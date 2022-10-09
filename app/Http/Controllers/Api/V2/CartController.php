@@ -57,8 +57,8 @@ class CartController extends Controller
             'sub_total' => format_price($subtotal),
             'shipping_cost' => format_price($items->sum('shipping_cost')),
             'discount' => format_price($items->sum('discount')+$bulk_sell_discount),
-            'grand_total' => format_price($sum),
-            'grand_total_value' => convert_price($sum),
+            'grand_total' => format_price($sum-$bulk_sell_discount),
+            'grand_total_value' => convert_price($sum-$bulk_sell_discount),
             'coupon_code' => $items[0]->coupon_code,
             'coupon_applied' => $items[0]->coupon_applied == 1,
         ]);
