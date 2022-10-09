@@ -102,6 +102,9 @@ class CartController extends Controller
                 $shop_data = Shop::where('user_id', $owner_id)->first();
                 if ($shop_data) {
                     $shop['name'] = $shop_data->user->username;
+                    $shop['apply_discount'] = $shop_data->apply_discount;
+                    $shop['min_product_count'] = $shop_data->min_product_count;
+                    $shop['discount_percentage'] = $shop_data->discount_percentage;
                     $shop['owner_id'] =(int) $owner_id;
                     $shop['cart_items'] = $shop_items_data;
                 } else {
