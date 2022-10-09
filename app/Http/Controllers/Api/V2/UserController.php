@@ -36,20 +36,21 @@ class UserController extends Controller
             'name' => "",
             'email' => "",
             'username' => "",
+            'shop_logo' => "https://hodisat.com/public/uploads/avatar-place.png",
             'phone' => "",
             'vacation_mode'=> ""
         ];
-        
+
 
 
         $token = PersonalAccessToken::findToken($request->access_token);
         if (!$token) {
             return response()->json($false_response);
         }
-        
+
         $user = $token->tokenable;
 
-        
+
 
         if ($user == null) {
             return response()->json($false_response);
@@ -62,10 +63,11 @@ class UserController extends Controller
             'name' => $user->name,
             'email' => $user->email,
             'username' => $user->username,
+            'shop_logo' => uploaded_asset($this->shop->logo),
             'phone' => $user->phone,
             'vacation_mode' => (string)$user->vacation_mode
         ]);
 
     }
-	
+
 }
