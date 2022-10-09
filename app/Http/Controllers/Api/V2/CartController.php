@@ -101,7 +101,7 @@ class CartController extends Controller
 
                 $shop_data = Shop::where('user_id', $owner_id)->first();
                 if ($shop_data) {
-                    $shop['name'] = $shop_data->name;
+                    $shop['name'] = $shop_data->user->username;
                     $shop['owner_id'] =(int) $owner_id;
                     $shop['cart_items'] = $shop_items_data;
                 } else {
@@ -125,12 +125,12 @@ class CartController extends Controller
 
         $variant = $request->variant;
 
-        
+
         $price = $product->unit_price;
-        
+
 
         //discount calculation based on flash deal and regular discount
-        
+
         $discount_applicable = false;
 
         if ($product->discount_start_date == null) {
@@ -177,7 +177,7 @@ class CartController extends Controller
             'quantity' => DB::raw("quantity + $request->quantity")
         ]);
 
-     
+
 
         return response()->json([
             'result' => true,
