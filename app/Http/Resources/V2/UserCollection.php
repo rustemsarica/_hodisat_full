@@ -15,8 +15,6 @@ class UserCollection extends ResourceCollection
                     'name' => $data->name,
                     'type' => $data->user_type,
                     'email' => $data->email,
-                    'avatar' => $data->avatar,
-                    'avatar_original' => uploaded_asset($data->avatar_original),
                     'address' => $data->address,
                     'city' => $data->city,
                     'country' => $data->country,

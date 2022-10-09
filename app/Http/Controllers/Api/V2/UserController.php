@@ -63,7 +63,7 @@ class UserController extends Controller
             'name' => $user->name,
             'email' => $user->email,
             'username' => $user->username,
-            'shop_logo' => uploaded_asset($this->shop->logo),
+            'shop_logo' => uploaded_asset($user->shop->logo),
             'phone' => $user->phone,
             'vacation_mode' => (string)$user->vacation_mode
         ]);
