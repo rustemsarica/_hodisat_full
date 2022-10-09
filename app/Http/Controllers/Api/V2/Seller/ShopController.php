@@ -46,10 +46,21 @@ class ShopController extends Controller
     public function update(Request $request)
     {
 
-        
+
         $shop = Shop::where('user_id',auth()->user()->id)->first();
         $successMessage=translate('Shop info updated successfully');
         $failedMessage=translate('Shop info updated failed');
+
+        if($request->has('apply_discount')){
+            $shop->apply_discount = $request->apply_discount;
+            if($request->apply_discount==0){
+                $shop->min_product_count = null;
+                $shop->discount_percentage = null;
+            }else{
+                $shop->min_product_count = $request->min_product_count;
+                $shop->discount_percentage = $request->discount_percentage;
+            }
+        }
 
         if ($request->has('shipping_cost')) {
             $shop->shipping_cost = $request->shipping_cost;
@@ -64,12 +75,12 @@ class ShopController extends Controller
             $seller = Seller::where('user_id',auth()->user()->id)->first();
             $seller->bank_name = $request->bank_name;
             $seller->bank_acc_name = $request->bank_acc_name;
-				
+
             $successMessage=translate('Payment info updated successfully');
 
 			if ($seller->save()) {
 				return $this->success(translate($successMessage));
-			}    
+			}
         }
 
         if ($shop->save()) {
@@ -77,7 +88,7 @@ class ShopController extends Controller
         }
 
         return $this->failed(translate($failedMessage));
-        
+
     }
 
 
@@ -90,16 +101,16 @@ class ShopController extends Controller
             ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"))
             ->get()->toArray();
        //dd($data->toArray());
-      
+
         //$array_date = [];
         $sales_array = [];
 		for ($i=0; $i<7; $i++) {
             $new_date = date("M-d", strtotime(($i+1)." days ago"));
     		//$array_date[] = date("M-d", strtotime($i." days ago"));
-            
+
             $sales_array[$i]['date'] = $new_date;
             $sales_array[$i]['total'] = 0;
-          
+
         	if(!empty($data)) {
                 $key = array_search($new_date, array_column($data, 'date'));
               	if(is_numeric($key)) {
@@ -107,7 +118,7 @@ class ShopController extends Controller
               	}
         	}
 		}
-        
+
         return Response()->json($sales_array);
     }
 
@@ -133,7 +144,7 @@ class ShopController extends Controller
         $products = filter_products(Product::where('user_id',  auth()->user()->id))
             ->limit(12)
             ->get();
-            
+
         return new ProductCollection($products);
     }
 
@@ -152,7 +163,7 @@ class ShopController extends Controller
             'id' => $shop->id,
             'package_name' => $shop->seller_package->name,
             'package_img' => uploaded_asset($shop->seller_package->logo)
-            
+
         ]);
     }
 
@@ -170,7 +181,7 @@ class ShopController extends Controller
             'avatar' => $user->avatar,
             'avatar_original' => uploaded_asset($user->avatar_original),
             'phone' => $user->phone
-            
+
         ]);
     }
 

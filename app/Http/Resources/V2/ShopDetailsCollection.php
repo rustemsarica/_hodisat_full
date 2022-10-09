@@ -17,19 +17,19 @@ class ShopDetailsCollection extends JsonResource
             $user=DB::table('blocked_users')->where(['user_id'=> auth('sanctum')->user()->id, 'blocked_user' => $this->user_id])->count();
             $follow=Follow::where(['user_id'=> auth('sanctum')->user()->id, 'followed_user_id' => $this->user_id])->count();
 
-			if($user>0){				
+			if($user>0){
             	$blocked=true;
 			}
             if($follow>0){
                 $followed = true;
             }
         }
-        return 
+        return
         [
             'id' => $this->id,
             'user_id' => $this->user_id,
             'name' => $this->user->name,
-            "slug" => $this->slug,
+            "slug" => $this->user->username,
             'description' => $this->meta_description,
             'logo' => uploaded_asset($this->logo),
             'upload_id' => $this->logo,
@@ -45,8 +45,12 @@ class ShopDetailsCollection extends JsonResource
             'bank_name' => $this->user->seller->bank_name,
             'bank_acc_name' => $this->user->seller->bank_acc_name,
 
+            "apply_discount" => $this->apply_discount,
+            "min_product_count" => $this->min_product_count,
+            "discount_percentage" => $this->discount_percentage,
+
             'rating' => (double) $this->rating,
-            'email'=> $this->user->email, 
+            'email'=> $this->user->email,
             'products'=> $this->user->products()->count(),
             'orders'=> $this->user->seller_orders()->where("delivery_status","delivered")->count(),
             'sales'=>format_price( $this->user->seller_sales()->where("payment_status","paid")->sum('price'),true),
