@@ -38,12 +38,25 @@ class CartController extends Controller
             $subtotal += $cartItem->price * $cartItem->quantity;
         }
 
-
+        $bulk_sell_discount=0.00;
+        $owner_ids = Cart::where('user_id', auth()->user()->id)->select('owner_id')->groupBy('owner_id')->pluck('owner_id')->toArray();
+        if (!empty($owner_ids)) {
+            foreach ($owner_ids as $owner_id) {
+                $shop_data = Shop::where('user_id', $owner_id)->first();
+                if($shop_data->apply_discount==1){
+                    $cart_items_count=Cart::where(['user_id'=> auth()->user()->id, 'owner_id' => $owner_id])->count();
+                    if($cart_items_count>=$shop_data->min_product_count){
+                        $seller_total_price=Cart::where(['user_id'=> auth()->user()->id, 'owner_id' => $owner_id])->sum('price');
+                        $bulk_sell_discount+=($seller_total_price/100)*$shop_data->discount_percentage;
+                    }
+                }
+            }
+        }
 
         return response()->json([
             'sub_total' => format_price($subtotal),
             'shipping_cost' => format_price($items->sum('shipping_cost')),
-            'discount' => format_price($items->sum('discount')),
+            'discount' => format_price($items->sum('discount')+$bulk_sell_discount),
             'grand_total' => format_price($sum),
             'grand_total_value' => convert_price($sum),
             'coupon_code' => $items[0]->coupon_code,
