@@ -40,7 +40,7 @@ class OfferCollection extends ResourceCollection
                         'thumbnail_image' => uploaded_asset($data->product->thumbnail_img),
                         'base_price' => format_price($data->product->unit_price),
                         'seller_id' => $seller->id,
-                        'seller_name'=> $seller->product->user->username,
+                        'seller_name'=> $seller->user->username,
                         'seller_avatar' =>  $seller_logo,
                         'rating' => 0,
                         'is_in_wishlist'=> false,
