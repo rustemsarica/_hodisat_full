@@ -70,7 +70,7 @@ class AuthController extends Controller
         }
 
         $user->save();
-        
+
             $seller = new Seller;
             $seller->user_id = $user->id;
 
@@ -81,7 +81,7 @@ class AuthController extends Controller
                 $shop->save();
 
             }
-        
+
         //create token
         $user->createToken('tokens')->plainTextToken;
 
@@ -176,7 +176,7 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        
+
         $user = request()->user();
         $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
 
@@ -236,7 +236,7 @@ class AuthController extends Controller
 
                 return response()->json(['result' => false, 'message' => translate('You can not login with this provider'), 'user' => null]);
             }else{
-                
+
             $user = new User([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -262,6 +262,7 @@ class AuthController extends Controller
             'shop_id'=> $shop->id,
             'logo' => uploaded_asset($shop->logo),
             'sliders' => uploaded_asset($shop->sliders),
+            'description' => $shop->meta_description,
             'user' => [
                 'id' => $user->id,
                 'type' => $user->user_type,
