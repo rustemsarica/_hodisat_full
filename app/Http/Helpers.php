@@ -197,7 +197,7 @@ if (!function_exists('format_price')) {
         }
 
 
-        // Minimize the price 
+        // Minimize the price
         if ($isMinimize) {
             $temp = number_format($price / 1000000000, get_setting('no_of_decimals'), ".", "");
 
@@ -252,7 +252,7 @@ if (!function_exists('cart_product_price')) {
                 $str = $cart_product['variation'];
             }
             $price = $product->unit_price;
-            
+
             //discount calculation
             $discount_applicable = false;
 
@@ -272,6 +272,7 @@ if (!function_exists('cart_product_price')) {
                     $price -= $product->discount;
                 }
             }
+
         } else {
             $price = $product->bids->max('amount');
         }
@@ -293,7 +294,7 @@ if (!function_exists('cart_product_discount')) {
         if ($cart_product['variation'] != null) {
             $str = $cart_product['variation'];
         }
-    
+
         $price = $product->unit_price;
 
         //discount calculation
@@ -336,7 +337,7 @@ if (!function_exists('carts_product_discount')) {
             if ($cart_product['variation'] != null) {
                 $str = $cart_product['variation'];
             }
-            
+
             $price = $product->unit_price;
 
             //discount calculation
@@ -455,7 +456,7 @@ if (!function_exists('home_price')) {
         $highest_price = $product->unit_price;
 
         return format_price(convert_price($lowest_price));
-            
+
     }
 }
 
@@ -622,7 +623,7 @@ function getShippingCost($carts, $index, $carrier = '')
     $cartItem = $carts[$index];
     $product = Product::find($cartItem['product_id']);
 
-    
+
 
     foreach ($carts as $key => $cart_item) {
         $item_product = Product::find($cart_item['product_id']);
@@ -1005,7 +1006,7 @@ if (!function_exists('seller_purchase_payment_done')) {
 if (!function_exists('product_restock')) {
     function product_restock($orderDetail)
     {
-        
+
         $product_stock = Product::where('id', $orderDetail->product_id)->first();
 
         if ($product_stock != null) {
