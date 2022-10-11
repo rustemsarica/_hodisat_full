@@ -10,16 +10,22 @@ use Illuminate\Http\Request;
 class OfferController extends Controller
 {
 
-    public function offers()
+    public function offers(Request $request)
     {
+        if($request->status==""){
+            $request->status=null;
+        }
         $productIds = Product::where('user_id', auth()->user()->id)->pluck('id')->toArray();
-        $offers = Offer::whereIn('product_id',$productIds)->get();
+        $offers = Offer::whereIn('product_id',$productIds)->where('answer',$request->status)->get();
         return new OfferCollection($offers);
     }
 
-    public function myOffers()
+    public function myOffers(Request $request)
     {
-        $offers = Offer::where('user_id',auth()->user()->id)->get();
+        if($request->status==""){
+            $request->status=null;
+        }
+        $offers = Offer::where('user_id',auth()->user()->id)->where('answer',$request->status)->get();
         return new OfferCollection($offers);
     }
 
