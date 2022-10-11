@@ -262,7 +262,7 @@ class AuthController extends Controller
             'shop_id'=> $shop->id,
             'logo' => uploaded_asset($shop->logo),
             'sliders' => uploaded_asset($shop->sliders),
-            'description' => $shop->meta_description,
+            'description' => $shop->meta_descriptions,
             'user' => [
                 'id' => $user->id,
                 'type' => $user->user_type,

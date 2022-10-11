@@ -38,6 +38,7 @@ class UserController extends Controller
             'username' => "",
             'shop_logo' => "https://hodisat.com/public/uploads/avatar-place.png",
             'cover_image' => "https://hodisat.com/public/uploads/bg.jpg",
+            'description' => "",
             'phone' => "",
             'vacation_mode'=> ""
         ];
@@ -66,6 +67,7 @@ class UserController extends Controller
             'username' => $user->username,
             'shop_logo' => uploaded_asset($user->shop->logo),
             'cover_image' => uploaded_asset($user->shop->sliders),
+            'description' => $user->shop->meta_description,
             'phone' => $user->phone,
             'vacation_mode' => (string)$user->vacation_mode
         ]);
