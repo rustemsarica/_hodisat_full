@@ -61,6 +61,11 @@ class OfferController extends Controller
                     'message' => 'Teklifin satıcıya iletildi.'
                 ]);
 
+        }else{
+            return response()->json([
+                'status' => false,
+                'message' => 'Bir sorun oluştu.'
+            ]);
         }
 
     }
