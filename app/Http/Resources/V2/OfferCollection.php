@@ -5,7 +5,6 @@ namespace App\Http\Resources\V2;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 use App\Models\Shop;
-use App\Models\Wishlist;
 
 class OfferCollection extends ResourceCollection
 {
