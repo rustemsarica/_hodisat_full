@@ -31,6 +31,10 @@ class OfferController extends Controller
 
     public function create_offer(Request $request)
     {
+        return response()->json([
+            'status' => false,
+            'message' => 'Teklifin değerlendirilmeden yeni bir teklif yapamazsın.'
+        ]);
         $product = Product::where('id',$request->product_id)->first();
         $min_offer_value = ( $product->unit_price / 100 ) * ( 100 - 20 );
         $unansweredOffers = Offer::where(['user_id'=> auth()->user()->id, 'product_id'=> $request->product_id, 'answer'=>null])->count();
@@ -55,12 +59,10 @@ class OfferController extends Controller
         $offer->offer_value = $request->offer_value;
 
         if($offer->save()){
-
-                return response()->json([
-                    'status' => true,
-                    'message' => 'Teklifin satıcıya iletildi.'
-                ]);
-
+            return response()->json([
+                'status' => true,
+                'message' => 'Teklifin satıcıya iletildi.'
+            ]);
         }else{
             return response()->json([
                 'status' => false,
