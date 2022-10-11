@@ -82,7 +82,7 @@ class OfferController extends Controller
 
     public function answer(Request $request)
     {
-        $offer = Offer::where(['product_id'=> $request->product_id, 'user_id' => $request->user_id, 'answer'=> null])->first();
+        $offer = Offer::where('id', $request->id)->first();
         $offer->answer = $request->answer;
         if($offer->save()){
             return response()->json([
