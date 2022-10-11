@@ -181,7 +181,7 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
 
     Route::get('offers','App\Http\Controllers\Api\V2\OfferController@offers')->middleware('auth:sanctum');
     Route::get('myoffers','App\Http\Controllers\Api\V2\OfferController@myOffers')->middleware('auth:sanctum');
-    Route::post('create-offer','App\Http\Controllers\Api\V2\OfferController@createOffer')->middleware('auth:sanctum');
+    Route::post('create-offer','App\Http\Controllers\Api\V2\OfferController@create_offer')->middleware('auth:sanctum');
     Route::post('answer-offer','App\Http\Controllers\Api\V2\OfferController@answer')->middleware('auth:sanctum');
 
 

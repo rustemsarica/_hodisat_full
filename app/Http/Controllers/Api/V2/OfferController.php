@@ -29,7 +29,7 @@ class OfferController extends Controller
         return new OfferCollection($offers);
     }
 
-    public function createOffer(Request $request)
+    public function create_offer(Request $request)
     {
         $product = Product::where('id',$request->product_id)->first();
         $min_offer_value = ( $product->unit_price / 100 ) * ( 100 - 20 );
