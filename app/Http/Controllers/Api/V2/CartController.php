@@ -94,6 +94,7 @@ class CartController extends Controller
                     foreach ($shop_items_raw_data as $shop_items_raw_data_item) {
 
                         $price = (double) cart_product_price($shop_items_raw_data_item, $product, false, false);
+
                         $offer = Offer::where(['product_id'=>$shop_items_raw_data_item["product_id"], 'user_id'=>auth()->user()->id, 'answer'=>1])->first();
                         if($offer!=null){
                             $price = $offer->offer_value;
@@ -106,7 +107,7 @@ class CartController extends Controller
                         $shop_items_data_item["product_name"] = $product->getTranslation('name');
                         $shop_items_data_item["product_thumbnail_image"] = uploaded_asset($product->thumbnail_img);
                         $shop_items_data_item["variation"] = $shop_items_raw_data_item["variation"];
-                        $shop_items_data_item["price"] =$price;
+                        $shop_items_data_item["price"] = $price;
                         $shop_items_data_item["currency_symbol"] = $currency_symbol;
                         $shop_items_data_item["shipping_cost"] =(double) $shop_items_raw_data_item["shipping_cost"];
                         $shop_items_data_item["quantity"] =intval($shop_items_raw_data_item["quantity"]) ;
