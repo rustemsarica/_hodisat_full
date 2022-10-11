@@ -5,6 +5,7 @@ namespace App\Http\Resources\V2;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 use App\Models\Shop;
+use App\Models\User;
 
 class OfferCollection extends ResourceCollection
 {
@@ -13,6 +14,7 @@ class OfferCollection extends ResourceCollection
 
             return [
             'data' => $this->collection->map(function($data) {
+                $user = User::where('id', $data->user_id)->first();
                 $seller = Shop::where('user_id',$data->product->user_id)->first();
 
                 if($seller->logo!=null || $seller->logo != ''){
@@ -27,9 +29,9 @@ class OfferCollection extends ResourceCollection
                 return [
                     'id' => (integer) $data->id,
                     'shop'=> [
-                        'id'=> $data->user->shop->id,
-                        'name' => $data->user->username,
-                        'logo' => uploaded_asset($data->user->shop->logo),
+                        'id'=> $user->shop->id,
+                        'name' => $user->username,
+                        'logo' => uploaded_asset($user->shop->logo),
                         'raiting' => null
                     ],
                     'product' => [
