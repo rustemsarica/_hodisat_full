@@ -52,6 +52,13 @@ class OfferController extends Controller
             ]);
         }
 
+        if($product->unit_price  == $request->offer_value){
+            return response()->json([
+                'status' => false,
+                'message' => 'Teklif değerin ürün fiyatının altında olmalı.'
+            ]);
+        }
+
         $offer = new Offer;
         $offer->product_id = $request->product_id;
         $offer->user_id = auth()->user()->id;
