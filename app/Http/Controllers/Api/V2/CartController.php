@@ -93,13 +93,13 @@ class CartController extends Controller
                 if (!empty($shop_items_raw_data)) {
                     foreach ($shop_items_raw_data as $shop_items_raw_data_item) {
 
+                        $product = Product::where('id', $shop_items_raw_data_item["product_id"])->first();
                         $price = (double) cart_product_price($shop_items_raw_data_item, $product, false, false);
 
                         $offer = Offer::where(['product_id'=>$shop_items_raw_data_item["product_id"], 'user_id'=>auth()->user()->id, 'answer'=>1])->first();
                         if($offer!=null){
                             $price = $offer->offer_value;
                         }
-                        $product = Product::where('id', $shop_items_raw_data_item["product_id"])->first();
                         $shop_items_data_item["id"] = intval($shop_items_raw_data_item["id"]) ;
                         $shop_items_data_item["owner_id"] =intval($shop_items_raw_data_item["owner_id"]) ;
                         $shop_items_data_item["user_id"] =intval($shop_items_raw_data_item["user_id"]) ;
