@@ -106,7 +106,7 @@ class CartController extends Controller
                         $shop_items_data_item["product_name"] = $product->getTranslation('name');
                         $shop_items_data_item["product_thumbnail_image"] = uploaded_asset($product->thumbnail_img);
                         $shop_items_data_item["variation"] = $shop_items_raw_data_item["variation"];
-                        $shop_items_data_item["price"] = $price;
+                        $shop_items_data_item["price"] =$price;
                         $shop_items_data_item["currency_symbol"] = $currency_symbol;
                         $shop_items_data_item["shipping_cost"] =(double) $shop_items_raw_data_item["shipping_cost"];
                         $shop_items_data_item["quantity"] =intval($shop_items_raw_data_item["quantity"]) ;

@@ -247,10 +247,7 @@ if (!function_exists('cart_product_price')) {
     function cart_product_price($cart_product, $product, $formatted = true)
     {
         if ($product->auction_product == 0) {
-            $str = '';
-            if ($cart_product['variation'] != null) {
-                $str = $cart_product['variation'];
-            }
+
             $price = $product->unit_price;
 
             //discount calculation
