@@ -64,7 +64,7 @@ class Product extends Model
         return $this->hasMany(AuctionProductBid::class);
     }
 
-    public function offer()
+    public function offers()
     {
         return $this->belongsTo(Offer::class);
     }
