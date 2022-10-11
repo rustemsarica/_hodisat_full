@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Shop;
 use App\Models\User;
+use App\Models\Offer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -144,6 +145,11 @@ class CartController extends Controller
 
         $price = $product->unit_price;
 
+        $offer = Offer::where(['product_id'=>$request->id, 'user_id'=>auth()->user()->id, 'answer'=>1])->first();
+
+        if($offer!=null){
+            $price = $offer->offer_value;
+        }
 
         //discount calculation based on flash deal and regular discount
 
