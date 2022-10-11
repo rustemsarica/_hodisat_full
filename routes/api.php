@@ -18,7 +18,7 @@ Route::group(['prefix' => 'v2/auth', 'middleware' => ['app_language']], function
 });
 
 Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
-    
+
     Route::get('get-search-suggestions', 'App\Http\Controllers\Api\V2\SearchSuggestionController@getList');
     Route::get('languages', 'App\Http\Controllers\Api\V2\LanguageController@getList');
 
@@ -41,7 +41,7 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
     Route::apiResource('categories', 'App\Http\Controllers\Api\V2\CategoryController')->only('index');
     Route::get('sub-categories/{id}', 'App\Http\Controllers\Api\V2\SubCategoryController@index')->name('subCategories.index');
     Route::get('category/{id}','App\Http\Controllers\Api\V2\CategoryController@getCategory');
-    
+
     Route::get('category/attributes/{id}','App\Http\Controllers\Api\V2\CategoryController@getCategoryAttributes');
 
     Route::apiResource('colors', 'App\Http\Controllers\Api\V2\ColorController')->only('index');
@@ -60,7 +60,7 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
     Route::get('purchase-history', 'App\Http\Controllers\Api\V2\PurchaseHistoryController@index')->middleware('auth:sanctum');
     Route::get('purchase-history-details/{id}', 'App\Http\Controllers\Api\V2\PurchaseHistoryController@details')->middleware('auth:sanctum');
     Route::get('purchase-history-items/{id}', 'App\Http\Controllers\Api\V2\PurchaseHistoryController@items')->middleware('auth:sanctum');
-    
+
      Route::get('seller/{id}/purchased', 'App\Http\Controllers\Api\V2\PurchaseHistoryController@purchased');
 
     Route::get('filter/categories', 'App\Http\Controllers\Api\V2\FilterController@categories');
@@ -112,11 +112,11 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
 
     Route::get('reviews/product/{id}', 'App\Http\Controllers\Api\V2\ReviewController@index')->name('api.reviews.index');
     Route::post('reviews/submit', 'App\Http\Controllers\Api\V2\ReviewController@submit')->name('api.reviews.submit')->middleware('auth:sanctum');
-    
+
     Route::get('shop/user/{id}', 'App\Http\Controllers\Api\V2\ShopController@shopOfUser')->middleware('auth:sanctum');
      Route::get('shop/user/detail/{id}', 'App\Http\Controllers\Api\V2\ShopController@shopOfUserDetail')->name('shop.detail.user_id');
     Route::get('shop/userid/{id}', 'App\Http\Controllers\Api\V2\ShopController@shopIdOfUser');
-    
+
     Route::get('shops/details/{id}', 'App\Http\Controllers\Api\V2\ShopController@info')->name('shops.info');
     Route::get('shops/products/all/{id}', 'App\Http\Controllers\Api\V2\ShopController@allProducts')->name('shops.allProducts');
     Route::get('shops/products/top/{id}', 'App\Http\Controllers\Api\V2\ShopController@topSellingProducts')->name('shops.topSellingProducts');
@@ -149,12 +149,12 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
     Route::post('user/shipping/update-location', 'App\Http\Controllers\Api\V2\AddressController@updateShippingAddressLocation')->middleware('auth:sanctum');
     Route::post('user/shipping/make_default', 'App\Http\Controllers\Api\V2\AddressController@makeShippingAddressDefault')->middleware('auth:sanctum');
     Route::get('user/shipping/delete/{address_id}', 'App\Http\Controllers\Api\V2\AddressController@deleteShippingAddress')->middleware('auth:sanctum');
-	
+
 	Route::get('user-notifications', 'App\Http\Controllers\Api\V2\FollowController@user_notifications')->middleware('auth:sanctum');
-	
+
 	Route::get('get-blocked-users', 'App\Http\Controllers\Api\V2\FollowController@blockedUsers')->middleware('auth:sanctum');
 	Route::get('user-block', 'App\Http\Controllers\Api\V2\FollowController@block_user')->middleware('auth:sanctum');
-	
+
 	Route::get('follows/check-follow', 'App\Http\Controllers\Api\V2\FollowController@checkFollow')->middleware('auth:sanctum');
     Route::get('follows/follow', 'App\Http\Controllers\Api\V2\FollowController@add')->middleware('auth:sanctum');
     Route::get('follows/unfollow', 'App\Http\Controllers\Api\V2\FollowController@remove')->middleware('auth:sanctum');
@@ -178,6 +178,11 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
 
 
     // Route::post('coupon/apply', 'App\Http\Controllers\Api\V2\CouponController@apply')->middleware('auth:sanctum');
+
+    Route::get('offers','App\Http\Controllers\Api\V2\OfferController@offers')->middleware('auth:sanctum');
+    Route::get('myoffers','App\Http\Controllers\Api\V2\OfferController@myOffers')->middleware('auth:sanctum');
+    Route::post('create-offer','App\Http\Controllers\Api\V2\OfferController@createOffer')->middleware('auth:sanctum');
+    Route::post('answer-offer','App\Http\Controllers\Api\V2\OfferController@answer')->middleware('auth:sanctum');
 
 
     Route::any('stripe', 'App\Http\Controllers\Api\V2\StripeController@stripe');
@@ -234,9 +239,9 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
     Route::get('profile/counters', 'App\Http\Controllers\Api\V2\ProfileController@counters')->middleware('auth:sanctum');
 
     Route::post('profile/update', 'App\Http\Controllers\Api\V2\ProfileController@update')->middleware('auth:sanctum');
-	
+
 	Route::post('profile/vacation-mode', 'App\Http\Controllers\Api\V2\ProfileController@vacationMode')->middleware('auth:sanctum');
-    
+
     Route::post('profile/update-device-token', 'App\Http\Controllers\Api\V2\ProfileController@update_device_token')->middleware('auth:sanctum');
     Route::post('profile/update-image', 'App\Http\Controllers\Api\V2\ProfileController@updateImage')->middleware('auth:sanctum');
     Route::post('profile/image-upload', 'App\Http\Controllers\Api\V2\ProfileController@imageUpload')->middleware('auth:sanctum');
@@ -259,7 +264,7 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
     Route::get('addon-list', 'App\Http\Controllers\Api\V2\ConfigController@addon_list');
     //Activated social login list
     Route::get('activated-social-login', 'App\Http\Controllers\Api\V2\ConfigController@activated_social_login');
-    
+
     //Business Sttings list
     Route::post('business-settings', 'App\Http\Controllers\Api\V2\ConfigController@business_settings');
     //Pickup Point list
