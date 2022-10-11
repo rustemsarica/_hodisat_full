@@ -12,11 +12,13 @@ class OfferController extends Controller
 
     public function offers(Request $request)
     {
-        if($request->status==""){
-            $request->status=null;
+        $productIds = Product::where('user_id', auth()->user()->id)->pluck('id')->toArray();
+
+        if($request->status!="" && $request->status!=null){
+            $offers = Offer::whereIn('product_id',$productIds)->get();
+            return new OfferCollection($offers);
         }
 
-        $productIds = Product::where('user_id', auth()->user()->id)->pluck('id')->toArray();
         $offers = Offer::whereIn('product_id',$productIds)->where('answer',$request->status)->get();
         return new OfferCollection($offers);
     }
