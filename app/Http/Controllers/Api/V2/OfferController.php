@@ -55,12 +55,12 @@ class OfferController extends Controller
         $offer->offer_value = $request->offer_value;
 
         if($offer->save()){
-            if($min_offer_value > $request->offer_value){
+
                 return response()->json([
                     'status' => true,
                     'message' => 'Teklifin satıcıya iletildi.'
                 ]);
-            }
+
         }
 
     }
