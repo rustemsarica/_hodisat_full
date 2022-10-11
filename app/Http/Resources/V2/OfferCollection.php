@@ -27,9 +27,9 @@ class OfferCollection extends ResourceCollection
                 return [
                     'id' => (integer) $data->id,
                     'shop'=> [
-                        'id'=> $data->user->shop->id,
-                        'name' => $data->user->username,
-                        'logo' => uploaded_asset($data->user->shop->logo),
+                        'id'=> $data->id,
+                        'name' => $data->id,
+                        'logo' => uploaded_asset($data->id),
                         'raiting' => null
                     ],
                     'product' => [
