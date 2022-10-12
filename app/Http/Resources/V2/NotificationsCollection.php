@@ -15,7 +15,7 @@ class NotificationsCollection extends ResourceCollection
             'data' => $this->collection->map(function($data) {
 
                 return [
-                    'id' => (string)$data->id,
+                    'id' => $data->id,
                     'title' => $data->title,
                     'text' => $data->text,
                     'item_type' => $data->item_type,
