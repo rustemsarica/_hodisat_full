@@ -84,7 +84,7 @@ class FollowController extends Controller
 	public function user_notifications()
     {
 
-         $notifications =  FirebaseNotification::where('notifiable_id', auth()->user()->id)->latest('created_at')->paginate(15);
+         $notifications =  FirebaseNotification::where('receiver_id', auth()->user()->id)->latest('created_at')->paginate(15);
          return new NotificationsCollection($notifications);
 
     }
