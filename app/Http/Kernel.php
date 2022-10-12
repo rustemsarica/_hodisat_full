@@ -4,7 +4,6 @@ namespace App\Http;
 
 use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\IsSeller;
-use App\Http\Middleware\IsCustomer;
 use App\Http\Middleware\IsUser;
 use App\Http\Middleware\CheckoutMiddleware;
 use App\Http\Middleware\IsUnbanned;
@@ -65,7 +64,6 @@ class Kernel extends HttpKernel
         'app_language' => AppLanguage::class,
         'admin' => IsAdmin::class,
         'seller' => IsSeller::class,
-        'customer' => IsCustomer::class,
         'user' => IsUser::class,
         'unbanned' => IsUnbanned::class,
         'checkout' => CheckoutMiddleware::class,

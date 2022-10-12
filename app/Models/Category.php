@@ -23,10 +23,6 @@ class Category extends Model
     	return $this->hasMany(Product::class);
     }
 
-    public function classified_products(){
-    	return $this->hasMany(CustomerProduct::class);
-    }
-
     public function categories()
     {
         return $this->hasMany(Category::class, 'parent_id');

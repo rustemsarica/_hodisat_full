@@ -98,12 +98,6 @@ class LoginController extends Controller
                 $newUser->provider_id = $user->id;
                 $newUser->save();
 
-                //make user a customer
-                // $customer = new Customer;
-                // $customer->user_id = $newUser->id;
-                // $customer->save();
-
-                //proceed to login
                 auth()->login($newUser, true);
             }
         }
@@ -193,7 +187,7 @@ class LoginController extends Controller
         }
 
         if (auth()->user()->user_type == 'admin' || auth()->user()->user_type == 'staff') {
-            
+
             return redirect()->route('admin.dashboard');
         } elseif (auth()->user()->user_type == 'seller') {
             return redirect()->route('seller.dashboard');

@@ -10,7 +10,6 @@ use App\Models\FlashDeal;
 use App\Models\Brand;
 use App\Models\Product;
 use App\Models\PickupPoint;
-use App\Models\CustomerPackage;
 use App\Models\User;
 use App\Models\Shop;
 use App\Models\Order;
@@ -127,8 +126,6 @@ class HomeController extends Controller
     {
         if (Auth::user()->user_type == 'seller') {
             return redirect()->route('seller.dashboard');
-        } elseif (Auth::user()->user_type == 'customer') {
-            return view('frontend.user.customer.dashboard');
         } else {
             abort(404);
         }
@@ -245,9 +242,9 @@ class HomeController extends Controller
                 $affiliateController = new AffiliateController;
                 $affiliateController->processAffiliateStats($referred_by_user->id, 1, 0, 0, 0);
             }
-            
+
             return view('frontend.product_details', compact('detailedProduct', 'product_queries', 'total_query'));
-            
+
         }
         abort(404);
     }
@@ -256,9 +253,9 @@ class HomeController extends Controller
     {
         $shop  = Shop::where('slug', $slug)->first();
         if ($shop != null) {
-            
+
             return view('frontend.seller_shop', compact('shop'));
-            
+
         }
         abort(404);
     }
@@ -357,11 +354,7 @@ class HomeController extends Controller
         return view('frontend.partials.category_elements', compact('category'));
     }
 
-    public function premium_package_index()
-    {
-        $customer_packages = CustomerPackage::all();
-        return view('frontend.user.customer_packages_lists', compact('customer_packages'));
-    }
+
 
     // public function new_page()
     // {
@@ -461,7 +454,7 @@ class HomeController extends Controller
 
     public function reset_password_with_code(Request $request)
     {
-        
+
         if (($user = User::where('email', $request->email)->where('verification_code', $request->code)->first()) != null) {
             if ($request->password == $request->password_confirmation) {
                 $user->password = Hash::make($request->password);

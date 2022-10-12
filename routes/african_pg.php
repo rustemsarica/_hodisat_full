@@ -45,8 +45,5 @@ Route::controller(PayfastController::class)->group(function () {
   Route::any('/payfast/seller_package_payment/return', 'seller_package_payment_return')->name('payfast.seller_package_payment.return');
   Route::any('/payfast/seller_package_payment/cancel', 'seller_package_payment_cancel')->name('payfast.seller_package_payment.cancel');
 
-  Route::any('/payfast/customer_package_payment/notify', 'customer_package_notify')->name('payfast.customer_package_payment.notify');
-  Route::any('/payfast/customer_package_payment/return', 'customer_package_return')->name('payfast.customer_package_payment.return');
-  Route::any('/payfast/customer_package_payment/cancel', 'customer_package_cancel')->name('payfast.customer_package_payment.cancel');
 });
 //Payfast routes <ends>

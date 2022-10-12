@@ -20,7 +20,6 @@ use App\Models\Translation;
 use App\Models\CombinedOrder;
 use App\Models\SellerPackage;
 use App\Models\BusinessSetting;
-use App\Models\CustomerPackage;
 use App\Utility\SendSMSUtility;
 use App\Utility\CategoryUtility;
 use App\Models\SellerPackagePayment;
@@ -893,15 +892,6 @@ if (!function_exists('isSeller')) {
     }
 }
 
-if (!function_exists('isCustomer')) {
-    function isCustomer()
-    {
-        if (Auth::check() && Auth::user()->user_type == 'customer') {
-            return true;
-        }
-        return false;
-    }
-}
 
 if (!function_exists('formatBytes')) {
     function formatBytes($bytes, $precision = 2)

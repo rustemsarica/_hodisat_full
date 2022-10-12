@@ -10,8 +10,6 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CompareController;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\CurrencyController;
-use App\Http\Controllers\CustomerPackageController;
-use App\Http\Controllers\CustomerProductController;
 use App\Http\Controllers\DemoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
@@ -123,8 +121,6 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/shop/{slug}', 'shop')->name('shop.visit');
     Route::get('/shop/{slug}/{type}', 'filter_shop')->name('shop.visit.type');
 
-    Route::get('/customer-packages', 'premium_package_index')->name('customer_packages_list_show');
-
     Route::get('/brands', 'all_brands')->name('brands.all');
     Route::get('/categories', 'all_categories')->name('categories.all');
     Route::get('/sellers', 'all_seller')->name('sellers');
@@ -153,14 +149,6 @@ Route::get('/sitemap.xml', function() {
     return base_path('sitemap.xml');
 });
 
-// Classified Product
-Route::controller(CustomerProductController::class)->group(function () {
-    Route::get('/customer-products', 'customer_products_listing')->name('customer.products');
-    Route::get('/customer-products?category={category_slug}', 'search')->name('customer_products.category');
-    Route::get('/customer-products?city={city_id}', 'search')->name('customer_products.city');
-    Route::get('/customer-products?q={search}', 'search')->name('customer_products.search');
-    Route::get('/customer-product/{slug}', 'customer_product')->name('customer.product');
-});
 
 // Search
 Route::controller(SearchController::class)->group(function () {
@@ -192,7 +180,7 @@ Route::controller(MercadopagoController::class)->group(function () {
     Route::any('/mercadopago/payment/done', 'paymentstatus')->name('mercadopago.done');
     Route::any('/mercadopago/payment/cancel', 'callback')->name('mercadopago.cancel');
 });
-//Mercadopago 
+//Mercadopago
 
 // SSLCOMMERZ Start
 Route::controller(SslcommerzController::class)->group(function () {
@@ -233,12 +221,12 @@ Route::group(['middleware' => ['user', 'verified', 'unbanned']], function() {
         Route::post('/new-user-email', 'update_email')->name('user.change.email');
         Route::post('/user/update-profile', 'userProfileUpdate')->name('user.profile.update');
     });
-    
+
     Route::get('/all-notifications', [NotificationController::class, 'index'])->name('all-notifications');
 
 });
 
-Route::group(['middleware' => ['customer', 'verified', 'unbanned']], function() {
+Route::group(['middleware' => ['user', 'verified', 'unbanned']], function() {
 
     // Checkout Routs
     Route::group(['prefix' => 'checkout'], function() {
@@ -254,7 +242,7 @@ Route::group(['middleware' => ['customer', 'verified', 'unbanned']], function() 
             Route::post('/remove_coupon_code', 'remove_coupon_code')->name('checkout.remove_coupon_code');
             //Club point
             Route::post('/apply-club-point', 'apply_club_point')->name('checkout.apply_club_point');
-            Route::post('/remove-club-point', 'remove_club_point')->name('checkout.remove_club_point'); 
+            Route::post('/remove-club-point', 'remove_club_point')->name('checkout.remove_club_point');
         });
     });
 
@@ -279,17 +267,6 @@ Route::group(['middleware' => ['customer', 'verified', 'unbanned']], function() 
     Route::resource('support_ticket', SupportTicketController::class);
     Route::post('support_ticket/reply', [SupportTicketController::class, 'seller_store'])->name('support_ticket.seller_store');
 
-    // Customer Package
-    Route::post('/customer_packages/purchase',[CustomerPackageController::class, 'purchase_package'])->name('customer_packages.purchase');
-
-    // Customer Product
-    Route::resource('customer_products', CustomerProductController::class);
-    Route::controller(CustomerProductController::class)->group(function () {
-        Route::get('/customer_products/{id}/edit', 'edit')->name('customer_products.edit');
-        Route::post('/customer_products/published', 'updatePublished')->name('customer_products.published');
-        Route::post('/customer_products/status', 'updateStatus')->name('customer_products.update.status');
-        Route::get('/customer_products/destroy/{id}', 'destroy')->name('customer_products.destroy');
-    });
 
     // Product Review
     Route::post('/product_review_modal', [ReviewController::class, 'product_review_modal'])->name('product_review_modal');
@@ -297,19 +274,19 @@ Route::group(['middleware' => ['customer', 'verified', 'unbanned']], function() 
 });
 
 Route::group(['middleware' => ['auth']], function() {
-    
+
     Route::get('invoice/{order_id}', [InvoiceController::class, 'invoice_download'])->name('invoice.download');
 
     // Reviews
     Route::resource('/reviews', ReviewController::class);
-    
+
     // Product Conversation
     Route::resource('conversations', ConversationController::class);
     Route::controller(ConversationController::class)->group(function () {
         Route::get('/conversations/destroy/{id}', 'destroy')->name('conversations.destroy');
         Route::post('conversations/refresh', 'refresh')->name('conversations.refresh');
     });
-    
+
     // Product Query
     Route::resource('product-queries', ProductQueryController::class);
 
@@ -350,7 +327,6 @@ Route::get('/customer-products/admin', [IyzicoController::class, 'initPayment'])
 Route::controller(PayhereController::class)->group(function () {
     Route::get('/payhere/checkout/testing', 'checkout_testing')->name('payhere.checkout.testing');
     Route::get('/payhere/wallet/testing', 'wallet_testing')->name('payhere.checkout.testing');
-    Route::get('/payhere/customer_package/testing', 'customer_package_testing')->name('payhere.customer_package.testing');
 
     Route::any('/payhere/checkout/notify', 'checkout_notify')->name('payhere.checkout.notify');
     Route::any('/payhere/checkout/return', 'checkout_return')->name('payhere.checkout.return');
@@ -363,10 +339,6 @@ Route::controller(PayhereController::class)->group(function () {
     Route::any('/payhere/seller_package_payment/notify', 'seller_package_notify')->name('payhere.seller_package_payment.notify');
     Route::any('/payhere/seller_package_payment/return', 'seller_package_payment_return')->name('payhere.seller_package_payment.return');
     Route::any('/payhere/seller_package_payment/cancel', 'seller_package_payment_cancel')->name('payhere.seller_package_payment.cancel');
-
-    Route::any('/payhere/customer_package_payment/notify', 'customer_package_notify')->name('payhere.customer_package_payment.notify');
-    Route::any('/payhere/customer_package_payment/return', 'customer_package_return')->name('payhere.customer_package_payment.return');
-    Route::any('/payhere/customer_package_payment/cancel', 'customer_package_cancel')->name('payhere.customer_package_payment.cancel');
 });
 
 
@@ -374,7 +346,7 @@ Route::controller(PayhereController::class)->group(function () {
 Route::controller(NgeniusController::class)->group(function () {
     Route::any('ngenius/cart_payment_callback', 'cart_payment_callback')->name('ngenius.cart_payment_callback');
     Route::any('ngenius/wallet_payment_callback', 'wallet_payment_callback')->name('ngenius.wallet_payment_callback');
-    Route::any('ngenius/customer_package_payment_callback', 'customer_package_payment_callback')->name('ngenius.customer_package_payment_callback');
+
     Route::any('ngenius/seller_package_payment_callback', 'seller_package_payment_callback')->name('ngenius.seller_package_payment_callback');
 });
 

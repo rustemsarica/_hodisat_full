@@ -33,11 +33,6 @@ class PayhereUtility
         return view('frontend.payhere.wallet_form', compact('user_id','order_id', 'amount', 'first_name', 'last_name', 'phone', 'email','address','city'));
     }
 
-    public static  function create_customer_package_form($user_id,$package_id,$order_id, $amount, $first_name, $last_name, $phone, $email,$address,$city)
-    {
-        return view('frontend.payhere.customer_package_form', compact('user_id','package_id','order_id', 'amount', 'first_name', 'last_name', 'phone', 'email','address','city'));
-    }
-
 
     public static function getHash($order_id, $payhere_amount)
     {
@@ -45,5 +40,5 @@ class PayhereUtility
         return $hash;
     }
 
- 
+
 }

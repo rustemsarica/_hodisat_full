@@ -24,7 +24,8 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'address', 'city', 'postal_code', 'phone', 'country', 'provider_id', 'email_verified_at', 'verification_code'
+
+        'username','name', 'email', 'password', 'address', 'city', 'postal_code', 'phone', 'country', 'provider_id', 'email_verified_at', 'verification_code'
     ];
 
     /**
@@ -41,10 +42,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Wishlist::class);
     }
 
-    public function customer()
-    {
-        return $this->hasOne(Customer::class);
-    }
 
     public function affiliate_user()
     {
@@ -99,21 +96,6 @@ class User extends Authenticatable implements MustVerifyEmail
     public function club_point()
     {
         return $this->hasOne(ClubPoint::class);
-    }
-
-    public function customer_package()
-    {
-        return $this->belongsTo(CustomerPackage::class);
-    }
-
-    public function customer_package_payments()
-    {
-        return $this->hasMany(CustomerPackagePayment::class);
-    }
-
-    public function customer_products()
-    {
-        return $this->hasMany(CustomerProduct::class);
     }
 
     public function seller_package_payments()
