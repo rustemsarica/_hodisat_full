@@ -94,11 +94,7 @@ class NotificationUtility
                 'text' => $req->text,
                 'sound' => 'default'
             ],
-            'data' => [
-                'item_type' => $req->type,
-                'item_type_id' => $req->id,
-                'click_action' => 'FLUTTER_NOTIFICATION_CLICK'
-            ],
+
             'priority' => 'high',
             'content_available' => true
         );
