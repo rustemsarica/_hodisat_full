@@ -87,7 +87,7 @@ class NotificationUtility
 
         $fields = array
         (
-            'to' => $req->device_token,
+            'token' => $req->device_token,
             'notification' => [
                 'body' => $req->text,
                 'title' => $req->title,
