@@ -53,6 +53,18 @@ class WishlistController extends Controller
             Wishlist::create(
                 ['user_id' =>auth()->user()->id, 'product_id' => $request->product_id]
             );
+            $product = Product::where('id', $request->product_id)->first();
+            if (get_setting('google_firebase') == 1 && $product->user->device_token != null) {
+                $data->device_token = $product->user->device_token;
+                $data->title = "Ürünün dikkat çekiyor";
+                $data->text = auth()->user()->username." ürününü beğendi.";
+
+                $data->type = "offer";
+                $data->id = $product->id;
+                $data->user_id = $product->user->id;
+
+                NotificationUtility::sendFirebaseNotification($data);
+            }
 
             return response()->json([
                 'message' => translate('Product added to wishlist'),

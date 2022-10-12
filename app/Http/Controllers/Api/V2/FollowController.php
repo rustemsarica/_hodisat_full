@@ -7,10 +7,13 @@ use App\Http\Resources\V2\NotificationsCollection;
 
 use App\Models\Follow;
 use App\Models\Shop;
-use App\Models\Notification;
+use App\Models\FirebaseNotification;
+use App\Models\user;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
+use App\Utility\NotificationUtility;
 
 class FollowController extends Controller
 {
@@ -28,10 +31,23 @@ class FollowController extends Controller
     {
         $product = Follow::where(['followed_user_id' => $request->followed_user_id, 'user_id' => auth()->user()->id])->count();
         if ($product == 0) {
-        
+
             Follow::create(
                 ['user_id' =>auth()->user()->id, 'followed_user_id' => $request->followed_user_id]
             );
+
+            $user = User::where('id',$request->followed_user_id)->first();
+            if (get_setting('google_firebase') == 1 && $user->device_token != null) {
+                $data->device_token = $user->device_token;
+                $data->title = "Yeni takipçi!";
+                $data->text = $user->username.", seni takip etmeye başladı.";
+
+                $data->type = "user";
+                $data->id = $user->shop->id;
+                $data->user_id = $user->id;
+
+                NotificationUtility::sendFirebaseNotification($data);
+            }
 
             return response()->json(['result' => true], 200);
         }
@@ -50,27 +66,27 @@ class FollowController extends Controller
     }
 
     public function getFollowers(Request $request)
-    {    
+    {
         $user_ids = Follow::where('followed_user_id', $request->user_id)->pluck("user_id")->toArray();
         $shops = Shop::whereIn('user_id', $user_ids);
 
-        return new FollowCollection($shops->get());    
+        return new FollowCollection($shops->get());
     }
 
     public function getFollowing(Request $request)
-    {    
+    {
         $user_ids = Follow::where('user_id', $request->user_id)->pluck("followed_user_id")->toArray();
         $shops = Shop::whereIn('user_id', $user_ids);
 
-        return new FollowCollection($shops->get());    
+        return new FollowCollection($shops->get());
     }
-	
+
 	public function user_notifications()
     {
-       
-         $notifications =  Notification::where('notifiable_id', auth()->user()->id)->latest('created_at')->paginate(15);
-         return new NotificationsCollection($notifications);        
-        
+
+         $notifications =  FirebaseNotification::where('notifiable_id', auth()->user()->id)->latest('created_at')->paginate(15);
+         return new NotificationsCollection($notifications);
+
     }
 
     public function block_user(Request $request)
@@ -88,12 +104,12 @@ class FollowController extends Controller
             return response()->json(['result' => true, 'message'=> 'Kullanıcı engellendi.']);
         }
     }
-	
+
 	public function blockedUsers(Type $var = null)
     {
         $users=DB::table('blocked_users')->where('user_id', auth()->user()->id)->pluck('blocked_user')->toArray();
         $shops=Shop::whereIn('user_id',$users)->get();
-        return new FollowCollection($shops);  
+        return new FollowCollection($shops);
     }
-    
+
 }

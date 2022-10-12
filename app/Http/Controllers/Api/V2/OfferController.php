@@ -67,6 +67,18 @@ class OfferController extends Controller
         $offer->offer_value = $request->offer_value;
 
         if($offer->save()){
+
+            if (get_setting('google_firebase') == 1 && $product->user->device_token != null) {
+                $data->device_token = $product->user->device_token;
+                $data->title = "Teklif!";
+                $data->text = $product->name." için ".$request->offer_value." ₺ değerinde teklif yapıldı";
+
+                $data->type = "offer";
+                $data->id = $product->id;
+                $data->user_id = $product->user->id;
+
+                NotificationUtility::sendFirebaseNotification($data);
+            }
             return response()->json([
                 'status' => true,
                 'message' => 'Teklifin satıcıya iletildi.'

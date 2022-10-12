@@ -84,7 +84,7 @@ class OrderService{
         NotificationUtility::sendNotification($order, $request->status);
         if (get_setting('google_firebase') == 1 && $order->user->device_token != null) {
             $request->device_token = $order->user->device_token;
-            $request->title = "Order updated !";
+            $request->title = "Siparişin güncellendi!";
             $status = str_replace("_", "", $order->delivery_status);
             $request->text = " Your order {$order->code} has been {$status}";
 
@@ -153,7 +153,7 @@ class OrderService{
             }
         }
         return 1;
-    
+
     }
 
     public function update_tracking_code(Request $request) {
@@ -163,34 +163,34 @@ class OrderService{
 
         return 1;
    }
-   
+
     public function generateUniqueCode(){
         do {
             $shipping_key = random_int(100000000000, 999999999999);
         } while (Shippingkey::where("shipping_key", $shipping_key)->first());
-  
+
         return $shipping_key;
     }
-   
+
     public function create_shipping_code($id) {
-        
+
         $order = Order::findOrFail($id);
         $seller_name=User::find($order->seller_id);
         $seller = Address::where('user_id',$order->seller_id)->first();
-                
+
         $shipping_address = json_decode($order->shipping_address, true);
-        
+
         $state=State::where('name',$shipping_address['state'])->first();
-        
+
         $seller_city=City::where('id',$seller->city_id)->first();
         $seller_state=State::where('id',$seller->state_id)->first();
         $shipping_key=$this->generateUniqueCode();
-        
+
         //return redirect('/orders')->with('status', 'Gönderi kodu oluşturuldu!'.$shipping_key);
         try{
 
             $istek = Soap::to('https://ws.yurticikargo.com/KOPSWebServices/NgiShipmentInterfaceServices?wsdl');
-			
+
 			$shipmentData=[
 				'ngiDocumentKey' 		=> $shipping_key,
 				'cargoType' 			=> 2,
@@ -239,12 +239,12 @@ class OrderService{
 				'townName'				=> $shipping_address['city'],
 				'consigneeMobilePhone'	=> $shipping_address['phone'],
 			];
-			
+
 			$XPayerCustData=[
 				'invCustId'				=> 909344613,
 				'invAddressId'			=> null,
 			];
-			
+
 			$data=[
 				'wsUserName'        	=> 'CIZGITURIZMYENI',
 				'wsPassword'        	=> '02v1d1pp3dmn7d15',
@@ -254,9 +254,9 @@ class OrderService{
 				'XConsigneeCustAddress'	=> $XConsigneeCustAddress,
 				'payerCustData'			=> $XPayerCustData,
 			];
-			
+
             $response = $istek->createNgiShipmentWithAddress($data);
-            
+
             if($response->XShipmentDataResponse->outFlag==0){
                 Shippingkey::insert(['shipping_key'=>$shipping_key]);
 				$order->shipping_comp = $shipping_comp;
@@ -271,14 +271,14 @@ class OrderService{
 			return false;
         }
 
-        
+
     }
-   
+
     public function cancel_shipping_code(Request $request) {
         $key=$request->shipping_code;
         $shipping_comp=$request->shipping_comp;
         $order=Order::where('shipping_code',$key)->first();
-        
+
             $istek = Soap::to('https://ws.yurticikargo.com/KOPSWebServices/NgiShipmentInterfaceServices?wsdl');
             $data=[
                     'wsUserName'        		=> 'CIZGITURIZMYENI',
@@ -287,7 +287,7 @@ class OrderService{
                     'ngiCargoKey'               => $key,
                     'ngiDocumentKey'            => $key,
                     'cancellationDescription'   => 'İPTAL İŞLEMİ MÜŞTERİ İSTEĞİ İLE',
-                    
+
                     ];
             $response = $istek->cancelNgiShipment($data);
             if($response->XCancelShipmentResponse->outFlag==0){
@@ -299,7 +299,7 @@ class OrderService{
             }else{
                 return redirect('/orders')->with('danger', 'Beklenmeyen Hata! Lütfen ekibimizle iletişime geçin!'.json_encode($response,true));
             }
-        
+
     }
 
 }

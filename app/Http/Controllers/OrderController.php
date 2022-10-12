@@ -29,13 +29,13 @@ class OrderController extends Controller
     // All Orders
     public function all_orders(Request $request)
     {
-        
-        
+
+
         $date = $request->date;
         $sort_search = null;
         $delivery_status = null;
         $payment_status = '';
-        
+
         $orders = Order::orderBy('id', 'desc');
         $admin_user_id = User::where('user_type', 'admin')->first()->id;
         if(Route::currentRouteName() == 'inhouse_orders.index') {
@@ -75,7 +75,7 @@ class OrderController extends Controller
     {
         $order = Order::findOrFail(decrypt($id));
         $order_shipping_address = json_decode($order->shipping_address);
-        
+
         $order->viewed = 1;
         $order->save();
         return view('backend.sales.show', compact('order'));
@@ -147,7 +147,7 @@ class OrderController extends Controller
             $order->shipping_address = $combined_order->shipping_address;
 
             $order->additional_info = $request->additional_info;
-            
+
             //======== Closed By Kiron ==========
             // $order->shipping_type = $carts[0]['shipping_type'];
             // if ($carts[0]['shipping_type'] == 'pickup_point') {
@@ -177,7 +177,7 @@ class OrderController extends Controller
 
                 $product_variation = $cartItem['variation'];
 
-                
+
                 if ( 1 > $product->current_stock) {
                     flash(translate('The requested quantity is not available for ') . $product->getTranslation('name'))->warning();
                     $order->delete();
@@ -421,9 +421,9 @@ class OrderController extends Controller
         NotificationUtility::sendNotification($order, $request->status);
         if (get_setting('google_firebase') == 1 && $order->user->device_token != null) {
             $request->device_token = $order->user->device_token;
-            $request->title = "Order updated !";
-            $status = str_replace("_", "", $order->delivery_status);
-            $request->text = " Your order {$order->code} has been {$status}";
+            $request->title = "Siparişin güncellendi!";
+            $status = translate(str_replace("_", "", $order->delivery_status));
+            $request->text = "{$order->code} numaralı siparişin {$status}";
 
             $request->type = "order";
             $request->id = $order->id;
