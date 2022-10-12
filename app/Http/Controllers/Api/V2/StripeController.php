@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use App\Models\CustomerPackage;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\CustomerPackageController;
 use App\Http\Controllers\WalletController;
 use App\Models\CombinedOrder;
 use App\Models\Currency;
@@ -25,7 +23,7 @@ class StripeController extends Controller
         if(isset($request->seller_package_id)) {
             $data['package_id'] = $request->seller_package_id;
         }
-        
+
         return view('frontend.payment.stripe_app', $data);
     }
 

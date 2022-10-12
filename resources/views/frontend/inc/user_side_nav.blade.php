@@ -30,7 +30,7 @@
                         $delivery_viewed = App\Models\Order::where('user_id', Auth::user()->id)->where('delivery_viewed', 0)->get()->count();
                         $payment_status_viewed = App\Models\Order::where('user_id', Auth::user()->id)->where('payment_status_viewed', 0)->get()->count();
                     @endphp
-                    @if(Auth::user()->user_type == 'customer')
+
                         <li class="aiz-side-nav-item">
                             <a href="{{ route('purchase_history.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['purchase_history.index','purchase_history.details'])}}">
                                 <i class="las la-file-alt aiz-side-nav-icon"></i>
@@ -39,7 +39,7 @@
                             </a>
                         </li>
 
-                    @endif
+
 
                         @if (addon_is_activated('refund_request'))
                             <li class="aiz-side-nav-item">

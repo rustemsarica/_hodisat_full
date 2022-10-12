@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
-use App\Models\Customer;
 use App\Models\Cart;
 use App\Models\Seller;
 use App\Models\Shop;
@@ -97,7 +96,7 @@ class RegisterController extends Controller
                 $otpController->send_code($user);
             }
         }
-        
+
             $seller = new Seller;
             $seller->user_id = $user->id;
 
@@ -107,8 +106,8 @@ class RegisterController extends Controller
                 $shop->slug = Str::slug($request->name) . '-' . $shop->id;
                 $shop->save();
             }
-        
-        
+
+
         if(session('temp_user_id') != null){
             Cart::where('temp_user_id', session('temp_user_id'))
                     ->update([

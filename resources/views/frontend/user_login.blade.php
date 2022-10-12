@@ -164,16 +164,5 @@
             }
         }
 
-
-
-        function autoFillSeller(){
-            $('#email').val('seller@example.com');
-            $('#password').val('123456');
-        }
-        function autoFillCustomer(){
-            $('#email').val('customer@example.com');
-            $('#password').val('123456');
-        }
-
     </script>
 @endsection

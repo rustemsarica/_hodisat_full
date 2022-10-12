@@ -29,8 +29,6 @@
                                             <button class="btn btn-base-1 btn-block" type="submit">{{translate('Pay Now')}} (Ksh{{ $combined_order->grand_total }})</button>
                                         @elseif(Session::get('payment_type') == 'wallet_payment')
                                             <button class="btn btn-base-1 btn-block" type="submit">{{translate('Pay Now')}} (Ksh{{ Session::get('payment_data')['amount'] }})</button>
-                                        @elseif(Session::get('payment_type') == 'customer_package_payment')
-                                            <button class="btn btn-base-1 btn-block" type="submit">{{translate('Pay Now')}} (Ksh{{ $customer_package->amount }})</button>
                                         @elseif(Session::get('payment_type') == 'seller_package_payment')
                                             <button class="btn btn-base-1 btn-block" type="submit">{{translate('Pay Now')}} (Ksh{{ $seller_package->amount }})</button>
                                         @endif

@@ -6,7 +6,6 @@ namespace App\Http\Controllers\Api\V2;
 
 use App\Models\BusinessSetting;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\CustomerPackageController;
 use App\Http\Controllers\WalletController;
 use App\Models\CombinedOrder;
 use App\Models\User;
@@ -53,7 +52,7 @@ class IyzicoController extends Controller
         $shippingAddress->setCountry("Turkey");
         $shippingAddress->setAddress("Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1");
         $iyzicoRequest->setShippingAddress($shippingAddress);
-        
+
         $billingAddress = new \Iyzipay\Model\Address();
         $billingAddress->setContactName("Jane Doe");
         $billingAddress->setCity("Istanbul");

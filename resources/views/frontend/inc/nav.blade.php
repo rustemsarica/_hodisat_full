@@ -72,8 +72,8 @@
                         <li class="list-inline-item mr-3 border-right border-left-0 pr-3 pl-0">
                             <a href="tel:{{ get_setting('helpline_number') }}" class="text-reset d-inline-block opacity-60 py-2">
                                 <i class="la la-phone"></i>
-                                <span>{{ translate('Help line')}}</span>  
-                                <span>{{ get_setting('helpline_number') }}</span>    
+                                <span>{{ translate('Help line')}}</span>
+                                <span>{{ get_setting('helpline_number') }}</span>
                             </a>
                         </li>
                     @endif
@@ -104,13 +104,7 @@
                                             @forelse(Auth::user()->unreadNotifications as $notification)
                                                 <li class="list-group-item">
                                                     @if($notification->type == 'App\Notifications\OrderNotification')
-                                                        @if(Auth::user()->user_type == 'customer')
-                                                        <a href="{{route('purchase_history.details', encrypt($notification->data['order_id']))}}" class="text-reset">
-                                                            <span class="ml-2">
-                                                                {{translate('Order code: ')}} {{$notification->data['order_code']}} {{ translate('has been '. ucfirst(str_replace('_', ' ', $notification->data['status'])))}}
-                                                            </span>
-                                                        </a>
-                                                        @elseif (Auth::user()->user_type == 'seller')
+                                                        @if (Auth::user()->user_type == 'seller')
                                                             <a href="{{ route('seller.orders.show', encrypt($notification->data['order_id'])) }}" class="text-reset">
                                                                 <span class="ml-2">
                                                                     {{translate('Order code: ')}} {{$notification->data['order_code']}} {{ translate('has been '. ucfirst(str_replace('_', ' ', $notification->data['status'])))}}
@@ -296,7 +290,7 @@
 
 @section('script')
     <script type="text/javascript">
-        
+
         function show_order_details(order_id)
         {
             $('#order-details-modal-body').html(null);

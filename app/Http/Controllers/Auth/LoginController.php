@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
 use App\Models\User;
-use App\Models\Customer;
 use App\Models\Cart;
 use Session;
 use Illuminate\Http\Request;
