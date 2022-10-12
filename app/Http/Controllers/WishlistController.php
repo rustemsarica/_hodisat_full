@@ -43,14 +43,14 @@ class WishlistController extends Controller
         if(Auth::check()){
             $wishlist = Wishlist::where('user_id', Auth::user()->id)->where('product_id', $request->id)->first();
             if($wishlist == null){
-
+                $wishlist = new Wishlist;
+                $wishlist->user_id = Auth::user()->id;
+                $wishlist->product_id = $request->id;
+                $wishlist->save();
 
                 $product = Product::where('id', $request->id)->first();
                 if (get_setting('google_firebase') == 1 && $product->user->device_token != null) {
-                    $wishlist = new Wishlist;
-                    $wishlist->user_id = Auth::user()->id;
-                    $wishlist->product_id = $request->id;
-                    $wishlist->save();
+
                     $data->device_token = $product->user->device_token;
                     $data->title = "Ürünün dikkat çekiyor";
                     $data->text = Auth::user()->username." ürününü beğendi.";
