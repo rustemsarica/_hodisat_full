@@ -91,7 +91,8 @@ class NotificationUtility
             'notification' => [
                 'body' => $req->text,
                 'title' => $req->title,
-                'sound' => 'default' /*Default sound*/
+                'text' => $req->text,
+                'sound' => 'default'
             ],
             'data' => [
                 'item_type' => $req->type,
