@@ -97,5 +97,10 @@ class OfferController extends Controller
         }
     }
 
+    public function check_offer(Request $request)
+    {
+       $offer = Offer::where(['user_id'=>auth()->user()->id, 'product_id'=>$request->product_id])->first();
+       return new OfferCollection($offer);
+    }
 
 }
