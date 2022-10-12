@@ -59,7 +59,7 @@ class WishlistController extends Controller
                 $data->title = "Ürünün dikkat çekiyor";
                 $data->text = auth()->user()->username." ürününü beğendi.";
 
-                $data->type = "offer";
+                $data->type = "product";
                 $data->id = $product->id;
                 $data->user_id = $product->user->id;
 
