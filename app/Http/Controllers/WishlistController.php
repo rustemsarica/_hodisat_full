@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\Wishlist;
+use App\Models\Product;
 
 use App\Utility\NotificationUtility;
 
