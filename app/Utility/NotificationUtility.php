@@ -104,7 +104,7 @@ class NotificationUtility
 
         //$fields = json_encode($arrayToSend);
         $headers = array(
-            'Authorization: key='.env('FCM_SERVER_KEY'),
+            'Authorization: key=AIzaSyALq8vfJ1CQ69uRqqbpfWxstWMhRK-1Yls',
             'Content-Type: application/json'
         );
 
