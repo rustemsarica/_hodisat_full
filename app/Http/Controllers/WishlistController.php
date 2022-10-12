@@ -51,16 +51,15 @@ class WishlistController extends Controller
                 $product = Product::where('id', $request->id)->first();
                 if (get_setting('google_firebase') == 1 && $product->user->device_token != null) {
 
-                    $data = array();
-                    $data->device_token = $product->user->device_token;
-                    $data->title = "Ürünün dikkat çekiyor";
-                    $data->text = Auth::user()->username." ürününü beğendi.";
+                    $wishlist->device_token = $product->user->device_token;
+                    $wishlist->title = "Ürünün dikkat çekiyor";
+                    $wishlist->text = Auth::user()->username." ürününü beğendi.";
 
-                    $data->type = "product";
-                    $data->id = $product->id;
-                    $data->user_id = $product->user->id;
+                    $wishlist->type = "product";
+                    $wishlist->id = $product->id;
+                    $wishlist->user_id = $product->user->id;
 
-                    NotificationUtility::sendFirebaseNotification($data);
+                    NotificationUtility::sendFirebaseNotification($wishlist);
                 }
             }
             return view('frontend.partials.wishlist');
