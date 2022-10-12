@@ -38,15 +38,16 @@ class FollowController extends Controller
 
             $user = User::where('id',$request->followed_user_id)->first();
             if (get_setting('google_firebase') == 1 && $user->device_token != null) {
-                $data->device_token = $user->device_token;
-                $data->title = "Yeni takipçi!";
-                $data->text = $user->username.", seni takip etmeye başladı.";
+                $request->device_token = $user->device_token;
+                $request->title = "Yeni takipçi!";
+                $request->text = $user->username.", seni takip etmeye başladı.";
 
-                $data->type = "user";
-                $data->id = $user->shop->id;
-                $data->user_id = $user->id;
+                $request->type = "user";
+                $request->id = $user->shop->id;
+                $request->user_id = $user->id;
+                $request->image = uploaded_asset($user->shop->logo);
 
-                NotificationUtility::sendFirebaseNotification($data);
+                NotificationUtility::sendFirebaseNotification($request);
             }
 
             return response()->json(['result' => true], 200);
