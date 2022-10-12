@@ -86,7 +86,7 @@ class OrderService{
             $request->device_token = $order->user->device_token;
             $request->title = "Siparişin güncellendi!";
             $status = str_replace("_", "", $order->delivery_status);
-            $request->text = " Your order {$order->code} has been {$status}";
+            $request->text = "{$order->code} numaralı siparişin {$status}";
 
             $request->type = "order";
             $request->id = $order->id;
