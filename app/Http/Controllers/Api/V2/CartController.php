@@ -70,12 +70,20 @@ class CartController extends Controller
 
     public function count()
     {
-        $items = Cart::where('user_id',auth()->user()->id)->count();
+        if(auth()->check()){
+             $items = Cart::where('user_id',auth()->user()->id)->count();
 
-        return response()->json([
-            'count' => $items,
-            'status' => true,
-        ]);
+            return response()->json([
+                'count' => $items,
+                'status' => true,
+            ]);
+        }else{
+            return response()->json([
+                'count' => 0,
+                'status' => true,
+            ]);
+        }
+
     }
 
 
