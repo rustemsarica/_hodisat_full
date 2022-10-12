@@ -7,6 +7,7 @@ use App\Models\Wishlist;
 use App\Models\Product;
 use App\Models\Shop;
 use Illuminate\Http\Request;
+use \App\Utility\NotificationUtility;
 
 class WishlistController extends Controller
 {
