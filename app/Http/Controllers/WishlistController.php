@@ -58,7 +58,7 @@ class WishlistController extends Controller
                     $request->type = "product";
                     $request->id = $product->id;
                     $request->user_id = $product->user->id;
-
+                    $request->image = uploaded_asset($product->thumbnail_img);
                     NotificationUtility::sendFirebaseNotification($request);
                 }
             }
