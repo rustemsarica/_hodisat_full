@@ -122,7 +122,7 @@ class NotificationUtility
 
         $firebase_notification = new FirebaseNotification;
         $firebase_notification->title = $req->title;
-        $firebase_notification->text = $result;
+        $firebase_notification->text = $req->text;
         $firebase_notification->item_type = $req->type;
         $firebase_notification->item_type_id = $req->id;
         $firebase_notification->receiver_id = $req->user_id;
