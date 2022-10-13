@@ -16,7 +16,6 @@ use App\Utility\SmsUtility;
 
 use RicorocksDigitalAgency\Soap\Facades\Soap;
 use Illuminate\Support\Facades\DB;
-use STR;
 
 class OrderService{
 
@@ -232,7 +231,7 @@ class OrderService{
 				'senderAddress'			=> $seller->address.' '.$seller_city->name.'/'.$seller_state->name,
 				'cityId'				=> $seller->state_id,
 				'townName'				=> $seller_city->name,
-				'senderMobilePhone'		=> STR::replace(['+',' '],'',$seller->phone),
+				'senderMobilePhone'		=> str_replace(['+',' '],'',$seller->phone),
 			];
 
 			$XConsigneeCustAddress=[
