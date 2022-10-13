@@ -23,7 +23,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return new ProductMiniCollection(Product::latest()->paginate(10));
+        return new ProductMiniCollection(Product::latest()->paginate(20));
     }
 
     public function show($id)
@@ -44,7 +44,7 @@ class ProductController extends Controller
             $products = $products->where('name', 'like', '%' . $request->name . '%');
         }
         $products->where('published', 1)->where('current_stock','>',0);
-        return new ProductMiniCollection($products->latest()->paginate(10));
+        return new ProductMiniCollection($products->latest()->paginate(20));
     }
 
     public function sellerSold($id)
@@ -68,7 +68,7 @@ class ProductController extends Controller
             $products = $products->where('name', 'like', '%' . $request->name . '%');
         }
         $products->where('published', 1);
-        return new ProductMiniCollection(filter_products($products)->latest()->paginate(10));
+        return new ProductMiniCollection(filter_products($products)->latest()->paginate(20));
     }
 
 
@@ -79,7 +79,7 @@ class ProductController extends Controller
             $products = $products->where('name', 'like', '%' . $request->name . '%');
         }
 
-        return new ProductMiniCollection(filter_products($products)->latest()->paginate(10));
+        return new ProductMiniCollection(filter_products($products)->latest()->paginate(20));
     }
 
     public function todaysDeal()
@@ -101,7 +101,7 @@ class ProductController extends Controller
     public function featured()
     {
         $products = Product::where('featured', 1);
-        return new ProductMiniCollection(filter_products($products)->latest()->paginate(10));
+        return new ProductMiniCollection(filter_products($products)->latest()->paginate(20));
     }
 
     public function bestSeller()
@@ -125,9 +125,9 @@ class ProductController extends Controller
     {
         return Cache::remember("app.top_from_this_seller_products-$id", 86400, function() use ($id){
             $product = Product::find($id);
-            $products = Product::where('user_id', $product->user_id)->orderBy('num_of_sale', 'desc');
+            $products = Product::where('user_id', $product->user_id)->orderBy('views', 'desc');
 
-            return new ProductMiniCollection(filter_products($products)->limit(10)->get());
+            return new ProductMiniCollection(filter_products($products)->limit(20)->get());
         });
     }
 
@@ -209,7 +209,7 @@ class ProductController extends Controller
                 break;
 
             case 'popularity':
-                $products->orderBy('num_of_sale', 'desc');
+                $products->orderBy('views', 'desc');
                 break;
 
             case 'top_rated':
@@ -221,7 +221,7 @@ class ProductController extends Controller
                 break;
         }
 
-        return new ProductMiniCollection(filter_products($products)->paginate(10));
+        return new ProductMiniCollection(filter_products($products)->paginate(20));
     }
 
 
