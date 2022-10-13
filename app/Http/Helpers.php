@@ -105,13 +105,9 @@ if (!function_exists('get_cached_products')) {
     function get_cached_products($category_id = null)
     {
         $products = \App\Models\Product::where('published', 1)->where('approved', '1')->where('auction_product', 0);
-        $verified_sellers = verified_sellers_id();
+
         if (get_setting('vendor_system_activation') == 1) {
-            $products = $products->where(function ($p) use ($verified_sellers) {
-                $p->where('added_by', 'admin')->orWhere(function ($q) use ($verified_sellers) {
-                    $q->whereIn('user_id', $verified_sellers);
-                });
-            });
+            $products = $products;
         } else {
             $products = $products->where('added_by', 'admin');
         }
@@ -127,15 +123,6 @@ if (!function_exists('get_cached_products')) {
                 return $products->latest()->take(12)->get();
             });
         }
-    }
-}
-
-if (!function_exists('verified_sellers_id')) {
-    function verified_sellers_id()
-    {
-        return Cache::rememberForever('verified_sellers_id', function () {
-            return App\Models\Shop::pluck('user_id')->toArray();
-        });
     }
 }
 
