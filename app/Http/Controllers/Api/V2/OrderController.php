@@ -87,7 +87,7 @@ class OrderController extends Controller
             }else{
                 $order->payment_status = 'unpaid';
             }
-            
+
             $order->save();
 
             $subtotal = 0;
@@ -103,7 +103,7 @@ class OrderController extends Controller
 
                 $product_variation = $cartItem['variation'];
 
-                
+
                 if (1 > $product->current_stock) {
                     $order->delete();
                     $combined_order->delete();
@@ -167,7 +167,7 @@ class OrderController extends Controller
             }
 
             $combined_order->grand_total += $order->grand_total;
-
+            $order->shipping_code=(new OrderService)->create_shipping_code($order->id);
             if (strpos($request->payment_type, "manual_payment_") !== false) { // if payment type like  manual_payment_1 or  manual_payment_25 etc)
 
                 $order->manual_payment = 1;
@@ -175,7 +175,7 @@ class OrderController extends Controller
 
             }
 			$order->save();
-            
+
         }
         $combined_order->save();
 
