@@ -15,6 +15,7 @@ use App\Utility\NotificationUtility;
 use App\Utility\SmsUtility;
 
 use RicorocksDigitalAgency\Soap\Facades\Soap;
+use DB;
 
 class OrderService{
 
@@ -269,6 +270,7 @@ class OrderService{
             }
 
         }catch(Exception $e){
+            DB::table('logs')->insert(['text'=>$e]);
 			return false;
         }
 
