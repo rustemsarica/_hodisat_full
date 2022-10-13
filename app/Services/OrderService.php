@@ -191,6 +191,7 @@ class OrderService{
         //return redirect('/orders')->with('status', 'Gönderi kodu oluşturuldu!'.$shipping_key);
         try{
 
+            DB::table('logs')->insert(['text'=>"wsdl"]);
             $istek = Soap::to('https://ws.yurticikargo.com/KOPSWebServices/NgiShipmentInterfaceServices?wsdl');
 
 			$shipmentData=[
