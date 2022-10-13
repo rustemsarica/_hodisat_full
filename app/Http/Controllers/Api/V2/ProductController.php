@@ -217,7 +217,7 @@ class ProductController extends Controller
                 break;
 
             default:
-                $products->orderBy('created_at', 'desc');
+                $products->inRandomOrder();
                 break;
         }
 
