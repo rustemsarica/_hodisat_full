@@ -258,7 +258,7 @@ class OrderService{
 			];
 
             $response = $istek->createNgiShipmentWithAddress($data);
-
+            DB::table('logs')->insert(['text'=>$response]);
             if($response->XShipmentDataResponse->outFlag==0){
                 Shippingkey::insert(['shipping_key'=>$shipping_key]);
 				$order->shipping_comp = "yurtici_kargo";
