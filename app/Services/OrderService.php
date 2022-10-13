@@ -193,7 +193,6 @@ class OrderService{
 
             $istek = Soap::to('https://ws.yurticikargo.com/KOPSWebServices/NgiShipmentInterfaceServices?wsdl');
 
-            DB::table('logs')->insert(['text'=>"geçti"]);
 			$shipmentData=[
 				'ngiDocumentKey' 		=> $shipping_key,
 				'cargoType' 			=> 1,
@@ -257,6 +256,8 @@ class OrderService{
 				'XConsigneeCustAddress'	=> $XConsigneeCustAddress,
 				'payerCustData'			=> $XPayerCustData,
 			];
+
+            DB::table('logs')->insert(['text'=>json_encode($data)]);
 
             $response = $istek->createNgiShipmentWithAddress($data);
             DB::table('logs')->insert(['text'=>json_encode($response)]);
