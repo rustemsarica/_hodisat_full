@@ -51,7 +51,8 @@ class ProductMiniCollection extends ResourceCollection
                         'current_stock' => $data->current_stock,
                         'links' => [
                             'details' => route('products.show', $data->id),
-                        ]
+                        ],
+                        'published' => $data->published
                     ];
                 })
             ];
@@ -88,7 +89,8 @@ class ProductMiniCollection extends ResourceCollection
                     'current_stock' => $data->current_stock,
                     'links' => [
                         'details' => route('products.show', $data->id),
-                    ]
+                    ],
+                    'published' => $data->published
                 ];
             })
         ];
