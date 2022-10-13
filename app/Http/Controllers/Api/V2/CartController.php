@@ -153,6 +153,13 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
+        $is_in_cart = Cart::where(['user_id'=>auth()->user()->id, 'product_id'=>$request->id])->count();
+
+        if($is_in_cart>0){
+            return response()->json(['result' => false, 'message' => translate("The product is already in cart") ], 200);
+        }
+
+
         $product = Product::findOrFail($request->id);
 
         $variant = $request->variant;
