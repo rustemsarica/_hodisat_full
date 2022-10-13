@@ -46,14 +46,14 @@ class ProductController extends Controller
         $products->where('published', 1)->where('current_stock','>',0);
         return new ProductMiniCollection($products->latest()->paginate(10));
     }
-    
+
     public function sellerSold($id)
     {
         $shop = Shop::findOrFail($id);
         $orders=Order::where('seller_id',$shop->user_id)->pluck('id')->toArray();
         $orderedP=OrderDetail::whereIn('order_id',$orders)->pluck('product_id')->toArray();
         $products = Product::whereIn('id', $orderedP);
-        
+
         return new ProductMiniCollection($products->latest()->paginate(10));
     }
 
@@ -134,8 +134,8 @@ class ProductController extends Controller
 
     public function search(Request $request)
     {
-        
-        
+
+
         $category_ids = [];
         $brand_ids = [];
         $colors = [];
@@ -148,7 +148,7 @@ class ProductController extends Controller
         if ($request->brands != null && $request->brands != "") {
             $brand_ids = explode(',', $request->brands);
         }
-        
+
         if ($request->colors != null || $request->colors != "") {
             $colors_ids = explode(',', $request->colors);
             $colors = Color::whereIn('id', $colors_ids)->pluck('code')->toArray();
@@ -171,7 +171,7 @@ class ProductController extends Controller
         if (!empty($category_ids)) {
             $products->whereIn('category_id', $category_ids);
         }
-        
+
         if (!empty($colors)) {
             $products->whereIn('colors', $colors);
         }
@@ -197,7 +197,7 @@ class ProductController extends Controller
 
         switch ($sort_by) {
             case 'price_low_to_high':
-                $products->orderBy('unit_price', 'asc');
+                $products->orderBy('unit_price');
                 break;
 
             case 'price_high_to_low':
