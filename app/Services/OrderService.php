@@ -192,7 +192,10 @@ class OrderService{
         try{
 
             //$istek = Soap::to('https://testws.yurticikargo.com/KOPSWebServices/NgiShipmentInterfaceServices?wsdl');
-            $istek = new \SoapClient('https://testws.yurticikargo.com/KOPSWebServices/NgiShipmentInterfaceServices?wsdl');
+            $istek = new \SoapClient('https://testws.yurticikargo.com/KOPSWebServices/NgiShipmentInterfaceServices?wsdl',array(
+                'stream_context' => $context,
+                'cache_wsdl' => WSDL_CACHE_NONE
+            ));
             DB::table('logs')->insert(['text'=>$istek]);
 			$shipmentData=[
 				'ngiDocumentKey' 		=> $shipping_key,
