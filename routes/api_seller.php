@@ -17,10 +17,10 @@ Route::group(['prefix' => 'v2/seller', 'middleware' => ['app_language', 'auth:sa
         Route::get('orders/items/{id}', 'getOrderItems');
         Route::post('orders/update-delivery-status', 'update_delivery_status');
         Route::post('orders/update-payment-status', 'update_payment_status');
-        
+
         // Route::apiResource('shops', 'App\Http\Controllers\Api\V2\ShopController')->only('index');
     });
-    
+
     //Shop Section
     Route::controller(ShopController::class)->group(function () {
         Route::get('payment-history', 'payment_histories');
@@ -59,9 +59,9 @@ Route::group(['prefix' => 'v2/seller', 'middleware' => ['app_language', 'auth:sa
         Route::get('products/reviews', 'product_reviews');
 
         Route::get('products/search', 'search');
-        Route::post('products/add','store_product');
-        Route::post('products/update','update_product');
-        Route::get('products/edit/{id}', 'edit');
+        Route::post('product/add','store_product');
+        Route::post('product/update','update_product');
+        Route::get('product/edit/{id}', 'edit');
     });
 
     //Coupon Section
@@ -74,14 +74,14 @@ Route::group(['prefix' => 'v2/seller', 'middleware' => ['app_language', 'auth:sa
         Route::get('coupon/for-product', 'coupon_for_product');
     });
 
-    //Conversations 
+    //Conversations
     Route::controller(ConversationController::class)->group(function () {
         Route::get('conversations', 'index');
         Route::get('conversations/show/{id}', 'showMessages');
         Route::post('conversations/message/store', 'send_message_to_customer');
     });
 
-    //Seller Package 
+    //Seller Package
     Route::controller(SellerPackageController::class)->group(function () {
         Route::get('seller-packages-list', 'seller_packages_list');
         Route::post('seller-package/offline-payment', 'purchase_package_offline');
