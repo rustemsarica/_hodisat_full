@@ -191,7 +191,7 @@ class OrderService{
         //return redirect('/orders')->with('status', 'Gönderi kodu oluşturuldu!'.$shipping_key);
         try{
 
-            $istek = Soap::to('https://ws.yurticikargo.com/KOPSWebServices/NgiShipmentInterfaceServices?wsdl');
+            $istek = Soap::to('https://testws.yurticikargo.com/KOPSWebServices/NgiShipmentInterfaceServices?wsdl');
 
 			$shipmentData=[
 				'ngiDocumentKey' 		=> $shipping_key,
@@ -243,13 +243,13 @@ class OrderService{
 			];
 
 			$XPayerCustData=[
-				'invCustId'				=> 909344613,
+				'invCustId'				=> 1010954,
 				'invAddressId'			=> null,
 			];
 
 			$data=[
-				'wsUserName'        	=> 'CIZGITURIZMYENI',
-				'wsPassword'        	=> '02v1d1pp3dmn7d15',
+				'wsUserName'        	=> 'TEST123',
+				'wsPassword'        	=> 'YK',
 				'wsUserLanguage'      	=> 'TR',
 				'shipmentData'			=> $shipmentData,
 				'XSenderCustAddress'	=> $XSenderCustAddress,
