@@ -197,7 +197,7 @@ class ProductController extends Controller
 
         switch ($sort_by) {
             case 'price_low_to_high':
-                $products->orderBy('unit_price');
+                $products->orderBy('unit_price', 'asc');
                 break;
 
             case 'price_high_to_low':

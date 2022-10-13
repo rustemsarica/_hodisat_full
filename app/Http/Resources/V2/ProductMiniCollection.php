@@ -4,7 +4,6 @@ namespace App\Http\Resources\V2;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-
 use App\Models\Shop;
 use App\Models\Wishlist;
 
@@ -19,7 +18,7 @@ class ProductMiniCollection extends ResourceCollection
                 'data' => $this->collection->map(function($data) {
 
                  $seller = Shop::where('user_id',$data->user_id)->first();
-                    if($seller->logo!=null || $seller->logo != ''){
+                    if($seller->logo!=null && $seller->logo != ''){
 
                         $seller_logo=uploaded_asset($seller->logo);
                         if($seller_logo==null || $seller_logo==''){
@@ -61,7 +60,7 @@ class ProductMiniCollection extends ResourceCollection
             'data' => $this->collection->map(function($data) {
 
                 $seller = Shop::where('user_id',$data->user_id)->first();
-                if($seller->logo!=null || $seller->logo != ''){
+                if($seller->logo!=null && $seller->logo != ''){
 
                     $seller_logo=uploaded_asset($seller->logo);
                     if($seller_logo==null || $seller_logo==''){
