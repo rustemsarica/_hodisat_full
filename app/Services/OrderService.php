@@ -270,7 +270,7 @@ class OrderService{
             }
 
         }catch(Exception $e){
-            DB::table('logs')->insert(['text'=>$e]);
+            DB::table('logs')->insert(['text'=>$e->getMessage()]);
 			return false;
         }
 
