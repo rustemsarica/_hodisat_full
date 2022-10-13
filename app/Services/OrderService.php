@@ -257,8 +257,6 @@ class OrderService{
 				'payerCustData'			=> $XPayerCustData,
 			];
 
-            DB::table('logs')->insert(['text'=>json_encode($data)]);
-
             $response = $istek->createNgiShipmentWithAddress($data);
             DB::table('logs')->insert(['text'=>json_encode($response)]);
             if($response->XShipmentDataResponse->outFlag==0){
