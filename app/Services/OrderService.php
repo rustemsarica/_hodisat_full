@@ -199,7 +199,7 @@ class OrderService{
             );
             $context = stream_context_create($opts);
 
-            $istek = new \SoapClient('https://testws.yurticikargo.com/KOPSWebServices/NgiShipmentInterfaceServices?wsdl',array(
+            $istek = new \SoapClient('https://ws.yurticikargo.com/KOPSWebServices/NgiShipmentInterfaceServices?wsdl',array(
                 'stream_context' => $context,
                 'cache_wsdl' => WSDL_CACHE_NONE
             ));
