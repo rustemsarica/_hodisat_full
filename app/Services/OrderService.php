@@ -230,7 +230,7 @@ class OrderService{
 				'senderAddress'			=> $seller->address.' '.$seller_city->name.'/'.$seller_state->name,
 				'cityId'				=> $seller->state_id,
 				'townName'				=> $seller_city->name,
-				'senderMobilePhone'		=> Str::replace(['+',' '],'',$seller->phone),
+				'senderMobilePhone'		=> str_replace(['+',' '],'',$seller->phone),
 			];
 
 			$XConsigneeCustAddress=[
