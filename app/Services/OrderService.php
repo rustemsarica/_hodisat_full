@@ -191,18 +191,8 @@ class OrderService{
         //return redirect('/orders')->with('status', 'Gönderi kodu oluşturuldu!'.$shipping_key);
         try{
 
-            //$istek = Soap::to('https://testws.yurticikargo.com/KOPSWebServices/NgiShipmentInterfaceServices?wsdl');
-            $opts = array(
-                'http' => array(
-                    'user_agent' => 'PHPSoapClient'
-                )
-            );
-            $context = stream_context_create($opts);
+            $istek = Soap::to('https://testws.yurticikargo.com/KOPSWebServices/NgiShipmentInterfaceServices?wsdl');
 
-            $istek = new \SoapClient('https://ws.yurticikargo.com/KOPSWebServices/NgiShipmentInterfaceServices?wsdl',array(
-                'stream_context' => $context,
-                'cache_wsdl' => WSDL_CACHE_NONE
-            ));
             DB::table('logs')->insert(['text'=>"geçti"]);
 			$shipmentData=[
 				'ngiDocumentKey' 		=> $shipping_key,
