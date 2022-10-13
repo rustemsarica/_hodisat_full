@@ -14,6 +14,7 @@ use App\Models\State;
 use App\Utility\NotificationUtility;
 use App\Utility\SmsUtility;
 
+use RicorocksDigitalAgency\Soap\Facades\Soap;
 
 class OrderService{
 
@@ -127,7 +128,7 @@ class OrderService{
 
         if ($order->payment_status == 'paid' && $order->commission_calculated == 0) {
             calculateCommissionAffilationClubPoint($order);
-        } 
+        }
 
         //sends Notifications to user
         NotificationUtility::sendNotification($order, $request->status);
