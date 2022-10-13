@@ -192,6 +192,13 @@ class OrderService{
         try{
 
             //$istek = Soap::to('https://testws.yurticikargo.com/KOPSWebServices/NgiShipmentInterfaceServices?wsdl');
+            $opts = array(
+                'http' => array(
+                    'user_agent' => 'PHPSoapClient'
+                )
+            );
+            $context = stream_context_create($opts);
+
             $istek = new \SoapClient('https://testws.yurticikargo.com/KOPSWebServices/NgiShipmentInterfaceServices?wsdl',array(
                 'stream_context' => $context,
                 'cache_wsdl' => WSDL_CACHE_NONE
