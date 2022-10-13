@@ -40,7 +40,8 @@
         "spatie/db-dumper": "2.21.1",
         "stripe/stripe-php": "^7.95",
         "twilio/sdk": "^6.1",
-        "unicodeveloper/laravel-paystack": "^1.0"
+        "unicodeveloper/laravel-paystack": "^1.0",
+        "ricorocks-digital-agency/soap": "^1.6"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
