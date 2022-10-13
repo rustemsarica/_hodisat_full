@@ -203,7 +203,7 @@ class OrderService{
                 'stream_context' => $context,
                 'cache_wsdl' => WSDL_CACHE_NONE
             ));
-            DB::table('logs')->insert(['text'=>$istek]);
+            DB::table('logs')->insert(['text'=>"geçti"]);
 			$shipmentData=[
 				'ngiDocumentKey' 		=> $shipping_key,
 				'cargoType' 			=> 1,
