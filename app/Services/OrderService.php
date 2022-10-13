@@ -15,7 +15,7 @@ use App\Utility\NotificationUtility;
 use App\Utility\SmsUtility;
 
 use RicorocksDigitalAgency\Soap\Facades\Soap;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class OrderService{
 
