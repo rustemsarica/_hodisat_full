@@ -179,9 +179,7 @@ class ProductController extends Controller
         if ($name != null && $name != "") {
             $products->where(function ($query) use ($name) {
                 foreach (explode(' ', trim($name)) as $word) {
-                    $query->where('name', 'like', '%'.$word.'%')->orWhereHas('product_translations', function($query) use ($word){
-                        $query->where('name', 'like', '%'.$word.'%');
-                    });
+                    $query->where('name', 'like', '%'.$word.'%')->orWhere('description', 'like', '%'.$word.'%' );
                 }
             });
             SearchUtility::store($name);
