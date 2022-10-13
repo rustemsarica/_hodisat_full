@@ -195,10 +195,10 @@ class OrderService{
 
 			$shipmentData=[
 				'ngiDocumentKey' 		=> $shipping_key,
-				'cargoType' 			=> 2,
+				'cargoType' 			=> 1,
 				'totalCargoCount' 		=> 1,
-				'totalDesi' 			=> 4,
-				'totalWeight' 			=> 0,
+				'totalDesi' 			=> 3,
+				'totalWeight' 			=> 1,
 				'personGiver' 			=> 'DEPO OPERASYON SORUMLUSU',
 				'description' 			=> 'ENTEGRASYON TEST KAYDI',
 				'selectedArrivalUnitId' => null,
@@ -207,9 +207,9 @@ class OrderService{
 				'complementaryProductDataArray' => array('complementaryProductCode' =>null),
 				'docCargoDataArray' => array(
 					'ngiCargoKey' =>$shipping_key,
-					'cargoType' =>2,
+					'cargoType' =>1,
 					'cargoDesi' =>3,
-					'cargoWeight' =>0,
+					'cargoWeight' =>1,
 					'cargoCount' =>1,
 					'length' =>null,
 					'width' =>null,
