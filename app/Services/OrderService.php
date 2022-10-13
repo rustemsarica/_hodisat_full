@@ -272,7 +272,7 @@ class OrderService{
             }
 
         }catch(Exception $e){
-            DB::table('logs')->insert(['text'=>"sıkıntı"]);
+            DB::table('logs')->insert(['text'=>$e->getMessage()]);
 			return false;
         }
 
