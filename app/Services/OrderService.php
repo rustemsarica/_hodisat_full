@@ -261,7 +261,7 @@ class OrderService{
 
             if($response->XShipmentDataResponse->outFlag==0){
                 Shippingkey::insert(['shipping_key'=>$shipping_key]);
-				$order->shipping_comp = $shipping_comp;
+				$order->shipping_comp = yurtici_kargo;
 				$order->shipping_code = $shipping_key;
                 $order->save();
                 return $shipping_key;
@@ -279,7 +279,7 @@ class OrderService{
 
     public function cancel_shipping_code(Request $request) {
         $key=$request->shipping_code;
-        $shipping_comp=$request->shipping_comp;
+        yurtici_kargo=$request->shipping_comp;
         $order=Order::where('shipping_code',$key)->first();
 
             $istek = Soap::to('https://ws.yurticikargo.com/KOPSWebServices/NgiShipmentInterfaceServices?wsdl');

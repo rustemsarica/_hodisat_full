@@ -168,7 +168,7 @@ class OrderController extends Controller
 
             $combined_order->grand_total += $order->grand_total;
             $order->save();
-            $order->shipping_code=(new OrderService)->create_shipping_code($order->id);
+            (new OrderService)->create_shipping_code($order->id);
             if (strpos($request->payment_type, "manual_payment_") !== false) { // if payment type like  manual_payment_1 or  manual_payment_25 etc)
 
                 $order->manual_payment = 1;
