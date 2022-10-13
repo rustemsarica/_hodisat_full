@@ -12,30 +12,30 @@ class ProductMiniCollection extends ResourceCollection
 {
     public function toArray($request)
     {
-        
+
         if(auth('sanctum')->check()){
-           
+
             return [
                 'data' => $this->collection->map(function($data) {
 
                  $seller = Shop::where('user_id',$data->user_id)->first();
                     if($seller->logo!=null || $seller->logo != ''){
-    
+
                         $seller_logo=uploaded_asset($seller->logo);
                         if($seller_logo==null || $seller_logo==''){
-                            $seller_logo='https://hodisat.com/public/assets/img/avatar-place.png'; 
+                            $seller_logo='https://hodisat.com/public/assets/img/avatar-place.png';
                         }
                     }else{
-                       $seller_logo='https://hodisat.com/public/assets/img/avatar-place.png'; 
+                       $seller_logo='https://hodisat.com/public/assets/img/avatar-place.png';
                     }
-                    
+
                     $is_in_wishlist=false;
                     $wishlists = Wishlist::where('user_id', auth('sanctum')->user()->id)->where('product_id',$data->id)->get();
                     if($wishlists->count()>0){
                         $is_in_wishlist=true;
                     }
-                 
-    
+
+
                     return [
                         'id' => $data->id,
                         'name' => $data->name,
@@ -60,17 +60,18 @@ class ProductMiniCollection extends ResourceCollection
             return [
             'data' => $this->collection->map(function($data) {
 
-             $seller = Shop::where('user_id',$data->user_id)->first();
+                $seller = Shop::where('user_id',$data->user_id)->first();
                 if($seller->logo!=null || $seller->logo != ''){
+
                     $seller_logo=uploaded_asset($seller->logo);
                     if($seller_logo==null || $seller_logo==''){
-                        $seller_logo='https://hodisat.com/public/assets/img/avatar-place.png'; 
+                        $seller_logo='https://hodisat.com/public/assets/img/avatar-place.png';
                     }
                 }else{
-                   $seller_logo='https://hodisat.com/public/assets/img/avatar-place.png'; 
+                   $seller_logo='https://hodisat.com/public/assets/img/avatar-place.png';
                 }
-                 
-             
+
+
 
                 return [
                     'id' => $data->id,
@@ -93,8 +94,8 @@ class ProductMiniCollection extends ResourceCollection
             })
         ];
         }
-        
-        
+
+
     }
 
     public function with($request)
