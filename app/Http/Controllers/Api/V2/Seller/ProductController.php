@@ -7,6 +7,7 @@ use App\Http\Resources\V2\ReviewCollection;
 use App\Http\Resources\V2\Seller\ProductCollection;
 use App\Http\Resources\V2\Seller\ProductResource;
 use App\Http\Resources\V2\Seller\ProductReviewCollection;
+use App\Http\Resources\V2\ProductMiniCollection;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Review;
@@ -27,7 +28,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::with('category')->where('user_id', auth()->user()->id)->paginate(10);
-        return new ProductCollection($products);
+        return new ProductMiniCollection($products);
     }
 
     public function edit($id)
@@ -72,7 +73,7 @@ class ProductController extends Controller
     public function duplicate($id)
     {
         $product = Product::findOrFail($id);
-        
+
         if (auth()->user()->id != $product->user_id) {
             return $this->failed(translate('This product is not yours'));
         }
@@ -120,16 +121,16 @@ class ProductController extends Controller
             ->select('reviews.id','reviews.rating','reviews.comment','reviews.status','reviews.updated_at','products.name as product_name','users.id as user_id','users.name','users.avatar')
             ->distinct()
             ->paginate(1);
-        
+
        return new ProductReviewCollection($reviews);
     }
 
     public function store_product(Request $request){
 
-         
+
         if (addon_is_activated('seller_subscription')) {
             if (!seller_package_validity_check()) {
-                
+
                 $this->failed(translate('Please upgrade your package'));
             }
         }
@@ -156,9 +157,9 @@ class ProductController extends Controller
         $data->meta_title = $request->name;
         $data->meta_description = $request->description;
         $data->meta_img = $request->thumbnail_img;
-        
+
         if($data->save()){
-            
+
             $request->merge(['product_id' => $data->id]);
             $request->merge(['lang' => 'tr']);
             ProductTranslation::create($request->only([
@@ -167,13 +168,13 @@ class ProductController extends Controller
 
             Artisan::call('view:clear');
             Artisan::call('cache:clear');
-    
+
             return $this->success(translate('Product has been created successfully'));
         }else{
             return $this->success(translate('Somethings went wrong.'));
         }
 
-        
+
 
     }
 
@@ -181,20 +182,20 @@ class ProductController extends Controller
         try{
             if (addon_is_activated('seller_subscription')) {
                 if (!seller_package_validity_check()) {
-                    
+
                     $this->failed(translate('Please upgrade your package'));
                 }
             }
-     
+
             $slug = Str::slug($request->name);
             $same_slug_count = Product::where('slug', 'LIKE', $slug . '%')->count();
             $slug_suffix = $same_slug_count ? '-' . $same_slug_count + 1 : '';
-            $slug .= $slug_suffix;    
-            
+            $slug .= $slug_suffix;
+
             $data = Product::where('id',$request->id)->first();
 
             $string_photos=null;
-            
+
             if($request->photos!=null && $request->photos!="" && $data->photos!=null && $data->photos!=""){
                 $string_photos=$data->photos.",".$request->photos;
             }elseif($request->photos!=null && $request->photos!=""){
@@ -202,7 +203,7 @@ class ProductController extends Controller
             }else{
                 $string_photos=$data->photos;
             }
-    
+
             $data->slug = $slug;
             $data->added_by=$request->added_by;
             $data->user_id=$request->user_id;
@@ -227,32 +228,32 @@ class ProductController extends Controller
             ->update($request->only([
             'lang', 'name', 'description', 'product_id'
             ]));
-    
+
             if($data->save()){
                 Artisan::call('view:clear');
                 Artisan::call('cache:clear');
-        
+
                 return $this->success(translate('Product has been created successfully'));
             }else{
                 return $this->failed(translate('Somethings went wrong.'));
             }
-            
+
         }
         catch(\Exception $e){
             return $this->failed($e->getMessage());
-        }      
+        }
 
     }
 
-    
+
     public function productImageUpload($request)
     {
 
         $ids=array();
-        
+
         foreach($request as $item ){
             $item = \json_decode($item);
-            
+
             $filename = $item->filename;
             $realImage = \base64_decode($item->image);
             $array = \explode(".",$filename);
@@ -260,13 +261,13 @@ class ProductController extends Controller
             $dir = public_path('uploads/all');
 
             $upload = new Upload;
-            
+
             $newFileName = rand(10000000000, 9999999999) . date("YmdHis") . "." . $extension;
             $newFullPath = "$dir/$newFileName";
 
             $filehandler = fopen($newFullPath, 'wb' );
             fwrite($filehandler, realImage);
-            fclose($filehandler); 
+            fclose($filehandler);
             //$file_put = file_put_contents($newFullPath, $realImage);
 
             $newPath = "uploads/all/$newFileName";
@@ -284,7 +285,7 @@ class ProductController extends Controller
             array_push($ids, $upload->id);
         }
             return \implode(",",$ids);
-       
+
     }
 
 }
