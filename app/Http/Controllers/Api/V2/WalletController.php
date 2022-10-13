@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V2;
 use App\Http\Resources\V2\WalletCollection;
 use App\Models\User;
 use App\Models\Wallet;
+use App\Models\Shop;
 use Illuminate\Http\Request;
 
 class WalletController extends Controller
@@ -29,15 +30,15 @@ class WalletController extends Controller
     public function processPayment(Request $request)
     {
         $order = new OrderController;
-        $user = User::find($request->user_id);
+        $shop = Shop::where('user_id',$request->user_id)->first();
 
-        if ($user->shop->admin_to_pay >= $request->amount) {
-            
-            $response =  $order->store($request, true);            
+        if ($shop->admin_to_pay >= $request->amount) {
+
+            $response =  $order->store($request, true);
             $decoded_response = $response->original;
             if ($decoded_response['result'] == true) { // only decrease user balance with a success
-                $user->shop->admin_to_pay -= $request->amount;
-                $user->save();            
+                $shop->admin_to_pay -= $request->amount;
+                $shop->save();
             }
 
             return $response;
