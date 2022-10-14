@@ -230,8 +230,8 @@ if (!function_exists('cart_product_price')) {
         if ($product->auction_product == 0) {
 
             $price = $product->unit_price;
-            if($price>$cart_product->price){
-                $price = $cart_product->price;
+            if($price>$cart_product["price"]){
+                $price = $cart_product["price"];
             }
             //discount calculation
             $discount_applicable = false;
