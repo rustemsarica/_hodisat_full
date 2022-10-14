@@ -206,7 +206,7 @@ class OrderService{
                 'cache_wsdl' => WSDL_CACHE_NONE
             );
 
-            $istek = new SoapClient($wsdlUrl, $soapClientOptions);
+            $istek = new \SoapClient($wsdlUrl, $soapClientOptions);
 
 			$shipmentData=[
 				'ngiDocumentKey' 		=> $shipping_key,
