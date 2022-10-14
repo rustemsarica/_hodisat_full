@@ -248,7 +248,7 @@ class OrderService{
 			];
 
 			$data=[
-				'wsUserName'        	=> 'CIZGITURIZM11',
+				'wsUserName'        	=> 'CIZGITURIZMYENI',
 				'wsPassword'        	=> '02v1d1pp3dmn7d15',
 				'wsUserLanguage'      	=> 'TR',
 				'shipmentData'			=> $shipmentData,
