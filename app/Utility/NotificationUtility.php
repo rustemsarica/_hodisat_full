@@ -40,24 +40,12 @@ class NotificationUtility
         self::sendNotification($order, 'placed');
         if ($request !=null && get_setting('google_firebase') == 1 && $order->user->device_token != null) {
             $request->device_token = $order->user->device_token;
-            $request->title = translate("Order placed!");
-            $request->text = "{$order->code} numaralı siparişin alındı";
-
-            $request->type = "purchase";
-            $request->id = $order->id;
-            $request->user_id = $order->user->id;
-
-            self::sendFirebaseNotification($request);
-        }
-
-        if ($request !=null && get_setting('google_firebase') == 1 && $order->shop->user->device_token != null) {
-            $request->device_token = $order->shop->user->device_token;
             $request->title = "Yeni sipariş!";
             $request->text = "Bir yeni siparişin var.";
 
             $request->type = "order";
             $request->id = $order->id;
-            $request->user_id = $order->shop->user_id;
+            $request->user_id = $order->user_id;
 
             self::sendFirebaseNotification($request);
         }
