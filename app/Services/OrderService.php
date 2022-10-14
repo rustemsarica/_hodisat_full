@@ -267,7 +267,7 @@ class OrderService{
                 $order->save();
                 return $shipping_key;
             }elseif($response->XShipmentDataResponse->outFlag==2){
-                DB::table('logs')->insert(['text'=>$response]);
+                DB::table('logs')->insert(['text'=>json_encode($response,true)]);
                 return false;
             }
 
