@@ -209,6 +209,7 @@ class OrderService{
 				'docCargoDataArray' => array(
 					'ngiCargoKey' =>$shipping_key,
 					'cargoType' =>1,
+					'cargoDesi' =>1,
 					'cargoWeight' =>1,
 					'cargoCount' =>1,
 					'length' =>null,
