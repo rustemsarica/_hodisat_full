@@ -19,9 +19,9 @@ class PurchaseHistoryController extends Controller
     public function index(Request $request)
     {
         $order_query = Order::query();
-        if ($request->payment_status != "" || $request->payment_status != null) {
-            $order_query->where('payment_status', $request->payment_status);
-        }
+
+        $order_query->where('payment_status', 'paid');
+
         if ($request->delivery_status != "" || $request->delivery_status != null) {
             $delivery_status = $request->delivery_status;
             $order_query->whereIn("id", function ($query) use ($delivery_status) {
@@ -38,7 +38,7 @@ class PurchaseHistoryController extends Controller
     {
         $order_detail = Order::where('id', $id)->where('user_id', auth()->user()->id)->get();
         // $order_query = auth()->user()->orders->where('id', $id);
-        
+
         // return new PurchaseHistoryCollection($order_query->get());
         return new PurchaseHistoryCollection($order_detail);
     }
@@ -49,14 +49,14 @@ class PurchaseHistoryController extends Controller
         $order_query = OrderDetail::where('order_id', $order_id->id);
         return new PurchaseHistoryItemsCollection($order_query->get());
     }
-    
+
     public function purchased($id)
     {
         $shop = Shop::findOrFail($id);
         $orders = Order::where('user_id', $shop->user_id)->pluck('id')->toArray();
         $product_ids=OrderDetail::whereIn('order_id', $orders)->pluck('product_id')->toArray();
         $existing_product_ids = Product::whereIn('id', $product_ids);
-        
+
         return new ProductMiniCollection($existing_product_ids->latest()->paginate(10));
     }
 }

@@ -30,10 +30,10 @@ class OrderController extends Controller
             ->select('orders.id')
             ->distinct();
 
-        if ($request->payment_status != null) {
-            $orders = $orders->where('payment_status', $request->payment_status);
-            $payment_status = $request->payment_status;
-        }
+
+            $orders = $orders->where('payment_status', 'paid');
+            $payment_status = 'paid';
+
         if ($request->delivery_status != null) {
             $orders = $orders->where('delivery_status', $request->delivery_status);
             $delivery_status = $request->delivery_status;
@@ -58,7 +58,7 @@ class OrderController extends Controller
     {
         $order = Order::findOrFail(decrypt($id));
         $order_shipping_address = json_decode($order->shipping_address);
-        
+
         $order->viewed = 1;
         $order->save();
         return view('seller.orders.show', compact('order'));
@@ -78,7 +78,7 @@ class OrderController extends Controller
             $user->save();
         }
 
-        
+
         foreach ($order->orderDetails->where('seller_id', Auth::user()->id) as $key => $orderDetail) {
             $orderDetail->delivery_status = $request->status;
             $orderDetail->save();
@@ -135,7 +135,7 @@ class OrderController extends Controller
             $orderDetail->payment_status = $request->status;
             $orderDetail->save();
         }
-        
+
         $status = 'paid';
         foreach ($order->orderDetails as $key => $orderDetail) {
             if ($orderDetail->payment_status != 'paid') {

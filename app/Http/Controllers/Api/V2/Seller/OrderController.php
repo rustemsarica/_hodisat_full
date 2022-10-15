@@ -18,9 +18,9 @@ class OrderController extends Controller
     public function getOrderList(Request $request)
     {
         $order_query = Order::query();
-        if ($request->payment_status != "" || $request->payment_status != null) {
-            $order_query->where('payment_status', $request->payment_status);
-        }
+
+        $order_query->where('payment_status', 'paid');
+
         if ($request->delivery_status != "" || $request->delivery_status != null) {
             $delivery_status = $request->delivery_status;
             $order_query->whereIn("id", function ($query) use ($delivery_status) {
