@@ -55,7 +55,7 @@ class PurchaseHistoryItemsCollection extends ResourceCollection
                     'quantity' => (int)$data->quantity,
                     'thumbnail_image' => uploaded_asset($data->product->thumbnail_img),
                     'payment_status' => $data->payment_status,
-                    'payment_status_string' => ucwords(str_replace('_', ' ', $data->payment_status)),
+                    'payment_status_string' => translate(ucwords(str_replace('_', ' ', $data->payment_status))),
                     'delivery_status' => $data->delivery_status,
                     'delivery_status_string' => translate(ucwords(str_replace('_', ' ', $data->delivery_status))),
                     'refund_section' => $refund_section,

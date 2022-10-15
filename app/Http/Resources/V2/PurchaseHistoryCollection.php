@@ -25,7 +25,7 @@ class PurchaseHistoryCollection extends ResourceCollection
                     'shipping_type' => $data->shipping_type,
                     'shipping_type_string' => $data->shipping_type != null ? ucwords(str_replace('_', ' ', $data->shipping_type)) : "",
                     'payment_status' => $data->payment_status,
-                    'payment_status_string' => ucwords(str_replace('_', ' ', $data->payment_status)),
+                    'payment_status_string' => translate(ucwords(str_replace('_', ' ', $data->payment_status))),
                     'delivery_status' => $data->delivery_status,
                     'delivery_status_string' => translate(ucwords(str_replace('_', ' ',  $data->delivery_status))),
                     'grand_total' => format_price($data->grand_total),
