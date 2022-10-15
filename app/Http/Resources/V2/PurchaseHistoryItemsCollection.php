@@ -43,23 +43,7 @@ class PurchaseHistoryItemsCollection extends ResourceCollection
                     }
                 }
                 return [
-                    'id' => $data->id,
-                    'product_id' => $data->product->id,
-                    'product_name' => $data->product->name,
-                    'variation' => $data->variation,
-                    'price' => format_price($data->price),
-                    'shipping_cost' => format_price($data->shipping_cost),
-                    'coupon_discount' => format_price($data->coupon_discount),
-                    'quantity' => (int)$data->quantity,
-                    'thumbnail_image' => uploaded_asset($this->product->thumbnail_img),
-                    'payment_status' => $data->payment_status,
-                    'payment_status_string' => ucwords(str_replace('_', ' ', $data->payment_status)),
-                    'delivery_status' => $data->delivery_status,
-                    'delivery_status_string' => $data->delivery_status == 'pending' ? translate("Order Placed") : ucwords(str_replace('_', ' ', $data->delivery_status)),
-                    'refund_section' => $refund_section,
-                    'refund_button' => $refund_button,
-                    'refund_label' => $refund_label,
-                    'refund_request_status' => $refund_request_status,
+
                 ];
             })
         ];
