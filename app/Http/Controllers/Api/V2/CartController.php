@@ -279,4 +279,14 @@ class CartController extends Controller
         Cart::destroy($id);
         return response()->json(['result' => true, 'message' => translate('Product is successfully removed from your cart')], 200);
     }
+
+    public function checkProduct(Request $request)
+    {
+        $is_in_cart = Cart::where(['user_id'=>auth()->user()->id, 'product_id'=>$request->id])->count();
+
+        if($is_in_cart>0){
+            return true;
+        }
+        return false;
+    }
 }
