@@ -135,7 +135,7 @@ class CartController extends Controller
                     $shop['apply_discount'] = $shop_data->apply_discount;
                     $shop['min_product_count'] = $shop_data->min_product_count;
                     $shop['discount_percentage'] = $shop_data->discount_percentage;
-                    $shop['owner_id'] =(int) $owner_id;
+                    $shop['owner_id'] =(int) $shop_data->id;
                     $shop['cart_items'] = $shop_items_data;
                 } else {
                     $shop['name'] = "Inhouse";
