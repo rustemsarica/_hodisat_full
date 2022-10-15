@@ -3,6 +3,7 @@
 namespace App\Http\Resources\V2;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use App\Models\Product;
 
 class PurchaseHistoryItemsCollection extends ResourceCollection
 {
@@ -42,6 +43,7 @@ class PurchaseHistoryItemsCollection extends ResourceCollection
                         $refund_label = "Non-refundable";
                     }
                 }
+                $product=Product::find($data->product_id);
                 return [
                     'id' => $data->id,
                     'product_id' => $data->product->id,
@@ -51,7 +53,7 @@ class PurchaseHistoryItemsCollection extends ResourceCollection
                     'shipping_cost' => format_price($data->shipping_cost),
                     'coupon_discount' => format_price($data->coupon_discount),
                     'quantity' => (int)$data->quantity,
-                    'thumbnail_image' => uploaded_asset($this->product->thumbnail_img),
+                    'thumbnail_image' => uploaded_asset($data->product->thumbnail_img),
                     'payment_status' => $data->payment_status,
                     'payment_status_string' => ucwords(str_replace('_', ' ', $data->payment_status)),
                     'delivery_status' => $data->delivery_status,
