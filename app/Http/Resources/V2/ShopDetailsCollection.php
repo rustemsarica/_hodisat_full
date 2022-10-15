@@ -31,7 +31,7 @@ class ShopDetailsCollection extends JsonResource
             'name' => $this->user->name,
             "slug" => $this->user->username,
             'description' => $this->meta_description,
-            'logo' => uploaded_asset($this->logo),
+            'logo' => $this->logo==nul? "https://hodisat.com/public/uploads/avatar-place.png" : uploaded_asset($this->logo),
             'upload_id' => $this->logo,
             'sliders' => get_images_path($this->sliders)[0],
             'sliders_id' => $this->sliders,

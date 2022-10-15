@@ -13,7 +13,7 @@ class ShopCollection extends ResourceCollection
                 return [
                     'id' => $data->id,
                     'name' => $data->name,
-                    'logo' => uploaded_asset($data->logo),
+                    'logo' => $data->log==null ? "https://hodisat.com/public/uploads/avatar-place.png" : uploaded_asset($data->logo),
                     'rating' => $data->rating,
                 ];
             })
