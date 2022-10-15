@@ -65,7 +65,7 @@ class UserController extends Controller
             'name' => $user->name,
             'email' => $user->email,
             'username' => $user->username,
-            'shop_logo' => uploaded_asset($user->shop->logo),
+            'shop_logo' => $user->shop->logo==null ? "https://hodisat.com/public/uploads/avatar-place.png" : uploaded_asset($user->shop->logo),
             'cover_image' => uploaded_asset($user->shop->sliders),
             'description' => $user->shop->meta_description,
             'phone' => $user->phone,
