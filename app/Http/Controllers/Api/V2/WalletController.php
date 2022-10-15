@@ -36,7 +36,7 @@ class WalletController extends Controller
 
             $response =  $order->store($request, true);
             $decoded_response = $response->original;
-            if ($decoded_response['result'] == true) { // only decrease user balance with a success
+            if ($decoded_response['result'] == true) { 
                 $shop->admin_to_pay -= $request->amount;
                 $shop->save();
             }

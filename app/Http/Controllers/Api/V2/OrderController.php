@@ -186,8 +186,7 @@ class OrderController extends Controller
         if ( $request->payment_type == 'wallet'
             || strpos($request->payment_type, "manual_payment_") !== false // if payment type like  manual_payment_1 or  manual_payment_25 etc
         ) {
-            (new OrderService)->create_shipping_code($order->id);
-            NotificationUtility::sendOrderPlacedNotification($order);
+            \checkout_done($order, 'wallet');
         }
 
 

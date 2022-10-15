@@ -38,8 +38,6 @@ class OrderService{
             $orderDetail->save();
 
             if ($request->status == 'cancelled') {
-
-
                 $product = Product::where('id', $orderDetail->product_id)->first();
 
                     if ($product != null) {
