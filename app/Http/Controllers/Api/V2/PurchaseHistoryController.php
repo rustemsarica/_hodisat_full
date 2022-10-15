@@ -45,8 +45,7 @@ class PurchaseHistoryController extends Controller
 
     public function items($id)
     {
-        $order_id = Order::select('id')->where('id', $id)->where('user_id', auth()->user()->id)->first();
-        $order_query = OrderDetail::where('order_id', $order_id->id);
+        $order_query = OrderDetail::where('order_id', $id);
         return new PurchaseHistoryItemsCollection($order_query->get());
     }
 
