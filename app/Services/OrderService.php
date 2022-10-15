@@ -294,13 +294,9 @@ class OrderService{
                     ];
             $response = $istek->cancelNgiShipment($data);
             if($response->XCancelShipmentResponse->outFlag==0){
-                //order_products shipping_key shipping_comp delete
-                $order->shipping_comp = null;
-				$order->shipping_code = null;
-                $order->save();
-                return redirect('/orders')->with('status', 'Gönderi kodunuz iptal edildi!');
+                return true;
             }else{
-                return redirect('/orders')->with('danger', 'Beklenmeyen Hata! Lütfen ekibimizle iletişime geçin!'.json_encode($response,true));
+                return false;
             }
 
     }

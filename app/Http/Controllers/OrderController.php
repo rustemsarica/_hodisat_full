@@ -14,6 +14,7 @@ use App\Models\OrderDetail;
 use App\Models\CouponUsage;
 use App\Models\Coupon;
 use App\Models\User;
+use App\Models\Shop;
 use App\Models\CombinedOrder;
 use App\Models\SmsTemplate;
 use Auth;
@@ -29,7 +30,6 @@ class OrderController extends Controller
     // All Orders
     public function all_orders(Request $request)
     {
-
 
         $date = $request->date;
         $sort_search = null;
@@ -343,9 +343,9 @@ class OrderController extends Controller
         $order->save();
 
         if ($request->status == 'cancelled' && $order->payment_type == 'wallet') {
-            $user = User::where('id', $order->user_id)->first();
-            $user->balance += $order->grand_total;
-            $user->save();
+            $shop = Shop::where('user_id', $order->user_id)->first();
+            $shop->admin_to_pay += $order->grand_total;
+            $shop->save();
         }
 
         if (Auth::user()->user_type == 'seller') {
