@@ -5,6 +5,8 @@ namespace App\Http\Resources\V2;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use App\Models\Review;
 use App\Models\Attribute;
+use App\Models\Cart;
+use App\Models\Wishlist;
 
 
 class ProductDetailCollection extends ResourceCollection
@@ -13,6 +15,17 @@ class ProductDetailCollection extends ResourceCollection
     {
         return [
             'data' => $this->collection->map(function ($data) {
+
+                $is_in_wishlist=false;
+                $is_in_cart=false;
+                if(auth('sanctum')->check()){
+                    if(Wishlist::where(['user_id'=>auth()->user()->id, 'product_id'=>$data->id])->exists()){
+                        $is_in_wishlist=true;
+                    }
+                    if(Cart::where(['user_id'=>auth()->user()->id, 'product_id'=>$data->id])->exists()){
+                        $is_in_cart=true;
+                    }
+                }
 
                 $photo_paths = get_images_path($data->photos);
 
@@ -27,9 +40,7 @@ class ProductDetailCollection extends ResourceCollection
                             $item['path'] = $photo_paths[$i];
                             $photos[]= $item;
                         }
-
                     }
-
                 }
 
                 $brand = [
@@ -45,13 +56,13 @@ class ProductDetailCollection extends ResourceCollection
                         'logo'=> uploaded_asset($data->brand->logo),
                     ];
                 }
-                
+
 
                 return [
                     'id' => (integer)$data->id,
                     'name' => $data->getTranslation('name'),
                     'added_by' => $data->added_by,
-                    'seller_id' => $data->user->id,					
+                    'seller_id' => $data->user->id,
                     'seller_vacation_mode' => $data->user->vacation_mode,
                     'shop_id' => $data->added_by == 'admin' ? 0 : $data->user->shop->id,
                     'shop_name' => $data->added_by == 'admin' ? translate('In House Product') : $data->user->username,
@@ -73,6 +84,8 @@ class ProductDetailCollection extends ResourceCollection
                     'brand' => $brand,
                     'link' => route('product', $data->slug),
                     'category_id'=>$data->category_id,
+                    'is_in_wishlist'=> $is_in_wishlist,
+                    'is_in_cart'=> $is_in_cart,
                 ];
             })
         ];
