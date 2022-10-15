@@ -19,7 +19,7 @@ class ProductDetailCollection extends ResourceCollection
                 $is_in_wishlist=false;
                 $is_in_cart=false;
                 if(auth('sanctum')->check()){
-                    if(Wishlist::where(['user_id'=>auth()->user()->id, 'product_id'=>$data->id])->exists()){
+                    if(Wishlist::where(['user_id'=>auth('sanctum')->user()->id, 'product_id'=>$data->id])->exists()){
                         $is_in_wishlist=true;
                     }
                     if(Cart::where(['user_id'=>auth()->user()->id, 'product_id'=>$data->id])->exists()){
