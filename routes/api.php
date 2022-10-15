@@ -94,6 +94,7 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
     Route::post('carts', 'App\Http\Controllers\Api\V2\CartController@getList')->middleware('auth:sanctum');
     Route::get('delivery-info', 'App\Http\Controllers\Api\V2\ShippingController@getDeliveryInfo')->middleware('auth:sanctum');
     Route::get('carts/check-product', 'App\Http\Controllers\Api\V2\CartController@checkProduct')->middleware('auth:sanctum');
+    Route::get('carts/remove-product', 'App\Http\Controllers\Api\V2\CartController@removeProduct')->middleware('auth:sanctum');
 
     Route::post('coupon-apply', 'App\Http\Controllers\Api\V2\CheckoutController@apply_coupon_code')->middleware('auth:sanctum');
     Route::post('coupon-remove', 'App\Http\Controllers\Api\V2\CheckoutController@remove_coupon_code')->middleware('auth:sanctum');

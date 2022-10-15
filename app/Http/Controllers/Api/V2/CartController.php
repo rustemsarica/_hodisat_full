@@ -289,4 +289,11 @@ class CartController extends Controller
         }
         return response()->json(['result' => false, 'message' => "Ürün sepette değil"], 200);
     }
+
+    public function removeProduct(Request $request)
+    {
+        Cart::where(['user_id'=>auth()->user()->id, 'product_id'=>$request->id])->remove();
+
+        return response()->json(['result' => true, 'message' => translate('Product is successfully removed from your cart')], 200);
+    }
 }
