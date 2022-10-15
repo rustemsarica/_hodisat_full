@@ -259,7 +259,7 @@ class AuthController extends Controller
             'token_type' => 'Bearer',
             'expires_at' => null,
             'shop_id'=> $shop->id,
-            'logo' => uploaded_asset($shop->logo),
+            'logo' => $shop->logo == null ? "https://hodisat.com/public/uploads/avatar-place.png" : uploaded_asset($shop->logo),
             'sliders' => uploaded_asset($shop->sliders),
             'description' => $shop->meta_descriptions,
             'user' => [
