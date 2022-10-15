@@ -1,4 +1,5 @@
 <?php
+use App\Services\OrderService;
 
 use Carbon\Carbon;
 use App\Models\Cart;
@@ -927,6 +928,7 @@ if (!function_exists('checkout_done')) {
             $order->save();
 
             try {
+                (new OrderService)->create_shipping_code($order->id);
                 NotificationUtility::sendOrderPlacedNotification($order);
                 calculateCommissionAffilationClubPoint($order);
             } catch (\Exception $e) {
