@@ -28,7 +28,7 @@ class OrderService{
 
         if ($request->status == 'cancelled' && $order->payment_type == 'wallet') {
             $user = User::where('id', $order->user_id)->first();
-            $user->balance += $order->grand_total;
+            $user->shop->admin_to_pay += $order->grand_total;
             $user->save();
         }
 
@@ -38,11 +38,7 @@ class OrderService{
             $orderDetail->save();
 
             if ($request->status == 'cancelled') {
-                product_restock($orderDetail);
-                $variant = $orderDetail->variation;
-                if ($orderDetail->variation == null) {
-                    $variant = '';
-                }
+
 
                 $product = Product::where('id', $orderDetail->product_id)->first();
 
