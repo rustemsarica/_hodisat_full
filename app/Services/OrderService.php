@@ -83,7 +83,7 @@ class OrderService{
         if (get_setting('google_firebase') == 1 && $order->user->device_token != null) {
             $request->device_token = $order->user->device_token;
             $request->title = "Siparişin güncellendi!";
-            $status = str_replace("_", "", $order->delivery_status);
+            $status = translate(str_replace("_", " ", $order->delivery_status));
             $request->text = "{$order->code} numaralı siparişin {$status}";
 
             $request->type = "order";
