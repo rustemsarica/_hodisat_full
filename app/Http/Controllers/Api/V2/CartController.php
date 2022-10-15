@@ -285,8 +285,8 @@ class CartController extends Controller
         $is_in_cart = Cart::where(['user_id'=>auth()->user()->id, 'product_id'=>$request->id])->count();
 
         if($is_in_cart>0){
-            return true;
+            return response()->json(['result' => true, 'message' => "Ürün sepette"], 200);
         }
-        return false;
+        return response()->json(['result' => false, 'message' => "Ürün sepette değil"], 200);
     }
 }
