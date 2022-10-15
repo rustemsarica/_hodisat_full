@@ -3,7 +3,7 @@
 namespace App\Http\Resources\V2;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
-use App\Models\Product;
+
 
 class PurchaseHistoryItemsCollection extends ResourceCollection
 {
@@ -43,7 +43,7 @@ class PurchaseHistoryItemsCollection extends ResourceCollection
                         $refund_label = "Non-refundable";
                     }
                 }
-                $product=Product::find($data->product_id);
+
                 return [
                     'id' => $data->id,
                     'product_id' => $data->product->id,
