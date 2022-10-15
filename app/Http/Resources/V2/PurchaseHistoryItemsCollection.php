@@ -55,7 +55,7 @@ class PurchaseHistoryItemsCollection extends ResourceCollection
                     'payment_status' => $data->payment_status,
                     'payment_status_string' => ucwords(str_replace('_', ' ', $data->payment_status)),
                     'delivery_status' => $data->delivery_status,
-                    'delivery_status_string' => $data->delivery_status == 'pending' ? "order_placed" : ucwords(str_replace('_', ' ', $data->delivery_status)),
+                    'delivery_status_string' => $data->delivery_status == 'pending' ? translate("Order Placed") : ucwords(str_replace('_', ' ', $data->delivery_status)),
                     'refund_section' => $refund_section,
                     'refund_button' => $refund_button,
                     'refund_label' => $refund_label,
