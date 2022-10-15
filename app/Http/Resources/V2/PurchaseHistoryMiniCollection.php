@@ -19,7 +19,7 @@ class PurchaseHistoryMiniCollection extends ResourceCollection
                     'payment_status' => $data->payment_status,
                     'payment_status_string' => ucwords(str_replace('_', ' ', $data->payment_status)),
                     'delivery_status' => $data->delivery_status,
-                    'delivery_status_string' => $data->delivery_status == 'pending'? "Order Placed" : ucwords(str_replace('_', ' ',  $data->delivery_status)),
+                    'delivery_status_string' =>  translate(ucwords(str_replace('_', ' ',  $data->delivery_status))),
                     'grand_total' => format_price($data->grand_total) ,
                     'date' => date('d.m.Y', strtotime($data->created_at)),
                     'links' => [
