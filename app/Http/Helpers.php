@@ -930,7 +930,6 @@ if (!function_exists('checkout_done')) {
             try {
                 (new OrderService)->create_shipping_code($order->id);
                 NotificationUtility::sendOrderPlacedNotification($order);
-                calculateCommissionAffilationClubPoint($order);
             } catch (\Exception $e) {
             }
         }

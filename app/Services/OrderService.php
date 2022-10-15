@@ -32,6 +32,10 @@ class OrderService{
             $user->save();
         }
 
+        if($request->status=='delivered'){
+            calculateCommissionAffilationClubPoint($order);
+        }
+
         foreach ($order->orderDetails as $key => $orderDetail) {
 
             $orderDetail->delivery_status = $request->status;
