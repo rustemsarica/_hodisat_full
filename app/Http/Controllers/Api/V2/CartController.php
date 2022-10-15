@@ -131,7 +131,7 @@ class CartController extends Controller
                 $shop_data = Shop::where('user_id', $owner_id)->first();
                 if ($shop_data) {
                     $shop['name'] = $shop_data->user->username;
-                    $shop['seller_avatar'] = uploaded_asset($shop_data->logo);
+                    $shop['seller_avatar'] = $shop_data->logo== null ? "https://hodisat.com/public/uploads/avatar-place.png" : uploaded_asset($shop_data->logo);
                     $shop['apply_discount'] = $shop_data->apply_discount;
                     $shop['min_product_count'] = $shop_data->min_product_count;
                     $shop['discount_percentage'] = $shop_data->discount_percentage;
