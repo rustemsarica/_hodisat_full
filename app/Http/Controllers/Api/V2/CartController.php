@@ -292,7 +292,7 @@ class CartController extends Controller
 
     public function removeProduct(Request $request)
     {
-        Cart::where(['user_id'=>auth()->user()->id, 'product_id'=>$request->id])->remove();
+        Cart::where(['user_id'=>auth()->user()->id, 'product_id'=>$request->id])->delete();
 
         return response()->json(['result' => true, 'message' => translate('Product is successfully removed from your cart')], 200);
     }
