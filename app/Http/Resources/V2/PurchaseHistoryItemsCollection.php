@@ -44,8 +44,8 @@ class PurchaseHistoryItemsCollection extends ResourceCollection
                 }
                 return [
                     'id' => $data->id,
-                    'product_id' => 583,
-                    'product_name' => "deneme",
+                    'product_id' => $data->product->id,
+                    'product_name' => $data->product->name,
                     'variation' => $data->variation,
                     'price' => format_price($data->price),
                     'shipping_cost' => format_price($data->shipping_cost),
