@@ -122,6 +122,7 @@ class WishlistController extends Controller
 
     public function getProductLikes(Request $request)
     {
-        return new FollowCollection(Wishlist::where('product_id',$request->id)->get());
+        $ids = Wishlist::where('product_id',$request->id)->pluck('user_id')->toArray();
+        return new FollowCollection(Shop::whereIn('user_id',$ids)->get());
     }
 }
