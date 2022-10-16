@@ -33,7 +33,8 @@ class BrandController extends Controller
             return new BrandCollection(Brand::whereIn('id', $ids)->get());
         }
         return Cache::remember('app.top_brands', 86400, function(){
-            return new BrandCollection(Brand::where('top', 1)->get());
+            $ids=DB::table('products')->select('brand_id',DB::raw('COUNT(brand_id) AS magnitude'))->groupBy('brand_id')->orderBy('magnitude', 'DESC')->limit(10)->pluck('brand_id')->toArray();
+            return new BrandCollection(Brand::whereIn('id', $ids)->get());
         });
     }
 }
