@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V2;
 
 use App\Http\Resources\V2\ProductMiniCollection;
+use App\Http\Resources\V2\FollowCollection;
 use App\Models\Wishlist;
 use App\Models\Product;
 use App\Models\Shop;
@@ -117,5 +118,10 @@ class WishlistController extends Controller
             'product_id' => (integer)$request->product_id,
             'wishlist_id' => 0
         ], 200);
+    }
+
+    public function getProductLikes(Request $request)
+    {
+        return new FollowCollection(Wishlist::where('product_id',$request->id)->get());
     }
 }
