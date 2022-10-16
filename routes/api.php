@@ -131,7 +131,7 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
 
 
     Route::get('wishlists-check-product', 'App\Http\Controllers\Api\V2\WishlistController@isProductInWishlist')->middleware('auth:sanctum');
-    Route::get('wishlist/get-likes', 'App\Http\Controllers\Api\V2\WishlistController@getProductLikes');
+    Route::get('wishlist/get-likes', 'App\Http\Controllers\Api\V2\WishlistController@getProductLikes')->middleware('auth:sanctum');
     Route::get('wishlists-add-product', 'App\Http\Controllers\Api\V2\WishlistController@add')->middleware('auth:sanctum');
     Route::get('wishlists-remove-product', 'App\Http\Controllers\Api\V2\WishlistController@remove')->middleware('auth:sanctum');
     Route::get('wishlists/{id}/products', 'App\Http\Controllers\Api\V2\WishlistController@index');
