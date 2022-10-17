@@ -90,15 +90,18 @@ class SearchSuggestionController extends Controller
         if ($type == "sellers" &&  !empty($users)) {
             foreach ($users as  $user) {
                 $shop = Shop::where('user_id',$user->id)->first();
-                $item = [];
-                $item['id'] = $shop->id;
-                $item['image'] = uploaded_asset($shop->logo);
-                $item['query'] = $user->username;
-                $item['count'] = 0;
-                $item['type'] = "shop";
-                $item['type_string'] = translate("Shop");
+                if($shop!=null){
+                    $item = [];
+                    $item['id'] = $shop->id;
+                    $item['image'] = uploaded_asset($shop->logo);
+                    $item['query'] = $user->username;
+                    $item['count'] = 0;
+                    $item['type'] = "shop";
+                    $item['type_string'] = translate("Shop");
 
-                $items[] = $item;
+                    $items[] = $item;
+                }
+
             }
         }
         else{
