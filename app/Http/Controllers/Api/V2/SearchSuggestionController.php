@@ -111,7 +111,7 @@ class SearchSuggestionController extends Controller
                 $item['id'] = $brand->id;
                 $item['image'] = null;
                 $item['query'] = $brand->name;
-                $item['count'] = floor(Product::where('brand_id',$brand->id)->count()/Product::count());
+                $item['count'] = round(Product::where('brand_id',$brand->id)->count()/Product::count());
                 $item['type'] = "brand";
                 $item['type_string'] = "Brand";
 
@@ -141,7 +141,7 @@ class SearchSuggestionController extends Controller
                 $item['id'] = $category->id;
                 $item['image'] = null;
                 $item['query'] = $category->name;
-                $item['count'] = floor(Product::where('category_id',$category->id)->count()/Product::count());
+                $item['count'] = round(Product::where('category_id',$category->id)->count()/Product::count());
                 $item['type'] = "product";
                 $item['type_string'] = "Product";
 
