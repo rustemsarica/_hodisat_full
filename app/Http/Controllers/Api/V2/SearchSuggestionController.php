@@ -24,7 +24,7 @@ class SearchSuggestionController extends Controller
         $case2 = '%' . $query_key . '%';
         $brands = [];
         $products = [];
-        $shops = [];
+        $users = [];
         $categories = [];
 
 
@@ -77,10 +77,10 @@ class SearchSuggestionController extends Controller
                 $query_key=ltrim($query_key,"@");
                 $case1 = $query_key . '%';
                 $case2 = '%' . $query_key . '%';
-                $user_query->where('username', 'like', "$query_key%");
+                $user_query->where('username', 'like', "%$query_key%");
                 $user_query->orderByRaw("CASE
-                    WHEN name LIKE '$case1' THEN 1
-                    WHEN name LIKE '$case2' THEN 2
+                    WHEN username LIKE '$case1' THEN 1
+                    WHEN username LIKE '$case2' THEN 2
                     ELSE 3
                     END");
             }
