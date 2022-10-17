@@ -7,6 +7,7 @@ use App\Models\Search;
 use App\Models\Product;
 use App\Models\Brand;
 use App\Models\User;
+use App\Models\Shop;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -95,9 +96,10 @@ class SearchSuggestionController extends Controller
         //shop push
         if ($type == "sellers" &&  !empty($users)) {
             foreach ($users as  $user) {
+                $shop = Shop::where('user_id',$user->id)->first();
                 $item = [];
-                $item['id'] = $user->shop->id;
-                $item['image'] = uploaded_asset($user->shop->logo);
+                $item['id'] = $shop->id;
+                $item['image'] = uploaded_asset($shop->logo);
                 $item['query'] = $user->username;
                 $item['count'] = 0;
                 $item['type'] = "shop";
