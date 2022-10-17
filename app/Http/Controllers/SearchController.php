@@ -85,10 +85,10 @@ class SearchController extends Controller
             $case1 = $query . '%';
             $case2 = '%' . $query . '%';
 
-            $products->orderByRaw("CASE 
-                WHEN name LIKE '$case1' THEN 1 
-                WHEN name LIKE '$case2' THEN 2 
-                ELSE 3 
+            $products->orderByRaw("CASE
+                WHEN name LIKE '$case1' THEN 1
+                WHEN name LIKE '$case2' THEN 2
+                ELSE 3
                 END");
         }
 
@@ -161,7 +161,7 @@ class SearchController extends Controller
         $keywords = array();
         $query = $request->search;
         $products = Product::where('published', 1)->get();
-        
+
 
         $products = filter_products(Product::query());
 
@@ -179,7 +179,7 @@ class SearchController extends Controller
 
         $categories = Category::where('name', 'like', '%' . $query . '%')->get()->take(3);
 
-        $shops = Shop::whereIn('user_id', verified_sellers_id())->where('name', 'like', '%' . $query . '%')->get()->take(3);
+        $shops = Shop::where('name', 'like', '%' . $query . '%')->get()->take(3);
 
         if (sizeof($keywords) > 0 || sizeof($categories) > 0 || sizeof($products) > 0 || sizeof($shops) > 0) {
             return view('frontend.partials.search_content', compact('products', 'categories', 'keywords', 'shops'));

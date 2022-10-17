@@ -7,6 +7,7 @@ use App\Models\Search;
 use App\Models\Product;
 use App\Models\Brand;
 use App\Models\Shop;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class SearchSuggestionController extends Controller
@@ -16,43 +17,72 @@ class SearchSuggestionController extends Controller
         $query_key = $request->query_key;
         $type = $request->type;
         $searches;
-        //  = Search::select('id', 'query', 'count');
-        //if ($query_key != "") {
-        //    $search_query->where('query', 'like', "%{$query_key}%");
-        //}
-        //$searches = $search_query->orderBy('count', 'desc')->limit(10)->get();
+        if(substr($query_key, 0, 1)=='@'){
+            $type="seller";
+        }
+        $case1 = $query_key . '%';
+        $case2 = '%' . $query_key . '%';
+        $brands = [];
+        $products = [];
+        $shops = [];
+        $categories = [];
 
-        if ($type == "product") {
-            $product_query = Product::query();
-            if ($query_key != "") {
-                $product_query->where(function ($query) use ($query_key) {
-                    foreach (explode(' ', trim($query_key)) as $word) {
-                        $query->where('name', 'like', '%'.$word.'%')->orWhere('description', 'like', '%'.$word.'%')->orWhereHas('product_translations', function($query) use ($word){
-                            $query->where('name', 'like', '%'.$word.'%');
-                        });
-                    }
-                });
-            }
 
-            $products = filter_products($product_query)->limit(3)->get();
+        if($query_key == ""){
+            $search_query = Search::select('id', 'query', 'count');
+            $searches = $search_query->orderBy('count', 'desc')->limit(10)->get();
         }
 
-        if ($type == "brands") {
-            $brand_query = Brand::query();
+
+        if ($type == "product") {
             if ($query_key != "") {
+                $product_query = Product::query();
+                $product_query->where(function ($query) use ($query_key) {
+                    foreach (explode(' ', trim($query_key)) as $word) {
+                        $query->where('name', 'like', '%'.$word.'%')->orWhere('description', 'like', '%'.$word.'%');
+                    }
+                });
+
+                $product_query->orderByRaw("CASE
+                    WHEN name LIKE '$case1' THEN 1
+                    WHEN name LIKE '$case2' THEN 2
+                    ELSE 3
+                    END");
+                $products = filter_products($product_query)->limit(10)->get();
+
+                $brand_query = Brand::query();
                 $brand_query->where('name', 'like', "%$query_key%");
+                $brand_query->orderByRaw("CASE
+                    WHEN name LIKE '$case1' THEN 1
+                    WHEN name LIKE '$case2' THEN 2
+                    ELSE 3
+                    END");
+                $brands = $brand_query->limit(10)->get();
+
+                $category_query = Category::query();
+                $category_query->where('name', 'like', "%$query_key%");
+                $category_query->orderByRaw("CASE
+                    WHEN name LIKE '$case1' THEN 1
+                    WHEN name LIKE '$case2' THEN 2
+                    ELSE 3
+                    END");
+                $categories = $category_query->limit(10)->get();
             }
 
-            $brands = $brand_query->limit(3)->get();
         }
 
         if ($type == "sellers") {
             $shop_query = Shop::query();
             if ($query_key != "") {
                 $shop_query->where('name', 'like', "%$query_key%");
+                $shop_query->orderByRaw("CASE
+                    WHEN name LIKE '$case1' THEN 1
+                    WHEN name LIKE '$case2' THEN 2
+                    ELSE 3
+                    END");
             }
 
-            $shops = $shop_query->limit(3)->get();
+            $shops = $shop_query->limit(10)->get();
         }
 
 
@@ -64,6 +94,7 @@ class SearchSuggestionController extends Controller
             foreach ($shops as  $shop) {
                 $item = [];
                 $item['id'] = $shop->id;
+                $item['image'] = uploaded_asset($shop->logo);
                 $item['query'] = $shop->name;
                 $item['count'] = 0;
                 $item['type'] = "shop";
@@ -74,26 +105,43 @@ class SearchSuggestionController extends Controller
         }
 
         //brand push
-        if ($type == "brands" && !empty($brands)) {
+        if ($type == "product" && !empty($brands)) {
             foreach ($brands as  $brand) {
                 $item = [];
                 $item['id'] = $brand->id;
+                $item['image'] = null;
                 $item['query'] = $brand->name;
-                $item['count'] = 0;
+                $item['count'] = Product::where('brand_id',$brand->id)->count()/Product::count();
                 $item['type'] = "brand";
                 $item['type_string'] = "Brand";
 
                 $items[] = $item;
             }
         }
-    
+
         //product push
         if ($type == "product" &&  !empty($products)) {
             foreach ($products as  $product) {
                 $item = [];
                 $item['id'] = $product->id;
+                $item['image'] = uploaded_asset($product->thumbnail_img);
                 $item['query'] = $product->name;
                 $item['count'] = 0;
+                $item['type'] = "product";
+                $item['type_string'] = "Product";
+
+                $items[] = $item;
+            }
+        }
+
+        //product push
+        if ($type == "product" &&  !empty($categories)) {
+            foreach ($categories as  $category) {
+                $item = [];
+                $item['id'] = $category->id;
+                $item['image'] = null;
+                $item['query'] = $category->name;
+                $item['count'] = Product::where('category_id',$category->id)->count()/Product::count();
                 $item['type'] = "product";
                 $item['type_string'] = "Product";
 
