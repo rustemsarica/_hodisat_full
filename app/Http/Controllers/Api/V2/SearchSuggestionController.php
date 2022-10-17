@@ -98,7 +98,7 @@ class SearchSuggestionController extends Controller
                 $item['query'] = $shop->name;
                 $item['count'] = 0;
                 $item['type'] = "shop";
-                $item['type_string'] = "Shop";
+                $item['type_string'] = translate("Shop");
 
                 $items[] = $item;
             }
@@ -113,7 +113,7 @@ class SearchSuggestionController extends Controller
                     $item['query'] = $category->name;
                     $item['count'] = round(Product::where('category_id',$category->id)->count()/Product::count());
                     $item['type'] = "category";
-                    $item['type_string'] = "category";
+                    $item['type_string'] = translate("Category");
 
                     $items[] = $item;
                 }
@@ -128,7 +128,7 @@ class SearchSuggestionController extends Controller
                     $item['query'] = $brand->name;
                     $item['count'] = round(Product::where('brand_id',$brand->id)->count()/Product::count());
                     $item['type'] = "brand";
-                    $item['type_string'] = "Brand";
+                    $item['type_string'] = translate("Brand");
 
                     $items[] = $item;
                 }
@@ -143,7 +143,7 @@ class SearchSuggestionController extends Controller
                     $item['query'] = $product->name;
                     $item['count'] = 0;
                     $item['type'] = "product";
-                    $item['type_string'] = "Product";
+                    $item['type_string'] = translate("Product");
 
                     $items[] = $item;
                 }
