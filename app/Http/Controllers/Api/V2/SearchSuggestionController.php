@@ -74,8 +74,8 @@ class SearchSuggestionController extends Controller
 
         else if ($type == "sellers") {
             $user_query = User::query();
-            if ($query_key != "") {
                 $query_key=ltrim($query_key,"@");
+            if ($query_key != "") {
                 $case1 = $query_key . '%';
                 $case2 = '%' . $query_key . '%';
                 $user_query->where('username', 'like', "%$query_key%");
