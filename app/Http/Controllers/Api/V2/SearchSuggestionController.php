@@ -73,7 +73,7 @@ class SearchSuggestionController extends Controller
         }
 
         else if ($type == "sellers") {
-            $user_query = User::query()->with('shop');
+            $user_query = User::query();
             if ($query_key != "") {
                 $query_key=ltrim($query_key,"@");
                 $case1 = $query_key . '%';
