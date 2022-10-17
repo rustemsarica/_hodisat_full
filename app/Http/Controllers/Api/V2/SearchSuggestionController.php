@@ -71,7 +71,7 @@ class SearchSuggestionController extends Controller
 
         }
 
-        if ($type == "sellers") {
+        else if ($type == "sellers") {
             $shop_query = Shop::query();
             if ($query_key != "") {
                 $shop_query->where('name', 'like', "%$query_key%");
@@ -103,51 +103,54 @@ class SearchSuggestionController extends Controller
                 $items[] = $item;
             }
         }
+        else{
+            //category push
+            if (!empty($categories)) {
+                foreach ($categories as  $category) {
+                    $item = [];
+                    $item['id'] = $category->id;
+                    $item['image'] = null;
+                    $item['query'] = $category->name;
+                    $item['count'] = round(Product::where('category_id',$category->id)->count()/Product::count());
+                    $item['type'] = "category";
+                    $item['type_string'] = "category";
 
-        //brand push
-        if ($type == "product" && !empty($brands)) {
-            foreach ($brands as  $brand) {
-                $item = [];
-                $item['id'] = $brand->id;
-                $item['image'] = null;
-                $item['query'] = $brand->name;
-                $item['count'] = round(Product::where('brand_id',$brand->id)->count()/Product::count());
-                $item['type'] = "brand";
-                $item['type_string'] = "Brand";
+                    $items[] = $item;
+                }
+            }
 
-                $items[] = $item;
+            //brand push
+            if (!empty($brands)) {
+                foreach ($brands as  $brand) {
+                    $item = [];
+                    $item['id'] = $brand->id;
+                    $item['image'] = null;
+                    $item['query'] = $brand->name;
+                    $item['count'] = round(Product::where('brand_id',$brand->id)->count()/Product::count());
+                    $item['type'] = "brand";
+                    $item['type_string'] = "Brand";
+
+                    $items[] = $item;
+                }
+            }
+
+            //product push
+            if (!empty($products)) {
+                foreach ($products as  $product) {
+                    $item = [];
+                    $item['id'] = $product->id;
+                    $item['image'] = uploaded_asset($product->thumbnail_img);
+                    $item['query'] = $product->name;
+                    $item['count'] = 0;
+                    $item['type'] = "product";
+                    $item['type_string'] = "Product";
+
+                    $items[] = $item;
+                }
             }
         }
 
-        //product push
-        if ($type == "product" &&  !empty($products)) {
-            foreach ($products as  $product) {
-                $item = [];
-                $item['id'] = $product->id;
-                $item['image'] = uploaded_asset($product->thumbnail_img);
-                $item['query'] = $product->name;
-                $item['count'] = 0;
-                $item['type'] = "product";
-                $item['type_string'] = "Product";
 
-                $items[] = $item;
-            }
-        }
-
-        //product push
-        if ($type == "product" &&  !empty($categories)) {
-            foreach ($categories as  $category) {
-                $item = [];
-                $item['id'] = $category->id;
-                $item['image'] = null;
-                $item['query'] = $category->name;
-                $item['count'] = round(Product::where('category_id',$category->id)->count()/Product::count());
-                $item['type'] = "product";
-                $item['type_string'] = "Product";
-
-                $items[] = $item;
-            }
-        }
 
         //search push
         if (!empty($searches)) {
