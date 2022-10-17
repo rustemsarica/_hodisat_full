@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Api\V2;
 use App\Models\Search;
 use App\Models\Product;
 use App\Models\Brand;
-use App\Models\Shop;
+use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -72,20 +72,20 @@ class SearchSuggestionController extends Controller
         }
 
         else if ($type == "sellers") {
-            $shop_query = Shop::query();
+            $user_query = User::query();
             if ($query_key != "") {
                 $query_key=ltrim($query_key,"@");
                 $case1 = $query_key . '%';
                 $case2 = '%' . $query_key . '%';
-                $shop_query->where('name', 'like', "$query_key%");
-                $shop_query->orderByRaw("CASE
+                $user_query->where('username', 'like', "$query_key%");
+                $user_query->orderByRaw("CASE
                     WHEN name LIKE '$case1' THEN 1
                     WHEN name LIKE '$case2' THEN 2
                     ELSE 3
                     END");
             }
 
-            $shops = $shop_query->limit(10)->get();
+            $users = $user_query->limit(10)->get();
         }
 
 
@@ -93,12 +93,12 @@ class SearchSuggestionController extends Controller
         $items = [];
 
         //shop push
-        if ($type == "sellers" &&  !empty($shops)) {
-            foreach ($shops as  $shop) {
+        if ($type == "sellers" &&  !empty($users)) {
+            foreach ($users as  $user) {
                 $item = [];
-                $item['id'] = $shop->id;
-                $item['image'] = uploaded_asset($shop->logo);
-                $item['query'] = $shop->name;
+                $item['id'] = $user->shop->id;
+                $item['image'] = uploaded_asset($user->shop->logo);
+                $item['query'] = $user->username;
                 $item['count'] = 0;
                 $item['type'] = "shop";
                 $item['type_string'] = translate("Shop");
