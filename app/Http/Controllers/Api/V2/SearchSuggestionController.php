@@ -72,7 +72,7 @@ class SearchSuggestionController extends Controller
         }
 
         else if ($type == "sellers") {
-            $user_query = User::query();
+            $user_query = User::query()->with('shop');
             if ($query_key != "") {
                 $query_key=ltrim($query_key,"@");
                 $case1 = $query_key . '%';
@@ -96,7 +96,7 @@ class SearchSuggestionController extends Controller
         if ($type == "sellers" &&  !empty($users)) {
             foreach ($users as  $user) {
                 $item = [];
-                $item['id'] = $user->id;
+                $item['id'] = $user->shop->id;
                 $item['image'] = uploaded_asset($user->shop->logo);
                 $item['query'] = $user->username;
                 $item['count'] = 0;
