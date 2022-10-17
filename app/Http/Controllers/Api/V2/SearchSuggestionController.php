@@ -96,7 +96,7 @@ class SearchSuggestionController extends Controller
         if ($type == "sellers" &&  !empty($users)) {
             foreach ($users as  $user) {
                 $item = [];
-                $item['id'] = $user->shop->id;
+                $item['id'] = $user->id;
                 $item['image'] = uploaded_asset($user->shop->logo);
                 $item['query'] = $user->username;
                 $item['count'] = 0;
