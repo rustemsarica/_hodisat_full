@@ -75,6 +75,8 @@ class SearchSuggestionController extends Controller
             $shop_query = Shop::query();
             if ($query_key != "") {
                 $query_key=ltrim($query_key,"@");
+                $case1 = $query_key . '%';
+                $case2 = '%' . $query_key . '%';
                 $shop_query->where('name', 'like', "$query_key%");
                 $shop_query->orderByRaw("CASE
                     WHEN name LIKE '$case1' THEN 1
