@@ -76,9 +76,7 @@ class SearchSuggestionController extends Controller
             $user_query = User::query();
                 $query_key=ltrim($query_key,"@");
             if ($query_key != "") {
-                $case1 = $query_key . '%';
-                $case2 = '%' . $query_key . '%';
-                $user_query->where('username', 'like', "%$query_key%");
+                $user_query->where('username', 'like', "$query_key%");
             }
 
             $users = $user_query->limit(10)->get();
