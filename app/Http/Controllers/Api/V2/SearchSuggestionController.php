@@ -18,7 +18,7 @@ class SearchSuggestionController extends Controller
         $type = $request->type;
         $searches;
         if(substr($query_key, 0, 1)=='@'){
-            $type="seller";
+            $type="sellers";
         }
         $case1 = $query_key . '%';
         $case2 = '%' . $query_key . '%';
