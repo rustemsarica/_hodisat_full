@@ -18,7 +18,7 @@ use App\Utility\CategoryUtility;
 use App\Utility\SearchUtility;
 use Cache;
 use Auth;
-
+use Log;
 class ProductController extends Controller
 {
     public function index()
@@ -161,6 +161,7 @@ class ProductController extends Controller
         $attributeQuery = [];
 
         if($request->attrs != null && $request->attrs != ""){
+            Log::info($request->attrs);
             $attributes = explode(',', $request->attrs);
             foreach($attributes as $value){
                 $string = '"'.$value.'"';
