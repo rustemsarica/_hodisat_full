@@ -178,7 +178,7 @@ class ProductController extends Controller
 
         if (!empty($colors)) {
             $products->whereIn('colors', $colors);
-            $product->whereNot('colors', null);
+            $products->whereNot('colors', null);
         }
 
         if(!empty($attributes)){
