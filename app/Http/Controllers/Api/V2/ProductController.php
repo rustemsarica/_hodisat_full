@@ -150,6 +150,7 @@ class ProductController extends Controller
         }
 
         if ($request->selectedcolors != null || $request->selectedcolors != "") {
+            DB::table('logs')->insert(['text'=>$request->selectedcolors]);
             $colors = explode(',', $request->selectedcolors);
         }
 
