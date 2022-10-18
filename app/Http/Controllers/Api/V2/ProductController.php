@@ -18,7 +18,7 @@ use App\Utility\CategoryUtility;
 use App\Utility\SearchUtility;
 use Cache;
 use Auth;
-use DB;
+use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
     public function index()
