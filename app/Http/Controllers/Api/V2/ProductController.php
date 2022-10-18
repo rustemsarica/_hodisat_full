@@ -158,6 +158,14 @@ class ProductController extends Controller
         $min = (int)$request->min;
         $max = (int)$request->max;
 
+        $attributeQuery = array();
+        if($request->attributes != null || $request->attributes != ""){
+            $attributes = \json_decode($request->attributes);
+            foreach($attributes as $key->$value){
+                $string = '{"attribute_id":"'.$key.'","values":["'.$value.'"]}';
+                array_push($attributeQuery,$string);
+            }
+        }
 
         $products = Product::query();
 
@@ -173,6 +181,12 @@ class ProductController extends Controller
 
         if (!empty($colors)) {
             $products->whereIn('colors', $colors);
+        }
+
+        if(count($attributeQuery)>0){
+            foreach($attributeQuery as $attr){
+                $products->where('choice_options','like', '%'.$attr.'%');
+            }
         }
 
         if ($name != null && $name != "") {
