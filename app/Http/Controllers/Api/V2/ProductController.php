@@ -186,7 +186,7 @@ class ProductController extends Controller
 
         if(!empty($attributeQuery)){
             foreach($attributeQuery as $attr){
-                $products->orWhere('choice_options','like', '%'.$attr.'%');
+                $products->where('choice_options','like', '%'.$attr.'%');
             }
         }
 
@@ -233,7 +233,7 @@ class ProductController extends Controller
                 break;
         }
 
-        return new ProductMiniCollection(filter_products($products)->paginate(20));
+        return new ProductMiniCollection(filter_products($products)->distinct()->paginate(20));
     }
 
 
