@@ -161,7 +161,7 @@ class ProductController extends Controller
         $attributeQuery = [];
 
         if($request->attributes != null && $request->attributes != ""){
-            $attributes = \explode(',',$request->attributes);
+            $attributes = explode(',', $request->attributes);
             foreach($attributes as $value){
                 $string = '"values":["'.$value.'"]';
                 array_push($attributeQuery, $string);
