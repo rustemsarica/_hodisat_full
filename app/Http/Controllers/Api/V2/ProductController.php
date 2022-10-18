@@ -159,7 +159,7 @@ class ProductController extends Controller
         $max = (int)$request->max;
 
         $attributeQuery = array();
-        if($request->attributes != null || $request->attributes != ""){
+        if($request->attributes != null && $request->attributes != ""){
             $attributes = \json_decode($request->attributes);
             foreach($attributes as $key->$value){
                 $string = '{"attribute_id":"'.$key.'","values":["'.$value.'"]}';
