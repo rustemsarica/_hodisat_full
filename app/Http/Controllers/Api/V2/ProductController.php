@@ -158,15 +158,10 @@ class ProductController extends Controller
         $min = (int)$request->min;
         $max = (int)$request->max;
 
-        $attributeQuery = [];
+        $attributes = [];
 
         if($request->attrs != null && $request->attrs != ""){
-
             $attributes = explode(',', $request->attrs);
-            foreach($attributes as $value){
-                $string = '"'.$value.'"';
-                array_push($attributeQuery, $string);
-            }
         }
 
         $products = Product::query();
@@ -185,9 +180,9 @@ class ProductController extends Controller
             $products->whereIn('colors', $colors);
         }
 
-        if(!empty($attributeQuery)){
-            $products->where(function ($query) use($attributeQuery) {
-                foreach ($attributeQuery as $value) {
+        if(!empty($attributes)){
+            $products->where(function ($query) use($attributes) {
+                foreach ($attributes as $value) {
                     $str = '"' . $value . '"';
                     DB::table('logs')->insert(['text'=>$str]);
                     $query->orWhere('choice_options', 'like', '%' . $str . '%');
