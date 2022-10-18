@@ -161,6 +161,7 @@ class ProductController extends Controller
         $attributeQuery = [];
 
         if($request->attrs != null && $request->attrs != ""){
+
             $attributes = explode(',', $request->attrs);
             foreach($attributes as $value){
                 $string = '"'.$value.'"';
@@ -188,6 +189,7 @@ class ProductController extends Controller
             $products->where(function ($query) use($attributeQuery) {
                 foreach ($attributeQuery as $key => $value) {
                     $str = '"' . $value . '"';
+                    Log::info($str);
                     $query->orWhere('choice_options', 'like', '%' . $str . '%');
                 }
             });
