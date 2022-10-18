@@ -159,6 +159,7 @@ class ProductController extends Controller
         $max = (int)$request->max;
 
         $attributeQuery = [];
+
         if($request->attributes != null && $request->attributes != ""){
             $attributes = json_decode($request->attributes);
             foreach($attributes as $key->$value){
@@ -183,7 +184,7 @@ class ProductController extends Controller
             $products->whereIn('colors', $colors);
         }
 
-        if(count($attributeQuery)>0){
+        if(!empty($attributeQuery)){
             foreach($attributeQuery as $attr){
                 $products->where('choice_options','like', '%'.$attr.'%');
             }
