@@ -155,8 +155,8 @@ class ProductController extends Controller
 
         $sort_by = $request->sort_key;
         $name = $request->name;
-        $min = $request->min;
-        $max = $request->max;
+        $min = (int)$request->min;
+        $max = (int)$request->max;
 
 
         $products = Product::query();
@@ -184,11 +184,11 @@ class ProductController extends Controller
             SearchUtility::store($name);
         }
 
-        if ($min != null && $min != "") {
+        if ($min != null && $min != "" && is_numeric($min)) {
             $products->where('unit_price', '>=', $min);
         }
 
-        if ($max != null && $max != "") {
+        if ($max != null && $max != "" && is_numeric($max)) {
             $products->where('unit_price', '<=', $max);
         }
 
