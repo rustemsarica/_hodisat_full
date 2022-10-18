@@ -177,6 +177,7 @@ class ProductController extends Controller
         }
 
         if (!empty($colors)) {
+            DB::table('logs')->insert(['text'=>$colors]);
             $products->whereIn('colors', $colors);
             $products->whereNotNull('colors');
         }
