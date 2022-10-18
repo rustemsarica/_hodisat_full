@@ -150,8 +150,7 @@ class ProductController extends Controller
         }
 
         if ($request->colors != null || $request->colors != "") {
-            $colors_ids = explode(',', $request->colors);
-            $colors = Color::whereIn('id', $colors_ids)->pluck('code')->toArray();
+            $colors = explode(',', $request->colors);
         }
 
         $sort_by = $request->sort_key;
