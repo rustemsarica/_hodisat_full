@@ -185,9 +185,12 @@ class ProductController extends Controller
         }
 
         if(!empty($attributeQuery)){
-            foreach($attributeQuery as $attr){
-                $products->orWhere('choice_options','like', '%'.$attr.'%');
-            }
+            $products->where(function ($query) use($attributeQuery) {
+                foreach ($attributeQuery as $key => $value) {
+                    $str = '"' . $value . '"';
+                    $query->orWhere('choice_options', 'like', '%' . $str . '%');
+                }
+            });
         }
 
         if ($name != null && $name != "") {
