@@ -187,7 +187,7 @@ class ProductController extends Controller
 
         if(!empty($attributeQuery)){
             $products->where(function ($query) use($attributeQuery) {
-                foreach ($attributeQuery as $key => $value) {
+                foreach ($attributeQuery as $value) {
                     $str = '"' . $value . '"';
                     Log::info($str);
                     $query->orWhere('choice_options', 'like', '%' . $str . '%');
