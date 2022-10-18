@@ -233,7 +233,7 @@ class ProductController extends Controller
                 break;
         }
 
-        return new ProductMiniCollection(filter_products($products)->distinct()->paginate(20));
+        return new ProductMiniCollection(filter_products($products)->distinct()->paginate(40));
     }
 
 
