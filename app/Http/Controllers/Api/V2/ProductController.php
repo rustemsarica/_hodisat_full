@@ -161,14 +161,10 @@ class ProductController extends Controller
         $attributeQuery = [];
 
         if($request->attributes != null && $request->attributes != ""){
-            $reqAttr = $request->attributes;
-            $attributes = explode("-_-",$reqAttr);
+            $attributes = \explode(',',$request->attributes);
             foreach($attributes as $value){
-                $arr=explode(":",$value);
-                foreach(explode(',',$arr[1]) as $attr ){
-                    $string = '{"attribute_id":"'.$arr.'","values":["'.$value.'"]}';
-                    array_push($attributeQuery, $string);
-                }
+                $string = '"values":["'.$value.'"]';
+                array_push($attributeQuery, $string);
             }
         }
 
