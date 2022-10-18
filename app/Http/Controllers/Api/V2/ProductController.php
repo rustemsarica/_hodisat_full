@@ -160,13 +160,13 @@ class ProductController extends Controller
 
         $attributeQuery = [];
 
-        if($request->attributes != null && $request->attributes != ""){
-            $attributes = json_decode($request->attributes);
-            foreach($attributes as $key->$value){
-                $string = '{"attribute_id":"'.$key.'","values":["'.$value.'"]}';
-                array_push($attributeQuery, $string);
-            }
-        }
+        // if($request->attributes != null && $request->attributes != ""){
+        //     $attributes = json_decode($request->attributes);
+        //     foreach($attributes as $key->$value){
+        //         $string = '{"attribute_id":"'.$key.'","values":["'.$value.'"]}';
+        //         array_push($attributeQuery, $string);
+        //     }
+        // }
 
         $products = Product::query();
 
