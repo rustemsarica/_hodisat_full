@@ -184,11 +184,11 @@ class ProductController extends Controller
             SearchUtility::store($name);
         }
 
-        if ($min != null && $min != "" && is_numeric($min)) {
+        if ($min != null && $min != "") {
             $products->where('unit_price', '>=', $min);
         }
 
-        if ($max != null && $max != "" && is_numeric($max)) {
+        if ($max != null && $max != "") {
             $products->where('unit_price', '<=', $max);
         }
 
