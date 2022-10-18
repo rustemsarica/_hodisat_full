@@ -161,7 +161,8 @@ class ProductController extends Controller
         $attributeQuery = [];
 
         if($request->attributes != null && $request->attributes != ""){
-            $attributes = \explode("-_-",$request->attributes);
+            $reqAttr = $request->attributes;
+            $attributes = \explode("-_-",$reqAttr);
             foreach($attributes as $value){
                 $arr=explode(":",$value);
                 foreach(explode(',',$arr[1]) as $attr ){
