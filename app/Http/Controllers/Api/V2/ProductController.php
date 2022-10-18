@@ -149,8 +149,8 @@ class ProductController extends Controller
             $brand_ids = explode(',', $request->brands);
         }
 
-        if ($request->colors != null || $request->colors != "") {
-            $colors = explode(',', $request->colors);
+        if ($request->selectedcolors != null || $request->selectedcolors != "") {
+            $colors = explode(',', $request->selectedcolors);
         }
 
         $sort_by = $request->sort_key;
