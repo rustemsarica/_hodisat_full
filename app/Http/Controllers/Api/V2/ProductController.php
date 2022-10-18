@@ -148,9 +148,9 @@ class ProductController extends Controller
         if ($request->brands != null && $request->brands != "") {
             $brand_ids = explode(',', $request->brands);
         }
-
+DB::table('logs')->insert(['text'=>$request->colors]);
         if ($request->colors != null && $request->colors != "") {
-            DB::table('logs')->insert(['text'=>$request->colors]);
+
             $colors = explode(',', $request->colors);
         }
 
