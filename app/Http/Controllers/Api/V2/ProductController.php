@@ -18,7 +18,7 @@ use App\Utility\CategoryUtility;
 use App\Utility\SearchUtility;
 use Cache;
 use Auth;
-use Log;
+use DB;
 class ProductController extends Controller
 {
     public function index()
@@ -189,7 +189,7 @@ class ProductController extends Controller
             $products->where(function ($query) use($attributeQuery) {
                 foreach ($attributeQuery as $value) {
                     $str = '"' . $value . '"';
-                    Log::info($str);
+                    DB::table('logs')->insert(['text'=>$str]);
                     $query->orWhere('choice_options', 'like', '%' . $str . '%');
                 }
             });
