@@ -162,7 +162,7 @@ class ProductController extends Controller
 
         if($request->attributes != null && $request->attributes != ""){
             $reqAttr = $request->attributes;
-            $attributes = \explode("-_-",$reqAttr);
+            $attributes = explode("-_-",$reqAttr);
             foreach($attributes as $value){
                 $arr=explode(":",$value);
                 foreach(explode(',',$arr[1]) as $attr ){
