@@ -184,7 +184,6 @@ class ProductController extends Controller
             $products->where(function ($query) use($attributes) {
                 foreach ($attributes as $value) {
                     $str = '"' . $value . '"';
-                    DB::table('logs')->insert(['text'=>$str]);
                     $query->orWhere('choice_options', 'like', '%' . $str . '%');
                 }
             });
