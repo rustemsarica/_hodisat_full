@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V2;
 
 use App\Http\Resources\V2\UserCollection;
 use App\Models\User;
+use App\Models\UserNotificationPermission;
 use Illuminate\Http\Request;
 
 use Laravel\Sanctum\PersonalAccessToken;
@@ -71,6 +72,46 @@ class UserController extends Controller
             'phone' => $user->phone,
             'vacation_mode' => (string)$user->vacation_mode
         ]);
+
+    }
+
+    public function userNotificationPermissions(Request $request)
+    {
+        if($request->type=="update"){
+            $permissions=UserNotificationPermission::where('user_id',auth()->user()->id)->update([
+                'app_wishlist'=> $request->app_wishlist,
+                'app_follow'=> $request->app_follow,
+                'app_offers'=> $request->app_offers,
+                'app_reviews'=> $request->app_reviews,
+                'mail_wishlist'=> $request->mail_wishlist,
+                'mail_follow'=> $request->mail_follow,
+                'mail_offers'=> $request->mail_offers,
+                'mail_reviews'=> $request->mail_reviews,
+            ]);
+            return response()->json([
+                'app_wishlist'=> $permissions->app_wishlist,
+                'app_follow'=> $permissions->app_follow,
+                'app_offers'=> $permissions->app_offers,
+                'app_reviews'=> $permissions->app_reviews,
+                'mail_wishlist'=> $permissions->mail_wishlist,
+                'mail_follow'=> $permissions->mail_follow,
+                'mail_offers'=> $permissions->mail_offers,
+                'mail_reviews'=> $permissions->mail_reviews,
+            ]);
+        }else if($request->type=="get"){
+            $permissions=UserNotificationPermission::firstOrCreate(['user_id'=>auth()->user()->id]);
+
+            return response()->json([
+                'app_wishlist'=> $permissions->app_wishlist,
+                'app_follow'=> $permissions->app_follow,
+                'app_offers'=> $permissions->app_offers,
+                'app_reviews'=> $permissions->app_reviews,
+                'mail_wishlist'=> $permissions->mail_wishlist,
+                'mail_follow'=> $permissions->mail_follow,
+                'mail_offers'=> $permissions->mail_offers,
+                'mail_reviews'=> $permissions->mail_reviews,
+            ]);
+        }
 
     }
 

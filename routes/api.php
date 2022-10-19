@@ -152,6 +152,8 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
 
 	Route::get('user-notifications', 'App\Http\Controllers\Api\V2\FollowController@user_notifications')->middleware('auth:sanctum');
 
+	Route::get('user/notifications/permissions', 'App\Http\Controllers\Api\V2\UserController@userNotificationPermissions')->middleware('auth:sanctum');
+
 	Route::get('get-blocked-users', 'App\Http\Controllers\Api\V2\FollowController@blockedUsers')->middleware('auth:sanctum');
 	Route::get('user-block', 'App\Http\Controllers\Api\V2\FollowController@block_user')->middleware('auth:sanctum');
 

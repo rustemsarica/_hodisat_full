@@ -135,4 +135,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(Offer::class);
     }
+
+    public function notification_permissions()
+    {
+        return $this->belongsTo(UserNotificationPermission::class);
+    }
 }
