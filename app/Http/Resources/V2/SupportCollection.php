@@ -18,6 +18,7 @@ class SupportCollection extends ResourceCollection
                     'image_url' => $data->image_url,
                     'title' => $data->title,
                     'text' => $data->text,
+                    'is_expanded'=>false
                 ];
             })
         ];
