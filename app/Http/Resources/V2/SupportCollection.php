@@ -11,7 +11,7 @@ class SupportCollection extends ResourceCollection
     {
         return [
             'data' => $this->collection->map(function($data) {
-                $childrens= Suppor::where('parent_id',$data->id)->count();
+                $childrens= Support::where('parent_id',$data->id)->count();
                 return [
                     'id' => $data->id,
                     'parent_id' => $data->parent_id,
