@@ -50,6 +50,8 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
 
     Route::apiResource('general-settings', 'App\Http\Controllers\Api\V2\GeneralSettingController')->only('index');
 
+    Route::get('supports', 'App\Http\Controllers\Api\V2\GeneralSettingController@supports');
+
     Route::apiResource('home-categories', 'App\Http\Controllers\Api\V2\HomeCategoryController')->only('index');
 
     //Route::get('purchase-history/{id}', 'App\Http\Controllers\Api\V2\PurchaseHistoryController@index')->middleware('auth:sanctum');
