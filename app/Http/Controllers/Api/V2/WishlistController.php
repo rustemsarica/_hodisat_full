@@ -57,6 +57,9 @@ class WishlistController extends Controller
             );
             $product = Product::where('id', $request->product_id)->first();
             if (get_setting('google_firebase') == 1 && $product->user->device_token != null) {
+                if($product->user->notification_permissions!=null && $product->user->notification_permissions->app_follow==0){
+                    return response()->json(['result' => true], 200);
+                }
                 $request->device_token = $product->user->device_token;
                 $request->title = "Ürünün dikkat çekiyor";
                 $request->text = auth()->user()->username." ürününü beğendi.";
