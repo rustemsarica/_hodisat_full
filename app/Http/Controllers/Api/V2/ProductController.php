@@ -74,12 +74,77 @@ class ProductController extends Controller
 
     public function brand($id, Request $request)
     {
+        $colors = [];
+        $attributes = [];
+
         $products = Product::where('brand_id', $id);
         if ($request->name != "" || $request->name != null) {
             $products = $products->where('name', 'like', '%' . $request->name . '%');
+            SearchUtility::store($name);
         }
 
-        return new ProductMiniCollection(filter_products($products)->latest()->paginate(20));
+        if ($request->colors != null && $request->colors != "") {
+            $colors = Color::whereIn('id',explode(',', $request->colors))->pluck('code')->toArray();
+        }
+
+        $sort_by = $request->sort_key;
+        $name = $request->name;
+        $min = (int)$request->min;
+        $max = (int)$request->max;
+
+        if($request->attrs != null && $request->attrs != ""){
+            $attributes = explode(',', $request->attrs);
+        }
+        if (!empty($colors)) {
+            DB::table('logs')->insert(['text'=>$colors[0]]);
+            $products->whereIn('colors', $colors);
+            $products->whereNotNull('colors');
+        }
+
+        if(!empty($attributes)){
+            $products->where(function ($query) use($attributes) {
+                foreach ($attributes as $value) {
+                    $str = '"' . $value . '"';
+                    $query->orWhere('choice_options', 'like', '%' . $str . '%');
+                }
+            });
+        }
+
+        if ($min != null && $min != "" && is_numeric($min)) {
+            $products->where('unit_price', '>=', $min);
+        }
+
+        if ($max != null && $max != "" && is_numeric($max)) {
+            $products->where('unit_price', '<=', $max);
+        }
+
+        switch ($sort_by) {
+            case 'price_low_to_high':
+                $products->orderBy('unit_price', 'asc');
+                break;
+
+            case 'price_high_to_low':
+                $products->orderBy('unit_price', 'desc');
+                break;
+
+            case 'new_arrival':
+                $products->orderBy('created_at', 'desc');
+                break;
+
+            case 'popularity':
+                $products->orderBy('views', 'desc');
+                break;
+
+            case 'top_rated':
+                $products->orderBy('rating', 'desc');
+                break;
+
+            default:
+                $products->inRandomOrder();
+                break;
+        }
+
+        return new ProductMiniCollection(filter_products($products)->paginate(50));
     }
 
     public function todaysDeal()
@@ -134,7 +199,6 @@ class ProductController extends Controller
 
     public function search(Request $request)
     {
-
 
         $category_ids = [];
         $brand_ids = [];
