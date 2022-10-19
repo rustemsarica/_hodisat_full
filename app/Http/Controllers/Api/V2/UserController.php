@@ -78,7 +78,7 @@ class UserController extends Controller
     public function userNotificationPermissions(Request $request)
     {
         if($request->type=="update"){
-            $permissions=UserNotificationPermission::where('user_id',auth()->user()->id)->update([
+            UserNotificationPermission::where('user_id',auth()->user()->id)->update([
                 'app_wishlist'=> $request->app_wishlist,
                 'app_follow'=> $request->app_follow,
                 'app_offers'=> $request->app_offers,
@@ -88,6 +88,7 @@ class UserController extends Controller
                 'mail_offers'=> $request->mail_offers,
                 'mail_reviews'=> $request->mail_reviews,
             ]);
+            $permissions=UserNotificationPermission::where('user_id',auth()->user()->id)->first();
             return response()->json(['data'=>[
                 ['key' => 'app_wishlist', 'name' => translate('Wishlist Notifications'), 'value' => $permissions->app_wishlist],
                 ['key' => 'app_follow', 'name' => translate('Follow Notifications'), 'value' => $permissions->app_follow],
