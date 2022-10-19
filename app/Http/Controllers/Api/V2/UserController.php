@@ -88,16 +88,16 @@ class UserController extends Controller
                 'mail_offers'=> $request->mail_offers,
                 'mail_reviews'=> $request->mail_reviews,
             ]);
-            return response()->json([
-                'app_wishlist'=> $permissions->app_wishlist,
-                'app_follow'=> $permissions->app_follow,
-                'app_offers'=> $permissions->app_offers,
-                'app_reviews'=> $permissions->app_reviews,
-                'mail_wishlist'=> $permissions->mail_wishlist,
-                'mail_follow'=> $permissions->mail_follow,
-                'mail_offers'=> $permissions->mail_offers,
-                'mail_reviews'=> $permissions->mail_reviews,
-            ]);
+            return response()->json(['data'=>[
+                'item' => [ 'key' => traslate('Wishlist Notifications'), 'value' => $permissions->app_wishlist],
+                'item' => [ 'key' => translate('Follow Notifications'), 'value' => $permissions->app_follow],
+                'item' => [ 'key' => translate('Offer Notifications'), 'value' => $permissions->app_offers],
+                'item' => [ 'key' => translate('Review Notifications'), 'value' => $permissions->app_reviews],
+                'item' => [ 'key' => 'Mail '.translate('Wishlist Notifications'), 'value' => $permissions->mail_wishlist],
+                'item' => [ 'key' => 'Mail '.translate('Follow Notifications'), 'value' => $permissions->mail_follow],
+                'item' => [ 'key' => 'Mail '.translate('Offers Notifications'), 'value' => $permissions->mail_offers],
+                'item' => [ 'key' => 'Mail '.translate('Review Notifications'), 'value' => $permissions->mail_reviews],
+            ]]);
         }else if($request->type=="get"){
             $permissions=UserNotificationPermission::firstOrCreate(['user_id'=>auth()->user()->id]);
 
@@ -105,16 +105,16 @@ class UserController extends Controller
                $permissions=UserNotificationPermission::where(['user_id', auth()->user()->id])->first();
             }
 
-            return response()->json([
-                'app_wishlist'=> $permissions->app_wishlist,
-                'app_follow'=> $permissions->app_follow,
-                'app_offers'=> $permissions->app_offers,
-                'app_reviews'=> $permissions->app_reviews,
-                'mail_wishlist'=> $permissions->mail_wishlist,
-                'mail_follow'=> $permissions->mail_follow,
-                'mail_offers'=> $permissions->mail_offers,
-                'mail_reviews'=> $permissions->mail_reviews,
-            ]);
+            return response()->json(['data'=>[
+                'item' => [ 'key' => traslate('Wishlist Notifications'), 'value' => $permissions->app_wishlist],
+                'item' => [ 'key' => translate('Follow Notifications'), 'value' => $permissions->app_follow],
+                'item' => [ 'key' => translate('Offer Notifications'), 'value' => $permissions->app_offers],
+                'item' => [ 'key' => translate('Review Notifications'), 'value' => $permissions->app_reviews],
+                'item' => [ 'key' => 'Mail '.translate('Wishlist Notifications'), 'value' => $permissions->mail_wishlist],
+                'item' => [ 'key' => 'Mail '.translate('Follow Notifications'), 'value' => $permissions->mail_follow],
+                'item' => [ 'key' => 'Mail '.translate('Offers Notifications'), 'value' => $permissions->mail_offers],
+                'item' => [ 'key' => 'Mail '.translate('Review Notifications'), 'value' => $permissions->mail_reviews],
+            ]]);
         }
 
     }
