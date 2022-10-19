@@ -101,6 +101,10 @@ class UserController extends Controller
         }else if($request->type=="get"){
             $permissions=UserNotificationPermission::firstOrCreate(['user_id'=>auth()->user()->id]);
 
+            if($permissions->app_wishlist==null){
+               $permissions=UserNotificationPermission::where(['user_id', auth()->user()->id])->first();
+            }
+
             return response()->json([
                 'app_wishlist'=> $permissions->app_wishlist,
                 'app_follow'=> $permissions->app_follow,
