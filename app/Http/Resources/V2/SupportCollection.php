@@ -3,6 +3,7 @@
 namespace App\Http\Resources\V2;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use App\Models\Support;
 
 class SupportCollection extends ResourceCollection
 {
@@ -10,6 +11,7 @@ class SupportCollection extends ResourceCollection
     {
         return [
             'data' => $this->collection->map(function($data) {
+                $childrens= Suppor::where('parent_id',$data->id)->count();
                 return [
                     'id' => $data->id,
                     'parent_id' => $data->parent_id,
@@ -18,7 +20,8 @@ class SupportCollection extends ResourceCollection
                     'image_url' => $data->image_url,
                     'title' => $data->title,
                     'text' => $data->text,
-                    'is_expanded'=>false
+                    'is_expanded'=>false,
+                    'has_children' => $childrens>0 ? true : false,
                 ];
             })
         ];
