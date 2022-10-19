@@ -17,7 +17,7 @@ class NotificationsCollection extends ResourceCollection
         return [
             'data' => $this->collection->map(function($data) {
 
-                $image="";
+                $images="";
                 if($data->item_type=='product' || $data->item_type=='offer'){
                     $product=Product::find($data->item_type_id);
                     $images = \uploaded_asset($product->thumbnail_img);
