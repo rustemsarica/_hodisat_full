@@ -18,6 +18,11 @@ class GeneralSettingController extends Controller
 
     public function supports(Request $request)
     {
-        return new SupportCollection($supports= Support::where('parent_id',0)->get());
+        if($request->parent_id>0){
+            return new SupportCollection($supports= Support::where('id',$request->parent_id)->orWhere('parent_id',$request->parent_id)->get());
+        }else{
+           return new SupportCollection($supports= Support::where('parent_id',0)->get());
+        }
+
     }
 }
