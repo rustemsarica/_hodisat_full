@@ -106,7 +106,7 @@ class UserController extends Controller
             }
 
             return response()->json(['data'=>[
-                'item' => [ 'key' => 'app_wishlist', 'name' => trasnlate('Wishlist Notifications'), 'value' => $permissions->app_wishlist],
+                'item' => [ 'key' => 'app_wishlist', 'name' => translate('Wishlist Notifications'), 'value' => $permissions->app_wishlist],
                 'item' => [ 'key' => 'app_follow', 'name' => translate('Follow Notifications'), 'value' => $permissions->app_follow],
                 'item' => [ 'key' => 'app_offers', 'name' => translate('Offer Notifications'), 'value' => $permissions->app_offers],
                 'item' => [ 'key' => 'app_reviews', 'name' => translate('Review Notifications'), 'value' => $permissions->app_reviews],
