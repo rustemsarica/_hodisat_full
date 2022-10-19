@@ -38,6 +38,9 @@ class FollowController extends Controller
 
             $user = User::where('id',$request->followed_user_id)->first();
             if (get_setting('google_firebase') == 1 && $user->device_token != null) {
+                if($user->notification_permissions!=null && $user->notification_permissions->app_follow==0){
+                    return response()->json(['result' => true], 200);
+                }
                 $request->device_token = $user->device_token;
                 $request->title = "Yeni takipçi!";
                 $request->text = $user->username.", seni takip etmeye başladı.";
