@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Ticket;
 use App\Models\User;
 use App\Models\Support;
+use App\Models\SupportTranslation;
 use Auth;
 use App\Models\TicketReply;
 use App\Mail\SupportMailManager;
@@ -247,13 +248,20 @@ class SupportTicketController extends Controller
 
     public function updateSupport(Request $request)
     {
-        Support::where('id',$request->id)->update([
-            'parent_id'=>$request->parent_id,
-            'icon'=>$request->icon,
-            'image_url'=>$request->image_url,
-            'title'=>$request->title,
-            'text'=>$request->text,
-        ]);
+        $support = Support::findOrFail($request->id);
+        if($request->lang == env("DEFAULT_LANGUAGE")){
+            $support->title = $request->title;
+            $support->text = $request->text;
+        }
+        $support->parent_id=$request->parent_id;
+        $support->icon=$request->icon;
+        $support->image_url=$request->image_url;
+        $support->save();
+
+        $support_translation = SupportTranslation::firstOrNew(['lang' => $request->lang, 'support_id' => $support->id]);
+        $support_translation->title = $request->title;
+        $support_translation->text = $request->text;
+        $support_translation->save();
         return back();
     }
 
