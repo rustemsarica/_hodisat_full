@@ -74,7 +74,7 @@
             </table>
 
             <div class="aiz-pagination">
-                {{ $supports->links() }}
+                {{ $supports->appends(request()->input())->links() }}
             </div>
 
         </div>
