@@ -21,6 +21,10 @@ class OrderController extends Controller
 
         $order_query->where('payment_status', 'paid');
 
+        if($request->page=="support"){
+            $request->page=1;
+        }
+
         if ($request->delivery_status != "" || $request->delivery_status != null) {
             $delivery_status = $request->delivery_status;
             $order_query->whereIn("id", function ($query) use ($delivery_status) {
