@@ -348,7 +348,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
 
         Route::get('supports/', 'supportList')->name('support_ticket.supportList');
         Route::get('supports/{id}/show', 'getSupport')->name('support_ticket.getSupport');
-        Route::post('supports/add', 'addSuport')->name('support_ticket.addSuport');
+        Route::get('supports/add', 'addSuport')->name('support_ticket.addSuport');
+        Route::post('supports/add-post', 'addSuportPost')->name('support_ticket.addSuportPost');
         Route::post('supports/update', 'updateSuport')->name('support_ticket.updateSuport');
         Route::post('supports/{id}/delete', 'deleteSupport')->name('support_ticket.deleteSupport');
     });

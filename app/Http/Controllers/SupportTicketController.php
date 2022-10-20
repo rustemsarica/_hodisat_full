@@ -229,7 +229,12 @@ class SupportTicketController extends Controller
         $supports->where('id',$request->id)->first();
     }
 
-    public function addSuport(Request $request)
+    public function addSuport()
+    {
+        return view('backend.support.support_add');
+    }
+
+    public function addSuportPost(Request $request)
     {
         $support= new Support;
         $support->parent_id=$request->parent_id;
