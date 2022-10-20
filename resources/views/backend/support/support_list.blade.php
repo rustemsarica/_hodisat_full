@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <a href="{{ route('support_ticket.addSupport', $support->id) }}" class="btn btn-primary">Ekle</a>
+            <a href="{{ route('support_ticket.addSupport') }}" class="btn btn-primary">Ekle</a>
 
         </div>
 
