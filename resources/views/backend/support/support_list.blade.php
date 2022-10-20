@@ -101,14 +101,16 @@
 			<div class="card-body">
 				<form action="{{ route('support_ticket.addSupportPost') }}" method="POST">
 					@csrf
-                    <select class="form-control aiz-selectpicker" name="parent_id" id="parent_id">
-                        <option value="">{{translate('Parent Category')}}</option>
-                        @foreach (\App\Models\Support::get() as $item)
-                            <option value="{{$item->id}}" @if ($parent_id == '{{$item->id}}') selected @endif>{{$item->title}}</option>
-                        @endforeach
+                    <div class="form-group mb-3">
+						<label for="name">{{translate('Parent',get_setting('admin_lang'))}}</label>
+						<select class="form-control aiz-selectpicker" name="parent_id" id="parent_id">
+                            <option value="">{{translate('Parent Category')}}</option>
+                            @foreach (\App\Models\Support::get() as $item)
+                                <option value="{{$item->id}}" @if ($parent_id == '{{$item->id}}') selected @endif>{{$item->title}}</option>
+                            @endforeach
+                        </select>
+					</div>
 
-
-                    </select>
 					<div class="form-group mb-3">
 						<label for="name">{{translate('Title',get_setting('admin_lang'))}}</label>
 						<input type="text" placeholder="{{translate('Title',get_setting('admin_lang'))}}" name="title" class="form-control" required>
