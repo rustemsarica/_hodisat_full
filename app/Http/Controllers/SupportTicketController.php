@@ -228,7 +228,7 @@ class SupportTicketController extends Controller
     {
         $lang   = $request->lang;
         $support=Support::where('id',$id)->first();
-        return view('backend.support.support_list', compact('support','lang'));
+        return view('backend.support.support_update', compact('support','lang'));
     }
 
 
