@@ -98,14 +98,14 @@
     <div class="col-md-5">
 		<div class="card">
 			<div class="card-header">
-				<h5 class="mb-0 h6">{{ translate('Add New Brand',get_setting('admin_lang')) }}</h5>
+				<h5 class="mb-0 h6">{{ translate('Add New',get_setting('admin_lang')) }}</h5>
 			</div>
 			<div class="card-body">
-				<form action="{{ route('brands.store') }}" method="POST">
+				<form action="{{ route('support_ticket.addSupportPost') }}" method="POST">
 					@csrf
 					<div class="form-group mb-3">
 						<label for="name">{{translate('Name',get_setting('admin_lang'))}}</label>
-						<input type="text" placeholder="{{translate('Name',get_setting('admin_lang'))}}" name="name" class="form-control" required>
+						<input type="text" placeholder="{{translate('Title',get_setting('admin_lang'))}}" name="title" class="form-control" required>
 					</div>
 					<div class="form-group mb-3">
 						<label for="name">{{translate('Logo')}} <small>({{ translate('120x80',get_setting('admin_lang')) }})</small></label>
@@ -120,12 +120,12 @@
 						</div>
 					</div>
 					<div class="form-group mb-3">
-						<label for="name">{{translate('Meta Title',get_setting('admin_lang'))}}</label>
-						<input type="text" class="form-control" name="meta_title" placeholder="{{translate('Meta Title',get_setting('admin_lang'))}}">
+						<label for="image_url">{{translate('Image url',get_setting('admin_lang'))}}</label>
+						<input type="text" class="form-control" name="image_url" placeholder="{{translate('Image url',get_setting('admin_lang'))}}">
 					</div>
 					<div class="form-group mb-3">
-						<label for="name">{{translate('Meta Description',get_setting('admin_lang'))}}</label>
-						<textarea name="meta_description" rows="5" class="form-control"></textarea>
+						<label for="name">{{translate('Description',get_setting('admin_lang'))}}</label>
+						<textarea name="text" rows="5" class="form-control"></textarea>
 					</div>
 					<div class="form-group mb-3 text-right">
 						<button type="submit" class="btn btn-primary">{{translate('Save',get_setting('admin_lang'))}}</button>
