@@ -27,12 +27,14 @@
 
                 <div class="form-group row">
                     <label class="col-sm-3 col-from-label" for="name">{{translate('Parent',get_setting('admin_lang'))}}</label>
-                    <select class="col-md-9 form-control aiz-selectpicker" name="parent_id" id="parent_id">
-                        <option value="">{{translate('Parent Category')}}</option>
-                        @foreach (\App\Models\Support::where('parent_id',0)->get() as $item)
-                            <option value="{{$item->id}}" @if ($support->parent_id == $item->id) selected @endif>{{$item->title}}</option>
-                        @endforeach
-                    </select>
+                    <div class="col-md-9 ">
+                        <select class="form-control aiz-selectpicker" name="parent_id" id="parent_id">
+                            <option value="">{{translate('Parent Category')}}</option>
+                            @foreach (\App\Models\Support::where('parent_id',0)->get() as $item)
+                                <option value="{{$item->id}}" @if ($support->parent_id == $item->id) selected @endif>{{$item->title}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-from-label" for="name">{{translate('Title')}} <i class="las la-language text-danger" title="{{translate('Translatable')}}"></i></label>
