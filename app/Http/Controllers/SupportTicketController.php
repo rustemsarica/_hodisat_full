@@ -229,12 +229,12 @@ class SupportTicketController extends Controller
         $supports->where('id',$request->id)->first();
     }
 
-    public function addSuport()
+    public function addSupport()
     {
         return view('backend.support.support_add');
     }
 
-    public function addSuportPost(Request $request)
+    public function addSupportPost(Request $request)
     {
         $support= new Support;
         $support->parent_id=$request->parent_id;
@@ -247,7 +247,7 @@ class SupportTicketController extends Controller
         return back();
     }
 
-    public function updateSuport(Request $request)
+    public function updateSupport(Request $request)
     {
         Support::where('id',$request->id)->update([
             'parent_id'=>$request->parent_id,
