@@ -224,9 +224,11 @@ class SupportTicketController extends Controller
         return view('backend.support.support_list', compact('supports','parent_id','search'));
     }
 
-    public function getSupport($id)
+    public function getSupport(Request $request,$id)
     {
-        $supports->where('id',$request->id)->first();
+        $lang   = $request->lang;
+        $support=Support::where('id',$id)->first();
+        return view('backend.support.support_list', compact('support','lang'));
     }
 
 
