@@ -52,10 +52,10 @@ class SupportTicketController extends Controller
 
         if($ticket->save()){
             $this->send_support_mail_to_admin($ticket);
-            return response()->json(['result' => true, 'message'=> translate('Ticket has been sent successfully')]);
+            return response()->json(['status' => true, 'message'=> translate('Ticket has been sent successfully')]);
         }
         else{
-            return response()->json(['result' => false, 'message'=> translate('Something went wrong')]);
+            return response()->json(['status' => false, 'message'=> translate('Something went wrong')]);
         }
 
 
