@@ -48,9 +48,9 @@
                     <tr>
                         <td>
                             @if ($support->icon!=null)
-                                <img style="max-height:50px; max-width:50px" src="{{uploaded_asset($support->icon)}}" alt="">
+                                <img style="max-height:100px; max-width:100px" src="{{uploaded_asset($support->icon)}}" alt="">
                             @elseif($support->image_url!=null)
-                                <img style="max-height:50px; max-width:50px" src="{{$support->image_url}}" alt="">
+                                <img style="max-height:100px; max-width:100px" src="{{$support->image_url}}" alt="">
                             @endif
                         </td>
                         <td>
