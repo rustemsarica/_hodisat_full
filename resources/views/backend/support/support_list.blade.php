@@ -36,6 +36,7 @@
             <table class="table aiz-table mb-0">
                 <thead>
                     <tr>
+                        <th>Resim</th>
                         <th>Ana Kategori</th>
                         <th>Başlık</th>
                         <th>İçerik</th>
@@ -45,7 +46,14 @@
                 <tbody>
                     @foreach ($supports as $key => $support)
                     <tr>
-
+                        <td>
+                            @if ($support->icon!=null)
+                                <img style="height:100; width:100" src="{{uploaded_asset($support->icon)}}" alt="">
+                            @elseif($support->image_url!=null)
+                                <img style="height:100; width:100" src="{{uploaded_asset($support->image_url)}}" alt="">
+                            @endif
+                            {{ $support->title }}
+                        </td>
                         <td>
                             @if($support->parent_id!=0)
                               {{ \App\Models\Support::where('id',$support->parent_id)->first()->title }}
