@@ -52,6 +52,9 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
 
     Route::get('supports', 'App\Http\Controllers\Api\V2\GeneralSettingController@supports');
 
+    Route::get('supports/tickets', 'App\Http\Controllers\Api\V2\SupportTicketController@index')->middleware('auth:sanctum');
+    Route::post('supports/tickets/create', 'App\Http\Controllers\Api\V2\SupportTicketController@store')->middleware('auth:sanctum');
+
     Route::apiResource('home-categories', 'App\Http\Controllers\Api\V2\HomeCategoryController')->only('index');
 
     //Route::get('purchase-history/{id}', 'App\Http\Controllers\Api\V2\PurchaseHistoryController@index')->middleware('auth:sanctum');
