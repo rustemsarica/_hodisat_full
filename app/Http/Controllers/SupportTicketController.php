@@ -209,7 +209,8 @@ class SupportTicketController extends Controller
     public function supportList(Request $request)
     {
         $supports= Support::query();
-        $parent_category;
+        $parent_category=null;
+        $search = null;
         if($request->has('parent_id')){
             $supports->where('parent_id',$request->parent_id);
             $parent_category=$request->parent_id;
