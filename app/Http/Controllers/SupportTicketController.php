@@ -211,7 +211,7 @@ class SupportTicketController extends Controller
         $supports= Support::query();
         $parent_id=null;
         $search = null;
-        if($request->has('parent_id')){
+        if($request->has('parent_id') && $request->parent_id!=null && $request->parent_id!=""){
             $supports= $supports->where('parent_id',$request->parent_id);
             $parent_id=$request->parent_id;
         }
