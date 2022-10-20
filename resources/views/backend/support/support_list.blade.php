@@ -22,7 +22,7 @@
 
             <div class="col-lg-2">
                 <div class="form-group mb-0">
-                    <input type="text" class="form-control" id="search" name="search"@isset($sort_search) value="{{ $sort_search }}" @endisset placeholder="{{ translate('Search') }}">
+                    <input type="text" class="form-control" id="search" name="search"@isset($search) value="{{ $search }}" @endisset placeholder="{{ translate('Search') }}">
                 </div>
             </div>
             <div class="col-auto">

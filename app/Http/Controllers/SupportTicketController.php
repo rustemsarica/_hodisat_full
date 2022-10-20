@@ -220,7 +220,7 @@ class SupportTicketController extends Controller
             $supports->where('title','like', '%'.$request->search.'%');
         }
         $supports->paginate(10);
-        return view('backend.support.support_list', compact('supports','parent_category'));
+        return view('backend.support.support_list', compact('supports','parent_category','search'));
     }
 
     public function getSupport($id)
