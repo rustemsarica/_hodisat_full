@@ -795,7 +795,7 @@
                                 </a>
                             </li>
                             <li class="aiz-side-nav-item">
-                                <a href="{{ route('support_ticket.supportList') }}" class="aiz-side-nav-link">
+                                <a href="{{ route('support_ticket.supportList') }}" class="aiz-side-nav-link {{ areActiveRoutes(['support_ticket.supportList','support_ticket.getSupport'])}}">
                                     <span class="aiz-side-nav-text">{{translate('Support Configuration')}}</span>
                                 </a>
                             </li>
