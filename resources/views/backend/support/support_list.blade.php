@@ -70,7 +70,7 @@
 
                                 <td class="text-right">
 
-                                    <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{ route('support_ticket.getSupport', 'id'=>$support->id, 'lang'=>env('DEFAULT_LANGUAGE')) }}" title="{{ translate('View') }}">
+                                    <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{ route('support_ticket.getSupport', ['id'=>$support->id, 'lang'=>env('DEFAULT_LANGUAGE')]) }}" title="{{ translate('View') }}">
                                         <i class="las la-edit"></i>
                                     </a>
                                     @if ($support->parent_id!=0)
