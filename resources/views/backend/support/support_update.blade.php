@@ -56,7 +56,7 @@
                 <div class="form-group row">
                     <label class="col-sm-3 col-from-label">{{translate('Image Url')}}</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="meta_title" value="{{ $support->image_url }}" placeholder="{{translate('Image Url')}}">
+                        <input type="text" class="form-control" name="image_url" value="{{ $support->image_url }}" placeholder="{{translate('Image Url')}}">
                     </div>
                 </div>
                 <div class="form-group row">
