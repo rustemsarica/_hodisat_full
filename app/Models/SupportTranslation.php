@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BrandTranslation extends Model
+class SupportTranslation extends Model
 {
   protected $fillable = ['title','text', 'lang', 'support_id'];
 
