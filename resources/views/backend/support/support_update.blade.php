@@ -27,7 +27,7 @@
                 <div class="form-group mb-3">
                     <label for="name">{{translate('Parent',get_setting('admin_lang'))}}</label>
                     <select class="form-control aiz-selectpicker" name="parent_id" id="parent_id">
-                        <option value="">{{translate('Parent Category')}}</option>
+                        <option value="0">{{translate('Parent')}}</option>
                         @foreach (\App\Models\Support::where('parent_id',0)->get() as $item)
                             <option value="{{$item->id}}" @if ($support->parent_id == $item->id) selected @endif>{{$item->title}}</option>
                         @endforeach
