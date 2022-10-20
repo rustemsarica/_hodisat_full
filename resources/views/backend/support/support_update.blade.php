@@ -33,6 +33,15 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="form-group mb-3">
+                    <label for="name">{{translate('Parent',get_setting('admin_lang'))}}</label>
+                    <select class="form-control aiz-selectpicker" name="parent_id" id="parent_id">
+                        <option value="">{{translate('Parent Category')}}</option>
+                        @foreach (\App\Models\Support::where('parent_id',0)->get() as $item)
+                            <option value="{{$item->id}}" @if ($support->parent_id == $item->id) selected @endif>{{$item->title}}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-from-label" for="name">{{translate('Title')}} <i class="las la-language text-danger" title="{{translate('Translatable')}}"></i></label>
                     <div class="col-sm-9">
