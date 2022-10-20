@@ -218,6 +218,7 @@ class SupportTicketController extends Controller
 
         if($request->has('search') && $request->search!=""){
             $supports= $supports->where('title','like', '%'.$request->search.'%');
+            $search = $request->search;
         }
         $supports= $supports->paginate(10);
         return view('backend.support.support_list', compact('supports','parent_category','search'));
