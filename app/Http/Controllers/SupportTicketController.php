@@ -209,11 +209,11 @@ class SupportTicketController extends Controller
     public function supportList(Request $request)
     {
         $supports= Support::query();
-        $parent_category=null;
+        $parent_id=null;
         $search = null;
         if($request->has('parent_id')){
             $supports= $supports->where('parent_id',$request->parent_id);
-            $parent_category=$request->parent_id;
+            $parent_id=$request->parent_id;
         }
 
         if($request->has('search') && $request->search!=""){
@@ -221,7 +221,7 @@ class SupportTicketController extends Controller
             $search = $request->search;
         }
         $supports= $supports->paginate(10);
-        return view('backend.support.support_list', compact('supports','parent_category','search'));
+        return view('backend.support.support_list', compact('supports','parent_id','search'));
     }
 
     public function getSupport($id)
