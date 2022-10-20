@@ -16,7 +16,7 @@ class Support extends Model
     }
 
     public function support_translations(){
-      return $this->hasMany(supportTranslation::class);
+      return $this->hasMany(SupportTranslation::class);
     }
 
 }
