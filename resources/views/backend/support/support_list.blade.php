@@ -47,7 +47,10 @@
                     <tr>
 
                         <td>
-                            {{ \App\Models\Support::where('id',$support->parent_id)->first()->title }}
+                            @if($support->parent_id!=0)
+                              {{ \App\Models\Support::where('id',$support->parent_id)->first()->title }}
+                            @endif
+
                         </td>
                         <td>
                             {{ $support->title }}
