@@ -15,7 +15,7 @@ class SupportCollection extends ResourceCollection
                 return [
                     'id' => $data->id,
                     'parent_id' => $data->parent_id,
-                    'icon' => $data->icon,
+                    'icon' => uploaded_asset($data->icon),
                     'image' => $data->image,
                     'image_url' => $data->image_url,
                     'title' => $data->title,

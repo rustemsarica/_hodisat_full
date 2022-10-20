@@ -50,7 +50,7 @@ Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
 
     Route::apiResource('general-settings', 'App\Http\Controllers\Api\V2\GeneralSettingController')->only('index');
 
-    Route::get('supports', 'App\Http\Controllers\Api\V2\GeneralSettingController@supports');
+    Route::get('supports', 'App\Http\Controllers\Api\V2\SupportTicketController@supports');
 
     Route::get('supports/tickets', 'App\Http\Controllers\Api\V2\SupportTicketController@index')->middleware('auth:sanctum');
     Route::post('supports/tickets/create', 'App\Http\Controllers\Api\V2\SupportTicketController@store')->middleware('auth:sanctum');
