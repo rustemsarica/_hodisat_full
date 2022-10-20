@@ -32,8 +32,6 @@
                         </div>
                     </div>
 
-                    <a href="{{ route('support_ticket.addSupport') }}" class="btn btn-primary">Ekle</a>
-
                 </div>
 
                 <div class="card-body">
@@ -104,17 +102,17 @@
 				<form action="{{ route('support_ticket.addSupportPost') }}" method="POST">
 					@csrf
 					<div class="form-group mb-3">
-						<label for="name">{{translate('Name',get_setting('admin_lang'))}}</label>
+						<label for="name">{{translate('Title',get_setting('admin_lang'))}}</label>
 						<input type="text" placeholder="{{translate('Title',get_setting('admin_lang'))}}" name="title" class="form-control" required>
 					</div>
 					<div class="form-group mb-3">
-						<label for="name">{{translate('Logo')}} <small>({{ translate('120x80',get_setting('admin_lang')) }})</small></label>
+						<label for="name">{{translate('Icon')}} <small>({{ translate('120x80',get_setting('admin_lang')) }})</small></label>
 						<div class="input-group" data-toggle="aizuploader" data-type="image">
 							<div class="input-group-prepend">
 									<div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse',get_setting('admin_lang'))}}</div>
 							</div>
 							<div class="form-control file-amount">{{ translate('Choose File',get_setting('admin_lang')) }}</div>
-							<input type="hidden" name="logo" class="selected-files">
+							<input type="hidden" name="icon" class="selected-files">
 						</div>
 						<div class="file-preview box sm">
 						</div>
@@ -124,7 +122,7 @@
 						<input type="text" class="form-control" name="image_url" placeholder="{{translate('Image url',get_setting('admin_lang'))}}">
 					</div>
 					<div class="form-group mb-3">
-						<label for="name">{{translate('Description',get_setting('admin_lang'))}}</label>
+						<label for="name">{{translate('Text',get_setting('admin_lang'))}}</label>
 						<textarea name="text" rows="5" class="form-control"></textarea>
 					</div>
 					<div class="form-group mb-3 text-right">
