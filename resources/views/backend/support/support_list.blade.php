@@ -62,7 +62,7 @@
                         <td class="text-right">
 
                             <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{ route('support_ticket.getSupport', $support->id) }}" title="{{ translate('View') }}">
-                                <i class="las la-eye"></i>
+                                <i class="las la-edit"></i>
                             </a>
                             @if ($support->parent_id!=0)
                               <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('support_ticket.deleteSupport', $support->id)}}" title="{{ translate('Delete') }}">
