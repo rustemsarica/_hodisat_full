@@ -47,7 +47,7 @@
                     <tr>
 
                         <td>
-                            {{ \App\Models\Support::where('id',$support->id)->first()->title }}
+                            {{ \App\Models\Support::where('id',$support->parent_id)->first()->title }}
                         </td>
                         <td>
                             {{ $support->title }}
