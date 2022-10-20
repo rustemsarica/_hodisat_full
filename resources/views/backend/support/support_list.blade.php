@@ -52,7 +52,6 @@
                             @elseif($support->image_url!=null)
                                 <img style="height:50; width:50" src="{{$support->image_url}}" alt="">
                             @endif
-                            {{ $support->title }}
                         </td>
                         <td>
                             @if($support->parent_id!=0)
