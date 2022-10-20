@@ -345,6 +345,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
         Route::get('support_ticket/', 'admin_index')->name('support_ticket.admin_index');
         Route::get('support_ticket/{id}/show', 'admin_show')->name('support_ticket.admin_show');
         Route::post('support_ticket/reply', 'admin_store')->name('support_ticket.admin_store');
+
+        Route::get('supports/', 'supportList')->name('support_ticket.supportList');
+        Route::get('supports/{id}/show', 'getSupport')->name('support_ticket.getSupport');
+        Route::post('supports/add', 'addSuport')->name('support_ticket.addSuport');
+        Route::post('supports/update', 'updateSuport')->name('support_ticket.updateSuport');
+        Route::post('supports/{id}/delete', 'deleteSupport')->name('support_ticket.deleteSupport');
     });
 
     //Pickup_Points

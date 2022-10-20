@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Ticket;
 use App\Models\User;
+use App\Models\Support;
 use Auth;
 use App\Models\TicketReply;
 use App\Mail\SupportMailManager;
@@ -204,4 +205,56 @@ class SupportTicketController extends Controller
     {
         //
     }
+
+    public function supportList(Request $request)
+    {
+        $supports= Support::query();
+
+        if($request->has('parent_id')){
+            $supports->where('parent_id',$request->parent_id);
+        }
+
+        if($request->has('search') && $request->search!=""){
+            $supports->where('title','like', '%'.$request->search.'%');
+        }
+        $supports->paginate(10);
+        return view('backend.support.support_list', compact('supports'));
+    }
+
+    public function getSupport($id)
+    {
+        $supports->where('id',$request->id)->first();
+    }
+
+    public function addSuport(Request $request)
+    {
+        $support= new Support;
+        $support->parent_id=$request->parent_id;
+        $support->icon=$request->icon;
+        $support->image_url=$request->image_url;
+        $support->title=$request->title;
+        $support->text=$request->text;
+        $support->save();
+        flash(translate('Successfully'))->success();
+        return back();
+    }
+
+    public function updateSuport(Request $request)
+    {
+        Support::where('id',$request->id)->update([
+            'parent_id'=>$request->parent_id,
+            'icon'=>$request->icon,
+            'image_url'=>$request->image_url,
+            'title'=>$request->title,
+            'text'=>$request->text,
+        ]);
+        return back();
+    }
+
+    public function deleteSupport($id)
+    {
+        Support::where('id',$id)->delete();
+        return back();
+    }
+
 }

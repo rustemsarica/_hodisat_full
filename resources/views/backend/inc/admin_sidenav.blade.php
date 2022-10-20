@@ -795,6 +795,11 @@
                                 </a>
                             </li>
                             <li class="aiz-side-nav-item">
+                                <a href="{{ route('support.index') }}" class="aiz-side-nav-link">
+                                    <span class="aiz-side-nav-text">{{translate('Support Configuration')}}</span>
+                                </a>
+                            </li>
+                            <li class="aiz-side-nav-item">
                                 <a href="{{ route('file_system.index') }}" class="aiz-side-nav-link">
                                     <span class="aiz-side-nav-text">{{translate('File System & Cache Configuration')}}</span>
                                 </a>
