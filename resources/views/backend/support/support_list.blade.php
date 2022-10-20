@@ -10,10 +10,10 @@
             </div>
 
             <div class="col-lg-2 ml-auto">
-                <select class="form-control aiz-selectpicker" name="parent_category" id="parent_category">
+                <select class="form-control aiz-selectpicker" name="parent_id" id="parent_id">
                     <option value="">{{translate('Parent Category')}}</option>
                     @foreach (\App\Models\Support::where('parent_id',0)->get() as $item)
-                        <option value="{{$item->id}}" @if ($parent_category == '{{$item->id}}') selected @endif>{{$item->title}}</option>
+                        <option value="{{$item->id}}" @if ($parent_id == '{{$item->id}}') selected @endif>{{$item->title}}</option>
                     @endforeach
 
 
@@ -30,6 +30,7 @@
                     <button type="submit" class="btn btn-primary">{{ translate('Filter') }}</button>
                 </div>
             </div>
+
         </div>
 
         <div class="card-body">
