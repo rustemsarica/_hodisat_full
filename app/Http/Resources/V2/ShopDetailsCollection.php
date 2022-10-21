@@ -49,7 +49,7 @@ class ShopDetailsCollection extends JsonResource
             "min_product_count" => $this->min_product_count,
             "discount_percentage" => $this->discount_percentage,
 
-            'rating' => (double) $this->rating,
+            'rating' => (double) $this->seller->rating,
             'email'=> $this->user->email,
             'products'=> $this->user->products()->count(),
             'orders'=> $this->user->seller_orders()->where("delivery_status","delivered")->count(),
