@@ -20,6 +20,7 @@ class PurchaseHistoryCollection extends ResourceCollection
                     'id' => $data->id,
                     'code' => $data->code,
                     'user_id' => (int) $data->user_id,
+                    'seller_id' => (int) $data->seller_id,
                     'payment_type' => ucwords(str_replace('_', ' ', $data->payment_type)),
                     'pickup_point' => $pickup_point,
                     'shipping_type' => $data->shipping_type,
