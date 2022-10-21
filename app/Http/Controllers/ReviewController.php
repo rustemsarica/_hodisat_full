@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Review;
 use App\Models\Order;
+use App\Models\Seller;
 use Auth;
 
 class ReviewController extends Controller
@@ -122,6 +123,13 @@ class ReviewController extends Controller
             $order->seller->rating = 0;
         }
         $order->save();
+
+        if($request->status==1){
+            $seller = Seller::where('user_id', $review->seller_id)->first();
+            $seller->num_of_reviews+=1;
+            $seller->save();
+        }
+
 
         return 1;
     }
