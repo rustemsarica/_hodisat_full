@@ -3,6 +3,7 @@
 namespace App\Http\Resources\V2;
 
 use Carbon\Carbon;
+use App\Models\Review;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class PurchaseHistoryCollection extends ResourceCollection
@@ -36,6 +37,7 @@ class PurchaseHistoryCollection extends ResourceCollection
                     'subtotal' => format_price($data->orderDetails->sum('price')),
                     'date' => date('d.m.Y', strtotime($data->created_at)),
                     'cancel_request' => $data->cancel_request == 1,
+                    'can_review' => count($data->review)==0,
                     'manually_payable' => $data->manual_payment && $data->manual_payment_data == null,
                     'links' => [
                         'details' => ''

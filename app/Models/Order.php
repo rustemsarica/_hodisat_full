@@ -33,7 +33,7 @@ class Order extends Model
 
     public function review()
     {
-        return $this->belongsTo(Review::class)->where('status', 1);
+        return $this->belongsTo(Review::class);
     }
 
     public function pickup_point()
