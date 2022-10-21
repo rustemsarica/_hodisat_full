@@ -21,7 +21,7 @@ class ReviewController extends Controller
 
         $reviewable = false;
 
-        if($order != null && $order->user_id == auth()->user()->id && $order->delivery_status == 'confirmed' && Review::where('user_id', auth()->user()->id)->where('order_id', $order->id)->first() == null){
+        if($order != null && $order->user_id == auth()->user()->id && $order->delivery_status == 'confirmed' && Review::where('user_id', auth()->user()->id)->where('order_id', $order->id)->count() == 0){
             $reviewable = true;
         }
 
