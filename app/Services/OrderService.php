@@ -32,7 +32,7 @@ class OrderService{
             $user->save();
         }
 
-        if($request->status=='delivered'){
+        if($request->status=='confirmed'){
             calculateCommissionAffilationClubPoint($order);
         }
 
