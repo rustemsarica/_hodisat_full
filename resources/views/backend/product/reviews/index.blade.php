@@ -49,7 +49,7 @@
                             <td>
 
                             </td>
-                            <td>{{ $review->seller->user->username }}</td>
+                            <td>{{ $review->seller->username }}</td>
                             <td>{{ $review->user->username }} ({{ $review->user->email }})</td>
                             <td>{{ $review->rating }}</td>
                             <td>{{ $review->comment }}</td>
