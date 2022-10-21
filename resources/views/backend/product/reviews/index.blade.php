@@ -49,8 +49,8 @@
                             <td>
 
                             </td>
-                            <td>{{ $review->seller-> }}</td>
-                            <td>{{ $review->user->name }} ({{ $review->user->email }})</td>
+                            <td>{{ $review->seller->user->username }}</td>
+                            <td>{{ $review->user->username }} ({{ $review->user->email }})</td>
                             <td>{{ $review->rating }}</td>
                             <td>{{ $review->comment }}</td>
                             <td><label class="aiz-switch aiz-switch-success mb-0">
