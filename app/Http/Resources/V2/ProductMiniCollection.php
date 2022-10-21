@@ -17,7 +17,7 @@ class ProductMiniCollection extends ResourceCollection
             return [
                 'data' => $this->collection->map(function($data) {
 
-                 $seller = $data->shop;
+                    $seller = $data->shop;
                     if($seller->logo!=null && $seller->logo != ''){
                         $seller_logo=uploaded_asset($seller->logo);
                         if($seller_logo==null || $seller_logo==''){
