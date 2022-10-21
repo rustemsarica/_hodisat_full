@@ -13,7 +13,7 @@
         <div class="row flex-grow-1">
             <div class="col">
                 <h5 class="mb-0 h6">{{translate('Product Reviews')}}</h5>
-                
+
             </div>
             <div class="col-md-6 col-xl-4 ml-auto mr-0">
                 <form class="" id="sort_by_rating" action="{{ route('reviews.index') }}" method="GET">
@@ -43,13 +43,13 @@
             </thead>
             <tbody>
                 @foreach($reviews as $key => $review)
-                    @if ($review->product != null && $review->user != null)
+                    @if ($review->order != null && $review->user != null)
                         <tr>
                             <td>{{ ($key+1) + ($reviews->currentPage() - 1)*$reviews->perPage() }}</td>
                             <td>
-                                <a href="{{ route('product', $review->product->slug) }}" target="_blank" class="text-reset text-truncate-2">{{ $review->product->getTranslation('name') }}</a>
+
                             </td>
-                            <td>{{ $review->product->added_by }}</td>
+                            <td>{{ $review->seller-> }}</td>
                             <td>{{ $review->user->name }} ({{ $review->user->email }})</td>
                             <td>{{ $review->rating }}</td>
                             <td>{{ $review->comment }}</td>
