@@ -44,11 +44,6 @@ class Product extends Model
         return $this->hasMany(OrderDetail::class);
     }
 
-    public function reviews()
-    {
-        return $this->hasMany(Review::class)->where('status', 1);
-    }
-
     public function wishlists()
     {
         return $this->hasMany(Wishlist::class);
