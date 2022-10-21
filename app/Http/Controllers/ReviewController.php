@@ -115,25 +115,26 @@ class ReviewController extends Controller
         $review->status = $request->status;
         $review->save();
 
+        $seller = Seller::where('user_id', $review->seller_id)->first();
         $order = Order::findOrFail($review->order_id);
-        if(Review::where('seller_id', $order->seller_id)->where('status', 1)->count() > 0){
-            $order->seller->rating = Review::where('seller_id', $order->seller_id)->where('status', 1)->sum('rating')/Review::where('seller_id', $order->seller_id)->where('status', 1)->count();
-        }
-        else {
-            $order->seller->rating = 0;
-        }
-        $order->save();
+
 
         if($request->status==1){
-            $seller = Seller::where('user_id', $review->seller_id)->first();
+
             $seller->num_of_reviews+=1;
             $seller->save();
         }else{
-            $seller = Seller::where('user_id', $review->seller_id)->first();
             $seller->num_of_reviews-=1;
             $seller->save();
         }
 
+        if(Review::where('seller_id', $order->seller_id)->where('status', 1)->count() > 0){
+            $seller->rating = Review::where('seller_id', $order->seller_id)->where('status', 1)->sum('rating')/Review::where('seller_id', $order->seller_id)->where('status', 1)->count();
+        }
+        else {
+            $seller->rating = 0;
+        }
+        $seller->save();
 
         return 1;
     }
