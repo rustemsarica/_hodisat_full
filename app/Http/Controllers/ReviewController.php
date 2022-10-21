@@ -128,6 +128,10 @@ class ReviewController extends Controller
             $seller = Seller::where('user_id', $review->seller_id)->first();
             $seller->num_of_reviews+=1;
             $seller->save();
+        }else{
+            $seller = Seller::where('user_id', $review->seller_id)->first();
+            $seller->num_of_reviews-=1;
+            $seller->save();
         }
 
 
