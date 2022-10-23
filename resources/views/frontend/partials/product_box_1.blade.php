@@ -42,9 +42,6 @@
             @endif
             <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
         </div>
-        <div class="rating rating-sm mt-1">
-            {{ renderStarRating($product->rating) }}
-        </div>
         <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0 h-35px">
             <a href="{{ $product_url }}" class="d-block text-reset">{{  $product->getTranslation('name')  }}</a>
         </h3>
