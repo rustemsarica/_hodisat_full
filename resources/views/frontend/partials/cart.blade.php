@@ -52,7 +52,6 @@ if (auth()->user() != null) {
                                     <span class="fw-600 mb-1 text-truncate-2">
                                         {{ $product->getTranslation('name') }}
                                     </span>
-                                    <span class="">{{ 1 }}x</span>
                                     <span class="">{{ cart_product_price($cartItem, $product) }}</span>
                                 </span>
                             </a>
