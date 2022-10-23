@@ -287,10 +287,11 @@
                                     <button type="button" class="btn btn-primary buy-now fw-600" onclick="buyNow()">
                                         <i class="la la-shopping-cart"></i> {{ translate('Buy Now') }}
                                     </button>
-                                @endif
+                                @else
                                 <button type="button" class="btn btn-secondary out-of-stock fw-600 d-none" disabled>
                                     <i class="la la-cart-arrow-down"></i> {{ translate('Out of Stock') }}
                                 </button>
+                                @endif
                             </div>
 
 
