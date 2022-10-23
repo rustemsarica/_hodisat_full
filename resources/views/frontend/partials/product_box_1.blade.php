@@ -2,6 +2,9 @@
     @if(discount_in_percentage($product) > 0)
         <span class="badge-custom">{{ translate('OFF') }}<span class="box ml-1 mr-0">&nbsp;{{discount_in_percentage($product)}}%</span></span>
     @endif
+    @if ($product->current_stock==0)
+        Satıldı
+    @endif
     <div class="position-relative">
         @php
             $product_url = route('product', $product->slug);
