@@ -495,8 +495,7 @@ class HomeController extends Controller
 
     public function all_seller(Request $request)
     {
-        $shops = Shop::whereIn('user_id', verified_sellers_id())
-            ->paginate(15);
+        $shops = Shop::paginate(15);
 
         return view('frontend.shop_listing', compact('shops'));
     }
