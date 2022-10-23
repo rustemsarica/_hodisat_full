@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('meta_title'){{ $shop->user->username }}@stop
+@section('meta_title'){{ $shop->user->username }}  - Hodisat @stop
 
 @section('meta_description'){{ $shop->meta_description }}@stop
 
@@ -13,18 +13,18 @@
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="website">
     <meta name="twitter:site" content="@publisher_handle">
-    <meta name="twitter:title" content="{{ $shop->user->username }}">
+    <meta name="twitter:title" content="{{ $shop->user->username }} - Hodisat">
     <meta name="twitter:description" content="{{ $shop->meta_description }}">
     <meta name="twitter:creator" content="@author_handle">
-    <meta name="twitter:image" content="{{ uploaded_asset($shop->meta_img) }}">
+    <meta name="twitter:image" content="{{ uploaded_asset($shop->logo) }}">
 
     <!-- Open Graph data -->
-    <meta property="og:title" content="{{ $shop->user->username }}" />
+    <meta property="og:title" content="{{ $shop->user->username }}  - Hodisat" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ route('shop.visit', $shop->user->username) }}" />
     <meta property="og:image" content="{{ uploaded_asset($shop->logo) }}" />
     <meta property="og:description" content="{{ $shop->meta_description }}" />
-    <meta property="og:site_name" content="{{ $shop->user->username }}" />
+    <meta property="og:site_name" content="{{ $shop->user->username }}  - Hodisat" />
 @endsection
 
 @section('content')
