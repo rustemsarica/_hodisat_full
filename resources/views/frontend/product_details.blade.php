@@ -255,6 +255,24 @@
                             </form>
 
                             <div class="mt-3">
+                                @php
+                                if (auth()->user() != null) {
+                                    $user_id = Auth::user()->id;
+                                    $cart = \App\Models\Cart::where('user_id', $user_id);
+                                } else {
+                                    $temp_user_id = Session()->get('temp_user_id');
+                                    if ($temp_user_id) {
+                                        $cart = \App\Models\Cart::where('temp_user_id', $temp_user_id);
+                                    }
+                                }
+                                @endphp
+                                @if (in_array($detailedProduct->id, $cart->pluck('product_id')->toArray()))
+                                    <div class="col-lg-auto col-6 order-5 order-lg-0 text-right">
+                                        <a href="javascript:void(0)" onclick="removeFromCart(event, {{ $cart->where('product_id', $detailedProduct->id)->first()->id }})" class="btn btn-icon btn-sm btn-soft-primary btn-circle">
+                                            <i class="las la-trash"></i>
+                                        </a>
+                                    </div>
+                                @endif
                                 @if($detailedProduct->current_stock>0)
                                     <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600"
                                         onclick="addToCart()">
