@@ -200,7 +200,7 @@
 
 <script>
     $(document).ready(function() {
-        $(document).on('click', '.add-to-cart', function(e) {
+        $(document).on('click', '.remove-from-cart', function(e) {
                 location.reload();
         });
     });
