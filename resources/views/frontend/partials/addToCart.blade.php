@@ -113,23 +113,21 @@
 
                                 <div class="row no-gutters">
                                     <div class="col-2">
-                                        <div class="opacity-50 mt-2 ">{{ \App\Models\Attribute::find($choice->attribute_id)->getTranslation('name') }}:</div>
+                                        <div class="opacity-50 mt-2 ">{{ \App\Models\Attribute::find($choice->attribute_id)->name }}:</div>
                                     </div>
                                     <div class="col-10">
                                         <div class="aiz-radio-inline">
-                                            @foreach ($choice->values as $key => $value)
                                             <label class="aiz-megabox pl-0 mr-2">
                                                 <input
                                                     type="radio"
                                                     name="attribute_id_{{ $choice->attribute_id }}"
-                                                    value="{{ $value }}"
-                                                    @if($key == 0) checked @endif
+                                                    value="{{$choice->values[0]}}"
+                                                     checked
                                                 >
                                                 <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
-                                                    {{ $value }}
+                                                    {{$choice->values[0]}}
                                                 </span>
                                             </label>
-                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
