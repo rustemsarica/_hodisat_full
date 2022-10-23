@@ -255,7 +255,7 @@
                             </form>
 
                             <div class="mt-3">
-                                @if($product->current_stock>0)
+                                @if($detailedProduct->current_stock>0)
                                     <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600"
                                         onclick="addToCart()">
                                         <i class="las la-shopping-bag"></i>
