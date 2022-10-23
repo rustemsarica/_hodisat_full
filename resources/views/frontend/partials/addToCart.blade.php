@@ -199,7 +199,7 @@
 </div>
 
 <script>
-    $(document).read(function(){
+    $(document).ready(function() {
         $(document).on('click', '.remove-from-cart', function(e) {
                 location.reload();
         });
