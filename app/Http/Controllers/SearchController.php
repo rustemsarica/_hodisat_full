@@ -174,7 +174,8 @@ class SearchController extends Controller
 
         $categories = Category::where('name', 'like', '%' . $query . '%')->get()->take(3);
 
-        $shops = Shop::where('name', 'like', '%' . $query . '%')->get()->take(3);
+        $users = User::where('username', 'like', '%' . $query . '%')->take(3)->pluck('id')->toArray();
+        $shops = Shop::whereIn('user_id', $users)->get();
 
         if (sizeof($keywords) > 0 || sizeof($categories) > 0 || sizeof($products) > 0 || sizeof($shops) > 0) {
             return view('frontend.partials.search_content', compact('products', 'categories', 'keywords', 'shops'));
