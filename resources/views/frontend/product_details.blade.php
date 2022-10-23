@@ -381,73 +381,9 @@
                                     <a href="{{ route('shop.visit', $detailedProduct->user->username) }}"
                                         class="d-block btn btn-soft-primary rounded-0">{{ translate('Visit Store') }}</a>
                                 </div>
-                                <div class="col">
-                                    <ul class="social list-inline mb-0">
-                                        <li class="list-inline-item mr-0">
-                                            <a href="{{ $detailedProduct->user->shop->facebook }}" class="facebook"
-                                                target="_blank">
-                                                <i class="lab la-facebook-f opacity-60"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item mr-0">
-                                            <a href="{{ $detailedProduct->user->shop->google }}" class="google"
-                                                target="_blank">
-                                                <i class="lab la-google opacity-60"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item mr-0">
-                                            <a href="{{ $detailedProduct->user->shop->twitter }}" class="twitter"
-                                                target="_blank">
-                                                <i class="lab la-twitter opacity-60"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a href="{{ $detailedProduct->user->shop->youtube }}" class="youtube"
-                                                target="_blank">
-                                                <i class="lab la-youtube opacity-60"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     @endif
-                    <div class="bg-white rounded shadow-sm mb-3">
-                        <div class="p-3 border-bottom fs-16 fw-600">
-                            {{ translate('Top Selling Products') }}
-                        </div>
-                        <div class="p-3">
-                            <ul class="list-group list-group-flush">
-                                @foreach (filter_products(\App\Models\Product::where('user_id', $detailedProduct->user_id))->limit(6)->get()
-        as $key => $top_product)
-                                    <li class="py-3 px-0 list-group-item border-light">
-                                        <div class="row gutters-10 align-items-center">
-                                            <div class="col-5">
-                                                <a href="{{ route('product', $top_product->slug) }}"
-                                                    class="d-block text-reset">
-                                                    <img class="img-fit lazyload h-xxl-110px h-xl-80px h-120px"
-                                                        src="{{ static_asset('assets/img/placeholder.jpg') }}"
-                                                        data-src="{{ uploaded_asset($top_product->thumbnail_img) }}"
-                                                        alt="{{ $top_product->getTranslation('name') }}"
-                                                        onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';">
-                                                </a>
-                                            </div>
-                                            <div class="col-7 text-left">
-                                                <h4 class="fs-13 text-truncate-2">
-                                                    <a href="{{ route('product', $top_product->slug) }}"
-                                                        class="d-block text-reset">{{ $top_product->getTranslation('name') }}</a>
-                                                </h4>
-                                                <div class="mt-2">
-                                                    <span
-                                                        class="fs-17 fw-600 text-primary">{{ home_discounted_base_price($top_product) }}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-xl-9 order-0 order-xl-1">
                     <div class="bg-white mb-3 shadow-sm rounded">

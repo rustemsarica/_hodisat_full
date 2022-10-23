@@ -55,50 +55,11 @@
                 <div class="col-lg-6 order-2 order-lg-0">
                     <ul class="list-inline mb-0 text-center text-lg-left">
                         <li class="list-inline-item ">
-                            <a class="text-reset d-inline-block fw-600 fs-15 p-3 @if(!isset($type)) border-bottom border-primary border-width-2 @endif" href="{{ route('shop.visit', $shop->slug) }}">{{ translate('Store Home')}}</a>
+                            <a class="text-reset d-inline-block fw-600 fs-15 p-3 @if(!isset($type)) border-bottom border-primary border-width-2 @endif" href="{{ route('shop.visit', $shop->slug) }}">{{ translate('Store')}}</a>
                         </li>
                         <li class="list-inline-item ">
                             <a class="text-reset d-inline-block fw-600 fs-15 p-3 @if(isset($type) && $type == 'all-products') border-bottom border-primary border-width-2 @endif" href="{{ route('shop.visit.type', ['slug'=>$shop->slug, 'type'=>'all-products']) }}">{{ translate('All Products')}}</a>
                         </li>
-                    </ul>
-                </div>
-                <div class="col-lg-6 order-1 order-lg-0">
-                    <ul class="text-center text-lg-right mt-4 mt-lg-0 social colored list-inline mb-0">
-                        @if ($shop->facebook != null)
-                            <li class="list-inline-item">
-                                <a href="{{ $shop->facebook }}" class="facebook" target="_blank">
-                                    <i class="lab la-facebook-f"></i>
-                                </a>
-                            </li>
-                        @endif
-                        @if ($shop->instagram != null)
-                            <li class="list-inline-item">
-                                <a href="{{ $shop->instagram }}" class="instagram" target="_blank">
-                                    <i class="lab la-instagram"></i>
-                                </a>
-                            </li>
-                        @endif
-                        @if ($shop->twitter != null)
-                            <li class="list-inline-item">
-                                <a href="{{ $shop->twitter }}" class="twitter" target="_blank">
-                                    <i class="lab la-twitter"></i>
-                                </a>
-                            </li>
-                        @endif
-                        @if ($shop->google != null)
-                            <li class="list-inline-item">
-                                <a href="{{ $shop->google }}" class="google-plus" target="_blank">
-                                    <i class="lab la-google"></i>
-                                </a>
-                            </li>
-                        @endif
-                        @if ($shop->youtube != null)
-                            <li class="list-inline-item">
-                                <a href="{{ $shop->youtube }}" class="youtube" target="_blank">
-                                    <i class="lab la-youtube"></i>
-                                </a>
-                            </li>
-                        @endif
                     </ul>
                 </div>
             </div>
