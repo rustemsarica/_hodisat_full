@@ -78,7 +78,7 @@
             </section>
         @endif
 
-        @if($shop->user->products->where('published', 1)->where('approved', 1)->where('seller_featured', 1)->count>0)
+        @if($shop->user->products->where('published', 1)->where('approved', 1)->where('seller_featured', 1)->count()>0)
             <section class="mb-4">
                 <div class="container">
                     <div class="text-center mb-4">
