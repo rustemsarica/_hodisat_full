@@ -81,33 +81,13 @@
                                 {{ $detailedProduct->getTranslation('name') }}
                             </h1>
 
-                            <div class="row align-items-center">
-                                <div class="col-12">
-                                    @php
-                                        $total = 0;
-                                        $total += $detailedProduct->reviews->count();
-                                    @endphp
-                                    <span class="rating">
-                                        {{ renderStarRating($detailedProduct->rating) }}
-                                    </span>
-                                    <span class="ml-1 opacity-50">({{ $total }}
-                                        {{ translate('reviews') }})</span>
-                                </div>
-                                @if ($detailedProduct->est_shipping_days)
-                                    <div class="col-auto ml">
-                                        <small class="mr-2 opacity-50">{{ translate('Estimate Shipping Time') }}:
-                                        </small>{{ $detailedProduct->est_shipping_days }} {{ translate('Days') }}
-                                    </div>
-                                @endif
-                            </div>
 
-                            <hr>
 
                             <div class="row align-items-center">
                                 <div class="col-auto">
                                     <small class="mr-2 opacity-50">{{ translate('Sold by') }}: </small><br>
                                     @if ($detailedProduct->added_by == 'seller' && get_setting('vendor_system_activation') == 1)
-                                        <a href="{{ route('shop.visit', $detailedProduct->user->shop->slug) }}"
+                                        <a href="{{ route('shop.visit', $detailedProduct->user->username) }}"
                                             class="text-reset">{{ $detailedProduct->user->shop->name }}</a>
                                     @else
                                         {{ translate('Inhouse product') }}
@@ -380,25 +360,25 @@
                             <div class="position-relative p-3 text-left">
 
                                 <div class="opacity-50 fs-12 border-bottom">{{ translate('Sold by') }}</div>
-                                <a href="{{ route('shop.visit', $detailedProduct->user->shop->slug) }}"
+                                <a href="{{ route('shop.visit', $detailedProduct->user->username) }}"
                                     class="text-reset d-block fw-600">
                                     {{ $detailedProduct->user->name }}
                                 </a>
                                 <div class="text-center border rounded p-2 mt-3">
                                     <div class="rating">
-                                        @if ($total > 0)
-                                            {{ renderStarRating($detailedProduct->user->shop->rating) }}
+                                        @if ($detailedProduct->user->seller->num_of_reviews > 0)
+                                            {{ renderStarRating($detailedProduct->user->seller->rating) }}
                                         @else
                                             {{ renderStarRating(0) }}
                                         @endif
                                     </div>
-                                    <div class="opacity-60 fs-12">({{ $total }}
+                                    <div class="opacity-60 fs-12">({{ $detailedProduct->user->seller->num_of_reviews  }}
                                         {{ translate('customer reviews') }})</div>
                                 </div>
                             </div>
                             <div class="row no-gutters align-items-center border-top">
                                 <div class="col">
-                                    <a href="{{ route('shop.visit', $detailedProduct->user->shop->slug) }}"
+                                    <a href="{{ route('shop.visit', $detailedProduct->user->username) }}"
                                         class="d-block btn btn-soft-primary rounded-0">{{ translate('Visit Store') }}</a>
                                 </div>
                                 <div class="col">
@@ -485,8 +465,6 @@
                                 <a href="#tab_default_3" data-toggle="tab"
                                     class="p-3 fs-16 fw-600 text-reset">{{ translate('Downloads') }}</a>
                             @endif
-                            <a href="#tab_default_4" data-toggle="tab"
-                                class="p-3 fs-16 fw-600 text-reset">{{ translate('Reviews') }}</a>
                         </div>
 
                         <div class="tab-content pt-0">
@@ -520,51 +498,6 @@
                                 <div class="p-4 text-center ">
                                     <a href="{{ uploaded_asset($detailedProduct->pdf) }}"
                                         class="btn btn-primary">{{ translate('Download') }}</a>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="tab_default_4">
-                                <div class="p-4">
-                                    <ul class="list-group list-group-flush">
-                                        @foreach ($detailedProduct->reviews as $key => $review)
-                                            @if ($review->user != null)
-                                                <li class="media list-group-item d-flex">
-                                                    <span class="avatar avatar-md mr-3">
-                                                        <img class="lazyload"
-                                                            src="{{ static_asset('assets/img/placeholder.jpg') }}"
-                                                            onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
-                                                            @if ($review->user->avatar_original != null) data-src="{{ uploaded_asset($review->user->avatar_original) }}"
-                                                        @else
-                                                            data-src="{{ static_asset('assets/img/placeholder.jpg') }}" @endif>
-                                                    </span>
-                                                    <div class="media-body text-left">
-                                                        <div class="d-flex justify-content-between">
-                                                            <h3 class="fs-15 fw-600 mb-0">{{ $review->user->name }}
-                                                            </h3>
-                                                            <span class="rating rating-sm">
-                                                                @for ($i = 0; $i < $review->rating; $i++)
-                                                                    <i class="las la-star active"></i>
-                                                                @endfor
-                                                                @for ($i = 0; $i < 5 - $review->rating; $i++)
-                                                                    <i class="las la-star"></i>
-                                                                @endfor
-                                                            </span>
-                                                        </div>
-                                                        <div class="opacity-60 mb-2">
-                                                            {{ date('d-m-Y', strtotime($review->created_at)) }}</div>
-                                                        <p class="comment-text">
-                                                            {{ $review->comment }}
-                                                        </p>
-                                                    </div>
-                                                </li>
-                                            @endif
-                                        @endforeach
-                                    </ul>
-
-                                    @if (count($detailedProduct->reviews) <= 0)
-                                        <div class="text-center fs-18 opacity-70">
-                                            {{ translate('There have been no reviews for this product yet.') }}
-                                        </div>
-                                    @endif
                                 </div>
                             </div>
                         </div>
