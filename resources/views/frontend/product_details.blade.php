@@ -81,6 +81,7 @@
                                 {{ $detailedProduct->getTranslation('name') }}
                             </h1>
 
+
                             <div class="row align-items-center">
                                 <div class="col-auto">
                                     <small class="mr-2 opacity-50">{{ translate('Sold by') }}: </small><br>
@@ -254,6 +255,7 @@
                             </form>
 
                             <div class="mt-3">
+                                @if($product->current_stock>0)
                                     <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600"
                                         onclick="addToCart()">
                                         <i class="las la-shopping-bag"></i>
