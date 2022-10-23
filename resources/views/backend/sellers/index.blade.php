@@ -75,7 +75,7 @@
                                 </div>
                             </div>
                         </td>
-                        <td>@if($shop->user->banned == 1) <i class="fa fa-ban text-danger" aria-hidden="true"></i> @endif {{$shop->name}}</td>
+                        <td>@if($shop->user->banned == 1) <i class="fa fa-ban text-danger" aria-hidden="true"></i> @endif {{$shop->user->username}}</td>
                         <td>{{$shop->user->phone}}</td>
                         <td>{{$shop->user->email}}</td>
                         <td>{{ $shop->user->products->count() }}</td>

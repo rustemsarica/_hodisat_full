@@ -24,7 +24,7 @@
     <meta property="og:url" content="{{ route('shop.visit', $shop->slug) }}" />
     <meta property="og:image" content="{{ uploaded_asset($shop->logo) }}" />
     <meta property="og:description" content="{{ $shop->meta_description }}" />
-    <meta property="og:site_name" content="{{ $shop->name }}" />
+    <meta property="og:site_name" content="{{ $shop->user->username }}" />
 @endsection
 
 @section('content')
@@ -38,10 +38,10 @@
                             class="lazyload"
                             src="{{ static_asset('assets/img/placeholder.jpg') }}"
                             data-src="@if ($shop->logo !== null) {{ uploaded_asset($shop->logo) }} @else {{ static_asset('assets/img/placeholder.jpg') }} @endif"
-                            alt="{{ $shop->name }}"
+                            alt="{{ $shop->user->username }}"
                         >
                         <div class="pl-4 text-left">
-                            <h1 class="fw-600 h4 mb-0">{{ $shop->name }}
+                            <h1 class="fw-600 h4 mb-0">{{ $shop->user->username }}
                             </h1>
                             <div class="rating rating-sm mb-1">
                                 {{ renderStarRating($shop->rating) }}

@@ -5,7 +5,7 @@
           <img src="{{ uploaded_asset($shop->user->avatar_original) }}" onerror="this.onerror=null;this.src='{{ static_asset('assets/img/avatar-place.png') }}';">
       </span>
       <h1 class="h5 mb-1">{{ $shop->user->name }}</h1>
-      <p class="text-sm text-muted">{{ $shop->name }}</p>
+      <p class="text-sm text-muted">{{ $shop->user->username }}</p>
 
       <div class="pad-ver btn-groups">
           <a href="{{ $shop->facebook }}" class="btn btn-icon demo-pli-facebook icon-lg add-tooltip" data-original-title="Facebook" data-container="body"></a>
@@ -18,7 +18,7 @@
   <!-- Profile Details -->
   <h6 class="mb-4">{{translate('About')}} {{ $shop->user->name }}</h6>
   <p><i class="demo-pli-map-marker-2 icon-lg icon-fw mr-1"></i>{{ $shop->address }}</p>
-  <p><a href="{{ route('shop.visit', $shop->slug) }}" class="btn-link"><i class="demo-pli-internet icon-lg icon-fw mr-1"></i>{{ $shop->name }}</a></p>
+  <p><a href="{{ route('shop.visit', $shop->slug) }}" class="btn-link"><i class="demo-pli-internet icon-lg icon-fw mr-1"></i>{{ $shop->user->username }}</a></p>
   <p><i class="demo-pli-old-telephone icon-lg icon-fw mr-1"></i>{{ $shop->user->phone }}</p>
 
   <h6 class="mb-4">{{translate('Payout Info')}}</h6>

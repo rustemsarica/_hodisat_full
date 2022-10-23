@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="flex-grow-1 overflow--hidden">
                                     <div class="product-name text-truncate fs-14 mb-5px">
-                                        {{ $shop->name }}
+                                        {{ $shop->user->username }}
                                     </div>
                                     <div class="opacity-60">
                                         {{ $shop->address }}

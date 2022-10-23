@@ -32,7 +32,7 @@
                                         <img
                                             src="{{ static_asset('assets/img/placeholder-rect.jpg') }}"
                                             data-src="{{ uploaded_asset($shop->logo) }}"
-                                            alt="{{ $shop->name }}"
+                                            alt="{{ $shop->user->username }}"
                                             class="img-fluid lazyload"
                                             onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder-rect.jpg') }}';"
                                         >
@@ -41,7 +41,7 @@
                                 <div class="col-8 border-left border-light">
                                     <div class="p-3 text-left">
                                         <h2 class="h6 fw-600 text-truncate">
-                                            <a href="{{ route('shop.visit', $shop->slug) }}" class="text-reset" tabindex="0">{{ $shop->name }}</a>
+                                            <a href="{{ route('shop.visit', $shop->slug) }}" class="text-reset" tabindex="0">{{ $shop->user->username }}</a>
                                         </h2>
                                         <div class="rating rating-sm mb-2">
                                             {{ renderStarRating($shop->rating) }}

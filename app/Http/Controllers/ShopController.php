@@ -81,7 +81,7 @@ class ShopController extends Controller
         if (Shop::where('user_id', $user->id)->first() == null) {
             $shop = new Shop;
             $shop->user_id = $user->id;
-            $shop->name = $request->name;
+            $shop->user->username = $request->name;
             $shop->address = $request->address;
             $shop->slug = preg_replace('/\s+/', '-', $request->name);
 

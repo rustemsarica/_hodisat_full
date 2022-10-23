@@ -4,7 +4,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h5 class="mb-0 h6">{{ $user->name }} ({{ $user->shop->name }})</h5>
+        <h5 class="mb-0 h6">{{ $user->name }} ({{ $user->username }})</h5>
     </div>
     <div class="card-body">
         <table class="table aiz-table">

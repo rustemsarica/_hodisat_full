@@ -34,7 +34,7 @@
           <h6 class="mb-4">{{ translate('Shop Info') }}</h6>
           <p class="text-muted">
               <strong>{{translate('Shop Name')}}</strong>
-              <span class="ml-2">{{ $shop->user->shop->name }}</span>
+              <span class="ml-2">{{ $shop->user->username }}</span>
           </p>
           <p class="text-muted">
               <strong>{{translate('Address')}}</strong>

@@ -25,7 +25,7 @@
                             <td>{{ $key+1 }}</td>
                             <td>{{ $payment->created_at }}</td>
                             <td>
-                                {{ $user->name }} ({{ $user->shop->name }})
+                                {{ $user->name }} ({{ $user->username }})
                             </td>
                             <td>
                                 {{ single_price($payment->amount) }}

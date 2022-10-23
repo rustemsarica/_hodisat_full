@@ -24,7 +24,7 @@
                 <div class="row">
                     <label class="col-md-2 col-form-label">{{ translate('Shop Name') }}<span class="text-danger text-danger">*</span></label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control mb-3" placeholder="{{ translate('Shop Name')}}" name="name" value="{{ $shop->name }}" required>
+                        <input type="text" class="form-control mb-3" placeholder="{{ translate('Shop Name')}}" name="name" value="{{ $shop->user->username }}" required>
                     </div>
                 </div>
                 <div class="row mb-3">

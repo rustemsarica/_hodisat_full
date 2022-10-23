@@ -117,7 +117,7 @@
                         </td>
                         <td>
                             @if($order->shop)
-                                {{ $order->shop->name }}
+                                {{ $order->shop->user->username }}
                             @else
                                 {{ translate('Inhouse Order') }}
                             @endif

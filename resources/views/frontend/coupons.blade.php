@@ -23,7 +23,7 @@
                 @php
                     if($coupon->user->user_type != 'admin') {
                         $shop = $coupon->user->shop;
-                        $name = $shop->name;
+                        $name = $shop->user->username;
                     }
                     else {
                         $name = get_setting('website_name');

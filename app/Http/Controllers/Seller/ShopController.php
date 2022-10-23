@@ -24,7 +24,7 @@ class ShopController extends Controller
                 $shop->shipping_cost = $request->shipping_cost;
             }
 
-            $shop->name             = $request->name;
+            $shop->user->username             = $request->name;
             $shop->address          = $request->address;
             $shop->phone            = $request->phone;
             $shop->slug             = preg_replace('/\s+/', '-', $request->name) . '-' . $shop->id;

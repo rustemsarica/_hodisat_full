@@ -110,7 +110,7 @@
                                 <div class="col-auto">
                                     <small class="mr-2 opacity-50">{{ translate('Sold by')}}: </small><br>
                                     @if ($detailedProduct->added_by == 'seller' && get_setting('vendor_system_activation') == 1)
-                                        <a href="{{ route('shop.visit', $detailedProduct->user->shop->slug) }}" class="text-reset">{{ $detailedProduct->user->shop->name }}</a>
+                                        <a href="{{ route('shop.visit', $detailedProduct->user->shop->slug) }}" class="text-reset">{{ $detailedProduct->user->username }}</a>
                                     @else
                                         {{  translate('Inhouse product') }}
                                     @endif
@@ -318,7 +318,7 @@
                                 @endif
                                 <div class="opacity-50 fs-12 border-bottom">{{ translate('Sold by')}}</div>
                                 <a href="{{ route('shop.visit', $detailedProduct->user->shop->slug) }}" class="text-reset d-block fw-600">
-                                    {{ $detailedProduct->user->shop->name }}
+                                    {{ $detailedProduct->user->username }}
                                     @if ($detailedProduct->user->shop->verification_status == 1)
                                         <span class="ml-2"><i class="fa fa-check-circle" style="color:green"></i></span>
                                     @else
