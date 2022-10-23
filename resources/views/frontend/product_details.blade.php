@@ -769,7 +769,7 @@
                 e.preventDefault();
             });
             $(document).on('click', '.remove-from-cart', function(e) {
-                window.reload;
+                location.reload();
             });
         });
 
