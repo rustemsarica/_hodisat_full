@@ -277,8 +277,8 @@
                                             <i class="las la-trash"></i>
                                         </a>
                                     </div>
-                                @endif
-                                @if($detailedProduct->current_stock>0)
+
+                                @elseif($detailedProduct->current_stock>0)
                                     <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600"
                                         onclick="addToCart()">
                                         <i class="las la-shopping-bag"></i>
