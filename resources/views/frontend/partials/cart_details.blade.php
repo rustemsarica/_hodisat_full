@@ -7,8 +7,6 @@
                         <div class="row gutters-5 d-none d-lg-flex border-bottom mb-3 pb-3">
                             <div class="col-md-5 fw-600">{{ translate('Product')}}</div>
                             <div class="col fw-600">{{ translate('Price')}}</div>
-                            <div class="col fw-600">{{ translate('Quantity')}}</div>
-                            <div class="col fw-600">{{ translate('Total')}}</div>
                             <div class="col-auto fw-600">{{ translate('Remove')}}</div>
                         </div>
                         <ul class="list-group list-group-flush">
@@ -39,10 +37,6 @@
                                             <span class="fw-600 fs-16">{{ single_price($cartItem['price']) }}</span>
                                         </div>
 
-                                        <div class="col-lg col-4 order-3 order-lg-0 my-3 my-lg-0">
-                                            <span class="opacity-60 fs-12 d-block d-lg-none">{{ translate('Total')}}</span>
-                                            <span class="fw-600 fs-16 text-primary">{{ single_price($cartItem['price']) }}</span>
-                                        </div>
                                         <div class="col-lg-auto col-6 order-5 order-lg-0 text-right">
                                             <a href="javascript:void(0)" onclick="removeFromCartView(event, {{ $cartItem['id'] }})" class="btn btn-icon btn-sm btn-soft-primary btn-circle">
                                                 <i class="las la-trash"></i>
