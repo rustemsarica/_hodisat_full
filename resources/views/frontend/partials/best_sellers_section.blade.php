@@ -32,7 +32,7 @@
                                     <div class="col-8 border-left border-light">
                                         <div class="p-3 text-left">
                                             <h2 class="h6 fw-600 text-truncate">
-                                                <a href="{{ route('shop.visit', $seller->slug) }}" class="text-reset">{{ $seller->user->username }}</a>
+                                                <a href="{{ route('shop.visit', $seller->user->username) }}" class="text-reset">{{ $seller->user->username }}</a>
                                             </h2>
                                             <div class="rating rating-sm mb-2">
                                                 {{ renderStarRating($seller->rating) }}
