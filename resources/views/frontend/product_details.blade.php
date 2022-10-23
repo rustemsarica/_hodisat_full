@@ -272,12 +272,6 @@
                                         <i class="las la-trash"></i>
                                         <span class="d-none d-md-inline-block"> {{ translate('Remove from cart') }}</span>
                                     </button>
-                                    <div class="col-lg-auto col-6 order-5 order-lg-0 text-right">
-                                        <a href="javascript:void(0)" onclick="removeFromCart( {{ $cart->where('product_id', $detailedProduct->id)->first()->id }})" class="btn btn-icon btn-sm btn-danger btn-circle">
-                                            <i class="las la-trash"></i>
-                                        </a>
-                                    </div>
-
                                 @elseif($detailedProduct->current_stock>0)
                                     <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600"
                                         onclick="addToCart()">

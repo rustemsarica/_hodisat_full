@@ -165,10 +165,28 @@
                 </form>
                 <div class="mt-3">
                     @if($qty > 0)
+                        @php
+                        if (auth()->user() != null) {
+                            $user_id = Auth::user()->id;
+                            $cart = \App\Models\Cart::where('user_id', $user_id);
+                        } else {
+                            $temp_user_id = Session()->get('temp_user_id');
+                            if ($temp_user_id) {
+                                $cart = \App\Models\Cart::where('temp_user_id', $temp_user_id);
+                            }
+                        }
+                        @endphp
+                        @if (in_array($product->id, $cart->pluck('product_id')->toArray()))
+                            <button type="button" class="btn btn-primary buy-now fw-600 add-to-cart" onclick="removeFromCart(removeFromCart( {{ $cart->where('product_id', $product->id)->first()->id }}))">
+                                <i class="la la-shopping-cart"></i>
+                                <span class="d-none d-md-inline-block">{{ translate('Remove from cart')}}</span>
+                            </button>
+                        @else
                             <button type="button" class="btn btn-primary buy-now fw-600 add-to-cart" onclick="addToCart()">
                                 <i class="la la-shopping-cart"></i>
                                 <span class="d-none d-md-inline-block">{{ translate('Add to cart')}}</span>
                             </button>
+                        @endif
                     @endif
                     <button type="button" class="btn btn-secondary out-of-stock fw-600 d-none" disabled>
                         <i class="la la-cart-arrow-down"></i>{{ translate('Out of Stock')}}
