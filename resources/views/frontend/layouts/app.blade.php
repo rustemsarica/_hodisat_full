@@ -389,48 +389,7 @@
                 $('#addToCart-modal-body').html(data);
                 AIZ.plugins.slickCarousel();
                 AIZ.plugins.zoom();
-                AIZ.extra.plusMinus();
-                getVariantPrice();
             });
-        }
-
-        $('#option-choice-form input').on('change', function(){
-            getVariantPrice();
-        });
-
-        function getVariantPrice(){
-            if($('#option-choice-form input[name=quantity]').val() > 0 && checkAddToCartValidity()){
-                $.ajax({
-                   type:"POST",
-                   url: '{{ route('products.variant_price') }}',
-                   data: $('#option-choice-form').serializeArray(),
-                   success: function(data){
-
-                        $('.product-gallery-thumb .carousel-box').each(function (i) {
-                            if($(this).data('variation') && data.variation == $(this).data('variation')){
-                                $('.product-gallery-thumb').slick('slickGoTo', i);
-                            }
-                        })
-
-                        $('#option-choice-form #chosen_price_div').removeClass('d-none');
-                        $('#option-choice-form #chosen_price_div #chosen_price').html(data.price);
-                        $('#available-quantity').html(data.quantity);
-                        $('.input-number').prop('max', data.max_limit);
-                        if(parseInt(data.in_stock) == 0 ){
-                           $('.buy-now').addClass('d-none');
-                           $('.add-to-cart').addClass('d-none');
-                           $('.out-of-stock').removeClass('d-none');
-                        }
-                        else{
-                           $('.buy-now').removeClass('d-none');
-                           $('.add-to-cart').removeClass('d-none');
-                           $('.out-of-stock').addClass('d-none');
-                        }
-
-                        AIZ.extra.plusMinus();
-                   }
-               });
-            }
         }
 
         function checkAddToCartValidity(){
