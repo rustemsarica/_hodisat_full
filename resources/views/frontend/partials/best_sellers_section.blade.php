@@ -1,6 +1,6 @@
 @php
     $best_selers = Cache::remember('best_selers', 86400, function () {
-        return \App\Models\Shop::orderBy('num_of_sale', 'desc')->take(20)->get();
+        return \App\Models\Seller::orderBy('num_of_sale', 'desc')->take(20)->get();
     });
 @endphp
 
@@ -15,7 +15,7 @@
                     <a href="{{ route('sellers') }}" class="ml-auto mr-0 btn btn-primary btn-sm shadow-md">{{ translate('View All Sellers') }}</a>
                 </div>
                 <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="3" data-lg-items="3"  data-md-items="2" data-sm-items="2" data-xs-items="1" data-rows="2">
-                    @foreach ($best_selers as $key => $seller)
+                    @foreach ($best_selers as $key => $seller->shop)
                         @if ($seller->user != null)
                             <div class="carousel-box">
                                 <div class="row no-gutters box-3 align-items-center border border-light rounded hov-shadow-md my-2 has-transition">
@@ -24,7 +24,7 @@
                                             <img
                                                 src="{{ static_asset('assets/img/placeholder.jpg') }}"
                                                 data-src="@if ($seller->logo !== null) {{ uploaded_asset($seller->logo) }} @else {{ static_asset('assets/img/placeholder.jpg') }} @endif"
-                                                alt="{{ $seller->name }}"
+                                                alt="{{ $seller->user->username }}"
                                                 class="img-fluid lazyload"
                                             >
                                         </a>
