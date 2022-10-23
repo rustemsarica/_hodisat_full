@@ -712,6 +712,7 @@
 @section('script')
     <script type="text/javascript">
 
+
         function CopyToClipboard(e) {
             var url = $(e).data('url');
             var $temp = $("<input>");
@@ -766,6 +767,9 @@
             $(document).on('click', '.pagination a', function(e) {
                 getQuestions($(this).attr('href').split('page=')[1]);
                 e.preventDefault();
+            });
+            $(document).on('click', '.remove-from-cart', function(e) {
+                window.reload;
             });
         });
 
