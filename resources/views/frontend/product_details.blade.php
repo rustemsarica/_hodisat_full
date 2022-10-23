@@ -437,9 +437,6 @@
                                                     <a href="{{ route('product', $top_product->slug) }}"
                                                         class="d-block text-reset">{{ $top_product->getTranslation('name') }}</a>
                                                 </h4>
-                                                <div class="rating rating-sm mt-1">
-                                                    {{ renderStarRating($top_product->rating) }}
-                                                </div>
                                                 <div class="mt-2">
                                                     <span
                                                         class="fs-17 fw-600 text-primary">{{ home_discounted_base_price($top_product) }}</span>
