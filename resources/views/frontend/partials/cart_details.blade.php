@@ -86,6 +86,3 @@
     @endif
 </div>
 
-<script type="text/javascript">
-    AIZ.extra.plusMinus();
-</script>
