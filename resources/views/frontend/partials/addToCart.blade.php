@@ -162,19 +162,6 @@
 
 
 
-                    <div class="row no-gutters pb-3 d-none" id="chosen_price_div">
-                        <div class="col-2">
-                            <div class="opacity-50">{{ translate('Total Price')}}:</div>
-                        </div>
-                        <div class="col-10">
-                            <div class="product-price">
-                                <strong id="chosen_price" class="h4 fw-600 text-primary">
-
-                                </strong>
-                            </div>
-                        </div>
-                    </div>
-
                 </form>
                 <div class="mt-3">
                     @if($qty > 0)
@@ -193,8 +180,4 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    $('#option-choice-form input').on('change', function () {
-        getVariantPrice();
-    });
-</script>
+
