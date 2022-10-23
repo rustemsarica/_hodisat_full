@@ -18,11 +18,8 @@
                             @foreach ($carts as $key => $cartItem)
                                 @php
                                     $product = \App\Models\Product::find($cartItem['product_id']);
-                                    $total = $total + ($cartItem['price']) * 1;
+                                    $total = $total + ($cartItem['price']);
                                     $product_name_with_choice = $product->getTranslation('name');
-                                    if ($cartItem['variation'] != null) {
-                                        $product_name_with_choice = $product->getTranslation('name').' - '.$cartItem['variation'];
-                                    }
                                 @endphp
                                 <li class="list-group-item px-0 px-lg-3">
                                     <div class="row gutters-5">
