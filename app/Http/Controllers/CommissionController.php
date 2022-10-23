@@ -130,8 +130,9 @@ class CommissionController extends Controller
                 $shop->admin_to_pay -= $order->coupon_discount;
                 $shop->save();
             }else{
-                $order->seller->num_of_sale+=1;
-                $order->save();
+                $seller = $order->seller;
+                $seller->num_of_sale+=1;
+                $seller->save();
             }
 
     }
