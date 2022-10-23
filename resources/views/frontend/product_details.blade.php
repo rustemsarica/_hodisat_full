@@ -390,14 +390,6 @@
                         <div class="nav border-bottom aiz-nav-tabs">
                             <a href="#tab_default_1" data-toggle="tab"
                                 class="p-3 fs-16 fw-600 text-reset active show">{{ translate('Description') }}</a>
-                            @if ($detailedProduct->video_link != null)
-                                <a href="#tab_default_2" data-toggle="tab"
-                                    class="p-3 fs-16 fw-600 text-reset">{{ translate('Video') }}</a>
-                            @endif
-                            @if ($detailedProduct->pdf != null)
-                                <a href="#tab_default_3" data-toggle="tab"
-                                    class="p-3 fs-16 fw-600 text-reset">{{ translate('Downloads') }}</a>
-                            @endif
                         </div>
 
                         <div class="tab-content pt-0">
@@ -406,31 +398,6 @@
                                     <div class="mw-100 overflow-hidden text-left aiz-editor-data">
                                         <?php echo $detailedProduct->getTranslation('description'); ?>
                                     </div>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane fade" id="tab_default_2">
-                                <div class="p-4">
-                                    <div class="embed-responsive embed-responsive-16by9">
-                                        @if ($detailedProduct->video_provider == 'youtube' && isset(explode('=', $detailedProduct->video_link)[1]))
-                                            <iframe class="embed-responsive-item"
-                                                src="https://www.youtube.com/embed/{{ get_url_params($detailedProduct->video_link, 'v') }}"></iframe>
-                                        @elseif ($detailedProduct->video_provider == 'dailymotion' && isset(explode('video/', $detailedProduct->video_link)[1]))
-                                            <iframe class="embed-responsive-item"
-                                                src="https://www.dailymotion.com/embed/video/{{ explode('video/', $detailedProduct->video_link)[1] }}"></iframe>
-                                        @elseif ($detailedProduct->video_provider == 'vimeo' && isset(explode('vimeo.com/', $detailedProduct->video_link)[1]))
-                                            <iframe
-                                                src="https://player.vimeo.com/video/{{ explode('vimeo.com/', $detailedProduct->video_link)[1] }}"
-                                                width="500" height="281" frameborder="0" webkitallowfullscreen
-                                                mozallowfullscreen allowfullscreen></iframe>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="tab_default_3">
-                                <div class="p-4 text-center ">
-                                    <a href="{{ uploaded_asset($detailedProduct->pdf) }}"
-                                        class="btn btn-primary">{{ translate('Download') }}</a>
                                 </div>
                             </div>
                         </div>
