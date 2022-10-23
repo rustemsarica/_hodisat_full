@@ -150,7 +150,7 @@
                                                 checked
                                             >
                                             <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center p-1 mb-2">
-                                                <span class="size-30px d-inline-block rounded" style="background: {{ \App\Models\Color::where('code', $product->colors)->first()->value; }};"></span>
+                                                <span class="size-30px d-inline-block rounded" style="background: {{ $product->colors; }};"></span>
                                             </span>
                                         </label>
                                     </div>
