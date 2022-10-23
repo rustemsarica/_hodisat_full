@@ -21,7 +21,7 @@
                 onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
             >
         </a>
-        @if ($product->wholesale_product)
+        @if ($product->current_stock==0)
             <span class="absolute-bottom-left fs-11 text-white fw-600 px-2 lh-1-8" style="background-color: #455a64">
                 {{ translate('Wholesale') }}
             </span>
