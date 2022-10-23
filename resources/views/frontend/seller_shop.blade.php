@@ -107,7 +107,7 @@
             <div class="row gutters-5 row-cols-xxl-5 row-cols-lg-4 row-cols-md-3 row-cols-2">
                 @php
                     if (!isset($type)){
-                        $products = \App\Models\Product::where('user_id', $shop->user->id)->where('current_stock','>' 0)->where('published', 1)->where('approved', 1)->orderBy('created_at', 'desc')->paginate(24);
+                        $products = \App\Models\Product::where('user_id', $shop->user->id)->where('current_stock','>', 0)->where('published', 1)->where('approved', 1)->orderBy('created_at', 'desc')->paginate(24);
                     }
                     elseif ($type == 'all-products'){
                         $products = \App\Models\Product::where('user_id', $shop->user->id)->where('published', 1)->where('approved', 1)->paginate(24);
