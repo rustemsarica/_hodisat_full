@@ -17,7 +17,7 @@
                                 @php
                                     $product = \App\Models\Product::find($cartItem['product_id']);
                                     $total = $total + ($cartItem['price']);
-                                    $product_name_with_choice = $product->getTranslation('name');
+                                    $product_name_with_choice = $product->name;
                                 @endphp
                                 <li class="list-group-item px-0 px-lg-3">
                                     <div class="row gutters-5">
@@ -26,7 +26,7 @@
                                                 <img
                                                     src="{{ uploaded_asset($product->thumbnail_img) }}"
                                                     class="img-fit size-60px rounded"
-                                                    alt="{{ $product->getTranslation('name')  }}"
+                                                    alt="{{ $product->name  }}"
                                                 >
                                             </span>
                                             <span class="fs-14 opacity-60">{{ $product_name_with_choice }}</span>
