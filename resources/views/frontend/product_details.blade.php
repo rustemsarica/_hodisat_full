@@ -267,7 +267,7 @@
                                 }
                                 @endphp
                                 @if (in_array($detailedProduct->id, $cart->pluck('product_id')->toArray()))
-                                    <button type="button" class="btn btn-danger mr-2 add-to-cart fw-600"
+                                    <button type="button" class="btn btn-danger mr-2 remove-from-cart fw-600"
                                         onclick="removeFromCart( {{ $cart->where('product_id', $detailedProduct->id)->first()->id }})">
                                         <i class="las la-trash"></i>
                                         <span class="d-none d-md-inline-block"> {{ translate('Remove from cart') }}</span>
