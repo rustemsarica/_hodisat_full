@@ -15,7 +15,7 @@
                     <a href="{{ route('sellers') }}" class="ml-auto mr-0 btn btn-primary btn-sm shadow-md">{{ translate('View All Sellers') }}</a>
                 </div>
                 <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="3" data-lg-items="3"  data-md-items="2" data-sm-items="2" data-xs-items="1" data-rows="2">
-                    @foreach ($best_selers as $key => $seller->shop)
+                    @foreach ($best_selers as $key => $seller)
                         @if ($seller->user != null)
                             <div class="carousel-box">
                                 <div class="row no-gutters box-3 align-items-center border border-light rounded hov-shadow-md my-2 has-transition">
@@ -23,7 +23,7 @@
                                         <a href="{{ route('shop.visit', $seller->user->username) }}" class="d-block p-3">
                                             <img
                                                 src="{{ static_asset('assets/img/placeholder.jpg') }}"
-                                                data-src="@if ($seller->logo !== null) {{ uploaded_asset($seller->logo) }} @else {{ static_asset('assets/img/placeholder.jpg') }} @endif"
+                                                data-src="@if ($seller->shop->logo !== null) {{ uploaded_asset($seller->shop->logo) }} @else {{ static_asset('assets/img/placeholder.jpg') }} @endif"
                                                 alt="{{ $seller->user->username }}"
                                                 class="img-fluid lazyload"
                                             >
@@ -37,7 +37,7 @@
                                             <div class="rating rating-sm mb-2">
                                                 {{ renderStarRating($seller->rating) }}
                                             </div>
-                                            <a href="{{ route('shop.visit', $seller->slug) }}" class="btn btn-soft-primary btn-sm">
+                                            <a href="{{ route('shop.visit', $seller->user->username) }}" class="btn btn-soft-primary btn-sm">
                                                 {{ translate('Visit Store') }} <i class="las la-angle-right"></i>
                                             </a>
                                         </div>
