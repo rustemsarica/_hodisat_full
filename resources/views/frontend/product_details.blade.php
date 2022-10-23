@@ -268,7 +268,7 @@
                                 @endphp
                                 @if (in_array($detailedProduct->id, $cart->pluck('product_id')->toArray()))
                                     <div class="col-lg-auto col-6 order-5 order-lg-0 text-right">
-                                        <a href="javascript:void(0)" onclick="removeFromCart(event, {{ $detailedProduct->id }})" class="btn btn-icon btn-sm btn-soft-primary btn-circle">
+                                        <a href="javascript:void(0)" onclick="removeFromCart(event, {{ $cart->where('product_id', $detailedProduct->id)->first()->id }})" class="btn btn-icon btn-sm btn-soft-primary btn-circle">
                                             <i class="las la-trash"></i>
                                         </a>
                                     </div>
@@ -711,9 +711,6 @@
 
 @section('script')
     <script type="text/javascript">
-        $(document).ready(function() {
-            getVariantPrice();
-        });
 
         function CopyToClipboard(e) {
             var url = $(e).data('url');
