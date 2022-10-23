@@ -251,7 +251,8 @@ class HomeController extends Controller
 
     public function shop($slug)
     {
-        $shop  = Shop::where('slug', $slug)->first();
+        $user = User::where('username', $slug)->first();
+        $shop  = Shop::where('user_id', $user->id)->first();
         if ($shop != null) {
 
             return view('frontend.seller_shop', compact('shop'));
