@@ -536,9 +536,6 @@
                                                     <span
                                                         class="fw-700 text-primary">{{ home_discounted_base_price($related_product) }}</span>
                                                 </div>
-                                                <div class="rating rating-sm mt-1">
-                                                    {{ renderStarRating($related_product->rating) }}
-                                                </div>
                                                 <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0 h-35px">
                                                     <a href="{{ route('product', $related_product->slug) }}"
                                                         class="d-block text-reset">{{ $related_product->getTranslation('name') }}</a>
