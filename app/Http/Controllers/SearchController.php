@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Brand;
 use App\Models\Color;
 use App\Models\Shop;
+use App\Models\User;
 use App\Models\Attribute;
 use App\Models\AttributeCategory;
 use App\Utility\CategoryUtility;
