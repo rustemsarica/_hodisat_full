@@ -16,7 +16,7 @@ class IsUser
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && (Auth::user()->user_type == 'seller' || Auth::user()->user_type == 'admin') ) {
+        if (Auth::check() && Auth::user()->user_type == 'seller' ) {
 
             return $next($request);
         }
