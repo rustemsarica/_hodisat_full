@@ -81,8 +81,6 @@
                                 {{ $detailedProduct->getTranslation('name') }}
                             </h1>
 
-
-
                             <div class="row align-items-center">
                                 <div class="col-auto">
                                     <small class="mr-2 opacity-50">{{ translate('Sold by') }}: </small><br>
@@ -104,21 +102,20 @@
 
                             <hr>
 
-                                @if ($detailedProduct->brand != null)
-							<div class="row align-items-center">
-                                <div class="col-sm-2">
-                                            <div class="opacity-50 my-2">{{ translate('Brand') }}:</div>
+                            @if ($detailedProduct->brand != null)
+                                <div class="row align-items-center">
+                                    <div class="col-sm-2">
+                                        <div class="opacity-50 my-2">{{ translate('Brand') }}:</div>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <div class="fs-16 opacity-60">
+                                            {{ $detailedProduct->brand->name }}
                                         </div>
-                                        <div class="col-sm-10">
-                                            <div class="fs-16 opacity-60">
-                                                    {{ $detailedProduct->brand->name }}
-                                            </div>
-                                        </div>
+                                    </div>
+                                </div>
 
-                            </div>
-
-                            <hr>
-                                @endif
+                                <hr>
+                            @endif
 
 
                                 @if (home_price($detailedProduct) != home_discounted_price($detailedProduct))
@@ -241,7 +238,6 @@
                                 <input type="hidden" name="quantity" value="1" max="1">
 
 
-
                                 <div class="row no-gutters pb-3 d-none" id="chosen_price_div">
                                     <div class="col-sm-2">
                                         <div class="opacity-50 my-2">{{ translate('Total Price') }}:</div>
@@ -258,12 +254,6 @@
                             </form>
 
                             <div class="mt-3">
-                                @if ($detailedProduct->external_link != null)
-                                    <a type="button" class="btn btn-primary buy-now fw-600"
-                                        href="{{ $detailedProduct->external_link }}">
-                                        <i class="la la-share"></i> {{ translate($detailedProduct->external_link_btn) }}
-                                    </a>
-                                @else
                                     <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600"
                                         onclick="addToCart()">
                                         <i class="las la-shopping-bag"></i>
@@ -412,8 +402,7 @@
                             <div class="aiz-carousel gutters-5 half-outside-arrow" data-items="5" data-xl-items="3"
                                 data-lg-items="4" data-md-items="3" data-sm-items="2" data-xs-items="2"
                                 data-arrows='true' data-infinite='true'>
-                                @foreach (filter_products(\App\Models\Product::where('category_id', $detailedProduct->category_id)->where('id', '!=', $detailedProduct->id))->limit(10)->get()
-        as $key => $related_product)
+                                @foreach (filter_products(\App\Models\Product::where('category_id', $detailedProduct->category_id)->where('id', '!=', $detailedProduct->id))->limit(10)->get() as $key => $related_product)
                                     <div class="carousel-box">
                                         <div
                                             class="aiz-card-box border border-light rounded hov-shadow-md my-2 has-transition">

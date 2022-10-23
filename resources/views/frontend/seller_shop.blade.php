@@ -71,11 +71,9 @@
             <div class="container">
                 <div class="aiz-carousel dots-inside-bottom mobile-img-auto-height" data-arrows="true" data-dots="true" data-autoplay="true">
                     @if ($shop->sliders != null)
-                        @foreach (explode(',',$shop->sliders) as $key => $slide)
-                            <div class="carousel-box">
-                                <img class="d-block w-100 lazyload rounded h-200px h-lg-380px img-fit" src="{{ static_asset('assets/img/placeholder-rect.jpg') }}" data-src="{{ uploaded_asset($slide) }}" alt="{{ $key }} offer">
-                            </div>
-                        @endforeach
+                        <div class="carousel-box">
+                            <img class="d-block w-100 lazyload rounded h-200px h-lg-380px img-fit" src="{{ static_asset('assets/img/placeholder-rect.jpg') }}" data-src="{{ uploaded_asset($shop->sliders) }}" alt="Hodisat offer">
+                        </div>
                     @endif
                 </div>
             </div>
