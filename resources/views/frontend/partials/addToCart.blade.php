@@ -177,7 +177,7 @@
                         }
                         @endphp
                         @if (in_array($product->id, $cart->pluck('product_id')->toArray()))
-                            <button type="button" class="btn btn-danger remove-from-cart fw-600 add-to-cart" onclick="removeFromCart(removeFromCart( {{ $cart->where('product_id', $product->id)->first()->id }}))">
+                            <button type="button" class="btn btn-danger remove-from-cart fw-600" onclick="removeFromCart(removeFromCart( {{ $cart->where('product_id', $product->id)->first()->id }}))">
                                 <i class="la la-trash"></i>
                                 <span class="d-none d-md-inline-block">{{ translate('Remove from cart')}}</span>
                             </button>
@@ -200,7 +200,7 @@
 
 <script>
     $(document).ready(function() {
-        $(document).on('click', '.remove-from-cart', function(e) {
+        $(document).on('click', '.add-to-cart', function(e) {
                 location.reload();
         });
     });
