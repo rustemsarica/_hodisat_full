@@ -160,18 +160,13 @@ class SearchController extends Controller
     {
         $keywords = array();
         $query = $request->search;
-        $products = Product::where('published', 1)->get();
-
 
         $products = filter_products(Product::query());
 
-        $products = $products->where('published', 1)
-            ->where(function ($q) use ($query) {
+        $products = $products->where(function ($q) use ($query) {
                 foreach (explode(' ', trim($query)) as $word) {
                     $q->where('name', 'like', '%' . $word . '%')
-                        ->orWhereHas('product_translations', function ($q) use ($word) {
-                            $q->where('name', 'like', '%' . $word . '%');
-                        });
+                        ->orWhere('description', 'like', '%' . $word . '%');
                 }
             })
             ->limit(3)
