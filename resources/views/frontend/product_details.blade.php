@@ -268,7 +268,7 @@
                                 @endphp
                                 @if (in_array($detailedProduct->id, $cart->pluck('product_id')->toArray()))
                                     <div class="col-lg-auto col-6 order-5 order-lg-0 text-right">
-                                        <a href="javascript:void(0)" onclick="removeFromCart(event, {{ $cart->where('product_id', $detailedProduct->id)->first()->id }})" class="btn btn-icon btn-sm btn-soft-primary btn-circle">
+                                        <a href="javascript:void(0)" onclick="removeFromCart( {{ $cart->where('product_id', $detailedProduct->id)->first()->id }})" class="btn btn-icon btn-sm btn-soft-primary btn-circle">
                                             <i class="las la-trash"></i>
                                         </a>
                                     </div>
@@ -372,7 +372,7 @@
                                 <div class="opacity-50 fs-12 border-bottom">{{ translate('Sold by') }}</div>
                                 <a href="{{ route('shop.visit', $detailedProduct->user->username) }}"
                                     class="text-reset d-block fw-600">
-                                    {{ $detailedProduct->user->name }}
+                                    {{ $detailedProduct->user->username }}
                                 </a>
                                 <div class="text-center border rounded p-2 mt-3">
                                     <div class="rating">
