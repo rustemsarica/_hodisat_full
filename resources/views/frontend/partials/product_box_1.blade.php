@@ -19,7 +19,7 @@
             >
         </a>
         @if ($product->current_stock==0)
-        <span class="absolute-center fs-20 text-white fw-600 p-2 lh-1-8" style="background-color: #455a64; opacity:0.5; ">
+        <span class="absolute-center fs-20 text-white fw-600 p-2 lh-1-8" style="background-color: #455a64; opacity:0.7; ">
             {{ translate('Sold') }}
         </span>
         @endif
