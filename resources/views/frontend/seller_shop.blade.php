@@ -67,37 +67,39 @@
     </section>
 
     @if (!isset($type))
-        <section class="mb-5">
-            <div class="container">
-                <div class="aiz-carousel dots-inside-bottom mobile-img-auto-height" data-arrows="true" data-dots="true" data-autoplay="true">
-                    @if ($shop->sliders != null)
-                        <div class="carousel-box">
+
+        @if ($shop->sliders != null && $shop->sliders != "")
+            <section class="mb-5">
+                <div class="container">
+                    <div class="carousel-box">
                             <img class="d-block w-100 lazyload rounded h-200px h-lg-380px img-fit" src="{{ static_asset('assets/img/placeholder-rect.jpg') }}" data-src="{{ uploaded_asset($shop->sliders) }}" alt="Hodisat offer">
-                        </div>
-                    @endif
+                    </div>
                 </div>
-            </div>
-        </section>
-        <section class="mb-4">
-            <div class="container">
-                <div class="text-center mb-4">
-                    <h3 class="h3 fw-600 border-bottom">
-                        <span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">{{ translate('Featured Products')}}</span>
-                    </h3>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="aiz-carousel gutters-10" data-items="6" data-xl-items="5" data-lg-items="4"  data-md-items="3" data-sm-items="2" data-xs-items="2" data-autoplay='true' data-infinute="true" data-dots="true">
-                            @foreach ($shop->user->products->where('published', 1)->where('approved', 1)->where('seller_featured', 1) as $key => $product)
-                                <div class="carousel-box">
-                                    @include('frontend.partials.product_box_1',['product' => $product])
-                                </div>
-                            @endforeach
+            </section>
+        @endif
+
+        @if($shop->user->products->where('published', 1)->where('approved', 1)->where('seller_featured', 1)->count>0)
+            <section class="mb-4">
+                <div class="container">
+                    <div class="text-center mb-4">
+                        <h3 class="h3 fw-600 border-bottom">
+                            <span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">{{ translate('Featured Products')}}</span>
+                        </h3>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="aiz-carousel gutters-10" data-items="6" data-xl-items="5" data-lg-items="4"  data-md-items="3" data-sm-items="2" data-xs-items="2" data-autoplay='true' data-infinute="true" data-dots="true">
+                                @foreach ($shop->user->products->where('published', 1)->where('approved', 1)->where('seller_featured', 1)->get() as $key => $product)
+                                    <div class="carousel-box">
+                                        @include('frontend.partials.product_box_1',['product' => $product])
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        @endif
     @endif
 
     <section class="mb-4">
