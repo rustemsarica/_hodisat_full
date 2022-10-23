@@ -67,17 +67,6 @@
     </section>
 
     @if (!isset($type))
-
-        @if ($shop->sliders != null && $shop->sliders != "")
-            <section class="mb-5">
-                <div class="container">
-                    <div class="carousel-box">
-                            <img class="d-block w-100 lazyload rounded h-200px h-lg-380px img-fit" src="{{ static_asset('assets/img/placeholder-rect.jpg') }}" data-src="{{ uploaded_asset($shop->sliders) }}" alt="Hodisat offer">
-                    </div>
-                </div>
-            </section>
-        @endif
-
         @if($shop->user->products->where('published', 1)->where('approved', 1)->where('seller_featured', 1)->count()>0)
             <section class="mb-4">
                 <div class="container">
