@@ -58,9 +58,6 @@
                             <a class="text-reset d-inline-block fw-600 fs-15 p-3 @if(!isset($type)) border-bottom border-primary border-width-2 @endif" href="{{ route('shop.visit', $shop->slug) }}">{{ translate('Store Home')}}</a>
                         </li>
                         <li class="list-inline-item ">
-                            <a class="text-reset d-inline-block fw-600 fs-15 p-3 @if(isset($type) && $type == 'top-selling') border-bottom border-primary border-width-2 @endif" href="{{ route('shop.visit.type', ['slug'=>$shop->slug, 'type'=>'top-selling']) }}">{{ translate('Top Selling')}}</a>
-                        </li>
-                        <li class="list-inline-item ">
                             <a class="text-reset d-inline-block fw-600 fs-15 p-3 @if(isset($type) && $type == 'all-products') border-bottom border-primary border-width-2 @endif" href="{{ route('shop.visit.type', ['slug'=>$shop->slug, 'type'=>'all-products']) }}">{{ translate('All Products')}}</a>
                         </li>
                     </ul>
@@ -151,8 +148,6 @@
                     <span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">
                         @if (!isset($type))
                             {{ translate('New Arrival Products')}}
-                        @elseif ($type == 'top-selling')
-                            {{ translate('Top Selling')}}
                         @elseif ($type == 'all-products')
                             {{ translate('All Products')}}
                         @endif
@@ -163,9 +158,6 @@
                 @php
                     if (!isset($type)){
                         $products = \App\Models\Product::where('user_id', $shop->user->id)->where('published', 1)->where('approved', 1)->orderBy('created_at', 'desc')->paginate(24);
-                    }
-                    elseif ($type == 'top-selling'){
-                        $products = \App\Models\Product::where('user_id', $shop->user->id)->where('published', 1)->where('approved', 1)->orderBy('num_of_sale', 'desc')->paginate(24);
                     }
                     elseif ($type == 'all-products'){
                         $products = \App\Models\Product::where('user_id', $shop->user->id)->where('published', 1)->where('approved', 1)->paginate(24);
