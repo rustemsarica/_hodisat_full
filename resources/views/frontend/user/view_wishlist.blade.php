@@ -22,9 +22,6 @@
                             <h5 class="fs-14 mb-0 lh-1-5 fw-600 text-truncate-2">
                                 <a href="{{ route('product', $wishlist->product->slug) }}" class="text-reset">{{ $wishlist->product->getTranslation('name') }}</a>
                             </h5>
-                            <div class="rating rating-sm mb-1">
-                                {{ renderStarRating($wishlist->product->rating) }}
-                            </div>
                             <div class=" fs-14">
                                   @if(home_base_price($wishlist->product->unit_price) != home_discounted_base_price($wishlist->product))
                                       <del class="opacity-60 mr-1">{{ home_base_price($wishlist->product->unit_price) }}</del>
