@@ -58,7 +58,7 @@
             <ul class="list-group list-group-raw">
                 @foreach ($shops as $key => $shop)
                     <li class="list-group-item">
-                        <a class="text-reset" href="{{ route('shop.visit', $shop->slug) }}">
+                        <a class="text-reset" href="{{ route('shop.visit', $shop->user->username) }}">
                             <div class="d-flex search-product align-items-center">
                                 <div class="mr-3">
                                     <img class="size-40px img-fit rounded" src="{{ uploaded_asset($shop->logo) }}">
@@ -66,9 +66,6 @@
                                 <div class="flex-grow-1 overflow--hidden">
                                     <div class="product-name text-truncate fs-14 mb-5px">
                                         {{ $shop->user->username }}
-                                    </div>
-                                    <div class="opacity-60">
-                                        {{ $shop->address }}
                                     </div>
                                 </div>
                             </div>
