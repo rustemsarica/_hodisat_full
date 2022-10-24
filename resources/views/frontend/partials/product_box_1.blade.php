@@ -43,7 +43,7 @@
     <div class="p-md-3 p-2 text-left">
         <div class="fs-15">
             @if(home_base_price($product->unit_price) != home_discounted_base_price($product))
-                <del class="fw-600 opacity-50 mr-1">{{ home_base_price($product->unit_price) }}</del>
+                <del class="fw-600 opacity-80 mr-1">{{ home_base_price($product->unit_price) }}</del>
             @endif
             <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
         </div>
