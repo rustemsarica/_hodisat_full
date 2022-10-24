@@ -183,9 +183,9 @@
                     @endif
                 </div>
                 <div class="d-lg-none ml-auto mr-0">
-                    <a class="p-2 d-block text-reset" href="javascript:void(0);" data-toggle="class-toggle" data-target=".front-header-search">
+                    <div class="p-2 d-block text-reset c-pointer" data-toggle="class-toggle" data-target=".front-header-search">
                         <i class="las la-search la-flip-horizontal la-2x"></i>
-                    </a>
+                    </div>
                 </div>
 
                 <div class="flex-grow-1 front-header-search d-flex align-items-center bg-white">
