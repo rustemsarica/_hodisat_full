@@ -41,9 +41,9 @@
             </div>
             <div class="col-lg-3 ml-xl-auto col-md-4 mr-0">
                 <div class="text-center text-md-left mt-4">
-                    <h4 class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4">
+                    <div class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4">
                         {{ translate('Contact Info') }}
-                    </h4>
+                    </div>
                     <ul class="list-unstyled">
                         <li class="mb-2">
                            <span class="d-block opacity-80">{{ translate('Address') }}:</span>
@@ -64,9 +64,9 @@
             </div>
             <div class="col-lg-2 col-md-4">
                 <div class="text-center text-md-left mt-4">
-                    <h4 class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4">
+                    <div class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4">
                         {{ get_setting('widget_one',null,App::getLocale()) }}
-                    </h4>
+                    </div>
                     <ul class="list-unstyled">
                         @if ( get_setting('widget_one_labels',null,App::getLocale()) !=  null )
                             @foreach (json_decode( get_setting('widget_one_labels',null,App::getLocale()), true) as $key => $value)
@@ -83,9 +83,9 @@
 
             <div class="col-md-4 col-lg-2">
                 <div class="text-center text-md-left mt-4">
-                    <h4 class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4">
+                    <div class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4">
                         {{ translate('My Account') }}
-                    </h4>
+                    </div>
                     <ul class="list-unstyled">
                         @if (Auth::check())
                             <li class="mb-2">
