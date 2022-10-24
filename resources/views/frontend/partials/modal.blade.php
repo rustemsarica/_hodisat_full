@@ -21,7 +21,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">{{ translate('Cancel')}}</button>
-                <div id="delete_link" class="btn btn-danger btn-ok c-pointer">{{ translate('Delete')}}</div>
+                <a href="www.hodisat.com" id="delete_link" class="btn btn-danger btn-ok">{{ translate('Delete')}}</a>
             </div>
         </div>
     </div>
