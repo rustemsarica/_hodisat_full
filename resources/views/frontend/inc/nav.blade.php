@@ -70,8 +70,8 @@
                 <ul class="list-inline mb-0 h-100 d-flex justify-content-end align-items-center">
                     @if (get_setting('helpline_number'))
                         <li class="list-inline-item mr-3 border-right border-left-0 pr-3 pl-0">
-                            <a href="tel:{{ get_setting('helpline_number') }}" class="text-reset d-inline-block opacity-80 py-2">
-                                <i class="la la-phone"></i>
+                            <a href="mailto:{{ get_setting('contact_email') }}" class="text-reset d-inline-block opacity-80 py-2">
+                                <i class="las la-mail-bulk"></i>
                                 <span>{{ translate('Help line')}}</span>
                                 <span>{{ get_setting('helpline_number') }}</span>
                             </a>
