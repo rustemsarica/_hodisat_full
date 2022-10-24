@@ -26,7 +26,7 @@ class ProfileController extends Controller
         return response()->json([
             'cart_item_count' => Cart::where('user_id', auth()->user()->id)->count(),
             'wishlist_item_count' => Wishlist::where('user_id', auth()->user()->id)->count(),
-            'order_count' => Order::where('user_id', auth()->user()->id)->count(),
+            'order_count' => Order::where(['seller_id'=> auth()->user()->id, 'delivery_status'=>'pending', 'payment_status'=>'paid'])->count(),
         ]);
     }
 
@@ -177,12 +177,12 @@ class ProfileController extends Controller
 
             if($request->has('type')){
                 if($request->type=="logo"){
-                    $shop->logo = $upload->id; 
+                    $shop->logo = $upload->id;
                 }else if($request->type=="sliders"){
-                    $shop->sliders = $upload->id; 
-                }                
+                    $shop->sliders = $upload->id;
+                }
             }
-            
+
             $shop->save();
 
             return response()->json([
@@ -341,7 +341,7 @@ class ProfileController extends Controller
             ]
         );
     }
-	
+
 	public function vacationMode()
     {
         $user=User::find(auth()->user()->id);
@@ -350,7 +350,7 @@ class ProfileController extends Controller
         }else{
             $user->vacation_mode=1;
         }
-        
+
         if($user->save()){
             return response()->json([
             'result' => true,
