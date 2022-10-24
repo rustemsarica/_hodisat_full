@@ -25,14 +25,14 @@
                             }
                         @endphp
                         <div class="dropdown-toggle text-reset py-2 c-pointer" data-toggle="dropdown" data-display="static">
-                            <img src="{{ static_asset('assets/img/placeholder.jpg') }}" data-src="{{ static_asset('assets/img/flags/'.$locale.'.png') }}" class="mr-2 lazyload" alt="{{ \App\Models\Language::where('code', $locale)->first()->name }}" height="11">
+                            <img src="{{ static_asset('assets/img/flags/tr.png') }}" data-src="{{ static_asset('assets/img/flags/'.$locale.'.png') }}" class="mr-2 lazyload" alt="{{ \App\Models\Language::where('code', $locale)->first()->name }}" height="11">
                             <span class="opacity-60">{{ \App\Models\Language::where('code', $locale)->first()->name }}</span>
                         </div>
                         <ul class="dropdown-menu dropdown-menu-left">
                             @foreach (\App\Models\Language::where('status', 1)->get() as $key => $language)
                                 <li>
                                     <div data-flag="{{ $language->code }}" class="dropdown-item c-pointer @if($locale == $language) active @endif">
-                                        <img src="{{ static_asset('assets/img/placeholder.jpg') }}" data-src="{{ static_asset('assets/img/flags/'.$language->code.'.png') }}" class="mr-1 lazyload" alt="{{ $language->name }}" height="11">
+                                        <img src="{{ static_asset('assets/img/flags/tr.png') }}" data-src="{{ static_asset('assets/img/flags/'.$language->code.'.png') }}" class="mr-1 lazyload" alt="{{ $language->name }}" height="11" width="16">
                                         <span class="language">{{ $language->name }}</span>
                                     </div>
                                 </li>
