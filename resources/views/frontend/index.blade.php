@@ -130,7 +130,7 @@
 
 
     {{-- Flash Deal --}}
-    @php
+    {{-- @php
         $flash_deal = \App\Models\FlashDeal::where('status', 1)->where('featured', 1)->first();
     @endphp
     @if($flash_deal != null && strtotime(date('Y-m-d H:i:s')) >= $flash_deal->start_date && strtotime(date('Y-m-d H:i:s')) <= $flash_deal->end_date)
@@ -161,7 +161,7 @@
             </div>
         </div>
     </section>
-    @endif
+    @endif --}}
 
     @if (count($newest_products) > 0)
         <div id="section_newest">
