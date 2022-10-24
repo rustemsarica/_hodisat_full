@@ -46,16 +46,16 @@
                     </h4>
                     <ul class="list-unstyled">
                         <li class="mb-2">
-                           <span class="d-block opacity-30">{{ translate('Address') }}:</span>
-                           <span class="d-block opacity-70">{{ get_setting('contact_address',null,App::getLocale()) }}</span>
+                           <span class="d-block opacity-80">{{ translate('Address') }}:</span>
+                           <span class="d-block ">{{ get_setting('contact_address',null,App::getLocale()) }}</span>
                         </li>
                         <li class="mb-2">
-                           <span class="d-block opacity-30">{{translate('Phone')}}:</span>
-                           <span class="d-block opacity-70">{{ get_setting('contact_phone') }}</span>
+                           <span class="d-block opacity-80">{{translate('Phone')}}:</span>
+                           <span class="d-block ">{{ get_setting('contact_phone') }}</span>
                         </li>
                         <li class="mb-2">
-                           <span class="d-block opacity-30">{{translate('Email')}}:</span>
-                           <span class="d-block opacity-70">
+                           <span class="d-block opacity-80">{{translate('Email')}}:</span>
+                           <span class="d-block ">
                                <a href="mailto:{{ get_setting('contact_email') }}" class="text-reset">{{ get_setting('contact_email')  }}</a>
                             </span>
                         </li>
@@ -71,7 +71,7 @@
                         @if ( get_setting('widget_one_labels',null,App::getLocale()) !=  null )
                             @foreach (json_decode( get_setting('widget_one_labels',null,App::getLocale()), true) as $key => $value)
                             <li class="mb-2">
-                                <a href="{{ json_decode( get_setting('widget_one_links'), true)[$key] }}" class="opacity-50 hov-opacity-100 text-reset">
+                                <a href="{{ json_decode( get_setting('widget_one_links'), true)[$key] }}" class="opacity-80 hov-opacity-100 text-reset">
                                     {{ $value }}
                                 </a>
                             </li>
@@ -89,49 +89,39 @@
                     <ul class="list-unstyled">
                         @if (Auth::check())
                             <li class="mb-2">
-                                <a class="opacity-50 hov-opacity-100 text-reset" href="{{ route('logout') }}">
+                                <a class="opacity-80 hov-opacity-100 text-reset" href="{{ route('logout') }}">
                                     {{ translate('Logout') }}
                                 </a>
                             </li>
                         @else
                             <li class="mb-2">
-                                <a class="opacity-50 hov-opacity-100 text-reset" href="{{ route('user.login') }}">
+                                <a class="opacity-80 hov-opacity-100 text-reset" href="{{ route('user.login') }}">
                                     {{ translate('Login') }}
                                 </a>
                             </li>
                         @endif
                         <li class="mb-2">
-                            <a class="opacity-50 hov-opacity-100 text-reset" href="{{ route('purchase_history.index') }}">
+                            <a class="opacity-80 hov-opacity-100 text-reset" href="{{ route('purchase_history.index') }}">
                                 {{ translate('Order History') }}
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a class="opacity-50 hov-opacity-100 text-reset" href="{{ route('wishlists.index') }}">
+                            <a class="opacity-80 hov-opacity-100 text-reset" href="{{ route('wishlists.index') }}">
                                 {{ translate('My Wishlist') }}
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a class="opacity-50 hov-opacity-100 text-reset" href="{{ route('orders.track') }}">
+                            <a class="opacity-80 hov-opacity-100 text-reset" href="{{ route('orders.track') }}">
                                 {{ translate('Track Order') }}
                             </a>
                         </li>
                         @if (addon_is_activated('affiliate_system'))
                             <li class="mb-2">
-                                <a class="opacity-50 hov-opacity-100 text-light" href="{{ route('affiliate.apply') }}">{{ translate('Be an affiliate partner')}}</a>
+                                <a class="opacity-80 hov-opacity-100 text-light" href="{{ route('affiliate.apply') }}">{{ translate('Be an affiliate partner')}}</a>
                             </li>
                         @endif
                     </ul>
                 </div>
-                @if (get_setting('vendor_system_activation') == 1)
-                    <div class="text-center text-md-left mt-4">
-                        <h4 class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4">
-                            {{ translate('Be a Seller') }}
-                        </h4>
-                        <a href="{{ route('shops.create') }}" class="btn btn-primary btn-sm shadow-md">
-                            {{ translate('Apply Now') }}
-                        </a>
-                    </div>
-                @endif
             </div>
         </div>
     </div>
