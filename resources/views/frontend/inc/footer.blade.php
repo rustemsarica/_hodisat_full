@@ -141,7 +141,7 @@
                 <ul class="list-inline my-3 my-md-0 social colored text-center">
                     @if ( get_setting('facebook_link') !=  null )
                     <li class="list-inline-item">
-                        <a href="{{ get_setting('facebook_link') }}" target="_blank" class="facebook"><i class="lab la-facebook-f"></i> Facebook</a>
+                        <a href="{{ get_setting('facebook_link') }}" target="_blank" class="facebook"><i class="lab la-facebook-f"></i></a>
                     </li>
                     @endif
                     @if ( get_setting('twitter_link') !=  null )
