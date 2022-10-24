@@ -10,7 +10,7 @@ if (auth()->user() != null) {
 }
 
 @endphp
-<a href="javascript:void(0)" class="d-flex align-items-center text-reset h-100" data-toggle="dropdown"
+<div class="d-flex align-items-center text-reset h-100 c-pointer" data-toggle="dropdown"
     data-display="static">
     <i class="la la-shopping-cart la-2x opacity-80"></i>
     <span class="flex-grow-1 ml-1">
@@ -23,7 +23,7 @@ if (auth()->user() != null) {
         @endif
         <span class="nav-box-text d-none d-xl-block opacity-70">{{ translate('Cart') }}</span>
     </span>
-</a>
+</div>
 <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg p-0 stop-propagation">
 
     @if (isset($cart) && count($cart) > 0)

@@ -85,7 +85,7 @@
                         @else
 
                             <li class="list-inline-item mr-3 border-right border-left-0 pr-3 pl-0 dropdown">
-                                <a class="dropdown-toggle no-arrow text-reset" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="false" aria-expanded="false">
+                                <div class="dropdown-toggle no-arrow text-reset c-pointer" data-toggle="dropdown"role="button" aria-haspopup="false" aria-expanded="false">
                                     <span class="">
                                         <span class="position-relative d-inline-block">
                                             <i class="las la-bell fs-18"></i>
@@ -94,7 +94,7 @@
                                             @endif
                                         </span>
                                     </span>
-                                </a>
+                                </div>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg py-0">
                                     <div class="p-3 bg-light border-bottom">
                                         <h6 class="mb-0">{{ translate('Notifications') }}</h6>
