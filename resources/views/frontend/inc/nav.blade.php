@@ -198,7 +198,7 @@
                                 <div class="input-group">
                                     <input type="text" class="border-0 border-lg form-control" id="search" name="keyword" @isset($query)
                                         value="{{ $query }}"
-                                    @endisset placeholder="{{translate('I am shopping for...')}}" autocomplete="off" style="max-width: 400px">
+                                    @endisset placeholder="{{translate('I am shopping for...')}}" autocomplete="off" style="max-width: 450px">
                                     <div class="input-group-append d-none d-lg-block">
                                         <button class="btn btn-primary" type="submit" name="search">
                                             <i class="la la-search la-flip-horizontal fs-18"></i>
