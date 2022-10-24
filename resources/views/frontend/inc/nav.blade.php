@@ -189,7 +189,7 @@
                 </div>
 
                 <div class="flex-grow-1 front-header-search d-flex align-items-center bg-white">
-                    <div class="position-relative flex-grow-1">
+                    <div class="position-relative flex-grow-1" style="max-width: 450px">
                         <form action="{{ route('search') }}" method="GET" class="stop-propagation">
                             <div class="d-flex position-relative align-items-center">
                                 <div class="d-lg-none" data-toggle="class-toggle" data-target=".front-header-search">
@@ -198,7 +198,7 @@
                                 <div class="input-group">
                                     <input type="text" class="border-0 border-lg form-control" id="search" name="keyword" @isset($query)
                                         value="{{ $query }}"
-                                    @endisset placeholder="{{translate('I am shopping for...')}}" autocomplete="off" style="max-width: 450px">
+                                    @endisset placeholder="{{translate('I am shopping for...')}}" autocomplete="off">
                                     <div class="input-group-append d-none d-lg-block">
                                         <button class="btn btn-primary" type="submit" name="search">
                                             <i class="la la-search la-flip-horizontal fs-18"></i>
