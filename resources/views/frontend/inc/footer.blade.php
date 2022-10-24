@@ -28,12 +28,12 @@
                     <div class="w-300px mw-100 mx-auto mx-md-0">
                         @if(get_setting('play_store_link') != null)
                             <a href="{{ get_setting('play_store_link') }}" target="_blank" class="d-inline-block mr-3 ml-0">
-                                <img src="{{ static_asset('assets/img/play.png') }}" class="mx-100 h-40px">
+                                <img src="{{ static_asset('assets/img/play.png') }}" class="mx-100 h-40px" alt="Hodisat PlayStore">
                             </a>
                         @endif
                         @if(get_setting('app_store_link') != null)
                             <a href="{{ get_setting('app_store_link') }}" target="_blank" class="d-inline-block">
-                                <img src="{{ static_asset('assets/img/app.png') }}" class="mx-100 h-40px">
+                                <img src="{{ static_asset('assets/img/app.png') }}" class="mx-100 h-40px" alt="Hodisat AppStore">
                             </a>
                         @endif
                     </div>
