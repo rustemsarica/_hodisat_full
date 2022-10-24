@@ -6727,7 +6727,7 @@ input[type="number"] {
     font-size: 0.875rem;
     height: calc(1.3125rem + 1.2rem + 2px);
     border: 1px solid #e2e5ec;
-    color: #898b92;
+    color: #3E4447;
 }
 .form-control-sm {
     height: calc(1.5rem + 0.8rem + 2px);
@@ -6748,13 +6748,13 @@ input[type="number"] {
     box-shadow: none;
 }
 .form-control::-webkit-input-placeholder {
-    color: #898b92;
+    color: #3E4447;
 }
 .form-control:-ms-input-placeholder {
-    color: #898b92;
+    color: #3E4447;
 }
 .form-control::placeholder {
-    color: #898b92;
+    color: #3E4447;
 }
 .form-control:disabled,
 .form-control[readonly] {
@@ -6787,7 +6787,7 @@ input[type="number"] {
     font-size: 0.875rem;
     height: calc(1.3125rem + 1.2rem + 2px);
     border: 1px solid #e2e5ec;
-    color: #898b92;
+    color: #3E4447;
 }
 .custom-file-label::after {
     height: calc(1.3125rem + 1.2rem);
@@ -7103,7 +7103,7 @@ input[type="number"] {
     outline: none !important;
 }
 .bootstrap-select .dropdown-toggle {
-    color: #898b92;
+    color: #3E4447;
     background-color: transparent !important;
     border-color: #e2e5ec;
 }
