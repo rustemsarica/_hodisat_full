@@ -51,7 +51,7 @@
                                 $currency_code = \App\Models\Currency::findOrFail(get_setting('system_default_currency'))->code;
                             }
                         @endphp
-                        <a href="javascript:void(0)" class="dropdown-toggle text-reset py-2 opacity-60" data-toggle="dropdown" data-display="static">
+                        <a href="javascript:void(0)" class="dropdown-toggle text-reset py-2 opacity-80" data-toggle="dropdown" data-display="static">
                             {{ \App\Models\Currency::where('code', $currency_code)->first()->name }} {{ (\App\Models\Currency::where('code', $currency_code)->first()->symbol) }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
@@ -70,7 +70,7 @@
                 <ul class="list-inline mb-0 h-100 d-flex justify-content-end align-items-center">
                     @if (get_setting('helpline_number'))
                         <li class="list-inline-item mr-3 border-right border-left-0 pr-3 pl-0">
-                            <a href="tel:{{ get_setting('helpline_number') }}" class="text-reset d-inline-block opacity-60 py-2">
+                            <a href="tel:{{ get_setting('helpline_number') }}" class="text-reset d-inline-block opacity-80 py-2">
                                 <i class="la la-phone"></i>
                                 <span>{{ translate('Help line')}}</span>
                                 <span>{{ get_setting('helpline_number') }}</span>
@@ -80,7 +80,7 @@
                     @auth
                         @if(isAdmin())
                             <li class="list-inline-item mr-3 border-right border-left-0 pr-3 pl-0">
-                                <a href="{{ route('admin.dashboard') }}" class="text-reset d-inline-block opacity-60 py-2">{{ translate('My Panel')}}</a>
+                                <a href="{{ route('admin.dashboard') }}" class="text-reset d-inline-block opacity-80 py-2">{{ translate('My Panel')}}</a>
                             </li>
                         @else
 
@@ -132,21 +132,21 @@
 
                             <li class="list-inline-item mr-3 border-right border-left-0 pr-3 pl-0">
                                 @if (Auth::user()->user_type == 'seller')
-                                    <a href="{{ route('seller.dashboard') }}" class="text-reset d-inline-block opacity-60 py-2">{{ translate('My Panel')}}</a>
+                                    <a href="{{ route('seller.dashboard') }}" class="text-reset d-inline-block opacity-80 py-2">{{ translate('My Panel')}}</a>
                                 @else
-                                    <a href="{{ route('dashboard') }}" class="text-reset d-inline-block opacity-60 py-2">{{ translate('My Panel')}}</a>
+                                    <a href="{{ route('dashboard') }}" class="text-reset d-inline-block opacity-80 py-2">{{ translate('My Panel')}}</a>
                                 @endif
                             </li>
                         @endif
                         <li class="list-inline-item">
-                            <a href="{{ route('logout') }}" class="text-reset d-inline-block opacity-60 py-2">{{ translate('Logout')}}</a>
+                            <a href="{{ route('logout') }}" class="text-reset d-inline-block opacity-80 py-2">{{ translate('Logout')}}</a>
                         </li>
                     @else
                         <li class="list-inline-item mr-3 border-right border-left-0 pr-3 pl-0">
-                            <a href="{{ route('user.login') }}" class="text-reset d-inline-block opacity-60 py-2">{{ translate('Login')}}</a>
+                            <a href="{{ route('user.login') }}" class="text-reset d-inline-block opacity-80 py-2">{{ translate('Login')}}</a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="{{ route('user.registration') }}" class="text-reset d-inline-block opacity-60 py-2">{{ translate('Registration')}}</a>
+                            <a href="{{ route('user.registration') }}" class="text-reset d-inline-block opacity-80 py-2">{{ translate('Registration')}}</a>
                         </li>
                     @endauth
                 </ul>
@@ -267,7 +267,7 @@
                 <ul class="list-inline mb-0 pl-0 mobile-hor-swipe text-center">
                     @foreach (json_decode( get_setting('header_menu_labels'), true) as $key => $value)
                     <li class="list-inline-item mr-0">
-                        <a href="{{ json_decode( get_setting('header_menu_links'), true)[$key] }}" class="opacity-60 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                        <a href="{{ json_decode( get_setting('header_menu_links'), true)[$key] }}" class="opacity-80 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
                             {{ translate($value) }}
                         </a>
                     </li>
