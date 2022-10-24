@@ -200,7 +200,7 @@
                                         value="{{ $query }}"
                                     @endisset placeholder="{{translate('I am shopping for...')}}" autocomplete="off">
                                     <div class="input-group-append d-none d-lg-block">
-                                        <button class="btn btn-primary" type="submit">
+                                        <button class="btn btn-primary" type="submit" name="search">
                                             <i class="la la-search la-flip-horizontal fs-18"></i>
                                         </button>
                                     </div>
