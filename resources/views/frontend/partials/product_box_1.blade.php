@@ -29,13 +29,13 @@
             </span>
         @endif
         <div class="absolute-top-right aiz-p-hov-icon">
-            <div onclick="addToWishList({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left">
+            <div class="c-pointer" onclick="addToWishList({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left">
                 <i class="la la-heart-o"></i>
             </div>
-            <div onclick="addToCompare({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to compare') }}" data-placement="left">
+            <div class="c-pointer" onclick="addToCompare({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to compare') }}" data-placement="left">
                 <i class="las la-sync"></i>
             </div>
-            <div onclick="showAddToCartModal({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to cart') }}" data-placement="left">
+            <div class="c-pointer" onclick="showAddToCartModal({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to cart') }}" data-placement="left">
                 <i class="las la-shopping-cart"></i>
             </div>
         </div>
