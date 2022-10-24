@@ -6585,7 +6585,7 @@ input[type="number"] {
 .card-bordered {
     border: 1px solid #ebedf2;
 }
-.aiz-p-hov-icon a {
+.aiz-p-hov-icon div {
     display: block;
     height: 32px;
     width: 32px;
@@ -6601,27 +6601,27 @@ input[type="number"] {
     transform: translateX(calc(100% + 7px));
     -webkit-transform: translateX(calc(100% + 7px));
 }
-[dir="rtl"] .aiz-p-hov-icon a {
+[dir="rtl"] .aiz-p-hov-icon div {
     transform: translateX(calc(-100% - 7px));
     -webkit-transform: translateX(calc(-100% - 7px));
     margin-left: 5px;
 }
-.aiz-p-hov-icon a:hover {
+.aiz-p-hov-icon div:hover {
     background: var(--primary);
     color: #fff;
 }
-.aiz-p-hov-icon a:nth-child(2) {
+.aiz-p-hov-icon div:nth-child(2) {
     transition-delay: 0.05s;
     -webkit-transition-delay: 0.05s;
 }
-.aiz-p-hov-icon a:nth-child(3) {
+.aiz-p-hov-icon div:nth-child(3) {
     transition-delay: 0.1s;
     -webkit-transition-delay: 0.1s;
 }
 .aiz-card-box {
     overflow: hidden;
 }
-.aiz-card-box:hover .aiz-p-hov-icon a {
+.aiz-card-box:hover .aiz-p-hov-icon div {
     transform: translateX(0);
     -webkit-transform: translateX(0);
 }
