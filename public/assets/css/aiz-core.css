@@ -8613,6 +8613,7 @@ div.footable-loader > span.fooicon:after {
 }
 .aiz-carousel .slick-prev {
     left: 10px;
+    cursor: pointer;
 }
 .aiz-carousel.hide-disabled .slick-disabled {
     display: none !important;
@@ -8620,6 +8621,7 @@ div.footable-loader > span.fooicon:after {
 
 .aiz-carousel .slick-next {
     right: 10px;
+    cursor: pointer;
 }
 .aiz-carousel .slick-dots {
     list-style: none;
@@ -9723,7 +9725,7 @@ ul.social.colored [class*="linkedin"] {
 
 .dropdown-toggle.filter-section[data-toggle]:not(.collapsed):after {
     font-family: "Line Awesome Free";
-    content: "\f106"; 
+    content: "\f106";
 }
 
 .iqty-btns {
