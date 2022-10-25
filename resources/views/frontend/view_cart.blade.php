@@ -54,7 +54,7 @@
                         <div class="shadow-sm bg-white p-3 p-lg-4 rounded text-left">
                             <div class="mb-4">
                                 <div class="row gutters-5 d-none d-lg-flex border-bottom mb-3 pb-3">
-                                    <div class="col fw-600">{{ translate('Product') }}</div>
+                                    <div class="col-md-5 fw-600">{{ translate('Product') }}</div>
                                     <div class="col fw-600">{{ translate('Price') }}</div>
                                     <div class="col-auto fw-600">{{ translate('Remove') }}</div>
                                 </div>
@@ -73,7 +73,7 @@
                                         @endphp
                                         <li class="list-group-item px-0 px-lg-3">
                                             <div class="row gutters-5">
-                                                <div class="col-lg d-flex">
+                                                <div class="col-lg-5 d-flex">
                                                     <span class="mr-2 ml-0">
                                                         <img src="{{ uploaded_asset($product->thumbnail_img) }}"
                                                             class="img-fit size-60px rounded"
@@ -88,8 +88,6 @@
                                                     <span
                                                         class="fw-600 fs-16">{{ cart_product_price($cartItem, $product, true, false) }}</span>
                                                 </div>
-
-
 
                                                 <div class="col-lg-auto col-6 order-5 order-lg-0 text-right">
                                                     <a href="javascript:void(0)"
