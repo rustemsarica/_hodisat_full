@@ -127,7 +127,7 @@ class AizUploadController extends Controller
 
                 if($type[$extension] == 'image' && get_setting('disable_image_optimization') != 1){
                     try {
-                        $img = Image::make($request->file('aiz_file')->getRealPath())->encode('webp');
+                        $img = Image::make($request->file('aiz_file')->getRealPath())->encode();
                         $height = $img->height();
                         $width = $img->width();
                         if($width > $height && $width > 1500){
@@ -139,7 +139,7 @@ class AizUploadController extends Controller
                                 $constraint->aspectRatio();
                             });
                         }
-                        $img->save(base_path('public/').explode('.',$path)[0],75, 'webp');
+                        $img->save(base_path('public/').explode('.',$path)[0].'webp', 75 );
                         clearstatcache();
                         $size = $img->filesize();
 
