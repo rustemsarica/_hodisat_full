@@ -139,7 +139,7 @@ class AizUploadController extends Controller
                                 $constraint->aspectRatio();
                             });
                         }
-                        $img->save(base_path('public/').explode('.',$path)[0].'webp', 75 );
+                        $img->save(base_path('public/').explode('.',$path)[0].'.webp', 75 );
                         clearstatcache();
                         $size = $img->filesize();
 
@@ -162,8 +162,8 @@ class AizUploadController extends Controller
                     }
                 }
 
-                $upload->extension = $extension;
-                $upload->file_name = $path;
+                $upload->extension = 'webp';
+                $upload->file_name = explode('.',$path)[0].'.webp';
                 $upload->user_id = Auth::user()->id;
                 $upload->type = $type[$upload->extension];
                 $upload->file_size = $size;
