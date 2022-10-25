@@ -13,7 +13,7 @@
                                 <div class="carousel-box">
                                     <a href="{{ json_decode(get_setting('home_slider_links'), true)[$key] }}">
                                         <img
-                                        style="background-color:beige;"
+                                        style="background-color:rgb(172, 164, 164);"
                                             class="d-block mw-100 img-fit rounded shadow-sm overflow-hidden"
                                             src="{{ uploaded_asset($slider_images[$key]) }}"
                                             alt="{{ env('APP_NAME')}} promo"
