@@ -38,7 +38,7 @@ class HomeController extends Controller
     {
 
         $newest_products = Cache::remember('newest_products', 3600, function () {
-            return filter_products(Product::latest())->limit(12)->get();
+            return filter_products(Product::without('product_translations')->latest())->limit(12)->get();
         });
 
         $all_products = Cache::remember('home_products', 86400, function () {
