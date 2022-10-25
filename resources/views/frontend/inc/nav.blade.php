@@ -229,12 +229,6 @@
                 </div>
 
                 <div class="d-none d-lg-block ml-3 mr-0">
-                    <div class="" id="compare">
-                        @include('frontend.partials.compare')
-                    </div>
-                </div>
-
-                <div class="d-none d-lg-block ml-3 mr-0">
                     <div class="" id="wishlist">
                         @include('frontend.partials.wishlist')
                     </div>
