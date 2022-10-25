@@ -42,11 +42,7 @@ class HomeController extends Controller
         });
 
 
-            $products = Product::without('product_translations');
-            $all_products = $products->latest()->where(['approved'=> 1,'published'=>1,'auction_product'=> 0])->limit(30)->get();
-
-
-        return view('frontend.index', ['newest_products'=>$newest_products, 'all_products'=>$all_products]);
+        return view('frontend.index', ['newest_products'=>$newest_products]);
     }
 
     public function login()
