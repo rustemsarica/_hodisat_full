@@ -3,7 +3,7 @@
 @section('content')
 <div id="content">
     {{-- Sliders --}}
-    <div class="home-banner-area mb-4 mt-4">
+    <div class="home-banner-area mb-2 mt-4">
         <div class="container">
             <div class="row position-relative">
                 <div class="col-lg-12 ">
@@ -33,7 +33,7 @@
 
     {{-- Banner section 1 --}}
     @if (get_setting('home_banner1_images') != null)
-        <div class="mb-4">
+        <div class="mb-2">
             <div class="container">
                 <div class="row gutters-10">
                     @php $banner_1_imags = json_decode(get_setting('home_banner1_images')); @endphp
@@ -53,7 +53,7 @@
 
     @if (count($newest_products) > 0)
         <div id="section_newest">
-            <section class="mb-4">
+            <section class="mb-2">
                 <div class="container px-2 py-4 px-md-4 py-md-3 bg-white shadow-sm rounded">
                     <div class="d-flex mb-3 align-items-baseline border-bottom">
                         <h3 class="h5 fw-700 mb-0">
@@ -77,7 +77,7 @@
 
     {{-- Banner Section 2 --}}
     @if (get_setting('home_banner2_images') != null)
-        <div class="mb-4">
+        <div class="mb-2">
             <div class="container">
                 <div class="row gutters-10">
                     @php $banner_2_imags = json_decode(get_setting('home_banner2_images')); @endphp
@@ -97,7 +97,7 @@
 
     {{-- Featured Section --}}
     <div id="section_featured">
-        <section class="mb-4 mx-2">
+        <section class="mb-2 mx-2">
             <div class="container py-4 px-md-4 py-md-3 bg-white shadow-sm rounded">
                 <div class="row">
                     <div class="col-xl-9">
@@ -138,7 +138,7 @@
 
     {{-- Banner Section 2 --}}
     @if (get_setting('home_banner3_images') != null)
-        <div class="mb-4">
+        <div class="mb-2">
             <div class="container">
                 <div class="row gutters-10">
                     @php $banner_3_imags = json_decode(get_setting('home_banner3_images')); @endphp
