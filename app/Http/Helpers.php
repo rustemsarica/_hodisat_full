@@ -1053,3 +1053,27 @@ if (!function_exists('get_url_params')) {
         return $query_params[$key] ?? '';
     }
 }
+
+if (!function_exists('getHeaderCategories')) {
+    function getHeaderCategories($id=null,$second=null)
+    {
+        if($id==null){
+            $categories = Cache::remember('headerCategories', 86400, function () {
+                return Category::withCount('childrenCategories')->where(['parent_id'=>0,'status'=>1])->orderBy('level','asc')->get();
+            });
+            return $categories;
+        }else{
+            if($second==null){
+                $categories = Cache::remember('headerCategories'.$id, 86400, function () use($id) {
+                    return Category::withCount('childrenCategories')->where(['parent_id'=>$id,'status'=>1])->orderBy('level','asc')->get();
+                });
+                return $categories;
+            }else{
+                $categories = Cache::remember('headerCategories'.$id, 86400, function () use($id,$second) {
+                    return Category::withCount('childrenCategories')->where(['parent_id'=>$id,'status'=>1])->orderBy('level','asc')->limit($second)->get();
+                });
+                return $categories;
+            }
+        }
+    }
+}

@@ -269,6 +269,34 @@
             </div>
         </div>
     @endif
+
+    <div class="rstech-category-menu d-none d-md-inline bg-white border-top border-gray-200 py-1">
+        <div class="container">
+            <ul class="list-inline mb-0 pl-0 mobile-hor-swipe text-center">
+                @php
+                    $categories=getHeaderCategories();
+                @endphp
+                @foreach ($categories as $value)
+                <li class="list-inline-item mr-0 category-nav-element"  data-id="{{ $value->id }}">
+                    <a href="{{ route('products.category', $value->slug) }}" class="opacity-80 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
+                        {{ $value->getTranslation('name') }}
+                    </a>
+                    @if($value->children_categories_count>0 && get_setting('header_Subcategory')=='mega-menu')
+                        <div class="sub-cat-menu c-scrollbar-light rounded shadow-lg p-4">
+                            <div class="c-preloader text-center absolute-center">
+                                <i class="las la-spinner la-spin la-3x opacity-70"></i>
+                            </div>
+                        </div>
+                    @elseif($value->children_categories_count>0 && get_setting('header_Subcategory')=='dropdown')
+                        <div class="dropdown-category-menu c-scrollbar-light rounded shadow-lg ">
+
+                        </div>
+                    @endif
+                </li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
 </header>
 
 <div class="modal fade" id="order_details" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
