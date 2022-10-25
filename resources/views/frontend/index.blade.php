@@ -173,10 +173,11 @@
         });
 
 
-        var iCount = 1;
+        var iCount = 2;
         var currentPage = 1;
 
         var home_url = "{{ route('home.section.all_products') }}";
+        load_more(currentPage);
 
         var windowHeight = $(window).height();
 
