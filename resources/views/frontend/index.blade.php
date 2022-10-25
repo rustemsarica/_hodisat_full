@@ -174,12 +174,12 @@
         });
 
         var SITEURL = "{{ route('home.section.best_selling') }}";
-   var page = 1; //track user scroll as page number, right now page number is 1
-   load_more(page); //initial content load
-   $(window).scroll(function() { //detect page scroll
-      if($(window).scrollTop() + $(window).height() >= $(document).height()) { //if user scrolled from top to bottom of the page
-      page++; //page number increment
-      load_more(page); //load content
+   var page = 1;
+   load_more(page);
+   $(window).scroll(function() {
+      if($(window).scrollTop() + $(window).height() >= $(document).height()-500) {
+      page++;
+      load_more(page);
       }
     });
     function load_more(page){
