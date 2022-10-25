@@ -54,9 +54,9 @@
                         <div class="shadow-sm bg-white p-3 p-lg-4 rounded text-left">
                             <div class="mb-4">
                                 <div class="row gutters-5 d-none d-lg-flex border-bottom mb-3 pb-3">
-                                    <div class="col-md-5 fw-600">{{ translate('Product') }}</div>
+                                    <div class="col fw-600">{{ translate('Product') }}</div>
                                     <div class="col fw-600">{{ translate('Price') }}</div>
-                                    <div class="col-auto fw-600">{{ translate('Remove') }}</div>
+                                    <div class="col fw-600">{{ translate('Remove') }}</div>
                                 </div>
                                 <ul class="list-group list-group-flush">
                                     @php
