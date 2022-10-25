@@ -178,7 +178,7 @@ class HomeController extends Controller
 
     public function load_best_selling_section(Request $request)
     {
-        $products = Product::paginate(20);
+        $products = Product::paginate(40);
         $data = '';
         if ($request->ajax()) {
             foreach ($products as $product) {
