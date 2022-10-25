@@ -105,7 +105,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('home');
 
     Route::post('/home/section/featured', 'load_featured_section')->name('home.section.featured');
-    Route::post('/home/section/best_selling', 'load_best_selling_section')->name('home.section.best_selling');
+    Route::get('/home/section/best_selling', 'load_best_selling_section')->name('home.section.best_selling');
     Route::post('/home/section/home_categories', 'load_home_categories_section')->name('home.section.home_categories');
     Route::post('/home/section/best_sellers', 'load_best_sellers_section')->name('home.section.best_sellers');
 

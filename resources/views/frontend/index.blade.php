@@ -191,7 +191,7 @@
     function load_more(page){
         $.ajax({
            url: SITEURL + "?page=" + page,
-           type: "post",
+           type: "get",
            datatype: "html",
            beforeSend: function()
            {
