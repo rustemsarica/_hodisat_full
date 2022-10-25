@@ -99,7 +99,7 @@
     {{-- Featured Section --}}
     <div id="section_featured">
         <section class="mb-4">
-            <div class="container px-2 py-4 px-md-4 py-md-3 bg-white shadow-sm rounded">
+            <div class="container px-4 py-4 px-md-4 py-md-3 bg-white shadow-sm rounded">
 
                     <div class="d-flex mb-3 align-items-baseline border-bottom">
                         <h3 class="h5 fw-700 mb-0">
