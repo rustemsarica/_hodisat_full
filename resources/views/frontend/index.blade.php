@@ -218,14 +218,15 @@
                 })
                 .done(function(data)
                 {
+                    $('.c-preloader').hide();
                     if(data.length == 0){
                         console.log(data.length);
                         return;
                     }
-                $('.c-preloader').hide();
-                $("#all_products_section").append(data);
-
-                page++;
+                    if(data!=""){
+                        $("#all_products_section").append(data);
+                        page++;
+                    }
             });
         }
     </script>
