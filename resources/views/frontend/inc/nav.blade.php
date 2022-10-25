@@ -32,7 +32,7 @@
                             @foreach (\App\Models\Language::where('status', 1)->get() as $key => $language)
                                 <li>
                                     <div data-flag="{{ $language->code }}" class="dropdown-item c-pointer @if($locale == $language) active @endif">
-                                        <img src="{{ static_asset('assets/img/flags/tr.png') }}" data-src="{{ static_asset('assets/img/flags/'.$language->code.'.png') }}" class="mr-1 lazyload" alt="{{ $language->name }}" height="11" width="16">
+                                        <img style="background-color: whitesmoke;" src="{{ static_asset('assets/img/flags/tr.png') }}" data-src="{{ static_asset('assets/img/flags/'.$language->code.'.png') }}" class="mr-1 lazyload" alt="{{ $language->name }}" height="11" width="16">
                                         <span class="language">{{ $language->name }}</span>
                                     </div>
                                 </li>
