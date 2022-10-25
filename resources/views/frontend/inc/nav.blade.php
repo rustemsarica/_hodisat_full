@@ -172,11 +172,6 @@
                     </a>
                 </div>
 
-                <div class="d-lg-none ml-auto mr-0">
-                    <div class="p-2 d-block text-reset c-pointer" data-toggle="class-toggle" data-target=".front-header-search">
-                        <i class="las la-search la-flip-horizontal la-2x"></i>
-                    </div>
-                </div>
 
                 <div class="flex-grow-1 front-header-search d-flex align-items-center bg-white">
                     <div class="position-relative flex-grow-1" style="max-width: 500px">
@@ -211,13 +206,6 @@
                     </div>
                 </div>
 
-                <div class="d-none d-lg-none ml-3 mr-0">
-                    <div class="nav-search-box">
-                        <a href="#" class="nav-box-link">
-                            <i class="la la-search la-flip-horizontal d-inline-block nav-box-icon"></i>
-                        </a>
-                    </div>
-                </div>
 
                 <div>
                     <div class="d-none d-lg-block ml-3 mr-0">
