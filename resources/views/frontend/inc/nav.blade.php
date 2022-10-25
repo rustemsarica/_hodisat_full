@@ -157,7 +157,7 @@
 <header class="@if(get_setting('header_stikcy') == 'on') sticky-top @endif z-1020 bg-white border-bottom shadow-sm">
     <div class="position-relative logo-bar-area z-1">
         <div class="container">
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center justify-content-between">
 
                 <div class="col-auto col-xl-3 pl-0 pr-3 d-flex align-items-center">
                     <a class="d-block py-10px mr-3 ml-0" href="{{ route('home') }}">
