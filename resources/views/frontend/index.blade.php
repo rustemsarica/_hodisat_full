@@ -125,6 +125,10 @@
                                 </span>
                             </h3>
                         </div>
+                        {{-- Best Seller --}}
+                        <div id="section_best_sellers">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -151,10 +155,7 @@
     </div>
     @endif
 
-    {{-- Best Seller --}}
-    <div id="section_best_sellers">
 
-    </div>
 
 
 @endsection
@@ -170,10 +171,10 @@
             //     $('#section_home_categories').html(data);
             //     AIZ.plugins.slickCarousel();
             // });
-            // $.post('{{ route('home.section.best_sellers') }}', {_token:'{{ csrf_token() }}'}, function(data){
-            //     $('#section_best_sellers').html(data);
-            //     AIZ.plugins.slickCarousel();
-            // });
+             $.post('{{ route('home.section.best_sellers') }}', {_token:'{{ csrf_token() }}'}, function(data){
+                 $('#section_best_sellers').html(data);
+                 AIZ.plugins.slickCarousel();
+             });
         });
     </script>
 @endsection
