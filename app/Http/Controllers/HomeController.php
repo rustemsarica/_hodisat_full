@@ -42,7 +42,7 @@ class HomeController extends Controller
 
 
             $products = Product::query();
-             $all_products = filter_products($products->lates())->limit(30)->get();
+             $all_products = $products->latest()->limit(30)->get();
 
 
         return view('frontend.index', compact('newest_products', 'all_products'));
