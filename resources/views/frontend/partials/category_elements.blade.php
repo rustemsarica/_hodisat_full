@@ -1,13 +1,13 @@
 <div class="card-columns" style="column-count: 5 !important;">
-    @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category->id) as $key => $first_level_id)
+    @foreach (getHeaderCategories($category->id) as $first_level)
         <div class="card shadow-none border-0">
             <ul class="list-unstyled mb-3">
                 <li class="fw-600 border-bottom pb-2 mb-3">
-                    <a class="text-reset" href="{{ route('products.category', \App\Models\Category::find($first_level_id)->slug) }}">{{ \App\Models\Category::find($first_level_id)->getTranslation('name') }}</a>
+                    <a class="text-reset" href="{{ route('products.category', $first_level->slug }}">{{ $first_level->getTranslation('name') }}</a>
                 </li>
-                @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($first_level_id) as $key => $second_level_id)
+                @foreach (getHeaderCategories($first_level->id, 5) as $second_level)
                     <li class="mb-2">
-                        <a class="text-reset" href="{{ route('products.category', \App\Models\Category::find($second_level_id)->slug) }}">{{ \App\Models\Category::find($second_level_id)->getTranslation('name') }}</a>
+                        <a class="text-reset" href="{{ route('products.category', $second_level->slug) }}">{{ $second_level->getTranslation('name') }}</a>
                     </li>
                 @endforeach
             </ul>
