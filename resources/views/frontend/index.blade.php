@@ -209,7 +209,7 @@
             })
             .fail(function(jqXHR, ajaxOptions, thrownError)
             {
-                alert('No response from server');
+                //alert('No response from server');
             });
         }
     </script>
