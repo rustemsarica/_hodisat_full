@@ -96,7 +96,31 @@
     </div>
     @endif
 
-
+    {{-- Featured Section --}}
+    <div id="section_featured">
+        <section class="mb-4">
+            <div class="container">
+                <div class="px-2 py-4 px-md-4 py-md-3 bg-white shadow-sm rounded">
+                    <div class="d-flex mb-3 align-items-baseline border-bottom">
+                        <h3 class="h5 fw-700 mb-0">
+                            <span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">
+                                {{ translate('All Products') }}
+                            </span>
+                        </h3>
+                    </div>
+                    <div class="col-xl-12 px-0">
+                        <div class="row gutters-10 row-cols-xxl-6 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
+                            @foreach ($all_products as $key => $product)
+                            <div class="col">
+                                @include('frontend.partials.product_box_1',['product' => $product])
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     {{-- Banner Section 2 --}}
     @if (get_setting('home_banner3_images') != null)
