@@ -177,11 +177,11 @@
         var page = 1;
         load_more(page);
 
-        var home_url = {{ route('home.section.best_selling') }}
+        var home_url = "{{ route('home.section.best_selling') }}";
         $(window).scroll(function() {
             if($(window).scrollTop() + $(window).height() >= $(document).height()) {
-            page++;
-            load_more(page);
+                page++;
+                load_more(page);
             }
         });
 
