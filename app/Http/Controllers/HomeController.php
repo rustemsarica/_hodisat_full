@@ -43,7 +43,7 @@ class HomeController extends Controller
 
         $all_products = Cache::remember('home_products', 86400, function () {
             $products = Product::without('product_translations');
-            return $all_products = filter_products($products->inRandomOrder())->limit(30)->get();
+            return $all_products = filter_products($products->latest())->limit(30)->get();
         });
 
         return view('frontend.index', ['newest_products'=>$newest_products, 'all_products'=>$all_products]);
