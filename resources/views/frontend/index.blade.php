@@ -63,9 +63,9 @@
                                 </span>
                             </h3>
                         </div>
-                        <div class="row gutters-10 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
+                        <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="6" data-xl-items="5" data-lg-items="4"  data-md-items="3" data-sm-items="2" data-xs-items="2" data-arrows='true' data-infinite='true'>
                             @foreach ($newest_products as $key => $new_product)
-                            <div class="col">
+                            <div class="carousel-box">
                                 @include('frontend.partials.product_box_1',['product' => $new_product])
                             </div>
                             @endforeach
