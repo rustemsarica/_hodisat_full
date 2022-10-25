@@ -4,8 +4,6 @@
     });
 @endphp
 
-
-
 <div class="aiz-carousel gutters-5 half-outside-arrow" data-items="1" data-rows="10" data-arrows='false' data-infinite='false'>
     @foreach ($blogs as $key => $blog)
     <div class="carousel-box">
