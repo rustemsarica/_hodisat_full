@@ -87,7 +87,7 @@
                             </span>
                         </h3>
                     </div>
-                    <div class="col-xl-9">
+                    <div class="col-xl-12">
                         <div class="row gutters-5 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
                             @foreach ($newest_products as $key => $new_product)
                                 @include('frontend.partials.product_box_1',['product' => $new_product])
