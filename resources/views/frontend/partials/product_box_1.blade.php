@@ -14,7 +14,6 @@
                 class="img-fit lazyload lazyload-image mx-auto h-140px h-md-210px"
                 src="{{ static_asset($product->thumbnail!=null ? $product->thumbnail->file_name : 'assets/img/placeholder.jpg') }}"
                 alt="{{  $product->name  }}"
-                onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
             >
         </a>
         @if ($product->current_stock==0)
@@ -31,7 +30,7 @@
                 @endif
                 <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
             </div>
-            <div class="c-pointer fs-24" onclick="addToWishList({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left">
+            <div class="c-pointer fs-24" onclick="addToWishList({{ $product->id }})">
                 <i class="la la-heart-o"></i>
             </div>
         </div>
