@@ -176,7 +176,7 @@ class HomeController extends Controller
         return view('frontend.partials.featured_products_section');
     }
 
-    public function load_best_selling_section(Request $request)
+    public function load_all_products_section(Request $request)
     {
         $products = Product::paginate(40);
         $data = '';
