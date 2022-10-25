@@ -96,45 +96,41 @@
     @endif
 
     {{-- Featured Section --}}
-    <div id="section_featured">
-        <section class="mb-2 mx-2">
-            <div class="container py-4 px-md-4 py-md-3 bg-white shadow-sm rounded">
-                <div class="row">
-                    <div class="col-xl-9">
-                        <div class="d-flex mb-3 align-items-baseline border-bottom">
-                            <h3 class="h5 fw-700 mb-0">
-                                <a href="{{route('search')}}"><span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">
-                                    {{ translate('All Products') }}
-                                </span></a>
-                            </h3>
-                        </div>
-                        <div id="all_products_section" class="row gutters-10 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
-
-                        </div>
+    <section class="mb-2 mx-2">
+        <div class="container py-4 px-md-4 py-md-3 bg-white shadow-sm rounded">
+            <div class="row">
+                <div class="col-xl-9">
+                    <div class="d-flex mb-3 align-items-baseline border-bottom">
+                        <h3 class="h5 fw-700 mb-0">
+                            <a href="{{route('search')}}"><span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">
+                                {{ translate('All Products') }}
+                            </span></a>
+                        </h3>
                     </div>
-                    <div class="col-xl-3">
-                        <div class="d-flex mb-3 align-items-baseline border-bottom">
-                            <h3 class="h5 fw-700 mb-0">
-                                <a href="{{ route('blog') }}"><span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">{{ translate('Blog') }}</span></a>
-                            </h3>
-                        </div>
-                        @include('frontend.partials.blog_section')
-                        <div class="d-flex mb-3 align-items-baseline border-bottom">
-                            <h3 class="h5 fw-700 mb-0">
-                                <span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">
-                                    {{ translate('Best Sellers') }}
-                                </span>
-                            </h3>
-                        </div>
-                        {{-- Best Seller --}}
-                        <div id="section_best_sellers">
-
-                        </div>
+                    <div id="all_products_section" class="row gutters-10 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
+                    </div>
+                </div>
+                <div class="col-xl-3">
+                    <div class="d-flex mb-3 align-items-baseline border-bottom">
+                        <h3 class="h5 fw-700 mb-0">
+                            <a href="{{ route('blog') }}"><span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">{{ translate('Blog') }}</span></a>
+                        </h3>
+                    </div>
+                    @include('frontend.partials.blog_section')
+                    <div class="d-flex mb-3 align-items-baseline border-bottom">
+                        <h3 class="h5 fw-700 mb-0">
+                            <span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">
+                                {{ translate('Best Sellers') }}
+                            </span>
+                        </h3>
+                    </div>
+                    {{-- Best Seller --}}
+                    <div id="section_best_sellers">
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
     {{-- Banner Section 2 --}}
     @if (get_setting('home_banner3_images') != null)
