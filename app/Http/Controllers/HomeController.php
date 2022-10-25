@@ -41,7 +41,7 @@ class HomeController extends Controller
         });
 
 
-            $products = Product::query();
+            $products = Product::without('product_translations');
              $all_products = $products->latest()->limit(30)->get();
 
 
