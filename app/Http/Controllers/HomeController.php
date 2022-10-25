@@ -190,7 +190,8 @@ class HomeController extends Controller
             }
             return $data;
         }
-        return view('frontend.partials.best_selling_section');
+        return false;
+        //return view('frontend.partials.best_selling_section');
     }
 
     public function load_auction_products_section()
