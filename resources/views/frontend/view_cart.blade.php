@@ -50,7 +50,7 @@
         <div class="container">
             @if ($carts && count($carts) > 0)
                 <div class="row">
-                    <div class="col-xxl-8 col-xl-10 mx-auto">
+                    <div class="col-xxl-6 col-xl-6 mx-auto">
                         <div class="shadow-sm bg-white p-3 p-lg-4 rounded text-left">
                             <div class="mb-4">
                                 <div class="row gutters-5 d-none d-lg-flex border-bottom mb-3 pb-3">
