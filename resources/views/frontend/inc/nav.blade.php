@@ -281,17 +281,12 @@
                     <a href="{{ route('products.category', $value->slug) }}" class="opacity-80 fs-14 px-3 py-2 d-inline-block fw-600 hov-opacity-100 text-reset">
                         {{ $value->getTranslation('name') }}
                     </a>
-                    @if($value->children_categories_count>0 && get_setting('header_Subcategory')=='mega-menu')
+
                         <div class="sub-cat-menu c-scrollbar-light rounded shadow-lg p-4">
                             <div class="c-preloader text-center absolute-center">
                                 <i class="las la-spinner la-spin la-3x opacity-70"></i>
                             </div>
                         </div>
-                    @elseif($value->children_categories_count>0 && get_setting('header_Subcategory')=='dropdown')
-                        <div class="dropdown-category-menu c-scrollbar-light rounded shadow-lg ">
-
-                        </div>
-                    @endif
                 </li>
                 @endforeach
             </ul>
