@@ -41,10 +41,10 @@ class HomeController extends Controller
             return filter_products(Product::without('product_translations')->latest())->limit(12)->get();
         });
 
-        $all_products = Cache::remember('home_products', 86400, function () {
+
             $products = Product::without('product_translations');
             return $all_products = $products->latest()->where(['approved'=> 1,'published'=>1,'auction_product'=> 0])->limit(30)->get();
-        });
+
 
         return view('frontend.index', ['newest_products'=>$newest_products, 'all_products'=>$all_products]);
     }
