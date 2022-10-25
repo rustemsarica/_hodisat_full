@@ -199,13 +199,17 @@
             console.log(diff);
             if(diff < 800) {
                 if (iCount == page) {
-                iCount++;
+                    iCount++;
                     load_more(page);
                 }
             }
         });
 
         function load_more(page){
+            console.log(home_url);
+            console.log("?page=" + page);
+            console.log("?icount=" + iCount);
+
             $.ajax({
                 url: home_url + "?page=" + page,
                 type: "get",
