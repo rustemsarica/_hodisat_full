@@ -180,13 +180,10 @@ class HomeController extends Controller
     {
         $products = Product::paginate(40);
         $data = '';
-        if ($request->ajax()) {
             foreach ($products as $product) {
                 $data.='<div class="col">'.view('frontend.partials.product_box_1',['product' => $product]).'</div>';
             }
             return $data;
-        }
-        return $data;
         //return view('frontend.partials.best_selling_section');
     }
 
