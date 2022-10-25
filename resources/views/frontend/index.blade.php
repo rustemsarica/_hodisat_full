@@ -1,6 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('content')
+<div id="content">
     {{-- Sliders --}}
     <div class="home-banner-area mb-4 mt-4">
         <div class="container">
@@ -32,22 +33,22 @@
 
     {{-- Banner section 1 --}}
     @if (get_setting('home_banner1_images') != null)
-    <div class="mb-4">
-        <div class="container">
-            <div class="row gutters-10">
-                @php $banner_1_imags = json_decode(get_setting('home_banner1_images')); @endphp
-                @foreach ($banner_1_imags as $key => $value)
-                    <div class="col-xl col-md-6">
-                        <div class="mb-3 mb-lg-0">
-                            <a href="{{ json_decode(get_setting('home_banner1_links'), true)[$key] }}" class="d-block text-reset">
-                                <img src="{{ static_asset('assets/img/placeholder-rect.jpg') }}" data-src="{{ uploaded_asset($banner_1_imags[$key]) }}" alt="{{ env('APP_NAME') }} promo" class="img-fluid lazyload w-100">
-                            </a>
+        <div class="mb-4">
+            <div class="container">
+                <div class="row gutters-10">
+                    @php $banner_1_imags = json_decode(get_setting('home_banner1_images')); @endphp
+                    @foreach ($banner_1_imags as $key => $value)
+                        <div class="col-xl col-md-6">
+                            <div class="mb-3 mb-lg-0">
+                                <a href="{{ json_decode(get_setting('home_banner1_links'), true)[$key] }}" class="d-block text-reset">
+                                    <img src="{{ static_asset('assets/img/placeholder-rect.jpg') }}" data-src="{{ uploaded_asset($banner_1_imags[$key]) }}" alt="{{ env('APP_NAME') }} promo" class="img-fluid lazyload w-100">
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         </div>
-    </div>
     @endif
 
     @if (count($newest_products) > 0)
@@ -151,9 +152,7 @@
         </div>
     @endif
 
-
-
-
+</div>
 @endsection
 
 @section('script')
@@ -178,10 +177,28 @@
         load_more(page);
 
         var home_url = "{{ route('home.section.best_selling') }}";
+
+        var windowHeight = $(window).height();
+
+		var content = $("#content");
+
+		var contentYSpaces = 0;
+
+        contentYSpaces += parseInt($(content).css("marginTop"));
+		contentYSpaces += parseInt($(content).css("marginBottom"));
+		contentYSpaces += parseInt($(content).css("paddingTop"));
+		contentYSpaces += parseInt($(content).css("paddingBottom"));
+
         $(window).scroll(function() {
-            if($(window).scrollTop() + $(window).height() >= $(document).height()-500) {
-                page++;
+            var contentHeight = $("#content").height();
+
+			var scrollTop = $(this).scrollTop();
+
+			var diff  = contentHeight - (scrollTop+windowHeight-contentYSpaces);
+
+            if(diff < 900) {
                 load_more(page);
+                page++;
             }
         });
 
@@ -205,7 +222,6 @@
                 }
                 $('.c-preloader').hide();
                 $("#all_products_section").append(data);
-                console.log('data.length');
             })
             .fail(function(jqXHR, ajaxOptions, thrownError)
             {
