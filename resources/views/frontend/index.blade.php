@@ -109,14 +109,8 @@
                                 </span>
                             </h3>
                         </div>
-                        <div class="row gutters-10 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
-                            <div id="results">
-                                @foreach ($all_products as $key => $product)
-                                <div class="col">
-                                    @include('frontend.partials.product_box_1',['product' => $product])
-                                </div>
-                                @endforeach
-                            </div>
+                        <div id="results" class="row gutters-10 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
+
                         </div>
                     </div>
                     <div class="col-xl-3">
