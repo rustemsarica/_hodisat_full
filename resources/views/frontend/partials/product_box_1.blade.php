@@ -10,7 +10,7 @@
             }
         @endphp
         <a href="{{ $product_url }}" class="d-block">
-            <img style="background-color:antiquewhite"
+            <img style="background-color:whitesmoke"
                 class="img-fit lazyload lazyload-image mx-auto h-140px h-md-210px"
                 src="{{ static_asset($product->thumbnail->file_name) }}"
                 alt="{{  $product->name  }}"
