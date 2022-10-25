@@ -182,11 +182,11 @@ class HomeController extends Controller
 
     public function load_best_selling_section(Request $request)
     {
-        $posts = Product::paginate(20);
+        $products = Product::paginate(20);
         $data = '';
         if ($request->ajax()) {
-            foreach ($posts as $post) {
-                $data.='<li>'.$post->id.'  </li>';
+            foreach ($products as $product) {
+                $data.=view('frontend.partials.product_box_1',['product' => $product]);
             }
             return $data;
         }
