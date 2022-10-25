@@ -2,12 +2,10 @@
 
 @section('content')
     {{-- Categories , Sliders . Today's deal --}}
-    <div class="home-banner-area mb-2 pt-3">
+    <div class="home-banner-area my-2">
         <div class="container">
             <div class="row position-relative">
-
-
-                <div class=" col-lg-12 ">
+                <div class="col-lg-12 ">
                     @if (get_setting('home_slider_images') != null)
                         <div class="aiz-carousel dots-inside-bottom mobile-img-auto-height" data-arrows="true" data-dots="true" data-autoplay="true">
                             @php $slider_images = json_decode(get_setting('home_slider_images'), true);  @endphp
@@ -31,7 +29,6 @@
                         </div>
                     @endif
                 </div>
-
             </div>
         </div>
     </div>
