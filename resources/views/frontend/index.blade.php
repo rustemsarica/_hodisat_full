@@ -103,9 +103,9 @@
                     <div class="col-xl-9">
                         <div class="d-flex mb-3 align-items-baseline border-bottom">
                             <h3 class="h5 fw-700 mb-0">
-                                <span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">
+                                <a href="{{route('search')}}"><span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">
                                     {{ translate('All Products') }}
-                                </span>
+                                </span></a>
                             </h3>
                         </div>
                         <div id="all_products_section" class="row gutters-10 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
