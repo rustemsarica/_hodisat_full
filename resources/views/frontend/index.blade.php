@@ -75,6 +75,27 @@
         </div>
     @endif
 
+
+    {{-- Banner Section 2 --}}
+    @if (get_setting('home_banner2_images') != null)
+    <div class="mb-4">
+        <div class="container">
+            <div class="row gutters-10">
+                @php $banner_2_imags = json_decode(get_setting('home_banner2_images')); @endphp
+                @foreach ($banner_2_imags as $key => $value)
+                    <div class="col-xl col-md-6">
+                        <div class="mb-3 mb-lg-0">
+                            <a href="{{ json_decode(get_setting('home_banner2_links'), true)[$key] }}" class="d-block text-reset">
+                                <img src="{{ static_asset('assets/img/placeholder-rect.jpg') }}" data-src="{{ uploaded_asset($banner_2_imags[$key]) }}" alt="{{ env('APP_NAME') }} promo" class="img-fluid lazyload w-100">
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    @endif
+
     {{-- Featured Section --}}
     <div id="section_featured">
         <section class="mb-4">
@@ -100,33 +121,6 @@
             </div>
         </section>
     </div>
-
-
-    {{-- Banner Section 2 --}}
-    @if (get_setting('home_banner2_images') != null)
-    <div class="mb-4">
-        <div class="container">
-            <div class="row gutters-10">
-                @php $banner_2_imags = json_decode(get_setting('home_banner2_images')); @endphp
-                @foreach ($banner_2_imags as $key => $value)
-                    <div class="col-xl col-md-6">
-                        <div class="mb-3 mb-lg-0">
-                            <a href="{{ json_decode(get_setting('home_banner2_links'), true)[$key] }}" class="d-block text-reset">
-                                <img src="{{ static_asset('assets/img/placeholder-rect.jpg') }}" data-src="{{ uploaded_asset($banner_2_imags[$key]) }}" alt="{{ env('APP_NAME') }} promo" class="img-fluid lazyload w-100">
-                            </a>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-    @endif
-
-    {{-- Category wise Products --}}
-    <div id="section_home_categories">
-
-    </div>
-
 
     {{-- Banner Section 2 --}}
     @if (get_setting('home_banner3_images') != null)
