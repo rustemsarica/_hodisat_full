@@ -190,7 +190,7 @@ class HomeController extends Controller
             }
             return $data;
         }
-        return false;
+        return $data;
         //return view('frontend.partials.best_selling_section');
     }
 
