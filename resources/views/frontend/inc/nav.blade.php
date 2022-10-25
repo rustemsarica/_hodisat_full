@@ -178,7 +178,7 @@
                     </div>
                 </div>
 
-                <div class="flex-grow-1 front-header-search d-flex align-items-center bg-white">
+                <div class="col-xl-6 flex-grow-1 front-header-search d-flex align-items-center bg-white">
                     <div class="position-relative flex-grow-1" style="max-width: 500px">
                         <form action="{{ route('search') }}" method="GET" class="stop-propagation">
                             <div class="d-flex position-relative align-items-center">
