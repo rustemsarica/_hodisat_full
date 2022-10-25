@@ -73,7 +73,7 @@
                                         @endphp
                                         <li class="list-group-item px-0 px-lg-3">
                                             <div class="row gutters-5">
-                                                <div class="col-lg-5 d-flex">
+                                                <div class="col-lg d-flex">
                                                     <span class="mr-2 ml-0">
                                                         <img src="{{ uploaded_asset($product->thumbnail_img) }}"
                                                             class="img-fit size-60px rounded"
