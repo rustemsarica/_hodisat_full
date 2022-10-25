@@ -115,6 +115,7 @@
 
         </div>
     @endif
+
     {{-- Featured Section --}}
     <div id="section_featured">
 
@@ -273,18 +274,18 @@
 @section('script')
     <script>
         $(document).ready(function(){
-            $.post('{{ route('home.section.featured') }}', {_token:'{{ csrf_token() }}'}, function(data){
-                $('#section_featured').html(data);
-                AIZ.plugins.slickCarousel();
-            });
-            $.post('{{ route('home.section.home_categories') }}', {_token:'{{ csrf_token() }}'}, function(data){
-                $('#section_home_categories').html(data);
-                AIZ.plugins.slickCarousel();
-            });
-            $.post('{{ route('home.section.best_sellers') }}', {_token:'{{ csrf_token() }}'}, function(data){
-                $('#section_best_sellers').html(data);
-                AIZ.plugins.slickCarousel();
-            });
+            // $.post('{{ route('home.section.featured') }}', {_token:'{{ csrf_token() }}'}, function(data){
+            //     $('#section_featured').html(data);
+            //     AIZ.plugins.slickCarousel();
+            // });
+            // $.post('{{ route('home.section.home_categories') }}', {_token:'{{ csrf_token() }}'}, function(data){
+            //     $('#section_home_categories').html(data);
+            //     AIZ.plugins.slickCarousel();
+            // });
+            // $.post('{{ route('home.section.best_sellers') }}', {_token:'{{ csrf_token() }}'}, function(data){
+            //     $('#section_best_sellers').html(data);
+            //     AIZ.plugins.slickCarousel();
+            // });
         });
     </script>
 @endsection
