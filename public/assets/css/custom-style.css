@@ -1,4 +1,16 @@
 /*your custom css goes here*/
+@media (min-width:576px){
+    .header-categories{
+        -webkit-column-count:5 !important;
+        -moz-column-count:5 !important;
+        column-count:5 !important;
+    }
+    .header-categories .card {
+        display: block !important;
+        width: 100%;
+    }
+}
+
 .aiz-category-menu .category-nav-element:hover > a{
     position: relative;
     z-index: 10;
