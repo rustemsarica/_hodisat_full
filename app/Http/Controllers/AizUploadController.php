@@ -139,7 +139,7 @@ class AizUploadController extends Controller
                                 $constraint->aspectRatio();
                             });
                         }
-                        $img->save(base_path('public/').$path,75, 'webp');
+                        $img->save(base_path('public/').explode('.',$path)[0],75, 'webp');
                         clearstatcache();
                         $size = $img->filesize();
 
