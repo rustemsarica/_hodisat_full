@@ -6,7 +6,7 @@
 
 
 
-<div class="aiz-carousel gutters-10 half-outside-arrow" data-items="1" data-arrows='false' data-infinite='false'>
+<div class="aiz-carousel gutters-10 half-outside-arrow" data-items="1" data-rows="10" data-arrows='false' data-infinite='false'>
     @foreach ($blogs as $key => $blog)
     <div class="carousel-box">
         <div class="row no-gutters box-3 align-items-center border border-light rounded hov-shadow-md my-2 has-transition">
@@ -25,7 +25,7 @@
                         <a href="{{ url('blog').'/'. $blog->slug }}" class="text-reset">{{ $blog->title }}</a>
                     </h2>
                     <a href="{{ url('blog').'/'. $blog->slug }}" class="btn btn-outline-primary btn-sm">
-                        {{ translate('Visit Store') }} <i class="las la-angle-right"></i>
+                        {{ translate('View More') }} <i class="las la-angle-right"></i>
                     </a>
                 </div>
             </div>
