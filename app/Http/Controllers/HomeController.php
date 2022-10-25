@@ -40,7 +40,12 @@ class HomeController extends Controller
             return filter_products(Product::latest())->limit(12)->get();
         });
 
-        return view('frontend.index', compact('newest_products'));
+        $all_products = Cache::remember('newest_products', 86400, function () {
+            $products = Product::query();
+            return filter_products($products)->limit(50)->inRandomOrder()->get();
+        });
+
+        return view('frontend.index', compact('newest_products', 'all_products'));
     }
 
     public function login()
