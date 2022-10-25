@@ -198,8 +198,10 @@
 
             console.log(diff);
             if(diff < 900) {
-                load_more(page);
-                page++;
+                if (iCount == page) {
+                iCount++;
+                    load_more(page);
+                }
             }
         });
 
@@ -216,17 +218,13 @@
                 .done(function(data)
                 {
                     if(data.length == 0){
-                    console.log(data.length);
-                    //notify user if nothing to load
-
-                    return;
-                }
+                        console.log(data.length);
+                        return;
+                    }
                 $('.c-preloader').hide();
                 $("#all_products_section").append(data);
-            })
-            .fail(function(jqXHR, ajaxOptions, thrownError)
-            {
-                //alert('No response from server');
+
+                page++;
             });
         }
     </script>
