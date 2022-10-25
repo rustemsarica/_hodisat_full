@@ -6,7 +6,7 @@
 
 
 
-<div class="aiz-carousel gutters-10 half-outside-arrow" data-items="1" data-rows="10" data-arrows='false' data-infinite='false'>
+<div class="aiz-carousel gutters-5 half-outside-arrow" data-items="1" data-rows="10" data-arrows='false' data-infinite='false'>
     @foreach ($blogs as $key => $blog)
     <div class="carousel-box">
         <div class="row no-gutters box-3 align-items-center border border-light rounded hov-shadow-md my-2 has-transition">
