@@ -196,6 +196,7 @@
 
 			var diff  = contentHeight - (scrollTop+windowHeight-contentYSpaces);
 
+            console.log(diff);
             if(diff < 900) {
                 load_more(page);
                 page++;
