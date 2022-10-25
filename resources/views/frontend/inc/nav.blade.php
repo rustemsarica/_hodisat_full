@@ -270,7 +270,7 @@
         </div>
     @endif
 
-    <div class="rstech-category-menu d-none d-md-inline bg-white border-top border-gray-200 py-1">
+    <div class="aiz-category-menu d-none d-md-inline bg-white border-top border-gray-200 py-1">
         <div class="container">
             <ul class="list-inline mb-0 pl-0 mobile-hor-swipe text-center">
                 @php
