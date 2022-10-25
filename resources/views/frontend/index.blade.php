@@ -2,7 +2,7 @@
 
 @section('content')
     {{-- Categories , Sliders . Today's deal --}}
-    <div class="home-banner-area my-2">
+    <div class="home-banner-area mb-4">
         <div class="container">
             <div class="row position-relative">
                 <div class="col-lg-12 ">
