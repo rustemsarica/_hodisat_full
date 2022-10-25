@@ -117,6 +117,12 @@
                     <div class="col-xl-3">
                         <div class="d-flex mb-3 align-items-baseline border-bottom">
                             <h3 class="h5 fw-700 mb-0">
+                                <a href="{{ route('blog') }}"><span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">{{ translate('Blog') }}</span></a>
+                            </h3>
+                        </div>
+                        @include('frontend.partials.blog_section')
+                        <div class="d-flex mb-3 align-items-baseline border-bottom">
+                            <h3 class="h5 fw-700 mb-0">
                                 <span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">
                                     {{ translate('Best Sellers') }}
                                 </span>
