@@ -10,7 +10,7 @@ class Product extends Model
 
     protected $guarded = ['choice_attributes'];
 
-    protected $with = ['product_translations'];
+    protected $with = ['product_translations', 'thumbnail'];
 
     public function getTranslation($field = '', $lang = false)
     {
@@ -22,6 +22,11 @@ class Product extends Model
     public function product_translations()
     {
         return $this->hasMany(ProductTranslation::class);
+    }
+
+    public function thumbnail()
+    {
+        return $this->hasOne(Upload::class, 'id', 'thumbnail_img');
     }
 
     public function category()
