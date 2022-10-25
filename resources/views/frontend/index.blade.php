@@ -174,7 +174,7 @@
 
 
         var iCount = 1;
-        var page = 1;
+        var currentPage = 1;
 
         var home_url = "{{ route('home.section.all_products') }}";
 
@@ -198,9 +198,9 @@
 
             console.log(diff);
             if(diff < 800) {
-                if (iCount == page) {
+                if (iCount == currentPage) {
                     iCount++;
-                    load_more(page);
+                    load_more(currentPage);
                 }
             }
         });
@@ -220,12 +220,12 @@
 
                         console.log("append");
                         $("#all_products_section").append(data);
-                        page++;
+                        currentPage++;
                     }
                 }
             });
 
-            console.log("?page=" + page);
+            console.log("?page=" + currentPage);
         }
     </script>
 @endsection
