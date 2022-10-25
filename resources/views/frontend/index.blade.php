@@ -173,8 +173,9 @@
         });
 
 
-        var iCount = 1;
+        var iCount = 2;
         var page = 1;
+        load_more(page);
 
         var home_url = "{{ route('home.section.best_selling') }}";
 
@@ -201,7 +202,6 @@
                 if (iCount == page) {
                 iCount++;
                     load_more(page);
-                    page++;
                 }
             }
         });
@@ -225,6 +225,7 @@
                     }
                     if(data!=""){
                         $("#all_products_section").append(data);
+                        page++;
                     }
             });
         }
