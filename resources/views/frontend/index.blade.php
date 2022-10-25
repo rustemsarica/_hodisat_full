@@ -87,13 +87,13 @@
                             </span>
                         </h3>
                     </div>
-                </div>
 
                     @foreach ($newest_products as $key => $new_product)
                         <div class="carousel-box col-lg-2 col-6">
                             @include('frontend.partials.product_box_1',['product' => $new_product])
                         </div>
                     @endforeach
+                </div>
             </div>
         </section>
     </div>
