@@ -197,7 +197,7 @@
 			var diff  = contentHeight - (scrollTop+windowHeight-contentYSpaces);
 
             console.log(diff);
-            if(diff < 800) {
+            if(diff < 900) {
                 if (iCount == currentPage) {
                     iCount++;
                     load_more(currentPage);
