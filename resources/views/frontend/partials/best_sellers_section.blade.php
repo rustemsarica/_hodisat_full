@@ -1,6 +1,6 @@
 @php
     $best_selers = Cache::remember('best_selers', 86400, function () {
-        return \App\Models\Seller::orderBy('num_of_sale', 'desc')->take(20)->get();
+        return \App\Models\Seller::orderBy('num_of_sale', 'desc')->take(18)->get();
     });
 @endphp
 
