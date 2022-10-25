@@ -177,7 +177,7 @@
    var page = 1;
    load_more(page);
    $(window).scroll(function() {
-      if($(window).scrollTop() + $(window).height() >= $(document).height()-500) {
+      if($(window).scrollTop() + $(window).height() == $(document).height()-500) {
       page++;
       load_more(page);
       }
