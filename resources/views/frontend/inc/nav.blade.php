@@ -219,7 +219,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-3 d-none d-lg-flex">
+                <div class="col-xl-3 d-none d-lg-flex mr-3 justify-content-end">
                     <div class="ml-3 mr-0">
                         <div class="" id="wishlist">
                             @include('frontend.partials.wishlist')
