@@ -179,7 +179,7 @@
 
         var home_url = "{{ route('home.section.best_selling') }}";
         $(window).scroll(function() {
-            if($(window).scrollTop() + $(window).height() == $(document).height()-500) {
+            if($(window).scrollTop() + $(window).height() >= $(document).height()-500) {
                 page++;
                 load_more(page);
             }
