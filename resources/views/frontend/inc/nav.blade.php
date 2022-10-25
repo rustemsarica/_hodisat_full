@@ -159,7 +159,7 @@
         <div class="container">
             <div class="d-flex align-items-center justify-content-between">
 
-                <div class="col-auto col-xl-3 pl-0 pr-3 d-flex align-items-center">
+                <div class="col  pl-0 pr-3 d-flex align-items-center">
                     <a class="d-block py-10px mr-3 ml-0" href="{{ route('home') }}">
                         @php
                             $header_logo = get_setting('header_logo');
@@ -173,7 +173,7 @@
                 </div>
 
 
-                <div class="flex-grow-1 front-header-search d-flex align-items-center bg-white">
+                <div class="col flex-grow-1 front-header-search d-flex align-items-center bg-white">
                     <div class="position-relative flex-grow-1" style="max-width: 500px">
                         <form action="{{ route('search') }}" method="GET" class="stop-propagation">
                             <div class="d-flex position-relative align-items-center">
@@ -207,7 +207,7 @@
                 </div>
 
 
-                <div>
+                <div class="col">
                     <div class="d-none d-lg-block ml-3 mr-0">
                         <div class="" id="wishlist">
                             @include('frontend.partials.wishlist')
