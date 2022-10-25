@@ -109,7 +109,7 @@
                                 </span>
                             </h3>
                         </div>
-                        <div id="results" class="row gutters-10 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
+                        <div id="all_products_section" class="row gutters-10 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
 
                         </div>
                     </div>
@@ -173,41 +173,43 @@
              });
         });
 
-        var SITEURL = "{{ route('home.section.best_selling') }}";
-   var page = 1;
-   load_more(page);
-   $(window).scroll(function() {
-      if($(window).scrollTop() + $(window).height() == $(document).height()-500) {
-      page++;
-      load_more(page);
-      }
-    });
-    function load_more(page){
-        $.ajax({
-           url: SITEURL + "?page=" + page,
-           type: "get",
-           datatype: "html",
-           beforeSend: function()
-           {
-            $('.c-preloader').show();
-            }
-        })
-        .done(function(data)
-        {
-            if(data.length == 0){
-            console.log(data.length);
-            //notify user if nothing to load
 
-            return;
-          }
-          $('.c-preloader').hide(); //hide loading animation once data is received
-          $("#results").append(data); //append data into #results element
-           console.log('data.length');
-       })
-       .fail(function(jqXHR, ajaxOptions, thrownError)
-       {
-          alert('No response from server');
-       });
-    }
+        var page = 1;
+        load_more(page);
+
+        $(window).scroll(function() {
+            if($(window).scrollTop() + $(window).height() == $(document).height()-500) {
+            page++;
+            load_more(page);
+            }
+        });
+
+        function load_more(page){
+            $.ajax({
+                url: {{ route('home.section.best_selling') }} + "?page=" + page,
+                type: "get",
+                datatype: "html",
+                beforeSend: function()
+                {
+                    $('.c-preloader').show();
+                    }
+                })
+                .done(function(data)
+                {
+                    if(data.length == 0){
+                    console.log(data.length);
+                    //notify user if nothing to load
+
+                    return;
+                }
+                $('.c-preloader').hide();
+                $("#all_products_section").append(data);
+                console.log('data.length');
+            })
+            .fail(function(jqXHR, ajaxOptions, thrownError)
+            {
+                alert('No response from server');
+            });
+        }
     </script>
 @endsection
