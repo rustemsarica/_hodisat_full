@@ -196,8 +196,7 @@
 
 			var diff  = contentHeight - (scrollTop+windowHeight-contentYSpaces);
 
-            console.log(diff);
-            if(diff < 900) {
+            if(diff < 1000) {
                 if (iCount == currentPage) {
                     iCount++;
                     load_more(currentPage);
@@ -206,9 +205,6 @@
         });
 
         function load_more(page){
-            console.log(home_url);
-            console.log("?page=" + page);
-            console.log("?icount=" + iCount);
 
             $.ajax({
                 url: home_url + "?page=" + page,
@@ -217,15 +213,11 @@
                 success: function(data)
                 {
                     if(data!=""){
-
-                        console.log("append");
                         $("#all_products_section").append(data);
                         currentPage++;
                     }
                 }
             });
-
-            console.log("?page=" + currentPage);
         }
     </script>
 @endsection
