@@ -116,7 +116,15 @@
                             @endforeach
                         </div>
                     </div>
-                    <div class="col-xl-3"></div>
+                    <div class="col-xl-3">
+                        <div class="d-flex mb-3 align-items-baseline border-bottom">
+                            <h3 class="h5 fw-700 mb-0">
+                                <span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">
+                                    {{ translate('Best Sellers') }}
+                                </span>
+                            </h3>
+                        </div>
+                    </div>
             </div>
         </section>
     </div>
