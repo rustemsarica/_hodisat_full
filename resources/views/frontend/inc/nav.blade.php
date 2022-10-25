@@ -170,7 +170,7 @@
                             <img src="{{ static_asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}" class="mw-100 h-30px h-md-60px" height="50">
                         @endif
                     </a>
-
+{{--
                     @if(Route::currentRouteName() != 'home')
                         <div class="d-none d-xl-block align-self-stretch category-menu-icon-box ml-auto mr-0">
                             <div class="h-100 d-flex align-items-center" id="category-menu-icon">
@@ -179,7 +179,7 @@
                                 </div>
                             </div>
                         </div>
-                    @endif
+                    @endif --}}
                 </div>
                 <div class="d-lg-none ml-auto mr-0">
                     <div class="p-2 d-block text-reset c-pointer" data-toggle="class-toggle" data-target=".front-header-search">
