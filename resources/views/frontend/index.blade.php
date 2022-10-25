@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    {{-- Categories , Sliders . Today's deal --}}
+    {{-- Sliders --}}
     <div class="home-banner-area mb-4 mt-4">
         <div class="container">
             <div class="row position-relative">
@@ -54,80 +54,53 @@
     </div>
     @endif
 
-
-    {{-- Flash Deal --}}
-    {{-- @php
-        $flash_deal = \App\Models\FlashDeal::where('status', 1)->where('featured', 1)->first();
-    @endphp
-    @if($flash_deal != null && strtotime(date('Y-m-d H:i:s')) >= $flash_deal->start_date && strtotime(date('Y-m-d H:i:s')) <= $flash_deal->end_date)
-    <section class="mb-4">
-        <div class="container">
-            <div class="px-2 py-4 px-md-4 py-md-3 bg-white shadow-sm rounded">
-
-                <div class="d-flex flex-wrap mb-3 align-items-baseline border-bottom">
-                    <h3 class="h5 fw-700 mb-0">
-                        <span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">{{ translate('Flash Sale') }}</span>
-                    </h3>
-                    <div class="aiz-count-down ml-auto ml-lg-3 align-items-center" data-date="{{ date('Y/m/d H:i:s', $flash_deal->end_date) }}"></div>
-                    <a href="{{ route('flash-deal-details', $flash_deal->slug) }}" class="ml-auto mr-0 btn btn-primary btn-sm shadow-md w-100 w-md-auto">{{ translate('View More') }}</a>
-                </div>
-
-                <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="6" data-xl-items="5" data-lg-items="4"  data-md-items="3" data-sm-items="2" data-xs-items="2" data-arrows='true'>
-                    @foreach ($flash_deal->flash_deal_products->take(20) as $key => $flash_deal_product)
-                        @php
-                            $product = \App\Models\Product::find($flash_deal_product->product_id);
-                        @endphp
-                        @if ($product != null && $product->published != 0)
-                            <div class="carousel-box">
-                                @include('frontend.partials.product_box_1',['product' => $product])
-                            </div>
-                        @endif
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </section>
-    @endif --}}
-
     @if (count($newest_products) > 0)
         <div id="section_newest">
-
-                <section class="mb-4">
-                    <div class="container">
-                        <div class="px-2 py-4 px-md-4 py-md-3 bg-white shadow-sm rounded">
-                            <div class="d-flex mb-3 align-items-baseline border-bottom">
-                                <h3 class="h5 fw-700 mb-0">
-                                    <span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">
-                                        {{ translate('New Products') }}
-                                    </span>
-                                </h3>
+            <section class="mb-4">
+                <div class="container">
+                    <div class="px-2 py-4 px-md-4 py-md-3 bg-white shadow-sm rounded">
+                        <div class="d-flex mb-3 align-items-baseline border-bottom">
+                            <h3 class="h5 fw-700 mb-0">
+                                <span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">
+                                    {{ translate('New Products') }}
+                                </span>
+                            </h3>
+                        </div>
+                        <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="6" data-xl-items="5" data-lg-items="4"  data-md-items="3" data-sm-items="2" data-xs-items="2" data-arrows='true'>
+                            @foreach ($newest_products as $key => $new_product)
+                            <div class="carousel-box">
+                                @include('frontend.partials.product_box_1',['product' => $new_product])
                             </div>
-                            <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="6" data-xl-items="5" data-lg-items="4"  data-md-items="3" data-sm-items="2" data-xs-items="2" data-arrows='true'>
-                                @foreach ($newest_products as $key => $new_product)
-                                <div class="carousel-box">
-                                    @include('frontend.partials.product_box_1',['product' => $new_product])
-                                </div>
-                                @endforeach
-                            </div>
+                            @endforeach
                         </div>
                     </div>
-                </section>
-
+                </div>
+            </section>
         </div>
     @endif
 
     {{-- Featured Section --}}
     <div id="section_featured">
+        <section class="mb-4">
+            <div class="container">
+                <div class="px-2 py-4 px-md-4 py-md-3 bg-white shadow-sm rounded">
+                    <div class="d-flex mb-3 align-items-baseline border-bottom">
+                        <h3 class="h5 fw-700 mb-0">
+                            <span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">
+                                {{ translate('New Products') }}
+                            </span>
+                        </h3>
+                    </div>
 
+                    @foreach ($newest_products as $key => $new_product)
+                        <div class="carousel-box">
+                            @include('frontend.partials.product_box_1',['product' => $new_product])
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
     </div>
-
-    <!-- Auction Product -->
-    @if(addon_is_activated('auction'))
-        <div id="auction_products">
-
-        </div>
-    @endif
-
 
 
     {{-- Banner Section 2 --}}
@@ -181,93 +154,6 @@
 
     </div>
 
-    {{-- Top 10 categories and Brands --}}
-    @if (get_setting('top10_categories') != null && get_setting('top10_brands') != null)
-    <section class="mb-4">
-        <div class="container">
-            <div class="row gutters-10">
-                @if (get_setting('top10_categories') != null)
-                    <div class="col-lg-6">
-                        <div class="d-flex mb-3 align-items-baseline border-bottom">
-                            <h3 class="h5 fw-700 mb-0">
-                                <span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">{{ translate('Top 10 Categories') }}</span>
-                            </h3>
-                            <a href="{{ route('categories.all') }}" class="ml-auto mr-0 btn btn-primary btn-sm shadow-md">{{ translate('View All Categories') }}</a>
-                        </div>
-                        <div class="row gutters-5">
-                            @php $top10_categories = json_decode(get_setting('top10_categories')); @endphp
-                            @foreach ($top10_categories as $key => $value)
-                                @php $category = \App\Models\Category::find($value); @endphp
-                                @if ($category != null)
-                                    <div class="col-sm-6">
-                                        <a href="{{ route('products.category', $category->slug) }}" class="bg-white border d-block text-reset rounded p-2 hov-shadow-md mb-2">
-                                            <div class="row align-items-center no-gutters">
-                                                <div class="col-3 text-center">
-                                                    <img
-                                                        src="{{ static_asset('assets/img/placeholder.jpg') }}"
-                                                        data-src="{{ uploaded_asset($category->banner) }}"
-                                                        alt="{{ $category->getTranslation('name') }}"
-                                                        class="img-fluid img lazyload h-60px"
-                                                        onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
-                                                    >
-                                                </div>
-                                                <div class="col-7">
-                                                    <div class="text-truncat-2 pl-3 fs-14 fw-600 text-left">{{ $category->getTranslation('name') }}</div>
-                                                </div>
-                                                <div class="col-2 text-center">
-                                                    <i class="la la-angle-right text-primary"></i>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                @endif
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
-                @if (get_setting('top10_brands') != null)
-                    <div class="col-lg-6">
-                        <div class="d-flex mb-3 align-items-baseline border-bottom">
-                            <h3 class="h5 fw-700 mb-0">
-                                <span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">{{ translate('Top 10 Brands') }}</span>
-                            </h3>
-                            <a href="{{ route('brands.all') }}" class="ml-auto mr-0 btn btn-primary btn-sm shadow-md">{{ translate('View All Brands') }}</a>
-                        </div>
-                        <div class="row gutters-5">
-                            @php $top10_brands = json_decode(get_setting('top10_brands')); @endphp
-                            @foreach ($top10_brands as $key => $value)
-                                @php $brand = \App\Models\Brand::find($value); @endphp
-                                @if ($brand != null)
-                                    <div class="col-sm-6">
-                                        <a href="{{ route('products.brand', $brand->slug) }}" class="bg-white border d-block text-reset rounded p-2 hov-shadow-md mb-2">
-                                            <div class="row align-items-center no-gutters">
-                                                <div class="col-4 text-center">
-                                                    <img
-                                                        src="{{ static_asset('assets/img/placeholder.jpg') }}"
-                                                        data-src="{{ uploaded_asset($brand->logo) }}"
-                                                        alt="{{ $brand->getTranslation('name') }}"
-                                                        class="img-fluid img lazyload h-60px"
-                                                        onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
-                                                    >
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="text-truncate-2 pl-3 fs-14 fw-600 text-left">{{ $brand->getTranslation('name') }}</div>
-                                                </div>
-                                                <div class="col-2 text-center">
-                                                    <i class="la la-angle-right text-primary"></i>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                @endif
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
-            </div>
-        </div>
-    </section>
-    @endif
 
 @endsection
 
