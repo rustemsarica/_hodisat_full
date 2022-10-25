@@ -25,6 +25,7 @@ use Illuminate\Auth\Events\PasswordReset;
 use Cache;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -41,7 +42,7 @@ class HomeController extends Controller
         });
 
         $all_products = Cache::remember('home_products', 86400, function () {
-            $products = Product::without('product_translations');
+            $products = DB::table('products');
             return $all_products = filter_products($products->inRandomOrder())->limit(30)->get();
         });
 
