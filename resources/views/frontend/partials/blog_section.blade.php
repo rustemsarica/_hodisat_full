@@ -21,10 +21,10 @@
             </div>
             <div class="col-8 border-left border-light">
                 <div class="p-3 text-left">
-                    <h2 class="h6 fw-600 text-truncate">
+                    <h2 class="fs-12 fw-600">
                         <a href="{{ url('blog').'/'. $blog->slug }}" class="text-reset">{{ $blog->title }}</a>
                     </h2>
-                    <a href="{{ url('blog').'/'. $blog->slug }}" class="btn btn-outline-primary btn-sm">
+                    <a href="{{ url('blog').'/'. $blog->slug }}" class="btn btn-outline-primary btn-xs">
                         {{ translate('View More') }} <i class="las la-angle-right"></i>
                     </a>
                 </div>
