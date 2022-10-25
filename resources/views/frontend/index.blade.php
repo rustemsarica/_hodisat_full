@@ -202,6 +202,7 @@
                 if (iCount == page) {
                 iCount++;
                     load_more(page);
+                    page++;
                 }
             }
         });
@@ -225,7 +226,6 @@
                     }
                     if(data!=""){
                         $("#all_products_section").append(data);
-                        page++;
                     }
             });
         }
