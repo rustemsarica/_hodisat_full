@@ -175,7 +175,6 @@
 
         var iCount = 1;
         var page = 1;
-        load_more(page);
 
         var home_url = "{{ route('home.section.best_selling') }}";
 
