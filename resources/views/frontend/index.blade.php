@@ -99,16 +99,15 @@
     {{-- Featured Section --}}
     <div id="section_featured">
         <section class="mb-4 mx-2">
-            <div class="container px-2 py-4 px-md-4 py-md-3 bg-white shadow-sm rounded">
-
-                    <div class="d-flex mb-3 align-items-baseline border-bottom">
-                        <h3 class="h5 fw-700 mb-0">
-                            <span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">
-                                {{ translate('All Products') }}
-                            </span>
-                        </h3>
-                    </div>
+            <div class="container py-4 px-md-4 py-md-3 bg-white shadow-sm rounded">
                     <div class="col-xl-12 px-0">
+                        <div class="d-flex mb-3 align-items-baseline border-bottom">
+                            <h3 class="h5 fw-700 mb-0">
+                                <span class="border-bottom border-primary border-width-2 pb-3 d-inline-block">
+                                    {{ translate('All Products') }}
+                                </span>
+                            </h3>
+                        </div>
                         <div class="row gutters-10 row-cols-xxl-6 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
                             @foreach ($all_products as $key => $product)
                             <div class="col">
@@ -117,7 +116,6 @@
                             @endforeach
                         </div>
                     </div>
-
             </div>
         </section>
     </div>
