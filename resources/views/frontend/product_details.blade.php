@@ -263,6 +263,8 @@
                                     $temp_user_id = Session()->get('temp_user_id');
                                     if ($temp_user_id) {
                                         $cart = \App\Models\Cart::where('temp_user_id', $temp_user_id);
+                                    }else{
+                                        $cart = null;
                                     }
                                 }
                                 @endphp
