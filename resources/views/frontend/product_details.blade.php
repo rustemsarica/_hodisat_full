@@ -266,7 +266,7 @@
                                     }
                                 }
                                 @endphp
-                                @if (in_array($detailedProduct->id, $cart->pluck('product_id')->toArray()))
+                                @if ($cart!=null && in_array($detailedProduct->id, $cart->pluck('product_id')->toArray()))
                                     <button type="button" class="btn btn-danger mr-2 remove-from-cart fw-600"
                                         onclick="removeFromCart( {{ $cart->where('product_id', $detailedProduct->id)->first()->id }})">
                                         <i class="las la-trash"></i>
