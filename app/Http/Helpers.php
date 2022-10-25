@@ -13,6 +13,7 @@ use App\Models\Upload;
 use App\Models\Wallet;
 use App\Models\Address;
 use App\Models\Carrier;
+use App\Models\Category;
 use App\Models\Country;
 use App\Models\Product;
 use App\Models\Currency;
