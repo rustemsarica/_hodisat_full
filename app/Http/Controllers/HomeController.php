@@ -42,7 +42,7 @@ class HomeController extends Controller
 
 
             $products = Product::query();
-             $all_products = filter_products($products->inRandomOrder())->limit(30)->get();
+             $all_products = [];
 
 
         return view('frontend.index', compact('newest_products', 'all_products'));
