@@ -89,7 +89,7 @@
                     </div>
 
                     @foreach ($newest_products as $key => $new_product)
-                        <div class="col-lg-2 col-6">
+                        <div class="row gutters-5 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-4 row-cols-md-3 row-cols-2">
                             @include('frontend.partials.product_box_1',['product' => $new_product])
                         </div>
                     @endforeach
