@@ -177,6 +177,7 @@
         var page = 1;
         load_more(page);
 
+        var home_url = {{ route('home.section.best_selling') }}
         $(window).scroll(function() {
             if($(window).scrollTop() + $(window).height() == $(document).height()-500) {
             page++;
@@ -186,7 +187,7 @@
 
         function load_more(page){
             $.ajax({
-                url: {{ route('home.section.best_selling') }} + "?page=" + page,
+                url: home_url + "?page=" + page,
                 type: "get",
                 datatype: "html",
                 beforeSend: function()
