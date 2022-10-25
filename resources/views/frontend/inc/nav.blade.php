@@ -179,7 +179,7 @@
                 </div>
 
                 <div class="col-xl-6 flex-grow-1 front-header-search d-flex align-items-center bg-white">
-                    <div class="position-relative flex-grow-1" style="max-width: 500px">
+                    <div class="position-relative flex-grow-1 m-auto" style="max-width: 500px">
                         <form action="{{ route('search') }}" method="GET" class="stop-propagation">
                             <div class="d-flex position-relative align-items-center">
                                 <div class="d-lg-none" data-toggle="class-toggle" data-target=".front-header-search">
@@ -219,14 +219,14 @@
                     </div>
                 </div>
 
-                <div class="col-xl-3">
-                    <div class="d-none d-lg-block ml-3 mr-0">
+                <div class="col-xl-3 d-none d-lg-block">
+                    <div class="ml-3 mr-0">
                         <div class="" id="wishlist">
                             @include('frontend.partials.wishlist')
                         </div>
                     </div>
 
-                    <div class="d-none d-lg-block  align-self-stretch ml-3 mr-0" data-hover="dropdown">
+                    <div class="align-self-stretch ml-3 mr-0" data-hover="dropdown">
                         <div class="nav-cart-box dropdown h-100" id="cart_items">
                             @include('frontend.partials.cart')
                         </div>
