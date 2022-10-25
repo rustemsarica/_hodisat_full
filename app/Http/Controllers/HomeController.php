@@ -186,7 +186,7 @@ class HomeController extends Controller
         $data = '';
         if ($request->ajax()) {
             foreach ($products as $product) {
-                $data.=view('frontend.partials.product_box_1',['product' => $product]);
+                $data.='<div class="col">'.view('frontend.partials.product_box_1',['product' => $product]).'</div>';
             }
             return $data;
         }
