@@ -1,4 +1,4 @@
-<div class="card-columns">
+<div class="card-columns" style="column-count: 5 !important;">
     @foreach (\App\Utility\CategoryUtility::get_immediate_children_ids($category->id) as $key => $first_level_id)
         <div class="card shadow-none border-0">
             <ul class="list-unstyled mb-3">
