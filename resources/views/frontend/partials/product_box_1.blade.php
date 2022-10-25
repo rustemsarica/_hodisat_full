@@ -32,7 +32,7 @@
                 @endif
                 <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
             </div>
-            <div class="c-pointer" onclick="addToWishList({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left">
+            <div class="c-pointer fs-18" onclick="addToWishList({{ $product->id }})" data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left">
                 <i class="la la-heart-o"></i>
             </div>
         </div>
