@@ -210,22 +210,13 @@
                 url: home_url + "?page=" + page,
                 type: "get",
                 datatype: "html",
-                beforeSend: function()
+                success: function(data)
                 {
-                    $('.c-preloader').show();
-                    }
-                })
-                .done(function(data)
-                {
-                    $('.c-preloader').hide();
-                    if(data.length == 0){
-                        console.log(data.length);
-                        return;
-                    }
                     if(data!=""){
                         $("#all_products_section").append(data);
                         page++;
                     }
+                }
             });
         }
     </script>
