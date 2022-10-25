@@ -186,7 +186,7 @@ class HomeController extends Controller
         $data = '';
         if ($request->ajax()) {
             foreach ($posts as $post) {
-                $data.='<li>'.$post->id.' <strong>'.$post->name.'</strong> </li>';
+                $data.='<li>'.$post->id.'  </li>';
             }
             return $data;
         }
