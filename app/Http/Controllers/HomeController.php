@@ -46,7 +46,7 @@ class HomeController extends Controller
             return $all_products = filter_products($products->inRandomOrder())->limit(30)->get();
         });
 
-        return view('frontend.index', compact('newest_products', 'all_products'));
+        return view('frontend.index', ['newest_products', 'all_products']);
     }
 
     public function login()
