@@ -23,8 +23,8 @@
         </span>
         @endif
     </div>
-    <div class="p-md-3 p-2 text-left">
-        <div class="d-flex justify-content-between">
+
+        <div class="p-md-3 p-2 d-flex justify-content-between">
             <div class="fs-18">
                 @if(home_base_price($product->unit_price) != home_discounted_base_price($product))
                     <del class="fw-600 opacity-80 mr-1">{{ home_base_price($product->unit_price) }}</del>
@@ -35,5 +35,4 @@
                 <i class="la la-heart-o"></i>
             </div>
         </div>
-    </div>
 </div>
