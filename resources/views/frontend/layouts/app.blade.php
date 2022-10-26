@@ -140,7 +140,9 @@
     <!-- End Facebook Pixel Code -->
 @endif
 
-
+@php
+    echo get_setting('header_script');
+@endphp
 
 </head>
 <body>
@@ -225,63 +227,6 @@
     <script src="{{ static_asset('assets/js/aiz-core.js') }}"></script>
 
 
-    <script>
-        $(document).ready(function(){
-            $.post('{{ route('home.section.best_sellers') }}', {_token:'{{ csrf_token() }}'}, function(data){
-                $('#section_best_sellers').html(data);
-                AIZ.plugins.slickCarousel();
-            });
-        });
-
-
-        var iCount = 2;
-        var currentPage = 1;
-
-        var home_url = "{{ route('home.section.all_products') }}";
-        load_more(currentPage);
-
-        var windowHeight = $(window).height();
-
-        var content = $("#content");
-
-        var contentYSpaces = 0;
-
-        contentYSpaces += parseInt($(content).css("marginTop"));
-        contentYSpaces += parseInt($(content).css("marginBottom"));
-        contentYSpaces += parseInt($(content).css("paddingTop"));
-        contentYSpaces += parseInt($(content).css("paddingBottom"));
-
-        $(window).scroll(function() {
-            var contentHeight = $("#content").height();
-
-            var scrollTop = $(this).scrollTop();
-
-            var diff  = contentHeight - (scrollTop+windowHeight-contentYSpaces);
-
-            if(diff < 1000) {
-                if (iCount == currentPage) {
-                    iCount++;
-                    load_more(currentPage);
-                }
-            }
-        });
-
-        function load_more(page){
-
-            $.ajax({
-                url: home_url + "?page=" + page,
-                type: "get",
-                datatype: "html",
-                success: function(data)
-                {
-                    if(data!=""){
-                        $("#all_products_section").append(data);
-                        currentPage++;
-                    }
-                }
-            });
-        }
-    </script>
 
     @if (get_setting('facebook_chat') == 1)
         <script type="text/javascript">
@@ -524,7 +469,11 @@
     </script>
 
 
+    @yield('script')
 
+    @php
+        echo get_setting('footer_script');
+    @endphp
 
 </body>
 </html>
