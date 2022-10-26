@@ -25,7 +25,7 @@
                             }
                         @endphp
                         <div class="dropdown-toggle text-reset py-2 c-pointer" data-toggle="dropdown" data-display="static">
-                            <img src="{{ static_asset('assets/img/flags/tr.png') }}" data-src="{{ static_asset('assets/img/flags/'.$locale.'.png') }}" class="mr-2 lazyload" alt="{{ \App\Models\Language::where('code', $locale)->first()->name }}" height="11">
+                            <img src="{{ static_asset('assets/img/flags/tr.png') }}" data-src="{{ static_asset('assets/img/flags/'.$locale.'.png') }}" class="mr-2 lazyload" alt="{{ \App\Models\Language::where('code', $locale)->first()->name }}" height="11" width="16">
                             <span class="opacity-80">{{ \App\Models\Language::where('code', $locale)->first()->name }}</span>
                         </div>
                         <ul class="dropdown-menu dropdown-menu-left">
@@ -165,9 +165,9 @@
                             $header_logo = get_setting('header_logo');
                         @endphp
                         @if($header_logo != null)
-                            <img src="{{ uploaded_asset($header_logo) }}" alt="{{ env('APP_NAME') }}" class="mw-100 h-30px h-md-60px" height="50">
+                            <img src="{{ uploaded_asset($header_logo) }}" alt="{{ env('APP_NAME') }}" class="mw-100 h-30px h-md-60px" height="50" width="160">
                         @else
-                            <img src="{{ static_asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}" class="mw-100 h-30px h-md-60px" height="50">
+                            <img src="{{ static_asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}" class="mw-100 h-30px h-md-60px" height="50" width="160">
                         @endif
                     </a>
                 </div>

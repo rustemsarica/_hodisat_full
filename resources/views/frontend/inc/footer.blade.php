@@ -6,9 +6,9 @@
                 <div class="mt-4">
                     <a href="{{ route('home') }}" class="d-block">
                         @if(get_setting('footer_logo') != null)
-                            <img class="lazyload" src="{{ static_asset('assets/img/placeholder-rect.jpg') }}" data-src="{{ uploaded_asset(get_setting('footer_logo')) }}" alt="{{ env('APP_NAME') }}" height="44">
+                            <img class="lazyload" src="{{ static_asset('assets/img/placeholder-rect.jpg') }}" data-src="{{ uploaded_asset(get_setting('footer_logo')) }}" alt="{{ env('APP_NAME') }}" height="50" width="160">
                         @else
-                            <img class="lazyload" src="{{ static_asset('assets/img/placeholder-rect.jpg') }}" data-src="{{ static_asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}" height="44">
+                            <img class="lazyload" src="{{ static_asset('assets/img/placeholder-rect.jpg') }}" data-src="{{ static_asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}" height="50" width="160">
                         @endif
                     </a>
                     <div class="my-3">
@@ -28,12 +28,12 @@
                     <div class="w-300px mw-100 mx-auto mx-md-0">
                         @if(get_setting('play_store_link') != null)
                             <a href="{{ get_setting('play_store_link') }}" target="_blank" class="d-inline-block mr-3 ml-0">
-                                <img src="{{ static_asset('assets/img/play.png') }}" class="mx-100 h-40px" alt="Hodisat PlayStore">
+                                <img src="{{ static_asset('assets/img/play.png') }}" class="mx-100 h-40px" height="50" width="160" alt="Hodisat PlayStore">
                             </a>
                         @endif
                         @if(get_setting('app_store_link') != null)
                             <a href="{{ get_setting('app_store_link') }}" target="_blank" class="d-inline-block">
-                                <img src="{{ static_asset('assets/img/app.png') }}" class="mx-100 h-40px" alt="Hodisat AppStore">
+                                <img src="{{ static_asset('assets/img/app.png') }}" class="mx-100 h-40px" height="50" width="160" alt="Hodisat AppStore">
                             </a>
                         @endif
                     </div>
