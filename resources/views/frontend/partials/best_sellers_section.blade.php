@@ -8,7 +8,8 @@
     <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="1" data-lg-items="1"  data-md-items="1" data-sm-items="1" data-xs-items="1" data-rows="6">
         @foreach ($best_selers as $key => $seller)
             @if ($seller->user != null)
-                <div class="carousel-box row no-gutters box-3 align-items-center border border-light rounded hov-shadow-md my-2 has-transition">
+                <div class="carousel-box">
+                    <div class="row no-gutters box-3 align-items-center border border-light rounded hov-shadow-md my-2 has-transition">
                         <div class="col-4">
                             <a href="{{ route('shop.visit', $seller->user->username) }}" class="d-block p-3">
                                 <img
@@ -33,7 +34,7 @@
                                 </a>
                             </div>
                         </div>
-
+                    </div>
                 </div>
             @endif
         @endforeach

@@ -6,8 +6,8 @@
 
 <div class="aiz-carousel gutters-5 half-outside-arrow" data-items="1" data-rows="10" data-arrows='false' data-infinite='false'>
     @foreach ($blogs as $key => $blog)
-    <div class="carousel-box row no-gutters box-3 align-items-center border border-light rounded hov-shadow-md my-2 has-transition">
-
+    <div class="carousel-box">
+        <div class="row no-gutters box-3 align-items-center border border-light rounded hov-shadow-md my-2 has-transition">
             <div class="col-4">
                 <a href="{{ url('blog').'/'. $blog->slug }}" class="d-block p-3">
                     <img
@@ -29,6 +29,7 @@
                     </a>
                 </div>
             </div>
+        </div>
     </div>
     @endforeach
 </div>
