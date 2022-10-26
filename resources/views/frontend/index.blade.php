@@ -7,7 +7,7 @@
             <div class="container">
                 <div class="row position-relative">
                         @if (get_setting('home_slider_images') != null)
-                            <div class="aiz-carousel m-auto mobile-img-auto-height" data-arrows="false" data-dots="false" data-autoplay="true">
+                            <div class="aiz-carousel dots-inside-bottom mobile-img-auto-height" data-arrows="false" data-dots="false" data-autoplay="true">
                                 @php $slider_images = json_decode(get_setting('home_slider_images'), true);  @endphp
                                 @foreach ($slider_images as $key => $value)
                                     <div class="carousel-box">

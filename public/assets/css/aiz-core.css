@@ -8644,7 +8644,7 @@ div.footable-loader > span.fooicon:after {
 .aiz-carousel .slick-dots .slick-active button {
     background: var(--primary);
 }
-.aiz-carousel.dots-inside-bottom .slick-dots {
+.aiz-carousel .dots-inside-bottom .slick-dots {
     position: absolute;
     bottom: 10px;
     left: 50%;
