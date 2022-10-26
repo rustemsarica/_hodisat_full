@@ -17,7 +17,7 @@ Route::group(['prefix' => 'v2/auth', 'middleware' => ['app_language']], function
     Route::post('check-username', 'App\Http\Controllers\Api\V2\AuthController@checkUsername');
 });
 
-Route::group(['prefix' => 'v2', 'middleware' => ['app_language']], function() {
+Route::group(['prefix' => 'v2', 'as' =>'api.', 'middleware' => ['app_language']], function() {
 
     Route::get('get-search-suggestions', 'App\Http\Controllers\Api\V2\SearchSuggestionController@getList');
     Route::get('languages', 'App\Http\Controllers\Api\V2\LanguageController@getList');
