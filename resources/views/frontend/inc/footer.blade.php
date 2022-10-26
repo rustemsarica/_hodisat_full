@@ -141,27 +141,27 @@
                 <ul class="list-inline my-3 my-md-0 social colored text-center">
                     @if ( get_setting('facebook_link') !=  null )
                     <li class="list-inline-item">
-                        <a href="{{ get_setting('facebook_link') }}" target="_blank" class="facebook"><i class="lab la-facebook-f"></i></a>
+                        <div onclick="window.open('{{ get_setting('facebook_link') }}','_blank');" class="facebook c-pointer"><i class="lab la-facebook-f"></i></div>
                     </li>
                     @endif
                     @if ( get_setting('twitter_link') !=  null )
                     <li class="list-inline-item">
-                        <a href="{{ get_setting('twitter_link') }}" target="_blank" class="twitter"><i class="lab la-twitter"></i></a>
+                        <div onclick="window.open('{{ get_setting('twitter_link') }}','_blank');" class="twitter c-pointer"><i class="lab la-twitter"></i></div>
                     </li>
                     @endif
                     @if ( get_setting('instagram_link') !=  null )
                     <li class="list-inline-item">
-                        <a href="{{ get_setting('instagram_link') }}" target="_blank" class="instagram"><i class="lab la-instagram"></i></a>
+                        <div onclick="window.open('{{ get_setting('instagram_link') }}','_blank');" class="instagram c-pointer"><i class="lab la-instagram"></i></div>
                     </li>
                     @endif
                     @if ( get_setting('youtube_link') !=  null )
                     <li class="list-inline-item">
-                        <a href="{{ get_setting('youtube_link') }}" target="_blank" class="youtube"><i class="lab la-youtube"></i></a>
+                        <div onclick="window.open('{{ get_setting('youtube_link') }}','_blank');" class="youtube c-pointer"><i class="lab la-youtube"></i></div>
                     </li>
                     @endif
                     @if ( get_setting('linkedin_link') !=  null )
                     <li class="list-inline-item">
-                        <a href="{{ get_setting('linkedin_link') }}" target="_blank" class="linkedin"><i class="lab la-linkedin-in"></i></a>
+                        <div onclick="window.open('{{ get_setting('linkedin_link') }}','_blank');" class="linkedin c-pointer"><i class="lab la-linkedin-in"></i></div>
                     </li>
                     @endif
                 </ul>
