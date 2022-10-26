@@ -41,7 +41,7 @@ class HomeController extends Controller
             return filter_products(Product::without('product_translations')->where('current_stock',1)->latest())->limit(12)->get();
         });
 
-return $newest_products;
+
         return view('frontend.index', ['newest_products'=>$newest_products]);
     }
 
