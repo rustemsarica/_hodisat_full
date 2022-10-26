@@ -281,7 +281,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/reviews', ReviewController::class);
 
     // Product Conversation
-    Route::resource('conversations', ConversationController::class);
+    Route::resource('conversations', ConversationController::class)->except('destroy');
     Route::controller(ConversationController::class)->group(function () {
         Route::get('/conversations/destroy/{id}', 'destroy')->name('conversations.destroy');
         Route::post('conversations/refresh', 'refresh')->name('conversations.refresh');
