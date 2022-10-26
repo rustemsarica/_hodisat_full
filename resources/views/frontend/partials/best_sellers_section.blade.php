@@ -5,7 +5,7 @@
 @endphp
 
 @if (get_setting('vendor_system_activation') == 1)
-    <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="1" data-lg-items="1"  data-md-items="1" data-sm-items="1" data-xs-items="1" data-rows="6">
+    <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="1" data-arrows="false" data-rows="6">
         @foreach ($best_selers as $key => $seller)
             @if ($seller->user != null)
                 <div class="carousel-box">
