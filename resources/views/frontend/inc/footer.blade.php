@@ -131,12 +131,12 @@
 <footer class="pt-3 pb-7 pb-xl-3 bg-black text-light">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-4">
+            <div class="col-lg-12 mb-2">
                 <div class="text-center text-md-left" current-verison="{{get_setting("current_version")}}">
                     {!! get_setting('frontend_copyright_text',null,App::getLocale()) !!}
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-12">
                 @if ( get_setting('show_social_links') )
                 <ul class="list-inline my-3 my-md-0 social colored text-center">
                     @if ( get_setting('facebook_link') !=  null )
@@ -167,19 +167,7 @@
                 </ul>
                 @endif
             </div>
-            <div class="col-lg-4">
-                <div class="text-center text-md-right">
-                    <ul class="list-inline mb-0">
-                        @if ( get_setting('payment_method_images') !=  null )
-                            @foreach (explode(',', get_setting('payment_method_images')) as $key => $value)
-                                <li class="list-inline-item">
-                                    <img src="{{ uploaded_asset($value) }}" height="30" class="mw-100 h-auto" style="max-height: 30px">
-                                </li>
-                            @endforeach
-                        @endif
-                    </ul>
-                </div>
-            </div>
+
         </div>
     </div>
 </footer>
