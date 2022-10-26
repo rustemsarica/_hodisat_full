@@ -71,7 +71,7 @@ Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => ['auth', 'ad
     });
 
     // Brand
-    Route::resource('brands', BrandController::class);
+    Route::resource('brands', BrandController::class)->except('edit', 'destroy');
     Route::controller(BrandController::class)->group(function () {
         Route::get('/brands/edit/{id}', 'edit')->name('brands.edit');
         Route::get('/brands/destroy/{id}', 'destroy')->name('brands.destroy');
