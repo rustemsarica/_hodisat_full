@@ -238,7 +238,7 @@ Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => ['auth', 'ad
         });
 
         // Custom Page
-        Route::resource('custom-pages', PageController::class);
+        Route::resource('custom-pages', PageController::class)->except('edit', 'destroy');
         Route::controller(PageController::class)->group(function () {
             Route::get('/custom-pages/edit/{id}', 'edit')->name('custom-pages.edit');
             Route::get('/custom-pages/destroy/{id}', 'destroy')->name('custom-pages.destroy');
@@ -246,18 +246,18 @@ Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => ['auth', 'ad
     });
 
     // Staff Roles
-    Route::resource('roles', RoleController::class);
+    Route::resource('roles', RoleController::class)->except('edit', 'destroy');
     Route::controller(RoleController::class)->group(function () {
         Route::get('/roles/edit/{id}', 'edit')->name('roles.edit');
         Route::get('/roles/destroy/{id}', 'destroy')->name('roles.destroy');
     });
 
     // Staff
-    Route::resource('staffs', StaffController::class);
+    Route::resource('staffs', StaffController::class)->except('destroy');;
     Route::get('/staffs/destroy/{id}', [StaffController::class, 'destroy'])->name('staffs.destroy');
 
     // Flash Deal
-    Route::resource('flash_deals', FlashDealController::class);
+    Route::resource('flash_deals', FlashDealController::class)->except('edit', 'destroy');
     Route::controller(FlashDealController::class)->group(function () {
         Route::get('/flash_deals/edit/{id}', 'edit')->name('flash_deals.edit');
         Route::get('/flash_deals/destroy/{id}', 'destroy')->name('flash_deals.destroy');
@@ -292,7 +292,6 @@ Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => ['auth', 'ad
         Route::get('/orders/destroy/{id}', 'destroy')->name('orders.destroy');
         Route::post('/bulk-order-delete', 'bulk_order_delete')->name('bulk-order-delete');
 
-        Route::get('/orders/destroy/{id}', 'destroy')->name('orders.destroy');
         Route::post('/orders/details', 'order_details')->name('orders.details');
         Route::post('/orders/update_delivery_status', 'update_delivery_status')->name('orders.update_delivery_status');
         Route::post('/orders/update_payment_status', 'update_payment_status')->name('orders.update_payment_status');
