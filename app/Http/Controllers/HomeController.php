@@ -39,10 +39,6 @@ class HomeController extends Controller
     public function index()
     {
 
-        $uploads = Upload::get();
-        foreach($uploads as $upload){
-            Upload::where('id',$upload->id)->update(['file_name'=>explode('.',$upload->file_name)[0].'.webp','extension'=>'webp']);
-        }
         $newest_products = Cache::remember('newest_products', 3600, function () {
             return filter_products(Product::without('product_translations')->latest())->limit(12)->get();
         });
