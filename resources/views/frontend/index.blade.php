@@ -12,7 +12,7 @@
                                 @foreach ($slider_images as $key => $value)
                                     <a href="{{ json_decode(get_setting('home_slider_links'), true)[$key] }}">
                                         <div class="carousel-box" style='height: 457px;
-                                        width: 100%; background-image: url("{{ uploaded_asset($slider_images[$key]) }}")';>
+                                        width: 100%; background-image: url("{{ uploaded_asset($slider_images[$key]) }}");'>
 
 
                                         </div>
