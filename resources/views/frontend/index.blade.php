@@ -37,7 +37,7 @@
                         @foreach ($banner_1_imags as $key => $value)
                             <div class="col-xl col-md-6">
                                 <div class="mb-3 mb-lg-0">
-                                    <a href="{{ json_decode(get_setting('home_banner1_links'), true)[$key] }}" class="d-block text-reset">
+                                    <a href="{{ json_decode(get_setting('home_banner1_links'), true)[$key] }}" class="d-block  text-reset">
                                         <img src="{{ static_asset('assets/img/placeholder-rect.jpg') }}" data-src="{{ uploaded_asset($banner_1_imags[$key]) }}" alt="{{ env('APP_NAME') }} promo" class="img-fluid lazyload w-100">
                                     </a>
                                 </div>
