@@ -37,9 +37,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $newest_products = Cache::remember('newest_products', 3600, function () {
-            return filter_products(Product::without('product_translations')->where('current_stock',1)->latest())->limit(12)->get();
-        });
+
+        $newest_products = array();
 
 
         return view('frontend.index', ['newest_products'=>$newest_products]);
