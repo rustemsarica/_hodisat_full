@@ -274,7 +274,7 @@ Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => ['auth', 'ad
     });
 
     // Order
-    Route::resource('orders', OrderController::class);
+    Route::resource('orders', OrderController::class)->except('destroy');
     Route::controller(OrderController::class)->group(function () {
         // All Orders
         Route::get('/all_orders', 'all_orders')->name('all_orders.index');
