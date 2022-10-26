@@ -48,7 +48,7 @@
     <link rel="icon" href="{{ uploaded_asset(get_setting('site_icon')) }}">
 
     <!-- Google Fonts -->
-    <link href="{{ static_asset('assets/fonts/google-font.css') }}" rel="stylesheet">
+    {{-- <link href="{{ static_asset('assets/fonts/google-font.css') }}" rel="stylesheet"> --}}
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="{{ static_asset('assets/css/vendors.css') }}">
@@ -140,9 +140,7 @@
     <!-- End Facebook Pixel Code -->
 @endif
 
-@php
-    echo get_setting('header_script');
-@endphp
+
 
 </head>
 <body>
@@ -424,7 +422,6 @@
                        $('.c-preloader').hide();
                        $('#modal-size').removeClass('modal-lg');
                        $('#addToCart-modal-body').html(data.modal_view);
-                       AIZ.extra.plusMinus();
                        AIZ.plugins.slickCarousel();
                        updateNavCart(data.nav_cart_view,data.cart_count);
                     }
@@ -472,9 +469,6 @@
 
     @yield('script')
 
-    @php
-        echo get_setting('footer_script');
-    @endphp
 
 </body>
 </html>
