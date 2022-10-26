@@ -88,7 +88,7 @@ Route::controller(LoginController::class)->group(function () {
 });
 
 Route::controller(VerificationController::class)->group(function () {
-    Route::get('/email/resend', 'resend')->name('verification.resend');
+    Route::get('/email/resend', 'resend')->name('email.verification.resend');
     Route::get('/verification-confirmation/{code}', 'verification_confirmation')->name('email.verification.confirmation');
 });
 
