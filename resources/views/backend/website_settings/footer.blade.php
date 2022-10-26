@@ -12,7 +12,7 @@
     <ul class="nav nav-tabs nav-fill border-light">
         @foreach (\App\Models\Language::all() as $key => $language)
             <li class="nav-item">
-                <a class="nav-link text-reset @if ($language->code == $lang) active @else bg-soft-dark border-light border-left-0 @endif py-3" href="{{ route('website.footer', ['lang'=> $language->code] ) }}">
+                <a class="nav-link text-reset @if ($language->code == $lang) active @else bg-soft-dark border-light border-left-0 @endif py-3" href="{{ route('admin.website.footer', ['lang'=> $language->code] ) }}">
                     <img src="{{ static_asset('assets/img/flags/'.$language->code.'.png') }}" height="11" class="mr-1">
                     <span>{{$language->name}}</span>
                 </a>
@@ -31,7 +31,7 @@
     						<h6 class="mb-0">{{ translate('About Widget') }}</h6>
     					</div>
     					<div class="card-body">
-    						<form action="{{ route('business_settings.update') }}" method="POST" enctype="multipart/form-data">
+    						<form action="{{ route('admin.business_settings.update') }}" method="POST" enctype="multipart/form-data">
     							@csrf
     							<div class="form-group">
     			                    <label class="form-label" for="signinSrEmail">{{ translate('Footer Logo') }}</label>
@@ -75,7 +75,7 @@
     						<h6 class="mb-0">{{ translate('Contact Info Widget') }}</h6>
     					</div>
     					<div class="card-body">
-                            <form action="{{ route('business_settings.update') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin.business_settings.update') }}" method="POST" enctype="multipart/form-data">
     							@csrf
                                 <div class="form-group">
     								<label>{{ translate('Contact address') }} ({{ translate('Translatable') }})</label>
@@ -105,7 +105,7 @@
     						<h6 class="mb-0">{{ translate('Link Widget One') }}</h6>
     					</div>
     					<div class="card-body">
-                            <form action="{{ route('business_settings.update') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin.business_settings.update') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
     							<div class="form-group">
     								<label>{{ translate('Title') }} ({{ translate('Translatable') }})</label>
@@ -179,7 +179,7 @@
     	<div class="card-header">
     		<h6 class="fw-600 mb-0">{{ translate('Footer Bottom') }}</h6>
     	</div>
-        <form action="{{ route('business_settings.update') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.business_settings.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
            <div class="card-body">
                 <div class="card shadow-none bg-light">

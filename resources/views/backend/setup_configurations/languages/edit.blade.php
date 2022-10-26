@@ -13,7 +13,7 @@
                 <h5 class="mb-0 h6">{{translate('update Language Info')}}</h5>
             </div>
             <div class="card-body p-0">
-                <form class="p-4" action="{{ route('languages.update', $language->id) }}" method="POST">
+                <form class="p-4" action="{{ route('admin.languages.update', $language->id) }}" method="POST">
                     @csrf
                     <div class="form-group row">
                         <div class="col-lg-3">

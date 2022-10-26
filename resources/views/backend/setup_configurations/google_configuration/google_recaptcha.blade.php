@@ -8,7 +8,7 @@
                     <h3 class="mb-0 h6">{{translate('Google reCAPTCHA Setting')}}</h3>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" action="{{ route('google_recaptcha.update') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('admin.google_recaptcha.update') }}" method="POST">
                         @csrf
                         <div class="form-group row">
                             <div class="col-md-4">

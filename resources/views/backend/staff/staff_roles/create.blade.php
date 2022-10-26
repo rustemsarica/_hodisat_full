@@ -7,7 +7,7 @@
         <div class="card-header">
             <h5 class="mb-0 h6">{{translate('Role Information')}}</h5>
         </div>
-        <form action="{{ route('roles.store') }}" method="POST">
+        <form action="{{ route('admin.roles.store') }}" method="POST">
             @csrf
             <div class="card-body">
                 <div class="form-group row">

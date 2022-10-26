@@ -14,7 +14,7 @@
         </div>
         @if($type != 'Seller')
         <div class="col text-right">
-            <a href="{{ route('products.create') }}" class="btn btn-circle btn-info">
+            <a href="{{ route('admin.products.create') }}" class="btn btn-circle btn-info">
                 <span>{{translate('Add New Product')}}</span>
             </a>
         </div>
@@ -165,22 +165,22 @@
                             </label>
                         </td>
                         <td class="text-right">
-                            <a class="btn btn-soft-success btn-icon btn-circle btn-sm"  href="{{ route('product', $product->slug) }}" target="_blank" title="{{ translate('View') }}">
+                            <a class="btn btn-soft-success btn-icon btn-circle btn-sm"  href="{{ route('admin.product', $product->slug) }}" target="_blank" title="{{ translate('View') }}">
                                 <i class="las la-eye"></i>
                             </a>
                             @if ($type == 'Seller')
-                            <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('products.seller.edit', ['id'=>$product->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Edit') }}">
+                            <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('admin.products.seller.edit', ['id'=>$product->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Edit') }}">
                                 <i class="las la-edit"></i>
                             </a>
                             @else
-                            <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('products.admin.edit', ['id'=>$product->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Edit') }}">
+                            <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('admin.products.admin.edit', ['id'=>$product->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Edit') }}">
                                 <i class="las la-edit"></i>
                             </a>
                             @endif
-                            <a class="btn btn-soft-warning btn-icon btn-circle btn-sm" href="{{route('products.duplicate', ['id'=>$product->id, 'type'=>$type]  )}}" title="{{ translate('Duplicate') }}">
+                            <a class="btn btn-soft-warning btn-icon btn-circle btn-sm" href="{{route('admin.products.duplicate', ['id'=>$product->id, 'type'=>$type]  )}}" title="{{ translate('Duplicate') }}">
                                 <i class="las la-copy"></i>
                             </a>
-                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('products.destroy', $product->id)}}" title="{{ translate('Delete') }}">
+                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('admin.products.destroy', $product->id)}}" title="{{ translate('Delete') }}">
                                 <i class="las la-trash"></i>
                             </a>
                         </td>
@@ -230,7 +230,7 @@
             else{
                 var status = 0;
             }
-            $.post('{{ route('products.todays_deal') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
+            $.post('{{ route('admin.products.todays_deal') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
                 if(data == 1){
                     AIZ.plugins.notify('success', '{{ translate('Todays Deal updated successfully') }}');
                 }
@@ -247,7 +247,7 @@
             else{
                 var status = 0;
             }
-            $.post('{{ route('products.published') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
+            $.post('{{ route('admin.products.published') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
                 if(data == 1){
                     AIZ.plugins.notify('success', '{{ translate('Published products updated successfully') }}');
                 }
@@ -264,7 +264,7 @@
             else{
                 var approved = 0;
             }
-            $.post('{{ route('products.approved') }}', {
+            $.post('{{ route('admin.products.approved') }}', {
                 _token      :   '{{ csrf_token() }}',
                 id          :   el.value,
                 approved    :   approved
@@ -285,7 +285,7 @@
             else{
                 var status = 0;
             }
-            $.post('{{ route('products.featured') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
+            $.post('{{ route('admin.products.featured') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
                 if(data == 1){
                     AIZ.plugins.notify('success', '{{ translate('Featured products updated successfully') }}');
                 }
@@ -305,7 +305,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: "{{route('bulk-product-delete')}}",
+                url: "{{route('admin.bulk-product-delete')}}",
                 type: 'POST',
                 data: data,
                 cache: false,

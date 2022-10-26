@@ -7,7 +7,7 @@
 			<h1 class="h3">{{translate('Upload New File')}}</h1>
 		</div>
 		<div class="col-md-6 text-md-right">
-			<a href="{{ route('uploaded-files.index') }}" class="btn btn-link text-reset">
+			<a href="{{ route('admin.uploaded-files.index') }}" class="btn btn-link text-reset">
 				<i class="las la-angle-left"></i>
 				<span>{{translate('Back to uploaded files')}}</span>
 			</a>
@@ -20,7 +20,7 @@
     </div>
     <div class="card-body">
     	<div id="aiz-upload-files" class="h-420px" style="min-height: 65vh">
-    		
+
     	</div>
     </div>
 </div>

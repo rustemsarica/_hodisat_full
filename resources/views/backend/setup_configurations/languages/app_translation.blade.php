@@ -15,7 +15,7 @@
            </form>
          </div>
        </div>
-        <form class="form-horizontal" action="{{ route('app-translations.store') }}" method="POST">
+        <form class="form-horizontal" action="{{ route('admin.app-translations.store') }}" method="POST">
             @csrf
             <input type="hidden" name="id" value="{{ $language->id }}">
             <div class="card-body">

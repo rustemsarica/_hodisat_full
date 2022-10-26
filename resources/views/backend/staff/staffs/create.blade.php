@@ -9,7 +9,7 @@
                 <h5 class="mb-0 h6">{{translate('Staff Information')}}</h5>
             </div>
 
-            <form class="form-horizontal" action="{{ route('staffs.store') }}" method="POST" enctype="multipart/form-data">
+            <form class="form-horizontal" action="{{ route('admin.staffs.store') }}" method="POST" enctype="multipart/form-data">
             	@csrf
                 <div class="card-body">
                     <div class="form-group row">

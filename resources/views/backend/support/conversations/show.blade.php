@@ -31,7 +31,7 @@
                 @endforeach
             </ul>
             @if (Auth::user()->id == $conversation->receiver_id)
-                <form action="{{ route('messages.store') }}" method="POST">
+                <form action="{{ route('admin.messages.store') }}" method="POST">
                     @csrf
                     <input type="hidden" name="conversation_id" value="{{ $conversation->id }}">
                     <div class="row">

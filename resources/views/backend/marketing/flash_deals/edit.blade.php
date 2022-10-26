@@ -13,14 +13,14 @@
               <ul class="nav nav-tabs nav-fill border-light">
                 @foreach (\App\Models\Language::all() as $key => $language)
                   <li class="nav-item">
-                    <a class="nav-link text-reset @if ($language->code == $lang) active @else bg-soft-dark border-light border-left-0 @endif py-3" href="{{ route('flash_deals.edit', ['id'=>$flash_deal->id, 'lang'=> $language->code] ) }}">
+                    <a class="nav-link text-reset @if ($language->code == $lang) active @else bg-soft-dark border-light border-left-0 @endif py-3" href="{{ route('admin.flash_deals.edit', ['id'=>$flash_deal->id, 'lang'=> $language->code] ) }}">
                       <img src="{{ static_asset('assets/img/flags/'.$language->code.'.png') }}" height="11" class="mr-1">
                       <span>{{$language->name}}</span>
                     </a>
                   </li>
                  @endforeach
               </ul>
-              <form class="p-4" action="{{ route('flash_deals.update', $flash_deal->id) }}" method="POST">
+              <form class="p-4" action="{{ route('admin.flash_deals.update', $flash_deal->id) }}" method="POST">
                 @csrf
                   <input type="hidden" name="_method" value="PATCH">
                   <input type="hidden" name="lang" value="{{ $lang }}">
@@ -121,7 +121,7 @@
             function get_flash_deal_discount(){
                 var product_ids = $('#products').val();
                 if(product_ids.length > 0){
-                    $.post('{{ route('flash_deals.product_discount_edit') }}', {_token:'{{ csrf_token() }}', product_ids:product_ids, flash_deal_id:{{ $flash_deal->id }}}, function(data){
+                    $.post('{{ route('admin.flash_deals.product_discount_edit') }}', {_token:'{{ csrf_token() }}', product_ids:product_ids, flash_deal_id:{{ $flash_deal->id }}}, function(data){
                         $('#discount_table').html(data);
                         AIZ.plugins.fooTable();
                     });

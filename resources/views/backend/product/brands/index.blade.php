@@ -45,10 +45,10 @@
                                     </label>
 		                        </td>
 		                        <td class="text-right">
-		                            <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('brands.edit', ['id'=>$brand->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Edit',get_setting('admin_lang')) }}">
+		                            <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('admin.brands.edit', ['id'=>$brand->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Edit',get_setting('admin_lang')) }}">
 		                                <i class="las la-edit"></i>
 		                            </a>
-		                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('brands.destroy', $brand->id)}}" title="{{ translate('Delete',get_setting('admin_lang')) }}">
+		                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('admin.brands.destroy', $brand->id)}}" title="{{ translate('Delete',get_setting('admin_lang')) }}">
 		                                <i class="las la-trash"></i>
 		                            </a>
 		                        </td>
@@ -68,7 +68,7 @@
 				<h5 class="mb-0 h6">{{ translate('Add New Brand',get_setting('admin_lang')) }}</h5>
 			</div>
 			<div class="card-body">
-				<form action="{{ route('brands.store') }}" method="POST">
+				<form action="{{ route('admin.brands.store') }}" method="POST">
 					@csrf
 					<div class="form-group mb-3">
 						<label for="name">{{translate('Name',get_setting('admin_lang'))}}</label>
@@ -121,7 +121,7 @@
             else{
                 var status = 0;
             }
-            $.post('{{ route('brands.change.top') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
+            $.post('{{ route('admin.brands.change.top') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
                 if(data == 1){
                     AIZ.plugins.notify('success', '{{ translate('Brand updated successfully') }}',get_setting('admin_lang'));
                 }

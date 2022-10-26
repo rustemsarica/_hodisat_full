@@ -149,24 +149,24 @@
                         @endif
                         <td class="text-right">
                             @php
-                                $order_detail_route = route('orders.show', encrypt($order->id));
+                                $order_detail_route = route('admin.orders.show', encrypt($order->id));
                                 if(Route::currentRouteName() == 'seller_orders.index') {
-                                    $order_detail_route = route('seller_orders.show', encrypt($order->id));
+                                    $order_detail_route = route('admin.seller_orders.show', encrypt($order->id));
                                 }
                                 else if(Route::currentRouteName() == 'pick_up_point.index') {
-                                    $order_detail_route = route('pick_up_point.order_show', encrypt($order->id));
+                                    $order_detail_route = route('admin.pick_up_point.order_show', encrypt($order->id));
                                 }
                                 if(Route::currentRouteName() == 'inhouse_orders.index') {
-                                    $order_detail_route = route('inhouse_orders.show', encrypt($order->id));
+                                    $order_detail_route = route('admin.inhouse_orders.show', encrypt($order->id));
                                 }
                             @endphp
                             <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{ $order_detail_route }}" title="{{ translate('View') }}">
                                 <i class="las la-eye"></i>
                             </a>
-                            <a class="btn btn-soft-info btn-icon btn-circle btn-sm" href="{{ route('invoice.download', $order->id) }}" title="{{ translate('Download Invoice') }}">
+                            <a class="btn btn-soft-info btn-icon btn-circle btn-sm" href="{{ route('admin.invoice.download', $order->id) }}" title="{{ translate('Download Invoice') }}">
                                 <i class="las la-download"></i>
                             </a>
-                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('orders.destroy', $order->id)}}" title="{{ translate('Delete') }}">
+                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('admin.orders.destroy', $order->id)}}" title="{{ translate('Delete') }}">
                                 <i class="las la-trash"></i>
                             </a>
                         </td>
@@ -211,7 +211,7 @@
 //                headers: {
 //                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 //                },
-//                url: "{{route('bulk-order-status')}}",
+//                url: "{{route('admin.bulk-order-status')}}",
 //                type: 'POST',
 //                data: data,
 //                cache: false,
@@ -231,7 +231,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: "{{route('bulk-order-delete')}}",
+                url: "{{route('admin.bulk-order-delete')}}",
                 type: 'POST',
                 data: data,
                 cache: false,

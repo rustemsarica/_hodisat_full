@@ -12,7 +12,7 @@
     <div class="col-md-8 mx-auto">
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('in_house_sale_report.index') }}" method="GET">
+                <form action="{{ route('admin.in_house_sale_report.index') }}" method="GET">
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label">{{translate('Sort by Category')}} :</label>
                         <div class="col-md-5">

@@ -11,7 +11,7 @@
 <div class="row">
     <div class="col-md-10 mx-auto">
         <div class="card">
-            <form action="{{ route('wallet-history.index') }}" method="GET">
+            <form action="{{ route('admin.wallet-history.index') }}" method="GET">
                 <div class="card-header row gutters-5">
                     <div class="col text-center text-md-left">
                         <h5 class="mb-md-0 h6">{{ translate('Wallet Transaction') }}</h5>

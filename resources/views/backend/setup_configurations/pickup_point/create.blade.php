@@ -8,7 +8,7 @@
             <div class="card-header">
                 <h5 class="mb-0 h6">{{translate('Pickup Point Information')}}</h5>
             </div>
-            <form action="{{ route('pick_up_points.store') }}" method="POST">
+            <form action="{{ route('admin.pick_up_points.store') }}" method="POST">
             	@csrf
                 <div class="card-body">
                     <div class="form-group row row">

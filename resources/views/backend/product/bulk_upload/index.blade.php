@@ -25,8 +25,8 @@
             </div>
             <br>
             <div class="">
-                <a href="{{ route('pdf.download_category') }}"><button class="btn btn-info">{{translate('Download Category')}}</button></a>
-                <a href="{{ route('pdf.download_brand') }}"><button class="btn btn-info">{{translate('Download Brand')}}</button></a>
+                <a href="{{ route('admin.pdf.download_category') }}"><button class="btn btn-info">{{translate('Download Category')}}</button></a>
+                <a href="{{ route('admin.pdf.download_brand') }}"><button class="btn btn-info">{{translate('Download Brand')}}</button></a>
             </div>
             <br>
         </div>
@@ -37,7 +37,7 @@
             <h5 class="mb-0 h6"><strong>{{translate('Upload Product File')}}</strong></h5>
         </div>
         <div class="card-body">
-            <form class="form-horizontal" action="{{ route('bulk_product_upload') }}" method="POST" enctype="multipart/form-data">
+            <form class="form-horizontal" action="{{ route('admin.bulk_product_upload') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group row">
                     <div class="col-sm-9">

@@ -27,7 +27,7 @@
                                         <div class="media-body">
                                             <p class="mb-1 text-truncate-2">
                                                 {{ translate('Order code: ') }}
-                                                <a href="{{route('all_orders.show', encrypt($notification->data['order_id']))}}">
+                                                <a href="{{route('admin.all_orders.show', encrypt($notification->data['order_id']))}}">
                                                     {{$notification->data['order_code']}}
                                                 </a>
                                                 {{translate(' has been '. ucfirst(str_replace('_', ' ', $notification->data['status'])))}}
@@ -46,7 +46,7 @@
                             </li>
                         @endforelse
                     </ul>
-                    
+
                     {{ $notifications->links() }}
                 </div>
             </form>

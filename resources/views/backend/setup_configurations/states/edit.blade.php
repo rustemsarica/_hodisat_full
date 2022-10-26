@@ -13,7 +13,7 @@
     			<h5 class="mb-0 h6">{{ translate('Edit State') }}</h5>
     	    </div>
             <div class="card-body p-0">
-                <form class="p-4" action="{{ route('states.update', $state->id) }}" method="POST" enctype="multipart/form-data">
+                <form class="p-4" action="{{ route('admin.states.update', $state->id) }}" method="POST" enctype="multipart/form-data">
                     <input name="_method" type="hidden" value="PATCH">
                     @csrf
                     <div class="form-group mb-3">

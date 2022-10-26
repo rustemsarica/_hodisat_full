@@ -54,7 +54,7 @@
                                 @endif
                             </td>
                             <td class="text-right">
-                                <a href="{{route('support_ticket.admin_show', encrypt($ticket->id))}}" class="btn btn-soft-primary btn-icon btn-circle btn-sm" title="{{ translate('View Details') }}">
+                                <a href="{{route('admin.support_ticket.admin_show', encrypt($ticket->id))}}" class="btn btn-soft-primary btn-icon btn-circle btn-sm" title="{{ translate('View Details') }}">
                                     <i class="las la-eye"></i>
                                 </a>
                             </td>

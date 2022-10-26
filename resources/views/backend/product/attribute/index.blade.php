@@ -35,13 +35,13 @@
 									@endforeach
 								</td>
 								<td class="text-right">
-									<a class="btn btn-soft-info btn-icon btn-circle btn-sm" href="{{route('attributes.show', $attribute->id)}}" title="{{ translate('Attribute values') }}">
+									<a class="btn btn-soft-info btn-icon btn-circle btn-sm" href="{{route('admin.attributes.show', $attribute->id)}}" title="{{ translate('Attribute values') }}">
 										<i class="las la-cog"></i>
 									</a>
-									<a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('attributes.edit', ['id'=>$attribute->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Edit') }}">
+									<a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('admin.attributes.edit', ['id'=>$attribute->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Edit') }}">
 										<i class="las la-edit"></i>
 									</a>
-									<a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('attributes.destroy', $attribute->id)}}" title="{{ translate('Delete') }}">
+									<a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('admin.attributes.destroy', $attribute->id)}}" title="{{ translate('Delete') }}">
 										<i class="las la-trash"></i>
 									</a>
 								</td>
@@ -58,7 +58,7 @@
 					<h5 class="mb-0 h6">{{ translate('Add New Attribute') }}</h5>
 			</div>
 			<div class="card-body">
-				<form action="{{ route('attributes.store') }}" method="POST">
+				<form action="{{ route('admin.attributes.store') }}" method="POST">
 					@csrf
 					<div class="form-group mb-3">
 						<label for="name">{{translate('Name')}}</label>

@@ -70,11 +70,11 @@
 
                                 <td class="text-right">
 
-                                    <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{ route('support_ticket.getSupport', ['id'=>$support->id, 'lang'=>env('DEFAULT_LANGUAGE')]) }}" title="{{ translate('View') }}">
+                                    <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{ route('admin.support_ticket.getSupport', ['id'=>$support->id, 'lang'=>env('DEFAULT_LANGUAGE')]) }}" title="{{ translate('View') }}">
                                         <i class="las la-edit"></i>
                                     </a>
                                     @if ($support->parent_id!=0)
-                                    <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('support_ticket.deleteSupport', $support->id)}}" title="{{ translate('Delete') }}">
+                                    <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('admin.support_ticket.deleteSupport', $support->id)}}" title="{{ translate('Delete') }}">
                                         <i class="las la-trash"></i>
                                     @endif
 
@@ -99,7 +99,7 @@
 				<h5 class="mb-0 h6">{{ translate('Add New',get_setting('admin_lang')) }}</h5>
 			</div>
 			<div class="card-body">
-				<form action="{{ route('support_ticket.addSupportPost') }}" method="POST">
+				<form action="{{ route('admin.support_ticket.addSupportPost') }}" method="POST">
 					@csrf
                     <div class="form-group mb-3">
 						<label for="name">{{translate('Parent',get_setting('admin_lang'))}}</label>

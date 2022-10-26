@@ -8,7 +8,7 @@
 			<h1 class="h3">{{translate('All Pick-up Points')}}</h1>
 		</div>
 		<div class="col-md-6 text-md-right">
-			<a href="{{ route('pick_up_points.create') }}" class="btn btn-circle btn-info">
+			<a href="{{ route('admin.pick_up_points.create') }}" class="btn btn-circle btn-info">
 				<span>{{translate('Add New Pick-up Point')}}</span>
 			</a>
 		</div>
@@ -67,10 +67,10 @@
                             @endif
                         </td>
 						<td class="text-right">
-							<a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('pick_up_points.edit', ['id'=>$pickup_point->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Edit') }}">
+							<a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('admin.pick_up_points.edit', ['id'=>$pickup_point->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Edit') }}">
 								<i class="las la-edit"></i>
 							</a>
-							<a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('pick_up_points.destroy', $pickup_point->id)}}" title="{{ translate('Delete') }}">
+							<a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('admin.pick_up_points.destroy', $pickup_point->id)}}" title="{{ translate('Delete') }}">
 								<i class="las la-trash"></i>
 							</a>
 						</td>

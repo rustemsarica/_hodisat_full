@@ -10,7 +10,7 @@
             </div>
 
             <div class="card-body">
-                <form class="form-horizontal" action="{{ route('newsletters.send') }}" method="POST" enctype="multipart/form-data">
+                <form class="form-horizontal" action="{{ route('admin.newsletters.send') }}" method="POST" enctype="multipart/form-data">
                 	@csrf
                     <div class="form-group row">
                         <label class="col-sm-2 col-from-label" for="name">{{translate('Emails')}} ({{translate('Users')}})</label>

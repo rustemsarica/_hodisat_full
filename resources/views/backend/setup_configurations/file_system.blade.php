@@ -9,7 +9,7 @@
                     <h3 class="fs-18 mb-0 text-center">{{translate('S3 File System Credentials')}}</h3>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('admin.payment_method.update') }}" method="POST">
                         <input type="hidden" name="payment_method" value="paypal">
                         @csrf
                         <div class="form-group row">
@@ -88,7 +88,7 @@
                     <h3 class="fs-18 mb-0 text-center">{{translate('Cache & Session Driver')}}</h3>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('admin.payment_method.update') }}" method="POST">
                         <input type="hidden" name="payment_method" value="paypal">
                         @csrf
                         <div class="form-group row">
@@ -130,7 +130,7 @@
                     <h3 class="fs-18 mb-0 text-center">{{translate('Redis Configuration (If you use redis as any of the drivers)')}}</h3>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('admin.payment_method.update') }}" method="POST">
                         <input type="hidden" name="payment_method" value="paypal">
                         @csrf
                         <div class="form-group row">
@@ -182,7 +182,7 @@
             else{
                 var value = 0;
             }
-            $.post('{{ route('business_settings.update.activation') }}', {_token:'{{ csrf_token() }}', type:type, value:value}, function(data){
+            $.post('{{ route('admin.business_settings.update.activation') }}', {_token:'{{ csrf_token() }}', type:type, value:value}, function(data){
                 if(data == '1'){
                     AIZ.plugins.notify('success', '{{ translate('Settings updated successfully') }}');
                 }

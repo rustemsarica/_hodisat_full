@@ -8,7 +8,7 @@
             <h1 class="h3">{{translate('All Posts')}}</h1>
         </div>
         <div class="col text-right">
-            <a href="{{ route('blog.create') }}" class="btn btn-circle btn-info">
+            <a href="{{ route('admin.blog.create') }}" class="btn btn-circle btn-info">
                 <span>{{translate('Add New Post')}}</span>
             </a>
         </div>
@@ -22,7 +22,7 @@
             <div class="col text-center text-md-left">
                 <h5 class="mb-md-0 h6">{{ translate('All blog posts') }}</h5>
             </div>
-            
+
             <div class="col-md-2">
                 <div class="form-group mb-0">
                     <input type="text" class="form-control form-control-sm" id="search" name="search"@isset($sort_search) value="{{ $sort_search }}" @endisset placeholder="{{ translate('Type & Enter') }}">
@@ -68,11 +68,11 @@
                             </label>
                         </td>
                         <td class="text-right">
-                            <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{ route('blog.edit',$blog->id)}}" title="{{ translate('Edit') }}">
+                            <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{ route('admin.blog.edit',$blog->id)}}" title="{{ translate('Edit') }}">
                                 <i class="las la-pen"></i>
                             </a>
-                            
-                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('blog.destroy', $blog->id)}}" title="{{ translate('Delete') }}">
+
+                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('admin.blog.destroy', $blog->id)}}" title="{{ translate('Delete') }}">
                                 <i class="las la-trash"></i>
                             </a>
                         </td>
@@ -101,7 +101,7 @@
             if(el.checked){
                 var status = 1;
             }
-            $.post('{{ route('blog.change-status') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
+            $.post('{{ route('admin.blog.change-status') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
                 if(data == 1){
                     AIZ.plugins.notify('success', '{{ translate('Change blog status successfully') }}');
                 }

@@ -6,8 +6,8 @@
   <div class="card-header">
       <h5 class="mb-0 h6">{{ translate('Seller Verification') }}</h5>
       <div class="pull-right clearfix">
-        <a href="{{ route('sellers.reject', $shop->id) }}" class="btn btn-circle btn-danger d-innline-block">{{translate('Reject')}}</a></li>
-        <a href="{{ route('sellers.approve', $shop->id) }}" class="btn btn-circle btn-success d-innline-block">{{translate('Accept')}}</a>
+        <a href="{{ route('admin.sellers.reject', $shop->id) }}" class="btn btn-circle btn-danger d-innline-block">{{translate('Reject')}}</a></li>
+        <a href="{{ route('admin.sellers.approve', $shop->id) }}" class="btn btn-circle btn-success d-innline-block">{{translate('Accept')}}</a>
       </div>
   </div>
   <div class="card-body row">
@@ -64,8 +64,8 @@
               </tbody>
           </table>
           <div class="text-center">
-              <a href="{{ route('sellers.reject', $shop->id) }}" class="btn btn-sm btn-danger d-innline-block">{{translate('Reject')}}</a></li>
-              <a href="{{ route('sellers.approve', $shop->id) }}" class="btn btn-sm btn-success d-innline-block">{{translate('Accept')}}</a>
+              <a href="{{ route('admin.sellers.reject', $shop->id) }}" class="btn btn-sm btn-danger d-innline-block">{{translate('Reject')}}</a></li>
+              <a href="{{ route('admin.sellers.approve', $shop->id) }}" class="btn btn-sm btn-success d-innline-block">{{translate('Accept')}}</a>
           </div>
       </div>
   </div>

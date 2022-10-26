@@ -18,7 +18,7 @@
   <!-- Profile Details -->
   <h6 class="mb-4">{{translate('About')}} {{ $shop->user->name }}</h6>
   <p><i class="demo-pli-map-marker-2 icon-lg icon-fw mr-1"></i>{{ $shop->address }}</p>
-  <p><a href="{{ route('shop.visit', $shop->slug) }}" class="btn-link"><i class="demo-pli-internet icon-lg icon-fw mr-1"></i>{{ $shop->user->username }}</a></p>
+  <p><a href="{{ route('admin.shop.visit', $shop->slug) }}" class="btn-link"><i class="demo-pli-internet icon-lg icon-fw mr-1"></i>{{ $shop->user->username }}</a></p>
   <p><i class="demo-pli-old-telephone icon-lg icon-fw mr-1"></i>{{ $shop->user->phone }}</p>
 
   <h6 class="mb-4">{{translate('Payout Info')}}</h6>

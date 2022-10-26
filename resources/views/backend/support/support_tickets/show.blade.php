@@ -10,14 +10,14 @@
                <div class="mt-2">
                    <span> {{ $ticket->user->name }} </span>
                    <span class="ml-2"> {{ $ticket->created_at }} </span>
-                   <span class="badge badge-inline badge-secondary ml-2 text-capitalize"> 
-                       {{ translate($ticket->status) }} 
+                   <span class="badge badge-inline badge-secondary ml-2 text-capitalize">
+                       {{ translate($ticket->status) }}
                    </span>
                </div>
             </div>
         </div>
         <div class="card-body">
-            <form action="{{ route('support_ticket.admin_store') }}" method="post" id="ticket-reply-form" enctype="multipart/form-data">
+            <form action="{{ route('admin.support_ticket.admin_store') }}" method="post" id="ticket-reply-form" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="ticket_id" value="{{$ticket->id}}" required>
                 <input type="hidden" name="status" value="{{ $ticket->status }}" required>
@@ -39,9 +39,9 @@
                 </div>
                 <div class="form-group mb-0 text-right">
                     <button type="submit" class="btn btn-sm btn-dark" onclick="submit_reply('pending')">
-                        {{ translate('Submit as') }} 
+                        {{ translate('Submit as') }}
                         <strong>
-                            <span class="text-capitalize"> 
+                            <span class="text-capitalize">
                                 {{ translate($ticket->status) }}
                             </span>
                         </strong>

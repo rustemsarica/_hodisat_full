@@ -34,7 +34,7 @@
                     </li>
                 </ul>
                 @if (Auth::user()->id == $query->seller_id && $query->reply == null)
-                    <form action="{{ route('product_query.reply', $query->id) }}" method="POST">
+                    <form action="{{ route('admin.product_query.reply', $query->id) }}" method="POST">
                         @method('put')
                         @csrf
                         <input type="hidden" name="conversation_id" value="{{ $query->id }}">

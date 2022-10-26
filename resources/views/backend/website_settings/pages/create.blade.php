@@ -8,7 +8,7 @@
 	</div>
 </div>
 <div class="card">
-	<form action="{{ route('custom-pages.store') }}" method="POST" enctype="multipart/form-data">
+	<form action="{{ route('admin.custom-pages.store') }}" method="POST" enctype="multipart/form-data">
 		@csrf
 		<div class="card-header">
 			<h6 class="fw-600 mb-0">{{ translate('Page Content') }}</h6>
@@ -24,7 +24,7 @@
 				<label class="col-sm-2 col-from-label" for="name">{{translate('Link')}} <span class="text-danger">*</span></label>
 				<div class="col-sm-10">
 					<div class="input-group d-block d-md-flex">
-						<div class="input-group-prepend "><span class="input-group-text flex-grow-1">{{ route('home') }}/</span></div>
+						<div class="input-group-prepend "><span class="input-group-text flex-grow-1">{{ route('admin.home') }}/</span></div>
 						<input type="text" class="form-control w-100 w-md-auto" placeholder="{{ translate('Slug') }}" name="slug" required>
 					</div>
 					<small class="form-text text-muted">{{ translate('Use character, number, hypen only') }}</small>

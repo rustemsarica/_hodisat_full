@@ -29,12 +29,12 @@
                             <td>
                                 <span
                                     class="badge badge-inline {{ $query->reply == null ? 'badge-warning' : 'badge-success'  }}">
-                                    {{ $query->reply == null ? translate('Not Replied') : translate('Replied')}}                                   
+                                    {{ $query->reply == null ? translate('Not Replied') : translate('Replied')}}
                                 </span>
                             </td>
                             <td class="text-right">
                                 <a class="btn btn-soft-primary btn-icon btn-circle btn-sm"
-                                    href="{{ route('product_query.show', encrypt($query->id)) }}"
+                                    href="{{ route('admin.product_query.show', encrypt($query->id)) }}"
                                     title="{{ translate('View') }}">
                                     <i class="las la-eye"></i>
                                 </a>

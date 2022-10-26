@@ -12,7 +12,7 @@
 	<ul class="nav nav-tabs nav-fill border-light">
 		@foreach (\App\Models\Language::all() as $key => $language)
 			<li class="nav-item">
-				<a class="nav-link text-reset @if ($language->code == $lang) active @else bg-soft-dark border-light border-left-0 @endif py-3" href="{{ route('custom-pages.edit', ['id'=>$page->slug, 'lang'=> $language->code] ) }}">
+				<a class="nav-link text-reset @if ($language->code == $lang) active @else bg-soft-dark border-light border-left-0 @endif py-3" href="{{ route('admin.custom-pages.edit', ['id'=>$page->slug, 'lang'=> $language->code] ) }}">
 					<img src="{{ static_asset('assets/img/flags/'.$language->code.'.png') }}" height="11" class="mr-1">
 					<span>{{$language->name}}</span>
 				</a>
@@ -20,7 +20,7 @@
 		@endforeach
 	</ul>
 
-	<form class="p-4" action="{{ route('custom-pages.update', $page->id) }}" method="POST" enctype="multipart/form-data">
+	<form class="p-4" action="{{ route('admin.custom-pages.update', $page->id) }}" method="POST" enctype="multipart/form-data">
 		@csrf
 		<input type="hidden" name="_method" value="PATCH">
 		<input type="hidden" name="lang" value="{{ $lang }}">
@@ -42,10 +42,10 @@
 					<div class="col-sm-10">
 						<div class="input-group d-block d-md-flex">
 							@if($page->type == 'custom_page')
-								<div class="input-group-prepend"><span class="input-group-text flex-grow-1">{{ route('home') }}/</span></div>
+								<div class="input-group-prepend"><span class="input-group-text flex-grow-1">{{ route('admin.home') }}/</span></div>
 								<input type="text" class="form-control w-100 w-md-auto" placeholder="{{ translate('Slug') }}" name="slug" value="{{ $page->slug }}">
 							@else
-								<input class="form-control w-100 w-md-auto" value="{{ route('home') }}/{{ $page->slug }}" disabled>
+								<input class="form-control w-100 w-md-auto" value="{{ route('admin.home') }}/{{ $page->slug }}" disabled>
 							@endif
 						</div>
 						<small class="form-text text-muted">{{ translate('Use character, number, hypen only') }}</small>

@@ -1,4 +1,4 @@
-<form action="{{ route('currency.store') }}" method="POST">
+<form action="{{ route('admin.currency.store') }}" method="POST">
     @csrf
     <div class="modal-header">
     	<h5 class="modal-title h6">{{translate('Add New Currency')}}</h5>

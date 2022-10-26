@@ -101,7 +101,7 @@
                     e.preventDefault();
                     var $this = $(this);
                     var locale = $this.data('flag');
-                    $.post('{{ route('language.change') }}',{_token:'{{ csrf_token() }}', locale:locale}, function(data){
+                    $.post('{{ route('admin.language.change') }}',{_token:'{{ csrf_token() }}', locale:locale}, function(data){
                         location.reload();
                     });
 

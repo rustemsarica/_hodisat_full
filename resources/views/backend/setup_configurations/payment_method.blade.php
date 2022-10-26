@@ -9,7 +9,7 @@
                     <h5 class="mb-0 h6 ">{{translate('Paypal Credential')}}</h5>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('admin.payment_method.update') }}" method="POST">
                         <input type="hidden" name="payment_method" value="paypal">
                         @csrf
                         <div class="form-group row">
@@ -57,7 +57,7 @@
                     <h5 class="mb-0 h6 ">{{translate('Stripe Credential')}}</h5>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('admin.payment_method.update') }}" method="POST">
                         @csrf
                         <input type="hidden" name="payment_method" value="stripe">
                         <div class="form-group row">
@@ -92,7 +92,7 @@
                     <h5 class="mb-0 h6 ">{{translate('Mercadopago Credential')}}</h5>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('admin.payment_method.update') }}" method="POST">
                         <input type="hidden" name="payment_method" value="paypal">
                         @csrf
                         <div class="form-group row">
@@ -127,7 +127,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="form-group mb-0 text-right">
                             <button type="submit" class="btn btn-sm btn-primary">{{translate('Save')}}</button>
                         </div>
@@ -142,7 +142,7 @@
                     <h5 class="mb-0 h6">{{translate('Bkash Credential')}}</h5>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('admin.payment_method.update') }}" method="POST">
                         @csrf
                         <input type="hidden" name="payment_method" value="bkash">
                         <div class="form-group row">
@@ -208,7 +208,7 @@
                     <h5 class="mb-0 h6 ">{{translate('Nagad Credential')}}</h5>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('admin.payment_method.update') }}" method="POST">
                         @csrf
                         <input type="hidden" name="payment_method" value="nagad">
                         <div class="form-group row">
@@ -270,7 +270,7 @@
                     <h5 class="mb-0 h6">{{translate('Sslcommerz Credential')}}</h5>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('admin.payment_method.update') }}" method="POST">
                         @csrf
                         <input type="hidden" name="payment_method" value="sslcommerz">
                         <div class="form-group row">
@@ -318,7 +318,7 @@
                     <h5 class="mb-0 h6">{{translate('Aamarpay Credential')}}</h5>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('admin.payment_method.update') }}" method="POST">
                         @csrf
                         <input type="hidden" name="payment_method" value="aamarpay">
                         <div class="form-group row">
@@ -366,7 +366,7 @@
                     <h5 class="mb-0 h6">{{translate('Iyzico Credential')}}</h5>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('admin.payment_method.update') }}" method="POST">
                         @csrf
                         <input type="hidden" name="payment_method" value="iyzico">
                         <div class="form-group row">
@@ -416,7 +416,7 @@
                     <h5 class="mb-0 h6 ">{{translate('Instamojo Credential')}}</h5>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('admin.payment_method.update') }}" method="POST">
                         @csrf
                         <input type="hidden" name="payment_method" value="instamojo">
                         <div class="form-group row">
@@ -464,7 +464,7 @@
                     <h5 class="mb-0 h6 ">{{translate('PayStack Credential')}}</h5>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('admin.payment_method.update') }}" method="POST">
                         @csrf
                         <input type="hidden" name="payment_method" value="paystack">
                         <div class="form-group row">
@@ -517,7 +517,7 @@
                     <h5 class="mb-0 h6 ">{{translate('Payhere Credential')}}</h5>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('admin.payment_method.update') }}" method="POST">
                         @csrf
                         <input type="hidden" name="payment_method" value="payhere">
                         <div class="form-group row">
@@ -573,7 +573,7 @@
                     <h5 class="mb-0 h6">{{translate('Ngenius Credential')}}</h5>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('admin.payment_method.update') }}" method="POST">
                         @csrf
                         <input type="hidden" name="payment_method" value="ngenius">
                         <div class="form-group row">
@@ -622,7 +622,7 @@
                     <h5 class="mb-0 h6 ">{{translate('VoguePay Credential')}}</h5>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('admin.payment_method.update') }}" method="POST">
                         @csrf
                         <input type="hidden" name="payment_method" value="voguepay">
                         <div class="form-group row">
@@ -661,7 +661,7 @@
                     <h5 class="mb-0 h6 ">{{translate('RazorPay Credential')}}</h5>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('admin.payment_method.update') }}" method="POST">
                         @csrf
                         <input type="hidden" name="payment_method" value="razorpay">
                         <div class="form-group row">
@@ -696,7 +696,7 @@
                     <h5 class="mb-0 h6">{{translate('Authorize Net')}}</h5>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('admin.payment_method.update') }}" method="POST">
                         @csrf
                         <input type="hidden" name="payment_method" value="authorizenet">
                         <div class="form-group row">
@@ -746,7 +746,7 @@
                     <h5 class="mb-0 h6">{{translate('Payku')}}</h5>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" action="{{ route('payment_method.update') }}" method="POST">
+                    <form class="form-horizontal" action="{{ route('admin.payment_method.update') }}" method="POST">
                         @csrf
                         <input type="hidden" name="payment_method" value="payku">
                         <div class="form-group row">

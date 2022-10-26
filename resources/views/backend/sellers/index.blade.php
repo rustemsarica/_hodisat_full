@@ -95,30 +95,30 @@
                                     <a href="#" onclick="show_seller_profile('{{$shop->id}}');"  class="dropdown-item">
                                         {{translate('Profile')}}
                                     </a>
-                                    <a href="{{route('sellers.login', encrypt($shop->id))}}" class="dropdown-item">
+                                    <a href="{{route('admin.sellers.login', encrypt($shop->id))}}" class="dropdown-item">
                                         {{translate('Log in as this Seller')}}
                                     </a>
                                     <a href="#" onclick="show_seller_payment_modal('{{$shop->id}}');" class="dropdown-item">
                                         {{translate('Go to Payment')}}
                                     </a>
-                                    <a href="{{route('sellers.payment_history', encrypt($shop->user_id))}}" class="dropdown-item">
+                                    <a href="{{route('admin.sellers.payment_history', encrypt($shop->user_id))}}" class="dropdown-item">
                                         {{translate('Payment History')}}
                                     </a>
-                                    <a href="{{route('sellers.edit', encrypt($shop->id))}}" class="dropdown-item">
+                                    <a href="{{route('admin.sellers.edit', encrypt($shop->id))}}" class="dropdown-item">
                                         {{translate('Edit')}}
                                     </a>
                                     @if($shop->user->banned != 1)
-                                        <a href="#" onclick="confirm_ban('{{route('sellers.ban', $shop->id)}}');" class="dropdown-item">
+                                        <a href="#" onclick="confirm_ban('{{route('admin.sellers.ban', $shop->id)}}');" class="dropdown-item">
                                         {{translate('Ban this seller')}}
                                         <i class="fa fa-ban text-danger" aria-hidden="true"></i>
                                         </a>
                                     @else
-                                        <a href="#" onclick="confirm_unban('{{route('sellers.ban', $shop->id)}}');" class="dropdown-item">
+                                        <a href="#" onclick="confirm_unban('{{route('admin.sellers.ban', $shop->id)}}');" class="dropdown-item">
                                         {{translate('Unban this seller')}}
                                         <i class="fa fa-check text-success" aria-hidden="true"></i>
                                         </a>
                                     @endif
-                                    <a href="#" class="dropdown-item confirm-delete" data-href="{{route('sellers.destroy', $shop->id)}}" class="">
+                                    <a href="#" class="dropdown-item confirm-delete" data-href="{{route('admin.sellers.destroy', $shop->id)}}" class="">
                                         {{translate('Delete')}}
                                     </a>
                                 </div>
@@ -217,7 +217,7 @@
         });
 
         function show_seller_payment_modal(id){
-            $.post('{{ route('sellers.payment_modal') }}',{_token:'{{ @csrf_token() }}', id:id}, function(data){
+            $.post('{{ route('admin.sellers.payment_modal') }}',{_token:'{{ @csrf_token() }}', id:id}, function(data){
                 $('#payment_modal #payment-modal-content').html(data);
                 $('#payment_modal').modal('show', {backdrop: 'static'});
                 $('.demo-select2-placeholder').select2();
@@ -225,7 +225,7 @@
         }
 
         function show_seller_profile(id){
-            $.post('{{ route('sellers.profile_modal') }}',{_token:'{{ @csrf_token() }}', id:id}, function(data){
+            $.post('{{ route('admin.sellers.profile_modal') }}',{_token:'{{ @csrf_token() }}', id:id}, function(data){
                 $('#profile_modal #profile-modal-content').html(data);
                 $('#profile_modal').modal('show', {backdrop: 'static'});
             });
@@ -238,7 +238,7 @@
             else{
                 var status = 0;
             }
-            $.post('{{ route('sellers.approved') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
+            $.post('{{ route('admin.sellers.approved') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
                 if(data == 1){
                     AIZ.plugins.notify('success', '{{ translate('Approved sellers updated successfully') }}');
                 }
@@ -270,7 +270,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: "{{route('bulk-seller-delete')}}",
+                url: "{{route('admin.bulk-seller-delete')}}",
                 type: 'POST',
                 data: data,
                 cache: false,

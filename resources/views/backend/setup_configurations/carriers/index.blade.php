@@ -8,7 +8,7 @@
                 <h1 class="h3">{{ translate('All Carriers') }}</h1>
             </div>
             <div class="col-md-6 text-md-right">
-                <a href="{{ route('carriers.create') }}" class="btn btn-primary">
+                <a href="{{ route('admin.carriers.create') }}" class="btn btn-primary">
                     <span>{{ translate('Add New Carrier') }}</span>
                 </a>
             </div>
@@ -53,10 +53,10 @@
                                         </label>
                                     </td>
                                     <td style="text-align: right;">
-                                        <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{ route('carriers.edit', $carrier->id) }}" title="{{ translate('Edit') }}">
+                                        <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{ route('admin.carriers.edit', $carrier->id) }}" title="{{ translate('Edit') }}">
                                             <i class="las la-edit"></i>
                                         </a>
-                                        <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('carriers.destroy', $carrier->id)}}" title="{{ translate('Delete') }}">
+                                        <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('admin.carriers.destroy', $carrier->id)}}" title="{{ translate('Delete') }}">
                                             <i class="las la-trash"></i>
                                         </a>
                                     </td>
@@ -79,7 +79,7 @@
 
 @section('script')
     <script type="text/javascript">
-        
+
         function update_status(el){
             if(el.checked){
                 var status = 1;
@@ -87,7 +87,7 @@
             else{
                 var status = 0;
             }
-            $.post('{{ route('carriers.update_status') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
+            $.post('{{ route('admin.carriers.update_status') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
                 if(data == 1){
                     AIZ.plugins.notify('success', '{{ translate('Carrier Status updated successfully') }}');
                 }

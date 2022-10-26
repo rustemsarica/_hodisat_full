@@ -11,7 +11,7 @@
             <div class="d-flex justify-content-around align-items-center align-items-stretch">
                 <div class="aiz-topbar-item">
                     <div class="d-flex align-items-center">
-                        <a class="btn btn-icon btn-circle btn-light" href="{{ route('home')}}" target="_blank" title="{{ translate('Browse Website') }}">
+                        <a class="btn btn-icon btn-circle btn-light" href="{{ route('admin.home')}}" target="_blank" title="{{ translate('Browse Website') }}">
                             <i class="las la-globe"></i>
                         </a>
                     </div>
@@ -21,7 +21,7 @@
                 <div class="d-flex justify-content-around align-items-center align-items-stretch ml-3">
                     <div class="aiz-topbar-item">
                         <div class="d-flex align-items-center">
-                            <a class="btn btn-icon btn-circle btn-light" href="{{ route('poin-of-sales.index') }}" target="_blank" title="{{ translate('POS') }}">
+                            <a class="btn btn-icon btn-circle btn-light" href="{{ route('admin.poin-of-sales.index') }}" target="_blank" title="{{ translate('POS') }}">
                                 <i class="las la-print"></i>
                             </a>
                         </div>
@@ -31,7 +31,7 @@
             <div class="d-flex justify-content-around align-items-center align-items-stretch ml-3">
                 <div class="aiz-topbar-item">
                     <div class="d-flex align-items-center">
-                        <a class="btn btn-soft-danger btn-sm d-flex align-items-center" href="{{ route('cache.clear')}}">
+                        <a class="btn btn-soft-danger btn-sm d-flex align-items-center" href="{{ route('admin.cache.clear')}}">
                             <i class="las la-hdd fs-20"></i>
                             <span class="fw-500 ml-1 mr-0 d-none d-md-block">{{ translate('Clear Cache') }}</span>
                         </a>
@@ -139,12 +139,12 @@
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-menu-md">
-                        <a href="{{ route('profile.index') }}" class="dropdown-item">
+                        <a href="{{ route('admin.profile.index') }}" class="dropdown-item">
                             <i class="las la-user-circle"></i>
                             <span>{{translate('Profile')}}</span>
                         </a>
 
-                        <a href="{{ route('logout')}}" class="dropdown-item">
+                        <a href="{{ route('admin.logout')}}" class="dropdown-item">
                             <i class="las la-sign-out-alt"></i>
                             <span>{{translate('Logout')}}</span>
                         </a>

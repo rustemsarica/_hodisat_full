@@ -37,7 +37,7 @@
                   <h5 class="mb-0 h6">{{translate('Seller Commission')}}</h5>
               </div>
               <div class="card-body">
-                  <form class="form-horizontal" action="{{ route('business_settings.vendor_commission.update') }}" method="POST" enctype="multipart/form-data">
+                  <form class="form-horizontal" action="{{ route('admin.business_settings.vendor_commission.update') }}" method="POST" enctype="multipart/form-data">
                   	@csrf
                     <div class="form-group row">
                         <label class="col-md-4 col-from-label">{{translate('Seller Commission')}}</label>
@@ -83,7 +83,7 @@
                   <h5 class="mb-0 h6">{{translate('Withdraw Seller Amount')}}</h5>
               </div>
               <div class="card-body">
-                  <form class="form-horizontal" action="{{ route('business_settings.vendor_commission.update') }}" method="POST" enctype="multipart/form-data">
+                  <form class="form-horizontal" action="{{ route('admin.business_settings.vendor_commission.update') }}" method="POST" enctype="multipart/form-data">
                   	@csrf
                     <div class="form-group row">
                         <label class="col-md-4 col-from-label">{{translate('Minimum Seller Amount Withdraw')}}</label>
@@ -115,8 +115,8 @@
             else{
                 var value = 0;
             }
-            
-            $.post('{{ route('business_settings.update.activation') }}', {_token:'{{ csrf_token() }}', type:type, value:value}, function(data){
+
+            $.post('{{ route('admin.business_settings.update.activation') }}', {_token:'{{ csrf_token() }}', type:type, value:value}, function(data){
                 if(data == '1'){
                     AIZ.plugins.notify('success', '{{ translate('Settings updated successfully') }}');
                 }

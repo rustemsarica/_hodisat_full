@@ -9,7 +9,7 @@
                 <h5 class="mb-0 h6">{{translate('Select Shipping Method')}}</h5>
             </div>
             <div class="card-body">
-                <form action="{{ route('shipping_configuration.update') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.shipping_configuration.update') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="type" value="shipping_type">
                     <div class="radio mar-btm">
@@ -61,10 +61,10 @@
                         3. {{ translate('Seller Wise Flat Shipping Cost calculation: Fixed rate for each seller. If customers purchase 2 product from two seller shipping cost is calculated by addition of each seller flat shipping cost') }}.
                     </li>
                     <li class="list-group-item">
-                        4. {{ translate('Area Wise Flat Shipping Cost calculation: Fixed rate for each area. If customers purchase multiple products from one seller shipping cost is calculated by the customer shipping area. To configure area wise shipping cost go to ') }} <a href="{{ route('cities.index') }}">{{ translate('Shipping Cities') }}</a>.
+                        4. {{ translate('Area Wise Flat Shipping Cost calculation: Fixed rate for each area. If customers purchase multiple products from one seller shipping cost is calculated by the customer shipping area. To configure area wise shipping cost go to ') }} <a href="{{ route('admin.cities.index') }}">{{ translate('Shipping Cities') }}</a>.
                     </li>
                     <li class="list-group-item">
-                        5. {{ translate('Carrier Based Shipping Cost calculation: Shipping cost calculate in addition with carrier. In each carrier you can set free shipping cost or can set weight range or price range shipping cost. To configure carrier based shipping cost go to ') }} <a href="{{ route('carriers.index') }}">{{ translate('Shipping Carriers') }}</a>.
+                        5. {{ translate('Carrier Based Shipping Cost calculation: Shipping cost calculate in addition with carrier. In each carrier you can set free shipping cost or can set weight range or price range shipping cost. To configure carrier based shipping cost go to ') }} <a href="{{ route('admin.carriers.index') }}">{{ translate('Shipping Carriers') }}</a>.
                     </li>
                 </ul>
             </div>
@@ -78,7 +78,7 @@
             <div class="card-header">
                 <h5 class="mb-0 h6">{{translate('Flat Rate Cost')}}</h5>
             </div>
-            <form action="{{ route('shipping_configuration.update') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.shipping_configuration.update') }}" method="POST" enctype="multipart/form-data">
               <div class="card-body">
                   @csrf
                   <input type="hidden" name="type" value="flat_rate_shipping_cost">
@@ -116,7 +116,7 @@
             <div class="card-header">
                 <h5 class="mb-0 h6">{{translate('Shipping Cost for Admin Products')}}</h5>
             </div>
-            <form action="{{ route('shipping_configuration.update') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.shipping_configuration.update') }}" method="POST" enctype="multipart/form-data">
               <div class="card-body">
                   @csrf
                   <input type="hidden" name="type" value="shipping_cost_admin">

@@ -12,14 +12,14 @@
             <ul class="nav nav-tabs nav-fill border-light">
       				@foreach (\App\Models\Language::all() as $key => $language)
       					<li class="nav-item">
-      						<a class="nav-link text-reset @if ($language->code == $lang) active @else bg-soft-dark border-light border-left-0 @endif py-3" href="{{ route('roles.edit', ['id'=>$role->id, 'lang'=> $language->code] ) }}">
+      						<a class="nav-link text-reset @if ($language->code == $lang) active @else bg-soft-dark border-light border-left-0 @endif py-3" href="{{ route('admin.roles.edit', ['id'=>$role->id, 'lang'=> $language->code] ) }}">
       							<img src="{{ static_asset('assets/img/flags/'.$language->code.'.png') }}" height="11" class="mr-1">
       							<span>{{$language->name}}</span>
       						</a>
       					</li>
     	            @endforeach
       			</ul>
-            <form class="p-4" action="{{ route('roles.update', $role->id) }}" method="POST">
+            <form class="p-4" action="{{ route('admin.roles.update', $role->id) }}" method="POST">
                 <input name="_method" type="hidden" value="PATCH">
                 <input type="hidden" name="lang" value="{{ $lang }}">
             	   @csrf
@@ -284,7 +284,7 @@
                                 </label>
                             </div>
                         </div>
-                        
+
                         <div class="row">
                             <div class="col-md-10">
                                 <label class="col-from-label">{{ translate('Uploaded Files') }}</label>

@@ -45,7 +45,7 @@
                                     <a onclick="show_message_modal('{{ $seller_withdraw_request->id }}');" class="btn btn-soft-success btn-icon btn-circle btn-sm" href="javascript:void(0);" title="{{ translate('Message View') }}">
                                         <i class="las la-eye"></i>
                                     </a>
-                                    <a href="{{route('sellers.payment_history', encrypt($seller_withdraw_request->user_id))}}" class="btn btn-soft-primary btn-icon btn-circle btn-sm"  title="{{ translate('Payment History') }}">
+                                    <a href="{{route('admin.sellers.payment_history', encrypt($seller_withdraw_request->user_id))}}" class="btn btn-soft-primary btn-icon btn-circle btn-sm"  title="{{ translate('Payment History') }}">
                                         <i class="las la-history"></i>
                                     </a>
                                 </td>
@@ -90,7 +90,7 @@
 @section('script')
   <script type="text/javascript">
       function show_seller_payment_modal(id, seller_withdraw_request_id){
-          $.post('{{ route('withdraw_request.payment_modal') }}',{_token:'{{ @csrf_token() }}', id:id, seller_withdraw_request_id:seller_withdraw_request_id}, function(data){
+          $.post('{{ route('admin.withdraw_request.payment_modal') }}',{_token:'{{ @csrf_token() }}', id:id, seller_withdraw_request_id:seller_withdraw_request_id}, function(data){
               $('#payment-modal-content').html(data);
               $('#payment_modal').modal('show', {backdrop: 'static'});
               $('.demo-select2-placeholder').select2();
@@ -98,7 +98,7 @@
       }
 
       function show_message_modal(id){
-          $.post('{{ route('withdraw_request.message_modal') }}',{_token:'{{ @csrf_token() }}', id:id}, function(data){
+          $.post('{{ route('admin.withdraw_request.message_modal') }}',{_token:'{{ @csrf_token() }}', id:id}, function(data){
               $('#message-modal-content').html(data);
               $('#message_modal').modal('show', {backdrop: 'static'});
           });

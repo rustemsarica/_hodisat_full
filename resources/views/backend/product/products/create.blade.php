@@ -11,7 +11,7 @@
     <h5 class="mb-0 h6">{{translate('Add New Product')}}</h5>
 </div>
 <div class="">
-    <form class="form form-horizontal mar-top" action="{{route('products.store')}}" method="POST" enctype="multipart/form-data" id="choice_form">
+    <form class="form form-horizontal mar-top" action="{{route('admin.products.store')}}" method="POST" enctype="multipart/form-data" id="choice_form">
         <div class="row gutters-5">
             <div class="col-lg-8">
                 @csrf
@@ -309,7 +309,7 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             type:"POST",
-            url:'{{ route('products.add-more-choice-option') }}',
+            url:'{{ route('admin.products.add-more-choice-option') }}',
             data:{
                attribute_id: i
             },

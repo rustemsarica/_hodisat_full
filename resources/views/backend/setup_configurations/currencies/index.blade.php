@@ -10,7 +10,7 @@
                 <h5 class="mb-0 h6">{{translate('System Default Currency')}}</h5>
             </div>
             <div class="card-body">
-                <form class="form-horizontal" action="{{ route('business_settings.update') }}" method="POST">
+                <form class="form-horizontal" action="{{ route('admin.business_settings.update') }}" method="POST">
                     @csrf
                     <div class="form-group row">
                         <div class="col-lg-3">
@@ -41,7 +41,7 @@
                 <h5 class="mb-0 h6">{{translate('Set Currency Formats')}}</h5>
             </div>
             <div class="card-body">
-                <form class="form-horizontal" action="{{ route('business_settings.update') }}" method="POST">
+                <form class="form-horizontal" action="{{ route('admin.business_settings.update') }}" method="POST">
                     @csrf
                     <div class="form-group row">
                         <input type="hidden" name="types[]" value="symbol_format">
@@ -193,7 +193,7 @@
         }
 
         function currency_modal(){
-            $.get('{{ route('currency.create') }}',function(data){
+            $.get('{{ route('admin.currency.create') }}',function(data){
                 $('#modal-content').html(data);
                 $('#add_currency_modal').modal('show');
             });
@@ -207,7 +207,7 @@
                 var status = 0;
             }
 
-            $.post('{{ route('currency.update_status') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
+            $.post('{{ route('admin.currency.update_status') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
                 if(data == 1){
                     AIZ.plugins.notify('success', '{{ translate('Currency Status updated successfully') }}');
                 }
@@ -218,7 +218,7 @@
         }
 
         function edit_currency_modal(id){
-            $.post('{{ route('currency.edit') }}',{_token:'{{ @csrf_token() }}', id:id}, function(data){
+            $.post('{{ route('admin.currency.edit') }}',{_token:'{{ @csrf_token() }}', id:id}, function(data){
                 $('#currency_modal_edit .modal-content').html(data);
                 $('#currency_modal_edit').modal('show', {backdrop: 'static'});
             });

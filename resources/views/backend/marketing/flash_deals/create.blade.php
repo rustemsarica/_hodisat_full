@@ -9,7 +9,7 @@
                 <h5 class="mb-0 h6">{{translate('Flash Deal Information')}}</h5>
             </div>
             <div class="card-body">
-                <form action="{{ route('flash_deals.store') }}" method="POST">
+                <form action="{{ route('admin.flash_deals.store') }}" method="POST">
                     @csrf
                     <div class="form-group row">
                         <label class="col-sm-3 control-label" for="name">{{translate('Title')}}</label>
@@ -70,7 +70,7 @@
                         {{ translate('If any product has discount or exists in another flash deal, the discount will be replaced by this discount & time limit.') }}
                     </div>
                     <br>
-                    
+
                     <div class="form-group" id="discount_table">
 
                     </div>
@@ -92,7 +92,7 @@
             $('#products').on('change', function(){
                 var product_ids = $('#products').val();
                 if(product_ids.length > 0){
-                    $.post('{{ route('flash_deals.product_discount') }}', {_token:'{{ csrf_token() }}', product_ids:product_ids}, function(data){
+                    $.post('{{ route('admin.flash_deals.product_discount') }}', {_token:'{{ csrf_token() }}', product_ids:product_ids}, function(data){
                         $('#discount_table').html(data);
                         AIZ.plugins.fooTable();
                     });

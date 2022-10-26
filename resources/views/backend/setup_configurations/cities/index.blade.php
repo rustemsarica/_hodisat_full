@@ -60,10 +60,10 @@
                                         </label>
                                       </td>
                                     <td class="text-right">
-                                        <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{ route('cities.edit', ['id'=>$city->id, 'lang'=>env('DEFAULT_LANGUAGE')]) }}" title="{{ translate('Edit') }}">
+                                        <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{ route('admin.cities.edit', ['id'=>$city->id, 'lang'=>env('DEFAULT_LANGUAGE')]) }}" title="{{ translate('Edit') }}">
                                             <i class="las la-edit"></i>
                                         </a>
-                                        <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('cities.destroy', $city->id)}}" title="{{ translate('Delete') }}">
+                                        <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('admin.cities.destroy', $city->id)}}" title="{{ translate('Delete') }}">
                                             <i class="las la-trash"></i>
                                         </a>
                                     </td>
@@ -83,7 +83,7 @@
     				<h5 class="mb-0 h6">{{ translate('Add New city') }}</h5>
     			</div>
     			<div class="card-body">
-    				<form action="{{ route('cities.store') }}" method="POST">
+    				<form action="{{ route('admin.cities.store') }}" method="POST">
     					@csrf
     					<div class="form-group mb-3">
     						<label for="name">{{translate('Name')}}</label>
@@ -131,7 +131,7 @@
             else{
                 var status = 0;
             }
-            $.post('{{ route('cities.status') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
+            $.post('{{ route('admin.cities.status') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
                 if(data == 1){
                     AIZ.plugins.notify('success', '{{ translate('Country status updated successfully') }}');
                 }

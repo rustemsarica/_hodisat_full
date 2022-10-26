@@ -181,11 +181,11 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>
                                         @if ($orderDetail->product != null && $orderDetail->product->auction_product == 0)
-                                            <a href="{{ route('product', $orderDetail->product->slug) }}" target="_blank">
+                                            <a href="{{ route('admin.product', $orderDetail->product->slug) }}" target="_blank">
                                                 <img height="50" src="{{ uploaded_asset($orderDetail->product->thumbnail_img) }}">
                                             </a>
                                         @elseif ($orderDetail->product != null && $orderDetail->product->auction_product == 1)
-                                            <a href="{{ route('auction-product', $orderDetail->product->slug) }}" target="_blank">
+                                            <a href="{{ route('admin.auction-product', $orderDetail->product->slug) }}" target="_blank">
                                                 <img height="50" src="{{ uploaded_asset($orderDetail->product->thumbnail_img) }}">
                                             </a>
                                         @else
@@ -195,7 +195,7 @@
                                     <td>
                                         @if ($orderDetail->product != null && $orderDetail->product->auction_product == 0)
                                             <strong>
-                                                <a href="{{ route('product', $orderDetail->product->slug) }}" target="_blank"
+                                                <a href="{{ route('admin.product', $orderDetail->product->slug) }}" target="_blank"
                                                     class="text-muted">
                                                     {{ $orderDetail->product->getTranslation('name') }}
                                                 </a>
@@ -205,7 +205,7 @@
                                             </small>
                                         @elseif ($orderDetail->product != null && $orderDetail->product->auction_product == 1)
                                             <strong>
-                                                <a href="{{ route('auction-product', $orderDetail->product->slug) }}" target="_blank"
+                                                <a href="{{ route('admin.auction-product', $orderDetail->product->slug) }}" target="_blank"
                                                     class="text-muted">
                                                     {{ $orderDetail->product->getTranslation('name') }}
                                                 </a>
@@ -287,7 +287,7 @@
                     </tbody>
                 </table>
                 <div class="no-print text-right">
-                    <a href="{{ route('invoice.download', $order->id) }}" type="button" class="btn btn-icon btn-light"><i
+                    <a href="{{ route('admin.invoice.download', $order->id) }}" type="button" class="btn btn-icon btn-light"><i
                             class="las la-print"></i></a>
                 </div>
             </div>
@@ -302,7 +302,7 @@
         $('#update_delivery_status').on('change', function() {
             var order_id = {{ $order->id }};
             var status = $('#update_delivery_status').val();
-            $.post('{{ route('orders.update_delivery_status') }}', {
+            $.post('{{ route('admin.orders.update_delivery_status') }}', {
                 _token: '{{ @csrf_token() }}',
                 order_id: order_id,
                 status: status
@@ -314,7 +314,7 @@
         $('#update_payment_status').on('change', function() {
             var order_id = {{ $order->id }};
             var status = $('#update_payment_status').val();
-            $.post('{{ route('orders.update_payment_status') }}', {
+            $.post('{{ route('admin.orders.update_payment_status') }}', {
                 _token: '{{ @csrf_token() }}',
                 order_id: order_id,
                 status: status
@@ -326,7 +326,7 @@
         $('#update_tracking_code').on('change', function() {
             var order_id = {{ $order->id }};
             var tracking_code = $('#update_tracking_code').val();
-            $.post('{{ route('orders.update_tracking_code') }}', {
+            $.post('{{ route('admin.orders.update_tracking_code') }}', {
                 _token: '{{ @csrf_token() }}',
                 order_id: order_id,
                 tracking_code: tracking_code

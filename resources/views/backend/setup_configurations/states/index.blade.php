@@ -58,7 +58,7 @@
                                         </label>
                                     </td>
                                     <td class="text-right">
-                                        <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{ route('states.edit', $state->id) }}" title="{{ translate('Edit') }}">
+                                        <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{ route('admin.states.edit', $state->id) }}" title="{{ translate('Edit') }}">
                                             <i class="las la-edit"></i>
                                         </a>
                                     </td>
@@ -78,7 +78,7 @@
     				<h5 class="mb-0 h6">{{ translate('Add New State') }}</h5>
     			</div>
     			<div class="card-body">
-    				<form action="{{ route('states.store') }}" method="POST">
+    				<form action="{{ route('admin.states.store') }}" method="POST">
     					@csrf
     					<div class="form-group mb-3">
     						<label for="name">{{translate('Name')}}</label>
@@ -116,7 +116,7 @@
             else{
                 var status = 0;
             }
-            $.post('{{ route('states.status') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
+            $.post('{{ route('admin.states.status') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
                 if(data == 1){
                     AIZ.plugins.notify('success', '{{ translate('Country status updated successfully') }}');
                 }

@@ -9,7 +9,7 @@
                 <h5 class="mb-0 h6">{{translate('Staff Information')}}</h5>
             </div>
 
-            <form action="{{ route('staffs.update', $staff->id) }}" method="POST">
+            <form action="{{ route('admin.staffs.update', $staff->id) }}" method="POST">
                 <input name="_method" type="hidden" value="PATCH">
             	@csrf
                 <div class="card-body">

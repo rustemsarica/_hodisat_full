@@ -173,7 +173,7 @@
                     <span class="slider round"></span>
                 </label>
                 <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    {{ translate('You need to configure SMTP correctly to enable this feature.') }} <a href="{{ route('smtp_settings.index') }}">{{ translate('Configure Now') }}</a>
+                    {{ translate('You need to configure SMTP correctly to enable this feature.') }} <a href="{{ route('admin.smtp_settings.index') }}">{{ translate('Configure Now') }}</a>
                 </div>
             </div>
         </div>
@@ -239,7 +239,7 @@
                     </label>
                 </div>
                 <div class="alert text-center" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    {{ translate('You need to configure Paypal correctly to enable this feature') }}. <a href="{{ route('payment_method.index') }}">{{ translate('Configure Now') }}</a>
+                    {{ translate('You need to configure Paypal correctly to enable this feature') }}. <a href="{{ route('admin.payment_method.index') }}">{{ translate('Configure Now') }}</a>
                 </div>
             </div>
         </div>
@@ -258,7 +258,7 @@
                     </label>
                 </div>
                 <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    {{ translate('You need to configure Stripe correctly to enable this feature.') }} <a href="{{ route('payment_method.index') }}">{{ translate('Configure Now') }}</a>
+                    {{ translate('You need to configure Stripe correctly to enable this feature.') }} <a href="{{ route('admin.payment_method.index') }}">{{ translate('Configure Now') }}</a>
                 </div>
             </div>
         </div>
@@ -277,7 +277,7 @@
                     </label>
                 </div>
                 <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    {{ translate('You need to configure Mercadopago correctly to enable this feature.') }} <a href="{{ route('payment_method.index') }}">{{ translate('Configure Now') }}</a>
+                    {{ translate('You need to configure Mercadopago correctly to enable this feature.') }} <a href="{{ route('admin.payment_method.index') }}">{{ translate('Configure Now') }}</a>
                 </div>
             </div>
         </div>
@@ -298,7 +298,7 @@
                     </label>
                 </div>
                 <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    {{ translate('You need to configure SSlCommerz correctly to enable this feature.') }} <a href="{{ route('payment_method.index') }}">{{ translate('Configure Now') }}</a>
+                    {{ translate('You need to configure SSlCommerz correctly to enable this feature.') }} <a href="{{ route('admin.payment_method.index') }}">{{ translate('Configure Now') }}</a>
                 </div>
             </div>
         </div>
@@ -319,7 +319,7 @@
                     </label>
                 </div>
                 <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    {{ translate('You need to configure Instamojo Payment correctly to enable this feature') }}. <a href="{{ route('payment_method.index') }}">{{ translate('Configure Now') }}</a>
+                    {{ translate('You need to configure Instamojo Payment correctly to enable this feature') }}. <a href="{{ route('admin.payment_method.index') }}">{{ translate('Configure Now') }}</a>
                 </div>
             </div>
         </div>
@@ -338,7 +338,7 @@
                     </label>
                 </div>
                 <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    {{ translate('You need to configure Razor correctly to enable this feature') }}. <a href="{{ route('payment_method.index') }}">{{ translate('Configure Now') }}</a>
+                    {{ translate('You need to configure Razor correctly to enable this feature') }}. <a href="{{ route('admin.payment_method.index') }}">{{ translate('Configure Now') }}</a>
                 </div>
             </div>
         </div>
@@ -359,7 +359,7 @@
                     </label>
                 </div>
                 <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    {{ translate('You need to configure PayStack correctly to enable this feature')  }}. <a href="{{ route('payment_method.index') }}">{{ translate('Configure Now') }}</a>
+                    {{ translate('You need to configure PayStack correctly to enable this feature')  }}. <a href="{{ route('admin.payment_method.index') }}">{{ translate('Configure Now') }}</a>
                 </div>
             </div>
         </div>
@@ -380,7 +380,7 @@
                     </label>
                 </div>
                 <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    {{ translate('You need to configure VoguePay correctly to enable this feature') }}. <a href="{{ route('payment_method.index') }}">{{ translate('Configure Now') }}</a>
+                    {{ translate('You need to configure VoguePay correctly to enable this feature') }}. <a href="{{ route('admin.payment_method.index') }}">{{ translate('Configure Now') }}</a>
                 </div>
             </div>
         </div>
@@ -399,7 +399,7 @@
                     </label>
                 </div>
                 <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    {{ translate('You need to configure Payhere correctly to enable this feature') }}. <a href="{{ route('payment_method.index') }}">{{ translate('Configure Now') }}</a>
+                    {{ translate('You need to configure Payhere correctly to enable this feature') }}. <a href="{{ route('admin.payment_method.index') }}">{{ translate('Configure Now') }}</a>
                 </div>
             </div>
         </div>
@@ -420,7 +420,7 @@
                     </label>
                 </div>
                 <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    {{ translate('You need to configure Ngenius correctly to enable this feature') }}. <a href="{{ route('payment_method.index') }}">{{ translate('Configure Now') }}</a>
+                    {{ translate('You need to configure Ngenius correctly to enable this feature') }}. <a href="{{ route('admin.payment_method.index') }}">{{ translate('Configure Now') }}</a>
                 </div>
             </div>
         </div>
@@ -440,7 +440,7 @@
                     </label>
                 </div>
                 <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    {{ translate('You need to configure iyzico correctly to enable this feature') }}. <a href="{{ route('payment_method.index') }}">{{ translate('Configure Now') }}</a>
+                    {{ translate('You need to configure iyzico correctly to enable this feature') }}. <a href="{{ route('admin.payment_method.index') }}">{{ translate('Configure Now') }}</a>
                 </div>
             </div>
         </div>
@@ -460,7 +460,7 @@
                     </label>
                 </div>
                 <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    {{ translate('You need to configure bkash correctly to enable this feature') }}. <a href="{{ route('payment_method.index') }}">{{ translate('Configure Now') }}</a>
+                    {{ translate('You need to configure bkash correctly to enable this feature') }}. <a href="{{ route('admin.payment_method.index') }}">{{ translate('Configure Now') }}</a>
                 </div>
             </div>
         </div>
@@ -480,7 +480,7 @@
                     </label>
                 </div>
                 <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    {{ translate('You need to configure nagad correctly to enable this feature') }}. <a href="{{ route('payment_method.index') }}">{{ translate('Configure Now') }}</a>
+                    {{ translate('You need to configure nagad correctly to enable this feature') }}. <a href="{{ route('admin.payment_method.index') }}">{{ translate('Configure Now') }}</a>
                 </div>
             </div>
         </div>
@@ -500,7 +500,7 @@
                     </label>
                 </div>
                 <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    {{ translate('You need to configure proxypay correctly to enable this feature') }}. <a href="{{ route('payment_method.index') }}">{{ translate('Configure Now') }}</a>
+                    {{ translate('You need to configure proxypay correctly to enable this feature') }}. <a href="{{ route('admin.payment_method.index') }}">{{ translate('Configure Now') }}</a>
                 </div>
             </div>
         </div>
@@ -520,7 +520,7 @@
                     </label>
                 </div>
                 <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    {{ translate('You need to configure amarpay correctly to enable this feature') }}. <a href="{{ route('payment_method.index') }}">{{ translate('Configure Now') }}</a>
+                    {{ translate('You need to configure amarpay correctly to enable this feature') }}. <a href="{{ route('admin.payment_method.index') }}">{{ translate('Configure Now') }}</a>
                 </div>
             </div>
         </div>
@@ -540,7 +540,7 @@
                     </label>
                 </div>
                 <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    {{ translate('You need to configure authorize net correctly to enable this feature') }}. <a href="{{ route('payment_method.index') }}">{{ translate('Configure Now') }}</a>
+                    {{ translate('You need to configure authorize net correctly to enable this feature') }}. <a href="{{ route('admin.payment_method.index') }}">{{ translate('Configure Now') }}</a>
                 </div>
             </div>
         </div>
@@ -560,7 +560,7 @@
                     </label>
                 </div>
                 <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    {{ translate('You need to configure payku net correctly to enable this feature') }}. <a href="{{ route('payment_method.index') }}">{{ translate('Configure Now') }}</a>
+                    {{ translate('You need to configure payku net correctly to enable this feature') }}. <a href="{{ route('admin.payment_method.index') }}">{{ translate('Configure Now') }}</a>
                 </div>
             </div>
         </div>
@@ -582,7 +582,7 @@
                     <span class="slider round"></span>
                 </label>
                 <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    {{ translate('You need to configure Facebook Client correctly to enable this feature') }}. <a href="{{ route('social_login.index') }}">{{ translate('Configure Now') }}</a>
+                    {{ translate('You need to configure Facebook Client correctly to enable this feature') }}. <a href="{{ route('admin.social_login.index') }}">{{ translate('Configure Now') }}</a>
                 </div>
             </div>
         </div>
@@ -598,7 +598,7 @@
                     <span class="slider round"></span>
                 </label>
                 <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    {{ translate('You need to configure Google Client correctly to enable this feature') }}. <a href="{{ route('social_login.index') }}">{{ translate('Configure Now') }}</a>
+                    {{ translate('You need to configure Google Client correctly to enable this feature') }}. <a href="{{ route('admin.social_login.index') }}">{{ translate('Configure Now') }}</a>
                 </div>
             </div>
         </div>
@@ -614,7 +614,7 @@
                     <span class="slider round"></span>
                 </label>
                 <div class="alert" style="color: #004085;background-color: #cce5ff;border-color: #b8daff;margin-bottom:0;margin-top:10px;">
-                    {{ translate('You need to configure Twitter Client correctly to enable this feature') }}. <a href="{{ route('social_login.index') }}">{{ translate('Configure Now') }}</a>
+                    {{ translate('You need to configure Twitter Client correctly to enable this feature') }}. <a href="{{ route('admin.social_login.index') }}">{{ translate('Configure Now') }}</a>
                 </div>
             </div>
         </div>
@@ -633,7 +633,7 @@
                 var value = 0;
             }
 
-            $.post('{{ route('business_settings.update.activation') }}', {_token:'{{ csrf_token() }}', type:type, value:value}, function(data){
+            $.post('{{ route('admin.business_settings.update.activation') }}', {_token:'{{ csrf_token() }}', type:type, value:value}, function(data){
                 if(data == '1'){
                     AIZ.plugins.notify('success', '{{ translate('Settings updated successfully') }}');
                 }

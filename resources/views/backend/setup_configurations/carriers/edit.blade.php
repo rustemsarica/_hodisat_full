@@ -7,7 +7,7 @@
                 <h1 class="h3">{{ translate('Carrier Informations') }}</h1>
             </div>
             <div class="col-md-6 text-md-right">
-                <a href="{{ route('carriers.index') }}" class="btn btn-primary">
+                <a href="{{ route('admin.carriers.index') }}" class="btn btn-primary">
                     <span>{{ translate('Back') }}</span>
                 </a>
             </div>
@@ -63,7 +63,7 @@
                                 </label>
                             </div>
                         </div>
-                        
+
                         <div class="form-group row" id="billing_type_section">
                             <label class="col-md-2 col-from-label">{{translate('Billing Type')}} <span class="text-danger">*</span></label>
                             <div class="col-md-9">
@@ -81,10 +81,10 @@
                             </div>
                             <table id="price-range-table" class="table table-responsive mb-0">
                                 <tbody>
-                                    
+
                                     <tr style="background-color: #c9c9d4">
                                         <td class="price_range_text"></td>
-                            
+
                                         <td> >= </td>
                                         @foreach($carrier->carrier_ranges as $carrier_range)
                                             <td>
@@ -133,13 +133,13 @@
                                             </td>
                                         @endif
                                     </tr>
-                            
+
                                     @foreach ($zones as $key => $zone)
                                         <tr>
                                             <td>
                                                 <span class="mt-2">{{ $zone->name }}</span>
                                             </td>
-                                            @php 
+                                            @php
                                                 $selected_zones = $carrier->carrier_range_prices->unique('zone_id')->pluck('zone_id')->toArray();
                                             @endphp
                                             <td>
@@ -147,7 +147,7 @@
                                             </td>
                                             @foreach($carrier->carrier_ranges as $key => $carrier_range)
                                                 @php
-                                                    $carrier_range_price = $carrier_range->carrier_range_prices->where('zone_id',$zone->id)->first(); 
+                                                    $carrier_range_price = $carrier_range->carrier_range_prices->where('zone_id',$zone->id)->first();
                                                 @endphp
                                                 <td>
                                                     <div class="input-group mb-2">
@@ -177,7 +177,7 @@
                                             <td></td>
                                             @foreach($carrier->carrier_ranges as $key => $carrier_range)
                                             <td>
-                                                @if($key == 0) 
+                                                @if($key == 0)
                                                     @continue
                                                 @endif
                                                 <button type="button" id="disablebtn" class="btn btn-primary btn-sm delete-range">Delete</button>
@@ -188,7 +188,7 @@
                             </table>
                             <button type="button" class="btn btn-primary btn-sm" id="addNewRange">{{ translate('Add new range') }}</button>
                         </div>
-                       
+
 
                         <div class="form-group mb-0 text-right">
                             <button type="button" class="btn btn-primary" id="carrier-submit-btn">{{translate('Update Carrier Informations')}}</button>
@@ -222,19 +222,19 @@
             $("#billing_type").val(billing_type).change();
         }
     }
-    
+
     // update price range form data based on billing type
     function update_price_range_form(){
         var billing_type = $('#billing_type').val();
-        
-        $(".carrier_range_form_header_text").html(billing_type === 'weight_based' 
-            ? "{{translate('Weight based carrier price range')}}" 
+
+        $(".carrier_range_form_header_text").html(billing_type === 'weight_based'
+            ? "{{translate('Weight based carrier price range')}}"
             : "{{translate('Price based carrier price range')}}");
-        $(".price_range_text").html(billing_type === 'weight_based' 
-            ? "{{ translate('Will be applied when the weight is') }}" 
+        $(".price_range_text").html(billing_type === 'weight_based'
+            ? "{{ translate('Will be applied when the weight is') }}"
             : "{{ translate('Will be applied when the price is') }}");
         $(".bill_based_on").html(billing_type === 'weight_based' ? "{{ translate('kg') }}" : "$");
-     
+
     }
 
     // disabled untill check
@@ -250,7 +250,7 @@
         // console.log(tdlenght);
 
 
-        // last td input 
+        // last td input
         var first_lasttd = $("#price-range-table").find("tr:nth-child(1)").find("td:last").find("input").val();
         var second_lasttd = $("#price-range-table").find("tr:nth-child(2)").find("td:last").find("input").val();
 
@@ -279,7 +279,7 @@
             $(this).clone()
             .find("input").val("").end()
             .insertAfter(this);
-        }); 
+        });
 
         $('#price-range-table tr:last td:last').html('<button type="button" id="disablebtn" class="btn btn-primary btn-sm delete-range">Delete</button>');
 
@@ -312,7 +312,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 method: "POST",
-                url: "{{ route('carriers.update', $carrier->id) }}",
+                url: "{{ route('admin.carriers.update', $carrier->id) }}",
                 data: data,
                 cache: false,
                 contentType: false,
@@ -321,7 +321,7 @@
 
                 }
             }).done(function(data) {
-                window.location.replace("{{ route('carriers.index') }}");
+                window.location.replace("{{ route('admin.carriers.index') }}");
             }).fail(function(jqXHR, textStatus, errorThrown) {
                 $(".print-error-msg").find("ul").html('');
                 $(".print-error-msg").css('display', 'block');

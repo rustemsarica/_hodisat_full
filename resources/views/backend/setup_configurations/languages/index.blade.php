@@ -9,7 +9,7 @@
                 <h5 class="mb-0 h6">{{ translate('Default Language') }}</h5>
             </div>
             <div class="card-body">
-                <form class="form-horizontal" action="{{ route('env_key_update.update') }}" method="POST">
+                <form class="form-horizontal" action="{{ route('admin.env_key_update.update') }}" method="POST">
                     @csrf
                     <div class="form-group row">
                         <div class="col-lg-3">
@@ -39,7 +39,7 @@
                 <h5 class="mb-0 h6">{{ translate('Import App Translations') }}</h5>
             </div>
             <div class="card-body">
-                <form class="form-horizontal" action="{{ route('app-translations.import') }}" method="POST" enctype="multipart/form-data">
+                <form class="form-horizontal" action="{{ route('admin.app-translations.import') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group row">
                         <div class="col-lg-3">
@@ -66,7 +66,7 @@
 <div class="aiz-titlebar text-left mt-2 mb-3">
 	<div class="align-items-center">
 		<div class="text-md-right">
-			<a href="{{ route('languages.create') }}" class="btn btn-circle btn-info">
+			<a href="{{ route('admin.languages.create') }}" class="btn btn-circle btn-info">
 				<span>{{translate('Add New Language')}}</span>
 			</a>
 		</div>
@@ -109,20 +109,20 @@
                             <span class="slider round"></span></label>
                         </td>
                         <td class="text-right">
-                            <a class="btn btn-soft-info btn-icon btn-circle btn-sm" href="{{route('languages.show', $language->id)}}" title="{{ translate('Translation') }}">
+                            <a class="btn btn-soft-info btn-icon btn-circle btn-sm" href="{{route('admin.languages.show', $language->id)}}" title="{{ translate('Translation') }}">
                                 <i class="las la-language"></i>
                             </a>
-                            <a class="btn btn-soft-warning btn-icon btn-circle btn-sm" href="{{route('app-translations.show', $language->id)}}" title="{{ translate('App Translation') }}">
+                            <a class="btn btn-soft-warning btn-icon btn-circle btn-sm" href="{{route('admin.app-translations.show', $language->id)}}" title="{{ translate('App Translation') }}">
                                 <i class="las la-language"></i>
                             </a>
-                            <a class="btn btn-soft-success btn-icon btn-circle btn-sm" href="{{route('app-translations.export', $language->id)}}" title="{{ translate('arb File Export') }}" download>
+                            <a class="btn btn-soft-success btn-icon btn-circle btn-sm" href="{{route('admin.app-translations.export', $language->id)}}" title="{{ translate('arb File Export') }}" download>
                                 <i class="las la-download"></i>
                             </a>
-                            <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('languages.edit', $language->id)}}" title="{{ translate('Edit') }}">
+                            <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('admin.languages.edit', $language->id)}}" title="{{ translate('Edit') }}">
                                 <i class="las la-edit"></i>
                             </a>
                             @if($language->code != 'en')
-                                <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('languages.destroy', $language->id)}}" title="{{ translate('Delete') }}">
+                                <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('admin.languages.destroy', $language->id)}}" title="{{ translate('Delete') }}">
                                     <i class="las la-trash"></i>
                                 </a>
                             @endif
@@ -156,7 +156,7 @@
             else{
                 var status = 0;
             }
-            $.post('{{ route('languages.update_rtl_status') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
+            $.post('{{ route('admin.languages.update_rtl_status') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
                 if(data == 1){
                     location.reload();
                 }
@@ -172,15 +172,15 @@
             else{
                 var status = 0;
             }
-            $.post('{{ route('languages.update-status') }}', {
-                    _token : '{{ csrf_token() }}', 
-                    id : el.value, 
+            $.post('{{ route('admin.languages.update-status') }}', {
+                    _token : '{{ csrf_token() }}',
+                    id : el.value,
                     status : status
                 }, function(data) {
                 if(data == 1) {
                     location.reload();
                 }
-                else { 
+                else {
                     AIZ.plugins.notify('danger', '{{ translate('Something went wrong') }}');
                 }
             });

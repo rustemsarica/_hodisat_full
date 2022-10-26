@@ -1,4 +1,4 @@
-<form class="form-horizontal" action="{{ route('commissions.pay_to_seller') }}" method="POST" enctype="multipart/form-data">
+<form class="form-horizontal" action="{{ route('admin.commissions.pay_to_seller') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="modal-header">
     	<h5 class="modal-title h6">{{translate('Pay to seller')}}</h5>

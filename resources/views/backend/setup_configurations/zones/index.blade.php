@@ -8,7 +8,7 @@
                 <h1 class="h3">{{ translate('All Zones') }}</h1>
             </div>
             <div class="col-md-6 text-md-right">
-                <a href="{{ route('zones.create') }}" class="btn btn-primary">
+                <a href="{{ route('admin.zones.create') }}" class="btn btn-primary">
                     <span>{{ translate('Add New Zone') }}</span>
                 </a>
             </div>
@@ -45,10 +45,10 @@
                                         </label>
                                     </td>
                                     <td style="text-align: right;">
-                                        <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{ route('zones.edit', $zone->id) }}" title="{{ translate('Edit') }}">
+                                        <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{ route('admin.zones.edit', $zone->id) }}" title="{{ translate('Edit') }}">
                                             <i class="las la-edit"></i>
                                         </a>
-                                        <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('zones.destroy', $zone->id)}}" title="{{ translate('Delete') }}">
+                                        <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('admin.zones.destroy', $zone->id)}}" title="{{ translate('Delete') }}">
                                             <i class="las la-trash"></i>
                                         </a>
                                     </td>

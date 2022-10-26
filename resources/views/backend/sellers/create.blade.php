@@ -12,7 +12,7 @@
             <h5 class="mb-0 h6">{{translate('Seller Information')}}</h5>
         </div>
         <div class="card-body">
-            <form action="{{ route('sellers.store') }}" method="POST">
+            <form action="{{ route('admin.sellers.store') }}" method="POST">
             	@csrf
                 <div class="form-group row">
                     <label class="col-sm-3 col-from-label" for="name">{{translate('Name')}}</label>

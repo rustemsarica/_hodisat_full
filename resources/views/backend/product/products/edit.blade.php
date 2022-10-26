@@ -5,7 +5,7 @@
     <h1 class="mb-0 h6">{{ translate('Edit Product') }}</h5>
 </div>
 <div class="">
-    <form class="form form-horizontal mar-top" action="{{route('products.update', $product->id)}}" method="POST" enctype="multipart/form-data" id="choice_form">
+    <form class="form form-horizontal mar-top" action="{{route('admin.products.update', $product->id)}}" method="POST" enctype="multipart/form-data" id="choice_form">
         <div class="row gutters-5">
             <div class="col-lg-8">
                 <input name="_method" type="hidden" value="POST">
@@ -16,7 +16,7 @@
                     <ul class="nav nav-tabs nav-fill border-light">
                         @foreach (\App\Models\Language::all() as $key => $language)
                         <li class="nav-item">
-                            <a class="nav-link text-reset @if ($language->code == $lang) active @else bg-soft-dark border-light border-left-0 @endif py-3" href="{{ route('products.admin.edit', ['id'=>$product->id, 'lang'=> $language->code] ) }}">
+                            <a class="nav-link text-reset @if ($language->code == $lang) active @else bg-soft-dark border-light border-left-0 @endif py-3" href="{{ route('admin.products.admin.edit', ['id'=>$product->id, 'lang'=> $language->code] ) }}">
                                 <img src="{{ static_asset('assets/img/flags/'.$language->code.'.png') }}" height="11" class="mr-1">
                                 <span>{{$language->name}}</span>
                             </a>
@@ -329,7 +329,7 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             type:"POST",
-            url:'{{ route('products.add-more-choice-option') }}',
+            url:'{{ route('admin.products.add-more-choice-option') }}',
             data:{
                attribute_id: i
             },

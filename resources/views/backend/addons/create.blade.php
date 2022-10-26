@@ -8,7 +8,7 @@
             <div class="card-header">
                 <h5 class="mb-0 h6">{{ translate('Install/Update Addon')}}</h5>
             </div>
-            <form class="form-horizontal" action="{{ route('addons.store') }}" method="POST" enctype="multipart/form-data">
+            <form class="form-horizontal" action="{{ route('admin.addons.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                     <div class="form-group row">

@@ -12,14 +12,14 @@
             <ul class="nav nav-tabs nav-fill border-light">
   				@foreach (\App\Models\Language::all() as $key => $language)
   					<li class="nav-item">
-  						<a class="nav-link text-reset @if ($language->code == $lang) active @else bg-soft-dark border-light border-left-0 @endif py-3" href="{{ route('support_ticket.getSupport', ['id'=>$support->id, 'lang'=> $language->code] ) }}">
+  						<a class="nav-link text-reset @if ($language->code == $lang) active @else bg-soft-dark border-light border-left-0 @endif py-3" href="{{ route('admin.support_ticket.getSupport', ['id'=>$support->id, 'lang'=> $language->code] ) }}">
   							<img src="{{ static_asset('assets/img/flags/'.$language->code.'.png') }}" height="11" class="mr-1">
   							<span>{{ $language->name }}</span>
   						</a>
   					</li>
 	            @endforeach
   			</ul>
-            <form class="p-4" action="{{ route('support_ticket.updateSupport') }}" method="POST" enctype="multipart/form-data">
+            <form class="p-4" action="{{ route('admin.support_ticket.updateSupport') }}" method="POST" enctype="multipart/form-data">
                 <input name="_method" type="hidden" value="PATCH">
                 <input type="hidden" name="lang" value="{{ $lang }}">
                 <input type="hidden" name="id" value="{{$support->id}}">

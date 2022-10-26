@@ -12,7 +12,7 @@
     <div class="col-md-8 mx-auto">
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('wish_report.index') }}" method="GET">
+                <form action="{{ route('admin.wish_report.index') }}" method="GET">
                     <div class="form-group row offset-lg-2">
                         <label class="col-md-3 col-form-label">{{ translate('Sort by Category') }}:</label>
                         <div class="col-md-5">

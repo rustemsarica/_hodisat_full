@@ -7,7 +7,7 @@
                 <h1 class="h3">{{ translate('Add New Zone') }}</h1>
             </div>
             <div class="col-md-6 text-md-right">
-                <a href="{{ route('zones.index') }}" class="btn btn-primary">
+                <a href="{{ route('admin.zones.index') }}" class="btn btn-primary">
                     <span>{{ translate('Back') }}</span>
                 </a>
             </div>
@@ -21,7 +21,7 @@
                     <h5 class="mb-0 h6">{{ translate('Zone Information') }}</h5>
                 </div>
 
-                <form action="{{ route('zones.store') }}" method="POST">
+                <form action="{{ route('admin.zones.store') }}" method="POST">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">

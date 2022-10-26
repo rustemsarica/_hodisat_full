@@ -1,4 +1,4 @@
-<form action="{{ route('commissions.pay_to_seller') }}" method="POST">
+<form action="{{ route('admin.commissions.pay_to_seller') }}" method="POST">
     @csrf
     <input type="hidden" name="shop_id" value="{{ $shop->id }}">
     <div class="modal-header">

@@ -13,7 +13,7 @@
         </div>
 
         <div class="card-body">
-          <form action="{{ route('sellers.update', $shop->id) }}" method="POST">
+          <form action="{{ route('admin.sellers.update', $shop->id) }}" method="POST">
                 <input name="_method" type="hidden" value="PATCH">
                 @csrf
                 <div class="form-group row">

@@ -13,7 +13,7 @@
 						<ul class="mb-0">
 							<li class="">
 								{{ translate('Make sure your server has matched with all requirements.') }}
-								<a href="{{route('system_server')}}">{{ translate('Check Here') }}</a>
+								<a href="{{route('admin.system_server')}}">{{ translate('Check Here') }}</a>
 							</li>
 							<li class="">{{ translate('Download latest version from codecanyon.') }}</li>
 							<li class="">{{ translate('Extract downloaded zip. You will find updates.zip file in those extraced files.') }}</li>
@@ -22,7 +22,7 @@
 							<li class="">{{ translate('Please turn off maintenance mode before updating.') }}</li>
 						</ul>
 					</div>
-					<form action="{{ route('update') }}" method="post" enctype="multipart/form-data">
+					<form action="{{ route('admin.update') }}" method="post" enctype="multipart/form-data">
 						@csrf
 						<div class="row gutters-5">
 							<div class="col-md">

@@ -7,7 +7,7 @@
                 <h1 class="h3">{{ translate('Add New Carrier') }}</h1>
             </div>
             <div class="col-md-6 text-md-right">
-                <a href="{{ route('carriers.index') }}" class="btn btn-primary">
+                <a href="{{ route('admin.carriers.index') }}" class="btn btn-primary">
                     <span>{{ translate('Back') }}</span>
                 </a>
             </div>
@@ -138,13 +138,13 @@
                                             </td>
                                         </tr>
                                     @endforeach
-                                    
+
                                     <tr>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                     </tr>
-                                    
+
                                 </tbody>
 
                             </table>
@@ -211,7 +211,7 @@
             // console.log(tdlenght);
 
 
-            // last td input 
+            // last td input
             var first_lasttd = $("#price-range-table").find("tr:nth-child(1)").find("td:last").find("input").val();
             var second_lasttd = $("#price-range-table").find("tr:nth-child(2)").find("td:last").find("input").val();
 
@@ -274,7 +274,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 method: "POST",
-                url: "{{ route('carriers.store') }}",
+                url: "{{ route('admin.carriers.store') }}",
                 data: data,
                 cache: false,
                 contentType: false,
@@ -283,14 +283,14 @@
 
                 }
             }).done(function(data) {
-                window.location.replace("{{ route('carriers.index') }}");
+                window.location.replace("{{ route('admin.carriers.index') }}");
             }).fail(function(jqXHR, textStatus, errorThrown) {
                 $(".print-error-msg").find("ul").html('');
                 $(".print-error-msg").css('display', 'block');
                 $.each(jqXHR.responseJSON.errors, function(key, value) {
                     $(".print-error-msg").find("ul").append('<li>' + value[0] + '</li>');
                 });
-                
+
                 $("html, body").animate({scrollTop: 0}, 800);
             });
         })

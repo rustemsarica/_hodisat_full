@@ -13,7 +13,7 @@
             <h1 class="h3">{{translate('All Categories')}}</h1>
         </div>
         <div class="col-md-6 text-md-right">
-            <a href="{{ route('categories.create') }}" class="btn btn-primary">
+            <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">
                 <span>{{translate('Add New category')}}</span>
             </a>
         </div>
@@ -87,7 +87,7 @@
                             </label>
                         </td>
                         <td>
-                            <form action="{{ route('categories.status') }}" method="post">
+                            <form action="{{ route('admin.categories.status') }}" method="post">
                 	            @csrf
                                 <input type="hidden" name="id" value="{{$category->id}}">
                                 @if($category->status==1)
@@ -101,10 +101,10 @@
                         </td>
                         <td>{{ $category->commision_rate }} %</td>
                         <td class="text-right">
-                            <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('categories.edit', ['id'=>$category->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Edit') }}">
+                            <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('admin.categories.edit', ['id'=>$category->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Edit') }}">
                                 <i class="las la-edit"></i>
                             </a>
-                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('categories.destroy', $category->id)}}" title="{{ translate('Delete') }}">
+                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('admin.categories.destroy', $category->id)}}" title="{{ translate('Delete') }}">
                                 <i class="las la-trash"></i>
                             </a>
                         </td>
@@ -134,7 +134,7 @@
             else{
                 var status = 0;
             }
-            $.post('{{ route('categories.featured') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
+            $.post('{{ route('admin.categories.featured') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
                 if(data == 1){
                     AIZ.plugins.notify('success', '{{ translate('Featured categories updated successfully') }}');
                 }

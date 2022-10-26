@@ -8,7 +8,7 @@
 			<h1 class="h3">{{translate('All Role')}}</h1>
 		</div>
 		<div class="col-md-6 text-md-right">
-			<a href="{{ route('roles.create') }}" class="btn btn-circle btn-info">
+			<a href="{{ route('admin.roles.create') }}" class="btn btn-circle btn-info">
 				<span>{{translate('Add New Role')}}</span>
 			</a>
 		</div>
@@ -34,10 +34,10 @@
                         <td>{{ ($key+1) + ($roles->currentPage() - 1)*$roles->perPage() }}</td>
                         <td>{{ $role->getTranslation('name')}}</td>
                         <td class="text-right">
-                            <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('roles.edit', ['id'=>$role->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Edit') }}">
+                            <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('admin.roles.edit', ['id'=>$role->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Edit') }}">
                                 <i class="las la-edit"></i>
                             </a>
-                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('roles.destroy', $role->id)}}" title="{{ translate('Delete') }}">
+                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('admin.roles.destroy', $role->id)}}" title="{{ translate('Delete') }}">
                                 <i class="las la-trash"></i>
                             </a>
                         </td>

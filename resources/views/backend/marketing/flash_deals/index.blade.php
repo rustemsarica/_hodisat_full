@@ -8,7 +8,7 @@
 			<h1 class="h3">{{translate('All Flash Deals')}}</h1>
 		</div>
 		<div class="col-md-6 text-md-right">
-			<a href="{{ route('flash_deals.create') }}" class="btn btn-circle btn-info">
+			<a href="{{ route('admin.flash_deals.create') }}" class="btn btn-circle btn-info">
 				<span>{{translate('Create New Flash Deal')}}</span>
 			</a>
 		</div>
@@ -65,10 +65,10 @@
 						</td>
 						<td>{{ url('flash-deal/'.$flash_deal->slug) }}</td>
 						<td class="text-right">
-                            <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('flash_deals.edit', ['id'=>$flash_deal->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Edit') }}">
+                            <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('admin.flash_deals.edit', ['id'=>$flash_deal->id, 'lang'=>env('DEFAULT_LANGUAGE')] )}}" title="{{ translate('Edit') }}">
                                 <i class="las la-edit"></i>
                             </a>
-                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('flash_deals.destroy', $flash_deal->id)}}" title="{{ translate('Delete') }}">
+                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('admin.flash_deals.destroy', $flash_deal->id)}}" title="{{ translate('Delete') }}">
                                 <i class="las la-trash"></i>
                             </a>
                         </td>
@@ -99,7 +99,7 @@
             else{
                 var status = 0;
             }
-            $.post('{{ route('flash_deals.update_status') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
+            $.post('{{ route('admin.flash_deals.update_status') }}', {_token:'{{ csrf_token() }}', id:el.value, status:status}, function(data){
                 if(data == 1){
                     location.reload();
                 }
@@ -115,7 +115,7 @@
             else{
                 var featured = 0;
             }
-            $.post('{{ route('flash_deals.update_featured') }}', {_token:'{{ csrf_token() }}', id:el.value, featured:featured}, function(data){
+            $.post('{{ route('admin.flash_deals.update_featured') }}', {_token:'{{ csrf_token() }}', id:el.value, featured:featured}, function(data){
                 if(data == 1){
                     location.reload();
                 }

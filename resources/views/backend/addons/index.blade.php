@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="col-md-6 mt-3 mt-sm-0 text-center text-md-right">
-                <a href="{{ route('addons.create')}}" class="btn btn-primary">{{ translate('Install/Update Addon')}}</a>
+                <a href="{{ route('admin.addons.create')}}" class="btn btn-primary">{{ translate('Install/Update Addon')}}</a>
             </div>
         </div>
     </div>
@@ -81,7 +81,7 @@
             else{
                 var status = 0;
             }
-            $.post('{{ route('addons.activation') }}', {_token:'{{ csrf_token() }}', id:id, status:status}, function(data){
+            $.post('{{ route('admin.addons.activation') }}', {_token:'{{ csrf_token() }}', id:id, status:status}, function(data){
                 if(data == 1){
                     AIZ.plugins.notify('success', '{{ translate('Status updated successfully') }}');
                 }

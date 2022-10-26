@@ -8,7 +8,7 @@
                 <h5 class="mb-0 h6">{{translate('SMTP Settings')}}</h5>
             </div>
             <div class="card-body">
-                <form class="form-horizontal" action="{{ route('env_key_update.update') }}" method="POST">
+                <form class="form-horizontal" action="{{ route('admin.env_key_update.update') }}" method="POST">
                     @csrf
                     <div class="form-group row">
                         <input type="hidden" name="types[]" value="MAIL_DRIVER">
@@ -119,7 +119,7 @@
                 <h5 class="mb-0 h6">{{translate('Test SMTP configuration')}}</h5>
             </div>
             <div class="card-body">
-                <form action="{{ route('test.smtp') }}" method="post">
+                <form action="{{ route('admin.test.smtp') }}" method="post">
                     @csrf
                     <div class="row">
                         <div class="col">

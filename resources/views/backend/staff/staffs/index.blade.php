@@ -8,7 +8,7 @@
 			<h1 class="h3">{{translate('All Staffs')}}</h1>
 		</div>
 		<div class="col-md-6 text-md-right">
-			<a href="{{ route('staffs.create') }}" class="btn btn-circle btn-info">
+			<a href="{{ route('admin.staffs.create') }}" class="btn btn-circle btn-info">
 				<span>{{translate('Add New Staffs')}}</span>
 			</a>
 		</div>
@@ -45,10 +45,10 @@
 								@endif
 							</td>
                             <td class="text-right">
-		                            <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('staffs.edit', encrypt($staff->id))}}" title="{{ translate('Edit') }}">
+		                            <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('admin.staffs.edit', encrypt($staff->id))}}" title="{{ translate('Edit') }}">
 		                                <i class="las la-edit"></i>
 		                            </a>
-		                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('staffs.destroy', $staff->id)}}" title="{{ translate('Delete') }}">
+		                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('admin.staffs.destroy', $staff->id)}}" title="{{ translate('Delete') }}">
 		                                <i class="las la-trash"></i>
 		                            </a>
 		                        </td>

@@ -14,7 +14,7 @@
                 <h5 class="mb-0 h6">{{translate('Category Information')}}</h5>
             </div>
             <div class="card-body">
-                <form class="form-horizontal" action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
+                <form class="form-horizontal" action="{{ route('admin.categories.store') }}" method="POST" enctype="multipart/form-data">
                 	@csrf
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label">{{translate('Name')}}</label>

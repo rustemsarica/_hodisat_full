@@ -1,4 +1,4 @@
-<form action="{{ route('your_currency.update') }}" method="POST" >
+<form action="{{ route('admin.your_currency.update') }}" method="POST" >
     @csrf
     <input type="hidden" name="id" value="{{ $currency->id }}">
     <div class="modal-header">
