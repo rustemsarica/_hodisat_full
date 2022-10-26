@@ -30,10 +30,10 @@
         		<td>{{ $key+1 }}</td>
 
 				@if($page->type == 'home_page')
-        			<td><a href="{{ route('admin.custom-pages.show_custom_page', $page->slug) }}" class="text-reset">{{ $page->getTranslation('title') }}</a></td>
+        			<td><a href="{{ route('custom-pages.show_custom_page', $page->slug) }}" class="text-reset">{{ $page->getTranslation('title') }}</a></td>
 					<td>{{ route('admin.home') }}</td>
 				@else
-        			<td><a href="{{ route('admin.custom-pages.show_custom_page', $page->slug) }}" class="text-reset">{{ $page->getTranslation('title') }}</a></td>
+        			<td><a href="{{ route('custom-pages.show_custom_page', $page->slug) }}" class="text-reset">{{ $page->getTranslation('title') }}</a></td>
 					<td>{{ route('admin.home') }}/{{ $page->slug }}</td>
 				@endif
 
