@@ -119,7 +119,7 @@ Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => ['auth', 'ad
     });
 
     // Seller
-    Route::resource('sellers', SellerController::class);
+    Route::resource('sellers', SellerController::class)->except('destroy');
     Route::controller(SellerController::class)->group(function () {
         Route::get('sellers_ban/{id}', 'ban')->name('sellers.ban');
         Route::get('/sellers/destroy/{id}', 'destroy')->name('sellers.destroy');
