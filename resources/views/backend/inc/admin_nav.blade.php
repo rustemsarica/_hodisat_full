@@ -11,7 +11,7 @@
             <div class="d-flex justify-content-around align-items-center align-items-stretch">
                 <div class="aiz-topbar-item">
                     <div class="d-flex align-items-center">
-                        <a class="btn btn-icon btn-circle btn-light" href="{{ route('admin.home')}}" target="_blank" title="{{ translate('Browse Website') }}">
+                        <a class="btn btn-icon btn-circle btn-light" href="{{ route('home')}}" target="_blank" title="{{ translate('Browse Website') }}">
                             <i class="las la-globe"></i>
                         </a>
                     </div>

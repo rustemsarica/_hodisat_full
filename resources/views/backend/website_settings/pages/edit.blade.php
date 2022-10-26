@@ -42,10 +42,10 @@
 					<div class="col-sm-10">
 						<div class="input-group d-block d-md-flex">
 							@if($page->type == 'custom_page')
-								<div class="input-group-prepend"><span class="input-group-text flex-grow-1">{{ route('admin.home') }}/</span></div>
+								<div class="input-group-prepend"><span class="input-group-text flex-grow-1">{{ route('home') }}/</span></div>
 								<input type="text" class="form-control w-100 w-md-auto" placeholder="{{ translate('Slug') }}" name="slug" value="{{ $page->slug }}">
 							@else
-								<input class="form-control w-100 w-md-auto" value="{{ route('admin.home') }}/{{ $page->slug }}" disabled>
+								<input class="form-control w-100 w-md-auto" value="{{ route('home') }}/{{ $page->slug }}" disabled>
 							@endif
 						</div>
 						<small class="form-text text-muted">{{ translate('Use character, number, hypen only') }}</small>
