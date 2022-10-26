@@ -14,8 +14,7 @@
                                         <a href="{{ json_decode(get_setting('home_slider_links'), true)[$key] }}">
                                             <img style="background-color:whitesmoke"
                                                 class="d-block mw-100 img-fit lazyload rounded shadow-sm"
-                                                src="{{ static_asset('assets/img/placeholder-rect.jpg') }}"
-                                                data-src="{{ uploaded_asset($slider_images[$key]) }}"
+                                                src="{{ uploaded_asset($slider_images[$key]) }}"
                                                 alt="{{ env('APP_NAME')}} promo"
                                                 height="457"
                                                 onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder-rect.jpg') }}';"
