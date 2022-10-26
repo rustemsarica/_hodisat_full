@@ -181,11 +181,11 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>
                                         @if ($orderDetail->product != null && $orderDetail->product->auction_product == 0)
-                                            <a href="{{ route('admin.product', $orderDetail->product->slug) }}" target="_blank">
+                                            <a href="{{ route('product', $orderDetail->product->slug) }}" target="_blank">
                                                 <img height="50" src="{{ uploaded_asset($orderDetail->product->thumbnail_img) }}">
                                             </a>
                                         @elseif ($orderDetail->product != null && $orderDetail->product->auction_product == 1)
-                                            <a href="{{ route('admin.auction-product', $orderDetail->product->slug) }}" target="_blank">
+                                            <a href="{{ route('auction-product', $orderDetail->product->slug) }}" target="_blank">
                                                 <img height="50" src="{{ uploaded_asset($orderDetail->product->thumbnail_img) }}">
                                             </a>
                                         @else
@@ -195,7 +195,7 @@
                                     <td>
                                         @if ($orderDetail->product != null && $orderDetail->product->auction_product == 0)
                                             <strong>
-                                                <a href="{{ route('admin.product', $orderDetail->product->slug) }}" target="_blank"
+                                                <a href="{{ route('product', $orderDetail->product->slug) }}" target="_blank"
                                                     class="text-muted">
                                                     {{ $orderDetail->product->getTranslation('name') }}
                                                 </a>
@@ -205,7 +205,7 @@
                                             </small>
                                         @elseif ($orderDetail->product != null && $orderDetail->product->auction_product == 1)
                                             <strong>
-                                                <a href="{{ route('admin.auction-product', $orderDetail->product->slug) }}" target="_blank"
+                                                <a href="{{ route('auction-product', $orderDetail->product->slug) }}" target="_blank"
                                                     class="text-muted">
                                                     {{ $orderDetail->product->getTranslation('name') }}
                                                 </a>
