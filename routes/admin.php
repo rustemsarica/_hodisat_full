@@ -313,18 +313,18 @@ Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => ['auth', 'ad
 
     //Blog Section
     //Blog cateory
-    Route::resource('blog-category', BlogCategoryController::class);
+    Route::resource('blog-category', BlogCategoryController::class)->except('destroy');
     Route::get('/blog-category/destroy/{id}', [BlogCategoryController::class, 'destroy'])->name('blog-category.destroy');
 
     // Blog
-    Route::resource('blog', BlogController::class);
+    Route::resource('blog', BlogController::class)->except('destroy');
     Route::controller(BlogController::class)->group(function () {
         Route::get('/blog/destroy/{id}', 'destroy')->name('blog.destroy');
         Route::post('/blog/change-status', 'change_status')->name('blog.change-status');
     });
 
     //Coupons
-    Route::resource('coupon', CouponController::class);
+    Route::resource('coupon', CouponController::class)->except('destroy');
     Route::controller(CouponController::class)->group(function () {
         Route::get('/coupon/destroy/{id}', 'destroy')->name('coupon.destroy');
 
@@ -353,7 +353,7 @@ Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => ['auth', 'ad
     });
 
     //Pickup_Points
-    Route::resource('pick_up_points', PickupPointController::class);
+    Route::resource('pick_up_points', PickupPointController::class)->except('edit', 'destroy');
     Route::controller(PickupPointController::class)->group(function () {
         Route::get('/pick_up_points/edit/{id}', 'edit')->name('pick_up_points.edit');
         Route::get('/pick_up_points/destroy/{id}', 'destroy')->name('pick_up_points.destroy');
@@ -374,7 +374,7 @@ Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => ['auth', 'ad
     });
 
     // Product Attribute
-    Route::resource('attributes', AttributeController::class );
+    Route::resource('attributes', AttributeController::class )->except('edit', 'destroy');
     Route::controller(AttributeController::class)->group(function () {
         Route::get('/attributes/edit/{id}', 'edit')->name('attributes.edit');
         Route::get('/attributes/destroy/{id}', 'destroy')->name('attributes.destroy');
@@ -408,7 +408,7 @@ Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => ['auth', 'ad
 	Route::post('/states/status', [StateController::class, 'updateStatus'])->name('states.status');
 
     // Carriers
-    Route::resource('carriers', CarrierController::class);
+    Route::resource('carriers', CarrierController::class)->except('destroy');
     Route::controller(CarrierController::class)->group(function () {
         Route::get('/carriers/destroy/{id}', 'destroy')->name('carriers.destroy');
         Route::post('/carriers/update_status', 'updateStatus')->name('carriers.update_status');
@@ -416,10 +416,10 @@ Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => ['auth', 'ad
 
 
     // Zones
-    Route::resource('zones', ZoneController::class);
+    Route::resource('zones', ZoneController::class)->except('destroy');
     Route::get('/zones/destroy/{id}', [ZoneController::class, 'destroy'])->name('zones.destroy');
 
-    Route::resource('cities', CityController::class);
+    Route::resource('cities', CityController::class)->except('edit', 'destroy');
     Route::controller(CityController::class)->group(function () {
         Route::get('/cities/edit/{id}', 'edit')->name('cities.edit');
         Route::get('/cities/destroy/{id}', 'destroy')->name('cities.destroy');
@@ -430,7 +430,7 @@ Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => ['auth', 'ad
     Route::view('/system/server-status', 'backend.system.server_status')->name('system_server');
 
     // uploaded files
-    Route::resource('/uploaded-files', AizUploadController::class);
+    Route::resource('/uploaded-files', AizUploadController::class)->except('destroy');
     Route::controller(AizUploadController::class)->group(function () {
         Route::any('/uploaded-files/file-info', 'file_info')->name('uploaded-files.info');
         Route::get('/uploaded-files/destroy/{id}', 'destroy')->name('uploaded-files.destroy');
