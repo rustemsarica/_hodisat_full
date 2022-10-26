@@ -18,7 +18,7 @@ use App\Http\Controllers\SellerPackagePaymentController;
 
 //Admin
 Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function(){
-    Route::resource('manual_payment_methods', ManualPaymentMethodController::class);
+    Route::resource('manual_payment_methods', ManualPaymentMethodController::class)->except('destroy');;
     Route::get('/manual_payment_methods/destroy/{id}', [ManualPaymentMethodController::class, 'destroy'])->name('manual_payment_methods.destroy');
     Route::get('/offline-wallet-recharge-requests', [WalletController::class, 'offline_recharge_request'])->name('offline_wallet_recharge_request.index');
     Route::post('/offline-wallet-recharge/approved', [WalletController::class, 'updateApproved'])->name('offline_recharge_request.approved');
