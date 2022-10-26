@@ -436,7 +436,7 @@ Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => ['auth', 'ad
         Route::get('/uploaded-files/destroy/{id}', 'destroy')->name('uploaded-files.destroy');
     });
 
-    Route::get('/all-notification', [NotificationController::class, 'index'])->name('admin.all-notification');
+    Route::get('/all-notification', [NotificationController::class, 'index'])->name('all-notification');
 
     Route::get('/clear-cache', [AdminController::class, 'clearCache'])->name('cache.clear');
 });
