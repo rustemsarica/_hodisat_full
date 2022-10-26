@@ -55,7 +55,7 @@ class FileController extends Controller
             }
 
 
-            $newFileName = rand(10000000000, 9999999999) . date("YmdHis") . "." . ".webp";
+            $newFileName = rand(10000000000, 9999999999) . date("YmdHis") . "." . "webp";
             $newFullPath = "$dir/$newFileName";
 
             $file_put = file_put_contents($newFullPath, $realImage);
