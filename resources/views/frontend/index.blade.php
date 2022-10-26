@@ -59,7 +59,7 @@
                                 </span>
                             </h3>
                         </div>
-                        <div class="col-12">
+                        <div class="row">
                             @foreach ($newest_products as $key => $product)
                             <div class="col-2">
                                 <div class="aiz-card-box border border-light rounded hov-shadow-md mt-1 mb-2 has-transition bg-white">
