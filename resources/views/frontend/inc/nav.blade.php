@@ -42,26 +42,26 @@
                     @endif
 
                     @if(get_setting('show_currency_switcher') == 'on')
-                    <li class="list-inline-item dropdown ml-auto ml-lg-0 mr-0" id="currency-change">
-                        @php
-                            if(Session::has('currency_code')){
-                                $currency_code = Session::get('currency_code');
-                            }
-                            else{
-                                $currency_code = \App\Models\Currency::findOrFail(get_setting('system_default_currency'))->code;
-                            }
-                        @endphp
-                        <a href="javascript:void(0)" class="dropdown-toggle text-reset py-2 opacity-80" data-toggle="dropdown" data-display="static">
-                            {{ \App\Models\Currency::where('code', $currency_code)->first()->name }} {{ (\App\Models\Currency::where('code', $currency_code)->first()->symbol) }}
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-                            @foreach (\App\Models\Currency::where('status', 1)->get() as $key => $currency)
-                                <li>
-                                    <a class="dropdown-item @if($currency_code == $currency->code) active @endif" href="javascript:void(0)" data-currency="{{ $currency->code }}">{{ $currency->name }} ({{ $currency->symbol }})</a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
+                        <li class="list-inline-item dropdown ml-auto ml-lg-0 mr-0" id="currency-change">
+                            @php
+                                if(Session::has('currency_code')){
+                                    $currency_code = Session::get('currency_code');
+                                }
+                                else{
+                                    $currency_code = \App\Models\Currency::findOrFail(get_setting('system_default_currency'))->code;
+                                }
+                            @endphp
+                            <a href="javascript:void(0)" class="dropdown-toggle text-reset py-2 opacity-80" data-toggle="dropdown" data-display="static">
+                                {{ \App\Models\Currency::where('code', $currency_code)->first()->name }} {{ (\App\Models\Currency::where('code', $currency_code)->first()->symbol) }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+                                @foreach (\App\Models\Currency::where('status', 1)->get() as $key => $currency)
+                                    <li>
+                                        <a class="dropdown-item @if($currency_code == $currency->code) active @endif" href="javascript:void(0)" data-currency="{{ $currency->code }}">{{ $currency->name }} ({{ $currency->symbol }})</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
                     @endif
                 </ul>
             </div>

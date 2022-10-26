@@ -12,7 +12,7 @@ class FileController extends Controller
 {
     public function index(){
         $all_uploads = (auth()->user()->user_type == 'seller') ? Upload::where('user_id',auth()->user()->id) : Upload::query();
-        
+
 
         $all_uploads = $all_uploads->paginate(20)->appends(request()->query());
 
@@ -34,8 +34,8 @@ class FileController extends Controller
         );
 
         try {
-            
-            
+
+
             $image = $request->image;
             $filename = $request->filename;
             $realImage = base64_decode($image);
@@ -54,8 +54,8 @@ class FileController extends Controller
                 ]);
             }
 
-            
-            $newFileName = rand(10000000000, 9999999999) . date("YmdHis") . "." . $extension;
+
+            $newFileName = rand(10000000000, 9999999999) . date("YmdHis") . "." . ".webp";
             $newFullPath = "$dir/$newFileName";
 
             $file_put = file_put_contents($newFullPath, $realImage);
@@ -113,7 +113,7 @@ class FileController extends Controller
         try{
             foreach($request->data as $item ){
                 $item = \json_decode($item);
-            
+
                 $filename=$item->filename;
                 $realImage = base64_decode($item->image);
                 $array= \explode(".",$filename);
@@ -131,7 +131,7 @@ class FileController extends Controller
 
 
                 $upload = new Upload;
-                
+
                 $newFileName = rand(10000000000, 9999999999) . date("YmdHis") . "." . $extension;
                 $newFullPath = "$dir/$newFileName";
 
@@ -185,18 +185,18 @@ class FileController extends Controller
             if(!empty($photos)){
                 $photos = array_values($photos);
                 $product->thumbnail_img=$photos[0];
-                $product->photos = \implode(",",$photos); 
+                $product->photos = \implode(",",$photos);
             }else{
                 $product->photos = null;
-                $product->thumbnail_img=null; 
+                $product->thumbnail_img=null;
             }
-            
+
             $product->save();
             $upload=Upload::where('id',$key)->first();
             File::delete($upload->file_name);
-            
+
             Upload::where('id',$key)->delete();
-            
+
             return response()->json([
                 'result' => true,
                 'message' => "Image deleted",
@@ -211,7 +211,7 @@ class FileController extends Controller
 	public function delete($imageId)
     {
         $upload=Upload::where('id',$imageId)->first();
-        File::delete($upload->file_name);            
+        File::delete($upload->file_name);
         Upload::where('id',$imageId)->delete();
         return response()->json([
             'result' => true,
