@@ -181,44 +181,7 @@ class HomeController extends Controller
         $products = filter_products(Product::where('current_stock',1))->paginate(40);
         $data = '';
             foreach ($products as $product) {
-                $data.='<div class="aiz-card-box border border-light rounded hov-shadow-md mt-1 mb-2 has-transition bg-white">';
-            $discount_in_percentage=discount_in_percentage($product);
-            if($discount_in_percentage > 0){
-                $data.='<span class="badge-custom">'.translate('OFF').'<span class="box ml-1 mr-0">&nbsp;'.$discount_in_percentage.'%</span></span>';
-            }
-            $data.='<div class="position-relative">';
-                $product_url = route('product', $product->slug);
-                if($product->auction_product == 1) {
-                        $product_url = route('auction-product', $product->slug);
-                }
-
-                $data.='<a href="'.$product_url.'" class="d-block">
-                    <img style="background-color:whitesmoke"
-                        class="img-fit lazyload lazyload-image mx-auto h-140px h-md-210px"
-                        src="'.static_asset($product->thumbnail!=null ? $product->thumbnail->file_name : 'assets/img/placeholder.jpg') .'"
-                        alt="'.$product->name.'"
-                    >
-                </a>';
-                if ($product->current_stock==0){
-                    $data.='<span class="absolute-center text-center fs-20 text-white fw-600 p-2 lh-1-8" style="background-color: #455a64; opacity:0.7; width:100%;">'.translate('Sold').'
-                    </span>';
-                }
-
-                $data.='</div>
-                    <div class="p-md-3 p-2 d-flex justify-content-between">
-                    <div class="fs-18">';
-                    if(home_base_price($product->unit_price) != home_discounted_base_price($product)){
-                        $data.='<del class="fw-600 opacity-80 mr-1">'.home_base_price($product->unit_price).'</del>';
-                    }
-
-
-                    $data.='<span class="fw-700 text-primary">'.home_discounted_base_price($product).'</span>
-                </div>
-                <div class="c-pointer fs-24" onclick="addToWishList('.$product->id.')">
-                    <i class="la la-heart-o"></i>
-                </div>
-            </div>
-        </div>';
+                $data.='<div class="col">'.view('frontend.partials.product_box_1',['product' => $product]).'</div>';
             }
         return $data;
     }
