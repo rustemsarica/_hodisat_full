@@ -24,7 +24,7 @@
 				<label class="col-sm-2 col-from-label" for="name">{{translate('Link')}} <span class="text-danger">*</span></label>
 				<div class="col-sm-10">
 					<div class="input-group d-block d-md-flex">
-						<div class="input-group-prepend "><span class="input-group-text flex-grow-1">{{ route('admin.home') }}/</span></div>
+						<div class="input-group-prepend "><span class="input-group-text flex-grow-1">{{ route('home') }}/</span></div>
 						<input type="text" class="form-control w-100 w-md-auto" placeholder="{{ translate('Slug') }}" name="slug" required>
 					</div>
 					<small class="form-text text-muted">{{ translate('Use character, number, hypen only') }}</small>
