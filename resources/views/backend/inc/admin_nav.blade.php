@@ -84,7 +84,7 @@
                             </ul>
                         </div>
                         <div class="text-center border-top">
-                            <a href="{{ route('admin.all-notification') }}" class="text-reset d-block py-2">
+                            <a href="{{ route('all-notification') }}" class="text-reset d-block py-2">
                                 {{translate('View All Notifications')}}
                             </a>
                         </div>
