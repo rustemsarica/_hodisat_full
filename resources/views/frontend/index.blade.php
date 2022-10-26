@@ -159,7 +159,7 @@
                             </h3>
                         </div>
                         {{-- Best Seller --}}
-                        @include('frontend.partials.best_sellers_section.blade')
+                        @include('frontend.partials.best_sellers_section')
                     </div>
                 </div>
             </div>
