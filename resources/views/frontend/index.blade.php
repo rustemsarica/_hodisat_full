@@ -159,8 +159,7 @@
                             </h3>
                         </div>
                         {{-- Best Seller --}}
-                        <div id="section_best_sellers">
-                        </div>
+                        @include('frontend.partials.best_sellers_section.blade')
                     </div>
                 </div>
             </div>
@@ -192,10 +191,8 @@
 @section('script')
     <script>
         $(document).ready(function(){
-            $.post('{{ route('home.section.best_sellers') }}', {_token:'{{ csrf_token() }}'}, function(data){
-                $('#section_best_sellers').html(data);
-                AIZ.plugins.slickCarousel();
-            });
+
+            AIZ.plugins.slickCarousel();
         });
 
 
