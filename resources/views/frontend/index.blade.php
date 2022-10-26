@@ -59,9 +59,9 @@
                                 </span>
                             </h3>
                         </div>
-                        <div class="row">
+                        <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="6" data-xl-items="5" data-lg-items="4"  data-md-items="3" data-sm-items="2" data-xs-items="2" data-arrows='true' data-infinite='true'>
                             @foreach ($newest_products as $key => $product)
-                            <div class="col-2">
+                            <div class="carousel-box">
                                 <div class="aiz-card-box border border-light rounded hov-shadow-md mt-1 mb-2 has-transition bg-white">
                                     @if(discount_in_percentage($product) > 0)
                                         <span class="badge-custom">{{ translate('OFF') }}<span class="box ml-1 mr-0">&nbsp;{{discount_in_percentage($product)}}%</span></span>
