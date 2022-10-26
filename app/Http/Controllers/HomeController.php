@@ -38,7 +38,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-
+        Artisan::call('route:clear');
+        Artisan::call('route:cache');
         $newest_products = Cache::remember('newest_products', 3600, function () {
             return filter_products(Product::without('product_translations')->latest())->limit(12)->get();
         });
