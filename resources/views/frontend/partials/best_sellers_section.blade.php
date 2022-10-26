@@ -23,14 +23,12 @@
                         </div>
                         <div class="col-8 border-left border-light">
                             <div class="p-3 text-left">
-                                <h2 class="h6 fw-600 text-truncate">
-                                    <a href="{{ route('shop.visit', $seller->user->username) }}" class="text-reset">{{ $seller->user->username }}</a>
-                                </h2>
+                                <a href="{{ route('shop.visit', $seller->user->username) }}" class="text-reset h6 fw-600 text-truncate">{{ $seller->user->username }}</a>
                                 <div class="rating rating-sm mb-2">
                                     {{ renderStarRating($seller->rating) }}
                                 </div>
                                 <a href="{{ route('shop.visit', $seller->user->username) }}" class="btn btn-outline-primary btn-sm">
-                                    {{ translate('Visit Store') }} <i class="las la-angle-right"></i>
+                                    {{ translate('Visit Store') }}
                                 </a>
                             </div>
                         </div>
