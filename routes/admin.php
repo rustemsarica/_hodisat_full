@@ -59,7 +59,7 @@ Route::controller(UpdateController::class)->group(function () {
 });
 
 Route::get('/admin', [AdminController::class, 'admin_dashboard'])->name('admin.dashboard')->middleware(['auth', 'admin']);
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function() {
+Route::group(['prefix' => 'admin', 'name'=> 'admin', 'middleware' => ['auth', 'admin']], function() {
 
     // category
     Route::resource('categories', CategoryController::class);
