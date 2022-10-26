@@ -15,6 +15,8 @@
                                 <img
                                     style="background-color: whitesmoke;" src="@if ($seller->shop->logo !== null) {{ uploaded_asset($seller->shop->logo) }} @else {{ static_asset('assets/img/placeholder.jpg') }} @endif"
                                     alt="{{ $seller->user->username }}"
+                                    width="75"
+                                    height="50"
                                     class="img-fluid lazyload"
                                 >
                             </a>
