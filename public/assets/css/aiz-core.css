@@ -9017,7 +9017,7 @@ div.footable-loader > span.fooicon:after {
 }
 
 /*social icon colored*/
-ul.social a {
+ul.social div {
     display: inline-block;
     width: 36px;
     height: 36px;
@@ -9026,7 +9026,7 @@ ul.social a {
     text-align: center;
     font-size: 18px;
 }
-ul.social a:hover {
+ul.social div:hover {
     -webkit-transform: translateY(-3px);
     transform: translateY(-3px);
 }
