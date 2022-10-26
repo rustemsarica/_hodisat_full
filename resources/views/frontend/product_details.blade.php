@@ -408,7 +408,7 @@
                             <div class="tab-pane fade active show" id="tab_default_1">
                                 <div class="p-4">
                                     <div class="mw-100 overflow-hidden text-left aiz-editor-data">
-                                        <?php echo $detailedProduct->getTranslation('description'); ?>
+                                        <?php echo $detailedProduct->description; ?>
                                     </div>
                                 </div>
                             </div>
