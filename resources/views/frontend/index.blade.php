@@ -12,8 +12,6 @@
                                     <div style="background-image: {{ uploaded_asset($slider_images[$key]) }}"></div>
                                 @endforeach
                             @endif
-
-                        @endif
                 </div>
             </div>
         </div>
