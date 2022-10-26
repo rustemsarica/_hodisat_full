@@ -272,7 +272,7 @@
                 });
             });
             if ($('#lang-change').length > 0) {
-                $('#lang-change .dropdown-menu a').each(function() {
+                $('#lang-change .dropdown-menu li div').each(function() {
                     $(this).on('click', function(e){
                         e.preventDefault();
                         var $this = $(this);
