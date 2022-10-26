@@ -293,7 +293,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('messages', MessageController::class);
 
     //Address
-    Route::resource('addresses', AddressController::class);
+    Route::resource('addresses', AddressController::class)->except('update', 'destroy');
     Route::controller(AddressController::class)->group(function () {
         Route::post('/get-states', 'getStates')->name('get-state');
         Route::post('/get-cities', 'getCities')->name('get-city');
