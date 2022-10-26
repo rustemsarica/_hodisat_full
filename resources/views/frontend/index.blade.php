@@ -7,11 +7,18 @@
             <div class="container">
                 <div class="row position-relative">
                         @if (get_setting('home_slider_images') != null)
-                            @php $slider_images = json_decode(get_setting('home_slider_images'), true);  @endphp
+                            <div class="aiz-carousel dots-inside-bottom mobile-img-auto-height" data-arrows="true" data-dots="true" data-autoplay="true">
+                                @php $slider_images = json_decode(get_setting('home_slider_images'), true);  @endphp
                                 @foreach ($slider_images as $key => $value)
-                                    <div style="background-image: {{ uploaded_asset($slider_images[$key]) }}"></div>
+                                    <a href="{{ json_decode(get_setting('home_slider_links'), true)[$key] }}">
+                                        <div class="carousel-box" style="background-image: url("{{ uploaded_asset($slider_images[$key]) }}")">
+
+
+                                        </div>
+                                    </a>
                                 @endforeach
-                            @endif
+                            </div>
+                        @endif
                 </div>
             </div>
         </div>
