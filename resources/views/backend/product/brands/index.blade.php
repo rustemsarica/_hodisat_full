@@ -37,7 +37,7 @@
 		                @foreach($brands as $key => $brand)
 		                    <tr>
 		                        <td>{{ ($key+1) + ($brands->currentPage() - 1)*$brands->perPage() }}</td>
-		                        <td>{{ $brand->getTranslation('name') }}</td>
+		                        <td>{{ $brand->name }}</td>
 								<td>
 		                            <label class="aiz-switch aiz-switch-success mb-0">
                                         <input onchange="brand_top(this)" value="{{ $brand->id }}" type="checkbox" <?php if ($brand->top == 1) echo "checked"; ?> >

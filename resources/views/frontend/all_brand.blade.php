@@ -29,7 +29,7 @@
                             <a href="{{ route('products.brand', $brand->slug) }}"
                                 class="d-block border-light hov-shadow-md mb-3 rounded border p-3">
                                 <img src="{{ uploaded_asset($brand->logo) }}" class="lazyload h-70px mw-100 mx-auto"
-                                    alt="{{ $brand->getTranslation('name') }}">
+                                    alt="{{ $brand->name }}">
                             </a>
                         </div>
                     @endforeach

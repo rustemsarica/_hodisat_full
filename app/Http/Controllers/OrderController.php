@@ -179,7 +179,7 @@ class OrderController extends Controller
 
 
                 if ( 1 > $product->current_stock) {
-                    flash(translate('The requested quantity is not available for ') . $product->getTranslation('name'))->warning();
+                    flash(translate('The requested quantity is not available for ') . $product->name)->warning();
                     $order->delete();
                     return redirect()->route('cart')->send();
                 } else{

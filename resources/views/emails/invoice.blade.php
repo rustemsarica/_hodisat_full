@@ -124,7 +124,7 @@
 	                @foreach ($order->orderDetails as $key => $orderDetail)
 		                @if ($orderDetail->product != null)
 							<tr class="">
-								<td>{{ $orderDetail->product->getTranslation('name') }} @if($orderDetail->variation != null) ({{ $orderDetail->variation }}) @endif</td>
+								<td>{{ $orderDetail->product->name }} @if($orderDetail->variation != null) ({{ $orderDetail->variation }}) @endif</td>
 								<td>
 									@if ($order->shipping_type != null && $order->shipping_type == 'home_delivery')
 										{{ translate('Home Delivery') }}

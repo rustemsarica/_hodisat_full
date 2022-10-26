@@ -127,7 +127,7 @@
                                     class="img-fit lazyload mx-auto h-210px"
                                     src="{{ static_asset('assets/img/placeholder.jpg') }}"
                                     data-src="{{ uploaded_asset($product->thumbnail_img) }}"
-                                    alt="{{  $product->getTranslation('name')  }}"
+                                    alt="{{  $product->name  }}"
                                     onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
                                 >
                             </a>
@@ -143,7 +143,7 @@
                                 {{ renderStarRating($product->rating) }}
                             </div>
                             <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0">
-                                <a href="{{ route('product', $product->slug) }}" class="d-block text-reset">{{ $product->getTranslation('name') }}</a>
+                                <a href="{{ route('product', $product->slug) }}" class="d-block text-reset">{{ $product->name }}</a>
                             </h3>
                         </div>
                     </div>

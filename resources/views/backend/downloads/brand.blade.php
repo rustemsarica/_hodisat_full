@@ -85,7 +85,7 @@
 			<tbody class="strong">
                 @foreach ($brands as $key => $brand)
 	                <tr class="">
-						<td>{{ $brand->getTranslation('name') }}</td>
+						<td>{{ $brand->name }}</td>
 						<td>{{ $brand->id }}</td>
 					</tr>
 				@endforeach

@@ -135,7 +135,7 @@ $payment_status = $order->orderDetails->where('seller_id', Auth::user()->id)->fi
                                     <td>
                                         @if ($orderDetail->product != null)
                                             <a href="{{ route('product', $orderDetail->product->slug) }}"
-                                                target="_blank">{{ $orderDetail->product->getTranslation('name') }}</a>
+                                                target="_blank">{{ $orderDetail->product->name }}</a>
                                         @else
                                             <strong>{{ translate('Product Unavailable') }}</strong>
                                         @endif

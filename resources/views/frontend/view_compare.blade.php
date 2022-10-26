@@ -73,7 +73,7 @@
                                     @foreach (Session::get('compare') as $key => $item)
                                         <td>
                                             @if (\App\Models\Product::find($item)->brand != null)
-                                                {{ \App\Models\Product::find($item)->brand->getTranslation('name') }}
+                                                {{ \App\Models\Product::find($item)->brand->name }}
                                             @endif
                                         </td>
                                     @endforeach

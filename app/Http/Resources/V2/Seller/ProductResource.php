@@ -38,13 +38,13 @@ class ProductResource extends ResourceCollection
                 if($data->brand != null) {
                     $brand = [
                         'id'=> $data->brand->id,
-                        'name'=> $data->brand->getTranslation('name'),
+                        'name'=> $data->brand->name,
 						'links' => [
                             'products' => route('api.products.brand', $data->brand->id)
                         ]
                     ];
                 }
-                
+
 				$category=Category::where('id',$data->category_id)->first();
                 $icon ='';
                 if(uploaded_asset(uploaded_asset($category->icon))) {
@@ -62,11 +62,11 @@ class ProductResource extends ResourceCollection
                         'products' => "",
                         'sub_categories' => ""
                     ]
-                ];  
+                ];
 
                 return [
                     'id' => (integer)$data->id,
-                    'name' => $data->getTranslation('name'),
+                    'name' => $data->name,
                     'added_by' => $data->added_by,
                     'seller_id' => $data->user->id,
                     'photos' => $photos,
@@ -76,7 +76,7 @@ class ProductResource extends ResourceCollection
                     'discount'=> "-".discount_in_percentage($data)."%",
                     'calculable_price' => $data->unit_price,
                     'earn_point' => (double)$data->earn_point,
-                    'description' => $data->getTranslation('description'),
+                    'description' => $data->description,
                     'brand' => $brand,
                     'category_id'=>$categoryInfo,
                 ];

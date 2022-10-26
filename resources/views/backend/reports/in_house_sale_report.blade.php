@@ -40,7 +40,7 @@
                         @foreach ($products as $key => $product)
                             <tr>
                                 <td>{{ ($key+1) + ($products->currentPage() - 1)*$products->perPage() }}</td>
-                                <td>{{ $product->getTranslation('name') }}</td>
+                                <td>{{ $product->name }}</td>
                                 <td>{{ $product->num_of_sale }}</td>
                             </tr>
                         @endforeach

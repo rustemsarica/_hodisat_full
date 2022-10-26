@@ -81,7 +81,7 @@
                     <div class="col-xl-7 col-lg-6">
                         <div class="text-left">
                             <h1 class="mb-2 fs-20 fw-600">
-                                {{ $detailedProduct->getTranslation('name') }}
+                                {{ $detailedproduct->name }}
                             </h1>
 
                             <div class="row align-items-center">
@@ -123,7 +123,7 @@
 
                                 @if ($detailedProduct->brand != null)
                                     <div class="col-auto">
-                                        <img src="{{ uploaded_asset($detailedProduct->brand->logo) }}" alt="{{ $detailedProduct->brand->getTranslation('name') }}" height="30">
+                                        <img src="{{ uploaded_asset($detailedProduct->brand->logo) }}" alt="{{ $detailedProduct->brand->name }}" height="30">
                                     </div>
                                 @endif
                             </div>
@@ -383,14 +383,14 @@
                                                     class="img-fit lazyload h-110px"
                                                     src="{{ static_asset('assets/img/placeholder.jpg') }}"
                                                     data-src="{{ uploaded_asset($top_product->thumbnail_img) }}"
-                                                    alt="{{ $top_product->getTranslation('name') }}"
+                                                    alt="{{ $top_product->name }}"
                                                     onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
                                                 >
                                             </a>
                                         </div>
                                         <div class="col-7">
                                             <h4 class="fs-13 text-truncate-2">
-                                                <a href="{{ route('product', $top_product->slug) }}" class="d-block text-reset">{{ $top_product->getTranslation('name') }}</a>
+                                                <a href="{{ route('product', $top_product->slug) }}" class="d-block text-reset">{{ $top_product->name }}</a>
                                             </h4>
                                             <div class="rating rating-sm mt-1">
                                                 {{ renderStarRating($top_product->rating) }}
@@ -590,7 +590,7 @@
                                                     class="img-fit lazyload mx-auto h-140px h-md-210px"
                                                     src="{{ static_asset('assets/img/placeholder.jpg') }}"
                                                     data-src="{{ uploaded_asset($related_product->thumbnail_img) }}"
-                                                    alt="{{ $related_product->getTranslation('name') }}"
+                                                    alt="{{ $related_product->name }}"
                                                     onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
                                                 >
                                             </a>
@@ -606,7 +606,7 @@
                                                 {{ renderStarRating($related_product->rating) }}
                                             </div>
                                             <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0">
-                                                <a href="{{ route('product', $related_product->slug) }}" class="d-block text-reset">{{ $related_product->getTranslation('name') }}</a>
+                                                <a href="{{ route('product', $related_product->slug) }}" class="d-block text-reset">{{ $related_product->name }}</a>
                                             </h3>
                                             @if (addon_is_activated('club_point'))
                                                 <div class="rounded px-2 mt-2 bg-soft-primary border-soft-primary border">
@@ -643,7 +643,7 @@
                     <input type="hidden" name="product_id" value="{{ $detailedProduct->id }}">
                     <div class="modal-body gry-bg px-3 pt-3">
                         <div class="form-group">
-                            <input type="text" class="form-control mb-3" name="title" value="{{ $detailedProduct->getTranslation('name') }}" placeholder="{{ translate('Product Name') }}" required>
+                            <input type="text" class="form-control mb-3" name="title" value="{{ $detailedproduct->name }}" placeholder="{{ translate('Product Name') }}" required>
                         </div>
                         <div class="form-group">
                             <textarea class="form-control" rows="8" name="message" required placeholder="{{ translate('Your Question') }}">{{ route('product', $detailedProduct->slug) }}</textarea>

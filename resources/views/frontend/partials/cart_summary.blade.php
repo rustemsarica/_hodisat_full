@@ -83,9 +83,9 @@
 
                         $shipping += $product_shipping_cost;
 
-                        $product_name_with_choice = $product->getTranslation('name');
+                        $product_name_with_choice = $product->name;
                         if ($cartItem['variant'] != null) {
-                            $product_name_with_choice = $product->getTranslation('name') . ' - ' . $cartItem['variant'];
+                            $product_name_with_choice = $product->name . ' - ' . $cartItem['variant'];
                         }
                     @endphp
                     <tr class="cart_item">

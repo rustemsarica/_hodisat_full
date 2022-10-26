@@ -10,19 +10,7 @@ class Product extends Model
 
     protected $guarded = ['choice_attributes'];
 
-    protected $with = ['product_translations', 'thumbnail'];
-
-    public function getTranslation($field = '', $lang = false)
-    {
-        $lang = $lang == false ? App::getLocale() : $lang;
-        $product_translations = $this->product_translations->where('lang', $lang)->first();
-        return $product_translations != null ? $product_translations->$field : $this->$field;
-    }
-
-    public function product_translations()
-    {
-        return $this->hasMany(ProductTranslation::class);
-    }
+    protected $with = ['thumbnail'];
 
     public function thumbnail()
     {

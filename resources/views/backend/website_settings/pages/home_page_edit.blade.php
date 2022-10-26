@@ -472,7 +472,7 @@
 							<input type="hidden" name="types[]" value="top10_brands">
 							<select name="top10_brands[]" class="form-control aiz-selectpicker" multiple data-max-options="10" data-live-search="true" data-selected="{{ get_setting('top10_brands') }}">
 								@foreach (\App\Models\Brand::all() as $key => $brand)
-									<option value="{{ $brand->id }}">{{ $brand->getTranslation('name') }}</option>
+									<option value="{{ $brand->id }}">{{ $brand->name }}</option>
 								@endforeach
 							</select>
 						</div>

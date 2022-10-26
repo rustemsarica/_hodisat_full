@@ -197,7 +197,7 @@
                                             <strong>
                                                 <a href="{{ route('product', $orderDetail->product->slug) }}" target="_blank"
                                                     class="text-muted">
-                                                    {{ $orderDetail->product->getTranslation('name') }}
+                                                    {{ $orderDetail->product->name }}
                                                 </a>
                                             </strong>
                                             <small>
@@ -207,7 +207,7 @@
                                             <strong>
                                                 <a href="{{ route('auction-product', $orderDetail->product->slug) }}" target="_blank"
                                                     class="text-muted">
-                                                    {{ $orderDetail->product->getTranslation('name') }}
+                                                    {{ $orderDetail->product->name }}
                                                 </a>
                                             </strong>
                                         @else

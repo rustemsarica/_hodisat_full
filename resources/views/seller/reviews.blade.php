@@ -28,7 +28,7 @@
                                     {{ $key+1 }}
                                 </td>
                                 <td>
-                                    <a href="{{ route('product', $review->product->slug) }}" target="_blank">{{  $review->product->getTranslation('name') }}</a>
+                                    <a href="{{ route('product', $review->product->slug) }}" target="_blank">{{  $review->product->name }}</a>
                                 </td>
                                 <td>{{ $review->user->name }}</td>
                                 <td>

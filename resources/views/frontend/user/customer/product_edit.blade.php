@@ -31,7 +31,7 @@
                 <div class="form-group row">
                     <label class="col-md-2 col-from-label">{{translate('Product Name')}} <span class="text-danger">* <i class="las la-language" title="{{translate('Translatable')}}"></i></span></label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" name="name" value="{{ $product->getTranslation('name') }}" placeholder="{{ translate('Product Name')}}" required>
+                        <input type="text" class="form-control" name="name" value="{{ $product->name }}" placeholder="{{ translate('Product Name')}}" required>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -53,7 +53,7 @@
                         <select class="form-control selectpicker" data-placeholder="{{ translate('Select a brand')}}" data-live-search="true"  id="brands" name="brand_id">
                             <option value=""></option>
                             @foreach (\App\Models\Brand::all() as $brand)
-                                <option value="{{ $brand->id }}" @if($brand->id == $product->brand_id) selected @endif>{{ $brand->getTranslation('name') }}</option>
+                                <option value="{{ $brand->id }}" @if($brand->id == $product->brand_id) selected @endif>{{ $brand->name }}</option>
                             @endforeach
                         </select>
                     </div>

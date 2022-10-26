@@ -48,7 +48,7 @@
                                 data-live-search="true">
                                 <option value="">{{ translate('Select Brand') }}</option>
                                 @foreach (\App\Models\Brand::all() as $brand)
-                                <option value="{{ $brand->id }}">{{ $brand->getTranslation('name') }}</option>
+                                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                                 @endforeach
                             </select>
                         </div>

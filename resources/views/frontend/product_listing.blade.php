@@ -241,7 +241,7 @@
                                         <select class="form-control form-control-sm aiz-selectpicker" data-live-search="true" name="brand" onchange="filter()">
                                             <option value="">{{ translate('All Brands')}}</option>
                                             @foreach (\App\Models\Brand::all() as $brand)
-                                                <option value="{{ $brand->slug }}" @isset($brand_id) @if ($brand_id == $brand->id) selected @endif @endisset>{{ $brand->getTranslation('name') }}</option>
+                                                <option value="{{ $brand->slug }}" @isset($brand_id) @if ($brand_id == $brand->id) selected @endif @endisset>{{ $brand->name }}</option>
                                             @endforeach
                                         </select>
                                     @endif

@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title">
-                    {{ $query->product != null ? $query->product->getTranslation('name') : translate('Product Deleted') }}
+                    {{ $query->product != null ? $query->product->name : translate('Product Deleted') }}
                 </h5>
             </div>
 

@@ -23,7 +23,7 @@ class RefundRequestCollection extends ResourceCollection
                     'id' => (int)$data->id,
                     'user_id' => (int)$data->user_id,
                     'order_code' => $data->order == null ? "" : $data->order->code,
-                    'product_name' => $data->orderDetail != null && $data->orderDetail->product != null ? $data->orderDetail->product->getTranslation('name', 'en') : "",
+                    'product_name' => $data->orderDetail != null && $data->orderDetail->product != null ? $data->orderDetail->product->name : "",
                     'product_price' => $data->orderDetail != null ? single_price($data->orderDetail->price) : "",
                     'refund_status' => (int) $data->refund_status,
                     'refund_label' => $refund_label,

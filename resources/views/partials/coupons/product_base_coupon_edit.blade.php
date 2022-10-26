@@ -20,7 +20,7 @@
                                     selected
                                 @endif
                             @endforeach
-                            >{{$product->getTranslation('name')}}</option>
+                            >{{$product->name}}</option>
                     @endforeach
                 </select>
             </div>

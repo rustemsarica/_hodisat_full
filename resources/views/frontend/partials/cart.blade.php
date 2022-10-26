@@ -47,10 +47,10 @@ if (auth()->user() != null) {
                                 <img src="{{ static_asset('assets/img/placeholder.jpg') }}"
                                     data-src="{{ uploaded_asset($product->thumbnail_img) }}"
                                     class="img-fit lazyload size-60px rounded"
-                                    alt="{{ $product->getTranslation('name') }}">
+                                    alt="{{ $product->name }}">
                                 <span class="minw-0 pl-2 flex-grow-1">
                                     <span class="fw-600 mb-1 text-truncate-2">
-                                        {{ $product->getTranslation('name') }}
+                                        {{ $product->name }}
                                     </span>
                                     <span class="">{{ cart_product_price($cartItem, $product) }}</span>
                                 </span>

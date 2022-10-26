@@ -67,7 +67,7 @@
                                 $seller_products[$product->user_id] = $product_ids;
                             }
                         }
-						
+
 						$pickup_point_list = array();
 						if (get_setting('pickup_point') == 1) {
 							$pickup_point_list = \App\Models\PickupPoint::where('pick_up_status',1)->get();
@@ -90,10 +90,10 @@
                                             <img
                                                 src="{{ uploaded_asset($product->thumbnail_img) }}"
                                                 class="img-fit size-60px rounded"
-                                                alt="{{  $product->getTranslation('name')  }}"
+                                                alt="{{  $product->name  }}"
                                             >
                                         </span>
-                                        <span class="fs-14 opacity-60">{{ $product->getTranslation('name') }}</span>
+                                        <span class="fs-14 opacity-60">{{ $product->name }}</span>
                                     </div>
                                 </li>
                                 @endforeach
@@ -157,7 +157,7 @@
                                             </label>
                                         </div>
                                         @endif
-                                        
+
                                     </div>
                                     @if ($pickup_point_list)
                                     <div class="mt-4 pickup_point_id_admin d-none">
@@ -230,10 +230,10 @@
                                                     <img
                                                         src="{{ uploaded_asset($product->thumbnail_img) }}"
                                                         class="img-fit size-60px rounded"
-                                                        alt="{{  $product->getTranslation('name')  }}"
+                                                        alt="{{  $product->name  }}"
                                                     >
                                                 </span>
-                                                <span class="fs-14 opacity-60">{{ $product->getTranslation('name') }}</span>
+                                                <span class="fs-14 opacity-60">{{ $product->name }}</span>
                                             </div>
                                         </li>
                                         @endforeach
@@ -322,7 +322,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    
+
                                     @if (get_setting('shipping_type') == 'carrier_wise_shipping')
                                         <div class="row pt-3 carrier_id_{{ $key }}">
                                             @foreach($carrier_list as $carrier_key => $carrier)

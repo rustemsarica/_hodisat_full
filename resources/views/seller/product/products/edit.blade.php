@@ -53,7 +53,7 @@
                                 <option value="">{{ translate('Select Brand') }}</option>
                                 @foreach (\App\Models\Brand::all() as $brand)
                                 <option value="{{ $brand->id }}" @if($product->brand_id == $brand->id) selected
-                                    @endif>{{ $brand->getTranslation('name') }}</option>
+                                    @endif>{{ $brand->name }}</option>
                                 @endforeach
                             </select>
                         </div>

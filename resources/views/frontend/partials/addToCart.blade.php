@@ -39,7 +39,7 @@
         <div class="col-lg-6">
             <div class="text-left">
                 <h2 class="mb-2 fs-20 fw-600">
-                    {{  $product->getTranslation('name')  }}
+                    {{  $product->name  }}
                 </h2>
 
                 @if(home_price($product) != home_discounted_price($product))

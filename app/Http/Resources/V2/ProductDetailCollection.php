@@ -53,7 +53,7 @@ class ProductDetailCollection extends ResourceCollection
                 if($data->brand != null) {
                     $brand = [
                         'id'=> $data->brand->id,
-                        'name'=> $data->brand->getTranslation('name'),
+                        'name'=> $data->brand->name,
                         'logo'=> uploaded_asset($data->brand->logo),
                     ];
                 }
@@ -61,7 +61,7 @@ class ProductDetailCollection extends ResourceCollection
 
                 return [
                     'id' => (integer)$data->id,
-                    'name' => $data->getTranslation('name'),
+                    'name' => $data->name,
                     'added_by' => $data->added_by,
                     'seller_id' => $data->user->id,
                     'seller_vacation_mode' => $data->user->vacation_mode,
@@ -81,7 +81,7 @@ class ProductDetailCollection extends ResourceCollection
                     'currency_symbol' => currency_symbol(),
                     'current_stock' => $data->current_stock,
                     'earn_point' => (double)$data->earn_point,
-                    'description' => $data->getTranslation('description'),
+                    'description' => $data->description,
                     'brand' => $brand,
                     'link' => route('product', $data->slug),
                     'category_id'=>$data->category_id,

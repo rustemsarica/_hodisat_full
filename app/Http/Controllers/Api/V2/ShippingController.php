@@ -90,7 +90,7 @@ class ShippingController extends Controller
                         $shop_items_data_item["owner_id"] =intval($shop_items_raw_data_item["owner_id"]) ;
                         $shop_items_data_item["user_id"] =intval($shop_items_raw_data_item["user_id"]) ;
                         $shop_items_data_item["product_id"] =intval($shop_items_raw_data_item["product_id"]) ;
-                        $shop_items_data_item["product_name"] = $product->getTranslation('name');
+                        $shop_items_data_item["product_name"] = $product->name;
                         $shop_items_data_item["product_thumbnail_image"] = uploaded_asset($product->thumbnail_img);
 
                         $shop_items_data[] = $shop_items_data_item;

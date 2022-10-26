@@ -39,7 +39,7 @@
                         @foreach ($products as $key => $product)
                             @if($product->wishlists != null)
                                 <tr>
-                                    <td>{{ $product->getTranslation('name') }}</td>
+                                    <td>{{ $product->name }}</td>
                                     <td>{{ $product->wishlists->count() }}</td>
                                 </tr>
                             @endif

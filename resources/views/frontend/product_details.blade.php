@@ -78,7 +78,7 @@
                     <div class="col-xl-7 col-lg-6">
                         <div class="text-left">
                             <h1 class="mb-2 fs-20 fw-600">
-                                {{ $detailedProduct->getTranslation('name') }}
+                                {{ $detailedproduct->name }}
                             </h1>
 
 
@@ -434,7 +434,7 @@
                                                     <img class="img-fit lazyload mx-auto h-140px h-md-210px"
                                                         src="{{ static_asset('assets/img/placeholder.jpg') }}"
                                                         data-src="{{ uploaded_asset($related_product->thumbnail_img) }}"
-                                                        alt="{{ $related_product->getTranslation('name') }}"
+                                                        alt="{{ $related_product->name }}"
                                                         onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';">
                                                 </a>
                                             </div>
@@ -449,7 +449,7 @@
                                                 </div>
                                                 <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0 h-35px">
                                                     <a href="{{ route('product', $related_product->slug) }}"
-                                                        class="d-block text-reset">{{ $related_product->getTranslation('name') }}</a>
+                                                        class="d-block text-reset">{{ $related_product->name }}</a>
                                                 </h3>
                                                 @if (addon_is_activated('club_point'))
                                                     <div

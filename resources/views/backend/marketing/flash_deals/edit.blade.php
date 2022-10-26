@@ -82,7 +82,7 @@
                                     @php
                                         $flash_deal_product = \App\Models\FlashDealProduct::where('flash_deal_id', $flash_deal->id)->where('product_id', $product->id)->first();
                                     @endphp
-                                    <option value="{{$product->id}}" <?php if($flash_deal_product != null) echo "selected";?> >{{ $product->getTranslation('name') }}</option>
+                                    <option value="{{$product->id}}" <?php if($flash_deal_product != null) echo "selected";?> >{{ $product->name }}</option>
                                 @endforeach
                             </select>
                         </div>

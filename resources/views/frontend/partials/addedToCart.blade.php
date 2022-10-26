@@ -7,7 +7,7 @@
         <img src="{{ static_asset('assets/img/placeholder.jpg') }}" data-src="{{ uploaded_asset($product->thumbnail_img) }}" class="mr-3 lazyload size-100px img-fit rounded" alt="Product Image">
         <div class="media-body pt-3 text-left">
             <h6 class="fw-600">
-                {{  $product->getTranslation('name')  }}
+                {{  $product->name  }}
             </h6>
             <div class="row mt-3">
                 <div class="col-sm-2 opacity-60">
@@ -40,7 +40,7 @@
                                     class="img-fit lazyload mx-auto h-140px h-md-210px"
                                     src="{{ static_asset('assets/img/placeholder.jpg') }}"
                                     data-src="{{ uploaded_asset($related_product->thumbnail_img) }}"
-                                    alt="{{ $related_product->getTranslation('name') }}"
+                                    alt="{{ $related_product->name }}"
                                     onerror="this.onerror=null;this.src='{{ static_asset('assets/img/placeholder.jpg') }}';"
                                 >
                             </a>
@@ -56,7 +56,7 @@
                                 {{ renderStarRating($related_product->rating) }}
                             </div>
                             <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0 h-35px">
-                                <a href="{{ route('product', $related_product->slug) }}" class="d-block text-reset">{{ $related_product->getTranslation('name') }}</a>
+                                <a href="{{ route('product', $related_product->slug) }}" class="d-block text-reset">{{ $related_product->name }}</a>
                             </h3>
                             @if (addon_is_activated('club_point'))
                                 <div class="rounded px-2 mt-2 bg-soft-primary border-soft-primary border">

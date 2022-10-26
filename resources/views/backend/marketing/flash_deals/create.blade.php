@@ -60,7 +60,7 @@
                         <div class="col-sm-9">
                             <select name="products[]" id="products" class="form-control aiz-selectpicker" multiple required data-placeholder="{{ translate('Choose Products') }}" data-live-search="true" data-selected-text-format="count">
                                 @foreach(\App\Models\Product::orderBy('created_at', 'desc')->get() as $product)
-                                    <option value="{{$product->id}}">{{ $product->getTranslation('name') }}</option>
+                                    <option value="{{$product->id}}">{{ $product->name }}</option>
                                 @endforeach
                             </select>
                         </div>

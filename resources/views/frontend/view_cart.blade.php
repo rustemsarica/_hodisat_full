@@ -66,9 +66,9 @@
                                         @php
                                             $product = \App\Models\Product::find($cartItem['product_id']);
                                             $total = $total + cart_product_price($cartItem, $product, false) * 1;
-                                            $product_name_with_choice = $product->getTranslation('name');
+                                            $product_name_with_choice = $product->name;
                                             if ($cartItem['variation'] != null) {
-                                                $product_name_with_choice = $product->getTranslation('name') . ' - ' . $cartItem['variation'];
+                                                $product_name_with_choice = $product->name . ' - ' . $cartItem['variation'];
                                             }
                                         @endphp
                                         <li class="list-group-item px-0 px-lg-3">
@@ -77,7 +77,7 @@
                                                     <span class="mr-2 ml-0">
                                                         <img src="{{ uploaded_asset($product->thumbnail_img) }}"
                                                             class="img-fit size-60px rounded"
-                                                            alt="{{ $product->getTranslation('name') }}">
+                                                            alt="{{ $product->name }}">
                                                     </span>
                                                     <span class="fs-14 opacity-60">{{ $product_name_with_choice }}</span>
                                                 </div>

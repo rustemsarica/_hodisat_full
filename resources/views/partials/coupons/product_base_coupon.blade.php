@@ -14,7 +14,7 @@
             <div class="col-lg-9">
                 <select name="product_ids[]" class="form-control product_id aiz-selectpicker" data-live-search="true" data-selected-text-format="count" required multiple>
                     @foreach($products as $product)
-                        <option value="{{$product->id}}">{{ $product->getTranslation('name') }}</option>
+                        <option value="{{$product->id}}">{{ $product->name }}</option>
                     @endforeach
                 </select>
             </div>

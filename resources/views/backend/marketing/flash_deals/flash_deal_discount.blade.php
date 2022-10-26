@@ -28,7 +28,7 @@
                   <img class="size-60px img-fit" src="{{ uploaded_asset($product->thumbnail_img)}}">
                 </div>
                 <div class="col">
-                  <span>{{  $product->getTranslation('name')  }}</span>
+                  <span>{{  $product->name  }}</span>
                 </div>
               </div>
             </td>

@@ -35,7 +35,7 @@
                             </div>
                             <div class="flex-grow-1 overflow--hidden minw-0">
                                 <div class="product-name text-truncate fs-14 mb-5px">
-                                    {{  $product->getTranslation('name')  }}
+                                    {{  $product->name  }}
                                 </div>
                                 <div class="">
                                     @if(home_base_price($product->unit_price) != home_discounted_base_price($product))
