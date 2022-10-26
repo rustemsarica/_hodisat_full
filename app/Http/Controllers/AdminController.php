@@ -17,8 +17,8 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function admin_dashboard(Request $request)
-    {   
-        
+    {
+
         $root_categories = Category::where('level', 0)->get();
 
         $cached_graph_data = Cache::remember('cached_graph_data', 86400, function() use ($root_categories){
@@ -35,9 +35,9 @@ class AdminController extends Controller
                     if($product->current_stock==0){
                         $sale += 1;
                     }
-                    
+
                     $qty += 1;
-                    
+
                 }
                 $qty_data .= $qty.',';
                 $num_of_sale_data .= $sale.',';
@@ -54,6 +54,12 @@ class AdminController extends Controller
     function clearCache(Request $request)
     {
         Artisan::call('cache:clear');
+        Artisan::call('config:clear');
+        Artisan::call('route:clear');
+        Artisan::call('view:clear');
+        Artisan::call('config:cache');
+        Artisan::call('route:cache');
+        Artisan::call('view:cache');
         flash(translate('Cache cleared successfully'))->success();
         return back();
     }

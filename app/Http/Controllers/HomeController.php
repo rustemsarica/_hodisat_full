@@ -24,7 +24,6 @@ use App\Models\ProductQuery;
 use Mail;
 use Illuminate\Auth\Events\PasswordReset;
 use Cache;
-use Artisan;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
@@ -38,7 +37,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         $newest_products = Cache::remember('newest_products', 3600, function () {
             return filter_products(Product::without('product_translations')->where('current_stock',1)->latest())->limit(12)->get();
         });
