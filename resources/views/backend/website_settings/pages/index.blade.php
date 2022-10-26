@@ -31,10 +31,10 @@
 
 				@if($page->type == 'home_page')
         			<td><a href="{{ route('admin.custom-pages.show_custom_page', $page->slug) }}" class="text-reset">{{ $page->getTranslation('title') }}</a></td>
-					<td>{{ route('home') }}</td>
+					<td>{{ route('admin.home') }}</td>
 				@else
         			<td><a href="{{ route('admin.custom-pages.show_custom_page', $page->slug) }}" class="text-reset">{{ $page->getTranslation('title') }}</a></td>
-					<td>{{ route('home') }}/{{ $page->slug }}</td>
+					<td>{{ route('admin.home') }}/{{ $page->slug }}</td>
 				@endif
 
         		<td class="text-right">
