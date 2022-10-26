@@ -1,4 +1,6 @@
+@extends('frontend.layouts.app')
 
+@section('content')
     <div id="content">
         {{-- Sliders --}}
         <div class="home-banner-area mb-2 mt-4">
@@ -185,7 +187,9 @@
         @endif
 
     </div>
+@endsection
 
+@section('script')
     <script>
         $(document).ready(function(){
             $.post('{{ route('home.section.best_sellers') }}', {_token:'{{ csrf_token() }}'}, function(data){
@@ -243,5 +247,5 @@
             });
         }
     </script>
-
+@endsection
 
