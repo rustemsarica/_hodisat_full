@@ -59,7 +59,7 @@
                                 </span>
                             </h3>
                         </div>
-                        <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="6" data-xl-items="5" data-lg-items="4"  data-md-items="3" data-sm-items="2" data-xs-items="2" data-arrows='true' data-infinite='true'>
+                        <div >
                             @foreach ($newest_products as $key => $product)
                             <div class="carousel-box">
                                 <div class="aiz-card-box border border-light rounded hov-shadow-md mt-1 mb-2 has-transition bg-white">
@@ -102,7 +102,6 @@
 
                             </div>
                             @endforeach
-                        </div>
                     </div>
                 </section>
             </div>
