@@ -40,7 +40,7 @@ class HomeController extends Controller
     {
 
         $newest_products = Cache::remember('newest_products', 3600, function () {
-            return filter_products(Product::without('product_translations')->latest())->limit(12)->get();
+            return filter_products(Product::without('product_translations')->where('current_stock',1)->latest())->limit(12)->get();
         });
 
 
@@ -180,7 +180,7 @@ class HomeController extends Controller
 
     public function load_all_products_section(Request $request)
     {
-        $products = Product::paginate(40);
+        $products = filter_products(Product::where('current_stock',1))->paginate(40);
         $data = '';
             foreach ($products as $product) {
                 $data.='<div class="col">'.view('frontend.partials.product_box_1',['product' => $product]).'</div>';
