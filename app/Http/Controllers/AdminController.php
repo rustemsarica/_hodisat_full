@@ -57,7 +57,6 @@ class AdminController extends Controller
         Artisan::call('route:clear');
         Artisan::call('route:cache');
         Artisan::call('config:clear');
-        Artisan::call('config:cache');
         flash(translate('Cache cleared successfully'))->success();
         return back();
     }
