@@ -81,7 +81,7 @@
                     <div class="col-xl-7 col-lg-6">
                         <div class="text-left">
                             <h1 class="mb-2 fs-20 fw-600">
-                                {{ $detailedproduct->name }}
+                                {{ $detailedProduct->name }}
                             </h1>
 
                             <div class="row align-items-center">
@@ -423,7 +423,7 @@
                             <div class="tab-pane active show" id="tab_default_1">
                                 <div class="p-4">
                                     <div class="mw-100 overflow-hidden">
-                                        <?php echo $detailedProduct->getTranslation('description'); ?>
+                                        <?php echo $detailedProduct->description; ?>
                                     </div>
                                 </div>
                             </div>
@@ -643,7 +643,7 @@
                     <input type="hidden" name="product_id" value="{{ $detailedProduct->id }}">
                     <div class="modal-body gry-bg px-3 pt-3">
                         <div class="form-group">
-                            <input type="text" class="form-control mb-3" name="title" value="{{ $detailedproduct->name }}" placeholder="{{ translate('Product Name') }}" required>
+                            <input type="text" class="form-control mb-3" name="title" value="{{ $detailedProduct->name }}" placeholder="{{ translate('Product Name') }}" required>
                         </div>
                         <div class="form-group">
                             <textarea class="form-control" rows="8" name="message" required placeholder="{{ translate('Your Question') }}">{{ route('product', $detailedProduct->slug) }}</textarea>

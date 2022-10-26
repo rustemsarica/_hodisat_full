@@ -200,7 +200,7 @@
                     <label class="col-md-2 col-from-label">{{ translate('Description')}} <span class="text-danger">* <i class="las la-language" title="{{translate('Translatable')}}"></i></span></label>
                     <div class="col-md-10">
                         <div class="mb-3">
-                            <textarea class="form-control" name="description" required>{{$product->getTranslation('description')}}</textarea>
+                            <textarea class="form-control" name="description" required>{{$product->description}}</textarea>
                         </div>
                     </div>
                 </div>

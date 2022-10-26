@@ -221,7 +221,7 @@
                         <label class="col-lg-3 col-from-label">{{translate('Description')}}</label>
                         <div class="col-lg-9">
                             <textarea class="form-control"
-                                name="description">{{$product->getTranslation('description',$lang)}}</textarea>
+                                name="description">{{$product->description}}</textarea>
                         </div>
                     </div>
                 </div>
