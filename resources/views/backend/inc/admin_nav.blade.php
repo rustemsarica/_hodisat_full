@@ -139,7 +139,7 @@
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-menu-md">
-                        <a href="{{ route('profile.index') }}" class="dropdown-item">
+                        <a href="{{ route('admin.profile.index') }}" class="dropdown-item">
                             <i class="las la-user-circle"></i>
                             <span>{{translate('Profile')}}</span>
                         </a>
