@@ -149,8 +149,12 @@
     <!-- aiz-main-wrapper -->
     <div class="aiz-main-wrapper d-flex flex-column">
 
+        <!-- Header -->
+        @include('frontend.inc.nav')
+
         @yield('content')
 
+        @include('frontend.inc.footer')
 
     </div>
 
