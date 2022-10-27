@@ -8,7 +8,6 @@ use App\Models\AttributeValue;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
-use App\Models\ProductTranslation;
 use Carbon\Carbon;
 use Combinations;
 use Artisan;
@@ -22,7 +21,7 @@ class ProductController extends Controller
 {
     protected $productService;
     protected $productFlashDealService;
- 
+
     public function __construct(
         ProductService $productService,
         ProductFlashDealService $productFlashDealService
@@ -64,7 +63,7 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
-        
+
         if (addon_is_activated('seller_subscription')) {
             if (!seller_package_validity_check()) {
                 flash(translate('Please upgrade your package.'))->warning();
@@ -75,14 +74,7 @@ class ProductController extends Controller
         $product = $this->productService->store($request->except([
             '_token', 'choice', 'flash_deal_id', 'flash_discount', 'flash_discount_type'
         ]));
-        $request->merge(['product_id' => $product->id]);
-                
 
-        // Product Translations
-        $request->merge(['lang' => 'tr']);
-        ProductTranslation::create($request->only([
-            'lang', 'name', 'description', 'product_id'
-        ]));
 
         flash(translate('Product has been inserted successfully'))->success();
 
@@ -115,15 +107,6 @@ class ProductController extends Controller
             '_token', 'choice', 'flash_deal_id', 'flash_discount', 'flash_discount_type',
         ]), $product);
 
-
-
-        // Product Translations
-        ProductTranslation::where('lang', 'tr')
-            ->where('product_id', $request->product_id)
-            ->update($request->only([
-            'lang', 'name', 'description', 'product_id'
-        ]));
-
         flash(translate('Product has been updated successfully'))->success();
 
         Artisan::call('view:clear');
@@ -135,9 +118,9 @@ class ProductController extends Controller
     public function sku_combination(Request $request)
     {
         $options = array();
-        
+
         array_push($options, $request->colors);
-        
+
 
         $unit_price = $request->unit_price;
         $product_name = $request->name;
@@ -162,9 +145,9 @@ class ProductController extends Controller
         $product = Product::findOrFail($request->id);
 
         $options = array();
-        
+
         array_push($options, $request->colors);
-        
+
         $product_name = $request->name;
         $unit_price = $request->unit_price;
 

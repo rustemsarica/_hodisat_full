@@ -24,7 +24,7 @@ class ProductService
         } else {
             $user_id = User::where('user_type', 'admin')->first()->id;
         }
-        
+
         $discount_start_date = null;
         $discount_end_date   = null;
         if ($collection['date_range'] != null) {
@@ -34,13 +34,13 @@ class ProductService
         }
         unset($collection['date_range']);
         $photos=explode(",",$collection['photos']);
-        
+
             $collection['meta_title'] = $collection['name'];
-        
+
             $collection['meta_description'] = strip_tags($collection['description']);
-        
+
             $collection['meta_img'] = $photos[0];
-            
+
             $collection['thumbnail_img'] = $photos[0];
 
 
@@ -58,9 +58,9 @@ class ProductService
         $same_slug_count = Product::where('slug', 'LIKE', $slug . '%')->count();
         $slug_suffix = $same_slug_count ? '-' + $same_slug_count + 1 : '';
         $slug .= $slug_suffix;
-        
+
         $colors = $collection['colors'];
-        
+
         $options = ProductUtility::get_attribute_options($collection);
 
         $combinations = Combinations::makeCombinations($options);
@@ -74,7 +74,6 @@ class ProductService
                 unset($collection['img_' . str_replace('.', '_', $str)]);
             }
         }
-
 
         $choice_options = array();
         if (isset($collection['choice_no']) && $collection['choice_no']) {
@@ -140,7 +139,7 @@ class ProductService
             $collection['refundable'] = 0;
         }
 
-        
+
         if(!isset($collection['featured'])){
             $collection['featured'] = 0;
         }
@@ -154,8 +153,8 @@ class ProductService
         }
         unset($collection['lang']);
 
-        
-       
+
+
         $discount_start_date = null;
         $discount_end_date   = null;
         if ($collection['date_range'] != null) {
@@ -164,20 +163,20 @@ class ProductService
             $discount_end_date   = strtotime($date_var[1]);
         }
         unset($collection['date_range']);
-        
+
         $photos=explode(",",$collection['photos']);
-        
+
             $collection['meta_title'] = $collection['name'];
-       
-        
+
+
             $collection['meta_description'] = strip_tags($collection['description']);
-        
+
 
             $collection['meta_img'] = $photos[0];
 
         $collection['thumbnail_img'] = $photos[0];
-            
-        
+
+
         $shipping_cost = 0;
         if (isset($collection['shipping_type'])) {
             if ($collection['shipping_type'] == 'free') {
@@ -189,7 +188,7 @@ class ProductService
         unset($collection['flat_shipping_cost']);
 
         $colors = $collection['colors'];
-        
+
 
         $options = ProductUtility::get_attribute_options($collection);
 
@@ -236,7 +235,7 @@ class ProductService
         }
 
         unset($collection['button']);
-        
+
         $data = $collection->merge(compact(
             'discount_start_date',
             'discount_end_date',
@@ -246,7 +245,7 @@ class ProductService
             'choice_options',
             'attributes',
         ))->toArray();
-        
+
         $product->update($data);
 
         return $product;
