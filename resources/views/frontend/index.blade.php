@@ -8,7 +8,7 @@
                 <div class="row position-relative">
                         @if (get_setting('home_slider_images') != null)
                             @php $slider_images = json_decode(get_setting('home_slider_images'), true);  @endphp
-                            @if (count($slider_images)>1)
+
                                 <div class="aiz-carousel dots-inside-bottom m-auto mobile-img-auto-height" data-arrows="false" data-dots="true" data-autoplay="true">
                                     @foreach ($slider_images as $key => $value)
                                         <div class="carousel-box">
@@ -23,18 +23,7 @@
                                         </div>
                                     @endforeach
                                 </div>
-                            @else
-                                <div class="m-auto">
-                                    <a href="{{ json_decode(get_setting('home_slider_links'), true)[0] }}">
-                                        <img style="background-color:whitesmoke"
-                                            class="d-block mw-100 img-fit lazyload rounded shadow-sm"
-                                            src="{{ uploaded_asset($slider_images[0]) }}"
-                                            alt="{{ env('APP_NAME')}} promo"
-                                            height="457"
-                                        >
-                                    </a>
-                                </div>
-                            @endif
+
 
                         @endif
                 </div>
