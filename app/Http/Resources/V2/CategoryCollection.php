@@ -28,7 +28,7 @@ class CategoryCollection extends ResourceCollection
                     'parent_id' => $data->parent_id,
                     'links' => [
                         'products' => route('api.products.category', $data->id),
-                        'sub_categories' => route('subCategories.index', $data->id)
+                        'sub_categories' => route('api.subCategories.index', $data->id)
                     ]
                 ];
             })
