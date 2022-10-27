@@ -48,7 +48,7 @@
             </div>
         @endif
 
-        @if (count($newest_products) > 0)
+        {{-- @if (count($newest_products) > 0)
             <div id="section_newest">
                 <section class="mb-2">
                     <div class="container px-2 py-4 px-md-4 py-md-3 bg-white shadow-sm rounded">
@@ -106,7 +106,7 @@
                     </div>
                 </section>
             </div>
-        @endif
+        @endif --}}
 
 
         {{-- Banner Section 2 --}}

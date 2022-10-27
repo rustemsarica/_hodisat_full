@@ -37,11 +37,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-        $newest_products = array();
-
-
-        return view('frontend.index', ['newest_products'=>$newest_products]);
+        return view('frontend.index');
     }
 
     public function login()
