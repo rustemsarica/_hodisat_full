@@ -1,10 +1,10 @@
 @php
     $blogs = Cache::remember('blogs', 86400, function () {
-        return \App\Models\Blog::where('status', 1)->latest()->limit(5)->get();
+        return \App\Models\Blog::where('status', 1)->latest()->limit(10)->get();
     });
 @endphp
 
-<div class="aiz-carousel gutters-5 mb-2" data-items="1" data-rows="5" data-arrows='false'>
+<div class="aiz-carousel gutters-5 mb-4" data-items="1" data-rows="5" data-arrows='false'>
     @foreach ($blogs as $key => $blog)
     <div class="carousel-box">
         <div class="row no-gutters box-3 align-items-center border border-light rounded hov-shadow-md my-2 has-transition">
