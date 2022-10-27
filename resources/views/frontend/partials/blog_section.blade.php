@@ -24,9 +24,6 @@
 
                     <a href="{{ url('blog').'/'. $blog->slug }}" class="text-reset fs-12 fw-600">{{ $blog->title }}</a>
 
-                    <a href="{{ url('blog').'/'. $blog->slug }}" class="btn btn-outline-primary btn-xs">
-                        {{ translate('View More') }} <i class="las la-angle-right"></i>
-                    </a>
                 </div>
             </div>
         </div>
