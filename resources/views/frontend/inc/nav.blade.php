@@ -159,7 +159,7 @@
         <div class="container">
             <div class="d-flex align-items-center justify-content-between">
 
-                <div class="col-auto col-xl-3 pl-0 pr-3 d-flex align-items-center">
+                <div class="col-xl-3 pl-0 pr-3 d-flex align-items-center">
                     <a class="d-block py-10px " href="{{ route('home') }}">
                         @php
                             $header_logo = get_setting('header_logo');
