@@ -88,7 +88,7 @@ class ProductMiniCollection extends ResourceCollection
                     'is_in_wishlist' => false,
                     'current_stock' => $data->current_stock,
                     'links' => [
-                        'details' => route('api.products.show', $data->id),
+                        'details' => ""
                     ],
                     'published' => $data->published
                 ];
