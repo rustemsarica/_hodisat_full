@@ -234,7 +234,7 @@
                     <span class="d-block fs-10 fw-600 opacity-60">{{ translate('Account') }}</span>
                 </a>
             @else
-                <a href="javascript:void(0)" class="text-reset d-block text-center pb-2 pt-3 mobile-side-nav-thumb" data-toggle="class-toggle" data-backdrop="static" data-target=".aiz-mobile-side-nav">
+                <div class="text-reset d-block text-center pb-2 pt-3 mobile-side-nav-thumb" data-toggle="class-toggle" data-backdrop="static" data-target=".aiz-mobile-side-nav">
                     <span class="d-block mx-auto">
                         @if(Auth::user()->photo != null)
                             <img src="{{ custom_asset(Auth::user()->avatar_original)}}" class="rounded-circle size-20px">
@@ -243,7 +243,7 @@
                         @endif
                     </span>
                     <span class="d-block fs-10 fw-600 opacity-60">{{ translate('Account') }}</span>
-                </a>
+                </div>
             @endif
         @else
             <a href="{{ route('user.login') }}" class="text-reset d-block text-center pb-2 pt-3">
