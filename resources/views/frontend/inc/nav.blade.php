@@ -84,7 +84,7 @@
                         @else
 
                             <li class="list-inline-item mr-3 border-right border-left-0 pr-3 pl-0 dropdown">
-                                <div class="dropdown-toggle no-arrow text-reset c-pointer" data-toggle="dropdown"role="button" aria-haspopup="false" aria-expanded="false">
+                                <div class="dropdown-toggle no-arrow text-reset c-pointer" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
                                     <span class="">
                                         <span class="position-relative d-inline-block">
                                             <i class="las la-bell fs-18"></i>
