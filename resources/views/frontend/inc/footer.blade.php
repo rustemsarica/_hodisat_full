@@ -225,7 +225,7 @@
             @if(isAdmin())
                 <a href="{{ route('admin.dashboard') }}" class="text-reset d-block text-center pb-2 pt-3">
                     <span class="d-block mx-auto">
-                        @if(Auth::user()->photo != null)
+                        @if(Auth::user()->shop->logo != null)
                             <img src="{{ uploaded_asset(Auth::user()->shop->logo)}}" class="rounded-circle size-20px">
                         @else
                             <img src="{{ static_asset('assets/img/avatar-place.png') }}" class="rounded-circle size-20px">
@@ -236,7 +236,7 @@
             @else
                 <div class="text-reset d-block text-center pb-2 pt-3 mobile-side-nav-thumb" data-toggle="class-toggle" data-backdrop="static" data-target=".aiz-mobile-side-nav">
                     <span class="d-block mx-auto">
-                        @if(Auth::user()->photo != null)
+                        @if(Auth::user()->shop->logo != null)
                             <img src="{{ uploaded_asset(Auth::user()->shop->logo)}}" class="rounded-circle size-20px">
                         @else
                             <img src="{{ static_asset('assets/img/avatar-place.png') }}" class="rounded-circle size-20px">
