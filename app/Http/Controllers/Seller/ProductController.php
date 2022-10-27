@@ -245,8 +245,6 @@ class ProductController extends Controller
             return back();
         }
 
-        $product->product_translations()->delete();
-
 
         if (Product::destroy($id)) {
             Cart::where('product_id', $id)->delete();

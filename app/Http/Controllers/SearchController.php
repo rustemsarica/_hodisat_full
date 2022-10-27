@@ -77,10 +77,7 @@ class SearchController extends Controller
 
             $products->where(function ($q) use ($query) {
                 foreach (explode(' ', trim($query)) as $word) {
-                    $q->where('name', 'like', '%' . $word . '%')
-                        ->orWhereHas('product_translations', function ($q) use ($word) {
-                            $q->where('name', 'like', '%' . $word . '%');
-                        });
+                    $q->where('name', 'like', '%' . $word . '%');
                 }
             });
             $case1 = $query . '%';
