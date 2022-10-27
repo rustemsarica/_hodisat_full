@@ -57,19 +57,7 @@
                                 {{ translate('Login') }}
                             </button>
                         </form>
-                        @if (env("DEMO_MODE") == "On")
-                            <div class="mt-4">
-                                <table class="table table-bordered">
-                                    <tbody>
-                                        <tr>
-                                            <td>admin@example.com</td>
-                                            <td>123456</td>
-                                            <td><button class="btn btn-info btn-xs" onclick="autoFill()">{{ translate('Copy') }}</button></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        @endif
+
                     </div>
                 </div>
             </div>
