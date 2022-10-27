@@ -12,7 +12,6 @@ use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Review;
 use App\Models\User;
-use App\Models\ProductTranslation;
 use App\Services\ProductService;
 use Artisan;
 use DB;
@@ -100,8 +99,6 @@ class ProductController extends Controller
             return $this->failed(translate('This product is not yours'));
         }
 
-        $product->product_translations()->delete();
-
         if (Product::destroy($id)) {
             Cart::where('product_id', $id)->delete();
 
@@ -160,12 +157,6 @@ class ProductController extends Controller
 
         if($data->save()){
 
-            $request->merge(['product_id' => $data->id]);
-            $request->merge(['lang' => 'tr']);
-            ProductTranslation::create($request->only([
-                'lang', 'name', 'description', 'product_id'
-            ]));
-
             Artisan::call('view:clear');
             Artisan::call('cache:clear');
 
@@ -220,14 +211,6 @@ class ProductController extends Controller
             $data->meta_title = $request->name;
             $data->meta_description = $request->description;
             $data->meta_img = $request->thumbnail_img;
-
-            $request->merge(['product_id' => $request->id]);
-            $request->merge(['lang' => 'tr']);
-            ProductTranslation::where('lang', 'tr')
-            ->where('product_id', $request->product_id)
-            ->update($request->only([
-            'lang', 'name', 'description', 'product_id'
-            ]));
 
             if($data->save()){
                 Artisan::call('view:clear');

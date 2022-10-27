@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\ProductTranslation;
 use App\Models\Category;
 use App\Models\AttributeValue;
 use App\Models\Cart;
@@ -37,7 +36,6 @@ class ProductController extends Controller
      */
     public function admin_products(Request $request)
     {
-        
 
         $type = 'In House';
         $col_name = null;
@@ -137,7 +135,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        
+
 
         $categories = Category::where('parent_id', 0)
             ->with('childrenCategories')
@@ -179,11 +177,6 @@ class ProductController extends Controller
         ]), $product);
 
 
-        // Product Translations
-        $request->merge(['lang' => 'tr']);
-        ProductTranslation::create($request->only([
-            'lang', 'name', 'description', 'product_id'
-        ]));
 
         flash(translate('Product has been inserted successfully'))->success();
 
@@ -212,10 +205,10 @@ class ProductController extends Controller
      */
     public function admin_product_edit(Request $request, $id)
     {
-        
+
 
         $product = Product::findOrFail($id);
-        
+
         $lang = $request->lang;
         $tags = json_decode($product->tags);
         $categories = Category::where('parent_id', 0)
@@ -262,13 +255,6 @@ class ProductController extends Controller
             'flash_deal_id', 'flash_discount', 'flash_discount_type'
         ]), $product);
 
-    
-        // Product Translations
-        ProductTranslation::where('lang', 'tr')
-            ->where('product_id', $request->product_id)
-            ->update($request->only([
-            'lang', 'name', 'description', 'product_id'
-        ]));
 
         flash(translate('Product has been updated successfully'))->success();
 
@@ -288,7 +274,6 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        $product->product_translations()->delete();
 
         if (Product::destroy($id)) {
             Cart::where('product_id', $id)->delete();
@@ -329,7 +314,7 @@ class ProductController extends Controller
         $product_new = $product->replicate();
         $product_new->slug = $product_new->slug . '-' . Str::random(5);
         $product_new->save();
-        
+
 
         flash(translate('Product has been duplicated successfully'))->success();
         if ($request->type == 'In House')
@@ -372,7 +357,7 @@ class ProductController extends Controller
         }
 
         $product->save();
-        
+
         Artisan::call('view:clear');
         Artisan::call('cache:clear');
         return 1;
@@ -395,7 +380,7 @@ class ProductController extends Controller
         }
 
         $product->save();
-        
+
         Artisan::call('view:clear');
         Artisan::call('cache:clear');
         return 1;
@@ -416,9 +401,9 @@ class ProductController extends Controller
     public function sku_combination(Request $request)
     {
         $options = array();
-        
+
         array_push($options, $request->colors);
-        
+
 
         $unit_price = $request->unit_price;
         $product_name = $request->name;
@@ -445,9 +430,9 @@ class ProductController extends Controller
         $product = Product::findOrFail($request->id);
 
         $options = array();
-        
+
         array_push($options, $request->colors);
-        
+
         $product_name = $request->name;
         $unit_price = $request->unit_price;
 
