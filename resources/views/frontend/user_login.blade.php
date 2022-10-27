@@ -83,9 +83,9 @@
                                             @endif
                                             @if(get_setting('google_login') == 1)
                                                 <li class="list-inline-item">
-                                                    <div onclick="window.open('{{ route('social.login', ['provider' => 'google']) }}', '_blank');" class="google">
+                                                    <a href="{{ route('social.login', ['provider' => 'google']) }}" class="google">
                                                         <i class="lab la-google"></i>
-                                                    </div>
+                                                    </a>
                                                 </li>
                                             @endif
                                             @if (get_setting('twitter_login') == 1)
