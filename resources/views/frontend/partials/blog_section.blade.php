@@ -1,6 +1,6 @@
 @php
     $blogs = Cache::remember('blogs', 86400, function () {
-        return \App\Models\Blog::where('status', 1)->latest()->limit(10)->get();
+        return \App\Models\Blog::where('status', 1)->latest()->limit(5)->get();
     });
 @endphp
 

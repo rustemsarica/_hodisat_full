@@ -1,11 +1,11 @@
 @php
     $best_selers = Cache::remember('best_selers', 86400, function () {
-        return \App\Models\Seller::orderBy('num_of_sale', 'desc')->take(6)->get();
+        return \App\Models\Seller::orderBy('num_of_sale', 'desc')->take(5)->get();
     });
 @endphp
 
 @if (get_setting('vendor_system_activation') == 1)
-    <div class="aiz-carousel gutters-10 " data-items="1" data-arrows="false" data-rows="6">
+    <div class="aiz-carousel gutters-10 " data-items="1" data-arrows="false" data-rows="5">
         @foreach ($best_selers as $key => $seller)
             @if ($seller->user != null)
                 <div class="carousel-box">
