@@ -162,7 +162,7 @@
             </div>
             <div class="col-lg-12 p-2">
                 <div class="text-center" current-verison="{{get_setting("current_version")}}">
-                    {!! get_setting('frontend_copyright_text',null,App::getLocale()) !!} <a href="https://www.linkedin.com/in/rustemsarica/" target="_blank" rel="noopener noreferrer">RS</a>
+                    {!! get_setting('frontend_copyright_text',null,App::getLocale()) !!} <a class="text-white" href="https://www.linkedin.com/in/rustemsarica/" target="_blank" rel="noopener noreferrer">RS</a>
                 </div>
             </div>
         </div>
