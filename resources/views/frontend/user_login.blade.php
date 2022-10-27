@@ -76,21 +76,21 @@
                                         <ul class="list-inline social colored text-center mb-5">
                                             @if (get_setting('facebook_login') == 1)
                                                 <li class="list-inline-item">
-                                                    <div onclick="window.location='{{ route('social.login', ['provider' => 'facebook']) }}';"class="facebook">
+                                                    <div onclick="window.open('{{ route('social.login', ['provider' => 'facebook']) }}', '_blank');"class="facebook">
                                                         <i class="lab la-facebook-f"></i>
                                                     </div>
                                                 </li>
                                             @endif
                                             @if(get_setting('google_login') == 1)
                                                 <li class="list-inline-item">
-                                                    <div onclick="window.location='{{ route('social.login', ['provider' => 'google']) }}';" class="google">
+                                                    <div onclick="window.open('{{ route('social.login', ['provider' => 'google']) }}', '_blank');" class="google">
                                                         <i class="lab la-google"></i>
                                                     </div>
                                                 </li>
                                             @endif
                                             @if (get_setting('twitter_login') == 1)
                                                 <li class="list-inline-item">
-                                                    <div onclick="window.location='{{ route('social.login', ['provider' => 'twitter']) }}';" class="twitter">
+                                                    <div onclick="window.open('{{ route('social.login', ['provider' => 'twitter']) }}', '_blank');" class="twitter">
                                                         <i class="lab la-twitter"></i>
                                                     </div>
                                                 </li>
