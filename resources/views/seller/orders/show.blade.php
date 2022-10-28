@@ -99,7 +99,7 @@
 
             <hr class="new-section-sm bord-no">
             <div class="row">
-                <div class="col-lg-9 table-responsive">
+                <div class="col-md-8 table-responsive">
                     <table class="table-bordered aiz-table invoice-summary table">
                         <thead>
                             <tr class="bg-trans-dark">
@@ -148,48 +148,48 @@
                     </table>
                 </div>
 
-            <div class="col-lg-3">
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <strong class="text-muted">{{ translate('Sub Total') }} :</strong>
-                            </td>
-                            <td>
-                                {{ single_price($order->orderDetails->sum('price')) }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong class="text-muted">{{ translate('Shipping') }} :</strong>
-                            </td>
-                            <td>
-                                {{ single_price($order->orderDetails->sum('shipping_cost')) }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong class="text-muted">{{ translate('Coupon') }} :</strong>
-                            </td>
-                            <td>
-                                {{ single_price($order->coupon_discount) }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong class="text-muted">{{ translate('TOTAL') }} :</strong>
-                            </td>
-                            <td class="text-muted h5">
-                                {{ single_price($order->grand_total) }}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="no-print text-right">
-                    <a href="{{ route('seller.invoice.download', $order->id) }}" type="button"
-                        class="btn btn-icon btn-light"><i class="las la-print"></i></a>
+                <div class="col-md-4">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong class="text-muted">{{ translate('Sub Total') }} :</strong>
+                                </td>
+                                <td>
+                                    {{ single_price($order->orderDetails->sum('price')) }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong class="text-muted">{{ translate('Shipping') }} :</strong>
+                                </td>
+                                <td>
+                                    {{ single_price($order->orderDetails->sum('shipping_cost')) }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong class="text-muted">{{ translate('Coupon') }} :</strong>
+                                </td>
+                                <td>
+                                    {{ single_price($order->coupon_discount) }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong class="text-muted">{{ translate('TOTAL') }} :</strong>
+                                </td>
+                                <td class="text-muted h5">
+                                    {{ single_price($order->grand_total) }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="no-print text-right">
+                        <a href="{{ route('seller.invoice.download', $order->id) }}" type="button"
+                            class="btn btn-icon btn-light"><i class="las la-print"></i></a>
+                    </div>
                 </div>
-            </div>
             </div>
 
         </div>
