@@ -141,6 +141,7 @@
                                             <strong>{{ translate('Product Unavailable') }}</strong>
                                         @endif
                                     </td>
+                                    <td class="text-center">{{ single_price($orderDetail->price) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
