@@ -28,7 +28,7 @@
                         <label class="col-lg-3 col-from-label">{{translate('Product Name')}}</label>
                         <div class="col-lg-8">
                             <input type="text" class="form-control" name="name"
-                                placeholder="{{translate('Product Name')}}" value="{{$product->getTranslation('name',$lang)}}"
+                                placeholder="{{translate('Product Name')}}" value="{{$product->name}}"
                                 required>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                                 <option value="">{{ translate('Select Brand') }}</option>
                                 @foreach (\App\Models\Brand::all() as $brand)
                                 <option value="{{ $brand->id }}" @if($product->brand_id == $brand->id) selected
-                                    @endif>{{ $brand->name }}</option>
+                                    @endif >{{ $brand->name }}</option>
                                 @endforeach
                             </select>
                         </div>
