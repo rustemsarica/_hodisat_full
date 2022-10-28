@@ -7,8 +7,9 @@
         <ul class="list-group list-group-flush">
           @foreach ($conversations as $key => $conversation)
               @if ($conversation->receiver != null && $conversation->sender != null)
-                <a href="{{ route('seller.conversations.show', encrypt($conversation->id)) }}" class="text-dark fw-600">
+              <a href="{{ route('seller.conversations.show', encrypt($conversation->id)) }}">
                     <li class="list-group-item px-0">
+
                       <div class="row gutters-10">
                           <div class="col-auto">
                               <div class="media">
