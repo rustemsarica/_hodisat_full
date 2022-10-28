@@ -17,7 +17,7 @@
                   <i class="las la-dollar-sign la-2x text-white"></i>
               </span>
               <div class="px-3 pt-3 pb-3">
-                  <div class="h4 fw-700 text-center">{{ single_price(Auth::user()->shop->admin_to_pay) }}</div>
+                  <div class="h4 fw-700 text-center">{{ single_price(Auth::user()->seller->admin_to_pay) }}</div>
                   <div class="opacity-50 text-center">{{ translate('Pending Balance') }}</div>
               </div>
             </div>
