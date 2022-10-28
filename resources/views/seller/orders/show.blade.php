@@ -48,25 +48,7 @@
             </div>
             <div class="row gutters-5 mt-2">
                 <div class="col text-md-left text-center">
-                    @if(json_decode($order->shipping_address))
-                        <address>
-                            <strong class="text-main">
-                                {{ json_decode($order->shipping_address)->name }}
-                            </strong><br>
-                            {{ json_decode($order->shipping_address)->email }}<br>
-                            {{ json_decode($order->shipping_address)->phone }}<br>
-                            {{ json_decode($order->shipping_address)->address }}, {{ json_decode($order->shipping_address)->city }}, {{ json_decode($order->shipping_address)->postal_code }}<br>
-                            {{ json_decode($order->shipping_address)->country }}
-                        </address>
-                    @else
-                        <address>
-                            <strong class="text-main">
-                                {{ $order->user->name }}
-                            </strong><br>
-                            {{ $order->user->email }}<br>
-                            {{ $order->user->phone }}<br>
-                        </address>
-                    @endif
+
                     @if ($order->manual_payment && is_array(json_decode($order->manual_payment_data, true)))
                         <br>
                         <strong class="text-main">{{ translate('Payment Information') }}</strong><br>
