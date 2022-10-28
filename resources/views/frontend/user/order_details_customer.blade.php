@@ -205,12 +205,15 @@
                                         class="text-italic">{{ single_price($order->orderDetails->sum('shipping_cost')) }}</span>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="w-50 fw-600">{{ translate('Coupon') }}</td>
-                                <td class="text-right">
-                                    <span class="text-italic">{{ single_price($order->coupon_discount) }}</span>
-                                </td>
-                            </tr>
+                            @if ($order->coupon_discount>0)
+                                <tr>
+                                    <td class="w-50 fw-600">{{ translate('Coupon') }}</td>
+                                    <td class="text-right">
+                                        <span class="text-italic">{{ single_price($order->coupon_discount) }}</span>
+                                    </td>
+                                </tr>
+                            @endif
+
                             <tr>
                                 <td class="w-50 fw-600">{{ translate('Total') }}</td>
                                 <td class="text-right">
