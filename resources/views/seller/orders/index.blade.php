@@ -8,13 +8,6 @@
             <div class="col text-center text-md-left">
               <h5 class="mb-md-0 h6">{{ translate('Orders') }}</h5>
             </div>
-              <div class="col-md-3 ml-auto">
-                  <select class="form-control aiz-selectpicker" data-placeholder="{{ translate('Filter by Payment Status')}}" name="payment_status" onchange="sort_orders()">
-                      <option value="">{{ translate('Filter by Payment Status')}}</option>
-                      <option value="paid" @isset($payment_status) @if($payment_status == 'paid') selected @endif @endisset>{{ translate('Paid')}}</option>
-                      <option value="unpaid" @isset($payment_status) @if($payment_status == 'unpaid') selected @endif @endisset>{{ translate('Un-Paid')}}</option>
-                  </select>
-              </div>
 
               <div class="col-md-3 ml-auto">
                 <select class="form-control aiz-selectpicker" data-placeholder="{{ translate('Filter by Payment Status')}}" name="delivery_status" onchange="sort_orders()">
@@ -44,7 +37,6 @@
                             <th data-breakpoints="lg">{{ translate('Customer')}}</th>
                             <th data-breakpoints="md">{{ translate('Amount')}}</th>
                             <th data-breakpoints="lg">{{ translate('Delivery Status')}}</th>
-                            <th>{{ translate('Payment Status')}}</th>
                             <th class="text-right">{{ translate('Options')}}</th>
                         </tr>
                     </thead>
@@ -79,13 +71,6 @@
                                             $status = $order->delivery_status;
                                         @endphp
                                         {{ translate(ucfirst(str_replace('_', ' ', $status))) }}
-                                    </td>
-                                    <td>
-                                        @if ($order->payment_status == 'paid')
-                                            <span class="badge badge-inline badge-success">{{ translate('Paid')}}</span>
-                                        @else
-                                            <span class="badge badge-inline badge-danger">{{ translate('Unpaid')}}</span>
-                                        @endif
                                     </td>
                                     <td class="text-right">
                                         <a href="{{ route('seller.orders.show', encrypt($order->id)) }}" class="btn btn-soft-info btn-icon btn-circle btn-sm" title="{{ translate('Order Details') }}">
