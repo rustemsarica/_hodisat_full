@@ -40,8 +40,8 @@
                         <div class="file-preview box sm">
                         </div>
                     </div>
-                {{-- </div>
-                <div class="row">
+                 </div>
+                {{-- <div class="row">
                     <label class="col-md-2 col-form-label">
                         {{ translate('Shop Phone') }}
                     </label>
