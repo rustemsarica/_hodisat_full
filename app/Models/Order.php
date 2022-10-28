@@ -61,8 +61,4 @@ class Order extends Model
         return $this->hasMany(ProxyPayment::class)->select('reference_id');
     }
 
-    public function commission()
-    {
-        return $this->belongsTo(CommissionHistory::class);
-    }
 }

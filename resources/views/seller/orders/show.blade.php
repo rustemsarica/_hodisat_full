@@ -111,7 +111,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $adminCommission=0;
+                                $total=0;
+                            @endphp
                             @foreach ($order->orderDetails as $key => $orderDetail)
+                                @php
+                                    $adminCommission+= $orderDetail->commission->admin_commission;
+                                    $total+=$orderDetail->price;
+                                @endphp
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>
@@ -175,7 +183,7 @@
                                     <strong class="text-muted">{{ translate('Admin Commission') }} :</strong>
                                 </td>
                                 <td>
-                                    {{ single_price($order->commission->admin_commission) }}
+                                    {{ single_price($adminCommission) }}
                                 </td>
                             </tr>
                             <tr>
@@ -183,7 +191,7 @@
                                     <strong class="text-muted">{{ translate('TOTAL') }} :</strong>
                                 </td>
                                 <td class="text-muted h5">
-                                    {{ $order->commission->seller_earning }}
+                                    {{ single_price($total-$adminCommission) }}
                                 </td>
                             </tr>
                         </tbody>
