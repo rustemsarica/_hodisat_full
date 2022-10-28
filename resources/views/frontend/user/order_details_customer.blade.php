@@ -51,24 +51,24 @@
                             <td class="w-50 fw-600">{{ translate('Order status') }}:</td>
                             <td>{{ translate(ucfirst(str_replace('_', ' ', $order->delivery_status))) }}</td>
                         </tr>
-                        <tr>
+                        {{-- <tr>
                             <td class="w-50 fw-600">{{ translate('Total order amount') }}:</td>
                             <td>{{ single_price($order->orderDetails->sum('price')) }}
                             </td>
-                        </tr>
-                        <tr>
+                        </tr> --}}
+                        {{-- <tr>
                             <td class="w-50 fw-600">{{ translate('Shipping method') }}:</td>
                             <td>{{ translate('Flat shipping rate') }}</td>
-                        </tr>
+                        </tr> --}}
                         <tr>
                             <td class="w-50 fw-600">{{ translate('Payment method') }}:</td>
                             <td>{{ translate(ucfirst(str_replace('_', ' ', $order->payment_type))) }}</td>
                         </tr>
 
-                        <tr>
-                            <td class="text-main text-bold">{{ translate('Additional Info') }}</td>
+                        {{-- <tr>
+                            <td class="w-50 fw-600">{{ translate('Additional Info') }}</td>
                             <td class="">{{ $order->additional_info }}</td>
-                        </tr>
+                        </tr> --}}
                         @if ($order->tracking_code)
                             <tr>
                                 <td class="w-50 fw-600">{{ translate('Tracking code') }}:</td>
