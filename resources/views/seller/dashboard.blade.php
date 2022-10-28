@@ -1,4 +1,4 @@
-@extends('seller.layouts.app')
+@extends('frontend.layouts.app')
 
 @section('panel_content')
     <div class="aiz-titlebar mt-2 mb-4">
