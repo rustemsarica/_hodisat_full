@@ -1,6 +1,6 @@
 @extends('frontend.layouts.seller')
 @section('content')
-<section class="py-5">
+<section class="py-3">
     <div class="container">
         <div class="d-flex align-items-start">
 			@include('frontend.inc.seller_side_nav')
