@@ -160,7 +160,7 @@
                                 </td>
                             </tr>
 
-                            @if ($order->coupon_discount)
+                            @if ($order->coupon_discount>0)
                                 <tr>
                                     <td>
                                         <strong class="text-muted">{{ translate('Coupon') }} :</strong>
