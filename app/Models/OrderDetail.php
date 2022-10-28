@@ -33,6 +33,6 @@ class OrderDetail extends Model
 
     public function commission()
     {
-        return $this->hasMany(CommissionHistory::class, 'order_detail_id', 'id');
+        return $this->belongsTo(CommissionHistory::class, 'order_detail_id', 'id');
     }
 }
