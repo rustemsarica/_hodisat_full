@@ -167,14 +167,17 @@
                                     {{ single_price($order->orderDetails->sum('shipping_cost')) }}
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <strong class="text-muted">{{ translate('Coupon') }} :</strong>
-                                </td>
-                                <td>
-                                    {{ single_price($order->coupon_discount) }}
-                                </td>
-                            </tr>
+                            @if ($order->coupon_discount)
+                                <tr>
+                                    <td>
+                                        <strong class="text-muted">{{ translate('Coupon') }} :</strong>
+                                    </td>
+                                    <td>
+                                        {{ single_price($order->coupon_discount) }}
+                                    </td>
+                                </tr>
+                            @endif
+
                             <tr>
                                 <td>
                                     <strong class="text-muted">{{ translate('TOTAL') }} :</strong>
