@@ -13,7 +13,6 @@
 </section>
 @endsection
 @section('script')
-
 <script src="{{ static_asset('assets/js/uppy.min.js') }}" ></script>
 <script src="{{ static_asset('assets/js/footable.min.js') }}" ></script>
 <script src="{{ static_asset('assets/js/chart.min.js') }}" ></script>
