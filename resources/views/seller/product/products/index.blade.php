@@ -76,7 +76,6 @@
                         <th>#</th>
                         <th width="30%">{{ translate('Name')}}</th>
                         <th data-breakpoints="md">{{ translate('Category')}}</th>
-                        <th data-breakpoints="md">{{ translate('Current Qty')}}</th>
                         <th>{{ translate('Base Price')}}</th>
                         @if(get_setting('product_approve_by_admin') == 1)
                             <th data-breakpoints="md">{{ translate('Approval')}}</th>
@@ -100,12 +99,6 @@
                                 @if ($product->category != null)
                                     {{ $product->category->getTranslation('name') }}
                                 @endif
-                            </td>
-                            <td>
-                                @php
-                                    $qty = $product->current_stock;
-                                    echo $qty;
-                                @endphp
                             </td>
                             <td>{{ $product->unit_price }}</td>
                             @if(get_setting('product_approve_by_admin') == 1)
