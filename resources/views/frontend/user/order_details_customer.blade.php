@@ -167,7 +167,7 @@
                                             @endif
                                         </td>
                                     @endif
-                                    <td class="text-right">
+                                    {{-- <td class="text-right">
                                         @if ($orderDetail->delivery_status == 'confirmed')
                                             <a href="javascript:void(0);"
                                                 onclick="product_review('{{ $orderDetail->product_id }}')"
@@ -175,7 +175,7 @@
                                         @else
                                             <span class="text-danger">{{ translate('Not Delivered Yet') }}</span>
                                         @endif
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>
