@@ -216,31 +216,31 @@
         var home_url = "{{ route('home.section.all_products') }}";
         load_more(currentPage);
 
-        var windowHeight = $(window).height();
+        // var windowHeight = $(window).height();
 
-        var content = $("#content");
+        // var content = $("#content");
 
-        var contentYSpaces = 0;
+        // var contentYSpaces = 0;
 
-        contentYSpaces += parseInt($(content).css("marginTop"));
-        contentYSpaces += parseInt($(content).css("marginBottom"));
-        contentYSpaces += parseInt($(content).css("paddingTop"));
-        contentYSpaces += parseInt($(content).css("paddingBottom"));
+        // contentYSpaces += parseInt($(content).css("marginTop"));
+        // contentYSpaces += parseInt($(content).css("marginBottom"));
+        // contentYSpaces += parseInt($(content).css("paddingTop"));
+        // contentYSpaces += parseInt($(content).css("paddingBottom"));
 
-        $(window).scroll(function() {
-            var contentHeight = $("#content").height();
+        // $(window).scroll(function() {
+        //     var contentHeight = $("#content").height();
 
-            var scrollTop = $(this).scrollTop();
+        //     var scrollTop = $(this).scrollTop();
 
-            var diff  = contentHeight - (scrollTop+windowHeight-contentYSpaces);
+        //     var diff  = contentHeight - (scrollTop+windowHeight-contentYSpaces);
 
-            if(diff < 1000) {
-                if (iCount == currentPage) {
-                    iCount++;
-                    load_more(currentPage);
-                }
-            }
-        });
+        //     if(diff < 1000) {
+        //         if (iCount == currentPage) {
+        //             iCount++;
+        //             load_more(currentPage);
+        //         }
+        //     }
+        // });
 
         function load_more(page){
 
