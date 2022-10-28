@@ -3,7 +3,7 @@
 @section('panel_content')
 
     <div class="card">
-        <div class="card-header">
+        <div class="card-header justify-content-start">
             @if ($conversation->sender_id == Auth::user()->id)
                 <img class="avatar avatar-xs mr-3" @if($conversation->receiver->shop != null) src="{{ uploaded_asset($conversation->receiver->shop->logo) }}" @endif onerror="this.onerror=null;this.src='{{ static_asset('assets/img/avatar-place.png') }}';">
             @else
