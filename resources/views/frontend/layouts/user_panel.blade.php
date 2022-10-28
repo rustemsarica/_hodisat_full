@@ -12,7 +12,7 @@
     </div>
 </section>
 @endsection
-@section('scripts')
+@section('script')
 
 <script src="{{ static_asset('assets/js/uppy.min.js') }}" ></script>
 <script src="{{ static_asset('assets/js/footable.min.js') }}" ></script>
