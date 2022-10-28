@@ -93,8 +93,8 @@
                             <tr>
                                 <th>#</th>
                                 <th width="30%">{{ translate('Product') }}</th>
-                                <th data-breakpoints="md">{{ translate('Variation') }}</th>
-                                <th>{{ translate('Quantity') }}</th>
+                                {{-- <th data-breakpoints="md">{{ translate('Variation') }}</th>
+                                <th>{{ translate('Quantity') }}</th> --}}
                                 <th data-breakpoints="md">{{ translate('Delivery Type') }}</th>
                                 <th>{{ translate('Price') }}</th>
                                 @if (addon_is_activated('refund_request'))
@@ -118,12 +118,12 @@
                                             <strong>{{ translate('Product Unavailable') }}</strong>
                                         @endif
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                         {{ $orderDetail->variation }}
                                     </td>
                                     <td>
                                         {{ $orderDetail->quantity }}
-                                    </td>
+                                    </td> --}}
                                     <td>
                                         @if ($order->shipping_type != null && $order->shipping_type == 'home_delivery')
                                             {{ translate('Home Delivery') }}
