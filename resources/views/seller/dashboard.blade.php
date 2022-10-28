@@ -520,7 +520,7 @@
         </div>
     </div>
 
-    <div class="card">
+    {{-- <div class="card">
         <div class="card-body">
             <div class="card-title text-primary">
                 <h6 class="mb-0">{{ translate('Top 12 Products') }}</h6>
@@ -560,7 +560,7 @@
                 @endforeach
             </div>
         </div>
-    </div>
+    </div> --}}
 
 @endsection
 
