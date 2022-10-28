@@ -1,6 +1,6 @@
-@extends('frontend.layouts.app')
+@extends('frontend.layouts.seller')
 
-@section('content')
+@section('panel_content')
 
 <section class="pt-4 mb-4">
     <div class="container text-center">
