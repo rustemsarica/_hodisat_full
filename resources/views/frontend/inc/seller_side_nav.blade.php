@@ -61,52 +61,6 @@
                             </a>
                         </li>
 
-                    {{-- @if(get_setting('classified_product') == 1)
-                        <li class="aiz-side-nav-item">
-                            <a href="{{ route('customer_products.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['customer_products.index', 'customer_products.create', 'customer_products.edit'])}}">
-                                <i class="lab la-sketch aiz-side-nav-icon"></i>
-                                <span class="aiz-side-nav-text">{{ translate('Classified Products') }}</span>
-                            </a>
-                        </li>
-                    @endif
-
-                    @if(addon_is_activated('auction'))
-                        <li class="aiz-side-nav-item">
-                            <a href="javascript:void(0);" class="aiz-side-nav-link">
-                                <i class="las la-gavel aiz-side-nav-icon"></i>
-                                <span class="aiz-side-nav-text">{{ translate('Auction') }}</span>
-                                <span class="aiz-side-nav-arrow"></span>
-                            </a>
-                            <ul class="aiz-side-nav-list level-2">
-                                <li class="aiz-side-nav-item">
-                                    <a href="{{ route('auction_product_bids.index') }}" class="aiz-side-nav-link">
-                                        <span class="aiz-side-nav-text">{{ translate('Bidded Products') }}</span>
-                                    </a>
-                                </li>
-                                <li class="aiz-side-nav-item">
-                                    <a href="{{ route('auction_product.purchase_history') }}" class="aiz-side-nav-link">
-                                        <span class="aiz-side-nav-text">{{ translate('Purchase History') }}</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    @endif --}}
-
-                    @if (get_setting('conversation_system') == 1)
-                        @php
-                            $conversation = \App\Models\Conversation::where('sender_id', Auth::user()->id)->where('sender_viewed', 0)->get();
-                        @endphp
-                        <li class="aiz-side-nav-item">
-                            <a href="{{ route('conversations.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['conversations.index', 'conversations.show'])}}">
-                                <i class="las la-comment aiz-side-nav-icon"></i>
-                                <span class="aiz-side-nav-text">{{ translate('Conversations') }}</span>
-                                @if (count($conversation) > 0)
-                                    <span class="badge badge-success">({{ count($conversation) }})</span>
-                                @endif
-                            </a>
-                        </li>
-                    @endif
-
 
                     @if (get_setting('wallet_system') == 1)
                         <li class="aiz-side-nav-item">
