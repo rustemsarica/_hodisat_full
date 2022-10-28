@@ -21,12 +21,12 @@
             <form class="" action="{{ route('seller.shop.update') }}" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                 @csrf
-                <div class="row">
+                {{-- <div class="row">
                     <label class="col-md-2 col-form-label">{{ translate('Shop Name') }}<span class="text-danger text-danger">*</span></label>
                     <div class="col-md-10">
                         <input type="text" class="form-control mb-3" placeholder="{{ translate('Shop Name')}}" name="name" value="{{ $shop->user->username }}" required>
                     </div>
-                </div>
+                </div> --}}
                 <div class="row mb-3">
                     <label class="col-md-2 col-form-label">{{ translate('Shop Logo') }}</label>
                     <div class="col-md-10">
@@ -49,13 +49,13 @@
                         <input type="text" class="form-control mb-3" placeholder="{{ translate('Phone')}}" name="phone" value="{{ $shop->phone }}" required>
                     </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <label class="col-md-2 col-form-label">{{ translate('Shop Address') }} <span class="text-danger text-danger">*</span></label>
                     <div class="col-md-10">
                         <input type="text" class="form-control mb-3" placeholder="{{ translate('Address')}}" name="address" value="{{ $shop->address }}" required>
                     </div>
-                </div>
-                @if (get_setting('shipping_type') == 'seller_wise_shipping')
+                </div> --}}
+                {{-- @if (get_setting('shipping_type') == 'seller_wise_shipping')
                     <div class="row">
                         <div class="col-md-2">
                             <label>{{ translate('Shipping Cost')}} <span class="text-danger">*</span></label>
@@ -64,13 +64,13 @@
                             <input type="number" lang="en" min="0" class="form-control mb-3" placeholder="{{ translate('Shipping Cost')}}" name="shipping_cost" value="{{ $shop->shipping_cost }}" required>
                         </div>
                     </div>
-                @endif
-                <div class="row">
+                @endif --}}
+                {{-- <div class="row">
                     <label class="col-md-2 col-form-label">{{ translate('Meta Title') }}<span class="text-danger text-danger">*</span></label>
                     <div class="col-md-10">
                         <input type="text" class="form-control mb-3" placeholder="{{ translate('Meta Title')}}" name="meta_title" value="{{ $shop->meta_title }}" required>
                     </div>
-                </div>
+                </div> --}}
                 <div class="row">
                     <label class="col-md-2 col-form-label">{{ translate('Meta Description') }}<span class="text-danger text-danger">*</span></label>
                     <div class="col-md-10">
@@ -98,7 +98,7 @@
                 <div class="row mb-3">
                     <label class="col-md-2 col-form-label">{{ translate('Banners') }} (1500x450)</label>
                     <div class="col-md-10">
-                        <div class="input-group" data-toggle="aizuploader" data-type="image" data-multiple="true">
+                        <div class="input-group" data-toggle="aizuploader" data-type="image" data-multiple="false">
                             <div class="input-group-prepend">
                                 <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}</div>
                             </div>
@@ -119,7 +119,7 @@
     </div>
 
     {{-- Social Media Link --}}
-    <div class="card">
+    {{-- <div class="card">
         <div class="card-header">
             <h5 class="mb-0 h6">{{ translate('Social Media Link') }}</h5>
         </div>
@@ -169,7 +169,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> --}}
 
 @endsection
 
