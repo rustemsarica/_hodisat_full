@@ -11,15 +11,12 @@
     </div>
     <div class="card">
         <div class="card-header">
-            <h5 class="card-title fs-16 fw-600 mb-0">#{{ $conversation->title }}
-            (
-                {{ translate('Between you and') }}
+            <h5 class="card-title fs-16 fw-600 mb-0">
                 @if ($conversation->sender_id == Auth::user()->id)
                     {{ $conversation->receiver->username }}
                 @else
                     {{ $conversation->sender->username }}
                 @endif
-            )
             </h5>
         </div>
 
