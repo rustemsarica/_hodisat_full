@@ -1,6 +1,6 @@
-@extends('frontend.layouts.app')
+@extends('frontend.layouts.user_panel')
 
-@section('content')
+@section('panel_content')
     <div class="aiz-titlebar mt-2 mb-4">
         <div class="row align-items-center">
             <div class="col-md-6">
