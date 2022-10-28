@@ -1,13 +1,6 @@
 @extends('frontend.layouts.user_panel')
 
 @section('panel_content')
-    <div class="aiz-titlebar mt-2 mb-4">
-      <div class="row align-items-center">
-          <div class="col-md-6">
-              <b class="h4">{{ translate('Conversations')}}</b>
-          </div>
-      </div>
-    </div>
 
     <div class="card">
       <div class="card-body">
@@ -20,9 +13,9 @@
                               <div class="media">
                                   <span class="avatar avatar-sm flex-shrink-0">
                                     @if (Auth::user()->id == $conversation->sender_id)
-                                        <img @if ($conversation->receiver->avatar_original == null) src="{{ static_asset('assets/img/avatar-place.png') }}" @else src="{{ uploaded_asset($conversation->receiver->avatar_original) }}" @endif onerror="this.onerror=null;this.src='{{ static_asset('assets/img/avatar-place.png') }}';">
+                                        <img @if ($conversation->receiver->shop->logo == null) src="{{ static_asset('assets/img/avatar-place.png') }}" @else src="{{ uploaded_asset($conversation->receiver->shop->logo) }}" @endif onerror="this.onerror=null;this.src='{{ static_asset('assets/img/avatar-place.png') }}';">
                                     @else
-                                        <img @if ($conversation->sender->avatar_original == null) src="{{ static_asset('assets/img/avatar-place.png') }}" @else src="{{ uploaded_asset($conversation->sender->avatar_original) }}" @endif class="rounded-circle" onerror="this.onerror=null;this.src='{{ static_asset('assets/img/avatar-place.png') }}';">
+                                        <img @if ($conversation->sender->shop->logo == null) src="{{ static_asset('assets/img/avatar-place.png') }}" @else src="{{ uploaded_asset($conversation->sender->shop->logo) }}" @endif class="rounded-circle" onerror="this.onerror=null;this.src='{{ static_asset('assets/img/avatar-place.png') }}';">
                                     @endif
                                 </span>
                               </div>
@@ -30,9 +23,9 @@
                           <div class="col-auto col-lg-3">
                               <p>
                                   @if (Auth::user()->id == $conversation->sender_id)
-                                      <span class="fw-600">{{ $conversation->receiver->name }}</span>
+                                      <span class="fw-600">{{ $conversation->receiver->username }}</span>
                                   @else
-                                      <span class="fw-600">{{ $conversation->sender->name }}</span>
+                                      <span class="fw-600">{{ $conversation->sender->username }}</span>
                                   @endif
                                   <br>
                                   <span class="opacity-50">

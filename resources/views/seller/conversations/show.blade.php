@@ -5,7 +5,7 @@
         <div class="h6">
             <span>{{ translate('Conversations With ')}}</span>
             @if ($conversation->sender_id == Auth::user()->id && $conversation->receiver->shop != null)
-                <a href="{{ route('shop.visit', $conversation->receiver->shop->slug) }}" class="">{{ $conversation->receiver->shop->user->username }}</a>
+                <a href="{{ route('shop.visit', $conversation->receiver->shop->slug) }}" class="">{{ $conversation->receiver->username }}</a>
             @endif
         </div>
     </div>
@@ -15,9 +15,9 @@
             (
                 {{ translate('Between you and') }}
                 @if ($conversation->sender_id == Auth::user()->id)
-                    {{ $conversation->receiver->name }}
+                    {{ $conversation->receiver->username }}
                 @else
-                    {{ $conversation->sender->name }}
+                    {{ $conversation->sender->username }}
                 @endif
             )
             </h5>
@@ -28,11 +28,11 @@
                 @foreach($conversation->messages as $message)
                     <li class="list-group-item px-0">
                         <div class="media mb-2">
-                          <img class="avatar avatar-xs mr-3" @if($message->user != null) src="{{ uploaded_asset($message->user->avatar_original) }}" @endif onerror="this.onerror=null;this.src='{{ static_asset('assets/img/avatar-place.png') }}';">
+                          <img class="avatar avatar-xs mr-3" @if($message->user != null) src="{{ uploaded_asset($message->user->shop->logo) }}" @endif onerror="this.onerror=null;this.src='{{ static_asset('assets/img/avatar-place.png') }}';">
                           <div class="media-body">
                             <h6 class="mb-0 fw-600">
                                 @if ($message->user != null)
-                                    {{ $message->user->name }}
+                                    {{ $message->user->username }}
                                 @endif
                             </h6>
                             <p class="opacity-50">{{$message->created_at}}</p>
