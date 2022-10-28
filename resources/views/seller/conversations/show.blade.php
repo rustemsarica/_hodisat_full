@@ -1,14 +1,7 @@
 @extends('frontend.layouts.user_panel')
 
 @section('panel_content')
-    <div class="aiz-titlebar mt-2 mb-4">
-        <div class="h6">
-            <span>{{ translate('Conversations With ')}}</span>
-            @if ($conversation->sender_id == Auth::user()->id && $conversation->receiver->shop != null)
-                <a href="{{ route('shop.visit', $conversation->receiver->shop->slug) }}" class="">{{ $conversation->receiver->username }}</a>
-            @endif
-        </div>
-    </div>
+
     <div class="card">
         <div class="card-header">
             <h5 class="card-title fs-16 fw-600 mb-0">
