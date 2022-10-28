@@ -1,4 +1,4 @@
-@extends('seller.layouts.app')
+@extends('frontend.layouts.user_panel')
 
 @section('panel_content')
 <div class="aiz-titlebar text-left mt-2 mb-3">
@@ -20,7 +20,7 @@
     </div>
     <div class="card-body">
     	<div id="aiz-upload-files" class="h-420px" style="min-height: 65vh">
-    		
+
     	</div>
     </div>
 </div>

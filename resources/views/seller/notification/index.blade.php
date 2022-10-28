@@ -1,4 +1,4 @@
-@extends('seller.layouts.app')
+@extends('frontend.layouts.user_panel')
 
 @section('panel_content')
 
@@ -59,7 +59,7 @@
 
 @section('script')
     <script type="text/javascript">
-        
+
         function show_order_details(order_id)
         {
             $('#order-details-modal-body').html(null);

@@ -1,4 +1,4 @@
-@extends('seller.layouts.app')
+@extends('frontend.layouts.user_panel')
 
 @section('panel_content')
 
@@ -20,7 +20,7 @@
                   <div class="h4 fw-700 text-center">{{ single_price(Auth::user()->shop->admin_to_pay) }}</div>
                   <div class="opacity-50 text-center">{{ translate('Pending Balance') }}</div>
               </div>
-            </div> 
+            </div>
         </div>
         <div class="col-md-4 mb-3 mr-auto" >
           <div class="p-3 rounded mb-3 c-pointer text-center bg-white shadow-sm hov-shadow-lg has-transition" onclick="show_request_modal()">

@@ -1,4 +1,4 @@
-@extends('seller.layouts.app')
+@extends('frontend.layouts.user_panel')
 @section('panel_content')
 
     <div class="aiz-titlebar mt-2 mb-4">
@@ -15,7 +15,7 @@
                 <div class="card-header">
                     <h5 class="mb-0 h6">{{translate('Coupon Information Adding')}}</h5>
                 </div>
-                
+
                 <div class="card-body">
                     <form class="form-horizontal" action="{{ route('seller.coupon.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
