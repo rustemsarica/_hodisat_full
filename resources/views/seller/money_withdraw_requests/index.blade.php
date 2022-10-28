@@ -2,14 +2,6 @@
 
 @section('panel_content')
 
-    <div class="aiz-titlebar mt-2 mb-4">
-      <div class="row align-items-center">
-        <div class="col-md-6">
-            <h1 class="h3">{{ translate('Money Withdraw') }}</h1>
-        </div>
-      </div>
-    </div>
-
     <div class="row gutters-10">
         <div class="col-md-4 mb-3 ml-auto" >
             <div class="bg-grad-1 text-white rounded-lg overflow-hidden">
