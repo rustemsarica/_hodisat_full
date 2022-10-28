@@ -100,7 +100,7 @@
                                 @if (addon_is_activated('refund_request'))
                                     <th data-breakpoints="md">{{ translate('Refund') }}</th>
                                 @endif
-                                <th data-breakpoints="md" class="text-right">{{ translate('Review') }}</th>
+                                {{-- <th data-breakpoints="md" class="text-right">{{ translate('Review') }}</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -168,7 +168,7 @@
                                         </td>
                                     @endif
                                     <td class="text-right">
-                                        @if ($orderDetail->delivery_status == 'delivered')
+                                        @if ($orderDetail->delivery_status == 'confirmed')
                                             <a href="javascript:void(0);"
                                                 onclick="product_review('{{ $orderDetail->product_id }}')"
                                                 class="btn btn-primary btn-sm"> {{ translate('Review') }} </a>
