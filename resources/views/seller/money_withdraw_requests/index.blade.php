@@ -126,7 +126,7 @@
         }
 
         function show_message_modal(id){
-            $.post('{{ route('seller.withdraw_request.message_modal') }}',{_token:'{{ @csrf_token() }}', id:id}, function(data){
+            $.post('{{ route('admin.withdraw_request.message_modal') }}',{_token:'{{ @csrf_token() }}', id:id}, function(data){
                 $('#message_modal .modal-content').html(data);
                 $('#message_modal').modal('show', {backdrop: 'static'});
             });
