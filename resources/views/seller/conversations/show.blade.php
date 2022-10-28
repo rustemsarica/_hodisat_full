@@ -4,6 +4,11 @@
 
     <div class="card">
         <div class="card-header">
+            @if ($conversation->sender_id == Auth::user()->id)
+                <img class="avatar avatar-xs mr-3" @if($conversation->receiver->shop != null) src="{{ uploaded_asset($conversation->receiver->shop->logo) }}" @endif onerror="this.onerror=null;this.src='{{ static_asset('assets/img/avatar-place.png') }}';">
+            @else
+                <img class="avatar avatar-xs mr-3" @if($conversation->sender->shop != null) src="{{ uploaded_asset($conversation->sender->shop->logo) }}" @endif onerror="this.onerror=null;this.src='{{ static_asset('assets/img/avatar-place.png') }}';">
+            @endif
             <h5 class="card-title fs-16 fw-600 mb-0">
                 @if ($conversation->sender_id == Auth::user()->id)
                     {{ $conversation->receiver->username }}
