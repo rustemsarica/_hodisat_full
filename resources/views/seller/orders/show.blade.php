@@ -99,7 +99,7 @@
 
             <hr class="new-section-sm bord-no">
             <div class="row">
-                <div class="col-lg-12 table-responsive">
+                <div class="col-lg-9 table-responsive">
                     <table class="table-bordered aiz-table invoice-summary table">
                         <thead>
                             <tr class="bg-trans-dark">
@@ -147,8 +147,8 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div class="clearfix float-right">
+
+            <div class="col-lg-3">
                 <table class="table">
                     <tbody>
                         <tr>
@@ -189,6 +189,7 @@
                     <a href="{{ route('seller.invoice.download', $order->id) }}" type="button"
                         class="btn btn-icon btn-light"><i class="las la-print"></i></a>
                 </div>
+            </div>
             </div>
 
         </div>
