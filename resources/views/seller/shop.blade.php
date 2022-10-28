@@ -40,7 +40,7 @@
                         <div class="file-preview box sm">
                         </div>
                     </div>
-                </div>
+                {{-- </div>
                 <div class="row">
                     <label class="col-md-2 col-form-label">
                         {{ translate('Shop Phone') }}
@@ -48,7 +48,7 @@
                     <div class="col-md-10">
                         <input type="text" class="form-control mb-3" placeholder="{{ translate('Phone')}}" name="phone" value="{{ $shop->phone }}" required>
                     </div>
-                </div>
+                </div> --}}
                 {{-- <div class="row">
                     <label class="col-md-2 col-form-label">{{ translate('Shop Address') }} <span class="text-danger text-danger">*</span></label>
                     <div class="col-md-10">
