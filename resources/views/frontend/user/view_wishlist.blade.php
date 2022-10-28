@@ -26,7 +26,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="link link--style-3" data-toggle="tooltip" data-placement="top" title="Remove from wishlist" onclick="removeFromWishlist({{ $wishlist->id }})">
+                            <a href="#" class="link link--style-3" data-toggle="tooltip" data-placement="top" title="{{translate('Remove from wishlist')}}" onclick="removeFromWishlist({{ $wishlist->id }})">
                                 <i class="la la-trash la-2x"></i>
                             </a>
                             <button type="button" class="btn btn-sm btn-block btn-primary ml-3" onclick="showAddToCartModal({{ $wishlist->product->id }})">
