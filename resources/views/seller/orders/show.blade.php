@@ -170,13 +170,20 @@
                                     </td>
                                 </tr>
                             @endif
-
+                            <tr>
+                                <td>
+                                    <strong class="text-muted">{{ translate('Admin Commission') }} :</strong>
+                                </td>
+                                <td>
+                                    {{ single_price($order->commission->admin_commission) }}
+                                </td>
+                            </tr>
                             <tr>
                                 <td>
                                     <strong class="text-muted">{{ translate('TOTAL') }} :</strong>
                                 </td>
                                 <td class="text-muted h5">
-                                    {{ $order->orderDetails->sum('price') }}
+                                    {{ $order->commission->seller_earning }}
                                 </td>
                             </tr>
                         </tbody>
