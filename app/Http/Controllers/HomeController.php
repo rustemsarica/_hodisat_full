@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
 
+use App\Http\Resources\V2\ProductMiniCollection;
 class HomeController extends Controller
 {
     /**
@@ -177,7 +178,8 @@ class HomeController extends Controller
         //      return filter_products(Product::withCount('wishlists')->where('current_stock',1))->paginate(40);
         //  });
         $products = filter_products(Product::withCount('wishlists')->where('current_stock',1))->limit(40)->get();
-         return json_encode($products);
+        return new ProductMiniCollection($products);
+        return json_encode($products);
 
         $data = '';
             foreach ($products as $product) {
