@@ -243,14 +243,14 @@
         // });
 
         function load_more(page){
-            console.log((Date.now() % 1000) / 1000)
+            console.log(Date.now() )
             $.ajax({
                 url: home_url + "?page=" + page,
                 type: "get",
                 datatype: "html",
                 success: function(data)
                 {
-                    console.log((Date.now() % 1000) / 1000)
+                    console.log(Date.now())
                     if(data!=""){
                         data.data.forEach(element => {
 
@@ -284,7 +284,7 @@
                             html+='</div>';
                             $("#all_products_section").append(html);
                         });
-                        console.log((Date.now() % 1000) / 1000)
+                        console.log(Date.now() )
                         currentPage++;
                     }
                 }
