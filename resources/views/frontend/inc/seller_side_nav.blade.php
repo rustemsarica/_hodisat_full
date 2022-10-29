@@ -24,6 +24,14 @@
                     </a>
                 </li>
 
+                <li class="aiz-side-nav-item">
+                    <a href="{{ route('seller.products') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['seller.products', 'seller.products.create', 'seller.products.edit']) }}">
+                                <i class="las la-shopping-cart aiz-side-nav-icon"></i>
+                                <span class="aiz-side-nav-text">{{ translate('Products') }}</span>
+                    </a>
+                </li>
+
                     @php
                         $delivery_viewed = App\Models\Order::where('user_id', Auth::user()->id)->where('delivery_viewed', 0)->get()->count();
                     @endphp
@@ -37,15 +45,23 @@
                         </li>
 
 
-
+                        <li class="aiz-side-nav-item">
+                            <a href="{{ route('seller.orders.index') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['seller.orders.index', 'seller.orders.show']) }}">
+                                <i class="las la-money-bill aiz-side-nav-icon"></i>
+                                <span class="aiz-side-nav-text">{{ translate('Orders') }}</span>
+                            </a>
+                        </li>
                         @if (addon_is_activated('refund_request'))
                             <li class="aiz-side-nav-item">
-                                <a href="{{ route('customer_refund_request') }}" class="aiz-side-nav-link {{ areActiveRoutes(['customer_refund_request'])}}">
+                                <a href="{{ route('vendor_refund_request') }}"
+                                    class="aiz-side-nav-link {{ areActiveRoutes(['vendor_refund_request', 'reason_show']) }}">
                                     <i class="las la-backward aiz-side-nav-icon"></i>
-                                    <span class="aiz-side-nav-text">{{ translate('Sent Refund Request') }}</span>
+                                    <span class="aiz-side-nav-text">{{ translate('Received Refund Request') }}</span>
                                 </a>
                             </li>
                         @endif
+
 
                         <li class="aiz-side-nav-item">
                             <a href="{{ route('wishlists.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['wishlists.index'])}}">
@@ -115,13 +131,7 @@
                         <span class="aiz-side-nav-text">{{translate('Manage Profile')}}</span>
                     </a>
                 </li>
-                <li class="aiz-side-nav-item">
-                    <a href="{{ route('seller.products') }}"
-                                class="aiz-side-nav-link {{ areActiveRoutes(['seller.products', 'seller.products.create', 'seller.products.edit']) }}">
-                                <i class="las la-shopping-cart aiz-side-nav-icon"></i>
-                                <span class="aiz-side-nav-text">{{ translate('Products') }}</span>
-                    </a>
-                </li>
+
                 @if (addon_is_activated('seller_subscription'))
                     <li class="aiz-side-nav-item">
                         <a href="#" class="aiz-side-nav-link">
@@ -153,67 +163,7 @@
                         </a>
                     </li>
                 @endif
-                @if (addon_is_activated('wholesale') && get_setting('seller_wholesale_product') == 1)
-                    <li class="aiz-side-nav-item">
-                        <a href="{{ route('seller.wholesale_products_list') }}"
-                            class="aiz-side-nav-link {{ areActiveRoutes(['wholesale_product_create.seller', 'wholesale_product_edit.seller']) }}">
-                            <i class="las la-luggage-cart aiz-side-nav-icon"></i>
-                            <span class="aiz-side-nav-text">{{ translate('Wholesale Products') }}</span>
-                        </a>
-                    </li>
-                @endif
-                @if (addon_is_activated('auction') && get_setting('seller_auction_product') == 1)
-                    <li class="aiz-side-nav-item">
-                        <a href="javascript:void(0);" class="aiz-side-nav-link">
-                            <i class="las la-gavel aiz-side-nav-icon"></i>
-                            <span class="aiz-side-nav-text">{{ translate('Auction') }}</span>
-                            <span class="aiz-side-nav-arrow"></span>
-                        </a>
-                        <ul class="aiz-side-nav-list level-2">
-                            <li class="aiz-side-nav-item">
-                                <a href="{{ route('auction_products.seller.index') }}"
-                                    class="aiz-side-nav-link {{ areActiveRoutes(['auction_products.seller.index', 'auction_product_create.seller', 'auction_product_edit.seller', 'product_bids.seller']) }}">
-                                    <span
-                                        class="aiz-side-nav-text">{{ translate('All Auction Products') }}</span>
-                                </a>
-                            </li>
-                            <li class="aiz-side-nav-item">
-                                <a href="{{ route('auction_products_orders.seller') }}"
-                                    class="aiz-side-nav-link {{ areActiveRoutes(['auction_products_orders.seller']) }}">
-                                    <span
-                                        class="aiz-side-nav-text">{{ translate('Auction Product Orders') }}</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                @endif
-                @if (addon_is_activated('pos_system'))
-                    @if (get_setting('pos_activation_for_seller') != null && get_setting('pos_activation_for_seller') != 0)
-                        <li class="aiz-side-nav-item">
-                            <a href="{{ route('poin-of-sales.seller_index') }}"
-                                class="aiz-side-nav-link {{ areActiveRoutes(['poin-of-sales.seller_index']) }}">
-                                <i class="las la-fax aiz-side-nav-icon"></i>
-                                <span class="aiz-side-nav-text">{{ translate('POS Manager') }}</span>
-                            </a>
-                        </li>
-                    @endif
-                @endif
-                <li class="aiz-side-nav-item">
-                    <a href="{{ route('seller.orders.index') }}"
-                        class="aiz-side-nav-link {{ areActiveRoutes(['seller.orders.index', 'seller.orders.show']) }}">
-                        <i class="las la-money-bill aiz-side-nav-icon"></i>
-                        <span class="aiz-side-nav-text">{{ translate('Orders') }}</span>
-                    </a>
-                </li>
-                @if (addon_is_activated('refund_request'))
-                    <li class="aiz-side-nav-item">
-                        <a href="{{ route('vendor_refund_request') }}"
-                            class="aiz-side-nav-link {{ areActiveRoutes(['vendor_refund_request', 'reason_show']) }}">
-                            <i class="las la-backward aiz-side-nav-icon"></i>
-                            <span class="aiz-side-nav-text">{{ translate('Received Refund Request') }}</span>
-                        </a>
-                    </li>
-                @endif
+
 
 
                 <li class="aiz-side-nav-item">
