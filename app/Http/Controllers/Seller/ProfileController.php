@@ -30,17 +30,7 @@ class ProfileController extends Controller
      */
     public function update(SellerProfileRequest $request , $id)
     {
-        if($request->has('payment_setting')){
-            $seller = Seller::where('user_id', $id)->first();
-            $seller->bank_name= $request->bank_name;
-            $seller->bank_acc_name= $request->bank_acc_name;
-            if($seller->save()){
-                flash(translate('Your Profile has been updated successfully!'))->success();
-                return back();
-            }
-            flash(translate('Sorry! Something went wrong.'))->error();
-            return back();
-        }
+
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->phone = $request->phone;
@@ -49,6 +39,15 @@ class ProfileController extends Controller
             $user->password = Hash::make($request->new_password);
         }
 
+
+        $shop = $user->seller;
+
+        if($shop){
+            $shop->bank_name = $request->bank_name;
+            $shop->bank_acc_name = $request->bank_acc_name;
+
+            $shop->save();
+        }
 
         $user->save();
 

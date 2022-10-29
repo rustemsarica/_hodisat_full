@@ -49,18 +49,9 @@
                     </div>
                 </div>
 
-                <div class="form-group mb-0 text-right">
-                    <button type="submit" class="btn btn-primary">{{translate('Update Profile')}}</button>
-                </div>
             </div>
         </div>
 
-    </form>
-
-    <form action="{{ route('seller.profile.update', $user->id) }}" method="post" enctype="multipart/form-data">
-        <input name="_method" type="hidden" value="POST">
-        <!-- Payment System -->
-        @csrf
         <div class="card">
             <div class="card-header">
                 <h5 class="mb-0 h6">{{ translate('Payment Setting')}}</h5>
@@ -90,7 +81,12 @@
             </div>
         </div>
 
+        <div class="form-group mb-0 text-right">
+            <button type="submit" class="btn btn-primary">{{translate('Update Profile')}}</button>
+        </div>
     </form>
+
+
     <br>
 
     <!-- Address -->
