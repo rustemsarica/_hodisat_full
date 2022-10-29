@@ -10,7 +10,7 @@ class Product extends Model
 
     protected $guarded = ['choice_attributes'];
 
-    protected $with = ['thumbnail:thumbnail.file_name'];
+    protected $with = ['thumbnail:uploads.file_name'];
 
     public function thumbnail()
     {
