@@ -33,7 +33,7 @@
         <div class="c-pointer fs-24 d-flex justify-content-between" onclick="addToWishList({{ $product->id }})">
             @auth
                 @if(App\Models\Wishlist::where(['product_id'=>$product->id, 'user_id'=>Auth::user()->id])->count()>0)
-                <i class="la la-heart"></i>
+                <i class="la la-heart" style="color: red"></i>
                 @else
                 <i class="la la-heart-o"></i>
                 @endif
