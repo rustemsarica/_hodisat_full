@@ -37,20 +37,6 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-2 col-form-label">{{ translate('Photo') }}</label>
-                    <div class="col-md-10">
-                        <div class="input-group" data-toggle="aizuploader" data-type="image">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}</div>
-                            </div>
-                            <div class="form-control file-amount">{{ translate('Choose File') }}</div>
-                            <input type="hidden" name="photo" value="{{ $user->avatar_original }}" class="selected-files">
-                        </div>
-                        <div class="file-preview box sm">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
                     <label class="col-md-2 col-form-label" for="password">{{ translate('Your Password') }}</label>
                     <div class="col-md-10">
                         <input type="password" name="new_password" id="password" class="form-control" placeholder="{{ translate('New Password') }}">
@@ -88,37 +74,19 @@
                     </div>
                 </div>
                 <div class="row">
-                    <label class="col-md-3 col-form-label" for="bank_name">{{ translate('Bank Name') }}</label>
+                    <label class="col-md-3 col-form-label" for="bank_name">{{ translate('Name') }}</label>
                     <div class="col-md-9">
-                        <input type="text" name="bank_name" value="{{ $user->shop->bank_name }}" id="bank_name" class="form-control mb-3" placeholder="{{ translate('Bank Name')}}">
+                        <input type="text" name="bank_name" value="{{ $user->shop->bank_name }}" id="bank_name" class="form-control mb-3" placeholder="{{ translate('Name')}}">
                         @error('phone')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </div>
                 </div>
                 <div class="row">
-                    <label class="col-md-3 col-form-label" for="bank_acc_name">{{ translate('Bank Account Name') }}</label>
+                    <label class="col-md-3 col-form-label" for="bank_acc_name">{{ translate('Iban') }}</label>
                     <div class="col-md-9">
-                        <input type="text" name="bank_acc_name" value="{{ $user->shop->bank_acc_name }}" id="bank_acc_name" class="form-control mb-3" placeholder="{{ translate('Bank Account Name')}}">
+                        <input type="text" name="bank_acc_name" value="{{ $user->shop->bank_acc_name }}" id="bank_acc_name" class="form-control mb-3" placeholder="{{ translate('Iban')}}">
                         @error('bank_acc_name')
-                            <small class="form-text text-danger">{{ $message }}</small>
-                        @enderror
-                    </div>
-                </div>
-                <div class="row">
-                    <label class="col-md-3 col-form-label" for="bank_acc_no">{{ translate('Bank Account Number') }}</label>
-                    <div class="col-md-9">
-                        <input type="text" name="bank_acc_no" value="{{ $user->shop->bank_acc_no }}" id="bank_acc_no" class="form-control mb-3" placeholder="{{ translate('Bank Account Number')}}">
-                        @error('bank_acc_no')
-                            <small class="form-text text-danger">{{ $message }}</small>
-                        @enderror
-                    </div>
-                </div>
-                <div class="row">
-                    <label class="col-md-3 col-form-label" for="bank_routing_no">{{ translate('Bank Routing Number') }}</label>
-                    <div class="col-md-9">
-                        <input type="number" name="bank_routing_no" value="{{ $user->shop->bank_routing_no }}" id="bank_routing_no" lang="en" class="form-control mb-3" placeholder="{{ translate('Bank Routing Number')}}">
-                        @error('bank_routing_no')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </div>
