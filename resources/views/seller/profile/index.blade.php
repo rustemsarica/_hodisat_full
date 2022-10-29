@@ -65,18 +65,9 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <label class="col-md-3 col-form-label">{{ translate('Bank Payment') }}</label>
-                    <div class="col-md-9">
-                        <label class="aiz-switch aiz-switch-success mb-3">
-                            <input value="1" name="bank_payment_status" type="checkbox" @if ($user->shop->bank_payment_status == 1) checked @endif>
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-                </div>
-                <div class="row">
                     <label class="col-md-3 col-form-label" for="bank_name">{{ translate('Name') }}</label>
                     <div class="col-md-9">
-                        <input type="text" name="bank_name" value="{{ $user->shop->bank_name }}" id="bank_name" class="form-control mb-3" placeholder="{{ translate('Name')}}">
+                        <input type="text" name="bank_name" value="{{ $user->seller->bank_name }}" id="bank_name" class="form-control mb-3" placeholder="{{ translate('Name')}}">
                         @error('phone')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
@@ -85,7 +76,7 @@
                 <div class="row">
                     <label class="col-md-3 col-form-label" for="bank_acc_name">{{ translate('Iban') }}</label>
                     <div class="col-md-9">
-                        <input type="text" name="bank_acc_name" value="{{ $user->shop->bank_acc_name }}" id="bank_acc_name" class="form-control mb-3" placeholder="{{ translate('Iban')}}">
+                        <input type="text" name="bank_acc_name" value="{{ $user->seller->bank_acc_name }}" id="bank_acc_name" class="form-control mb-3" placeholder="{{ translate('Iban')}}">
                         @error('bank_acc_name')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
