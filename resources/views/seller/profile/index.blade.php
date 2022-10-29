@@ -49,8 +49,13 @@
                     </div>
                 </div>
 
+                <div class="form-group mb-0 text-right">
+                    <button type="submit" class="btn btn-primary">{{translate('Update Profile')}}</button>
+                </div>
             </div>
         </div>
+
+    </form>
 
         <!-- Payment System -->
         <div class="card">
@@ -78,11 +83,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="form-group mb-0 text-right">
-            <button type="submit" class="btn btn-primary">{{translate('Update Profile')}}</button>
-        </div>
-    </form>
 
     <br>
 
