@@ -58,6 +58,7 @@
     </form>
 
     <form action="{{ route('seller.profile.update', $user->id) }}" method="post">
+        <input name="_method" type="hidden" value="POST">
         <!-- Payment System -->
         @csrf
         <div class="card">
