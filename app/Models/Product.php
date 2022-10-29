@@ -10,11 +10,11 @@ class Product extends Model
 
     protected $guarded = ['choice_attributes'];
 
-    protected $with = ['thumbnail'];
+
 
     public function thumbnail()
     {
-        return $this->hasOne(Upload::class, 'id', 'thumbnail_img')->first(['file_name']);
+        return $this->hasOne(Upload::class, 'id', 'thumbnail_img');
     }
 
     public function category()
