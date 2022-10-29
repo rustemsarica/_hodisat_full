@@ -68,7 +68,7 @@
                     <label class="col-md-3 col-form-label" for="bank_name">{{ translate('Name') }}</label>
                     <div class="col-md-9">
                         <input type="text" name="bank_name" value="{{ $user->seller->bank_name }}" id="bank_name" class="form-control mb-3" placeholder="{{ translate('Name')}}">
-                        @error('phone')
+                        @error('bank_name')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </div>
@@ -82,9 +82,9 @@
                         @enderror
                     </div>
                 </div>
-            </div>
-            <div class="form-group mb-0 text-right">
-                <button type="submit" class="btn btn-primary" name="payment_setting">{{translate('Update')}}</button>
+                <div class="form-group mb-0 text-right">
+                    <button type="submit" class="btn btn-primary" name="payment_setting">{{translate('Update')}}</button>
+                </div>
             </div>
         </div>
 
