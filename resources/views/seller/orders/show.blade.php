@@ -48,7 +48,7 @@
 
                 <div class="col text-md-left text-center">
                     <span class="text-main fw-600">{{ translate('Shipping Code') }}:</span>
-                    <span class="text-right">{{ implode(" ",explode("",$order->shipping_code,3)) }}</span>
+                    <span class="text-right">{{ implode(" ",str_split($order->shipping_code,3)) }}</span>
                 </div>
                 <div class="col text-md-left text-center">
 
