@@ -12,7 +12,7 @@
         <a href="{{ $product_url }}" class="d-block">
             <img style="background-color:whitesmoke"
                 class="img-fit lazyload lazyload-image mx-auto h-140px h-md-210px"
-                src="{{ static_asset($product->thumbnail!=null ? $product->thumbnail->file_name : 'assets/img/placeholder.jpg') }}"
+                src="{{ static_asset($product->thumbnail!=null ? $product->thumbnail: 'assets/img/placeholder.jpg') }}"
                 alt="{{  $product->name  }}"
             >
         </a>
