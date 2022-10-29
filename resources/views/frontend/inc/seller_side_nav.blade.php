@@ -110,7 +110,7 @@
 
 
                 <li class="aiz-side-nav-item">
-                    <a href="{{ route('profile') }}" class="aiz-side-nav-link {{ areActiveRoutes(['profile'])}}">
+                    <a href="{{ route('profile') }}" class="aiz-side-nav-link {{ areActiveRoutes(['seller.profile'])}}">
                         <i class="las la-user aiz-side-nav-icon"></i>
                         <span class="aiz-side-nav-text">{{translate('Manage Profile')}}</span>
                     </a>
@@ -120,13 +120,6 @@
                                 class="aiz-side-nav-link {{ areActiveRoutes(['seller.products', 'seller.products.create', 'seller.products.edit']) }}">
                                 <i class="las la-shopping-cart aiz-side-nav-icon"></i>
                                 <span class="aiz-side-nav-text">{{ translate('Products') }}</span>
-                    </a>
-                </li>
-                <li class="aiz-side-nav-item">
-                    <a href="{{ route('seller.uploaded-files.index') }}"
-                        class="aiz-side-nav-link {{ areActiveRoutes(['seller.uploaded-files.index', 'seller.uploads.create']) }}">
-                        <i class="las la-folder-open aiz-side-nav-icon"></i>
-                        <span class="aiz-side-nav-text">{{ translate('Uploaded Files') }}</span>
                     </a>
                 </li>
                 @if (addon_is_activated('seller_subscription'))
