@@ -17,7 +17,7 @@ class ProductCollection extends ResourceCollection
                     'id' => $data->id,
                     'name' => $data->name,
                     'photos' => explode(',', $data->photos),
-                    'thumbnail_image' => static_asset($product->thumbnail!=null ? $product->thumbnail->file_name : 'assets/img/placeholder.jpg'),
+                    'thumbnail_image' => static_asset($data->thumbnail!=null ? $data->thumbnail->file_name : 'assets/img/placeholder.jpg'),
                     'base_price' => (integer) home_base_price($data->unit_price, false),
                     'base_discounted_price' => (integer) home_discounted_base_price($data, false),
                     'todays_deal' => (integer) $data->todays_deal,
