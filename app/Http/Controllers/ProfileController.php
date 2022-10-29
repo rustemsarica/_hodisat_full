@@ -70,8 +70,16 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(env('DEMO_MODE') == 'On'){
-            flash(translate('Sorry! the action is not permitted in demo '))->error();
+
+        if($request->has('payment_setting')){
+            $seller = Seller::where('user_id', $id)->first();
+            $seller->bank_name= $request->bank_name;
+            $seller->bank_acc_name= $request->bank_acc_name;
+            if($seller->save()){
+                flash(translate('Your Profile has been updated successfully!'))->success();
+                return back();
+            }
+            flash(translate('Sorry! Something went wrong.'))->error();
             return back();
         }
 

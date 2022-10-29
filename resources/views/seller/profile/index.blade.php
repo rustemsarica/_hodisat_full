@@ -57,6 +57,7 @@
 
     </form>
 
+    <form action="{{ route('seller.profile.update', $user->id) }}" method="post">
         <!-- Payment System -->
         <div class="card">
             <div class="card-header">
@@ -84,6 +85,10 @@
             </div>
         </div>
 
+        <div class="form-group mb-0 text-right">
+            <button type="submit" class="btn btn-primary" name="payment_setting">{{translate('Profile')}}</button>
+        </div>
+    </form>
     <br>
 
     <!-- Address -->
