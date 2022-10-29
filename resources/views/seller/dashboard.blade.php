@@ -11,7 +11,7 @@
 
     <div class="row">
         <div class="col-sm-6 col-md-6 col-xxl-3">
-            <div class="card shadow-none mb-4 bg-primary py-4">
+            <div class="card shadow-none mb-4 bg-soft-primary py-4">
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col">
