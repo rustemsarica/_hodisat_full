@@ -31,7 +31,16 @@
             <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
         </div>
         <div class="c-pointer fs-24 d-flex justify-content-between" onclick="addToWishList({{ $product->id }})">
-            <i class="la la-heart-o"></i> <div class="pl-1 fs-16 opacity-80 m-auto">{{$product->wishlists_count}}</div>
+            @auth
+                @if(App\Models\Wishlist::where(['product_id'=>$product->id, 'user_id'=>Auth::user()->id])->count()>0)
+                <i class="la la-heart"></i>
+                @else
+                <i class="la la-heart-o"></i>
+                @endif
+            @else
+            <i class="la la-heart-o"></i>
+            @endauth
+            <div class="pl-1 fs-16 opacity-80 m-auto">{{$product->wishlists_count}}</div>
         </div>
     </div>
 </div>
