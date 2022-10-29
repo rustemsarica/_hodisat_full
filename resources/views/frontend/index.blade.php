@@ -243,7 +243,7 @@
         // });
 
         function load_more(page){
-
+            console.log((Date.now() % 1000) / 1000)
             $.ajax({
                 url: home_url + "?page=" + page,
                 type: "get",
@@ -283,7 +283,7 @@
                             html+='</div>';
                             $("#all_products_section").append(html);
                         });
-
+                        console.log((Date.now() % 1000) / 1000)
                         currentPage++;
                     }
                 }
