@@ -84,7 +84,7 @@
                 </div>
             </div>
             <div class="form-group mb-0 text-right">
-                <button type="submit" class="btn btn-primary" name="payment_setting">{{translate('Profile')}}</button>
+                <button type="submit" class="btn btn-primary" name="payment_setting">{{translate('Update')}}</button>
             </div>
         </div>
 
