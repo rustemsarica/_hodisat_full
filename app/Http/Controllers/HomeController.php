@@ -37,7 +37,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = filter_products(Product::with('thumbnail:file_name')->withCount('wishlists')->where('current_stock',1))->limit(5)->get();
+        $products = filter_products(Product::with('thumbnail:file_name')->withCount('wishlists')->where('current_stock',1))->first();
         return $products;
         return view('frontend.index');
     }
