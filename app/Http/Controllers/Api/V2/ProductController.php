@@ -28,7 +28,7 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        return new ProductDetailCollection(Product::where('id', $id)->get());
+        return new ProductDetailCollection(Product::withCount('wishlists')->where('id', $id)->get());
     }
 
     public function admin()
