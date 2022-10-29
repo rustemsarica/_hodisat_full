@@ -48,7 +48,7 @@
 
                 <div class="col text-md-left text-center">
                     <tr>
-                        <td class="text-main fw-600">{{ translate('Shipping Code') }}</td>
+                        <td class="text-main fw-600">{{ translate('Shipping Code') }}:</td>
                         <td class="text-right">{{ $order->shipping_code }}</td>
                     </tr>
                 </div>
