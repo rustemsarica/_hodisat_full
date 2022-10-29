@@ -250,9 +250,13 @@
                 datatype: "html",
                 success: function(data)
                 {
+                    var data = "";
                     if(data!=""){
-                        console.log(JSON.parse(data));
-                        $("#all_products_section").append(data);
+                        var data = JSON.parse(data);
+                        data.forEach(element => {
+                            $("#all_products_section").append(element.id);
+                        });
+
                         currentPage++;
                     }
                 }
