@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Seller;
 use Hash;
 
 class ProfileController extends Controller
@@ -71,16 +70,8 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        if($request->has('bank_name')){
-            $seller = Seller::where('user_id', $id)->first();
-            $seller->bank_name= $request->bank_name;
-            $seller->bank_acc_name= $request->bank_acc_name;
-            if($seller->save()){
-                flash(translate('Your Profile has been updated successfully!'))->success();
-                return back();
-            }
-            flash(translate('Sorry! Something went wrong.'))->error();
+        if(env('DEMO_MODE') == 'On'){
+            flash(translate('Sorry! the action is not permitted in demo '))->error();
             return back();
         }
 
@@ -90,7 +81,7 @@ class ProfileController extends Controller
         if($request->new_password != null && ($request->new_password == $request->confirm_password)){
             $user->password = Hash::make($request->new_password);
         }
-
+        $user->avatar_original = $request->avatar;
         if($user->save()){
             flash(translate('Your Profile has been updated successfully!'))->success();
             return back();
