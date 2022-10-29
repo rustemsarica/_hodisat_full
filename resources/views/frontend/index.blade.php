@@ -251,7 +251,7 @@
                 success: function(data)
                 {
                     if(data!=""){
-                        console.log(data);
+                        console.log(json_decode(data));
                         $("#all_products_section").append(data);
                         currentPage++;
                     }
