@@ -31,7 +31,7 @@
             <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
         </div>
         <div class="c-pointer fs-24 d-flex justify-content-between" onclick="addToWishList({{ $product->id }})">
-            <i class="la la-heart-o"></i> <div class="fs-16 opacity-80 m-auto">{{$product->wishlists_count}}</div>
+            <i class="la la-heart-o"></i> <div class="pl-1 fs-16 opacity-80 m-auto">{{$product->wishlists_count}}</div>
         </div>
     </div>
 </div>
