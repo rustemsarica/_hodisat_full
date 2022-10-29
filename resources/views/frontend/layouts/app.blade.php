@@ -94,6 +94,7 @@
             --primary: {{ get_setting('base_color', '#e62d04') }};
             --hov-primary: {{ get_setting('base_hov_color', '#c52907') }};
             --soft-primary: #CCE5E8;
+            --red:#c81919;
         }
 
         #map{
