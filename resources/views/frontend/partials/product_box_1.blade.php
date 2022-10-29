@@ -13,7 +13,7 @@
             <img style="background-color:whitesmoke"
                 class="img-fit lazyload lazyload-image mx-auto h-140px h-md-210px"
                 src="{{ static_asset($product->thumbnail!=null ? $product->thumbnail: 'assets/img/placeholder.jpg') }}"
-                alt="{{  $product->thumbnail  }}"
+                alt="{{  $product->thumbnail_img  }}"
             >
         </a>
         @if ($product->current_stock==0)
