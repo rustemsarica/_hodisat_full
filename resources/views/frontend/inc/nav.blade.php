@@ -246,7 +246,7 @@
                             <span class="flex-grow-1 ml-1">
                                 <span class="badge badge-inline badge-pill"></span>
                                 @if(Auth::check())
-                                    <span class="nav-box-text d-none d-xl-block opacity-70"></span>
+                                    <span class="nav-box-text d-none d-xl-block opacity-70">{{translate('Login')}}</span>
                                 @else
                                     <span class="nav-box-text d-none d-xl-block opacity-70">{{translate('Login')}}</span>
                                 @endif
