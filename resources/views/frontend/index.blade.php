@@ -243,12 +243,14 @@
         // });
 
         function load_more(page){
+            console.log(Date.now())
             $.ajax({
                 url: home_url + "?page=" + page,
                 type: "get",
                 datatype: "html",
                 success: function(data)
                 {
+                    console.log(Date.now())
                     if(data!=""){
                         $("#all_products_section").append(data);
     // data.data.forEach(element => {
