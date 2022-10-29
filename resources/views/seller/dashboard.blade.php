@@ -17,9 +17,9 @@
                         <div class="col">
                             <p class="small text-muted mb-0">
                                 <span class="fe fe-arrow-down fe-12"></span>
-                                <span class="fs-14 text-light">{{ translate('Products') }}</span>
+                                <span class="fs-14 text-primary">{{ translate('Products') }}</span>
                             </p>
-                            <h3 class="mb-0 text-white fs-30">
+                            <h3 class="mb-0 text-primary fs-30">
                                 {{ \App\Models\Product::where('user_id', Auth::user()->id)->count() }}
                             </h3>
 
