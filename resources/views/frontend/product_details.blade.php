@@ -4,7 +4,7 @@
 
 @section('meta_description'){{ $detailedProduct->description }}@stop
 
-@section('meta_keywords'){{ implode(",",explode(" ",$detailedProduct->name)).",".implode(",",explode(" ",$detailedProduct->description)) }}@stop
+@section('meta_keywords'){{ str_replace(" ",",",$detailedProduct->name).",".str_replace(" ",",",$detailedProduct->description) }}@stop
 
 @section('meta')
     <!-- Schema.org markup for Google+ -->
