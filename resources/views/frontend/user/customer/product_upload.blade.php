@@ -130,39 +130,6 @@
         </div>
         <div class="card">
             <div class="card-header">
-                <h5 class="mb-0 h6">{{translate('Meta Tags')}}</h5>
-            </div>
-            <div class="card-body">
-                <div class="form-group row">
-                    <label class="col-md-2 col-from-label">{{translate('Meta Title')}}</label>
-                    <div class="col-md-10">
-                        <input type="text" name="meta_title" class="form-control" placeholder="{{ translate('Meta Title')}}">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-md-2 col-from-label">{{translate('Description')}}</label>
-                    <div class="col-md-10">
-                        <textarea name="meta_description" rows="8" class="form-control"></textarea>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-md-2 col-from-label">{{ translate('Meta Image')}}</label>
-                    <div class="col-md-10">
-                        <div class="input-group" data-toggle="aizuploader" data-type="image">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text bg-soft-secondary font-weight-medium">{{ translate('Browse')}}</div>
-                            </div>
-                            <div class="form-control file-amount">{{ translate('Choose File') }}</div>
-                            <input type="hidden" name="meta_img" class="selected-files">
-                        </div>
-                        <div class="file-preview box sm">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
                 <h5 class="mb-0 h6">{{translate('Price')}}</h5>
             </div>
             <div class="card-body">

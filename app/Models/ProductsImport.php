@@ -53,8 +53,6 @@ class ProductsImport implements ToCollection, WithHeadingRow, WithValidation, To
                     'tags' => $row['tags'],
                     'unit_price' => $row['unit_price'],
                     'current_stock' => 1,
-                    'meta_title' => $row['meta_title'],
-                    'meta_description' => $row['meta_description'],
                     'colors' => json_encode(array()),
                     'choice_options' => json_encode(array()),
                     'variations' => json_encode(array()),
@@ -62,7 +60,7 @@ class ProductsImport implements ToCollection, WithHeadingRow, WithValidation, To
                     'thumbnail_img' => $this->downloadThumbnail($row['thumbnail_img']),
                     'photos' => $this->downloadGalleryImages($row['photos']),
                 ]);
-                
+
             }
 
             flash(translate('Products imported successfully'))->success();

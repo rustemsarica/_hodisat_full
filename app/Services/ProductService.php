@@ -35,13 +35,7 @@ class ProductService
         unset($collection['date_range']);
         $photos=explode(",",$collection['photos']);
 
-            $collection['meta_title'] = $collection['name'];
-
-            $collection['meta_description'] = strip_tags($collection['description']);
-
-            $collection['meta_img'] = $photos[0];
-
-            $collection['thumbnail_img'] = $photos[0];
+        $collection['thumbnail_img'] = $photos[0];
 
 
         $shipping_cost = 0;
@@ -166,13 +160,7 @@ class ProductService
 
         $photos=explode(",",$collection['photos']);
 
-            $collection['meta_title'] = $collection['name'];
-
-
-            $collection['meta_description'] = strip_tags($collection['description']);
-
-
-            $collection['meta_img'] = $photos[0];
+        $collection['meta_img'] = $photos[0];
 
         $collection['thumbnail_img'] = $photos[0];
 

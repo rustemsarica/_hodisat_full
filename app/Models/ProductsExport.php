@@ -25,10 +25,7 @@ class ProductsExport implements FromCollection, WithMapping, WithHeadings
             'category_id',
             'brand_id',
             'unit_price',
-            'purchase_price',
             'current_stock',
-            'meta_title',
-            'meta_description',
         ];
     }
 
@@ -37,7 +34,7 @@ class ProductsExport implements FromCollection, WithMapping, WithHeadings
     */
     public function map($product): array
     {
-        
+
         return [
             $product->name,
             $product->description,
@@ -46,7 +43,6 @@ class ProductsExport implements FromCollection, WithMapping, WithHeadings
             $product->category_id,
             $product->brand_id,
             $product->unit_price,
-            $product->purchase_price,
             $product->current_stock,
         ];
     }

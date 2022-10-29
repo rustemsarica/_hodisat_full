@@ -151,9 +151,6 @@ class ProductController extends Controller
         $data->colors=$request->colors;
         $data->choice_options=$request->choice_options;
         $data->attributes=$request->attribute_ids;
-        $data->meta_title = $request->name;
-        $data->meta_description = $request->description;
-        $data->meta_img = $request->thumbnail_img;
 
         if($data->save()){
 
@@ -208,9 +205,6 @@ class ProductController extends Controller
             $data->colors=$request->colors;
             $data->choice_options=$request->choice_options;
             $data->attributes=$request->attribute_ids;
-            $data->meta_title = $request->name;
-            $data->meta_description = $request->description;
-            $data->meta_img = $request->thumbnail_img;
 
             if($data->save()){
                 Artisan::call('view:clear');
