@@ -14,7 +14,7 @@ class Product extends Model
 
     public function thumbnail()
     {
-        return json_decode($this->hasOne(Upload::class, 'id', 'thumbnail_img'));
+        return $this->hasOne(Upload::class, 'id', 'thumbnail_img');
     }
 
     public function category()
