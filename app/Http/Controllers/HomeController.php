@@ -37,8 +37,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-        return $products;
         return view('frontend.index');
     }
 
