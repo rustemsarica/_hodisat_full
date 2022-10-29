@@ -250,7 +250,7 @@
                 datatype: "html",
                 success: function(data)
                 {
-                    var data = "";
+                    var html = "";
                     if(data!=""){
                         var data = JSON.parse(data);
                         data.forEach(element => {
