@@ -76,7 +76,7 @@ class ProductMiniCollection extends ResourceCollection
                 return [
                     'id' => $data->id,
                     'name' => $data->name,
-                    'thumbnail_image' => uploaded_asset($data->thumbnail_img),
+                    'thumbnail_image' => static_asset($data->thumbnail!=null ? $data->thumbnail->file_name : 'assets/img/placeholder.jpg'),
                     'has_discount' => $data->unit_price != home_discounted_base_price($data, false) ,
                     'discount'=>"-".discount_in_percentage($data)."%",
                     'stroked_price' => home_base_price($data->unit_price),
