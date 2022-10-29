@@ -71,7 +71,7 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {
 
-        if($request->has('payment_setting')){
+        if($request->has('bank_name')){
             $seller = Seller::where('user_id', $id)->first();
             $seller->bank_name= $request->bank_name;
             $seller->bank_acc_name= $request->bank_acc_name;
