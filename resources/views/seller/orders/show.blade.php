@@ -47,10 +47,8 @@
             <div class="row gutters-5 mt-2">
 
                 <div class="col text-md-left text-center">
-                    <tr>
-                        <td class="text-main fw-600">{{ translate('Shipping Code') }}:</td>
-                        <td class="text-right">{{ $order->shipping_code }}</td>
-                    </tr>
+                    <span class="text-main fw-600">{{ translate('Shipping Code') }}:</span>
+                    <span class="text-right">{{ $order->shipping_code }}</span>
                 </div>
                 <div class="col text-md-left text-center">
 
