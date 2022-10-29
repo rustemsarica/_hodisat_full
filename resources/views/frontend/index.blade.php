@@ -258,7 +258,7 @@
     var html = '<div class="col">';
     html +='<div class="aiz-card-box border border-light rounded hov-shadow-md mt-1 mb-2 has-transition bg-white">';
     if(element.has_discount){
-        html +='<span class="badge-custom">'+{{ translate('OFF') }}+'<span class="box ml-1 mr-0">&nbsp;'+element.discount+'</span></span>';
+        html +='<span class="badge-custom">{{ translate("OFF") }}<span class="box ml-1 mr-0">&nbsp;'+element.discount+'</span></span>';
     }
 
 
@@ -273,7 +273,7 @@
     html +='</div><div class="p-md-3 p-2 d-flex justify-content-between"><div class="fs-18">';
 
 
-    html +='<span class="fw-700 text-primary">'+element.main_price+'</span></div><div class="c-pointer fs-24 d-flex justify-content-between" onclick="addToWishList({{ $product->id }})">';
+    html +='<span class="fw-700 text-primary">'+element.main_price+'</span></div><div class="c-pointer fs-24 d-flex justify-content-between" onclick="addToWishList('+element.id+')">';
     if(element.is_in_wishlist){
         html +='<i class="la la-heart" style="color: var(--red)"></i>';
     }else{
