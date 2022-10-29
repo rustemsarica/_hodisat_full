@@ -176,6 +176,7 @@ class HomeController extends Controller
          $products = Cache::remember('home_products_page_'.$request->page, 3600, function () {
              return filter_products(Product::withCount('wishlists')->where('current_stock',1))->paginate(40);
          });
+         return $products;
         // $products = filter_products(Product::withCount('wishlists')->where('current_stock',1))->limit(40);
 
         $data = '';
