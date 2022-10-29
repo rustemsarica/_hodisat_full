@@ -10,6 +10,10 @@
         <div class="card-body">
             <div class="row gutters-5">
                 <div class="col text-md-left text-center">
+                    <tr>
+                        <td class="text-main text-bold">{{ translate('Shipping Code') }}</td>
+                        <td class="text-right">{{ $order->shipping_code }}</td>
+                    </tr>
                 </div>
                 @php
                     $delivery_status = $order->delivery_status;
@@ -86,12 +90,7 @@
                                 <td class="text-main text-bold">{{ translate('Order Date') }}</td>
                                 <td class="text-right">{{ date('d-m-Y h:i A', $order->date) }}</td>
                             </tr>
-                            <tr>
-                                <td class="text-main text-bold">{{ translate('Total amount') }}</td>
-                                <td class="text-right">
-                                    {{ single_price($order->grand_total) }}
-                                </td>
-                            </tr>
+
                         </tbody>
                     </table>
                 </div>
