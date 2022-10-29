@@ -30,8 +30,8 @@
             @endif
             <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
         </div>
-        <div class="c-pointer fs-24" onclick="addToWishList({{ $product->id }})">
-            <i class="la la-heart-o"></i> <span class="fs-16 opacity-80 align-middle">{{$product->wishlists_count}}</span>
+        <div class="c-pointer fs-24 d-flex justify-content-between" onclick="addToWishList({{ $product->id }})">
+            <i class="la la-heart-o"></i> <div class="fs-16 opacity-80 m-auto">{{$product->wishlists_count}}</div>
         </div>
     </div>
 </div>
