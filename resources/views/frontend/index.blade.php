@@ -263,7 +263,7 @@
 
 
     html +='<div class="position-relative">'
-    html +='<a href="{{ $product_url }}" class="d-block"><img style="background-color:whitesmoke" class="img-fit lazyload lazyload-image mx-auto h-140px h-md-210px" src="'+element.thumbnail_image+'" alt="'+element.name+'" > </a>'
+    html +='<a href="'+element.links.details+'" class="d-block"><img style="background-color:whitesmoke" class="img-fit lazyload lazyload-image mx-auto h-140px h-md-210px" src="'+element.thumbnail_image+'" alt="'+element.name+'" > </a>'
 
     if (element.current_stock==0){
         html +='<span class="absolute-center text-center fs-20 text-white fw-600 p-2 lh-1-8" style="background-color: #455a64; opacity:0.7; width:100%;">{{ translate("Sold") }}</span>'
