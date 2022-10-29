@@ -59,6 +59,7 @@
 
     <form action="{{ route('seller.profile.update', $user->id) }}" method="post">
         <!-- Payment System -->
+        @csrf
         <div class="card">
             <div class="card-header">
                 <h5 class="mb-0 h6">{{ translate('Payment Setting')}}</h5>
