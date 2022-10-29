@@ -250,9 +250,7 @@
                 datatype: "html",
                 success: function(data)
                 {
-                    console.log(data)
                     if(data!=""){
-                        //var data = JSON.parse(data).data;
                         data.data.forEach(element => {
 
     var html = '<div class="col">';
