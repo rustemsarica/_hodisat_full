@@ -177,7 +177,7 @@ class HomeController extends Controller
         //      return filter_products(Product::withCount('wishlists')->where('current_stock',1))->paginate(40);
         //  });
         $products = filter_products(Product::withCount('wishlists')->where('current_stock',1))->limit(40)->get();
-         return $products;
+         return json_encode($products);
 
         $data = '';
             foreach ($products as $product) {
