@@ -126,9 +126,9 @@
 
 
                 <li class="aiz-side-nav-item">
-                    <a href="{{ route('profile') }}" class="aiz-side-nav-link {{ areActiveRoutes(['profile'])}}">
+                    <a href="{{ route('profile') }}" class="aiz-side-nav-link {{ areActiveRoutes(['seller.profile.index'])}}">
                         <i class="las la-user aiz-side-nav-icon"></i>
-                        <span class="aiz-side-nav-text">{{translate('Manage Profile')}}</span> {{ Route::currentRouteName() }}
+                        <span class="aiz-side-nav-text">{{translate('Manage Profile')}}</span>
                     </a>
                 </li>
 
