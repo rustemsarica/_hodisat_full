@@ -252,8 +252,8 @@
                 {
                     console.log(data)
                     if(data!=""){
-                        var data = JSON.parse(data).data;
-                        data.forEach(element => {
+                        //var data = JSON.parse(data).data;
+                        data.data.forEach(element => {
 
     var html = '<div class="col">';
     html +='<div class="aiz-card-box border border-light rounded hov-shadow-md mt-1 mb-2 has-transition bg-white">';
