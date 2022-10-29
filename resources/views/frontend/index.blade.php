@@ -251,6 +251,7 @@
                 success: function(data)
                 {
                     if(data!=""){
+                        console.log(data);
                         $("#all_products_section").append(data);
                         currentPage++;
                     }
