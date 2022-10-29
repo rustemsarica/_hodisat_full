@@ -92,6 +92,11 @@ class CheckoutController extends Controller
             $order->payment_details = $payment;
             $order->save();
 
+            foreach($order->orderDetails as $detail){
+                $product = Product::find($detail->product->id);
+                $product->current_stock=0;
+                $product->save();
+            }
             calculateCommissionAffilationClubPoint($order);
         }
         Session::put('combined_order_id', $combined_order_id);
