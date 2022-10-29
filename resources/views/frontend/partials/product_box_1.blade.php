@@ -31,7 +31,7 @@
             <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
         </div>
         <div class="c-pointer fs-24" onclick="addToWishList({{ $product->id }})">
-            <i class="la la-heart-o"></i>
+            <i class="la la-heart-o"></i> {{count($product->wishlists)}}
         </div>
     </div>
 </div>
