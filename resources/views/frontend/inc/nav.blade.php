@@ -244,7 +244,7 @@
                         <a href="{{ route('wishlists.index') }}" class="d-flex align-items-center text-reset">
                             <i class="la la-user-o la-2x opacity-80"></i>
                             <span class="flex-grow-1 ml-1">
-                                <span class="badge badge-inline badge-pill"></span>
+                                <span class="badge badge-inline badge-pill">0</span>
                                 @if(Auth::check())
                                     <span class="nav-box-text d-none d-xl-block opacity-70">{{translate('Login')}}</span>
                                 @else
