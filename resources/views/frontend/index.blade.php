@@ -250,6 +250,7 @@
                 datatype: "html",
                 success: function(data)
                 {
+                    console.log((Date.now() % 1000) / 1000)
                     if(data!=""){
                         data.data.forEach(element => {
 
