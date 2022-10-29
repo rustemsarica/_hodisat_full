@@ -9,12 +9,6 @@
 
         <div class="card-body">
             <div class="row gutters-5">
-                <div class="col text-md-left text-center">
-                    <tr>
-                        <td class="text-main text-bold">{{ translate('Shipping Code') }}</td>
-                        <td class="text-right">{{ $order->shipping_code }}</td>
-                    </tr>
-                </div>
                 @php
                     $delivery_status = $order->delivery_status;
                     $payment_status = $order->orderDetails->where('seller_id', Auth::user()->id)->first()->payment_status;
@@ -51,6 +45,13 @@
                 @endif
             </div>
             <div class="row gutters-5 mt-2">
+
+                <div class="col text-md-left text-center">
+                    <tr>
+                        <td class="text-main fw-600">{{ translate('Shipping Code') }}</td>
+                        <td class="text-right">{{ $order->shipping_code }}</td>
+                    </tr>
+                </div>
                 <div class="col text-md-left text-center">
 
                     @if ($order->manual_payment && is_array(json_decode($order->manual_payment_data, true)))
@@ -71,11 +72,11 @@
                     <table>
                         <tbody>
                             <tr>
-                                <td class="text-main text-bold">{{ translate('Order #') }}</td>
-                                <td class="text-info text-bold text-right">{{ $order->code }}</td>
+                                <td class="text-main fw-600">{{ translate('Order #') }}</td>
+                                <td class="text-info fw-600 text-right">{{ $order->code }}</td>
                             </tr>
                             <tr>
-                                <td class="text-main text-bold">{{ translate('Order Status') }}</td>
+                                <td class="text-main fw-600">{{ translate('Order Status') }}</td>
                                 <td class="text-right">
                                     @if ($delivery_status == 'delivered')
                                         <span
@@ -87,7 +88,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="text-main text-bold">{{ translate('Order Date') }}</td>
+                                <td class="text-main fw-600">{{ translate('Order Date') }}</td>
                                 <td class="text-right">{{ date('d-m-Y h:i A', $order->date) }}</td>
                             </tr>
 
