@@ -105,10 +105,10 @@
 
                             @if ($detailedProduct->brand != null)
                                 <div class="row align-items-center">
-                                    <div class="col-sm-2">
+                                    <div class="col-2">
                                         <div class="opacity-50 my-2">{{ translate('Brand') }}:</div>
                                     </div>
-                                    <div class="col-sm-10">
+                                    <div class="col-10">
                                         <div class="fs-16 opacity-60">
                                             {{ $detailedProduct->brand->name }}
                                         </div>
@@ -121,10 +121,10 @@
 
                                 @if (home_price($detailedProduct) != home_discounted_price($detailedProduct))
                                     <div class="row no-gutters mt-3">
-                                        <div class="col-sm-2">
+                                        <div class="col-2">
                                             <div class="opacity-50 my-2">{{ translate('Price') }}:</div>
                                         </div>
-                                        <div class="col-sm-10">
+                                        <div class="col-10">
                                             <div class="fs-20 opacity-60">
                                                 <del>
                                                     {{ home_price($detailedProduct) }}
@@ -134,10 +134,10 @@
                                     </div>
 
                                     <div class="row no-gutters my-2">
-                                        <div class="col-sm-2">
+                                        <div class="col-2">
                                             <div class="opacity-50">{{ translate('Discount Price') }}:</div>
                                         </div>
-                                        <div class="col-sm-10">
+                                        <div class="col-10">
                                             <div class="">
                                                 <strong class="h2 fw-600 text-primary">
                                                     {{ home_discounted_price($detailedProduct) }}
@@ -147,10 +147,10 @@
                                     </div>
                                 @else
                                     <div class="row no-gutters mt-3">
-                                        <div class="col-sm-2">
+                                        <div class="col-2">
                                             <div class="opacity-50 my-2">{{ translate('Price') }}:</div>
                                         </div>
-                                        <div class="col-sm-10">
+                                        <div class="col-10">
                                             <div class="">
                                                 <strong class="h2 fw-600 text-primary">
                                                     {{ home_discounted_price($detailedProduct) }}
@@ -162,10 +162,10 @@
 
                             @if (addon_is_activated('club_point') && $detailedProduct->earn_point > 0)
                                 <div class="row no-gutters mt-4">
-                                    <div class="col-sm-2">
+                                    <div class="col-2">
                                         <div class="opacity-50 my-2">{{ translate('Club Point') }}:</div>
                                     </div>
-                                    <div class="col-sm-10">
+                                    <div class="col-10">
                                         <div
                                             class="d-inline-block rounded px-2 bg-soft-primary border-soft-primary border">
                                             <span class="strong-700">{{ $detailedProduct->earn_point }}</span>
