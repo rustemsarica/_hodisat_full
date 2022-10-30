@@ -183,12 +183,12 @@
                                 @if ($detailedProduct->choice_options != null)
                                     @foreach (json_decode($detailedProduct->choice_options) as $key => $choice)
                                         <div class="row no-gutters">
-                                            <div class="col-sm-2">
+                                            <div class="col-2">
                                                 <div class="opacity-50 my-2">
                                                     {{ \App\Models\Attribute::find($choice->attribute_id)->getTranslation('name') }}:
                                                 </div>
                                             </div>
-                                            <div class="col-sm-10">
+                                            <div class="col-10">
                                                 <div class="aiz-radio-inline">
                                                     @foreach ($choice->values as $key => $value)
                                                         <label class="aiz-megabox pl-0 mr-2">
