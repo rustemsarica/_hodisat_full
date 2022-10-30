@@ -10,7 +10,7 @@
                         <div class="col-lg-12">
                             @php $slider_images = json_decode(get_setting('home_slider_images'), true);  @endphp
                             @if (count($slider_images)>1)
-                                <div class="aiz-carousel mobile-img-auto-height" data-arrows="false" data-dots="false" data-autoplay="true">
+                                <div class="aiz-carousel mobile-img-auto-height" data-arrows="false" data-dots="false" data-autoplay="true" data-infinite="true">
                                     @foreach ($slider_images as $key => $value)
                                         <div class="carousel-box">
                                             <a href="{{ json_decode(get_setting('home_slider_links'), true)[$key] }}">
