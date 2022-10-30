@@ -141,12 +141,6 @@ class ProductService
             $collection['todays_deal'] = 0;
         }
 
-        if ($collection['lang'] != 'tr') {
-            unset($collection['name']);
-            unset($collection['description']);
-        }
-        unset($collection['lang']);
-
 
 
         $discount_start_date = null;
