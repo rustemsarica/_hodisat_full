@@ -51,7 +51,12 @@
                             <i>{{ $blog->category->category_name }}</i>
                         </div>
                         @endif
-                        <p class="opacity-70 mb-4 h-150px">
+                        <p class="opacity-70 mb-4" style="overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2; /* number of lines to show */
+                                line-clamp: 2;
+                        -webkit-box-orient: vertical;">
                             {{ $blog->short_description }}
                         </p>
                         <a href="{{ url("blog").'/'. $blog->slug }}" class="btn btn-soft-primary">
