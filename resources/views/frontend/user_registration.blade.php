@@ -158,7 +158,7 @@
                     username: val
                 },
                 success: function(data) {
-                    console.log(data);
+                    console.log(data.result);
                 }
             });
         }
