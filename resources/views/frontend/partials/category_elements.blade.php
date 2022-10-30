@@ -7,7 +7,7 @@ else{
     $column=$count;
 }
 @endphp
-<div class="card-columns @if($count>5) d-flex @endif " style="column-count: {{$column}} !important;">
+<div class="card-columns @if($count<=5) d-flex @endif " style="column-count: {{$column}} !important;">
     @foreach (getHeaderCategories($category->id) as $first_level)
         <div class="card shadow-none border-0 text-left d-block" style="width:200px;">
             <ul class="list-unstyled mb-3">
