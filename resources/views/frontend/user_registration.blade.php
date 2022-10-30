@@ -150,6 +150,8 @@
         function checkusername(el){
             if(el.value.length<6){
                 return $('#username').addClass('is-invalid');
+            }else if(el.value.includes(' ')){
+                return $('#username').addClass('is-invalid');
             }
             $.ajax({
                 headers: {
