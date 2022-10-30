@@ -17,7 +17,7 @@
 
   <!-- Profile Details -->
   <h6 class="mb-4">{{translate('About')}} {{ $shop->user->name }}</h6>
-  <p><a href="{{ route('admin.shop.visit', $shop->slug) }}" class="btn-link"><i class="demo-pli-internet icon-lg icon-fw mr-1"></i>{{ $shop->user->username }}</a></p>
+  <p><a href="{{ route('shop.visit', $shop->slug) }}" class="btn-link"><i class="demo-pli-internet icon-lg icon-fw mr-1"></i>{{ $shop->user->username }}</a></p>
   <p><i class="demo-pli-old-telephone icon-lg icon-fw mr-1"></i>{{ $shop->user->phone }}</p>
 
   <h6 class="mb-4">{{translate('Payout Info')}}</h6>
@@ -31,16 +31,16 @@
           <tbody>
           <tr>
               <td>{{ translate('Total Products') }}</td>
-              <td>{{ App\Models\Product::where('user_id', $shop->user->id)->get()->count() }}</td>
+              <td>{{ App\Models\Product::where('user_id', $shop->user_id)->get()->count() }}</td>
           </tr>
           <tr>
               <td>{{ translate('Total Orders') }}</td>
-              <td>{{ App\Models\OrderDetail::where('seller_id', $shop->user->id)->get()->count() }}</td>
+              <td>{{ App\Models\OrderDetail::where('seller_id', $shop->user_id)->get()->count() }}</td>
           </tr>
           <tr>
               <td>{{ translate('Total Sold Amount') }}</td>
               @php
-                  $orderDetails = \App\Models\OrderDetail::where('seller_id', $shop->user->id)->get();
+                  $orderDetails = \App\Models\OrderDetail::where('seller_id', $shop->user_id)->get();
                   $total = 0;
                   foreach ($orderDetails as $key => $orderDetail) {
                       if($orderDetail->order != null && $orderDetail->order->payment_status == 'paid'){
