@@ -42,10 +42,7 @@
               <div class="col-md-9">
                   <select name="payment_option" id="payment_option" class="form-control aiz-selectpicker" required>
                       <option value="">{{translate('Select Payment Method')}}</option>
-
-                      @if($shop->bank_payment_status == 1)
-                          <option value="bank_payment">{{translate('Bank Payment')}}</option>
-                      @endif
+                        <option value="bank_payment">{{translate('Bank Payment')}}</option>
                   </select>
               </div>
           </div>
