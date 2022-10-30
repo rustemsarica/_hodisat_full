@@ -5,12 +5,12 @@
         {{-- Sliders --}}
         <div class="home-banner-area mb-2 mt-4">
             <div class="container">
-                <div class="row position-relative">
+                <div class="row position-relative my-0">
                         @if (get_setting('home_slider_images') != null)
                         <div class="col-lg-12">
                             @php $slider_images = json_decode(get_setting('home_slider_images'), true);  @endphp
                             @if (count($slider_images)>1)
-                                <div class="aiz-carousel dots-inside-bottom mobile-img-auto-height" data-arrows="false" data-dots="false" data-autoplay="true">
+                                <div class="aiz-carousel mobile-img-auto-height" data-arrows="false" data-dots="false" data-autoplay="true">
                                     @foreach ($slider_images as $key => $value)
                                         <div class="carousel-box">
                                             <a href="{{ json_decode(get_setting('home_slider_links'), true)[$key] }}">
