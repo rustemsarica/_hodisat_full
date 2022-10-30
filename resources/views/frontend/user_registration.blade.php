@@ -19,11 +19,10 @@
                                         <div class="form-group">
                                             <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus placeholder="{{ translate('Username') }}">
 
-                                            @if ($errors->has('username'))
+
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('username') }}</strong>
                                                 </span>
-                                            @endif
                                         </div>
                                         <div class="form-group">
                                             <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('name') }}" placeholder="{{  translate('Full Name') }}" name="name">
