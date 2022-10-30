@@ -4,7 +4,7 @@
     });
 @endphp
 
-<div class="aiz-carousel gutters-5 mb-4" data-items="1" data-xs-items="2" data-rows="5" data-xs-rows="1" data-arrows='false'>
+<div class="aiz-carousel gutters-5 mb-4" data-items="1" data-xs-items="2" data-rows="5" data-xs-rows="1" data-arrows='false' data-xs-arrows='true'>
     @foreach ($blogs as $key => $blog)
         <div class="carousel-box">
             <div class="row no-gutters box-3 align-items-center border border-light rounded hov-shadow-md my-2 has-transition">
