@@ -11,7 +11,7 @@
                 <div class="col-12 col-md-4">
                     <a href="{{ url('blog').'/'. $blog->slug }}" class="d-block p-3">
                         <img
-                            style="background-color: whitesmoke; object-fit:cover; width:100px; height:100px;" src="@if ($blog->banner !== null) {{ uploaded_asset($blog->banner) }} @else {{ static_asset('assets/img/placeholder.jpg') }} @endif"
+                            style="background-color: whitesmoke; object-fit:cover; width:100%; height:100px;" src="@if ($blog->banner !== null) {{ uploaded_asset($blog->banner) }} @else {{ static_asset('assets/img/placeholder.jpg') }} @endif"
                             width="100"
                             height="100"
                             alt="{{ $blog->slug }}"
