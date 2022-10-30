@@ -42,11 +42,6 @@ class OrderConfirm extends Command
 
         $orders = Order::where('delivery_status','delivered')->get();
         foreach($orders as $order){
-            $request = new Request();
-                $request->order_id = $order->id;
-                $request->status = 'confirmed';
-                (new OrderService)->handle_delivery_status($request);
-                return;
             if($today->diffInDays($order->updated_at) >= $this->unconfirmedOrderExpiration)
             {
                 $request = new Request();
