@@ -38,7 +38,7 @@ class OrderConfirm extends Command
 
 	public function handle()
 	{
-        $today = Carbon::now();
+        $today = Carbon::now(config('app.timezone'));
 
         $orders = Order::where('delivery_status','delivered')->get();
         foreach($orders as $order){
