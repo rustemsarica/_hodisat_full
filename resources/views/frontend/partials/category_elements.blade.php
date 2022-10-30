@@ -1,15 +1,7 @@
-@php
-$count = count(getHeaderCategories($category->id));
-if($count>=5){
-    $column=5;
-}
-else{
-    $column=$count;
-}
-@endphp
-<div class="card-columns @if($count<=5) d-flex @endif " style="column-count: {{$column}} !important;">
+
+<div class="card-columns" style="column-count: 5 !important;">
     @foreach (getHeaderCategories($category->id) as $first_level)
-        <div class="card shadow-none border-0 text-left d-block" style="width:200px;">
+        <div class="card shadow-none border-0 text-left d-block">
             <ul class="list-unstyled mb-3">
                 <li class="fw-600 border-bottom pb-2 mb-3">
                     <a class="text-reset" href="{{ route('products.category', $first_level->slug) }}">{{ $first_level->getTranslation('name') }}</a>
