@@ -17,7 +17,7 @@
                                     <form id="reg-form" class="form-default" role="form" action="{{ route('register') }}" method="POST">
                                         @csrf
                                         <div class="form-group">
-                                            <input id="username" type="text" class="form-control {{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" required placeholder="{{ translate('Username') }}" autocomplete="off">
+                                            <input id="username" type="text" class="form-control {{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" required placeholder="{{ translate('Username') }}" autocomplete="off" onkeyup="checkusername(this.val)">
 
                                             @if ($errors->has('username'))
                                                 <span class="invalid-feedback" role="alert">
@@ -147,8 +147,26 @@
 
     <script type="text/javascript">
 
+        checkusername(val){
+            $.ajax({
+                headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                type:"POST",
+                url:'{{ route('register.check.username') }}',
+                data:{
+                    username: val
+                },
+                success: function(data) {
+                    var obj = JSON.parse(data);
+                    console.log(obj);
+                }
+            });
+        }
+
         @if(get_setting('google_recaptcha') == 1)
         // making the CAPTCHA  a required field for form submission
+
         $(document).ready(function(){
             // alert('helloman');
             $("#reg-form").on("submit", function(evt)
