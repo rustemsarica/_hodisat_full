@@ -148,6 +148,9 @@
     <script type="text/javascript">
 
         function checkusername(el){
+            if(el.value.length>6){
+                return $('#username').addClass('is-invalid');
+            }
             $.ajax({
                 headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
