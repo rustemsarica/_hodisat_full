@@ -1197,6 +1197,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 var slidesCenterMode = $this.data("center");
                 var slidesArrows = $this.data("arrows");
                 var slidesDots = $this.data("dots");
+                var slidesRowsXs = $this.data("xs-rows");
                 var slidesRows = $this.data("rows");
                 var slidesAutoplay = $this.data("autoplay");
                 var slidesFade = $this.data("fade");
@@ -1233,6 +1234,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 slidesArrows = !slidesArrows ? false : slidesArrows;
                 slidesDots = !slidesDots ? false : slidesDots;
                 slidesRows = !slidesRows ? 1 : slidesRows;
+                slidesRowsXs = !slidesRowsXs ? slidesRows : slidesRowsXs;
                 slidesAutoplay = !slidesAutoplay ? false : slidesAutoplay;
                 slidesFade = !slidesFade ? false : slidesFade;
                 asNavFor = !asNavFor ? null : asNavFor;
@@ -1307,6 +1309,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                                 slidesToShow: slidesPerViewXs,
                                 vertical: verticalXs,
                                 rtl: slidesRtlXs,
+                                slidesRows:slidesRowsXs
                             },
                         },
                     ],
