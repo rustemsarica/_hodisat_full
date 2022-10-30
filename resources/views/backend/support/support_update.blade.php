@@ -65,7 +65,7 @@
                 <div class="form-group row">
                     <label class="col-sm-3 col-from-label">{{translate('Text')}}</label>
                     <div class="col-sm-9">
-                        <textarea name="text" rows="8" class="form-control">{{ $support->text }}</textarea>
+                        <textarea name="text" rows="8" class="aiz-text-editor form-control">{{ $support->text }}</textarea>
                     </div>
                 </div>
                 <div class="form-group mb-0 text-right">

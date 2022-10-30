@@ -300,4 +300,36 @@ class OrderService{
 
     }
 
+    public function get_tracking_code($id)
+    {
+        $order = Order::find($id);
+        $istek = Soap::to('https://ws.yurticikargo.com/KOPSWebServices/WsReportWithReferenceServices?wsdl');
+		   $data=[
+				   'userName'        		=> 'CIZGITURIZMYENI',
+				   'password'        		=> '02v1d1pp3dmn7d15',
+				   'language'      		=> 'TR',
+				   'custParamsVO'				=> array(
+					   'invCustIdArray' => "909344613" ),
+				   'fieldName'      		=> 54,
+				   'fieldValue'      		=> $order->shipping_code,
+				   'startDate'      		=> null,
+				   'endDate'      			=> null,
+				   'dateParamType'      	=> null,
+				   'withCargoLifeCycle'    => 0,
+				   ];
+		   $response = $istek->listInvDocumentInterfaceByReference($data);
+
+		   if($response->ShippingDataResponseVO->outFlag==0){
+			   $tracking_number=$response->ShippingDataResponseVO->shippingDataDetailVOArray->docId; //kargo takip numarası
+			   $tracking_url=$response->ShippingDataResponseVO->shippingDataDetailVOArray->trackingUrl; //kargo takip linki
+               $order->tracking_code = $tracking_number;
+               $order->tracking_url = $tracking_url;
+               $order->delivery_status = 'picked_up';
+               $order->save();
+
+		   }else{
+            DB::table('logs')->insert(['text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
+		   }
+    }
+
 }

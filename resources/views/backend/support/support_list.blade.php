@@ -41,7 +41,6 @@
                                 <th>Resim</th>
                                 <th>Ana Kategori</th>
                                 <th>Başlık</th>
-                                <th>İçerik</th>
                                 <th class="text-right" width="15%">{{translate('options')}}</th>
                             </tr>
                         </thead>
@@ -63,9 +62,6 @@
                                 </td>
                                 <td>
                                     {{ $support->title }}
-                                </td>
-                                <td>
-                                    {{ $support->text }}
                                 </td>
 
                                 <td class="text-right">
@@ -133,7 +129,7 @@
 					</div>
 					<div class="form-group mb-3">
 						<label for="name">{{translate('Text',get_setting('admin_lang'))}}</label>
-						<textarea name="text" rows="5" class="form-control"></textarea>
+						<textarea name="text" rows="5" class="aiz-text-editor form-control"></textarea>
 					</div>
 					<div class="form-group mb-3 text-right">
 						<button type="submit" class="btn btn-primary">{{translate('Save',get_setting('admin_lang'))}}</button>
