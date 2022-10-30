@@ -44,7 +44,7 @@ class OrderConfirm extends Command
         foreach($orders as $order){
             if($today->diffInDays($order->updated_at) >= $this->unconfirmedOrderExpiration)
             {
-                $request = new Request;
+                $request = new Request();
                 $request->order_id = $order->id;
                 $request->status = 'confirmed';
                 (new OrderService)->handle_delivery_status($request);
