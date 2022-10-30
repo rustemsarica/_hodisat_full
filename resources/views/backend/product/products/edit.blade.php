@@ -10,24 +10,13 @@
             <div class="col-lg-8">
                 <input name="_method" type="hidden" value="POST">
                 <input type="hidden" name="id" value="{{ $product->id }}">
-                <input type="hidden" name="lang" value="{{ $lang }}">
                 @csrf
                 <div class="card">
-                    <ul class="nav nav-tabs nav-fill border-light">
-                        @foreach (\App\Models\Language::all() as $key => $language)
-                        <li class="nav-item">
-                            <a class="nav-link text-reset @if ($language->code == $lang) active @else bg-soft-dark border-light border-left-0 @endif py-3" href="{{ route('admin.products.admin.edit', ['id'=>$product->id, 'lang'=> $language->code] ) }}">
-                                <img src="{{ static_asset('assets/img/flags/'.$language->code.'.png') }}" height="11" class="mr-1">
-                                <span>{{$language->name}}</span>
-                            </a>
-                        </li>
-                        @endforeach
-                    </ul>
                     <div class="card-body">
                         <div class="form-group row">
-                            <label class="col-lg-3 col-from-label">{{translate('Product Name')}} <i class="las la-language text-danger" title="{{translate('Translatable')}}"></i></label>
+                            <label class="col-lg-3 col-from-label">{{translate('Product Name')}} </label>
                             <div class="col-lg-8">
-                                <input type="text" class="form-control" name="name" placeholder="{{translate('Product Name')}}" value="{{ $product->getTranslation('name', $lang) }}" required>
+                                <input type="text" class="form-control" name="name" placeholder="{{translate('Product Name')}}" value="{{ $product->name }}" required>
                             </div>
                         </div>
                         <div class="form-group row" id="category">
