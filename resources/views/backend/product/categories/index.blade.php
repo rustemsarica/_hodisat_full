@@ -13,7 +13,7 @@
             <h1 class="h3">{{translate('All Categories')}}</h1>
         </div>
         <div class="col-md-6 text-md-right">
-            <a href="{{ route('categories.create') }}" class="btn btn-primary">
+            <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">
                 <span>{{translate('Add New category')}}</span>
             </a>
         </div>
