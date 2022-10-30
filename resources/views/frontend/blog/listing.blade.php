@@ -36,7 +36,7 @@
                             src="{{ static_asset('assets/img/placeholder-rect.jpg') }}"
                             data-src="{{ uploaded_asset($blog->banner) }}"
                             alt="{{ $blog->title }}"
-                            class="img-fluid lazyload "
+                            class="img-fluid lazyload img-fit"
                         >
                     </a>
                     <div class="p-4">
@@ -59,7 +59,7 @@
                     </div>
                 </div>
             @endforeach
-            
+
         </div>
         <div class="aiz-pagination aiz-pagination-center mt-4">
             {{ $blogs->links() }}
