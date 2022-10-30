@@ -36,7 +36,7 @@
                             src="{{ static_asset('assets/img/placeholder-rect.jpg') }}"
                             data-src="{{ uploaded_asset($blog->banner) }}"
                             alt="{{ $blog->title }}"
-                            class="img-fluid lazyload img-fit"
+                            class="img-fluid lazyload img-fit h-250px"
                             height="250"
                         >
                     </a>
