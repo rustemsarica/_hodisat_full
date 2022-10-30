@@ -1,4 +1,4 @@
-<div class="card-columns" style="column-count: @php if(getHeaderCategories($category->id)>=5){echo '5';}else{ echo count(getHeaderCategories($category->id));}  @endphp !important;">
+<div class="card-columns" style="column-count: @php if(count(getHeaderCategories($category->id))>=5){echo '5';}else{ echo count(getHeaderCategories($category->id));}  @endphp !important;">
     @foreach (getHeaderCategories($category->id) as $first_level)
         <div class="card shadow-none border-0 text-left" style="max-width:200px;">
             <ul class="list-unstyled mb-3">
