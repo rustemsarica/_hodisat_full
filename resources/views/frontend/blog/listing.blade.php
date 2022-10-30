@@ -61,8 +61,8 @@
                         <p class="opacity-70 mb-4" style="overflow: hidden;
                         text-overflow: ellipsis;
                         display: -webkit-box;
-                        line-height:1em;
-                        height:4em;
+                        line-height:1.1em;
+                        height:4.4em;
                         -webkit-line-clamp: 4;
                                 line-clamp: 4;
                         -webkit-box-orient: vertical;">
