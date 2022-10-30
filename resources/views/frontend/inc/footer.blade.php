@@ -225,8 +225,8 @@
             @if(isAdmin())
                 <a href="{{ route('admin.dashboard') }}" class="text-reset d-block text-center pb-2 pt-3">
                     <span class="d-block mx-auto">
-                        @if(Auth::user()->shop != null || Auth::user()->shop->logo != null)
-                            {{Auth::user()->shop->logo}}
+                        @if(Auth::user()->shop != null && Auth::user()->shop->logo != null)
+                            <img src="{{ uploaded_asset(Auth::user()->shop->logo)}}" class="rounded-circle size-20px">
                         @else
                             <img src="{{ static_asset('assets/img/avatar-place.png') }}" class="rounded-circle size-20px">
                         @endif
