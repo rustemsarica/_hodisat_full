@@ -98,6 +98,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/users/login', 'login')->name('user.login');
     Route::get('/users/registration', 'registration')->name('user.registration');
     Route::post('/users/login/cart', 'cart_login')->name('cart.login.submit');
+    Route::post('/users/check-username', 'checkUsername')->name('register.check.username');
     // Route::get('/new-page', 'new_page')->name('new_page');
 
 

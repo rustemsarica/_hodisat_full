@@ -513,4 +513,20 @@ class HomeController extends Controller
         $products = filter_products(Product::where('added_by', 'admin'))->paginate(12)->appends(request()->query());
         return view('frontend.inhouse_products', compact('products'));
     }
+
+
+    public function checkUsername(Request $request)
+    {
+        $user = User::where('username', $request->username)->count();
+        if($user>0){
+            return response()->json([
+                'result' => false
+            ]);
+        }
+
+        return response()->json([
+            'result' => true
+        ]);
+
+    }
 }
