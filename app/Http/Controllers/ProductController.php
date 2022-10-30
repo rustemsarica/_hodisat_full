@@ -206,15 +206,12 @@ class ProductController extends Controller
     public function admin_product_edit(Request $request, $id)
     {
 
-
         $product = Product::findOrFail($id);
 
-        $lang = $request->lang;
-        $tags = json_decode($product->tags);
         $categories = Category::where('parent_id', 0)
             ->with('childrenCategories')
             ->get();
-        return view('backend.product.products.edit', compact('product', 'categories', 'tags', 'lang'));
+        return view('backend.product.products.edit', compact('product', 'categories'));
     }
 
     /**
@@ -226,14 +223,12 @@ class ProductController extends Controller
     public function seller_product_edit(Request $request, $id)
     {
         $product = Product::findOrFail($id);
-        $lang = $request->lang;
-        $tags = json_decode($product->tags);
         // $categories = Category::all();
         $categories = Category::where('parent_id', 0)
             ->with('childrenCategories')
             ->get();
 
-        return view('backend.product.products.edit', compact('product', 'categories', 'tags', 'lang'));
+        return view('backend.product.products.edit', compact('product', 'categories'));
     }
 
     /**
