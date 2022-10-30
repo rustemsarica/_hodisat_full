@@ -41,7 +41,12 @@
                         >
                     </a>
                     <div class="p-4">
-                        <h2 class="fs-18 fw-600 mb-1">
+                        <h2 class="fs-18 fw-600 mb-1" style="overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                                line-clamp: 2;
+                        -webkit-box-orient: vertical;">
                             <a href="{{ url("blog").'/'. $blog->slug }}" class="text-reset">
                                 {{ $blog->title }}
                             </a>
@@ -54,8 +59,8 @@
                         <p class="opacity-70 mb-4" style="overflow: hidden;
                         text-overflow: ellipsis;
                         display: -webkit-box;
-                        -webkit-line-clamp: 2; /* number of lines to show */
-                                line-clamp: 2;
+                        -webkit-line-clamp: 4;
+                                line-clamp: 4;
                         -webkit-box-orient: vertical;">
                             {{ $blog->short_description }}
                         </p>
