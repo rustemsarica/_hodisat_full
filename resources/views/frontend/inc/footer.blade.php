@@ -46,9 +46,11 @@
                         <li class="mb-2">
                            <span class="d-block opacity-80">{{ translate('Address') }}: {{ get_setting('contact_address',null,App::getLocale()) }}</span>
                         </li>
-                        <li class="mb-2">
-                           <span class="d-block opacity-80">{{translate('Phone')}}: {{ get_setting('contact_phone') }}</span>
-                        </li>
+                        @if(get_setting('contact_phone')!=null)
+                            <li class="mb-2">
+                            <span class="d-block opacity-80">{{translate('Phone')}}: {{ get_setting('contact_phone') }}</span>
+                            </li>
+                        @endif
                         <li class="mb-2">
                            <span class="d-block opacity-80">{{translate('Email')}}: <a href="mailto:{{ get_setting('contact_email') }}" class="text-reset">{{ get_setting('contact_email')  }}</a></span>
                         </li>
