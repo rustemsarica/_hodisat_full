@@ -33,7 +33,7 @@
 
 <section class="py-4">
     <div class="container">
-        <div class="mb-4 col-xl-8">
+        <div class="mb-4 col-xl-8 mx-auto">
             <img
                 src="{{ static_asset('assets/img/placeholder-rect.jpg') }}"
                 data-src="{{ uploaded_asset($blog->banner) }}"
