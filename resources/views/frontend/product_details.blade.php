@@ -239,19 +239,6 @@
                                 <input type="hidden" name="quantity" value="1" max="1">
 
 
-                                <div class="row no-gutters pb-3 d-none" id="chosen_price_div">
-                                    <div class="col-sm-2">
-                                        <div class="opacity-50 my-2">{{ translate('Total Price') }}:</div>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <div class="product-price">
-                                            <strong id="chosen_price" class="h4 fw-600 text-primary">
-
-                                            </strong>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </form>
 
                             <div class="mt-3">
