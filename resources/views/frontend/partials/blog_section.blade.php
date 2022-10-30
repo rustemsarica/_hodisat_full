@@ -21,10 +21,13 @@
                 </div>
                 <div class="col-12 col-md-7 border-left border-light">
                     <div class="p-3 text-left">
-
                         <a href="{{ url('blog').'/'. $blog->slug }}" class="text-reset fs-12 fw-600">{{ $blog->title }}</a>
-
                     </div>
+                    @if($blog->category != null)
+                        <div class="mb-2 opacity-50">
+                            <i>{{ $blog->category->category_name }}</i>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
