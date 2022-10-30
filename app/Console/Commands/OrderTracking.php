@@ -13,21 +13,21 @@ use Illuminate\Support\Carbon;
 use RicorocksDigitalAgency\Soap\Facades\Soap;
 use Illuminate\Support\Facades\DB;
 
-class OrderTrackingCode extends Command
+class OrderTracking extends Command
 {
 	/**
 	 * The name and signature of the console command.
 	 *
 	 * @var string
 	 */
-	protected $signature = 'orderTrackingCode';
+	protected $signature = 'orderTracking';
 
 	/**
 	 * The console command description.
 	 *
 	 * @var string
 	 */
-	protected $description = 'Get Order Tracking Code';
+	protected $description = 'Order Tracking';
 
 
 	public function __construct()
