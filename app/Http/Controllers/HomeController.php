@@ -515,7 +515,7 @@ class HomeController extends Controller
     }
 
 
-    public function checkUsername(Request $request)
+    public function check_username(Request $request)
     {
         $user = User::where('username', $request->username)->count();
         if($user>0){
