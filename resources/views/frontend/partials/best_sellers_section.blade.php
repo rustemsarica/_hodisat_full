@@ -11,7 +11,7 @@
             <div class="col">
                 <div class="carousel-box">
                     <div class="row no-gutters box-3 align-items-center border border-light rounded hov-shadow-md my-2 has-transition">
-                        <div class="col-4">
+                        <div class="col-12 col-md-4">
                             <a href="{{ route('shop.visit', $seller->user->username) }}" class="d-block p-3">
                                 <img
                                     style="background-color: whitesmoke;" src="@if ($seller->shop->logo !== null) {{ uploaded_asset($seller->shop->logo) }} @else {{ static_asset('assets/img/placeholder.jpg') }} @endif"
@@ -22,7 +22,7 @@
                                 >
                             </a>
                         </div>
-                        <div class="col-8 border-left border-light">
+                        <div class="col-12 col-md-8 border-left border-light">
                             <div class="p-3 text-left">
                                 <a href="{{ route('shop.visit', $seller->user->username) }}" class="text-reset h6 fw-600 text-truncate">{{ $seller->user->username }}</a>
                                 <div class="rating rating-sm mb-2">
