@@ -6,7 +6,7 @@ else{
     $column=count(getHeaderCategories($category->id));
 }
 @endphp
-<div class="card-columns d-flex" style="column-count: {{$column}} !important; ">
+<div class="card-columns d-flex" style="column-count: {{$column}} !important; max-width: calc(100% - 10%); width:auto;">
     @foreach (getHeaderCategories($category->id) as $first_level)
         <div class="card shadow-none border-0 text-left d-block" style="width:200px;">
             <ul class="list-unstyled mb-3">
