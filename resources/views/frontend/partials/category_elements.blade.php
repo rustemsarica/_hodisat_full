@@ -1,12 +1,4 @@
-@php
-$count = count(getHeaderCategories($category->id));
-if($count>=5){
-    $column=5;
-}
-else{
-    $column=$count;
-}
-@endphp
+
 <div class="card-columns" style="column-count: 5 !important;">
     @foreach (getHeaderCategories($category->id) as $first_level)
         <div class="card shadow-none border-0 text-left" >
