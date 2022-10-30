@@ -8,6 +8,7 @@
     <div class="aiz-carousel gutters-10 mb-4" data-items="1" data-xs-items="2" data-arrows="false" data-rows="5" data-xs-rows="1">
         @foreach ($best_selers as $key => $seller)
             @if ($seller->user != null)
+            <div class="col">
                 <div class="carousel-box">
                     <div class="row no-gutters box-3 align-items-center border border-light rounded hov-shadow-md my-2 has-transition">
                         <div class="col-4">
@@ -34,6 +35,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
             @endif
         @endforeach
     </div>
