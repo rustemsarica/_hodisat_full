@@ -148,7 +148,7 @@
     <script type="text/javascript">
 
         function checkusername(el){
-            if(el.value.length>6){
+            if(el.value.length<6){
                 return $('#username').addClass('is-invalid');
             }
             $.ajax({
