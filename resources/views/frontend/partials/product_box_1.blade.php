@@ -22,6 +22,9 @@
             </span>
         @endif
     </div>
+    <div class="p-md-3 p-2 fs-14">
+        {{$product->name}}
+    </div>
 
     <div class="p-md-3 p-2 d-flex justify-content-between">
         <div class="fs-18">
