@@ -1301,6 +1301,7 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                                 slidesToShow: slidesPerViewSm,
                                 vertical: verticalSm,
                                 rtl: slidesRtlSm,
+                                slidesRows:slidesRowsXs
                             },
                         },
                         {
