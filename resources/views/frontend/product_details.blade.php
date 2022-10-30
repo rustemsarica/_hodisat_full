@@ -10,7 +10,7 @@
     <!-- Schema.org markup for Google+ -->
     <meta itemprop="name" content="{{ $detailedProduct->name }}">
     <meta itemprop="description" content="{{ $detailedProduct->description }}">
-    <meta itemprop="image" content="{{ uploaded_asset($detailedProduct->meta_img) }}">
+    <meta itemprop="image" content="{{ uploaded_asset($detailedProduct->thumbnail_img) }}">
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="product">
@@ -18,7 +18,7 @@
     <meta name="twitter:title" content="{{ $detailedProduct->name }}">
     <meta name="twitter:description" content="{{ $detailedProduct->description }}">
     <meta name="twitter:creator" content="@author_handle">
-    <meta name="twitter:image" content="{{ uploaded_asset($detailedProduct->meta_img) }}">
+    <meta name="twitter:image" content="{{ uploaded_asset($detailedProduct->thumbnail_img) }}">
     <meta name="twitter:data1" content="{{ single_price($detailedProduct->unit_price) }}">
     <meta name="twitter:label1" content="Price">
 
@@ -26,7 +26,7 @@
     <meta property="og:title" content="{{ $detailedProduct->name }}" />
     <meta property="og:type" content="og:product" />
     <meta property="og:url" content="{{ route('product', $detailedProduct->slug) }}" />
-    <meta property="og:image" content="{{ uploaded_asset($detailedProduct->meta_img) }}" />
+    <meta property="og:image" content="{{ uploaded_asset($detailedProduct->thumbnail_img) }}" />
     <meta property="og:description" content="{{ $detailedProduct->description }}" />
     <meta property="og:site_name" content="{{ get_setting('name') }}" />
     <meta property="og:price:amount" content="{{ single_price($detailedProduct->unit_price) }}" />
