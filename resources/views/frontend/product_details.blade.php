@@ -84,7 +84,7 @@
 
                             <div class="row align-items-center">
                                 <div class="col-auto">
-                                    <small class="mr-2 opacity-50">{{ translate('Sold by') }}: </small><br>
+
                                     @if ($detailedProduct->added_by == 'seller' && get_setting('vendor_system_activation') == 1)
                                         <a href="{{ route('shop.visit', $detailedProduct->user->username) }}"
                                             class="text-reset">{{ $detailedProduct->user->username }}</a>
