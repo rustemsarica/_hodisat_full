@@ -22,7 +22,7 @@
             </span>
         @endif
     </div>
-    <div class="px-md-3 px-2 pt-md-3 pt-2 pb-1 fs-14 text-truncate">
+    <div class="px-md-3 px-2 pt-2 pb-1 fs-14 text-truncate">
         {{$product->name}}
     </div>
 
