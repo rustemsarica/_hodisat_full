@@ -18,7 +18,7 @@
                                                     class="d-block mw-100 img-fit lazyload rounded shadow-sm"
                                                     src="{{ uploaded_asset($slider_images[$key]) }}"
                                                     alt="{{ env('APP_NAME')}} promo"
-                                                    height="457"
+                                                    height="445"
                                                 >
                                             </a>
                                         </div>
