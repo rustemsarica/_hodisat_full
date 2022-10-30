@@ -22,7 +22,7 @@
 							<li class="">{{ translate('Please turn off maintenance mode before updating.') }}</li>
 						</ul>
 					</div>
-					<form action="{{ route('admin.update') }}" method="post" enctype="multipart/form-data">
+					<form action="{{ route('update') }}" method="post" enctype="multipart/form-data">
 						@csrf
 						<div class="row gutters-5">
 							<div class="col-md">
