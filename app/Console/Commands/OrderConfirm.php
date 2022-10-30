@@ -45,10 +45,8 @@ class OrderConfirm extends Command
             if($today->diffInDays($order->updated_at) >= $this->unconfirmedOrderExpiration)
             {
                 $request = new Request();
-                $request->replace(['order_id' => $order->id]);
-                $request->replace(['status' => 'confirmed']);
-                // $request->order_id = $order->id;
-                // $request->status = 'confirmed';
+                $request->order_id = $order->id;
+                $request->status = 'confirmed';
                 (new OrderService)->handle_delivery_status($request);
                 return;
             }
