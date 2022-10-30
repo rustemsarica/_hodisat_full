@@ -7,6 +7,7 @@
             <div class="container">
                 <div class="row position-relative">
                         @if (get_setting('home_slider_images') != null)
+                        <div class="col-lg-12">
                             @php $slider_images = json_decode(get_setting('home_slider_images'), true);  @endphp
                             @if (count($slider_images)>1)
                                 <div class="aiz-carousel dots-inside-bottom mobile-img-auto-height" data-arrows="false" data-dots="false" data-autoplay="true">
@@ -35,7 +36,7 @@
                                     </a>
                                 </div>
                             @endif
-
+                        </div>
                         @endif
                 </div>
             </div>
