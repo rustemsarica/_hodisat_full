@@ -17,7 +17,7 @@
                                     <form id="reg-form" class="form-default" role="form" action="{{ route('register') }}" method="POST">
                                         @csrf
                                         <div class="form-group">
-                                            <input id="username" type="text" class="form-control {{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" required placeholder="{{ translate('Username') }}" autocomplete="off" onkeyup="checkusername(this.value)">
+                                            <input id="username" type="text" class="form-control {{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" required placeholder="{{ translate('Username') }}" autocomplete="off" onkeyup="checkusername(this)">
 
                                             @if ($errors->has('username'))
                                                 <span class="invalid-feedback" role="alert">
@@ -147,7 +147,7 @@
 
     <script type="text/javascript">
 
-        function checkusername(val){
+        function checkusername(el){
             $.ajax({
                 headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -155,10 +155,13 @@
                 type:"POST",
                 url:'{{ route('register.check.username') }}',
                 data:{
-                    username: val
+                    username: el.value
                 },
                 success: function(data) {
                     console.log(data.result);
+                    if(data.result==false){
+                        el.addClass("is-invalid")
+                    }
                 }
             });
         }
