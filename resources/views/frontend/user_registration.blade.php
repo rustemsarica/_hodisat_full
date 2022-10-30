@@ -147,7 +147,7 @@
 
     <script type="text/javascript">
 
-        checkusername(val){
+        function checkusername(val){
             $.ajax({
                 headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
