@@ -4,10 +4,10 @@
     <div id="content">
         {{-- Sliders --}}
         <div class="home-banner-area mb-2 mt-4">
-            <div class="container">
-                <div class="row position-relative mx-0">
+            <div class="container px-0">
+                <div class="row position-relative">
                         @if (get_setting('home_slider_images') != null)
-                        <div class="col-lg-12 px-0">
+                        <div class="col-lg-12">
                             @php $slider_images = json_decode(get_setting('home_slider_images'), true);  @endphp
                             @if (count($slider_images)>1)
                                 <div class="aiz-carousel mobile-img-auto-height" data-arrows="false" data-dots="false" data-autoplay="true">
