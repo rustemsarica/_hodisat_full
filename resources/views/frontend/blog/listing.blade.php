@@ -37,6 +37,7 @@
                             data-src="{{ uploaded_asset($blog->banner) }}"
                             alt="{{ $blog->title }}"
                             class="img-fluid lazyload img-fit"
+                            height="250"
                         >
                     </a>
                     <div class="p-4">
