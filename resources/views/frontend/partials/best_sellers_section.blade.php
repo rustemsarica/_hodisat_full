@@ -13,10 +13,10 @@
                     <div class="col-12 col-md-4">
                         <a href="{{ route('shop.visit', $seller->user->username) }}" class="d-block p-3">
                             <img
-                                style="background-color: whitesmoke; object-fit:cover;" src="@if ($seller->shop->logo !== null) {{ uploaded_asset($seller->shop->logo) }} @else {{ static_asset('assets/img/placeholder.jpg') }} @endif"
+                                style="background-color: whitesmoke; object-fit:cover; width:100px; height:100px;" src="@if ($seller->shop->logo !== null) {{ uploaded_asset($seller->shop->logo) }} @else {{ static_asset('assets/img/placeholder.jpg') }} @endif"
                                 alt="{{ $seller->user->username }}"
-                                width="75"
-                                height="50"
+                                width="100"
+                                height="100"
                                 class="img-fluid lazyload"
                             >
                         </a>
