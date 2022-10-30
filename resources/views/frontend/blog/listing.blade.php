@@ -44,8 +44,8 @@
                         <h2 class="fs-18 fw-600 mb-1" style="overflow: hidden;
                         text-overflow: ellipsis;
                         display: -webkit-box;
-                        line-height:1.3;
-                        height:2.6;
+                        line-height:1.3em;
+                        height:2.6em;
                         -webkit-line-clamp: 2;
                                 line-clamp: 2;
                         -webkit-box-orient: vertical;">
