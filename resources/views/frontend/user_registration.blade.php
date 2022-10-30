@@ -158,7 +158,6 @@
                     username: val
                 },
                 success: function(data) {
-                    var obj = JSON.parse(data);
                     console.log(data);
                 }
             });
