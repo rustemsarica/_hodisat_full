@@ -159,7 +159,7 @@
                 },
                 success: function(data) {
                     var obj = JSON.parse(data);
-                    console.log(obj);
+                    console.log(obj.result);
                 }
             });
         }
