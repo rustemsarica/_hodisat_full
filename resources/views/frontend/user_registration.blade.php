@@ -25,6 +25,7 @@
                                                 </span>
                                             @endif
                                         </div>
+
                                         <div class="form-group">
                                             <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('name') }}" placeholder="{{  translate('Full Name') }}" name="name">
                                             @if ($errors->has('name'))
