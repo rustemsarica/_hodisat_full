@@ -160,7 +160,9 @@
                 success: function(data) {
                     console.log(data.result);
                     if(data.result==false){
-                        el.addClass("is-invalid")
+                        $('#username').addClass('is-invalid');
+                    }else{
+                        $('#username').removeClass('is-invalid');
                     }
                 }
             });
