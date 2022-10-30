@@ -24,7 +24,7 @@
                         <a href="{{ url('blog').'/'. $blog->slug }}" class="text-reset fs-12 fw-600">{{ $blog->title }}</a>
                     </div>
                     @if($blog->category != null)
-                        <div class="p-3 text-left opacity-70">
+                        <div class="px-3 pb-3 text-left opacity-70">
                             <i>{{ $blog->category->category_name }}</i>
                         </div>
                     @endif
