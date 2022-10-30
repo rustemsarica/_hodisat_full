@@ -33,13 +33,15 @@
 
 <section class="py-4">
     <div class="container">
-        <div class="mb-4 col-xl-8 mx-auto">
-            <img
-                src="{{ static_asset('assets/img/placeholder-rect.jpg') }}"
-                data-src="{{ uploaded_asset($blog->banner) }}"
-                alt="{{ $blog->title }}"
-                class="img-fluid lazyload w-100"
-            >
+        <div class="row">
+            <div class="mb-4 col-xl-8 mx-auto">
+                <img
+                    src="{{ static_asset('assets/img/placeholder-rect.jpg') }}"
+                    data-src="{{ uploaded_asset($blog->banner) }}"
+                    alt="{{ $blog->title }}"
+                    class="img-fluid lazyload w-100"
+                >
+            </div>
         </div>
         <div class="row">
             <div class="col-xl-8 mx-auto">
