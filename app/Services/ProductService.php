@@ -104,7 +104,7 @@ class ProductService
         }
         unset($collection['button']);
 
-        $array = $request->category_ids;
+        $array = $collection['category_ids'];
         $array = Arr::whereNotNull($array);
         $collection['category_id'] = Arr::last($array);
 
