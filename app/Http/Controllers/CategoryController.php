@@ -24,6 +24,11 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
+        $categories = Category::where('parent_id', '!=',0)->get();
+        foreach($categories as $category){
+            $this->create_parent_tree($category->id);
+        }
+        return;
         $sort_search =null;
         $categories = Category::where('parent_id', 0)->orderBy('order_level', 'desc');
         if ($request->has('search')){
@@ -291,5 +296,27 @@ class CategoryController extends Controller
 
         //     $attributes = Attribute::whereIn('id', $attribute_ids)->get();
         // return json_encode($attributes, JSON_UNESCAPED_UNICODE);
+    }
+
+    public function create_parent_tree($id)
+    {
+        $data = array();
+        $category=Category::where('id',$request->id)->first();
+        $parent_id=$category->parent_id;
+        if( $parent_id!=0){
+            array_push($data, $parent_id);
+        }
+        while($parent_id!=0){
+            $category=Category::where('id',$parent_id)->first();
+            if($category->parent_id>0){
+                array_push($data,$category->parent_id);
+            }else{
+                break;
+            }
+
+            $parent_id=$category->parent_id;
+        }
+        $category->parent_tree = explode(',', $data);
+        $category->save();
     }
 }
