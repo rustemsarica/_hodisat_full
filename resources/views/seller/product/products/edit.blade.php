@@ -413,7 +413,6 @@
 
     $(document).ready(function(){
 
-        get_custom_fields({{$product->category_id}});
         $('.remove-files').on('click', function(){
             $(this).parents(".col-md-4").remove();
         });
