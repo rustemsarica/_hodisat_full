@@ -77,20 +77,20 @@
                     <form action="{{ route('search') }}" method="GET" class="stop-propagation" id="searcForm">
                         <div class="d-flex position-relative align-items-center">
                             <div class="input-group">
-                                <input type="text" class="border-0 border-lg form-control" id="search" name="keyword" @isset($query)
+                                <input type="text" class="border-0 border-lg form-control" id="support-search" name="keyword" @isset($query)
                                     value="{{ $query }}"
                                 @endisset placeholder="{{translate('Search')}}" autocomplete="off">
                             </div>
                         </div>
                     </form>
-                    <div class="typed-search-box stop-propagation document-click-d-none d-none bg-white rounded shadow-lg position-absolute left-0 top-100 w-100" style="min-height: 200px">
+                    <div class="typed-support-search-box stop-propagation document-click-d-none d-none bg-white rounded shadow-lg position-absolute left-0 top-100 w-100" style="min-height: 200px">
                         <div class="search-preloader absolute-top-center">
                             <div class="dot-loader"><div></div><div></div><div></div></div>
                         </div>
                         <div class="search-nothing d-none p-3 text-center fs-16">
 
                         </div>
-                        <div id="search-content" class="text-left">
+                        <div id="support-search-content" class="text-left">
 
                         </div>
                     </div>
@@ -162,4 +162,44 @@
     </div>
 </section>
 
+@endsection
+
+@section('script')
+ <script>
+        $('#support-search').on('keyup', function(){
+        supportSearch();
+        });
+
+        $('#support-search').on('focus', function(){
+            supportSearch();
+        });
+
+        function supportSearch(){
+            var searchKey = $('#support-search').val();
+            if(searchKey.length > 0){
+                $('body').addClass("typed-support-search-box-shown");
+
+                $('.typed-search-box').removeClass('d-none');
+                $('.search-preloader').removeClass('d-none');
+                $.post('{{ route('search.ajax') }}', { _token: AIZ.data.csrf, search:searchKey}, function(data){
+                    if(data == '0'){
+                        // $('.typed-search-box').addClass('d-none');
+                        $('#support-search-content').html(null);
+                        $('.typed-search-box .search-nothing').removeClass('d-none').html('Sorry, nothing found for <strong>"'+searchKey+'"</strong>');
+                        $('.search-preloader').addClass('d-none');
+
+                    }
+                    else{
+                        $('.typed-search-box .search-nothing').addClass('d-none').html(null);
+                        $('#support-search-content').html(data);
+                        $('.search-preloader').addClass('d-none');
+                    }
+                });
+            }
+            else {
+                $('.typed-support-search-box').addClass('d-none');
+                $('body').removeClass("typed-support-search-box-shown");
+            }
+        }
+ </script>
 @endsection
