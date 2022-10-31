@@ -101,13 +101,13 @@ class RegisterController extends Controller
 
             $seller = new Seller;
             $seller->user_id = $user->id;
+            $seller->save();
 
-            if ($seller->save()) {
-                $shop = new Shop;
-                $shop->user_id = $user->id;
-                $shop->slug = Str::slug($request->name) . '-' . $shop->id;
-                $shop->save();
-            }
+            $shop = new Shop;
+            $shop->user_id = $user->id;
+            $shop->slug = $user->username;
+            $shop->save();
+
 
 
         if(session('temp_user_id') != null){
