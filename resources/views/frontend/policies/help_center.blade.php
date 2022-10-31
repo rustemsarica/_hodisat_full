@@ -141,10 +141,14 @@
     </div>
 </section>
 @else
+
 <section class="mb-4">
     <div class="container">
         <div class="row">
-            <div class="col-8">
+            <a class="btn btn-primary" href="{{route('helpcenter')}}"><i class="las la-undo"></i> {{translate('Help Center')}}</a>
+        </div>
+        <div class="row">
+            <div class="col-8 m-auto">
               <div class="tab-content" id="nav-tabContent">
                 <div class="accordion" id="accordion-search">
                     @foreach ($supports as $item)
