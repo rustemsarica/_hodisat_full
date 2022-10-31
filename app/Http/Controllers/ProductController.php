@@ -163,7 +163,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(Request $request)
     {
         $product = $this->productService->store($request->except([
             '_token', 'choice', 'flash_deal_id', 'flash_discount', 'flash_discount_type'
@@ -238,7 +238,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request, Product $product)
+    public function update(Request $request, Product $product)
     {
         //Product
         $product = $this->productService->update($request->except([
