@@ -47,10 +47,9 @@ class ProductService
             }
         }
         unset($collection['flat_shipping_cost']);
-        $same_slug_count = 0;
         $slug = Str::slug($collection['name'], '-');
         $same_slug_count = Product::where('slug', 'like', $slug.'%')->count();
-        $slug_suffix = $same_slug_count>0 ? '-' + $same_slug_count + 1 : '';
+        $slug_suffix = $same_slug_count>0 ? '-' . $same_slug_count + 1 : '';
         $slug .= $slug_suffix;
 
         $colors = $collection['colors'];
@@ -126,7 +125,7 @@ class ProductService
 
         $slug = Str::slug($collection['name']);
         $same_slug_count = Product::where('slug', $slug)->where('id','!=',$collection['id'])->count();
-        $slug_suffix = $same_slug_count > 1 ? '-' + $same_slug_count + 1 : '';
+        $slug_suffix = $same_slug_count > 1 ? '-' . $same_slug_count + 1 : '';
         $slug .= $slug_suffix;
 
         if(addon_is_activated('refund_request') && !isset($collection['refundable'])){
