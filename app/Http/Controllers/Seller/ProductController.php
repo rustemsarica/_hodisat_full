@@ -91,11 +91,10 @@ class ProductController extends Controller
             return back();
         }
 
-        $lang = 'tr';
+        $category = Category::where('id', $product->category_id)->first();
         $categories = Category::where('parent_id', 0)
-            ->with('childrenCategories')
             ->get();
-        return view('seller.product.products.edit', compact('product', 'categories', 'lang'));
+        return view('seller.product.products.edit', compact('product', 'categories', 'category'));
     }
 
     public function update(ProductRequest $request, Product $product)
