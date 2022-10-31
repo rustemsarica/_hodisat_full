@@ -236,7 +236,10 @@ class CategoryController extends Controller
     public function get_subcategories(Request $request)
     {
 
-        $locale = 'tr';
+        $locale = App::getLocale();
+        if($locale=='' || $locale == null){
+            $locale = env('DEFAULT_LANGUAGE');
+        }
         $categories = DB::table('categories')->where('parent_id',$request->parent_id)->join('category_translations', function ($join) use ($locale) {
             $join->on('categories.id', '=', 'category_translations.category_id')->where('category_translations.lang', $locale);
         })->select('categories.id','category_translations.name','categories.parent_id')->get();
