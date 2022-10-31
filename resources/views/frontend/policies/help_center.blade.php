@@ -34,6 +34,18 @@
     </div>
 
     <div class="row mb-4">
+        @if ( get_setting('widget_one_labels',null,App::getLocale()) !=  null )
+            @foreach (json_decode( get_setting('widget_one_labels',null,App::getLocale()), true) as $key => $value)
+            <div class="col">
+                <a href="{{ json_decode( get_setting('widget_one_links'), true)[$key] }}" class="opacity-80 hov-opacity-100 text-reset">
+                        {{ $value }}
+                </a>
+            </div>
+            @endforeach
+        @endif
+    </div>
+
+    <div class="row mb-4">
         <div class="col-lg-4 m-auto">
             <div class="card">
                 <div class="card-body">
