@@ -9198,8 +9198,8 @@ ul.social.colored [class*="linkedin"] {
 .aiz-category-menu .sub-cat-menu{
     display: none;
     position: absolute;
-    width: calc(100% - 10%);
-    left: calc(5%);
+    width: calc(100% - 8%);
+    left: calc(4%);
     /*height: calc(100% + 300px);*/
     overflow: hidden;
     z-index: 9;
