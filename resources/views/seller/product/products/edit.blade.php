@@ -311,7 +311,7 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             type:"POST",
-            url:'{{ route('products.add-more-choice-option') }}',
+            url:'{{ route('seller.products.add-more-choice-option') }}',
             data:{
                attribute_id: i,
                product_id: {{$product->id}}
@@ -338,25 +338,7 @@
 
     }
 
-    $('input[name="colors_active"]').on('change', function() {
-        if(!$('input[name="colors_active"]').is(':checked')){
-            $('#colors').prop('disabled', true);
-            AIZ.plugins.bootstrapSelect('refresh');
-        }
-        else{
-            $('#colors').prop('disabled', false);
-            AIZ.plugins.bootstrapSelect('refresh');
-        }
-        update_sku();
-    });
 
-    $(document).on("change", ".attribute_choice",function() {
-        update_sku();
-    });
-
-    $('#colors').on('change', function() {
-        update_sku();
-    });
 
     function delete_row(em){
         $(em).closest('.form-group').remove();
