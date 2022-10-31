@@ -209,20 +209,10 @@
                         </div>\
                     </div>');
                     AIZ.plugins.bootstrapSelect('refresh');
-            }
-        });
-
-
+                }
+            });
         }
 
-
-        function delete_row(em){
-            $(em).closest('.form-group row').remove();
-        }
-
-        function delete_variant(em){
-            $(em).closest('.variant').remove();
-        }
 
         $('#choice_attributes').on('change', function() {
             $('#customer_choice_options').html(null);

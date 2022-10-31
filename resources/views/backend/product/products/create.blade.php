@@ -28,18 +28,19 @@
                             </div>
                         </div>
                         <div class="form-group row" id="category">
-                            <label class="col-md-3 col-from-label">{{translate('Category')}} <span class="text-danger">*</span></label>
+                            <label class="col-md-3 col-from-label">{{translate('Category')}}</label>
                             <div class="col-md-8">
-                                <select class="form-control aiz-selectpicker" name="category_id" id="category_id" data-live-search="true" required>
+                                <select class="form-control aiz-selectpicker" name="category_ids[]" data-live-search="true" onchange="get_subcategories(this.value, 0);" required>
+                                    <option value="" disabled selected hidden>{{ translate("Select Category") }}</option>
                                     @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->getTranslation('name') }}</option>
-                                    @foreach ($category->childrenCategories as $childCategory)
-                                    @include('categories.child_category', ['child_category' => $childCategory])
-                                    @endforeach
                                     @endforeach
                                 </select>
                             </div>
                         </div>
+
+                        <div id="category_select_container"></div>
+
                         <div class="form-group row" id="brand">
                             <label class="col-md-3 col-from-label">{{translate('Brand')}}</label>
                             <div class="col-md-8">
@@ -103,23 +104,6 @@
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
-
-                        <div class="form-group row gutters-5">
-                            <div class="col-md-3">
-                                <input type="text" class="form-control" value="{{translate('Attributes')}}" disabled>
-                            </div>
-                            <div class="col-md-8">
-                                <select name="choice_attributes[]" id="choice_attributes" class="form-control aiz-selectpicker" data-selected-text-format="count" data-live-search="true" multiple data-placeholder="{{ translate('Choose Attributes') }}">
-                                    @foreach (\App\Models\Attribute::all() as $key => $attribute)
-                                    <option value="{{ $attribute->id }}">{{ $attribute->getTranslation('name') }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div>
-                            <p>{{ translate('Choose the attributes of this product and then input values of each attribute') }}</p>
-                            <br>
                         </div>
 
                         <div class="customer_choice_options" id="customer_choice_options">
@@ -289,17 +273,7 @@
 		else {
 			$(".action-btn").attr("attempted", 'true');
 		}
-        // Disable the submit button while evaluating if the form should be submitted
-        // $("button[type='submit']").prop('disabled', true);
 
-        // var valid = true;
-
-        // if (!valid) {
-            // e.preventDefault();
-
-            ////Reactivate the button if the form was not submitted
-            // $("button[type='submit']").button.prop('disabled', false);
-        // }
     });
 
 
@@ -309,9 +283,9 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             type:"POST",
-            url:'{{ route('admin.products.add-more-choice-option') }}',
+            url:'{{ route('seller.products.add-more-choice-option') }}',
             data:{
-               attribute_id: i
+            attribute_id: i
             },
             success: function(data) {
                 var obj = JSON.parse(data);
@@ -328,20 +302,9 @@
                     </div>\
                 </div>');
                 AIZ.plugins.bootstrapSelect('refresh');
-           }
-       });
-
-
+            }
+        });
     }
-
-    function delete_row(em){
-        $(em).closest('.form-group row').remove();
-    }
-
-    function delete_variant(em){
-        $(em).closest('.variant').remove();
-    }
-
 
 
     $('#choice_attributes').on('change', function() {
@@ -350,6 +313,64 @@
             add_more_customer_choice_option($(this).val(), $(this).text());
         });
     });
+
+    function get_custom_fields(category_id){
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type:"POST",
+            url:'{{ route('categories.getCategoryfields') }}',
+            data:{id: category_id},
+            dataType: 'JSON',
+            success: function(res) {
+                var len = res.length;
+                for(var i=0; i<len; i++){
+                    console.log(res);
+                    var id = res[i].id;
+                    var name = res[i].name;
+                    add_more_customer_choice_option(id, name);
+                }
+            }
+        });
+    }
+
+    function get_subcategories(category_id, data_select_id) {
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type:"POST",
+            url:'{{ route('categories.getSubcategories') }}',
+            data:{parent_id: category_id},
+            success: function(res) {
+                var subcategories=JSON.parse(res);
+                var date = new Date();
+                //reset subcategories
+                $('#category_select_container div').each(function () {
+                    if (parseInt($(this).attr('data-select-id')) > parseInt(data_select_id)) {
+                        $(this).remove();
+                    }
+                });
+                if (category_id == 0) {
+                    return false;
+                }
+                if (subcategories.length > 0) {
+                    var new_data_select_id = date.getTime();
+                    var select_tag = '<div class="form-group row" data-select-id="' + new_data_select_id + '"><label class="col-md-3 col-from-label">{{translate("subcategory")}}</label><div class="col-md-8"><select class="form-control aiz-selectpicker subcategories" name="category_ids[]" onchange="get_subcategories(this.value,' + new_data_select_id + ');">' +
+                        '<option value=""><?php echo translate("Select Category"); ?></option>';
+                    for (i = 0; i < subcategories.length; i++) {
+                        select_tag += '<option value="' + subcategories[i].id + '">' + subcategories[i].name + '</option>';
+                    }
+                    select_tag += '</select></div></div>';
+                    $('#category_select_container').append(select_tag);
+                    AIZ.plugins.bootstrapSelect('refresh');
+                }
+                $('#customer_choice_options').html('');
+                get_custom_fields(category_id);
+            }
+        });
+    }
 
 </script>
 
