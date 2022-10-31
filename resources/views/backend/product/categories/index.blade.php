@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('backend.layouts.app')
 
 @section('content')
 <div class="aiz-titlebar text-left mt-2 mb-3">
