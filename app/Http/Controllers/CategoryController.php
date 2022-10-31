@@ -252,13 +252,44 @@ class CategoryController extends Controller
 
     public function getCategoryfields(Request $request)
     {
-        $return=array();
-        $category = DB::table('categories')->where('id',$request->id)->first();
-        $parentIds=explode(',',$category->parent_tree);
+        $data = array();
+        $category=Category::where('id',$id)->first();
+        $parent_id=$category->parent_id;
+        array_push($data, $id);
+        if( $parent_id!=0){
+            array_push($data, $parent_id);
+        }
+        while($parent_id!=0){
+            $category=Category::where('id',$parent_id)->first();
+            if($category->parent_id>0){
+                array_push($data,$category->parent_id);
+            }else{
+                break;
+            }
 
-        $attribute_ids = AttributeCategory::whereIn('category_id', $parentIds)->orWhere('category_id', $request->id)->pluck('attribute_id')->toArray();
+            $parent_id=$category->parent_id;
+        }
 
-            $attributes = Attribute::whereIn('id', $attribute_ids)->get();
-        return json_encode($attributes, JSON_UNESCAPED_UNICODE);
+        $attributeIds=array();
+        foreach($data as $item){
+            if($attributeIds==null){
+                $id_array=AttributeCategory::where('category_id', $item)->pluck('attribute_id')->toArray();
+                if($id_array!=null){
+                    $attributeIds = $id_array;
+                    break;
+                }
+            }
+        }
+
+        return \json_encode(Attribute::whereIn('id', $attributeIds)->with('attribute_values')->get(),JSON_UNESCAPED_UNICODE);
+
+
+        // $category = DB::table('categories')->where('id',$request->id)->first();
+        // $parentIds=explode(',',$category->parent_tree);
+
+        // $attribute_ids = AttributeCategory::whereIn('category_id', $parentIds)->orWhere('category_id', $request->id)->pluck('attribute_id')->toArray();
+
+        //     $attributes = Attribute::whereIn('id', $attribute_ids)->get();
+        // return json_encode($attributes, JSON_UNESCAPED_UNICODE);
     }
 }

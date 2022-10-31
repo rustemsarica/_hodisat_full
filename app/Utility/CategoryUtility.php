@@ -97,4 +97,26 @@ class CategoryUtility
         }
 
     }
+
+    public function category_parent_tree($id)
+    {
+        $data = array();
+        $category=Category::where('id',$id)->first();
+        $parent_id=$category->parent_id;
+        array_push($data, $id);
+        if( $parent_id!=0){
+            array_push($data, $parent_id);
+        }
+        while($parent_id!=0){
+            $category=Category::where('id',$parent_id)->first();
+            if($category->parent_id>0){
+                array_push($data,$category->parent_id);
+            }else{
+                break;
+            }
+
+            $parent_id=$category->parent_id;
+        }
+        return $data;
+    }
 }
