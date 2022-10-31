@@ -94,6 +94,11 @@
                                     {{ translate('Login') }}
                                 </a>
                             </li>
+                            <li class="mb-2">
+                                <a class="opacity-80 hov-opacity-100 text-reset" href="{{ route('user.register') }}">
+                                    {{ translate('Register') }}
+                                </a>
+                            </li>
                         @endif
                         <li class="mb-2">
                             <a class="opacity-80 hov-opacity-100 text-reset" href="{{ route('purchase_history.index') }}">
