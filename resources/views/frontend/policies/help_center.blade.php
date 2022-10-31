@@ -72,9 +72,9 @@
 <section class="mb-4">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 m-auto front-header-search">
+            <div class="col-lg-6 m-auto">
                 <div class="position-relative flex-grow-1 m-auto" style="max-width: 500px">
-                    <form action="{{ route('search') }}" method="GET" class="stop-propagation" id="searcForm">
+                    <form method="GET" class="stop-propagation" id="searchSupportForm">
                         <div class="d-flex position-relative align-items-center">
                             <div class="input-group">
                                 <input type="text" class="border-0 border-lg form-control" id="support-search" name="support_search" @isset($query)
@@ -179,7 +179,7 @@
             if(searchKey.length > 0){
                 $('body').addClass("typed-support-search-box-shown");
 
-                $('.typed-search-box').removeClass('d-none');
+                $('.typed-support-search-box').removeClass('d-none');
                 $('.search-preloader').removeClass('d-none');
                 $.post('{{ route('search.ajax') }}', { _token: AIZ.data.csrf, support_search:searchKey}, function(data){
                     if(data == '0'){
