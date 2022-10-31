@@ -97,7 +97,7 @@ class ProductController extends Controller
         return view('seller.product.products.edit', compact('product', 'categories', 'category'));
     }
 
-    public function update(ProductRequest $request, Product $product)
+    public function update(Request $request, Product $product)
     {
         //Product
         $product = $this->productService->update($request->except([
