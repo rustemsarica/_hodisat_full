@@ -222,6 +222,10 @@ class ProductService
 
         unset($collection['button']);
 
+        $array = $collection['category_ids'];
+        $array = Arr::whereNotNull($array);
+        $collection['category_id'] = Arr::last($array);
+
         $data = $collection->merge(compact(
             'discount_start_date',
             'discount_end_date',
