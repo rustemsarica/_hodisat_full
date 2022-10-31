@@ -138,8 +138,8 @@
                 }
                 if (subcategories.length > 0) {
                     var new_data_select_id = date.getTime();
-                    var select_tag = '<div class="form-group row" data-select-id="' + new_data_select_id + '"><label class="col-md-3 col-from-label">{{__("Parent category")}}</label><div class="col-md-8"><select class="form-control aiz-selectpicker subcategories" name="parent_ids[]" onchange="get_subcategories(this.value,' + new_data_select_id + ');">' +
-                        '<option value=""><?php echo __("Select Category"); ?></option>';
+                    var select_tag = '<div class="form-group row" data-select-id="' + new_data_select_id + '"><label class="col-md-3 col-from-label">{{translate("Parent category")}}</label><div class="col-md-8"><select class="form-control aiz-selectpicker subcategories" name="parent_ids[]" onchange="get_subcategories(this.value,' + new_data_select_id + ');">' +
+                        '<option value=""><?php echo translate("Select Category"); ?></option>';
                     for (i = 0; i < subcategories.length; i++) {
                         select_tag += '<option value="' + subcategories[i].id + '">' + subcategories[i].name + '</option>';
                     }

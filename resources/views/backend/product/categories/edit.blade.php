@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-3 col-form-label">{{__('Parent Category')}}</label>
+                        <label class="col-md-3 col-form-label">{{translate('Parent Category')}}</label>
                         <div class="col-md-9">
                             <select class="select2 form-control aiz-selectpicker" name="parent_ids[]" data-toggle="select2" data-placeholder="Choose ..."data-live-search="true" onchange="get_subcategories(this.value, 0);"
                             @if ($category->parent_tree=='')
@@ -48,7 +48,7 @@
                                 data-selected="{{ $p_arr[0] }}"
                             @endif
                             >
-                                <option value="0">{{ __('No Parent') }}</option>
+                                <option value="0">{{ translate('No Parent') }}</option>
                                 @foreach ($categories as $acategory)
                                     <option value="{{ $acategory->id }}">{{ $acategory->getTranslation('name') }}</option>
                                 @endforeach
@@ -169,12 +169,12 @@
                 }
                 if (subcategories.length > 0) {
                     var new_data_select_id = date.getTime();
-                    var select_tag = '<div class="form-group row" data-select-id="' + category_id + '"><label class="col-md-3 col-from-label">{{__("Parent Category")}}</label><div class="col-md-8"><select class="form-control aiz-selectpicker subcategories" name="parent_ids[]" onchange="get_subcategories(this.value,' + category_id + ');"';
+                    var select_tag = '<div class="form-group row" data-select-id="' + category_id + '"><label class="col-md-3 col-from-label">{{translate("Parent Category")}}</label><div class="col-md-8"><select class="form-control aiz-selectpicker subcategories" name="parent_ids[]" onchange="get_subcategories(this.value,' + category_id + ');"';
                     if(category_id!={{$category->parent_id}}){
                         select_tag +=' data-selected="'+data_select_id+'"';
                     }
                     select_tag +='>' +
-                        '<option value=""><?php echo __("Select Category"); ?></option>';
+                        '<option value=""><?php echo translate("Select Category"); ?></option>';
                     for (i = 0; i < subcategories.length; i++) {
                         select_tag += '<option value="' + subcategories[i].id + '">' + subcategories[i].name + '</option>';
                     }
