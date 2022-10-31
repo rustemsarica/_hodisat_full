@@ -146,7 +146,7 @@
         <div class="row">
             <div class="col-8">
               <div class="tab-content" id="nav-tabContent">
-                <div class="accordion" id="accordion{{$support->id}}">
+                <div class="accordion" id="accordion-search">
                     @foreach ($supports as $item)
                     <div class="card mb-0">
                       <div class="card-header p-0" id="heading{{$item->id}}" type="button" data-toggle="collapse" data-target="#collapse{{$item->id}}" aria-expanded="true" aria-controls="collapse{{$item->id}}">
@@ -154,7 +154,7 @@
                             {{$item->title}}
                         </h2>
                       </div>
-                      <div id="collapse{{$item->id}}" class="collapse" aria-labelledby="heading{{$item->id}}" data-parent="#accordion{{$support->id}}">
+                      <div id="collapse{{$item->id}}" class="collapse" aria-labelledby="heading{{$item->id}}" data-parent="#accordion-search">
                         <div class="card-body">
                             {!!$item->text!!}
                         </div>
