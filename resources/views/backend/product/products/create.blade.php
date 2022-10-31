@@ -283,7 +283,7 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             type:"POST",
-            url:'{{ route('seller.products.add-more-choice-option') }}',
+            url:'{{ route('admin.products.add-more-choice-option') }}',
             data:{
             attribute_id: i
             },
