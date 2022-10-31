@@ -32,5 +32,21 @@
             </div>
         </div>
     </div>
+
+    <div class="row mb-4">
+        <div class="col-lg-4 m-auto">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-around">
+                        <i class="las la-paper-plane"></i>
+                        <a href="mailto:{{ get_setting('contact_email') }}" class="text-reset d-inline-block opacity-80 py-2">
+                            <i class="las la-mail-bulk"></i>
+                            <span>{{ get_setting('contact_email') }}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
