@@ -89,7 +89,7 @@
                                     <div class="col-lg-8">
                                         <select class="form-control aiz-selectpicker" name="parent_ids[]" onchange="get_subcategories(this.value, {{ $i }});"data-live-search="true">
                                             <option value="">{{translate("Select Category")}}</option>
-                                            @foreach (\App\Models\Category::where('parent_id',$cat_arr[$i])->get() as $subcat)
+                                            @foreach (\App\Models\Category::where('parent_id',$cat_arr[$i])->where('id','!=', $category->id)->get() as $subcat)
                                             <option value="{{ $subcat->id }}" <?php if(in_array($subcat->id,$cat_arr)) {echo "selected";} ?> >{{ $subcat->getTranslation('name') }}</option>
                                             @endforeach
                                         </select>
