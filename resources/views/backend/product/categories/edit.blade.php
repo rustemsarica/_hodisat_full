@@ -84,10 +84,10 @@
                                 </div>
                             </div>
                             @for ($i=0; $i<count($cat_arr);$i++)
-                                <div class="form-group row"  data-select-id="{{ $i }}">
+                                <div class="form-group row"  data-select-id="{{ $i+1 }}">
                                     <label class="col-lg-3 col-from-label">{{translate('Parent Category')}}</label>
                                     <div class="col-lg-8">
-                                        <select class="form-control aiz-selectpicker" name="parent_ids[]" onchange="get_subcategories(this.value, {{ $i }});"data-live-search="true">
+                                        <select class="form-control aiz-selectpicker" name="parent_ids[]" onchange="get_subcategories(this.value, {{ $i+1 }});"data-live-search="true">
                                             <option value="">{{translate("Select Category")}}</option>
                                             @foreach (\App\Models\Category::where('parent_id',$cat_arr[$i])->where('id','!=', $category->id)->get() as $subcat)
                                             <option value="{{ $subcat->id }}" <?php if(in_array($subcat->id,$cat_arr)) {echo "selected";} ?> >{{ $subcat->getTranslation('name') }}</option>
