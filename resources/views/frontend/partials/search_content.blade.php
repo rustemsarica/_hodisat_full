@@ -79,6 +79,7 @@
 
 @if (count($supports) > 0)
     <div>
+        <div class="px-2 py-1 text-uppercase fs-10 text-right text-muted bg-soft-secondary">Arama Sonuçları</div>
         <ul class="list-group list-group-raw">
             @foreach ($supports as $key => $value)
                 <li class="list-group-item py-1">
