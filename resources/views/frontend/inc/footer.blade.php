@@ -95,7 +95,7 @@
                                 </a>
                             </li>
                             <li class="mb-2">
-                                <a class="opacity-80 hov-opacity-100 text-reset" href="{{ route('user.register') }}">
+                                <a class="opacity-80 hov-opacity-100 text-reset" href="{{ route('user.registration') }}">
                                     {{ translate('Register') }}
                                 </a>
                             </li>
