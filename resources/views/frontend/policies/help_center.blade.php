@@ -6,13 +6,10 @@
             <div class="position-relative flex-grow-1 m-auto" style="max-width: 500px">
                 <form action="{{ route('search') }}" method="GET" class="stop-propagation" id="searcForm">
                     <div class="d-flex position-relative align-items-center">
-                        <div class="d-lg-none" data-toggle="class-toggle" data-target=".front-header-search">
-                            <button class="btn px-2" type="button"><i class="la la-2x la-long-arrow-left"></i></button>
-                        </div>
                         <div class="input-group">
                             <input type="text" class="border-0 border-lg form-control" id="search" name="keyword" @isset($query)
                                 value="{{ $query }}"
-                            @endisset placeholder="{{translate('I am shopping for...')}}" autocomplete="off">
+                            @endisset placeholder="{{translate('Search')}}" autocomplete="off">
                             <div class="input-group-append d-none d-lg-block">
                                 <div class="btn btn-primary" onclick="$('form#searcForm').submit();">
                                     <i class="la la-search la-flip-horizontal fs-18"></i>
