@@ -173,12 +173,12 @@
             });
         }
 
+        $("#username").value=""
         @if(get_setting('google_recaptcha') == 1)
         // making the CAPTCHA  a required field for form submission
 
         $(document).ready(function(){
             // alert('helloman');
-            $("#username").value=""
             $("#reg-form").on("submit", function(evt)
             {
                 var response = grecaptcha.getResponse();
