@@ -96,22 +96,7 @@
                                     </div>
                                 </div>
                             @endfor
-                            @php
-                                $category_subs=\App\Models\Category::where('parent_id', $category->parent_id)->where('id','!=',$category->id)->get();
-                            @endphp
-                            @if (!empty($category_subs) && count($category_subs)>0)
-                                <div class="form-group row"  data-select-id="{{ $i+1 }}">
-                                    <label class="col-lg-3 col-from-label"></label>
-                                    <div class="col-lg-8">
-                                        <select class="form-control aiz-selectpicker" name="category_ids[]" onchange="get_subcategories(this.value, {{ $i+1 }});"data-live-search="true">
-                                            <option value="">{{translate("Select Category")}}</option>
-                                            @foreach ($category_subs as $subcat)
-                                            <option value="{{ $subcat->id }}">{{ $subcat->getTranslation('name') }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                            @endif
+
                         @endif
                     </div>
 
