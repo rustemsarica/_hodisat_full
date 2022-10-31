@@ -72,7 +72,7 @@
                                 </a>
                             </li>
                             <li class="aiz-side-nav-item">
-                                <a href="{{route('admin.products.admin')}}" class="aiz-side-nav-link {{ areActiveRoutes(['products.admin', 'products.create', 'products.admin.edit']) }}" >
+                                <a href="{{route('admin.products.admin')}}" class="aiz-side-nav-link {{ areActiveRoutes(['admin.products.admin', 'admin.products.create', 'admin.products.admin.edit']) }}" >
                                     <span class="aiz-side-nav-text">{{ translate('In House Products') }}</span>
                                 </a>
                             </li>
