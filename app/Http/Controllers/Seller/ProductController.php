@@ -60,7 +60,7 @@ class ProductController extends Controller
         return view('seller.product.products.create', compact('categories'));
     }
 
-    public function store(ProductRequest $request)
+    public function store(Request $request)
     {
 
         if (addon_is_activated('seller_subscription')) {
