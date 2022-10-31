@@ -46,9 +46,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::where('parent_id', 0)
-            ->with('childrenCategories')
-            ->get();
+        $categories = Category::where('parent_id', 0)->get();
 
         return view('backend.product.categories.create', compact('categories'));
     }
@@ -72,8 +70,15 @@ class CategoryController extends Controller
         $category->meta_title = $request->meta_title;
         $category->meta_description = $request->meta_description;
 
-        if ($request->parent_id != "0") {
-            $category->parent_id = $request->parent_id;
+        $array = $request->parent_ids;
+        $array = Arr::whereNotNull($array);
+        $category->parent_id = Arr::last($array);
+
+        if(collect($array)->implode(',')!=0){
+            $category->parent_tree = collect($array)->implode(',');
+        }
+
+        if ($category->parent_id != "0") {
 
             $parent = Category::find($request->parent_id);
             $category->level = $parent->level + 1 ;
@@ -154,14 +159,22 @@ class CategoryController extends Controller
 
         $previous_level = $category->level;
 
-        if ($request->parent_id != "0") {
-            $category->parent_id = $request->parent_id;
+        $array = $request->parent_ids;
+        $array = Arr::whereNotNull($array);
+        $category->parent_id = Arr::last($array);
+
+        if(collect($array)->implode(',')!=0){
+            $category->parent_tree = collect($array)->implode(',');
+        }else{
+            $category->parent_tree ='';
+        }
+
+        if ($category->parent_id != "0") {
 
             $parent = Category::find($request->parent_id);
             $category->level = $parent->level + 1 ;
         }
         else{
-            $category->parent_id = 0;
             $category->level = 0;
         }
 

@@ -34,7 +34,7 @@
                     <div id="category_select_container">
                         @if ($category->parent_tree=='')
                             <div class="form-group row" data-select-id="0">
-                                <label class="col-lg-3 col-from-label">{{__('Category')}}</label>
+                                <label class="col-lg-3 col-from-label">{{translate('Category')}}</label>
                                 <div class="col-lg-8">
                                     <select class="form-control aiz-selectpicker" name="category_ids[]" data-selected="{{ $category->id }}" onchange="get_subcategories(this.value, 0);"data-live-search="true" required>
                                         @foreach ($categories as $cat)
@@ -51,7 +51,7 @@
                                     <label class="col-lg-3 col-from-label"></label>
                                     <div class="col-lg-8">
                                         <select class="form-control aiz-selectpicker" name="category_ids[]" onchange="get_subcategories(this.value, {{$category->id}});"data-live-search="true">
-                                            <option value="">{{__("Select Category")}}</option>
+                                            <option value="">{{translate("Select Category")}}</option>
                                             @foreach ($category_subs as $subcat)
                                             <option value="{{ $subcat->id }}">{{ $subcat->getTranslation('name') }}</option>
                                             @endforeach
@@ -65,10 +65,10 @@
                                 $i=1;
                             @endphp
                             <div class="form-group row">
-                                <label class="col-lg-3 col-from-label">{{__('Category')}}</label>
+                                <label class="col-lg-3 col-from-label">{{translate('Category')}}</label>
                                 <div class="col-lg-8">
                                     <select class="form-control aiz-selectpicker" name="category_ids[]" onchange="get_subcategories(this.value, 0);"data-live-search="true" required>
-                                        <option value="">{{__("Select Category")}}</option>
+                                        <option value="">{{translate("Select Category")}}</option>
                                         @foreach ($categories as $cat)
                                         <option value="{{ $cat->id }}"
                                         @if ($cat->id==$cat_arr[0])
@@ -84,7 +84,7 @@
                                     <label class="col-lg-3 col-from-label"></label>
                                     <div class="col-lg-8">
                                         <select class="form-control aiz-selectpicker" name="category_ids[]" onchange="get_subcategories(this.value, {{ $i }});"data-live-search="true">
-                                            <option value="">{{__("Select Category")}}</option>
+                                            <option value="">{{translate("Select Category")}}</option>
                                             @foreach (getSubCategories($cat) as $subcat)
                                             <option value="{{ $subcat->id }}" <?php if(in_array($subcat->id,$cat_arr) || $subcat->id==$category->id) {echo "selected";} ?> >{{ $subcat->getTranslation('name') }}</option>
                                             @endforeach
@@ -101,7 +101,7 @@
                                     <label class="col-lg-3 col-from-label"></label>
                                     <div class="col-lg-8">
                                         <select class="form-control aiz-selectpicker" name="category_ids[]" onchange="get_subcategories(this.value, {{ $i+1 }});"data-live-search="true">
-                                            <option value="">{{__("Select Category")}}</option>
+                                            <option value="">{{translate("Select Category")}}</option>
                                             @foreach ($category_subs as $subcat)
                                             <option value="{{ $subcat->id }}">{{ $subcat->getTranslation('name') }}</option>
                                             @endforeach
@@ -303,7 +303,7 @@
                     <div class="col-md-3">\
                         <input type="hidden" name="choice_options_'+ i +'[]" value="">\
                         <input type="hidden" name="choice_no[]" value="'+i+'">\
-                        <input type="text" class="form-control" name="choice[]" value="'+name+'" placeholder="{{ __('Choice Title') }}" readonly>\
+                        <input type="text" class="form-control" name="choice[]" value="'+name+'" placeholder="{{ translate('Choice Title') }}" readonly>\
                     </div>\
                     <div class="col-md-8">\
                         <select class="form-control aiz-selectpicker attribute_choice" data-live-search="true" name="choice_options_'+ i +'[]" multiple>\
@@ -394,7 +394,7 @@
                 if (subcategories.length > 0) {
                     var new_data_select_id = date.getTime();
                     var select_tag = '<div class="form-group row" data-select-id="' + new_data_select_id + '"><label class="col-md-3 col-from-label"></label><div class="col-md-8"><select class="form-control aiz-selectpicker subcategories" name="category_ids[]" onchange="get_subcategories(this.value,' + new_data_select_id + ');">' +
-                        '<option value=""><?php echo __("Select Category"); ?></option>';
+                        '<option value=""><?php echo translate("Select Category"); ?></option>';
                     for (i = 0; i < subcategories.length; i++) {
                         select_tag += '<option value="' + subcategories[i].id + '">' + subcategories[i].name + '</option>';
                     }

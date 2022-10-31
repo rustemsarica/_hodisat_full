@@ -22,20 +22,20 @@
                             <input type="text" placeholder="{{translate('Name')}}" id="name" name="name" class="form-control" required>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-md-3 col-form-label">{{translate('Parent Category')}}</label>
-                        <div class="col-md-9">
-                            <select class="select2 form-control aiz-selectpicker" name="parent_id" data-toggle="select2" data-placeholder="Choose ..." data-live-search="true">
+
+                    <div class="form-group row" id="category">
+                        <label class="col-md-3 col-from-label">{{translate('Parent Category')}} <span class="text-danger">*</span></label>
+                        <div class="col-md-8">
+                            <select class="form-control aiz-selectpicker" name="parent_ids[]" data-live-search="true" onchange="get_subcategories(this.value, 0);" required>
                                 <option value="0">{{ translate('No Parent') }}</option>
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->getTranslation('name') }}</option>
-                                    @foreach ($category->childrenCategories as $childCategory)
-                                        @include('categories.child_category', ['child_category' => $childCategory])
-                                    @endforeach
+                                <option value="{{ $category->id }}">{{ $category->getTranslation('name') }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
+                    <div id="category_select_container"></div>
+
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label">
                             {{translate('Ordering Number')}}
@@ -115,5 +115,41 @@
         </div>
     </div>
 </div>
-
+<script>
+    function get_subcategories(category_id, data_select_id) {
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type:"POST",
+            url:'{{ route('categories.getSubcategories') }}',
+            data:{parent_id: category_id},
+            success: function(res) {
+                var subcategories=JSON.parse(res);
+                var date = new Date();
+                //reset subcategories
+                $('#category_select_container div').each(function () {
+                    if (parseInt($(this).attr('data-select-id')) > parseInt(data_select_id)) {
+                        $(this).remove();
+                    }
+                });
+                if (category_id == 0) {
+                    return false;
+                }
+                if (subcategories.length > 0) {
+                    var new_data_select_id = date.getTime();
+                    var select_tag = '<div class="form-group row" data-select-id="' + new_data_select_id + '"><label class="col-md-3 col-from-label">{{__("Parent category")}}</label><div class="col-md-8"><select class="form-control aiz-selectpicker subcategories" name="parent_ids[]" onchange="get_subcategories(this.value,' + new_data_select_id + ');">' +
+                        '<option value=""><?php echo __("Select Category"); ?></option>';
+                    for (i = 0; i < subcategories.length; i++) {
+                        select_tag += '<option value="' + subcategories[i].id + '">' + subcategories[i].name + '</option>';
+                    }
+                    select_tag += '</select></div></div>';
+                    $('#category_select_container').append(select_tag);
+                    AIZ.plugins.bootstrapSelect('refresh');
+                }
+                $('#customer_choice_options').html('');
+            }
+       });
+    }
+</script>
 @endsection
