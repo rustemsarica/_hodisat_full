@@ -33,7 +33,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row my-2">
         <div class="col-4">
           <div class="list-group" id="list-tab" role="tablist">
             @foreach (\App\Models\Support::where('parent_id',0)->get() as $support)
@@ -72,7 +72,7 @@
     </div>
 
 
-    <div class="row my-2">
+    <div class="row mb-1">
         @if ( get_setting('widget_one_labels',null,App::getLocale()) !=  null )
             @foreach (json_decode( get_setting('widget_one_labels',null,App::getLocale()), true) as $key => $value)
             <div class="col">
