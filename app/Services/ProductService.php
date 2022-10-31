@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Utility\ProductUtility;
 use Combinations;
 use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
 
 class ProductService
 {
@@ -102,6 +103,10 @@ class ProductService
             $published = 0;
         }
         unset($collection['button']);
+
+        $array = $request->category_ids;
+        $array = Arr::whereNotNull($array);
+        $collection['category_id'] = Arr::last($array);
 
         $data = $collection->merge(compact(
             'user_id',

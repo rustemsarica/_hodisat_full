@@ -13,7 +13,6 @@ use Combinations;
 use Artisan;
 use Auth;
 use Str;
-use Illuminate\Support\Arr;
 
 use App\Services\ProductService;
 use App\Services\ProductFlashDealService;
@@ -70,9 +69,6 @@ class ProductController extends Controller
             }
         }
 
-        $array = $request->category_ids;
-        $array = Arr::whereNotNull($array);
-        $request->category_id = Arr::last($array);
         $product = $this->productService->store($request->except([
             '_token', 'choice', 'flash_deal_id', 'flash_discount', 'flash_discount_type'
         ]));
