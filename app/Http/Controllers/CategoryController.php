@@ -307,14 +307,14 @@ class CategoryController extends Controller
             array_push($data, $parent_id);
         }
         while($parent_id!=0){
-            $category=Category::where('id',$parent_id)->first();
-            if($category->parent_id>0){
-                array_push($data,$category->parent_id);
+            $parcategory=Category::where('id',$parent_id)->first();
+            if($parcategory->parent_id>0){
+                array_push($data,$parcategory->parent_id);
             }else{
                 break;
             }
 
-            $parent_id=$category->parent_id;
+            $parent_id=$parcategory->parent_id;
         }
         $category->parent_tree = implode(',', $data);
         $category->save();
