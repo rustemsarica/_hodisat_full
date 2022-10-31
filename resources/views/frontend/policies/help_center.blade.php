@@ -48,7 +48,7 @@
             @endforeach
         @endif
     </div>
-
+{{--
     <div class="row mb-4">
         <div class="col-lg-4 m-auto">
             <div class="card">
@@ -62,6 +62,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 @endsection
