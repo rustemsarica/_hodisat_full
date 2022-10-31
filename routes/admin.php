@@ -68,7 +68,7 @@ Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => ['auth', 'ad
         Route::get('/categories/destroy/{id}', 'destroy')->name('categories.destroy');
         Route::post('/categories/featured', 'updateFeatured')->name('categories.featured');
         Route::post('/categories/status', 'updateStatus')->name('categories.status');
-        Route::post('/categories/subcategories', 'CategoryController@getSubcategories')->name('categories.getSubcategories');
+        Route::get('/sub/categories/{id}', 'subCategories')->name('categories.sub');
         Route::post('/categories/reorder', 'categoryReorder')->name('categories.categoryReorder');
     });
 
