@@ -14,10 +14,10 @@
                             </div>
                             <div class="px-4 py-3 py-lg-4">
                                 <div class="">
-                                    <form id="reg-form" class="form-default" role="form" action="{{ route('register') }}" method="POST" autocomplete="nope">
+                                    <form id="reg-form" class="form-default" role="form" action="{{ route('register') }}" method="POST" autocomplete="off">
                                         @csrf
                                         <div class="form-group">
-                                            <input id="username" type="text" class="form-control {{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" required placeholder="{{ translate('Username') }}" autocomplete="nope" onkeyup="checkusername(this)" >
+                                            <input id="username" type="text" class="form-control {{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" required placeholder="{{ translate('Usernam&#8203;e') }}" autocomplete="nope" onkeyup="checkusername(this)" >
 
                                             @if ($errors->has('username'))
                                                 <span class="invalid-feedback" role="alert">
@@ -37,13 +37,13 @@
 
                                         @if (addon_is_activated('otp_system'))
                                             <div class="form-group phone-form-group mb-1">
-                                                <input type="tel" id="phone-code" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" value="{{ old('phone') }}" placeholder="" name="phone" autocomplete="nope">
+                                                <input type="tel" id="phone-code" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" value="{{ old('phone') }}" placeholder="" name="phone" autocomplete="off">
                                             </div>
 
                                             <input type="hidden" name="country_code" value="">
 
                                             <div class="form-group email-form-group mb-1 d-none">
-                                                <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{  translate('Email') }}" name="email"  autocomplete="nope">
+                                                <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{  translate('Email') }}" name="email"  autocomplete="off">
                                                 @if ($errors->has('email'))
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $errors->first('email') }}</strong>
@@ -56,7 +56,7 @@
                                             </div>
                                         @else
                                             <div class="form-group">
-                                                <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{  translate('Email') }}" name="email" autocomplete="nope">
+                                                <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{  translate('Email') }}" name="email" autocomplete="off">
                                                 @if ($errors->has('email'))
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $errors->first('email') }}</strong>
@@ -66,7 +66,7 @@
                                         @endif
 
                                         <div class="form-group">
-                                            <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{  translate('Password') }}" name="password" autocomplete="nope">
+                                            <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{  translate('Password') }}" name="password" autocomplete="off">
                                             @if ($errors->has('password'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('password') }}</strong>
