@@ -38,7 +38,7 @@
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label">{{__('Parent Category')}}</label>
                         <div class="col-md-9">
-                            <select class="select2 form-control rstech-selectpicker" name="parent_ids[]" data-toggle="select2" data-placeholder="Choose ..."data-live-search="true" onchange="get_subcategories(this.value, 0);"
+                            <select class="select2 form-control aiz-selectpicker" name="parent_ids[]" data-toggle="select2" data-placeholder="Choose ..."data-live-search="true" onchange="get_subcategories(this.value, 0);"
                             @if ($category->parent_tree=='')
                                data-selected="{{ $category->parent_id }}"
                             @else
@@ -169,7 +169,7 @@
                 }
                 if (subcategories.length > 0) {
                     var new_data_select_id = date.getTime();
-                    var select_tag = '<div class="form-group row" data-select-id="' + category_id + '"><label class="col-md-3 col-from-label">{{__("Parent Category")}}</label><div class="col-md-8"><select class="form-control rstech-selectpicker subcategories" name="parent_ids[]" onchange="get_subcategories(this.value,' + category_id + ');"';
+                    var select_tag = '<div class="form-group row" data-select-id="' + category_id + '"><label class="col-md-3 col-from-label">{{__("Parent Category")}}</label><div class="col-md-8"><select class="form-control aiz-selectpicker subcategories" name="parent_ids[]" onchange="get_subcategories(this.value,' + category_id + ');"';
                     if(category_id!={{$category->parent_id}}){
                         select_tag +=' data-selected="'+data_select_id+'"';
                     }
@@ -180,7 +180,7 @@
                     }
                     select_tag += '</select></div></div>';
                     $('#category_select_container').append(select_tag);
-                    RSTech.plugins.bootstrapSelect('refresh');
+                    AIZ.plugins.bootstrapSelect('refresh');
                 }
             }
        });
