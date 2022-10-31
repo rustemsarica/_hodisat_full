@@ -1055,6 +1055,22 @@ if (!function_exists('get_url_params')) {
     }
 }
 
+if (!function_exists('getSubCategoriesIds')) {
+    function getSubCategoriesIds($id)
+    {
+        $categories = new Category;
+        return $categories->subCategoriesIds($id);
+    }
+}
+
+if (!function_exists('getSubCategories')) {
+    function getSubCategories($id)
+    {
+        $categories = new Category;
+        return $categories->subCategories($id);
+    }
+}
+
 if (!function_exists('getHeaderCategories')) {
     function getHeaderCategories($id=null,$second=null)
     {
