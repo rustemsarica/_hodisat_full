@@ -177,7 +177,7 @@ class CategoryController extends Controller
         $array = Arr::whereNotNull($array);
         $category->parent_id = Arr::last($array);
 
-        if(collect($array)->implode(',')!=0){
+        if(count($array)>0){
             $category->parent_tree = collect($array)->implode(',');
         }else{
             $category->parent_tree ='';
