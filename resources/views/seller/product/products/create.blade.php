@@ -30,17 +30,17 @@
                     <div class="form-group row" id="category">
                         <label class="col-md-3 col-from-label">{{translate('Category')}}</label>
                         <div class="col-md-8">
-                            <select class="form-control aiz-selectpicker" name="category_id" id="category_id"
-                                data-live-search="true" required>
+                            <select class="form-control aiz-selectpicker" name="category_ids[]" data-live-search="true" onchange="get_subcategories(this.value, 0);" required>
+                                <option value="" disabled selected hidden>{{ translate("Select Category") }}</option>
                                 @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->getTranslation('name') }}</option>
-                                @foreach ($category->childrenCategories as $childCategory)
-                                @include('categories.child_category', ['child_category' => $childCategory])
-                                @endforeach
                                 @endforeach
                             </select>
                         </div>
                     </div>
+
+                    <div id="category_select_container"></div>
+
                     <div class="form-group row" id="brand">
                         <label class="col-md-3 col-from-label">{{translate('Brand')}}</label>
                         <div class="col-md-8">
@@ -251,6 +251,63 @@
                 add_more_customer_choice_option($(this).val(), $(this).text());
             });
         });
+
+        function get_custom_fields(category_id){
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type:"POST",
+                url:'{{ route('categories.getCategoryfields') }}',
+                data:{id: category_id},
+                dataType: 'JSON',
+                success: function(res) {
+                    var len = res.length;
+                    for(var i=0; i<len; i++){
+                        var id = res[i].id;
+                        var name = res[i].name;
+                        add_more_customer_choice_option(id, name);
+                    }
+                }
+            });
+        }
+
+        function get_subcategories(category_id, data_select_id) {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type:"POST",
+                url:'{{ route('categories.getSubcategories') }}',
+                data:{parent_id: category_id},
+                success: function(res) {
+                    var subcategories=JSON.parse(res);
+                    var date = new Date();
+                    //reset subcategories
+                    $('#category_select_container div').each(function () {
+                        if (parseInt($(this).attr('data-select-id')) > parseInt(data_select_id)) {
+                            $(this).remove();
+                        }
+                    });
+                    if (category_id == 0) {
+                        return false;
+                    }
+                    if (subcategories.length > 0) {
+                        var new_data_select_id = date.getTime();
+                        var select_tag = '<div class="form-group row" data-select-id="' + new_data_select_id + '"><label class="col-md-3 col-from-label">{{translate("subcategory")}}</label><div class="col-md-8"><select class="form-control rstech-selectpicker subcategories" name="category_ids[]" onchange="get_subcategories(this.value,' + new_data_select_id + ');">' +
+                            '<option value=""><?php echo translate("Select Category"); ?></option>';
+                        for (i = 0; i < subcategories.length; i++) {
+                            select_tag += '<option value="' + subcategories[i].id + '">' + subcategories[i].name + '</option>';
+                        }
+                        select_tag += '</select></div></div>';
+                        $('#category_select_container').append(select_tag);
+                        RSTech.plugins.bootstrapSelect('refresh');
+                    }
+                    $('#customer_choice_options').html('');
+                    get_custom_fields(category_id);
+                }
+            });
+        }
 
 </script>
 @endsection

@@ -9,6 +9,7 @@ use App\Models\CategoryTranslation;
 use App\Utility\CategoryUtility;
 use Illuminate\Support\Str;
 use Cache;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -229,5 +230,33 @@ class CategoryController extends Controller
         Category::whereIn('id',CategoryUtility::children_ids($request->id, true))->orWhere('id',$request->id)->update(['status'=>$request->status]);
         Cache::forget('featured_categories');
         return back();
+    }
+
+    public function getSubcategories(Request $request)
+    {
+
+        $locale = $request->session()->get('locale');
+        if($locale==''){
+            $locale = env('DEFAULT_LANGUAGE');
+        }
+        $categories = DB::table('categories')
+        ->join('category_translations', function ($join) use ($locale) {
+            $join->on('categories.id', '=', 'category_translations.category_id')->where('category_translations.lang', $locale);
+        })
+        ->select('categories.id','category_translations.name','categories.parent_id')->where('parent_id',$request->parent_id)->get();
+
+        return json_encode($categories, JSON_UNESCAPED_UNICODE);
+    }
+
+    public function getCategoryfields(Request $request)
+    {
+        $return=array();
+        $category = DB::table('categories')->where('id',$request->id)->first();
+        $parentIds=explode(',',$category->parent_tree);
+
+        $attribute_ids = AttributeCategory::whereIn('category_id', $parentIds)->orWhere('category_id', $request->id)->pluck('attribute_id')->toArray();
+
+            $attributes = Attribute::whereIn('id', $attribute_ids)->get();
+        return json_encode($attributes, JSON_UNESCAPED_UNICODE);
     }
 }

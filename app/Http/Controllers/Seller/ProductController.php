@@ -46,18 +46,16 @@ class ProductController extends Controller
     {
         if (addon_is_activated('seller_subscription')) {
             if (seller_package_validity_check()) {
-                $categories = Category::where('parent_id', 0)
-                    ->with('childrenCategories')
-                    ->get();
+                $categories = Category::where('parent_id', 0)->get();
                 return view('seller.product.products.create', compact('categories'));
             } else {
                 flash(translate('Please upgrade your package.'))->warning();
                 return back();
             }
         }
-        $categories = Category::where('parent_id', 0)
-            ->with('childrenCategories')
-            ->get();
+
+        $categories = Category::where('parent_id', 0)->get();
+
         return view('seller.product.products.create', compact('categories'));
     }
 
