@@ -24,11 +24,11 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = Category::where('parent_id', '!=',0)->get();
-        foreach($categories as $category){
-            $this->create_parent_tree($category->id);
-        }
-        return;
+        // $categories = Category::where('parent_id', '!=',0)->get();
+        // foreach($categories as $category){
+        //     $this->create_parent_tree($category->id);
+        // }
+        // return;
         $sort_search =null;
         $categories = Category::where('parent_id', 0)->orderBy('order_level', 'desc');
         if ($request->has('search')){
