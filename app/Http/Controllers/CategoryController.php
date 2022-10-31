@@ -80,7 +80,7 @@ class CategoryController extends Controller
 
         if ($category->parent_id != "0") {
 
-            $parent = Category::find($request->parent_id);
+            $parent = Category::find($category->parent_id);
             $category->level = $parent->level + 1 ;
         }
 
@@ -171,7 +171,7 @@ class CategoryController extends Controller
 
         if ($category->parent_id != "0") {
 
-            $parent = Category::find($request->parent_id);
+            $parent = Category::find($category->parent_id);
             $category->level = $parent->level + 1 ;
         }
         else{

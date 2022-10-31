@@ -147,7 +147,6 @@
                     $('#category_select_container').append(select_tag);
                     AIZ.plugins.bootstrapSelect('refresh');
                 }
-                $('#customer_choice_options').html('');
             }
        });
     }
