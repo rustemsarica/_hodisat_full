@@ -73,7 +73,7 @@ class ProductController extends Controller
         $array = $request->category_ids;
         $array = Arr::whereNotNull($array);
         $request->category_id = Arr::last($array);
-
+        $request->save();
         $product = $this->productService->store($request->except([
             '_token', 'choice', 'flash_deal_id', 'flash_discount', 'flash_discount_type'
         ]));
