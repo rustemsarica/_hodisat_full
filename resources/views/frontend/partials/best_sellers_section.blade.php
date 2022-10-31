@@ -13,7 +13,7 @@
                     <div class="col-12 col-md-5">
                         <a href="{{ route('shop.visit', $seller->user->username) }}" class="d-block p-3">
                             <img
-                                style="background-color: whitesmoke; object-fit:cover; width:100%; height:100px;" src="@if ($seller->shop->logo !== null) {{ uploaded_asset($seller->shop->logo) }} @else {{ static_asset('assets/img/placeholder.jpg') }} @endif"
+                                style="background-color: whitesmoke; object-fit:cover; width:100%; height:100px;" src="@if ($seller->shop->logo !== null) {{ uploaded_asset($seller->shop->logo) }} @else {{ static_asset('assets/img/avatar-place.jpg') }} @endif"
                                 alt="{{ $seller->user->username }}"
                                 width="100"
                                 height="100"
