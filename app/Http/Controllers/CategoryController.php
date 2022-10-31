@@ -253,9 +253,9 @@ class CategoryController extends Controller
     public function getCategoryfields(Request $request)
     {
         $data = array();
-        $category=Category::where('id',$id)->first();
+        $category=Category::where('id',$request->id)->first();
         $parent_id=$category->parent_id;
-        array_push($data, $id);
+        array_push($data, $request->id);
         if( $parent_id!=0){
             array_push($data, $parent_id);
         }
@@ -281,7 +281,7 @@ class CategoryController extends Controller
             }
         }
 
-        return \json_encode(Attribute::whereIn('id', $attributeIds)->with('attribute_values')->get(),JSON_UNESCAPED_UNICODE);
+        return json_encode(Attribute::whereIn('id', $attributeIds)->with('attribute_values')->get(),JSON_UNESCAPED_UNICODE);
 
 
         // $category = DB::table('categories')->where('id',$request->id)->first();
