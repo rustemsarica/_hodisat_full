@@ -69,7 +69,7 @@
                                 $i=1;
                             @endphp
                             <div class="form-group row">
-                                <label class="col-lg-3 col-from-label">{{translate('Category')}}</label>
+                                <label class="col-lg-3 col-from-label">{{translate('Parent Category')}}</label>
                                 <div class="col-lg-8">
                                     <select class="form-control aiz-selectpicker" name="parent_ids[]" onchange="get_subcategories(this.value, 0);"data-live-search="true" required>
                                         <option value="">{{translate("Select Category")}}</option>
@@ -85,7 +85,7 @@
                             </div>
                             @for ($i; $i<count($cat_arr);$i++)
                                 <div class="form-group row"  data-select-id="{{ $i }}">
-                                    <label class="col-lg-3 col-from-label"></label>
+                                    <label class="col-lg-3 col-from-label">{{translate('Parent Category')}}</label>
                                     <div class="col-lg-8">
                                         <select class="form-control aiz-selectpicker" name="parent_ids[]" onchange="get_subcategories(this.value, {{ $i }});"data-live-search="true">
                                             <option value="">{{translate("Select Category")}}</option>
