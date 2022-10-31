@@ -2,7 +2,7 @@
 <section class="bg-dark py-5 text-light footer-widget">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-xl-4 text-center text-md-left">
+            <div class="col-lg-3 text-center text-md-left">
                 <div class="mt-4">
                     <a href="{{ route('home') }}" class="d-block">
                         @if(get_setting('footer_logo') != null)
@@ -76,7 +76,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4 col-lg-3">
+            <div class="col-lg-3 col-md-4">
                 <div class="text-center text-md-left mt-4">
                     <div class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4">
                         {{ translate('My Account') }}
