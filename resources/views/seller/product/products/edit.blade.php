@@ -15,7 +15,6 @@
     <div class="row gutters-5">
         <div class="col-lg-8 m-auto">
             <input name="_method" type="hidden" value="POST">
-            <input type="hidden" name="lang" value="tr">
             <input type="hidden" name="id" value="{{ $product->id }}">
             <input type="hidden" name="slug" value="{{ $product->slug }}">
             <input type="hidden" name="thumbnail_img" value="{{ $product->thumbnail_img }}">
