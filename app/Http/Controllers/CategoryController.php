@@ -10,6 +10,7 @@ use App\Utility\CategoryUtility;
 use Illuminate\Support\Str;
 use Cache;
 use Illuminate\Support\Facades\DB;
+use App;
 
 class CategoryController extends Controller
 {
@@ -235,7 +236,7 @@ class CategoryController extends Controller
     public function getSubcategories(Request $request)
     {
 
-        $locale = $request->session()->get('locale');
+        $locale = App::getLocale();
         if($locale==''){
             $locale = env('DEFAULT_LANGUAGE');
         }
