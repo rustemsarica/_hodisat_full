@@ -297,7 +297,6 @@
             url:'{{ route('seller.products.add-more-choice-option') }}',
             data:{
                attribute_id: i,
-               product_id: {{$product->id}}
             },
             success: function(data) {
                 var obj = JSON.parse(data);
