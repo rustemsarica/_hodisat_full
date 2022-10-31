@@ -112,27 +112,6 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <div class="col-md-3">
-                            <input type="text" class="form-control" value="{{translate('Attributes')}}" disabled>
-                        </div>
-                        <div class="col-md-8">
-                            <select name="choice_attributes[]" id="choice_attributes"
-                                class="form-control aiz-selectpicker" data-live-search="true"
-                                data-selected-text-format="count" multiple
-                                data-placeholder="{{ translate('Choose Attributes') }}">
-                                @foreach (\App\Models\Attribute::all() as $key => $attribute)
-                                <option value="{{ $attribute->id }}">{{ $attribute->getTranslation('name') }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div>
-                        <p>{{ translate('Choose the attributes of this product and then input values of each attribute') }}
-                        </p>
-                        <br>
-                    </div>
-
                     <div class="customer_choice_options" id="customer_choice_options">
 
                     </div>
