@@ -167,7 +167,7 @@ class SearchController extends Controller
             $supports =Support::where(function ($q) use ($query) {
                 foreach (explode(' ', trim($query)) as $word) {
                     $q->where('title', 'like', '%' . $word . '%')
-                        ->orWhere('description', 'like', '%' . $word . '%');
+                        ->orWhere('text', 'like', '%' . $word . '%');
                 }
             })
             ->limit(5)
