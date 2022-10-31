@@ -12,6 +12,7 @@ use App\Models\Shop;
 use App\Models\User;
 use App\Models\Attribute;
 use App\Models\AttributeCategory;
+use App\Models\Support;
 use App\Utility\CategoryUtility;
 
 class SearchController extends Controller
@@ -156,6 +157,23 @@ class SearchController extends Controller
     //Suggestional Search
     public function ajax_search(Request $request)
     {
+        $supports = array();
+        if($request->has('support_search')){
+            $products = array();
+            $categories = array();
+            $keywords = array();
+            $shops = array();
+            $query = $request->support_search;
+            $supports =Support::where(function ($q) use ($query) {
+                foreach (explode(' ', trim($query)) as $word) {
+                    $q->where('title', 'like', '%' . $word . '%')
+                        ->orWhere('description', 'like', '%' . $word . '%');
+                }
+            })
+            ->limit(5)
+            ->get();
+            return view('frontend.partials.search_content', compact('products', 'categories', 'keywords', 'shops', 'supports'));
+        }
         $keywords = array();
         $query = $request->search;
 
@@ -176,7 +194,7 @@ class SearchController extends Controller
         $shops = Shop::whereIn('user_id', $users)->get();
 
         if (sizeof($keywords) > 0 || sizeof($categories) > 0 || sizeof($products) > 0 || sizeof($shops) > 0) {
-            return view('frontend.partials.search_content', compact('products', 'categories', 'keywords', 'shops'));
+            return view('frontend.partials.search_content', compact('products', 'categories', 'keywords', 'shops', 'supports'));
         }
         return '0';
     }

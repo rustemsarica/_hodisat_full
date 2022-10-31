@@ -76,3 +76,15 @@
         @endif
     </div>
 @endif
+
+@if (count($supports) > 0)
+    <div>
+        <ul class="list-group list-group-raw">
+            @foreach ($supports as $key => $value)
+                <li class="list-group-item py-1">
+                    <a class="text-reset hov-text-primary" >{{ $value->getTranslation('title') }}</a>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+@endif

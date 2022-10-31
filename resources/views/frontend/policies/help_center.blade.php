@@ -181,7 +181,7 @@
 
                 $('.typed-search-box').removeClass('d-none');
                 $('.search-preloader').removeClass('d-none');
-                $.post('{{ route('search.ajax') }}', { _token: AIZ.data.csrf, search:searchKey}, function(data){
+                $.post('{{ route('search.ajax') }}', { _token: AIZ.data.csrf, support_search:searchKey}, function(data){
                     if(data == '0'){
                         // $('.typed-search-box').addClass('d-none');
                         $('#support-search-content').html(null);
