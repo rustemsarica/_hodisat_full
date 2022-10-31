@@ -15,9 +15,11 @@
                     <div class="d-inline-block d-md-block mb-4">
                         <form class="form-inline" method="POST" action="{{ route('subscribers.store') }}">
                             @csrf
-                            <div class="input-group mb-0">
+                              <div class="input-group mb-0">
                                 <input type="email" name="email" class="form-control" placeholder="{{ translate('Your Email Address') }}" aria-label="{{ translate('Your Email Address') }}" aria-describedby="button-addon2" required>
-                                <button class="btn btn-primary" type="submit" id="button-addon2">{{ translate('Subscribe') }}</button>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit" id="button-addon2">{{ translate('Subscribe') }}</button>
+                                </div>
                               </div>
                         </form>
                     </div>
