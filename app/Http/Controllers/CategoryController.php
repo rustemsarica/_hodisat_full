@@ -316,7 +316,7 @@ class CategoryController extends Controller
 
             $parent_id=$category->parent_id;
         }
-        $category->parent_tree = explode(',', $data);
+        $category->parent_tree = implode(',', $data);
         $category->save();
     }
 }
