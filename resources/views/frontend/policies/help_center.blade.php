@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section('content')
 <style>
-    .active{
+    .list-group-item .active{
         background-color: var(--primary) !important;
         border-color: var(--primary) !important;
     }
