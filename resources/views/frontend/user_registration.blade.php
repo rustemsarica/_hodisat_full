@@ -17,7 +17,7 @@
                                     <form id="reg-form" class="form-default" role="form" action="{{ route('register') }}" method="POST" autocomplete="off">
                                         @csrf
                                         <div class="form-group">
-                                            <input id="username" type="text" class="form-control {{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" required placeholder="{{ translate('Username') }}" autocomplete="off" onkeyup="checkusername(this)" autofill="off">
+                                            <input id="username" type="text" class="form-control {{ $errors->has('username') ? ' is-invalid' : '' }}" name="kadi" required placeholder="{{ translate('Username') }}" autocomplete="off" onkeyup="checkusername(this)">
 
                                             @if ($errors->has('username'))
                                                 <span class="invalid-feedback" role="alert">
