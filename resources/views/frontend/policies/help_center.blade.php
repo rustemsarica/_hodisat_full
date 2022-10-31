@@ -1,5 +1,10 @@
 @extends('frontend.layouts.app')
 @section('content')
+<style>
+    .active{
+        background-color: var(--primary);
+    }
+</style>
 <div class="container">
     <div class="row my-4">
         <div class="col-lg-6 m-auto">
