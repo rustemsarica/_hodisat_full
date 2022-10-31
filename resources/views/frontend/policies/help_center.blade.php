@@ -45,7 +45,6 @@
         <div class="col-8">
           <div class="tab-content" id="nav-tabContent">
             @foreach (\App\Models\Support::where('parent_id',0)->get() as $support)
-                <a class="list-group-item list-group-item-action " id="list-{{$support->id}}-list" data-toggle="list" href="#list-{{$support->id}}" role="tab" aria-controls="{{$support->id}}">{{$support->title}}</a>
                 <div class="tab-pane fade " id="list-{{$support->id}}" role="tabpanel" aria-labelledby="list-{{$support->id}}-list">
                     <div class="accordion" id="accordionExample">
                         @foreach (\App\Models\Support::where('parent_id',$support->id)->get() as $item)
