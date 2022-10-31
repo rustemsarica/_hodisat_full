@@ -185,12 +185,12 @@
                     if(data == '0'){
                         // $('.typed-search-box').addClass('d-none');
                         $('#support-search-content').html(null);
-                        $('.typed-search-box .search-nothing').removeClass('d-none').html('Sorry, nothing found for <strong>"'+searchKey+'"</strong>');
+                        $('.typed-support-search-box .search-nothing').removeClass('d-none').html('Sorry, nothing found for <strong>"'+searchKey+'"</strong>');
                         $('.search-preloader').addClass('d-none');
 
                     }
                     else{
-                        $('.typed-search-box .search-nothing').addClass('d-none').html(null);
+                        $('.typed-support-search-box .search-nothing').addClass('d-none').html(null);
                         $('#support-search-content').html(data);
                         $('.search-preloader').addClass('d-none');
                     }
