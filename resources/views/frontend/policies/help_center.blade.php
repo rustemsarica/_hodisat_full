@@ -12,7 +12,7 @@
                             @endisset placeholder="{{translate('Search')}}" autocomplete="off">
                             <div class="input-group-append d-none d-lg-block">
                                 <div class="btn btn-primary" onclick="$('form#searcForm').submit();">
-                                    <i class="la la-search la-flip-horizontal fs-18"></i>
+                                    <i class="la la-search la-flip-horizontal fs-18"></i> {{translate('Search')}}
                                 </div>
                             </div>
                         </div>
