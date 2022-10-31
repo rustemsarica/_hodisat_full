@@ -33,7 +33,46 @@
         </div>
     </div>
 
-    <div class="row mb-1">
+    <div class="row">
+        <div class="col-4">
+          <div class="list-group" id="list-tab" role="tablist">
+            @foreach (\App\Models\Support::where('parent_id',0) as $support)
+                <a class="list-group-item list-group-item-action active" id="list-{{$support->id}}-list" data-toggle="list" href="#list-{{$support->id}}" role="tab" aria-controls="{{$support->id}}">{{$support->title}}</a>
+            @endforeach
+
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="tab-content" id="nav-tabContent">
+            @foreach (\App\Models\Support::where('parent_id',0) as $support)
+                <a class="list-group-item list-group-item-action active" id="list-{{$support->id}}-list" data-toggle="list" href="#list-{{$support->id}}" role="tab" aria-controls="{{$support->id}}">{{$support->title}}</a>
+                <div class="tab-pane fade show active" id="list-{{$support->id}}" role="tabpanel" aria-labelledby="list-{{$support->id}}-list">
+                    <div class="accordion" id="accordionExample">
+                        @foreach (\App\Models\Support::where('parent_id',$support->id) as $item)
+                        <div class="card">
+                          <div class="card-header" id="heading{{$item->id}}">
+                            <h2 class="mb-0">
+                              <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{$item->id}}" aria-expanded="true" aria-controls="collapse{{$item->id}}">
+                                {{$item->title}}
+                              </button>
+                            </h2>
+                          </div>
+
+                          <div id="collapse{{$item->id}}" class="collapse show" aria-labelledby="heading{{$item->id}}" data-parent="#accordionExample">
+                            <div class="card-body">
+                                {{$item->text}}
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+          </div>
+        </div>
+    </div>
+
+
+    <div class="row my-1">
         @if ( get_setting('widget_one_labels',null,App::getLocale()) !=  null )
             @foreach (json_decode( get_setting('widget_one_labels',null,App::getLocale()), true) as $key => $value)
             <div class="col">
