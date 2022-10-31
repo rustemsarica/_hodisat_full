@@ -77,7 +77,7 @@
                     <form action="{{ route('search') }}" method="GET" class="stop-propagation" id="searcForm">
                         <div class="d-flex position-relative align-items-center">
                             <div class="input-group">
-                                <input type="text" class="border-0 border-lg form-control" id="support-search" name="keyword" @isset($query)
+                                <input type="text" class="border-0 border-lg form-control" id="support-search" name="support_search" @isset($query)
                                     value="{{ $query }}"
                                 @endisset placeholder="{{translate('Search')}}" autocomplete="off">
                             </div>
