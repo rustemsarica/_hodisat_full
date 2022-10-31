@@ -56,7 +56,7 @@
                         @foreach (\App\Models\Support::where('parent_id',$support->id)->get() as $item)
                         <div class="card mb-0">
                           <div class="card-header p-0" id="heading{{$item->id}}" type="button" data-toggle="collapse" data-target="#collapse{{$item->id}}" aria-expanded="true" aria-controls="collapse{{$item->id}}">
-                            <h2 class="mb-0 px-2 btn-link fs-14">
+                            <h2 class="mb-0 px-4 btn-link fs-14">
                                 {{$item->title}}
                             </h2>
                           </div>
