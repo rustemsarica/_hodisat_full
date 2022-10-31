@@ -527,6 +527,10 @@ class HomeController extends Controller
         return response()->json([
             'result' => true
         ]);
+    }
 
+    public function help_center()
+    {
+        return view('frontend.policies.help_center');
     }
 }

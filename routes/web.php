@@ -130,11 +130,12 @@ Route::controller(HomeController::class)->group(function () {
 
 
     // Policies
-    Route::get('/seller-policy', 'sellerpolicy')->name('sellerpolicy');
-    Route::get('/return-policy', 'returnpolicy')->name('returnpolicy');
-    Route::get('/support-policy', 'supportpolicy')->name('supportpolicy');
-    Route::get('/terms', 'terms')->name('terms');
-    Route::get('/privacy-policy', 'privacypolicy')->name('privacypolicy');
+    Route::get('/satici-politikasi', 'sellerpolicy')->name('sellerpolicy');
+    Route::get('/iade-politikasi', 'returnpolicy')->name('returnpolicy');
+    Route::get('/destek-politikasi', 'supportpolicy')->name('supportpolicy');
+    Route::get('/kullanim-kosullari', 'terms')->name('terms');
+    Route::get('/gizlilik-politikasi', 'privacypolicy')->name('privacypolicy');
+    Route::get('/yardim-merkezi', 'help_center')->name('helpcenter');
 
     Route::get('/track-your-order', 'trackOrder')->name('orders.track');
 });
