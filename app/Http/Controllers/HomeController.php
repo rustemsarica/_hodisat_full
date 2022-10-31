@@ -532,8 +532,8 @@ class HomeController extends Controller
 
     public function help_center(Request $request)
     {
-        $support_search;
-        $supports=[];
+        $support_search="";
+        $supports=array();
         if($request->has('support_search')){
             $support_search=$request->support_search;
             $supports = Support::where(function ($q) use ($support_search) {
