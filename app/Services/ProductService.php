@@ -49,7 +49,7 @@ class ProductService
         unset($collection['flat_shipping_cost']);
 
         $slug = Str::slug($collection['name']);
-        $same_slug_count = Product::where('slug', 'LIKE', $slug . '%')->count();
+        $same_slug_count = Product::where('slug', 'like', $slug.'%')->count();
         $slug_suffix = $same_slug_count>0 ? '-' + $same_slug_count + 1 : '';
         $slug .= $slug_suffix;
 
