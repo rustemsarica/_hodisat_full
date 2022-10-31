@@ -21,6 +21,7 @@ use App\Mail\SecondEmailVerifyMailManager;
 use App\Models\AffiliateConfig;
 use App\Models\Page;
 use App\Models\ProductQuery;
+use App\Models\Support;
 use Mail;
 use Illuminate\Auth\Events\PasswordReset;
 use Cache;
@@ -529,9 +530,22 @@ class HomeController extends Controller
         ]);
     }
 
-    public function help_center()
+    public function help_center(Request $request)
     {
+        $support_search;
+        $supports=[];
+        if($request->has('support_search')){
+            $support_search=$request->support_search;
+            $supports = Support::where(function ($q) use ($support_search) {
+                foreach (explode(' ', trim($support_search)) as $word) {
+                    $q->where('title', 'like', '%' . $word . '%')
+                        ->orWhere('text', 'like', '%' . $word . '%');
+                }
+            })
+            ->limit(5)
+            ->get();
+        }
         $page =  Page::where('type', 'help_center_page')->first();
-        return view('frontend.policies.help_center', compact('page'));
+        return view('frontend.policies.help_center', compact('page','support_search','supports'));
     }
 }
