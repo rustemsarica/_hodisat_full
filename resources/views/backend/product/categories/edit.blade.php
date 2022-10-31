@@ -36,19 +36,27 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-3 col-form-label">{{translate('Parent Category')}}</label>
+                        <label class="col-md-3 col-form-label">{{__('Parent Category')}}</label>
                         <div class="col-md-9">
-                            <select class="select2 form-control aiz-selectpicker" name="parent_id" data-toggle="select2" data-placeholder="Choose ..."data-live-search="true" data-selected="{{ $category->parent_id }}">
-                                <option value="0">{{ translate('No Parent') }}</option>
+                            <select class="select2 form-control rstech-selectpicker" name="parent_ids[]" data-toggle="select2" data-placeholder="Choose ..."data-live-search="true" onchange="get_subcategories(this.value, 0);"
+                            @if ($category->parent_tree=='')
+                               data-selected="{{ $category->parent_id }}"
+                            @else
+                                @php
+                                    $p_arr=explode(',',$category->parent_tree);
+                                @endphp
+                                data-selected="{{ $p_arr[0] }}"
+                            @endif
+                            >
+                                <option value="0">{{ __('No Parent') }}</option>
                                 @foreach ($categories as $acategory)
                                     <option value="{{ $acategory->id }}">{{ $acategory->getTranslation('name') }}</option>
-                                    @foreach ($acategory->childrenCategories as $childCategory)
-                                        @include('categories.child_category', ['child_category' => $childCategory])
-                                    @endforeach
                                 @endforeach
                             </select>
                         </div>
                     </div>
+                    <div id="category_select_container"></div>
+
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label">
                             {{translate('Ordering Number')}}
@@ -134,5 +142,63 @@
     </div>
 </div>
 
+
+@endsection
+@section('script')
+<script type="text/javascript">
+
+    function get_subcategories(category_id, data_select_id) {
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type:"POST",
+            url:'{{ route('categories.getSubcategories') }}',
+            data:{parent_id: category_id},
+            success: function(res) {
+                var subcategories=JSON.parse(res);
+                var date = new Date();
+                //reset subcategories
+                $('#category_select_container div').each(function () {
+                    if (parseInt($(this).attr('data-select-id')) > parseInt(data_select_id)) {
+                        $(this).remove();
+                    }
+                });
+                if (category_id == 0) {
+                    return false;
+                }
+                if (subcategories.length > 0) {
+                    var new_data_select_id = date.getTime();
+                    var select_tag = '<div class="form-group row" data-select-id="' + category_id + '"><label class="col-md-3 col-from-label">{{__("Parent Category")}}</label><div class="col-md-8"><select class="form-control rstech-selectpicker subcategories" name="parent_ids[]" onchange="get_subcategories(this.value,' + category_id + ');"';
+                    if(category_id!={{$category->parent_id}}){
+                        select_tag +=' data-selected="'+data_select_id+'"';
+                    }
+                    select_tag +='>' +
+                        '<option value=""><?php echo __("Select Category"); ?></option>';
+                    for (i = 0; i < subcategories.length; i++) {
+                        select_tag += '<option value="' + subcategories[i].id + '">' + subcategories[i].name + '</option>';
+                    }
+                    select_tag += '</select></div></div>';
+                    $('#category_select_container').append(select_tag);
+                    RSTech.plugins.bootstrapSelect('refresh');
+                }
+            }
+       });
+    }
+
+    function onLoadCats() {
+        @if (!empty($category->parent_tree))
+            @php
+                $array = explode(',',$category->parent_tree);
+            @endphp
+            @for ($i=0;$i<count($array)-1;$i++)
+                get_subcategories(<?= $array[$i]; ?>,<?= $array[$i+1]; ?>);
+            @endfor
+        @endif
+        get_subcategories({{$category->parent_id}},{{$category->parent_id}});
+    }
+
+    onLoadCats();
+</script>
 
 @endsection
