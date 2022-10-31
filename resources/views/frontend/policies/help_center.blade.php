@@ -56,6 +56,19 @@
     </div>
 </section>
 
+@if ($page->getTranslation('content')!=null && $page->getTranslation('content')!="")
+<section class="mb-4">
+    <div class="container">
+        <div class="p-4 bg-white rounded shadow-sm overflow-hidden mw-100 text-left">
+            @php
+                echo $page->getTranslation('content');
+            @endphp
+        </div>
+    </div>
+</section>
+@endif
+
+
 <section class="mb-4">
     <div class="container">
         <div class="row">
@@ -92,15 +105,6 @@
     </div>
 </section>
 
-<section class="mb-4">
-    <div class="container">
-        <div class="p-4 bg-white rounded shadow-sm overflow-hidden mw-100 text-left">
-            @php
-                echo $page->getTranslation('content');
-            @endphp
-        </div>
-    </div>
-</section>
 
 
 <section class="mb-4">
