@@ -208,10 +208,10 @@ class ProductController extends Controller
 
         $product = Product::findOrFail($id);
 
+        $category = Category::find($product->category->id);
         $categories = Category::where('parent_id', 0)
-            ->with('childrenCategories')
             ->get();
-        return view('backend.product.products.edit', compact('product', 'categories'));
+        return view('backend.product.products.edit', compact('product', 'categories', 'category'));
     }
 
     /**
@@ -224,11 +224,11 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         // $categories = Category::all();
+        $category = Category::find($product->category->id);
         $categories = Category::where('parent_id', 0)
-            ->with('childrenCategories')
             ->get();
 
-        return view('backend.product.products.edit', compact('product', 'categories'));
+        return view('backend.product.products.edit', compact('product', 'categories', 'category'));
     }
 
     /**

@@ -161,7 +161,7 @@
                         </div>
                     </div>
 
-                    </div>
+                </div>
 
         </div>
 
@@ -185,8 +185,6 @@
                             </select>
                         </div>
                     </div>
-
-
 
                     <div class="customer_choice_options" id="customer_choice_options">
                         @foreach (json_decode($product->choice_options) as $key => $choice_option)
