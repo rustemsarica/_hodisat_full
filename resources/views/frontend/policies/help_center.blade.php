@@ -46,7 +46,7 @@
           <div class="tab-content" id="nav-tabContent">
             @foreach (\App\Models\Support::where('parent_id',0)->get() as $support)
                 <div class="tab-pane fade " id="list-{{$support->id}}" role="tabpanel" aria-labelledby="list-{{$support->id}}-list">
-                    <div class="accordion" id="accordionExample">
+                    <div class="accordion" id="accordion{{$support->id}}">
                         @foreach (\App\Models\Support::where('parent_id',$support->id)->get() as $item)
                         <div class="card">
                           <div class="card-header" id="heading{{$item->id}}">
@@ -57,7 +57,7 @@
                             </h2>
                           </div>
 
-                          <div id="collapse{{$item->id}}" class="collapse show" aria-labelledby="heading{{$item->id}}" data-parent="#accordionExample">
+                          <div id="collapse{{$item->id}}" class="collapse" aria-labelledby="heading{{$item->id}}" data-parent="#accordion{{$support->id}}">
                             <div class="card-body">
                                 {!!$item->text!!}
                             </div>
