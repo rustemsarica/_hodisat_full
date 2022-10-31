@@ -104,24 +104,6 @@
     <div class="container">
         <div class="row">
             <div class="col-4">
-                <div class="col-lg-6 m-auto">
-                    <div class="position-relative flex-grow-1 m-auto" style="max-width: 500px">
-                        <form method="GET" class="stop-propagation" id="searchSupportForm">
-                            <div class="d-flex position-relative align-items-center">
-                                <div class="input-group">
-                                    <input type="text" class="border-0 border-lg form-control" id="support-search" name="support_search" @isset($support_search)
-                                        value="{{ $support_search }}"
-                                    @endisset placeholder="{{translate('Search')}}" autocomplete="off">
-                                    <div class="input-group-append d-none d-lg-block">
-                                        <div class="btn btn-primary" onclick="$('form#searchSupportForm').submit();">
-                                            <i class="la la-search la-flip-horizontal fs-18"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
               <div class="list-group" id="list-tab" role="tablist">
                 @foreach (\App\Models\Support::where('parent_id',0)->get() as $support)
                     <a class="list-group-item list-group-item-action p-4 fs-16" id="list-{{$support->id}}-list" data-toggle="list" href="#list-{{$support->id}}" role="tab" aria-controls="{{$support->id}}">{{$support->title}}</a>
