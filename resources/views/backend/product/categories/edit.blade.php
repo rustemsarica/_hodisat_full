@@ -98,7 +98,7 @@
                                 <?php $i++; ?>
                             @endforeach
                             @php
-                                $category_subs=getSubCategories($category->id);
+                                $category_subs=\App\Models\Category::where('parent_id', $category->parent_id)->whereNot('id',$category->id)->get();
                             @endphp
                             @if (!empty($category_subs) && count($category_subs)>0)
                                 <div class="form-group row"  data-select-id="{{ $i+1 }}">
