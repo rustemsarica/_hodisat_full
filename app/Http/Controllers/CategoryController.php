@@ -103,7 +103,7 @@ class CategoryController extends Controller
         $category_translation->save();
 
         flash(translate('Category has been inserted successfully'))->success();
-        return redirect()->route('categories.index');
+        return redirect()->route('admin.categories.index');
     }
 
     /**
