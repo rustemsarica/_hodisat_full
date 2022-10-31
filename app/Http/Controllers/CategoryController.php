@@ -144,9 +144,7 @@ class CategoryController extends Controller
         $lang = $request->lang;
         $category = Category::findOrFail($id);
         $categories = Category::where('parent_id', 0)
-            ->with('childrenCategories')
-            ->whereNotIn('id', CategoryUtility::children_ids($category->id, true))->where('id', '!=' , $category->id)
-            ->orderBy('name','asc')
+            ->orderBy('level','asc')
             ->get();
 
         return view('backend.product.categories.edit', compact('category', 'categories', 'lang'));
