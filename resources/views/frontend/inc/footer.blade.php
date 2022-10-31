@@ -15,12 +15,10 @@
                     <div class="d-inline-block d-md-block mb-4">
                         <form class="form-inline" method="POST" action="{{ route('subscribers.store') }}">
                             @csrf
-                            <div class="form-group mb-0">
-                                <input type="email" class="form-control" placeholder="{{ translate('Your Email Address') }}" name="email" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">
-                                {{ translate('Subscribe') }}
-                            </button>
+                            <div class="input-group mb-0">
+                                <input type="email" name="email" class="form-control" placeholder="{{ translate('Your Email Address') }}" aria-label="{{ translate('Your Email Address') }}" aria-describedby="button-addon2" required>
+                                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">{{ translate('Subscribe') }}</button>
+                              </div>
                         </form>
                     </div>
                     <div class="w-300px mw-100 mx-auto mx-md-0">
