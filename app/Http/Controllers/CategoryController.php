@@ -37,7 +37,7 @@ class CategoryController extends Controller
             $categories = $categories->where('name', 'like', '%'.$sort_search.'%');
         }
         $categories = $categories->orderBy('level','asc')->paginate(20);
-        return view('admin.product.categories.index', compact('categories', 'sort_search','reorders'));
+        return view('backend.product.categories.index', compact('categories', 'sort_search','reorders'));
     }
 
     public function subCategories(Request $request, $id)
@@ -52,7 +52,7 @@ class CategoryController extends Controller
             $categories = $categories->where('name', 'like', '%'.$sort_search.'%');
         }
         $categories = $categories->orderBy('level','asc')->paginate(20);
-        return view('admin.product.categories.index', compact('categories', 'sort_search', 'parent','reorders'));
+        return view('backend.product.categories.index', compact('categories', 'sort_search', 'parent','reorders'));
     }
 
     /**
