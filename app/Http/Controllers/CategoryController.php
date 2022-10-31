@@ -249,7 +249,7 @@ class CategoryController extends Controller
         Cache::forget('featured_categories');
 
         flash(translate('Category has been deleted successfully'))->success();
-        return redirect()->route('categories.index');
+        return redirect()->route('admin.categories.index');
     }
 
     public function updateFeatured(Request $request)
