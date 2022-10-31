@@ -389,5 +389,8 @@ Route::controller(PageController::class)->group(function () {
     Route::get('/{slug}', 'show_custom_page')->name('custom-pages.show_custom_page');
 });
 
-Route::post('/categories/subcategories', 'CategoryController@get_subcategories')->name('categories.getSubcategories');
-Route::post('/categories/fields', 'CategoryController@getCategoryfields')->name('categories.getCategoryfields');
+Route::controller(CategoryController::class)->group(function () {
+    Route::post('/categories/subcategories', 'get_subcategories')->name('categories.getSubcategories');
+    Route::post('/categories/fields', 'getCategoryfields')->name('categories.getCategoryfields');
+});
+
