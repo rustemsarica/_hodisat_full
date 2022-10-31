@@ -301,7 +301,7 @@ class CategoryController extends Controller
     public function create_parent_tree($id)
     {
         $data = array();
-        $category=Category::where('id',$request->id)->first();
+        $category=Category::where('id',$id)->first();
         $parent_id=$category->parent_id;
         if( $parent_id!=0){
             array_push($data, $parent_id);
