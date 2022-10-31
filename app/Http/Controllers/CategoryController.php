@@ -316,6 +316,7 @@ class CategoryController extends Controller
 
             $parent_id=$parcategory->parent_id;
         }
+        $data = array_reverse($data);
         $category->parent_tree = implode(',', $data);
         $category->save();
     }
