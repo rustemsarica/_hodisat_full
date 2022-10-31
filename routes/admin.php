@@ -62,7 +62,7 @@ Route::get('/admin', [AdminController::class, 'admin_dashboard'])->name('admin.d
 Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => ['auth', 'admin']], function() {
 
     // category
-    Route::resource('categories', CategoryController::class)->only('index','store', 'create');
+    Route::resource('categories', CategoryController::class)->only('index','store', 'create', 'update');
     Route::controller(CategoryController::class)->group(function () {
         Route::get('/categories/edit/{id}', 'edit')->name('categories.edit');
         Route::get('/categories/destroy/{id}', 'destroy')->name('categories.destroy');
