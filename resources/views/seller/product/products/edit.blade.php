@@ -287,23 +287,6 @@
 
 @section('script')
 <script type="text/javascript">
-    $(document).ready(function (){
-        show_hide_shipping_div();
-    });
-
-    $("[name=shipping_type]").on("change", function (){
-        show_hide_shipping_div();
-    });
-
-    function show_hide_shipping_div() {
-        var shipping_val = $("[name=shipping_type]:checked").val();
-
-        $(".flat_rate_shipping_div").hide();
-
-        if(shipping_val == 'flat_rate'){
-            $(".flat_rate_shipping_div").show();
-        }
-    }
 
     function add_more_customer_choice_option(i, name){
         $.ajax({
@@ -332,41 +315,12 @@
                     </div>\
                 </div>');
                 AIZ.plugins.bootstrapSelect('refresh');
-                update_sku();
            }
        });
 
     }
 
 
-
-    function delete_row(em){
-        $(em).closest('.form-group').remove();
-        update_sku();
-    }
-
-    function delete_variant(em){
-        $(em).closest('.variant').remove();
-    }
-
-    function update_sku(){
-        $.ajax({
-           type:"POST",
-           url:'{{ route('products.sku_combination_edit') }}',
-           data:$('#choice_form').serialize(),
-           success: function(data){
-                $('#sku_combination').html(data);
-                AIZ.uploader.previewGenerate();
-                AIZ.plugins.fooTable();
-                if (data.length > 1) {
-                    $('#show-hide-div').hide();
-                }
-                else {
-                    $('#show-hide-div').show();
-                }
-           }
-        });
-    }
 
     AIZ.plugins.tagify();
 
@@ -397,7 +351,6 @@
             }
         });
 
-        update_sku();
     });
 
     function get_custom_fields(category_id){
@@ -461,7 +414,6 @@
     $(document).ready(function(){
 
         get_custom_fields({{$product->category_id}});
-        update_sku();
         $('.remove-files').on('click', function(){
             $(this).parents(".col-md-4").remove();
         });
