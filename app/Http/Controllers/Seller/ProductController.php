@@ -71,6 +71,7 @@ class ProductController extends Controller
         }
 
         $array = $request->category_ids;
+        return $array;
         $array = Arr::whereNotNull($array);
         $request->category_id = Arr::last($array);
 
