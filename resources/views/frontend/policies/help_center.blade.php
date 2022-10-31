@@ -68,7 +68,6 @@
 </section>
 @endif
 
-
 <section class="mb-4">
     <div class="container">
         <div class="row">
@@ -80,20 +79,14 @@
                                 <input type="text" class="border-0 border-lg form-control" id="support-search" name="support_search" @isset($support_search)
                                     value="{{ $support_search }}"
                                 @endisset placeholder="{{translate('Search')}}" autocomplete="off">
+                                <div class="input-group-append d-none d-lg-block">
+                                    <div class="btn btn-primary" onclick="$('form#searchSupportForm').submit();">
+                                        <i class="la la-search la-flip-horizontal fs-18"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </form>
-                    <div class="typed-support-search-box stop-propagation document-click-d-none d-none bg-white rounded shadow-lg position-absolute left-0 top-100 w-100" style="min-height: 200px">
-                        <div class="search-preloader absolute-top-center">
-                            <div class="dot-loader"><div></div><div></div><div></div></div>
-                        </div>
-                        <div class="search-nothing d-none p-3 text-center fs-16">
-
-                        </div>
-                        <div id="support-search-content" class="text-left">
-
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -195,42 +188,3 @@
 
 @endsection
 
-@section('script')
- <script>
-        $('#support-search').on('keyup', function(){
-        supportSearch();
-        });
-
-        $('#support-search').on('focus', function(){
-            supportSearch();
-        });
-
-        function supportSearch(){
-            var searchKey = $('#support-search').val();
-            if(searchKey.length > 0){
-                $('body').addClass("typed-support-search-box-shown");
-
-                $('.typed-support-search-box').removeClass('d-none');
-                $('.search-preloader').removeClass('d-none');
-                $.post('{{ route('search.ajax') }}', { _token: AIZ.data.csrf, support_search:searchKey}, function(data){
-                    if(data == '0'){
-                        // $('.typed-search-box').addClass('d-none');
-                        $('#support-search-content').html(null);
-                        $('.typed-support-search-box .search-nothing').removeClass('d-none').html('Sorry, nothing found for <strong>"'+searchKey+'"</strong>');
-                        $('.search-preloader').addClass('d-none');
-
-                    }
-                    else{
-                        $('.typed-support-search-box .search-nothing').addClass('d-none').html(null);
-                        $('#support-search-content').html(data);
-                        $('.search-preloader').addClass('d-none');
-                    }
-                });
-            }
-            else {
-                $('.typed-support-search-box').addClass('d-none');
-                $('body').removeClass("typed-support-search-box-shown");
-            }
-        }
- </script>
-@endsection
