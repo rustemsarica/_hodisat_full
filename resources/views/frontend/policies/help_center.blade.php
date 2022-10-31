@@ -2,7 +2,8 @@
 @section('content')
 <style>
     .active{
-        background-color: var(--primary);
+        background-color: var(--primary) !important;
+        border-color: var(--primary) !important;
     }
 </style>
 <div class="container">
