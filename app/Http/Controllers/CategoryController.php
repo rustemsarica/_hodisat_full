@@ -233,7 +233,7 @@ class CategoryController extends Controller
         return back();
     }
 
-    public function getSubcategories(Request $request)
+    public function get_subcategories(Request $request)
     {
 
         $locale = App::getLocale();
