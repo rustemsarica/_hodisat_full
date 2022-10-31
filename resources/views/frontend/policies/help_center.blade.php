@@ -100,6 +100,7 @@
     </div>
 </section>
 
+@if(count($supports)==0)
 <section class="mb-4">
     <div class="container">
         <div class="row">
@@ -139,6 +140,34 @@
         </div>
     </div>
 </section>
+@else
+<section class="mb-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+              <div class="tab-content" id="nav-tabContent">
+                <div class="accordion" id="accordion{{$support->id}}">
+                    @foreach ($supports as $item)
+                    <div class="card mb-0">
+                      <div class="card-header p-0" id="heading{{$item->id}}" type="button" data-toggle="collapse" data-target="#collapse{{$item->id}}" aria-expanded="true" aria-controls="collapse{{$item->id}}">
+                        <h2 class="mb-0 px-4 btn-link fs-14">
+                            {{$item->title}}
+                        </h2>
+                      </div>
+                      <div id="collapse{{$item->id}}" class="collapse" aria-labelledby="heading{{$item->id}}" data-parent="#accordion{{$support->id}}">
+                        <div class="card-body">
+                            {!!$item->text!!}
+                        </div>
+                      </div>
+                    </div>
+                    @endforeach
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
 
 <section class="mb-4">
     <div class="container">
