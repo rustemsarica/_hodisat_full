@@ -236,11 +236,8 @@ class CategoryController extends Controller
     public function get_subcategories(Request $request)
     {
 
-        $locale = App::getLocale();
-        if($locale=='' || $locale == null){
-            $locale = env('DEFAULT_LANGUAGE');
-        }
-        $categories = DB::table('categories')->where('parent_id',$request->parent_id)->get();
+
+        $categories = [];
 
         return json_encode($categories, JSON_UNESCAPED_UNICODE);
     }
