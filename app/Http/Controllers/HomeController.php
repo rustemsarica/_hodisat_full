@@ -531,6 +531,7 @@ class HomeController extends Controller
 
     public function help_center()
     {
-        return view('frontend.policies.help_center');
+        $page =  Page::where('type', 'help_center_page')->first();
+        return view('frontend.policies.help_center', compact('page'));
     }
 }
