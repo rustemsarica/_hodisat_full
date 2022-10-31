@@ -72,6 +72,11 @@
                             </li>
                             @endforeach
                         @endif
+                        <li class="mb-2">
+                            <a href="{{ route('helpcenter') }}" class="opacity-80 hov-opacity-100 text-reset">
+                                {{ translate("Help Center") }}
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
