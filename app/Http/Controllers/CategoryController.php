@@ -30,13 +30,29 @@ class CategoryController extends Controller
         // }
         // return;
         $sort_search =null;
-        $categories = Category::where('parent_id', 0)->orderBy('order_level', 'desc');
+        $categories = Category::where('parent_id', 0);
+        $reorders=DB::table('categories')->select('id')->where('parent_id', 0)->get();
         if ($request->has('search')){
             $sort_search = $request->search;
             $categories = $categories->where('name', 'like', '%'.$sort_search.'%');
         }
-        $categories = $categories->paginate(15);
-        return view('backend.product.categories.index', compact('categories', 'sort_search'));
+        $categories = $categories->orderBy('level','asc')->paginate(20);
+        return view('admin.product.categories.index', compact('categories', 'sort_search','reorders'));
+    }
+
+    public function subCategories(Request $request, $id)
+    {
+        $sort_search =null;
+
+        $categories = Category::where('parent_id', $id);
+        $reorders=DB::table('categories')->select('id')->where('parent_id', $id)->get();
+        $parent = Category::where('id', $id)->first();
+        if ($request->has('search')){
+            $sort_search = $request->search;
+            $categories = $categories->where('name', 'like', '%'.$sort_search.'%');
+        }
+        $categories = $categories->orderBy('level','asc')->paginate(20);
+        return view('admin.product.categories.index', compact('categories', 'sort_search', 'parent','reorders'));
     }
 
     /**
@@ -332,5 +348,14 @@ class CategoryController extends Controller
         $data = array_reverse($data);
         $category->parent_tree = implode(',', $data);
         $category->save();
+    }
+
+    public function categoryReorder(Request $request)
+    {
+        $categories=json_decode($request->json_categories);
+        foreach($categories as $row){
+            Category::where('id',$row->id)->update(['level'=>$row->level]);
+        }
+
     }
 }
