@@ -33,13 +33,13 @@
         </div>
     </div>
 
-    <div class="row mb-2">
+    <div class="row mb-1">
         @if ( get_setting('widget_one_labels',null,App::getLocale()) !=  null )
             @foreach (json_decode( get_setting('widget_one_labels',null,App::getLocale()), true) as $key => $value)
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <a href="{{ json_decode( get_setting('widget_one_links'), true)[$key] }}" class="opacity-80 hov-opacity-100 text-reset">
+                        <a href="{{ json_decode( get_setting('widget_one_links'), true)[$key] }}" class="opacity-80 hov-opacity-100 text-reset fs-16">
                         {{ $value }}
                         </a>
                     </div>
