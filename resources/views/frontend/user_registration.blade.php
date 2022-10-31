@@ -17,7 +17,7 @@
                                     <form id="reg-form" class="form-default" role="form" action="{{ route('register') }}" method="POST" autocomplete="off">
                                         @csrf
                                         <div class="form-group">
-                                            <input id="some_id" type="text" class="form-control {{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" required placeholder="{{ translate('Username') }}" autocomplete="username" onkeyup="checkusername(this)">
+                                            <input id="username" type="search" class="form-control {{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" required placeholder="{{ translate('Username') }}" autocomplete="off" onkeyup="checkusername(this)">
 
                                             @if ($errors->has('username'))
                                                 <span class="invalid-feedback" role="alert">
@@ -173,11 +173,6 @@
             });
         }
 
-        $(document).ready(function() {
-            var some_id = $('#some_id');
-            some_id.prop('type', 'text');
-            some_id.removeAttr('autocomplete');
-        });
         @if(get_setting('google_recaptcha') == 1)
         // making the CAPTCHA  a required field for form submission
 
