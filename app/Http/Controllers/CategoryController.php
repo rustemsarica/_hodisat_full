@@ -237,7 +237,7 @@ class CategoryController extends Controller
     {
 
         $locale = App::getLocale();
-        if($locale==''){
+        if($locale=='' || $locale == null){
             $locale = env('DEFAULT_LANGUAGE');
         }
         $categories = DB::table('categories')

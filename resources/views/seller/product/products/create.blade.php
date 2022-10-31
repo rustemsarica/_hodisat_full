@@ -294,14 +294,14 @@
                     }
                     if (subcategories.length > 0) {
                         var new_data_select_id = date.getTime();
-                        var select_tag = '<div class="form-group row" data-select-id="' + new_data_select_id + '"><label class="col-md-3 col-from-label">{{translate("subcategory")}}</label><div class="col-md-8"><select class="form-control rstech-selectpicker subcategories" name="category_ids[]" onchange="get_subcategories(this.value,' + new_data_select_id + ');">' +
+                        var select_tag = '<div class="form-group row" data-select-id="' + new_data_select_id + '"><label class="col-md-3 col-from-label">{{translate("subcategory")}}</label><div class="col-md-8"><select class="form-control aiz-selectpicker subcategories" name="category_ids[]" onchange="get_subcategories(this.value,' + new_data_select_id + ');">' +
                             '<option value=""><?php echo translate("Select Category"); ?></option>';
                         for (i = 0; i < subcategories.length; i++) {
                             select_tag += '<option value="' + subcategories[i].id + '">' + subcategories[i].name + '</option>';
                         }
                         select_tag += '</select></div></div>';
                         $('#category_select_container').append(select_tag);
-                        RSTech.plugins.bootstrapSelect('refresh');
+                        AIZ.plugins.bootstrapSelect('refresh');
                     }
                     $('#customer_choice_options').html('');
                     get_custom_fields(category_id);
