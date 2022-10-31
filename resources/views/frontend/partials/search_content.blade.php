@@ -83,7 +83,7 @@
         <ul class="list-group list-group-raw">
             @foreach ($supports as $key => $value)
                 <li class="list-group-item py-1">
-                    <a class="text-reset hov-text-primary" >{{ $value->title }}</a>
+                    <a href="{{route('helpcenter')}}?parent={{$value->parent_id}}&id={{$value->id}}" class="text-reset hov-text-primary" >{{ $value->title }}</a>
                 </li>
             @endforeach
         </ul>
