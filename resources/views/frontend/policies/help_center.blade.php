@@ -34,6 +34,12 @@
         background-color: var(--primary) !important;
         border-color: var(--primary) !important;
     }
+    .card-header{
+        background-color: var(--soft-primary) !important;
+    }
+    .collapsed{
+        background-color: white !important;
+    }
 </style>
 
 <section class="pt-4 mb-4">
