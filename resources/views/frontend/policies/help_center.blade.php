@@ -36,7 +36,7 @@
     <div class="row">
         <div class="col-4">
           <div class="list-group" id="list-tab" role="tablist">
-            @foreach (\App\Models\Support::where('parent_id',0) as $support)
+            @foreach (\App\Models\Support::where('parent_id',0)->get() as $support)
                 <a class="list-group-item list-group-item-action active" id="list-{{$support->id}}-list" data-toggle="list" href="#list-{{$support->id}}" role="tab" aria-controls="{{$support->id}}">{{$support->title}}</a>
             @endforeach
 
@@ -44,11 +44,11 @@
         </div>
         <div class="col-8">
           <div class="tab-content" id="nav-tabContent">
-            @foreach (\App\Models\Support::where('parent_id',0) as $support)
+            @foreach (\App\Models\Support::where('parent_id',0)->get() as $support)
                 <a class="list-group-item list-group-item-action active" id="list-{{$support->id}}-list" data-toggle="list" href="#list-{{$support->id}}" role="tab" aria-controls="{{$support->id}}">{{$support->title}}</a>
                 <div class="tab-pane fade show active" id="list-{{$support->id}}" role="tabpanel" aria-labelledby="list-{{$support->id}}-list">
                     <div class="accordion" id="accordionExample">
-                        @foreach (\App\Models\Support::where('parent_id',$support->id) as $item)
+                        @foreach (\App\Models\Support::where('parent_id',$support->id)->get() as $item)
                         <div class="card">
                           <div class="card-header" id="heading{{$item->id}}">
                             <h2 class="mb-0">
