@@ -48,7 +48,7 @@
                 <div class="tab-pane fade " id="list-{{$support->id}}" role="tabpanel" aria-labelledby="list-{{$support->id}}-list">
                     <div class="accordion" id="accordion{{$support->id}}">
                         @foreach (\App\Models\Support::where('parent_id',$support->id)->get() as $item)
-                        <div class="card">
+                        <div class="card mb-0">
                           <div class="card-header" id="heading{{$item->id}}">
                             <h2 class="mb-0">
                               <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{$item->id}}" aria-expanded="true" aria-controls="collapse{{$item->id}}">
