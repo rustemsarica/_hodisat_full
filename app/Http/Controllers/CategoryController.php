@@ -244,7 +244,7 @@ class CategoryController extends Controller
             $join->on('categories.id', '=', 'category_translations.category_id')->where('category_translations.lang', $locale);
         })->select('categories.id','category_translations.name','categories.parent_id')->get();
 
-        return $categories;
+        return json_encode($categories, JSON_UNESCAPED_UNICODE);
     }
 
     public function getCategoryfields(Request $request)
