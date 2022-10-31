@@ -114,7 +114,7 @@
             <div class="col-8">
               <div class="tab-content" id="nav-tabContent">
                 @foreach (\App\Models\Support::where('parent_id',0)->get() as $support)
-                    <div class="tab-pane fade @if($support->id==1) show @endif" id="list-{{$support->id}}" role="tabpanel" aria-labelledby="list-{{$support->id}}-list">
+                    <div class="tab-pane fade @if($support->id==1) show active @endif" id="list-{{$support->id}}" role="tabpanel" aria-labelledby="list-{{$support->id}}-list">
                         <div class="accordion" id="accordion{{$support->id}}">
                             @foreach (\App\Models\Support::where('parent_id',$support->id)->get() as $item)
                             <div class="card mb-0">
