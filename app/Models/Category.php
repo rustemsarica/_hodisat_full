@@ -42,4 +42,25 @@ class Category extends Model
     {
         return $this->belongsToMany(Attribute::class);
     }
+
+    public function subCategoriesIds($id, $container = array())
+    {
+        $children = DB::table('categories')->select('id')->where('parent_id',$id)->get();
+
+        if (!empty($children)) {
+            foreach ($children as $child) {
+                $container[] = $child->id;
+                $container = $this->subCategoriesIds($child->id, $container);
+            }
+        }
+
+        return $container;
+    }
+
+    public function subCategories($id)
+    {
+        $children = $this->where('parent_id',$id)->get();
+
+        return $children;
+    }
 }
