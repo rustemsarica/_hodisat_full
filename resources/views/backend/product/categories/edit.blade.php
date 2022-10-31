@@ -83,7 +83,7 @@
                                     </select>
                                 </div>
                             </div>
-                            @for ($i; $i<count($cat_arr);$i++)
+                            @for ($i=0; $i<count($cat_arr);$i++)
                                 <div class="form-group row"  data-select-id="{{ $i }}">
                                     <label class="col-lg-3 col-from-label">{{translate('Parent Category')}}</label>
                                     <div class="col-lg-8">
