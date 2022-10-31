@@ -281,7 +281,7 @@ class CategoryController extends Controller
             }
         }
 
-        return json_encode(Attribute::whereIn('id', $attributeIds)->with('attribute_values')->get(),JSON_UNESCAPED_UNICODE);
+        return json_encode(Attribute::whereIn('id', $attributeIds)->get(),JSON_UNESCAPED_UNICODE);
 
 
         // $category = DB::table('categories')->where('id',$request->id)->first();
