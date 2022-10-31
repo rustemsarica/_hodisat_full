@@ -37,7 +37,7 @@
         <div class="col-4">
           <div class="list-group" id="list-tab" role="tablist">
             @foreach (\App\Models\Support::where('parent_id',0)->get() as $support)
-                <a class="list-group-item list-group-item-action p-2 fs-16" id="list-{{$support->id}}-list" data-toggle="list" href="#list-{{$support->id}}" role="tab" aria-controls="{{$support->id}}">{{$support->title}}</a>
+                <a class="list-group-item list-group-item-action p-4 fs-16" id="list-{{$support->id}}-list" data-toggle="list" href="#list-{{$support->id}}" role="tab" aria-controls="{{$support->id}}">{{$support->title}}</a>
             @endforeach
 
           </div>
