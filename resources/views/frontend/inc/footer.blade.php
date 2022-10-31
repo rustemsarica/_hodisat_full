@@ -37,7 +37,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 ml-xl-auto col-md-4 mr-0">
+            <div class="col-lg-2 ml-xl-auto col-md-4 mr-0">
                 <div class="text-center text-md-left mt-4">
                     <div class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4">
                         {{ translate('Contact Info') }}
@@ -57,7 +57,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4">
+            <div class="col-lg-2 col-md-4">
                 <div class="text-center text-md-left mt-4">
                     <div class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4">
                         {{ get_setting('widget_one',null,App::getLocale()) }}
@@ -76,7 +76,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-4">
+            <div class="col-lg-2 col-md-4">
                 <div class="text-center text-md-left mt-4">
                     <div class="fs-13 text-uppercase fw-600 border-bottom border-gray-900 pb-2 mb-4">
                         {{ translate('My Account') }}
