@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section('content')
 <div class="container">
-    <div class="row">
+    <div class="row my-4">
         <div class="col-lg-6 m-auto">
             <div class="position-relative flex-grow-1 m-auto" style="max-width: 500px">
                 <form action="{{ route('search') }}" method="GET" class="stop-propagation" id="searcForm">
