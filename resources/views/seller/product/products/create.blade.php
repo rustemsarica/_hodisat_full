@@ -264,6 +264,7 @@
                 success: function(res) {
                     var len = res.length;
                     for(var i=0; i<len; i++){
+                        console.log(res);
                         var id = res[i].id;
                         var name = res[i].name;
                         add_more_customer_choice_option(id, name);
