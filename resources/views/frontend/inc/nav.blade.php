@@ -292,7 +292,7 @@
                         {{ $value->getTranslation('name') }}
                     </a>
 
-                        <div class="sub-cat-menu c-scrollbar-light rounded shadow-lg p-4">
+                        <div class="sub-cat-menu container c-scrollbar-light rounded shadow-lg p-0">
                             <div class="c-preloader text-center absolute-center">
                                 <i class="las la-spinner la-spin la-3x opacity-70"></i>
                             </div>
