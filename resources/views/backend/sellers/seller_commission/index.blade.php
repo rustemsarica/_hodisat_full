@@ -44,7 +44,7 @@
                         <label class="col-md-4 col-from-label">{{translate('Seller Commission')}}</label>
                         <div class="col-md-8">
                             <input type="hidden" name="types[]" value="vendor_commission_type">
-                            <select class="form-control aiz-selectpicker" name="vendor_commission_type" onchange="vendor_commission_type(this.value)">
+                            <select class="form-control aiz-selectpicker" name="vendor_commission_type" onchange="change_commission_type(this.value)">
                                 <option value="">{{translate('Commission Type')}}</option>
                                 <option value="amount"  @if(get_setting('vendor_commission_type') == 'amount') selected @endif >{{translate('Approved')}}</option>
                                 <option value="percent" @if(get_setting('vendor_commission_type') == 'percent') selected @endif >{{translate('Percent')}}</option>
@@ -127,7 +127,7 @@
 @section('script')
     <script type="text/javascript">
 
-        function vendor_commission_type(val){
+        function change_commission_type(val){
             if(val == 'amount'){
                 $('#commission_type').html('₺');
             }else if(val == 'percent'){
