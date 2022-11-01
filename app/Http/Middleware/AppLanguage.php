@@ -24,9 +24,9 @@ class AppLanguage
             $locale = env('DEFAULT_LANGUAGE');
         }
         else{
-            $locale = 'en';
+            $locale = 'tr';
         }
-    
+
 
         // set laravel localization
         App::setLocale($locale);
