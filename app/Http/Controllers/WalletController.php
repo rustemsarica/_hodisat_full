@@ -23,9 +23,6 @@ class WalletController extends Controller
         $request->session()->put('payment_type', 'wallet_payment');
         $request->session()->put('payment_data', $data);
 
-        $request->session()->put('payment_type', 'wallet_payment');
-        $request->session()->put('payment_data', $data);
-
         $decorator = __NAMESPACE__ . '\\Payment\\' . str_replace(' ', '', ucwords(str_replace('_', ' ', $request->payment_option))) . "Controller";
         if (class_exists($decorator)) {
             return (new $decorator)->pay($request);
