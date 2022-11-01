@@ -176,15 +176,14 @@ class OrderService{
     public function create_shipping_code($id) {
 
         $order = Order::findOrFail($id);
-        $seller_name=User::find($order->seller_id);
-        $seller = Address::where('user_id',$order->seller_id)->first();
+        $seller=User::find($order->seller_id);
 
         $shipping_address = json_decode($order->shipping_address, true);
 
         $state=State::where('name',$shipping_address['state'])->first();
 
-        $seller_city=City::where('id',$seller->city_id)->first();
-        $seller_state=State::where('id',$seller->state_id)->first();
+        $seller_city=City::where('id',$seller->city)->first();
+        $seller_state=State::where('id',$seller->state)->first();
         $shipping_key=$this->generateUniqueCode();
 
         //return redirect('/orders')->with('status', 'Gönderi kodu oluşturuldu!'.$shipping_key);
@@ -227,7 +226,7 @@ class OrderService{
 			];
 
 			$XSenderCustAddress=[
-				'senderCustName'		=> $seller_name->name,
+				'senderCustName'		=> $seller->name,
 				'senderAddress'			=> $seller->address.' '.$seller_city->name.'/'.$seller_state->name,
 				'cityId'				=> $seller->state_id,
 				'townName'				=> $seller_city->name,
