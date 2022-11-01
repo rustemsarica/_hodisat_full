@@ -263,10 +263,10 @@
             });
         }
 
-        function order_review(product_id) {
+        function order_review(order_id) {
             $.post('{{ route('product_review_modal') }}', {
                 _token: '{{ @csrf_token() }}',
-                product_id: product_id
+                order_id: order_id
             }, function(data) {
                 $('#product-review-modal-content').html(data);
                 $('#product-review-modal').modal('show', {
