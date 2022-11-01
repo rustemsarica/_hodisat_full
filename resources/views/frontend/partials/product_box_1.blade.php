@@ -42,8 +42,8 @@
             @endauth
             <div class="pl-1 fs-16 opacity-80 m-auto">{{$product->wishlists_count}}</div>
         </div>
-        <div class="fs-14">
-            {{$product->brand->name}}
-        </div>
+    </div>
+    <div class="fs-14">
+        {{$product->brand->name}}
     </div>
 </div>
