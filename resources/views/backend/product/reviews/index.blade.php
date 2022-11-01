@@ -4,7 +4,7 @@
 
 <div class="aiz-titlebar text-left mt-2 mb-3">
 	<div class="align-items-center">
-			<h1 class="h3">{{translate('Product Reviews')}}</h1>
+			<h1 class="h3">{{translate('Order Reviews')}}</h1>
 	</div>
 </div>
 
@@ -12,7 +12,7 @@
     <div class="card-header">
         <div class="row flex-grow-1">
             <div class="col">
-                <h5 class="mb-0 h6">{{translate('Product Reviews')}}</h5>
+                <h5 class="mb-0 h6">{{translate('Order Reviews')}}</h5>
 
             </div>
             <div class="col-md-6 col-xl-4 ml-auto mr-0">
@@ -33,8 +33,8 @@
             <thead>
                 <tr>
                     <th data-breakpoints="lg">#</th>
-                    <th>{{translate('Product')}}</th>
-                    <th data-breakpoints="lg">{{translate('Product Owner')}}</th>
+                    <th>{{translate('Order')}}</th>
+                    <th data-breakpoints="lg">{{translate('Seller')}}</th>
                     <th data-breakpoints="lg">{{translate('Customer')}}</th>
                     <th>{{translate('Rating')}}</th>
                     <th data-breakpoints="lg">{{translate('Comment')}}</th>
@@ -46,9 +46,7 @@
                     @if ($review->order != null && $review->user != null)
                         <tr>
                             <td>{{ ($key+1) + ($reviews->currentPage() - 1)*$reviews->perPage() }}</td>
-                            <td>
-
-                            </td>
+                            <td>{{ $review->order->code }}</td>
                             <td>{{ $review->seller->username }}</td>
                             <td>{{ $review->user->username }} ({{ $review->user->email }})</td>
                             <td>{{ $review->rating }}</td>

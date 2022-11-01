@@ -109,18 +109,6 @@ class ProductController extends Controller
         }
     }
 
-    public function product_reviews()
-    {
-        $reviews = Review::orderBy('id', 'desc')
-            ->join('products', 'reviews.product_id', '=', 'products.id')
-            ->join('users','reviews.user_id','=','users.id')
-            ->where('products.user_id', auth()->user()->id)
-            ->select('reviews.id','reviews.rating','reviews.comment','reviews.status','reviews.updated_at','products.name as product_name','users.id as user_id','users.name','users.avatar')
-            ->distinct()
-            ->paginate(1);
-
-       return new ProductReviewCollection($reviews);
-    }
 
     public function store_product(Request $request){
 

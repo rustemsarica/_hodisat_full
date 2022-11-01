@@ -12,8 +12,8 @@ class ReviewController extends Controller
     {
         $reviews = DB::table('reviews')
                     ->orderBy('id', 'desc')
-                    ->join('products', 'reviews.product_id', '=', 'products.id')
-                    ->where('products.user_id', Auth::user()->id)
+                    ->join('orders', 'reviews.order_id', '=', 'orders.id')
+                    ->where('reviews.seller_id', Auth::user()->id)
                     ->select('reviews.id')
                     ->distinct()
                     ->paginate(9);
