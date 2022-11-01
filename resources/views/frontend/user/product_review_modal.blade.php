@@ -11,8 +11,14 @@
         <input type="hidden" name="seller_id" value="{{ $order->seller_id }}">
         <div class="modal-body">
             <div class="form-group">
-                <label class="opacity-60">{{ translate('Product')}}</label>
-                <p>{{ $order->code }}</p>
+                <label class="opacity-60">{{ translate('Products')}}</label>
+                <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="2" data-arrows='true' data-infinite='false'>
+                    @foreach ($order->orderDetails as $details)
+                        <div class="carousel-box">
+                            @include('frontend.partials.product_box_1',['product' => $details->product])
+                        </div>
+                    @endforeach
+                </div>
             </div>
             <div class="form-group">
                 <label class="opacity-60">{{ translate('Rating')}}</label>
