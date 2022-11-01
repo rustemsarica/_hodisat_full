@@ -8,6 +8,7 @@
     <form action="{{ route('reviews.store') }}" method="POST" >
         @csrf
         <input type="hidden" name="order_id" value="{{ $order->id }}">
+        <input type="hidden" name="seller_id" value="{{ $order->seller_id }}">
         <div class="modal-body">
             <div class="form-group">
                 <label class="opacity-60">{{ translate('Product')}}</label>
