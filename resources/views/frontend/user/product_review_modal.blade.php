@@ -7,6 +7,7 @@
 @if($review == null)
     <form action="{{ route('reviews.store') }}" method="POST" >
         @csrf
+        <input type="hidden" name="order_id" value="{{ $product->id }}">
         <input type="hidden" name="product_id" value="{{ $product->id }}">
         <div class="modal-body">
             <div class="form-group">

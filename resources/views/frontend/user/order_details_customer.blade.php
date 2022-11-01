@@ -164,15 +164,15 @@
                                             @endif
                                         </td>
                                     @endif
-                                    {{-- <td class="text-right">
+                                    <td class="text-right">
                                         @if ($orderDetail->delivery_status == 'confirmed')
                                             <a href="javascript:void(0);"
-                                                onclick="product_review('{{ $orderDetail->product_id }}')"
+                                                onclick="order_review('{{ $orderDetail->product_id }}')"
                                                 class="btn btn-primary btn-sm"> {{ translate('Review') }} </a>
                                         @else
                                             <span class="text-danger">{{ translate('Not Delivered Yet') }}</span>
                                         @endif
-                                    </td> --}}
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -265,7 +265,7 @@
             });
         }
 
-        function product_review(product_id) {
+        function order_review(product_id) {
             $.post('{{ route('product_review_modal') }}', {
                 _token: '{{ @csrf_token() }}',
                 product_id: product_id
