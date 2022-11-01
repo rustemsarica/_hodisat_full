@@ -77,7 +77,7 @@
                         @endif
                     </table>
                 </div>
-
+                <div class="col-12">
                 @if ($order->delivery_status == 'confirmed')
                 <a href="javascript:void(0);"
                     onclick="order_review('{{ $order->id }}')"
@@ -85,6 +85,8 @@
                 @else
                     <span class="text-danger">{{ translate('Not Delivered Yet') }}</span>
                 @endif
+                </div>
+
             </div>
         </div>
     </div>
