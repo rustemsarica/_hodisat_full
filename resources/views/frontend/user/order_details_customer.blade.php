@@ -80,7 +80,7 @@
 
                 @if ($order->delivery_status == 'confirmed')
                 <a href="javascript:void(0);"
-                    onclick="order_review('{{ $orderDetail->product_id }}')"
+                    onclick="order_review('{{ $order->id }}')"
                     class="btn btn-primary btn-sm"> {{ translate('Review') }} </a>
             @else
                 <span class="text-danger">{{ translate('Not Delivered Yet') }}</span>
