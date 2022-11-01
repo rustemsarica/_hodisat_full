@@ -113,11 +113,6 @@
                                     <span class="aiz-side-nav-text">{{translate('Colors')}}</span>
                                 </a>
                             </li>
-                            <li class="aiz-side-nav-item">
-                                <a href="{{route('admin.reviews.index')}}" class="aiz-side-nav-link">
-                                    <span class="aiz-side-nav-text">{{translate('Product Reviews')}}</span>
-                                </a>
-                            </li>
                         </ul>
                     </li>
                 @endif
@@ -246,6 +241,13 @@
                                     </a>
                                 </li>
                             @endif
+
+                            <li class="aiz-side-nav-item">
+                                <a href="{{route('admin.reviews.index')}}" class="aiz-side-nav-link">
+                                    <span class="aiz-side-nav-text">{{translate('Seller Reviews')}}</span>
+                                </a>
+                            </li>
+
                             <li class="aiz-side-nav-item">
                                 <a href="{{ route('admin.seller_verification_form.index') }}" class="aiz-side-nav-link">
                                     <span class="aiz-side-nav-text">{{ translate('Seller Verification Form') }}</span>
