@@ -276,8 +276,6 @@ Route::group(['middleware' => ['user', 'verified', 'unbanned']], function() {
     // Product Review
     Route::post('/product_review_modal', [ReviewController::class, 'product_review_modal'])->name('product_review_modal');
 
-    Route::get('user/set-shipping-address', [AddressController::class,'shipping_address'])->name('seller.default.shipping.address');
-
 });
 
 Route::group(['middleware' => ['auth']], function() {

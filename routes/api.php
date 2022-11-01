@@ -155,8 +155,6 @@ Route::group(['prefix' => 'v2', 'as' =>'api.', 'middleware' => ['app_language']]
     Route::post('user/shipping/make_default', 'App\Http\Controllers\Api\V2\AddressController@makeShippingAddressDefault')->middleware('auth:sanctum');
     Route::get('user/shipping/delete/{address_id}', 'App\Http\Controllers\Api\V2\AddressController@deleteShippingAddress')->middleware('auth:sanctum');
 
-    Route::get('user/set-shipping-address', 'App\Http\Controllers\Api\V2\AddressController@shipping_address')->middleware('auth:sanctum');
-
 	Route::get('user-notifications', 'App\Http\Controllers\Api\V2\FollowController@user_notifications')->middleware('auth:sanctum');
 
 	Route::get('user/notifications/permissions', 'App\Http\Controllers\Api\V2\UserController@userNotificationPermissions')->middleware('auth:sanctum');

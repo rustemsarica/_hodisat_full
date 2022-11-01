@@ -92,6 +92,14 @@ class AddressController extends Controller
         $address = Address::find($request->id);
         $address->set_default = 1;
         $address->save();
+        $user = auth()->user();
+        $user->address       = $address->address;
+        $user->country_id    = $address->country_id;
+        $user->state_id      = $address->state_id;
+        $user->city_id       = $address->city_id;
+        $user->postal_code   = $address->postal_code;
+        $user->phone         = $address->phone;
+        $user->save();
         return response()->json([
             'result' => true,
             'message' => translate('Default shipping information has been updated')
@@ -215,26 +223,5 @@ class AddressController extends Controller
         return new StatesCollection($states);
     }
 
-    public function shipping_address(Request $request)
-    {
-        if($request->address == null || $request->country_id == null || $request->state_id == null || $request->city_id == null || $request->postal_code == null || $request->phone == null){
-            return response()->json([
-                'result' => false,
-                'message' => translate('All fields are required.')
-            ]);
-        }
-        $user = User::find($request->user_id);
-        $user->address       = $request->address;
-        $user->country_id    = $request->country_id;
-        $user->state_id      = $request->state_id;
-        $user->city_id       = $request->city_id;
-        $user->postal_code   = $request->postal_code;
-        $user->phone         = $request->phone;
-        $user->save();
 
-        return response()->json([
-            'result' => true,
-            'message' => translate('Address saved')
-        ]);
-    }
 }

@@ -160,24 +160,16 @@ class AddressController extends Controller
         $address->set_default = 1;
         $address->save();
 
-        return back();
-    }
-
-    public function shipping_address(Request $request)
-    {
-        if($request->address == null || $request->country_id == null || $request->state_id == null || $request->city_id == null || $request->postal_code == null || $request->phone == null){
-            return back();
-        }
-
         $user = Auth::user();
-        $user->address       = $request->address;
-        $user->country_id    = $request->country_id;
-        $user->state_id      = $request->state_id;
-        $user->city_id       = $request->city_id;
-        $user->postal_code   = $request->postal_code;
-        $user->phone         = $request->phone;
+        $user->address       = $address->address;
+        $user->country_id    = $address->country_id;
+        $user->state_id      = $address->state_id;
+        $user->city_id       = $address->city_id;
+        $user->postal_code   = $address->postal_code;
+        $user->phone         = $address->phone;
         $user->save();
 
         return back();
     }
+
 }
