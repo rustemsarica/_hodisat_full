@@ -146,7 +146,7 @@
 
         {{-- Featured Section --}}
         <section class="mb-2 mx-2">
-            <div class="container py-4 px-md-4 py-md-3 bg-white shadow-sm rounded">
+            <div class="container py-4 px-md-2 py-md-3 bg-white shadow-sm rounded">
                 <div class="row">
                     <div class="col-xl-9">
                         <div class="d-flex mb-3 align-items-baseline border-bottom">
