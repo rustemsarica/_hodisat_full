@@ -69,7 +69,7 @@ class OrderController extends Controller
     public function update_delivery_status(Request $request)
     {
         (new OrderService)->handle_delivery_status($request);
-        return 1;
+        return back();
         $order = Order::findOrFail($request->order_id);
         $order->delivery_viewed = '0';
         $order->delivery_status = $request->status;
