@@ -82,9 +82,9 @@
                 <a href="javascript:void(0);"
                     onclick="order_review('{{ $order->id }}')"
                     class="btn btn-primary btn-sm"> {{ translate('Review') }} </a>
-            @else
-                <span class="text-danger">{{ translate('Not Delivered Yet') }}</span>
-            @endif
+                @else
+                    <span class="text-danger">{{ translate('Not Delivered Yet') }}</span>
+                @endif
             </div>
         </div>
     </div>
