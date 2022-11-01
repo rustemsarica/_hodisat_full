@@ -77,6 +77,14 @@
                         @endif
                     </table>
                 </div>
+
+                @if ($order->delivery_status == 'confirmed')
+                <a href="javascript:void(0);"
+                    onclick="order_review('{{ $orderDetail->product_id }}')"
+                    class="btn btn-primary btn-sm"> {{ translate('Review') }} </a>
+            @else
+                <span class="text-danger">{{ translate('Not Delivered Yet') }}</span>
+            @endif
             </div>
         </div>
     </div>
@@ -100,7 +108,6 @@
                                 @if (addon_is_activated('refund_request'))
                                     <th data-breakpoints="md">{{ translate('Refund') }}</th>
                                 @endif
-                                {{-- <th data-breakpoints="md" class="text-right">{{ translate('Review') }}</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -164,15 +171,6 @@
                                             @endif
                                         </td>
                                     @endif
-                                    <td class="text-right">
-                                        @if ($order->delivery_status == 'confirmed')
-                                            <a href="javascript:void(0);"
-                                                onclick="order_review('{{ $orderDetail->product_id }}')"
-                                                class="btn btn-primary btn-sm"> {{ translate('Review') }} </a>
-                                        @else
-                                            <span class="text-danger">{{ translate('Not Delivered Yet') }}</span>
-                                        @endif
-                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
