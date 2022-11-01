@@ -26,13 +26,6 @@ use App\Services\OrderService;
 
 class OrderController extends Controller
 {
-    protected $orderService;
-
-    public function __construct(
-        OrderService $orderService
-    ) {
-        $this->orderService = $orderService;
-    }
     // All Orders
     public function all_orders(Request $request)
     {
@@ -344,7 +337,7 @@ class OrderController extends Controller
 
     public function update_delivery_status(Request $request)
     {
-        $this->orderService->handle_delivery_status($request);
+        (new OrderService)->handle_delivery_status($request);
         return 1;
 
         $order = Order::findOrFail($request->order_id);
