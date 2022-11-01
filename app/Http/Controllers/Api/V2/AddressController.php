@@ -33,6 +33,15 @@ class AddressController extends Controller
         $address->phone = $request->phone;
         $address->save();
 
+        $user = User::find(auth()->user()->id);
+        $user->address       = $address->address;
+        $user->country   = $address->country_id;
+        $user->state      = $address->state_id;
+        $user->city       = $address->city_id;
+        $user->postal_code   = $address->postal_code;
+        $user->phone         = $address->phone;
+        $user->save();
+
         return response()->json([
             'result' => true,
             'message' => translate('Shipping information has been added successfully')
