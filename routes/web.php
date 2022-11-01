@@ -225,6 +225,8 @@ Route::group(['middleware' => ['user', 'verified', 'unbanned']], function() {
         Route::post('/user/update-profile', 'userProfileUpdate')->name('user.profile.update');
     });
 
+
+
     Route::get('/all-notifications', [NotificationController::class, 'index'])->name('all-notifications');
 
 });
@@ -273,6 +275,8 @@ Route::group(['middleware' => ['user', 'verified', 'unbanned']], function() {
 
     // Product Review
     Route::post('/product_review_modal', [ReviewController::class, 'product_review_modal'])->name('product_review_modal');
+
+    Route::get('user/set-shipping-address', [AddressController::class,'shipping_address'])->name('seller.default.shipping.address');
 
 });
 

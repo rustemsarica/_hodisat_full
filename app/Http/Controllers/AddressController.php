@@ -80,7 +80,7 @@ class AddressController extends Controller
         $data['address_data'] = Address::findOrFail($id);
         $data['states'] = State::where('status', 1)->where('country_id', $data['address_data']->country_id)->get();
         $data['cities'] = City::where('status', 1)->where('state_id', $data['address_data']->state_id)->get();
-        
+
         $returnHTML = view('frontend.partials.address_edit_modal', $data)->render();
         return response()->json(array('data' => $data, 'html'=>$returnHTML));
 //        return ;
@@ -96,7 +96,7 @@ class AddressController extends Controller
     public function update(Request $request, $id)
     {
         $address = Address::findOrFail($id);
-        
+
         $address->address       = $request->address;
         $address->country_id    = $request->country_id;
         $address->state_id      = $request->state_id;
@@ -132,22 +132,22 @@ class AddressController extends Controller
     public function getStates(Request $request) {
         $states = State::where('status', 1)->where('country_id', $request->country_id)->get();
         $html = '<option value="">'.translate("Select State").'</option>';
-        
+
         foreach ($states as $state) {
             $html .= '<option value="' . $state->id . '">' . $state->name . '</option>';
         }
-        
+
         echo json_encode($html);
     }
-    
+
     public function getCities(Request $request) {
         $cities = City::where('status', 1)->where('state_id', $request->state_id)->get();
         $html = '<option value="">'.translate("Select City").'</option>';
-        
+
         foreach ($cities as $row) {
             $html .= '<option value="' . $row->id . '">' . $row->getTranslation('name') . '</option>';
         }
-        
+
         echo json_encode($html);
     }
 
@@ -159,6 +159,20 @@ class AddressController extends Controller
         $address = Address::findOrFail($id);
         $address->set_default = 1;
         $address->save();
+
+        return back();
+    }
+
+    public function shipping_address(Request $request)
+    {
+        $user = Auth::user();
+        $user->address       = $request->address;
+        $user->country_id    = $request->country_id;
+        $user->state_id      = $request->state_id;
+        $user->city_id       = $request->city_id;
+        $user->postal_code   = $request->postal_code;
+        $user->phone         = $request->phone;
+        $user->save();
 
         return back();
     }

@@ -119,7 +119,7 @@ class AddressController extends Controller
 
     public function getShippingInCart(Request $request)
     {
-        
+
            $cart= Cart::where('user_id', auth()->user()->id)->first();
 
            $address = $cart->address;
@@ -137,7 +137,7 @@ class AddressController extends Controller
            foreach ($carts as $key => $cart) {
 
             $cart->shipping_cost = 0;
-            
+
            if($request->shipping_type=="pickup_point"){
             $cart->shipping_type="pickup_point";
             $cart->pickup_point=$request->shipping_id;
@@ -191,7 +191,7 @@ class AddressController extends Controller
              $country_query->where('name', 'like', '%' . $request->name . '%');
         }
         $countries = $country_query->get();
-        
+
         return new CountriesCollection($countries);
     }
 
@@ -213,5 +213,22 @@ class AddressController extends Controller
        }
         $states = $state_query->get();
         return new StatesCollection($states);
+    }
+
+    public function shipping_address(Request $request)
+    {
+        $user = User::find($request->user_id);
+        $user->address       = $request->address;
+        $user->country_id    = $request->country_id;
+        $user->state_id      = $request->state_id;
+        $user->city_id       = $request->city_id;
+        $user->postal_code   = $request->postal_code;
+        $user->phone         = $request->phone;
+        $user->save();
+
+        return response()->json([
+            'result' => true,
+            'message' => translate('Address saved')
+        ]);
     }
 }
