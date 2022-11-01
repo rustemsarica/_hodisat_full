@@ -94,10 +94,9 @@ if (!function_exists('filter_products')) {
 
         if (get_setting('vendor_system_activation') == 1) {
             return $products->where('approved', '1')
-                ->where('published', '1')
-                ->where('auction_product', 0);
+                ->where('published', '1');
         } else {
-            return $products->where('published', '1')->where('auction_product', 0)->where('added_by', 'admin');
+            return $products->where('published', '1')->where('added_by', 'admin');
         }
     }
 }
@@ -106,7 +105,7 @@ if (!function_exists('filter_products')) {
 if (!function_exists('get_cached_products')) {
     function get_cached_products($category_id = null)
     {
-        $products = \App\Models\Product::where('published', 1)->where('approved', '1')->where('auction_product', 0);
+        $products = \App\Models\Product::where('published', 1)->where('approved', '1');
 
         if (get_setting('vendor_system_activation') == 1) {
             $products = $products;
@@ -229,8 +228,6 @@ if (!function_exists('discount_in_percentage')) {
 if (!function_exists('cart_product_price')) {
     function cart_product_price($cart_product, $product, $formatted = true)
     {
-        if ($product->auction_product == 0) {
-
             $price = $product->unit_price;
             if($price>$cart_product["price"]){
                 $price = $cart_product["price"];
@@ -255,9 +252,6 @@ if (!function_exists('cart_product_price')) {
                 }
             }
 
-        } else {
-            $price = $product->bids->max('amount');
-        }
 
 
         if ($formatted) {

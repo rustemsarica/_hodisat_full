@@ -73,40 +73,7 @@
                         </a>
                     </li>
                 @endif
-                @if (addon_is_activated('wholesale') && get_setting('seller_wholesale_product') == 1)
-                    <li class="aiz-side-nav-item">
-                        <a href="{{ route('seller.wholesale_products_list') }}"
-                            class="aiz-side-nav-link {{ areActiveRoutes(['wholesale_product_create.seller', 'wholesale_product_edit.seller']) }}">
-                            <i class="las la-luggage-cart aiz-side-nav-icon"></i>
-                            <span class="aiz-side-nav-text">{{ translate('Wholesale Products') }}</span>
-                        </a>
-                    </li>
-                @endif
-                @if (addon_is_activated('auction') && get_setting('seller_auction_product') == 1)
-                    <li class="aiz-side-nav-item">
-                        <a href="javascript:void(0);" class="aiz-side-nav-link">
-                            <i class="las la-gavel aiz-side-nav-icon"></i>
-                            <span class="aiz-side-nav-text">{{ translate('Auction') }}</span>
-                            <span class="aiz-side-nav-arrow"></span>
-                        </a>
-                        <ul class="aiz-side-nav-list level-2">
-                            <li class="aiz-side-nav-item">
-                                <a href="{{ route('auction_products.seller.index') }}"
-                                    class="aiz-side-nav-link {{ areActiveRoutes(['auction_products.seller.index', 'auction_product_create.seller', 'auction_product_edit.seller', 'product_bids.seller']) }}">
-                                    <span
-                                        class="aiz-side-nav-text">{{ translate('All Auction Products') }}</span>
-                                </a>
-                            </li>
-                            <li class="aiz-side-nav-item">
-                                <a href="{{ route('auction_products_orders.seller') }}"
-                                    class="aiz-side-nav-link {{ areActiveRoutes(['auction_products_orders.seller']) }}">
-                                    <span
-                                        class="aiz-side-nav-text">{{ translate('Auction Product Orders') }}</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                @endif
+
                 @if (addon_is_activated('pos_system'))
                     @if (get_setting('pos_activation_for_seller') != null && get_setting('pos_activation_for_seller') != 0)
                         <li class="aiz-side-nav-item">

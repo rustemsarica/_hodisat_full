@@ -53,11 +53,6 @@ class Product extends Model
         return $this->hasOne(FlashDealProduct::class);
     }
 
-    public function bids()
-    {
-        return $this->hasMany(AuctionProductBid::class);
-    }
-
     public function offers()
     {
         return $this->belongsTo(Offer::class);

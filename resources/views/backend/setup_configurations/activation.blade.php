@@ -191,36 +191,6 @@
             </div>
         </div>
     </div>
-    @if(addon_is_activated('wholesale'))
-        <div class="col-lg-4">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="mb-0 h6 text-center">{{translate('Wholesale Product for Seller')}}</h3>
-                </div>
-                <div class="card-body text-center">
-                    <label class="aiz-switch aiz-switch-success mb-0">
-                        <input type="checkbox" onchange="updateSettings(this, 'seller_wholesale_product')" <?php if(get_setting('seller_wholesale_product') == 1) echo "checked";?>>
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-            </div>
-        </div>
-    @endif
-    @if(addon_is_activated('auction'))
-        <div class="col-lg-4">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="mb-0 h6 text-center">{{translate('Auction Product for Seller')}}</h3>
-                </div>
-                <div class="card-body text-center">
-                    <label class="aiz-switch aiz-switch-success mb-0">
-                        <input type="checkbox" onchange="updateSettings(this, 'seller_auction_product')" <?php if(get_setting('seller_auction_product') == 1) echo "checked";?>>
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-            </div>
-        </div>
-    @endif
 </div>
 
 <h4 class="text-center text-muted mt-4">{{translate('Payment Related')}}</h4>

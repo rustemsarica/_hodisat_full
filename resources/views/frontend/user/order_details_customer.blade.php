@@ -108,11 +108,8 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>
-                                        @if ($orderDetail->product != null && $orderDetail->product->auction_product == 0)
+                                        @if ($orderDetail->product != null)
                                             <a href="{{ route('product', $orderDetail->product->slug) }}"
-                                                target="_blank">{{ $orderDetail->product->name }}</a>
-                                        @elseif($orderDetail->product != null && $orderDetail->product->auction_product == 1)
-                                            <a href="{{ route('auction-product', $orderDetail->product->slug) }}"
                                                 target="_blank">{{ $orderDetail->product->name }}</a>
                                         @else
                                             <strong>{{ translate('Product Unavailable') }}</strong>

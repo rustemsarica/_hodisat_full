@@ -43,33 +43,29 @@ class RouteServiceProvider extends ServiceProvider
      $this->mapApiRoutes();
 
      $this->mapApiSellerRoutes();
-    
+
      $this->mapAdminRoutes();
 
      $this->mapSellerRoutes();
-    
-     $this->mapAffiliateRoutes();
-    
-     $this->mapRefundRoutes();
-    
-     $this->mapClubPointsRoutes();
-    
-     $this->mapOtpRoutes();
-    
-     $this->mapOfflinePaymentRoutes();
-    
-     $this->mapAfricanPaymentGatewayRoutes();
-    
-     $this->mapPaytmRoutes();
-    
-     $this->mapPosRoutes();
-    
-     $this->mapSellerPackageRoutes();
-    
-     $this->mapAuctionRoutes();
 
-     $this->mapWholesaleRoutes();
-    
+     $this->mapAffiliateRoutes();
+
+     $this->mapRefundRoutes();
+
+     $this->mapClubPointsRoutes();
+
+     $this->mapOtpRoutes();
+
+     $this->mapOfflinePaymentRoutes();
+
+     $this->mapAfricanPaymentGatewayRoutes();
+
+     $this->mapPaytmRoutes();
+
+     $this->mapPosRoutes();
+
+     $this->mapSellerPackageRoutes();
+
      $this->mapWebRoutes();
 
     // $this->mapInstallRoutes();
@@ -77,34 +73,6 @@ class RouteServiceProvider extends ServiceProvider
     //$this->mapUpdateRoutes();
   }
 
-  /**
-   * Define the "b2b" routes for the application.
-   *
-   * These routes all receive session state, CSRF protection, etc.
-   *
-   * @return void
-   */
-  protected function mapWholesaleRoutes()
-  {
-    Route::middleware('web')
-       ->namespace($this->namespace)
-       ->group(base_path('routes/wholesale.php'));
-  }
-
-
-    /**
-   * Define the "auction" routes for the application.
-   *
-   * These routes all receive session state, CSRF protection, etc.
-   *
-   * @return void
-   */
-  protected function mapAuctionRoutes()
-  {
-    Route::middleware('web')
-       ->namespace($this->namespace)
-       ->group(base_path('routes/auction.php'));
-  }
 
   /**
    * Define the "seller package" routes for the application.

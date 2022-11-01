@@ -73,28 +73,6 @@
                         </li>
                     @endif
 
-                    @if(addon_is_activated('auction'))
-                        <li class="aiz-side-nav-item">
-                            <a href="javascript:void(0);" class="aiz-side-nav-link">
-                                <i class="las la-gavel aiz-side-nav-icon"></i>
-                                <span class="aiz-side-nav-text">{{ translate('Auction') }}</span>
-                                <span class="aiz-side-nav-arrow"></span>
-                            </a>
-                            <ul class="aiz-side-nav-list level-2">
-                                <li class="aiz-side-nav-item">
-                                    <a href="{{ route('auction_product_bids.index') }}" class="aiz-side-nav-link">
-                                        <span class="aiz-side-nav-text">{{ translate('Bidded Products') }}</span>
-                                    </a>
-                                </li>
-                                <li class="aiz-side-nav-item">
-                                    <a href="{{ route('auction_product.purchase_history') }}" class="aiz-side-nav-link">
-                                        <span class="aiz-side-nav-text">{{ translate('Purchase History') }}</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    @endif
-
                     @if (get_setting('conversation_system') == 1)
                         @php
                             $conversation = \App\Models\Conversation::where('sender_id', Auth::user()->id)->where('sender_viewed', 0)->get();
