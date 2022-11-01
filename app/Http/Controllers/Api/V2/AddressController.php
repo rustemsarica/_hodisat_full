@@ -12,6 +12,7 @@ use App\Http\Resources\V2\CountriesCollection;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\State;
+use App\Models\User;
 
 class AddressController extends Controller
 {
@@ -92,7 +93,7 @@ class AddressController extends Controller
         $address = Address::find($request->id);
         $address->set_default = 1;
         $address->save();
-        $user = auth()->user();
+        $user = User::find(auth()->user()->id);
         $user->address       = $address->address;
         $user->country_id    = $address->country_id;
         $user->state_id      = $address->state_id;
