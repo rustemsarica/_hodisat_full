@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    <div id="content" class="mx-auto">
+    <div id="content" class="container p-0">
         {{-- Sliders --}}
         <div class="home-banner-area mb-2 mt-4">
             <div class="container px-0">
