@@ -78,7 +78,14 @@
                     </table>
                 </div>
                 <div class="col-12">
-                @if ($order->delivery_status == 'confirmed')
+                @if ($order->delivery_status == 'delivered')
+                <form action="{{route('seller.orders.update_delivery_status')}}" method="post">
+                    <input type="hidden" name="order_id" value="{{$order->id}}">
+                    <input type="hidden" name="status" value="confirmed">
+                    <button type="submit" class="btn btn-primary btn-sm"> {{ translate('Confirm') }} </button>
+                </form>
+
+                @elseif ($order->delivery_status == 'confirmed')
                 <a href="javascript:void(0);"
                     onclick="order_review('{{ $order->id }}')"
                     class="btn btn-primary btn-sm"> {{ translate('Review') }} </a>
