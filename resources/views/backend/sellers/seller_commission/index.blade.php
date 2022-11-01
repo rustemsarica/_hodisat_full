@@ -39,6 +39,18 @@
               <div class="card-body">
                   <form class="form-horizontal" action="{{ route('admin.business_settings.vendor_commission.update') }}" method="POST" enctype="multipart/form-data">
                   	@csrf
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-from-label">{{translate('Seller Commission')}}</label>
+                        <div class="col-md-8">
+                            <input type="hidden" name="types[]" value="vendor_commission_type">
+                            <select class="form-control aiz-selectpicker" name="vendor_commission_type" onchange="vendor_commission_type(this.value)">
+                                <option value="">{{translate('Commission Type')}}</option>
+                                <option value="amount"  @if(get_setting('vendor_commission_type') == 'amount') selected @endif >{{translate('Approved')}}</option>
+                                <option value="percent" @if(get_setting('vendor_commission_type') == 'percent') selected @endif >{{translate('Percent')}}</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <label class="col-md-4 col-from-label">{{translate('Seller Commission')}}</label>
                         <div class="col-md-8">
@@ -46,7 +58,13 @@
                             <div class="input-group">
                                 <input type="number" lang="en" min="0" step="0.01" value="{{ get_setting('vendor_commission') }}" placeholder="{{translate('Seller Commission')}}" name="vendor_commission" class="form-control">
                                 <div class="input-group-append">
-                                    <span class="input-group-text">%</span>
+                                    <span id="commission_type" class="input-group-text">
+                                        @if(get_setting('vendor_commission_type') == 'percent')
+                                            %
+                                        @elseif(get_setting('vendor_commission_type') == 'amount')
+                                            ₺
+                                        @endif
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -108,6 +126,15 @@
 
 @section('script')
     <script type="text/javascript">
+
+        function vendor_commission_type(val){
+            if(val == 'amount'){
+                $('#commission_type').html('₺');
+            }else if(val == 'percent'){
+                $('#commission_type').html('%');
+            }
+        }
+
         function updateSettings(el, type){
             if($(el).is(':checked')){
                 var value = 1;
