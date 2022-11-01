@@ -95,9 +95,9 @@ class AddressController extends Controller
         $address->save();
         $user = User::find(auth()->user()->id);
         $user->address       = $address->address;
-        $user->country_id    = $address->country_id;
-        $user->state_id      = $address->state_id;
-        $user->city_id       = $address->city_id;
+        $user->country   = $address->country_id;
+        $user->state      = $address->state_id;
+        $user->city       = $address->city_id;
         $user->postal_code   = $address->postal_code;
         $user->phone         = $address->phone;
         $user->save();
