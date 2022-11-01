@@ -4,7 +4,7 @@
     <div id="content" class="container p-0">
         {{-- Sliders --}}
         <div class="home-banner-area mb-2 mt-4">
-            <div class="container px-0">
+            <div class="container">
                 <div class="row position-relative">
                         @if (get_setting('home_slider_images') != null)
                         <div class="col-lg-12">
