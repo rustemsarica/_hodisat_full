@@ -44,7 +44,7 @@
                             <h1 class="fw-600 h4 mb-0">{{ $shop->user->username }}
                             </h1>
                             <div class="rating rating-sm mb-1">
-                                {{ renderStarRating($shop->seller->rating) }}
+                                <a href="">{{ renderStarRating($shop->seller->rating) }}</a>
                             </div>
                         </div>
                     </div>

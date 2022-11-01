@@ -3,7 +3,7 @@
 @section('panel_content')
     <div class="card">
         <div class="card-header">
-            <h5 class="mb-0 h6">{{ translate('Product Reviews') }}</h5>
+            <h5 class="mb-0 h6">{{ translate('Reviews') }}</h5>
         </div>
         <div class="card-body">
             <table class="table aiz-table mb-0">
@@ -30,7 +30,7 @@
                                 <td>
                                     <a href="{{ route('product', $review->product->slug) }}" target="_blank">{{  $review->product->name }}</a>
                                 </td>
-                                <td>{{ $review->user->name }}</td>
+                                <td>{{ $review->user->username }}</td>
                                 <td>
                                     <span class="rating rating-sm">
                                         @for ($i=0; $i < $review->rating; $i++)
