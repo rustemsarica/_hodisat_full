@@ -43,7 +43,7 @@
             <div class="pl-1 fs-16 opacity-80 m-auto">{{$product->wishlists_count}}</div>
         </div>
     </div>
-    <div class="fs-14 opacity-80 px-2 pb-md-2 pb-2">
+    <div class="fs-14 opacity-80 px-md-3 px-2 pb-md-2 pb-2">
         {{$product->brand->name}}
     </div>
 </div>
