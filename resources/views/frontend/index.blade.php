@@ -2,6 +2,45 @@
 
 @section('content')
     <div id="content" class="container p-0">
+        {{-- Sliders --}}
+        <div class="home-banner-area mb-2 mt-4">
+            <div class="container px-0">
+                <div class="row position-relative">
+                        @if (get_setting('home_slider_images') != null)
+                        <div class="col-lg-12">
+                            @php $slider_images = json_decode(get_setting('home_slider_images'), true);  @endphp
+                            @if (count($slider_images)>1)
+                                <div class="aiz-carousel mobile-img-auto-height" data-arrows="false" data-dots="false" data-autoplay="true" data-infinite="true">
+                                    @foreach ($slider_images as $key => $value)
+                                        <div class="carousel-box">
+                                            <a href="{{ json_decode(get_setting('home_slider_links'), true)[$key] }}">
+                                                <img style="background-color:var(--soft-primary);"
+                                                    class="d-block mw-100 img-fit lazyload rounded shadow-sm"
+                                                    src="{{ uploaded_asset($slider_images[$key]) }}"
+                                                    alt="{{ env('APP_NAME')}} promo"
+                                                    height="440"
+                                                >
+                                            </a>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @else
+                                <div class="m-auto mobile-img-auto-height">
+                                    <a href="{{ json_decode(get_setting('home_slider_links'), true)[0] }}">
+                                        <img style="background-color:var(--soft-primary);"
+                                            class="d-block mw-100 img-fit lazyload rounded shadow-sm"
+                                            src="{{ uploaded_asset($slider_images[0]) }}"
+                                            alt="{{ env('APP_NAME')}} promo"
+                                            height="440"
+                                        >
+                                    </a>
+                                </div>
+                            @endif
+                        </div>
+                        @endif
+                </div>
+            </div>
+        </div>
 
 
         {{-- Banner section 1 --}}
