@@ -14,12 +14,14 @@
                 <label class="opacity-60">{{ translate('Products')}}</label>
                 <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="2" data-arrows='true' data-infinite='false'>
                     @foreach ($order->orderDetails as $details)
-                        <img
-                        style="background-color: whitesmoke; object-fit:cover; width:100%; height:100px;"
-                        width="100"
-                        height="100"
-                        class="img-fluid lazyload"
-                        src="{{uploaded_asset($details->product->thumbnail_img)}}" alt="{{$details->product->name}}">
+                        <a href="{{route('product', $details->product->slug)}}" target="_blank" rel="noopener noreferrer">
+                            <img
+                            style="background-color: whitesmoke; object-fit:cover; width:100px; height:100px;"
+                            width="100"
+                            height="100"
+                            class="img-fluid lazyload"
+                            src="{{uploaded_asset($details->product->thumbnail_img)}}" alt="{{$details->product->name}}">
+                        </a>
                     @endforeach
                 </div>
             </div>
