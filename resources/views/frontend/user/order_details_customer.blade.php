@@ -80,6 +80,7 @@
                 <div class="col-12">
                 @if ($order->delivery_status == 'delivered')
                 <form action="{{route('seller.orders.update_delivery_status')}}" method="post">
+                    @csrf
                     <input type="hidden" name="order_id" value="{{$order->id}}">
                     <input type="hidden" name="status" value="confirmed">
                     <button type="submit" class="btn btn-primary btn-sm"> {{ translate('Confirm') }} </button>
