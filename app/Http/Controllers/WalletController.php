@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Wallet;
+use App\Models\Seller;
 use Auth;
 use Session;
 
@@ -34,8 +35,9 @@ class WalletController extends Controller
     public function wallet_payment_done($payment_data, $payment_details)
     {
         $user = Auth::user();
-        $user->balance = $user->balance + $payment_data['amount'];
-        $user->save();
+        $seller = Seller::where('user_id',$user->id)->first();
+        $seller->admin_to_pay = $seller->admin_to_pay + $payment_data['amount'];
+        $seller->save();
 
         $wallet = new Wallet;
         $wallet->user_id = $user->id;
