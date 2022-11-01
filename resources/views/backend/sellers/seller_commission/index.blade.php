@@ -46,7 +46,7 @@
                             <input type="hidden" name="types[]" value="vendor_commission_type">
                             <select class="form-control aiz-selectpicker" name="vendor_commission_type" onchange="change_commission_type(this.value)">
                                 <option value="">{{translate('Commission Type')}}</option>
-                                <option value="amount"  @if(get_setting('vendor_commission_type') == 'amount') selected @endif >{{translate('Approved')}}</option>
+                                <option value="amount"  @if(get_setting('vendor_commission_type') == 'amount') selected @endif >{{translate('Amount')}}</option>
                                 <option value="percent" @if(get_setting('vendor_commission_type') == 'percent') selected @endif >{{translate('Percent')}}</option>
                             </select>
                         </div>
