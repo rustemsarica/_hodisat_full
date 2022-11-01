@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\OrderService;
-
 use App\Http\Controllers\AffiliateController;
 use Illuminate\Http\Request;
 use App\Models\Order;
@@ -24,6 +22,7 @@ use App\Utility\NotificationUtility;
 use CoreComponentRepository;
 use App\Utility\SmsUtility;
 use Illuminate\Support\Facades\Route;
+use App\Services\OrderService;
 
 class OrderController extends Controller
 {
