@@ -145,7 +145,7 @@ class OrderController extends Controller
             $order->user_id = Auth::user()->id;
             $order->shipping_address = $combined_order->shipping_address;
 
-            $order->additional_info = $request->additional_info;
+            //$order->additional_info = $request->additional_info;
 
             //======== Closed By Kiron ==========
             // $order->shipping_type = $carts[0]['shipping_type'];

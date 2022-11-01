@@ -91,10 +91,10 @@ $payment_status = $order->orderDetails->where('seller_id', Auth::user()->id)->fi
                             <td>{{ translate(ucfirst(str_replace('_', ' ', $order->payment_type))) }}</td>
                         </tr>
 
-                        <tr>
+                        {{-- <tr>
                             <td class="text-main text-bold">{{ translate('Additional Info') }}</td>
                             <td class="text-right">{{ $order->additional_info }}</td>
-                        </tr>
+                        </tr> --}}
                         @if ($order->tracking_code)
                             <tr>
                                 <td class="w-50 fw-600">{{ translate('Tracking code') }}:</td>

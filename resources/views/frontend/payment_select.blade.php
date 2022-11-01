@@ -53,7 +53,7 @@
 
 
                         <div class="card rounded border-0 shadow-sm">
-                            <div class="card-header p-3">
+                            {{-- <div class="card-header p-3">
                                 <h3 class="fs-16 fw-600 mb-0">
                                     {{ translate('Any additional info?') }}
                                 </h3>
@@ -61,7 +61,7 @@
                             <div class="form-group px-3 pt-3">
                                 <textarea name="additional_info" rows="5" class="form-control"
                                     placeholder="{{ translate('Type your text') }}"></textarea>
-                            </div>
+                            </div> --}}
 
                             <div class="card-header p-3">
                                 <h3 class="fs-16 fw-600 mb-0">
