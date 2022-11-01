@@ -105,7 +105,13 @@ class CommissionController extends Controller
 
                 if ($orderDetail->product->user->user_type == 'seller') {
                     $shop = $orderDetail->product->user->shop;
-                    $admin_commission = ($orderDetail->price * $commission_percentage)/100;
+
+                    if(get_setting('vendor_commission_type')== 'percent'){
+                        $admin_commission = ($orderDetail->price * $commission_percentage)/100;
+                    }elseif(get_setting('vendor_commission_type')== 'amount'){
+                        $admin_commission = $commission_percentage;
+                    }
+
 
                     if (get_setting('product_manage_by_admin') == 1) {
                         $seller_earning = ($orderDetail->price) - $admin_commission;
