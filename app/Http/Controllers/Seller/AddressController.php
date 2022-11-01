@@ -30,6 +30,15 @@ class AddressController extends Controller
         $address->phone         = $request->phone;
         $address->save();
 
+        $user = Auth::user();
+        $user->address       = $address->address;
+        $user->country_id    = $address->country_id;
+        $user->state_id      = $address->state_id;
+        $user->city_id       = $address->city_id;
+        $user->postal_code   = $address->postal_code;
+        $user->phone         = $address->phone;
+        $user->save();
+
         return back();
     }
 
