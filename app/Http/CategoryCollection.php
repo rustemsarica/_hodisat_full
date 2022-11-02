@@ -17,6 +17,7 @@ class CategoryCollection extends ResourceCollection
                     'banner' => uploaded_asset($data->banner),
                     'icon' => uploaded_asset($data->icon),
                     'number_of_children' => CategoryUtility::get_immediate_children_count($data->id),
+                    'parent_id' => $data->parent_id,
                     'links' => [
                         'products' => route('api.products.category', $data->id),
                         'sub_categories' => route('api.subCategories.index', $data->id)
