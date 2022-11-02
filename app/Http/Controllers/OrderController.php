@@ -237,7 +237,7 @@ class OrderController extends Controller
         }
 
         $combined_order->save();
-        if ( $request->payment_option == 'wallet' )
+        if ( $request->payment_option == 'Wallet' )
         {
             (new OrderService)->create_shipping_code($order->id);
             NotificationUtility::sendOrderPlacedNotification($order);
