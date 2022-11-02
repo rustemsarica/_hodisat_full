@@ -45,7 +45,7 @@ class NotificationUtility
 
             $request->type = "order";
             $request->id = $order->id;
-            $request->user_id = $order->user_id;
+            $request->user_id = $order->seller_id;
 
             self::sendFirebaseNotification($request);
         }
