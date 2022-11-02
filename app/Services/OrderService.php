@@ -228,7 +228,7 @@ class OrderService{
 			$XSenderCustAddress=[
 				'senderCustName'		=> $seller->name,
 				'senderAddress'			=> $seller->address.' '.$seller_city->name.'/'.$seller_state->name,
-				'cityId'				=> $seller->state_id,
+				'cityId'				=> $seller->state,
 				'townName'				=> $seller_city->name,
 				'senderMobilePhone'		=> str_replace(['+',' '],'',$seller->phone),
 			];
