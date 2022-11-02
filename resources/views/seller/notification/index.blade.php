@@ -18,9 +18,15 @@
                                 <div class="media-body">
                                     <p class="mb-1 text-truncate-2">
                                         {{ translate('Order: ') }}
-                                        <a href="{{ route('seller.orders.show', encrypt($notification->data['order_id'])) }}">
-                                            {{ $notification->data['order_code'] }}
-                                        </a>
+                                        @if (Auth::user()->id == $notification->data['seller_id'])
+                                            <a href="{{ route('seller.orders.show', encrypt($notification->data['order_id'])) }}">
+                                                {{ $notification->data['order_code'] }}
+                                            </a>
+                                        @elseif (Auth::user()->id == $notification->data['user_id'])
+                                            <a href="{{ route('purchase_history.details', encrypt($notification->data['order_id'])) }}">
+                                                {{ $notification->data['order_code'] }}
+                                            </a>
+                                        @endif
                                         {{ translate(' has been '. ucfirst(str_replace('_', ' ', $notification->data['status']))) }}
                                     </p>
                                     <small class="text-muted">

@@ -103,9 +103,6 @@
                                             @forelse(Auth::user()->unreadNotifications as $notification)
                                                 <li class="list-group-item">
                                                     @if($notification->type == 'App\Notifications\OrderNotification')
-                                                    @php
-                                                        $user = \App\Models\User::find($notification->data['order_code'])
-                                                    @endphp
                                                         @if (Auth::user()->id == $notification->data['seller_id'])
                                                             <a href="{{ route('seller.orders.show', encrypt($notification->data['order_id'])) }}" class="text-reset">
                                                                 <span class="ml-2">
