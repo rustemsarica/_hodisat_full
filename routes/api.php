@@ -73,11 +73,11 @@ Route::group(['prefix' => 'v2', 'as' =>'api.', 'middleware' => ['app_language']]
     Route::get('products/admin', 'App\Http\Controllers\Api\V2\ProductController@admin');
     Route::get('products/seller/{id}', 'App\Http\Controllers\Api\V2\ProductController@seller');
     Route::get('products/seller/{id}/sold', 'App\Http\Controllers\Api\V2\ProductController@sellerSold');
-    Route::get('products/category/{id}', 'App\Http\Controllers\Api\V2\ProductController@category')->name('api.products.category');
+    Route::get('products/category/{id}', 'App\Http\Controllers\Api\V2\ProductController@category')->name('products.category');
     Route::get('products/seller/{id}/sold', 'App\Http\Controllers\Api\V2\ProductController@sellerSold');
     Route::get('products/sub-category/{id}', 'App\Http\Controllers\Api\V2\ProductController@subCategory')->name('products.subCategory');
     Route::get('products/sub-sub-category/{id}', 'App\Http\Controllers\Api\V2\ProductController@subSubCategory')->name('products.subSubCategory');
-    Route::get('products/brand/{id}', 'App\Http\Controllers\Api\V2\ProductController@brand')->name('api.products.brand');
+    Route::get('products/brand/{id}', 'App\Http\Controllers\Api\V2\ProductController@brand')->name('products.brand');
     Route::get('products/todays-deal', 'App\Http\Controllers\Api\V2\ProductController@todaysDeal');
     Route::get('products/featured', 'App\Http\Controllers\Api\V2\ProductController@featured');
     Route::get('products/best-seller', 'App\Http\Controllers\Api\V2\ProductController@bestSeller');
@@ -114,8 +114,8 @@ Route::group(['prefix' => 'v2', 'as' =>'api.', 'middleware' => ['app_language']]
 
     Route::get('payment-types', 'App\Http\Controllers\Api\V2\PaymentTypesController@getList');
 
-    Route::get('reviews/product/{id}', 'App\Http\Controllers\Api\V2\ReviewController@index')->name('api.reviews.index');
-    Route::post('reviews/submit', 'App\Http\Controllers\Api\V2\ReviewController@submit')->name('api.reviews.submit')->middleware('auth:sanctum');
+    Route::get('reviews/product/{id}', 'App\Http\Controllers\Api\V2\ReviewController@index')->name('reviews.index');
+    Route::post('reviews/submit', 'App\Http\Controllers\Api\V2\ReviewController@submit')->name('reviews.submit')->middleware('auth:sanctum');
 
     Route::get('shop/user/{id}', 'App\Http\Controllers\Api\V2\ShopController@shopOfUser')->middleware('auth:sanctum');
      Route::get('shop/user/detail/{id}', 'App\Http\Controllers\Api\V2\ShopController@shopOfUserDetail')->name('shop.detail.user_id');
@@ -194,33 +194,33 @@ Route::group(['prefix' => 'v2', 'as' =>'api.', 'middleware' => ['app_language']]
 
 
     Route::any('stripe', 'App\Http\Controllers\Api\V2\StripeController@stripe');
-    Route::any('/stripe/create-checkout-session', 'App\Http\Controllers\Api\V2\StripeController@create_checkout_session')->name('api.stripe.get_token');
-    Route::any('/stripe/payment/callback', 'App\Http\Controllers\Api\V2\StripeController@callback')->name('api.stripe.callback');
-    Route::any('/stripe/success', 'App\Http\Controllers\Api\V2\StripeController@success')->name('api.stripe.success');
-    Route::any('/stripe/cancel', 'App\Http\Controllers\Api\V2\StripeController@cancel')->name('api.stripe.cancel');
+    Route::any('/stripe/create-checkout-session', 'App\Http\Controllers\Api\V2\StripeController@create_checkout_session')->name('stripe.get_token');
+    Route::any('/stripe/payment/callback', 'App\Http\Controllers\Api\V2\StripeController@callback')->name('stripe.callback');
+    Route::any('/stripe/success', 'App\Http\Controllers\Api\V2\StripeController@success')->name('stripe.success');
+    Route::any('/stripe/cancel', 'App\Http\Controllers\Api\V2\StripeController@cancel')->name('stripe.cancel');
 
-    Route::any('paypal/payment/url', 'App\Http\Controllers\Api\V2\PaypalController@getUrl')->name('api.paypal.url');
-    Route::any('paypal/payment/done', 'App\Http\Controllers\Api\V2\PaypalController@getDone')->name('api.paypal.done');
-    Route::any('paypal/payment/cancel', 'App\Http\Controllers\Api\V2\PaypalController@getCancel')->name('api.paypal.cancel');
+    Route::any('paypal/payment/url', 'App\Http\Controllers\Api\V2\PaypalController@getUrl')->name('paypal.url');
+    Route::any('paypal/payment/done', 'App\Http\Controllers\Api\V2\PaypalController@getDone')->name('paypal.done');
+    Route::any('paypal/payment/cancel', 'App\Http\Controllers\Api\V2\PaypalController@getCancel')->name('paypal.cancel');
 
-    Route::any('razorpay/pay-with-razorpay', 'App\Http\Controllers\Api\V2\RazorpayController@payWithRazorpay')->name('api.razorpay.paywidth');
-    Route::any('razorpay/payment', 'App\Http\Controllers\Api\V2\RazorpayController@payment')->name('api.razorpay.payment');
-    Route::post('razorpay/success', 'App\Http\Controllers\Api\V2\RazorpayController@success')->name('api.razorpay.success');
+    Route::any('razorpay/pay-with-razorpay', 'App\Http\Controllers\Api\V2\RazorpayController@payWithRazorpay')->name('razorpay.paywidth');
+    Route::any('razorpay/payment', 'App\Http\Controllers\Api\V2\RazorpayController@payment')->name('razorpay.payment');
+    Route::post('razorpay/success', 'App\Http\Controllers\Api\V2\RazorpayController@success')->name('razorpay.success');
 
-    Route::any('paystack/init', 'App\Http\Controllers\Api\V2\PaystackController@init')->name('api.paystack.init');
-    Route::post('paystack/success', 'App\Http\Controllers\Api\V2\PaystackController@success')->name('api.paystack.success');
+    Route::any('paystack/init', 'App\Http\Controllers\Api\V2\PaystackController@init')->name('paystack.init');
+    Route::post('paystack/success', 'App\Http\Controllers\Api\V2\PaystackController@success')->name('paystack.success');
 
-    Route::any('iyzico/init', 'App\Http\Controllers\Api\V2\IyzicoController@init')->name('api.iyzico.init');
-    Route::any('iyzico/callback', 'App\Http\Controllers\Api\V2\IyzicoController@callback')->name('api.iyzico.callback');
-    Route::post('iyzico/success', 'App\Http\Controllers\Api\V2\IyzicoController@success')->name('api.iyzico.success');
+    Route::any('iyzico/init', 'App\Http\Controllers\Api\V2\IyzicoController@init')->name('iyzico.init');
+    Route::any('iyzico/callback', 'App\Http\Controllers\Api\V2\IyzicoController@callback')->name('iyzico.callback');
+    Route::post('iyzico/success', 'App\Http\Controllers\Api\V2\IyzicoController@success')->name('iyzico.success');
 
     Route::get('bkash/begin', 'App\Http\Controllers\Api\V2\BkashController@begin')->middleware('auth:sanctum');
-    Route::get('bkash/api/webpage/{token}/{amount}', 'App\Http\Controllers\Api\V2\BkashController@webpage')->name('api.bkash.webpage');
-    Route::any('bkash/api/checkout/{token}/{amount}', 'App\Http\Controllers\Api\V2\BkashController@checkout')->name('api.bkash.checkout');
-    Route::any('bkash/api/execute/{token}', 'App\Http\Controllers\Api\V2\BkashController@execute')->name('api.bkash.execute');
-    Route::any('bkash/api/fail', 'App\Http\Controllers\Api\V2\BkashController@fail')->name('api.bkash.fail');
-    Route::any('bkash/api/success', 'App\Http\Controllers\Api\V2\BkashController@success')->name('api.bkash.success');
-    Route::post('bkash/api/process', 'App\Http\Controllers\Api\V2\BkashController@process')->name('api.bkash.process');
+    Route::get('bkash/api/webpage/{token}/{amount}', 'App\Http\Controllers\Api\V2\BkashController@webpage')->name('bkash.webpage');
+    Route::any('bkash/api/checkout/{token}/{amount}', 'App\Http\Controllers\Api\V2\BkashController@checkout')->name('bkash.checkout');
+    Route::any('bkash/api/execute/{token}', 'App\Http\Controllers\Api\V2\BkashController@execute')->name('bkash.execute');
+    Route::any('bkash/api/fail', 'App\Http\Controllers\Api\V2\BkashController@fail')->name('bkash.fail');
+    Route::any('bkash/api/success', 'App\Http\Controllers\Api\V2\BkashController@success')->name('bkash.success');
+    Route::post('bkash/api/process', 'App\Http\Controllers\Api\V2\BkashController@process')->name('bkash.process');
 
     Route::get('nagad/begin', 'App\Http\Controllers\Api\V2\NagadController@begin')->middleware('auth:sanctum');
     Route::any('nagad/verify/{payment_type}', 'App\Http\Controllers\Api\V2\NagadController@verify')->name('app.nagad.callback_url');
@@ -231,16 +231,16 @@ Route::group(['prefix' => 'v2', 'as' =>'api.', 'middleware' => ['app_language']]
     Route::post('sslcommerz/fail', 'App\Http\Controllers\Api\V2\SslCommerzController@payment_fail');
     Route::post('sslcommerz/cancel', 'App\Http\Controllers\Api\V2\SslCommerzController@payment_cancel');
 
-    Route::any('flutterwave/payment/url', 'App\Http\Controllers\Api\V2\FlutterwaveController@getUrl')->name('api.flutterwave.url');
-    Route::any('flutterwave/payment/callback', 'App\Http\Controllers\Api\V2\FlutterwaveController@callback')->name('api.flutterwave.callback');
+    Route::any('flutterwave/payment/url', 'App\Http\Controllers\Api\V2\FlutterwaveController@getUrl')->name('flutterwave.url');
+    Route::any('flutterwave/payment/callback', 'App\Http\Controllers\Api\V2\FlutterwaveController@callback')->name('flutterwave.callback');
 
-    Route::any('paytm/payment/pay', 'App\Http\Controllers\Api\V2\PaytmController@pay')->name('api.paytm.pay');
-    Route::any('paytm/payment/callback', 'App\Http\Controllers\Api\V2\PaytmController@callback')->name('api.paytm.callback');
+    Route::any('paytm/payment/pay', 'App\Http\Controllers\Api\V2\PaytmController@pay')->name('paytm.pay');
+    Route::any('paytm/payment/callback', 'App\Http\Controllers\Api\V2\PaytmController@callback')->name('paytm.callback');
 
     Route::post('payments/pay/wallet', 'App\Http\Controllers\Api\V2\WalletController@processPayment')->middleware('auth:sanctum');
     Route::post('payments/pay/manual', 'App\Http\Controllers\Api\V2\PaymentController@manualPayment')->middleware('auth:sanctum');
 
-    Route::post('offline/payment/submit', 'App\Http\Controllers\Api\V2\OfflinePaymentController@submit')->name('api.offline.payment.submit');
+    Route::post('offline/payment/submit', 'App\Http\Controllers\Api\V2\OfflinePaymentController@submit')->name('offline.payment.submit');
 
     Route::post('order/store', 'App\Http\Controllers\Api\V2\OrderController@store')->middleware('auth:sanctum');
 
