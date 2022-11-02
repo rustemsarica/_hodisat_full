@@ -37,9 +37,9 @@ class IyzicoController extends Controller
         $iyzicoRequest->setConversationId('123456789');
 
         $buyer = new \Iyzipay\Model\Buyer();
-        $buyer->setId("BY789");
-        $buyer->setName("John");
-        $buyer->setSurname("Doe");
+        $buyer->setId($user->id != null ? $user->id : "BY789");
+        $buyer->setName($user->name != null ? explode(' ',$user->name)[0] :"John");
+        $buyer->setSurname($user->name != null ? Arr::last(explode(' ',$user->name)) :"Doe");
         $buyer->setEmail($user->email != null ? $user->email : 'email@email.com' );
         $buyer->setIdentityNumber("74300864791");
         $buyer->setRegistrationAddress("Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1");
