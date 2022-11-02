@@ -103,10 +103,19 @@
                                             @forelse(Auth::user()->unreadNotifications as $notification)
                                                 <li class="list-group-item">
                                                     @if($notification->type == 'App\Notifications\OrderNotification')
-                                                        @if (Auth::user()->user_type == 'seller')
+                                                    @php
+                                                        $user = \App\Models\User::find($notification->data['order_code'])
+                                                    @endphp
+                                                        @if (Auth::user()->id == $notification->data['seller_id'])
                                                             <a href="{{ route('seller.orders.show', encrypt($notification->data['order_id'])) }}" class="text-reset">
                                                                 <span class="ml-2">
-                                                                    {{translate('Order code: ')}} {{$notification->data['order_code']}} {{ translate('has been '. ucfirst(str_replace('_', ' ', $notification->data['status'])))}}
+                                                                    {{translate('Order code')}}:  {{$notification->data['order_code']}} {{ translate('has been '. ucfirst(str_replace('_', ' ', $notification->data['status'])))}}
+                                                                </span>
+                                                            </a>
+                                                        @elseif (Auth::user()->id == $notification->data['user_id'])
+                                                            <a href="{{ route('purchase_history.details', encrypt($notification->data['order_id'])) }}" class="text-reset">
+                                                                <span class="ml-2">
+                                                                    {{translate('Order code')}}:  {{$notification->data['order_code']}} {{ translate('has been '. ucfirst(str_replace('_', ' ', $notification->data['status'])))}}
                                                                 </span>
                                                             </a>
                                                         @endif
