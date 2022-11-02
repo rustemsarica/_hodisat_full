@@ -234,14 +234,15 @@ class OrderController extends Controller
 
             $combined_order->grand_total += $order->grand_total;
             $order->save();
+
+            if ( $request->payment_option == 'wallet' )
+            {
+                (new OrderService)->create_shipping_code($order->id);
+                NotificationUtility::sendOrderPlacedNotification($order);
+            }
         }
 
         $combined_order->save();
-        if ( $request->payment_option == 'wallet' )
-        {
-            (new OrderService)->create_shipping_code($order->id);
-            NotificationUtility::sendOrderPlacedNotification($order);
-        }
 
         $request->session()->put('combined_order_id', $combined_order->id);
     }
