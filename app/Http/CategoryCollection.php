@@ -18,8 +18,8 @@ class CategoryCollection extends ResourceCollection
                     'icon' => uploaded_asset($data->icon),
                     'number_of_children' => CategoryUtility::get_immediate_children_count($data->id),
                     'links' => [
-                        'products' => "",
-                        'sub_categories' =>""
+                        'products' => route('api.products.category', $data->id),
+                        'sub_categories' => route('api.subCategories.index', $data->id)
                     ]
                 ];
             })
