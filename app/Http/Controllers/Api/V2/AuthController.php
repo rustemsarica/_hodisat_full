@@ -237,7 +237,7 @@ class AuthController extends Controller
             }else{
 
             $user = new User([
-                'usernam'=> Str::lower(explode(' ',$user->name)[0]),
+                'username'=> Str::lower(explode(' ',$user->name)[0]),
                 'name' => $request->name,
                 'email' => $request->email,
                 'provider_id' => $request->provider,
@@ -281,7 +281,8 @@ class AuthController extends Controller
                 'username'=> $user->username,
                 'email' => $user->email,
                 'phone' => $user->phone,
-                'vacation_mode' => $user->vacation_mode
+                'vacation_mode' => $user->vacation_mode,
+                'address_status' => $user->address == null || $user->state == null || $user->city == null ? false : true
             ]
         ]);
     }
