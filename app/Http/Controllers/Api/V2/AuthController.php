@@ -76,7 +76,7 @@ class AuthController extends Controller
             if ($seller->save()) {
                 $shop = new Shop;
                 $shop->user_id = $user->id;
-                $shop->slug = Str::slug($request->name) . '-' . $shop->id;
+                $shop->slug = $user->username;
                 $shop->save();
 
             }
@@ -237,12 +237,24 @@ class AuthController extends Controller
             }else{
 
             $user = new User([
+                'usernam'=> Str::lower(explode(' ',$user->name)[0]),
                 'name' => $request->name,
                 'email' => $request->email,
                 'provider_id' => $request->provider,
                 'email_verified_at' => Carbon::now()
             ]);
             $user->save();
+            $user->username = $user->username.$user->id;
+            $user->save();
+
+            $seller = new Seller;
+            $seller->user_id = $user->id;
+            $seller->save();
+
+            $shop = new Shop;
+            $shop->user_id = $user->id;
+            $shop->slug = $user->username;
+            $shop->save();
         }
         }
         return $this->loginSuccess($user);

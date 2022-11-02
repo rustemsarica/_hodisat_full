@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
 use App\Models\User;
 use App\Models\Cart;
+use App\Models\Seller;
+use App\Models\Shop;
 use Session;
 use Illuminate\Http\Request;
 use CoreComponentRepository;
@@ -91,12 +93,23 @@ class LoginController extends Controller
             } else {
                 //create a new user
                 $newUser = new User;
+                $newUser->username = Str::lower(explode(' ',$user->name)[0]);
                 $newUser->name = $user->name;
                 $newUser->email = $user->email;
                 $newUser->email_verified_at = date('Y-m-d Hms');
                 $newUser->provider_id = $user->id;
                 $newUser->save();
+                $newUser->username = $newUser->username.$newUser->id;
+                $newUser->save();
 
+                $seller = new Seller;
+                $seller->user_id = $newUser->id;
+                $seller->save();
+
+                $shop = new Shop;
+                $shop->user_id = $newUser->id;
+                $shop->slug = $newUser->username;
+                $shop->save();
                 auth()->login($newUser, true);
             }
         }

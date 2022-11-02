@@ -88,6 +88,7 @@ class RegisterController extends Controller
         else {
             if (addon_is_activated('otp_system')){
                 $user = User::create([
+                    'username' => $data['username'],
                     'name' => $data['name'],
                     'phone' => '+'.$data['country_code'].$data['phone'],
                     'password' => Hash::make($data['password']),
