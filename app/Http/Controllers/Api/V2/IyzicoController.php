@@ -21,7 +21,7 @@ class IyzicoController extends Controller
         $combined_order_id = $request->combined_order_id;
         $amount = $request->amount;
         $user_id = $request->user_id;
-
+        $user = User::find($user_id);
         $options = new \Iyzipay\Options();
         $options->setApiKey(env('IYZICO_API_KEY'));
         $options->setSecretKey(env('IYZICO_SECRET_KEY'));
@@ -40,7 +40,7 @@ class IyzicoController extends Controller
         $buyer->setId("BY789");
         $buyer->setName("John");
         $buyer->setSurname("Doe");
-        $buyer->setEmail("email@email.com");
+        $buyer->setEmail($user->email != null ? $user->email : 'email@email.com' );
         $buyer->setIdentityNumber("74300864791");
         $buyer->setRegistrationAddress("Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1");
         $buyer->setCity("Istanbul");
