@@ -276,10 +276,10 @@ class OrderService{
 
     }
 
-    public function cancel_shipping_code(Request $request) {
-        $key=$request->shipping_code;
-        $order=Order::where('shipping_code',$key)->first();
+    public function cancel_shipping_code($id) {
 
+        $order = Order::findOrFail($id);
+        $key=$order->shipping_code;
             $istek = Soap::to('https://ws.yurticikargo.com/KOPSWebServices/NgiShipmentInterfaceServices?wsdl');
             $data=[
                     'wsUserName'        		=> 'CIZGITURIZMYENI',
