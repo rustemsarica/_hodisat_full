@@ -233,7 +233,6 @@ class OrderController extends Controller
             }
 
             $combined_order->grand_total += $order->grand_total;
-            $order->shipping_code=(new OrderService)->create_shipping_code($order->id);
             $order->save();
         }
 
