@@ -192,7 +192,6 @@ class OrderController extends Controller
                 $order_detail->quantity =1;
                 $order_detail->save();
 
-                $product->save();
 
                 $order->seller_id = $product->user_id;
                 //======== Added By Kiron ==========
