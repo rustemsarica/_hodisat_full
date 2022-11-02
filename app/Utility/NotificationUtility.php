@@ -39,7 +39,7 @@ class NotificationUtility
         //sends Notifications to user
         self::sendNotification($order, 'placed');
         $user = User::find($order->seller_id);
-        if ($request !=null && get_setting('google_firebase') == 1 && $user->device_token != null) {
+        if (get_setting('google_firebase') == 1 && $user->device_token != null) {
             $request->device_token = $user->device_token;
             $request->title = "Yeni sipariş!";
             $request->text = "Bir yeni siparişin var.";
