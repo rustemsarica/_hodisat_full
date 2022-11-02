@@ -20,7 +20,7 @@ class CategoryController extends Controller
         if(request()->has('parent_id') && is_numeric (request()->get('parent_id'))){
           $parent_id = request()->get('parent_id');
         }
-        
+
         return Cache::remember("app.categories-$parent_id", 86400, function() use ($parent_id){
             return new CategoryCollection(Category::where('status',1)->where('parent_id', $parent_id)->get());
         });
@@ -41,12 +41,12 @@ class CategoryController extends Controller
     }
 
     public function top()
-    {   
+    {
         return Cache::remember('app.top_categories', 86400, function(){
             return new CategoryCollection(Category::where('status',1)->whereIn('id', json_decode(get_setting('home_categories')))->limit(20)->get());
         });
     }
-    
+
     public function getCategoryAttributes($id){
         $data = array();
         $category=Category::where('id',$id)->first();
@@ -62,7 +62,7 @@ class CategoryController extends Controller
             }else{
                 break;
             }
-            
+
             $parent_id=$category->parent_id;
         }
 
@@ -76,16 +76,16 @@ class CategoryController extends Controller
                 }
             }
         }
-        
-        
+
+
         return [
             'data'=>new Collection(Attribute::whereIn('id', $attributeIds)->with('attribute_values')->get()),
             'success' => true,
             'status' => 200
             ];
-        
+
     }
-    
+
     public function getCategory($id){
         $data=Category::where('status',1)->where('id', $id)->first();
 
@@ -96,7 +96,7 @@ class CategoryController extends Controller
         $icon ='';
         if(uploaded_asset(uploaded_asset($data->icon))) {
             $icon = uploaded_asset($data->icon);
-        } 
+        }
 
         return collect([
             'id' => $data->id,
@@ -107,13 +107,13 @@ class CategoryController extends Controller
             'parent_id' => $data->parent_id,
             'links' => [
                 'products' => route('api.products.category', $data->id),
-                'sub_categories' => route('subCategories.index', $data->id)
+                'sub_categories' => route('api.subCategories.index', $data->id)
             ]
         ]);
         return new CategoryCollection(Category::where('status',1)->where('id', $id)->get());
     }
 
-   
+
 
     public function categoryParentTree($id)
     {
@@ -131,7 +131,7 @@ class CategoryController extends Controller
             }else{
                 break;
             }
-            
+
             $parent_id=$category->parent_id;
         }
 
