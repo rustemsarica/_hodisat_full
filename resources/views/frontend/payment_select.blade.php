@@ -487,9 +487,9 @@
                                         <div class="h6 mb-3">
                                             <span class="opacity-80">{{ translate('Your wallet balance :') }}</span>
                                             <span
-                                                class="fw-600">{{ single_price(Auth::user()->balance) }}</span>
+                                                class="fw-600">{{ single_price(Auth::user()->seller->admin_to_pay) }}</span>
                                         </div>
-                                        @if (Auth::user()->balance < $total)
+                                        @if (Auth::user()->seller->admin_to_pay < $total)
                                             <button type="button" class="btn btn-secondary" disabled>
                                                 {{ translate('Insufficient balance') }}
                                             </button>
