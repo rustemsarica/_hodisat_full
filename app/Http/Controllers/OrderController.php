@@ -237,7 +237,7 @@ class OrderController extends Controller
 
             if ( $order->payment_type == 'wallet' )
             {
-                (new OrderService)->create_shipping_code($order->id);
+                //(new OrderService)->create_shipping_code($order->id);
                 NotificationUtility::sendOrderPlacedNotification($order);
             }
         }
