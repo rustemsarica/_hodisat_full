@@ -52,7 +52,7 @@
           </tr>
           <tr>
               <td>{{ translate('Wallet Balance') }}</td>
-              <td>{{ single_price($shop->seller->admin_to_pay) }}</td>
+              <td>{{ single_price($shop->admin_to_pay) }}</td>
           </tr>
           </tbody>
       </table>

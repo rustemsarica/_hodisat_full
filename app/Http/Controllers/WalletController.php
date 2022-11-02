@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Wallet;
-use App\Models\Seller;
+use App\Models\Shop;
 use Auth;
 use Session;
 
@@ -32,9 +32,9 @@ class WalletController extends Controller
     public function wallet_payment_done($payment_data, $payment_details)
     {
         $user = Auth::user();
-        $seller = Seller::where('user_id',$user->id)->first();
-        $seller->admin_to_pay = $seller->admin_to_pay + $payment_data['amount'];
-        $seller->save();
+        $shop = Shop::where('user_id',$user->id)->first();
+        $shop->admin_to_pay = $shop->admin_to_pay + $payment_data['amount'];
+        $shop->save();
 
         $wallet = new Wallet;
         $wallet->user_id = $user->id;

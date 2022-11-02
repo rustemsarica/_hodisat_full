@@ -31,7 +31,7 @@ class WithdrawRequestController extends Controller
     public function store(Request $request)
     {
 
-        if (auth()->user()->shop->admin_to_pay > 5) {
+        if (auth()->user()->shop->admin_to_pay > get_setting('minimum_seller_amount_withdraw')) {
             if ($request->amount >= get_setting('minimum_seller_amount_withdraw') && $request->amount <= auth()->user()->shop->admin_to_pay) {
                 $seller_withdraw_request = new SellerWithdrawRequest;
                 $seller_withdraw_request->user_id = auth()->user()->id;
