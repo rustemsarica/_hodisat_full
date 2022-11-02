@@ -98,7 +98,7 @@ class CheckoutController extends Controller
                 $product->save();
             }
             calculateCommissionAffilationClubPoint($order);
-            NotificationUtility::sendOrderPlacedNotification($order);
+            //NotificationUtility::sendOrderPlacedNotification($order);
         }
         Session::put('combined_order_id', $combined_order_id);
         return redirect()->route('order_confirmed');
