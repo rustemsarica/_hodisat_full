@@ -175,7 +175,6 @@ class OrderController extends Controller
                 $order->save();
 
             }
-			$order->save();
 
             if ( $request->payment_type == 'wallet')
             {
