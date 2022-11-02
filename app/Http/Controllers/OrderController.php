@@ -235,11 +235,6 @@ class OrderController extends Controller
             $combined_order->grand_total += $order->grand_total;
             $order->save();
 
-            if ( $order->payment_type == 'wallet' )
-            {
-                //(new OrderService)->create_shipping_code($order->id);
-                NotificationUtility::sendOrderPlacedNotification($order);
-            }
         }
 
         $combined_order->save();
