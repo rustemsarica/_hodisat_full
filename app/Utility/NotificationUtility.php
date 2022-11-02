@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Utility;
+use Illuminate\Http\Request;
 
 use App\Mail\InvoiceEmailManager;
 use App\Models\User;
@@ -40,7 +41,7 @@ class NotificationUtility
         self::sendNotification($order, 'placed');
         $user = User::find($order->seller_id);
         if (get_setting('google_firebase') == 1 && $user->device_token != null) {
-            $request = array();
+            $request = new Request();
             $request->device_token = $user->device_token;
             $request->title = "Yeni sipariş!";
             $request->text = "Bir yeni siparişin var.";
