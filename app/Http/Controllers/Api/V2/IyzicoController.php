@@ -11,6 +11,7 @@ use App\Models\CombinedOrder;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Redirect;
+use Illuminate\Support\Arr;
 
 class IyzicoController extends Controller
 {
