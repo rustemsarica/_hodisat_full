@@ -30,7 +30,10 @@ class BrandController extends Controller
     {
         if($request->category_id>0){
             $ids=DB::table('products')->where('category_id',$request->category_id)->select('brand_id',DB::raw('COUNT(brand_id) AS magnitude'))->groupBy('brand_id')->orderBy('magnitude', 'DESC')->limit(10)->pluck('brand_id')->toArray();
-            return new BrandCollection(Brand::whereIn('id', $ids)->get());
+            $brands = Brand::whereIn('id', $ids)->get();
+            if(count($brands)>0){
+                return new BrandCollection($brands);
+            }
         }
         return Cache::remember('app.top_brands', 86400, function(){
             $ids=DB::table('products')->select('brand_id',DB::raw('COUNT(brand_id) AS magnitude'))->groupBy('brand_id')->orderBy('magnitude', 'DESC')->limit(10)->pluck('brand_id')->toArray();

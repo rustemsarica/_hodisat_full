@@ -42,7 +42,6 @@ class OfferCollection extends ResourceCollection
                         'seller_id' => $seller->id,
                         'seller_name'=> $seller->user->username,
                         'seller_avatar' =>  $seller_logo,
-                        'rating' => 0,
                         'is_in_wishlist'=> false,
                         'current_stock' => $data->product->current_stock
                     ],
