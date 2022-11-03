@@ -41,7 +41,8 @@ class UserController extends Controller
             'cover_image' => "https://hodisat.com/public/uploads/bg.jpg",
             'description' => "",
             'phone' => "",
-            'vacation_mode'=> ""
+            'vacation_mode'=> "",
+            'address_status' => false
         ];
 
 
@@ -70,7 +71,8 @@ class UserController extends Controller
             'cover_image' => uploaded_asset($user->shop->sliders),
             'description' => $user->shop->meta_description,
             'phone' => $user->phone,
-            'vacation_mode' => (string)$user->vacation_mode
+            'vacation_mode' => (string)$user->vacation_mode,
+            'address_status' => $user->address == null || $user->state == null || $user->city == null ? false : true
         ]);
 
     }
