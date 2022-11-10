@@ -83,6 +83,22 @@ class OrderService{
             }
         }
 
+        if($request->status == 'cancelled'){
+            NotificationUtility::sendNotification($order, $request->status);
+            if (get_setting('google_firebase') == 1 && $order->seller->user->device_token != null) {
+                $request->device_token = $order->seller->user->device_token;
+                $status = translate(str_replace("_", " ", $order->delivery_status));
+                $request->title = "Siparişin {$status}";
+                $request->text = "{$order->code} numaralı siparişin {$status}";
+
+                $request->type = "order";
+                $request->id = $order->id;
+                $request->user_id = $order->seller->user->id;
+
+                NotificationUtility::sendFirebaseNotification($request);
+            }
+        }
+
         //sends Notifications to user
         NotificationUtility::sendNotification($order, $request->status);
         if (get_setting('google_firebase') == 1 && $order->user->device_token != null) {
