@@ -4,6 +4,7 @@ namespace App\Services;
 use Illuminate\Http\Request;
 
 use App\Models\Order;
+use App\Models\Shop;
 use App\Models\Product;
 use App\Models\SmsTemplate;
 use App\Models\User;
@@ -26,10 +27,10 @@ class OrderService{
         $order->delivery_status = $request->status;
         $order->save();
 
-        if ($request->status == 'cancelled' && $order->payment_type == 'wallet') {
-            $user = User::where('id', $order->user_id)->first();
-            $user->shop->admin_to_pay += $order->grand_total;
-            $user->save();
+        if ($request->status == 'cancelled') {
+            $shop = Shop::where('user_id', $order->user_id)->first();
+            $shop->admin_to_pay += $order->grand_total;
+            $shop->save();
         }
 
         if($request->status=='confirmed'){
@@ -48,6 +49,7 @@ class OrderService{
                         $product->current_stock += $orderDetail->quantity;
                         $product->save();
                     }
+
             }
 
             if (addon_is_activated('affiliate_system') && auth()->user()->user_type == 'admin') {

@@ -16,7 +16,7 @@ class PurchaseHistoryCollection extends ResourceCollection
                 if ($data->shipping_type == 'pickup_point' && $data->pickup_point_id) {
                     $pickup_point = $data->pickup_point;
                 }
-
+ 
                 return [
                     'id' => $data->id,
                     'code' => $data->code,
