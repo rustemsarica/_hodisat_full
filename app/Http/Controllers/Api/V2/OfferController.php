@@ -80,6 +80,7 @@ class OfferController extends Controller
 
                 NotificationUtility::sendFirebaseNotification($request);
             }
+
             return response()->json([
                 'status' => true,
                 'message' => 'Teklifin satıcıya iletildi.'

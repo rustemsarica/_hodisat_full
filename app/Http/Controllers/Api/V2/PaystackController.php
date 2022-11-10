@@ -55,7 +55,7 @@ class PaystackController extends Controller
             $payment_type = $request->payment_type;
 
             if ($payment_type == 'cart_payment') {
-
+                //create order
                 checkout_done($request->combined_order_id, $request->payment_details);
             }
 
