@@ -19,7 +19,6 @@ class IyzicoController extends Controller
     public function init(Request $request)
     {
         $payment_type = $request->payment_type;
-        $combined_order_id = $request->combined_order_id;
         $amount = $request->amount;
         $user_id = $request->user_id;
         $user = User::find($user_id);
@@ -63,9 +62,8 @@ class IyzicoController extends Controller
 
 
         if ($payment_type == 'cart_payment') {
-            $combined_order = CombinedOrder::find($combined_order_id);
-            $iyzicoRequest->setPrice(round($combined_order->grand_total));
-            $iyzicoRequest->setPaidPrice(round($combined_order->grand_total));
+            $iyzicoRequest->setPrice(round($amount));
+            $iyzicoRequest->setPaidPrice(round($amount));
             $iyzicoRequest->setCurrency(\Iyzipay\Model\Currency::TL);
             $iyzicoRequest->setBasketId(rand(000000, 999999));
             $iyzicoRequest->setPaymentGroup(\Iyzipay\Model\PaymentGroup::SUBSCRIPTION);
@@ -77,7 +75,7 @@ class IyzicoController extends Controller
             $firstBasketItem->setName("Cart Payment");
             $firstBasketItem->setCategory1("Accessories");
             $firstBasketItem->setItemType(\Iyzipay\Model\BasketItemType::VIRTUAL);
-            $firstBasketItem->setPrice(round($combined_order->grand_total));
+            $firstBasketItem->setPrice(round($amount));
             $basketItems[0] = $firstBasketItem;
 
             $iyzicoRequest->setBasketItems($basketItems);
@@ -163,6 +161,7 @@ class IyzicoController extends Controller
             $payment_type = $request->payment_type;
 
             if ($payment_type == 'cart_payment') {
+
 
                 checkout_done($request->combined_order_id, $request->payment_details);
             }

@@ -51,7 +51,7 @@ class OrderController extends Controller
                 $shippingAddress['lat_lang'] = $address->latitude . ',' . $address->longitude;
             }
         }
- 
+
         $combined_order = new CombinedOrder;
         $combined_order->user_id = $user->id;
         $combined_order->shipping_address = json_encode($shippingAddress);
@@ -190,7 +190,7 @@ class OrderController extends Controller
         Cart::where('user_id', auth()->user()->id)->delete();
 
 
-
+        return $order;
         return response()->json([
             'combined_order_id' => $combined_order->id,
             'result' => true,
