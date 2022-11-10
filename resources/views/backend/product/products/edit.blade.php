@@ -381,7 +381,7 @@ function add_more_customer_choice_option(i, name){
                         <input type="text" class="form-control" name="choice[]" value="'+name+'" placeholder="{{ translate('Choice Title') }}" readonly>\
                     </div>\
                     <div class="col-md-8">\
-                        <select class="form-control aiz-selectpicker attribute_choice" data-live-search="true" name="choice_options_'+ i +'[]" multiple>\
+                        <select class="form-control aiz-selectpicker attribute_choice" data-live-search="true" name="choice_options_'+ i +'[]">\
                             '+obj+'\
                         </select>\
                     </div>\
