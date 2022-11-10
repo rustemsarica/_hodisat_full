@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Subscriber;
 use Mail;
 use App\Mail\EmailManager;
+use App\Utility\NotificationUtility;
 
 class NewsletterController extends Controller
 {
