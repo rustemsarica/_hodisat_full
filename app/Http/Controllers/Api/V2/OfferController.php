@@ -6,6 +6,8 @@ use App\Http\Resources\V2\OfferCollection;
 use App\Models\Offer;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Utility\NotificationUtility;
+
 
 class OfferController extends Controller
 {
