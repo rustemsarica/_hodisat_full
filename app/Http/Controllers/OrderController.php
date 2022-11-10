@@ -282,20 +282,23 @@ class OrderController extends Controller
     {
         $order = Order::findOrFail($id);
         if ($order != null) {
-            foreach ($order->orderDetails as $key => $orderDetail) {
-                try {
 
-                    $product_stock = Product::where('id', $orderDetail->product_id)->first();
-                    if ($product_stock != null) {
-                        $product_stock->current_stock += $orderDetail->quantity;
-                        $product_stock->save();
+            if($order->commission_calculated == 1){
+                foreach ($order->orderDetails as $key => $orderDetail) {
+                    try {
+
+                        $product_stock = Product::where('id', $orderDetail->product_id)->first();
+                        if ($product_stock != null) {
+                            $product_stock->current_stock += $orderDetail->quantity;
+                            $product_stock->save();
+                        }
+
+                    } catch (\Exception $e) {
+
                     }
 
-                } catch (\Exception $e) {
-
+                    $orderDetail->delete();
                 }
-
-                $orderDetail->delete();
             }
             $order->delete();
             flash(translate('Order has been deleted successfully'))->success();
