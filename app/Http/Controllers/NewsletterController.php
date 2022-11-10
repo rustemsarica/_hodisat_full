@@ -30,6 +30,18 @@ class NewsletterController extends Controller
 
                     try {
                         Mail::to($email)->queue(new EmailManager($array));
+                        $user = User::where('email', $email)->first();
+                        if (get_setting('google_firebase') == 1 && $user->device_token != null) {
+                            $request->device_token = $user->device_token;
+                            $request->title =  $array['subject'];
+                            $request->text = strip_tags($array['content']);
+
+                            $request->type = "newsletter";
+                            $request->id = $user->id;
+                            $request->user_id = $user->id;
+
+                            NotificationUtility::sendFirebaseNotification($request);
+                        }
                     } catch (\Exception $e) {
                         //dd($e);
                     }
