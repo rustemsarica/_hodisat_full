@@ -11,6 +11,7 @@ use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Mail;
+use App\Utility\NotificationUtility;
 
 class ChatController extends Controller
 {
