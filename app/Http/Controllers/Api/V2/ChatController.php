@@ -98,6 +98,16 @@ class ChatController extends Controller
 
         try {
             Mail::to($conversation->receiver->email)->queue(new ConversationMailManager($array));
+            $user = User::where('email', $email)->first();
+            if (get_setting('google_firebase') == 1 && $seller_user->device_token != null) {
+                $request->device_token = $seller_user->device_token;
+                $request->title =  "Yeni mesaj!";
+                $request->text = $user->username.":".$message->message;
+                $request->type = "message";
+                $request->id = $conversation->id;
+                $request->user_id = $seller_user->id;
+                NotificationUtility::sendFirebaseNotification($request);
+            }
         } catch (\Exception $e) {
             //dd($e->getMessage());
         }
