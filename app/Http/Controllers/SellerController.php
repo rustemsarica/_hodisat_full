@@ -167,6 +167,7 @@ class SellerController extends Controller
         Order::where('user_id', $shop->user_id)->delete();
 
         User::destroy($shop->user->id);
+        Seller::destroy($shop->user->id);
 
         if (Shop::destroy($id)) {
             Artisan::call('cache:clear');
