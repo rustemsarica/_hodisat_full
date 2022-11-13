@@ -12,6 +12,7 @@ use App\Models\OrderDetail;
 use Illuminate\Support\Facades\Hash;
 use App\Notifications\EmailVerificationNotification;
 use Cache;
+use Artisan;
 
 class SellerController extends Controller
 {
@@ -168,8 +169,9 @@ class SellerController extends Controller
         User::destroy($shop->user->id);
 
         if (Shop::destroy($id)) {
+            Artisan::call('cache:clear');
             flash(translate('Seller has been deleted successfully'))->success();
-            return redirect()->route('sellers.index');
+            return redirect()->route('admin.sellers.index');
         } else {
             flash(translate('Something went wrong'))->error();
             return back();
