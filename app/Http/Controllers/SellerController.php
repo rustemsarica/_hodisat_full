@@ -9,6 +9,8 @@ use App\Models\Shop;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Cart;
+use App\Models\Wishlist;
 use Illuminate\Support\Facades\Hash;
 use App\Notifications\EmailVerificationNotification;
 use Cache;
@@ -158,7 +160,13 @@ class SellerController extends Controller
     public function destroy($id)
     {
         $shop = Shop::findOrFail($id);
-        Product::where('user_id', $shop->user_id)->delete();
+        $products = Product::where('user_id', $shop->user_id)->pluck('id')->toArray();
+        if(count($products)>0){
+            Cart::whereIn('product_id', $products)->detele();
+            Wishlist::whereIn('product_id', $products)->detele();
+            Product::where('user_id', $shop->user_id)->delete();
+        }
+
         $orders = Order::where('user_id', $shop->user_id)->get();
 
         foreach ($orders as $key => $order) {
@@ -167,7 +175,7 @@ class SellerController extends Controller
         Order::where('user_id', $shop->user_id)->delete();
 
         User::destroy($shop->user_id);
-        Seller::destroy($shop->user_id);
+        Seller::where('user_id',$shop->user_id)->delete();
 
         if (Shop::destroy($id)) {
             Artisan::call('cache:clear');
