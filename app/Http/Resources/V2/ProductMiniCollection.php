@@ -93,7 +93,10 @@ class ProductMiniCollection extends ResourceCollection
                     'links' => [
                         'details' => ""
                     ],
-                    'published' => $data->published
+                    'published' => $data->published,
+                    'approved' => $data->approved,
+                    'wish_count' => count($data->wishlists),
+                    'brand' => $data->brand->name
                 ];
             })
         ];
