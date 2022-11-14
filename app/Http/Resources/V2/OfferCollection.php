@@ -46,7 +46,7 @@ class OfferCollection extends ResourceCollection
                         'current_stock' => $data->product->current_stock
                     ],
                     'offer_value' => $data->offer_value,
-                    'answer' => $data->answer,
+                    'answer' => $data->answer==2 ? null : $data->answer,
                     'created_at' => $data->created_at,
                     'updated_at' => $data->updated_at
                 ];
