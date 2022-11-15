@@ -126,7 +126,7 @@ class ProductService
             'published',
         ))->toArray();
             if(Product::create($data)){
-                if (get_setting('product_approve_by_admin') == 1) {
+
                     $array['view'] = 'emails.product';
                     $array['subject'] = 'Yeni Ürün';
                     $array['from'] = env('MAIL_FROM_ADDRESS');
@@ -143,7 +143,6 @@ class ProductService
                     } catch (\Exception $e) {
                         // dd($e->getMessage());
                     }
-                }
                 return true;
             }
         return ;
