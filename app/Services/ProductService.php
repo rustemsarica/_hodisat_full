@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
 use App\Mail\ProductMailManager;
 use Mail;
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 
 class ProductService
 {
