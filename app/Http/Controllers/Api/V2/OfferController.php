@@ -28,7 +28,8 @@ class OfferController extends Controller
     public function myOffers(Request $request)
     {
         if($request->status==""){
-            $request->status=null;
+            $offers = Offer::where('user_id',auth()->user()->id)->get();
+            return new OfferCollection($offers);
         }
 
         $offers = Offer::where('user_id',auth()->user()->id)->where('answer',$request->status)->get();
