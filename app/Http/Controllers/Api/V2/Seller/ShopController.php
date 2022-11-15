@@ -148,7 +148,7 @@ class ShopController extends Controller
         return new ProductCollection($products);
     }
 
-    public function info($id)
+    public function info()
     {
        // dd(auth()->user()->shop);
         return new ShopDetailsCollection(auth()->user()->shop);
