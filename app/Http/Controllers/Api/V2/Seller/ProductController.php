@@ -164,7 +164,7 @@ class ProductController extends Controller
             $array['from'] = env('MAIL_FROM_ADDRESS');
             $array['content'] = 'Yeni ürün yüklendi.';
             $array['sender'] = auth()->user()->name;
-            $array['product'] = $collection['name'];
+            $array['product'] = $request->name;
             $array['date'] = $now->toDateTimeString();
             try {
                 foreach(User::where('user_type', 'admin')->get() as $admin){
