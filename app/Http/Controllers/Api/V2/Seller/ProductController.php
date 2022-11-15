@@ -129,7 +129,7 @@ class ProductController extends Controller
 
         $data = new Product;
         $data->slug = $slug;
-        $data->added_by=$request->added_by;
+        $data->added_by=auth()->user()->user_type;
         $data->user_id=$request->user_id;
         $data->category_id=$request->category_id;
         $data->name=$request->name;
@@ -142,15 +142,12 @@ class ProductController extends Controller
         $data->choice_options=$request->choice_options;
         $data->attributes=$request->attribute_ids;
 
-        try {
+
         if (auth()->user()->user_type == 'seller') {
             if (get_setting('product_approve_by_admin') == 1) {
                 $data->approved = 0;
             }
         }
-    } catch (\Exception $e) {
-        return $this->failed(translate('Somethings went wrong.'));
-    }
 
         if($data->save()){
 
@@ -159,7 +156,7 @@ class ProductController extends Controller
 
 
             try {
-                $array = array();
+
                 $array['view'] = 'emails.product';
                 $array['subject'] = 'Yeni Ürün';
                 $array['from'] = env('MAIL_FROM_ADDRESS');
