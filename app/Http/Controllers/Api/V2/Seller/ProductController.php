@@ -24,7 +24,7 @@ use Storage;
 
 use App\Mail\ProductMailManager;
 use Mail;
-use Illuminate\Support\Carbon;
+use Carbon\Carbon;
 
 class ProductController extends Controller
 {
