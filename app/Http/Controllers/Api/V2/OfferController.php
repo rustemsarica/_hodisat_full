@@ -17,7 +17,7 @@ class OfferController extends Controller
         $productIds = Product::where('user_id', auth()->user()->id)->pluck('id')->toArray();
 
         if($request->status=="" || $request->status==null){
-            $offers = Offer::whereIn('product_id',$productIds)->where('answer', 2)->get();
+            $offers = Offer::whereIn('product_id',$productIds)->get();
             return new OfferCollection($offers);
         }
 
@@ -27,7 +27,7 @@ class OfferController extends Controller
 
     public function myOffers(Request $request)
     {
-        if($request->status==""){
+        if($request->status=="" || $request->status==null){
             $offers = Offer::where('user_id',auth()->user()->id)->get();
             return new OfferCollection($offers);
         }
