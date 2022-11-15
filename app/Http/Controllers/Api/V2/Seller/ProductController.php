@@ -22,8 +22,8 @@ use App\Models\Upload;
 use Illuminate\Support\Facades\File;
 use Storage;
 
-use App\Mail\ProductMailManager;
 use Mail;
+use App\Mail\ProductMailManager;
 
 class ProductController extends Controller
 {
@@ -117,7 +117,6 @@ class ProductController extends Controller
 
         if (addon_is_activated('seller_subscription')) {
             if (!seller_package_validity_check()) {
-
                 $this->failed(translate('Please upgrade your package'));
             }
         }
@@ -151,9 +150,6 @@ class ProductController extends Controller
 
         if($data->save()){
 
-            Artisan::call('view:clear');
-            Artisan::call('cache:clear');
-
                 $admins = User::where('user_type', 'admin')->get();
 
                 foreach( $admins as $admin){
@@ -173,6 +169,8 @@ class ProductController extends Controller
                     }
                 }
 
+            Artisan::call('view:clear');
+            Artisan::call('cache:clear');
             return $this->success(translate('Product has been created successfully'));
         }else{
             return $this->failed(translate('Somethings went wrong.'));
