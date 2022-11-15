@@ -101,6 +101,24 @@ class OfferController extends Controller
         $offer = Offer::where('id', $request->id)->first();
         $offer->answer = $request->answer;
         if($offer->save()){
+            $product = Product::where('id', $offer->product_id)->first();
+            if (get_setting('google_firebase') == 1 && $offer->user->device_token != null) {
+                $request->device_token = $offer->user->device_token;
+                $request->title = "Teklif!";
+                $request->text = $product->name." için ".$offer->offer_value." ₺ değerindeki teklifin ";
+                if($request->answer==1){
+                    $request->text.= "kabuledildi.";
+                }
+                elseif($request->answer==0){
+                    $request->text.= "reddedildi.";
+                }
+                $request->type = "product";
+                $request->id = $product->id;
+                $request->user_id = $offer->user_id;
+                $request->image = uploaded_asset($product->thumbnail_img);
+
+                NotificationUtility::sendFirebaseNotification($request);
+            }
             return response()->json([
                 'status' => true,
                 'message' => 'Teklif cevaplandı.'
