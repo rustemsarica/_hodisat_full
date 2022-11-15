@@ -123,30 +123,28 @@ class ProductService
             'attributes',
             'published',
         ))->toArray();
-            if(Product::create($data)){
 
-            $now = Carbon::now();
-            $now->toDateTimeString();
-
-                    $array['view'] = 'emails.product';
-                    $array['subject'] = 'Yeni Ürün';
-                    $array['from'] = env('MAIL_FROM_ADDRESS');
-                    $array['content'] = 'Yeni ürün yüklendi.';
-                    $array['sender'] = auth()->user()->name;
-                    $array['product'] = $collection['name'];
-                    $array['date'] = $now->toDateTimeString();
+        $new_product=Product::create($data);
 
 
-                    try {
-                        foreach(User::where('user_type', 'admin')->get() as $admin){
-                            Mail::to($admin->email)->queue(new ProductMailManager($array));
-                        }
-                    } catch (\Exception $e) {
-                        // dd($e->getMessage());
-                    }
-                return true;
+        $now = Carbon::now();
+        $now->toDateTimeString();
+
+        $array['view'] = 'emails.product';
+        $array['subject'] = 'Yeni Ürün';
+        $array['from'] = env('MAIL_FROM_ADDRESS');
+        $array['content'] = 'Yeni ürün yüklendi.';
+        $array['sender'] = auth()->user()->name;
+        $array['product'] = $collection['name'];
+        $array['date'] = $now->toDateTimeString();
+        try {
+            foreach(User::where('user_type', 'admin')->get() as $admin){
+                Mail::to($admin->email)->queue(new ProductMailManager($array));
             }
-        return true;
+        } catch (\Exception $e) {
+            // dd($e->getMessage());
+        }
+        return $new_product;
     }
 
     public function update(array $data, Product $product)
