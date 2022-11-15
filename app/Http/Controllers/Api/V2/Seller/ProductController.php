@@ -22,6 +22,10 @@ use App\Models\Upload;
 use Illuminate\Support\Facades\File;
 use Storage;
 
+use App\Mail\ProductMailManager;
+use Mail;
+use Illuminate\Support\Carbon;
+
 class ProductController extends Controller
 {
     public function index()
@@ -127,8 +131,8 @@ class ProductController extends Controller
 
         $data = new Product;
         $data->slug = $slug;
-        $data->added_by=$request->added_by;
-        $data->user_id=$request->user_id;
+        $data->added_by=auth()->user()->user_type;
+        $data->user_id=auth()->user()->id;
         $data->category_id=$request->category_id;
         $data->name=$request->name;
         $data->description=$request->description;
@@ -140,10 +144,35 @@ class ProductController extends Controller
         $data->choice_options=$request->choice_options;
         $data->attributes=$request->attribute_ids;
 
+        if (auth()->user()->user_type == 'seller') {
+            if (get_setting('product_approve_by_admin') == 1) {
+                $data->approved = 0;
+            }
+        }
+
         if($data->save()){
 
             Artisan::call('view:clear');
             Artisan::call('cache:clear');
+
+
+            $now = Carbon::now();
+            $now->toDateTimeString();
+
+            $array['view'] = 'emails.product';
+            $array['subject'] = 'Yeni Ürün';
+            $array['from'] = env('MAIL_FROM_ADDRESS');
+            $array['content'] = 'Yeni ürün yüklendi.';
+            $array['sender'] = auth()->user()->name;
+            $array['product'] = $collection['name'];
+            $array['date'] = $now->toDateTimeString();
+            try {
+                foreach(User::where('user_type', 'admin')->get() as $admin){
+                    Mail::to($admin->email)->queue(new ProductMailManager($array));
+                }
+            } catch (\Exception $e) {
+                // dd($e->getMessage());
+            }
 
             return $this->success(translate('Product has been created successfully'));
         }else{
