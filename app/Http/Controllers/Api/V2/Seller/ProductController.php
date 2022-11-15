@@ -156,17 +156,18 @@ class ProductController extends Controller
             Artisan::call('cache:clear');
 
 
-            $now = Carbon::now();
-            $now->toDateTimeString();
-
-            $array['view'] = 'emails.product';
-            $array['subject'] = 'Yeni Ürün';
-            $array['from'] = env('MAIL_FROM_ADDRESS');
-            $array['content'] = 'Yeni ürün yüklendi.';
-            $array['sender'] = auth()->user()->name;
-            $array['product'] = $request->name;
-            $array['date'] = $now->toDateTimeString();
             try {
+
+                $now = Carbon::now();
+
+                $array['view'] = 'emails.product';
+                $array['subject'] = 'Yeni Ürün';
+                $array['from'] = env('MAIL_FROM_ADDRESS');
+                $array['content'] = 'Yeni ürün yüklendi.';
+                $array['sender'] = auth()->user()->name;
+                $array['product'] = $request->name;
+                $array['date'] = $now->toDateTimeString();
+
                 foreach(User::where('user_type', 'admin')->get() as $admin){
                     Mail::to($admin->email)->queue(new ProductMailManager($array));
                 }
