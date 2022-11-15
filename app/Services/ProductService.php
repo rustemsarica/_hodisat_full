@@ -145,7 +145,7 @@ class ProductService
                     }
                 return true;
             }
-        return ;
+        return true;
     }
 
     public function update(array $data, Product $product)
