@@ -11,7 +11,6 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
 use App\Mail\ProductMailManager;
 use Mail;
-use Carbon\Carbon;
 
 class ProductService
 {
@@ -127,23 +126,25 @@ class ProductService
         $new_product=Product::create($data);
 
 
-        $now = Carbon::now();
-        $now->toDateTimeString();
+        $admins = User::where('user_type', 'admin')->get();
 
-        $array['view'] = 'emails.product';
-        $array['subject'] = 'Yeni Ürün';
-        $array['from'] = env('MAIL_FROM_ADDRESS');
-        $array['content'] = 'Yeni ürün yüklendi.';
-        $array['sender'] = auth()->user()->name;
-        $array['product'] = $collection['name'];
-        $array['date'] = $now->toDateTimeString();
-        try {
-            foreach(User::where('user_type', 'admin')->get() as $admin){
-                Mail::to($admin->email)->queue(new ProductMailManager($array));
+        foreach( $admins as $admin){
+            $array['view'] = 'emails.product';
+            $array['subject'] = 'Yeni Ürün';
+            $array['from'] = env('MAIL_FROM_ADDRESS');
+            $array['content'] = 'Yeni ürün yüklendi.';
+            $array['sender'] = $data->user->name;
+            $array['product'] = $data->name;
+            $array['date'] = $data->created_at;
+            try {
+                if($admin->email!=null && $admin->email!=""){
+                    Mail::to($admin->email)->queue(new ProductMailManager($array));
+                }
+            } catch (\Exception $e) {
+                // dd($e->getMessage());
             }
-        } catch (\Exception $e) {
-            // dd($e->getMessage());
         }
+
         return $new_product;
     }
 
