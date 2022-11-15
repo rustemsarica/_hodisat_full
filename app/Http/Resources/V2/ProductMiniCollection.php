@@ -95,7 +95,7 @@ class ProductMiniCollection extends ResourceCollection
                     ],
                     'published' => $data->published,
                     'approved' => $data->approved,
-                    'wish_count' => count($data->wishlists),
+                    'wish_count' => 0,
                     'brand' => $data->brand->name
                 ];
             })
