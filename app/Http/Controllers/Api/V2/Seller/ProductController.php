@@ -154,9 +154,6 @@ class ProductController extends Controller
             Artisan::call('view:clear');
             Artisan::call('cache:clear');
 
-
-            try {
-
                 $array['view'] = 'emails.product';
                 $array['subject'] = 'Yeni Ürün';
                 $array['from'] = env('MAIL_FROM_ADDRESS');
@@ -166,11 +163,13 @@ class ProductController extends Controller
                 $array['date'] = $data->created_at;
 
                 foreach(User::where('user_type', 'admin')->get() as $admin){
-                    Mail::to($admin->email)->queue(new ProductMailManager($array));
+                    try {
+                            Mail::to($admin->email)->queue(new ProductMailManager($array));
+
+                    } catch (\Exception $e) {
+                        // dd($e->getMessage());
+                    }
                 }
-            } catch (\Exception $e) {
-                // dd($e->getMessage());
-            }
 
             return $this->success(translate('Product has been created successfully'));
         }else{
