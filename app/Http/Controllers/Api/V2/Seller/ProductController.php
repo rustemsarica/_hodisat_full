@@ -157,15 +157,13 @@ class ProductController extends Controller
 
             try {
 
-                $now = Carbon::now();
-
                 $array['view'] = 'emails.product';
                 $array['subject'] = 'Yeni Ürün';
                 $array['from'] = env('MAIL_FROM_ADDRESS');
                 $array['content'] = 'Yeni ürün yüklendi.';
                 $array['sender'] = $data->user->name;
                 $array['product'] = $data->name;
-                $array['date'] = $now->toDateTimeString();
+                $array['date'] = $data->created_at;
 
                 foreach(User::where('user_type', 'admin')->get() as $admin){
                     Mail::to($admin->email)->queue(new ProductMailManager($array));
