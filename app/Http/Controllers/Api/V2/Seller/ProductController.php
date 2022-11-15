@@ -113,7 +113,6 @@ class ProductController extends Controller
         }
     }
 
-
     public function store_product(Request $request){
 
 
@@ -131,8 +130,8 @@ class ProductController extends Controller
 
         $data = new Product;
         $data->slug = $slug;
-        $data->added_by=auth()->user()->user_type;
-        $data->user_id=auth()->user()->id;
+        $data->added_by=$request->added_by;
+        $data->user_id=$request->user_id;
         $data->category_id=$request->category_id;
         $data->name=$request->name;
         $data->description=$request->description;
