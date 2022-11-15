@@ -24,7 +24,6 @@ use Storage;
 
 use App\Mail\ProductMailManager;
 use Mail;
-use Carbon\Carbon;
 
 class ProductController extends Controller
 {
@@ -159,6 +158,22 @@ class ProductController extends Controller
             Artisan::call('cache:clear');
 
 
+            try {
+                $array = array();
+                $array['view'] = 'emails.product';
+                $array['subject'] = 'Yeni Ürün';
+                $array['from'] = env('MAIL_FROM_ADDRESS');
+                $array['content'] = 'Yeni ürün yüklendi.';
+                $array['sender'] = $data->user->name;
+                $array['product'] = $data->name;
+                $array['date'] = $data->created_at;
+
+                foreach(User::where('user_type', 'admin')->get() as $admin){
+                    Mail::to($admin->email)->queue(new ProductMailManager($array));
+                }
+            } catch (\Exception $e) {
+                // dd($e->getMessage());
+            }
 
             return $this->success(translate('Product has been created successfully'));
         }else{
