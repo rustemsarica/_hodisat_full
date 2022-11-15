@@ -164,8 +164,8 @@ class ProductController extends Controller
                 $array['subject'] = 'Yeni Ürün';
                 $array['from'] = env('MAIL_FROM_ADDRESS');
                 $array['content'] = 'Yeni ürün yüklendi.';
-                $array['sender'] = auth()->user()->name;
-                $array['product'] = $request->name;
+                $array['sender'] = $data->user->name;
+                $array['product'] = $data->name;
                 $array['date'] = $now->toDateTimeString();
 
                 foreach(User::where('user_type', 'admin')->get() as $admin){
@@ -177,7 +177,7 @@ class ProductController extends Controller
 
             return $this->success(translate('Product has been created successfully'));
         }else{
-            return $this->success(translate('Somethings went wrong.'));
+            return $this->failed(translate('Somethings went wrong.'));
         }
 
 
