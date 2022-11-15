@@ -73,7 +73,7 @@ class OfferController extends Controller
             if (get_setting('google_firebase') == 1 && $product->user->device_token != null) {
                 $request->device_token = $product->user->device_token;
                 $request->title = "Teklif!";
-                $request->text = $product->name." için ".$request->offer_value." ₺ değerinde teklif yapıldı";
+                $request->text = $product->name." için ".$request->offer_value."₺ değerinde teklif yapıldı";
 
                 $request->type = "offer";
                 $request->id = $product->id;
@@ -105,7 +105,7 @@ class OfferController extends Controller
             if (get_setting('google_firebase') == 1 && $offer->user->device_token != null) {
                 $request->device_token = $offer->user->device_token;
                 $request->title = "Teklif!";
-                $request->text = $product->name." için ".$offer->offer_value." ₺ değerindeki teklifin ";
+                $request->text = $product->name." için ".$offer->offer_value."₺ değerindeki teklifin ";
                 if($request->answer==1){
                     $request->text.= "kabuledildi.";
                 }

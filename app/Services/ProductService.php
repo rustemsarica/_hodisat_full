@@ -26,21 +26,6 @@ class ProductService
             $user_id = auth()->user()->id;
             if (get_setting('product_approve_by_admin') == 1) {
                 $approved = 0;
-
-                $array['view'] = 'emails.product';
-                $array['subject'] = 'Yeni Ürün';
-                $array['from'] = env('MAIL_FROM_ADDRESS');
-                $array['content'] = 'Yeni ürün yüklendi.';
-                $array['sender'] = auth()->user()->name;
-                $array['product'] = $collection['name'];
-                $array['date'] = $now->toDateTimeString();
-
-
-                try {
-                    Mail::to(User::where('user_type', 'admin')->first()->email)->queue(new ProductMailManager($array));
-                } catch (\Exception $e) {
-                    // dd($e->getMessage());
-                }
             }
         } else {
             $user_id = User::where('user_type', 'admin')->first()->id;
@@ -140,8 +125,26 @@ class ProductService
             'attributes',
             'published',
         ))->toArray();
+            if(Product::create($data)){
+                if (get_setting('product_approve_by_admin') == 1) {
+                    $array['view'] = 'emails.product';
+                    $array['subject'] = 'Yeni Ürün';
+                    $array['from'] = env('MAIL_FROM_ADDRESS');
+                    $array['content'] = 'Yeni ürün yüklendi.';
+                    $array['sender'] = auth()->user()->name;
+                    $array['product'] = $collection['name'];
+                    $array['date'] = $now->toDateTimeString();
 
-        return Product::create($data);
+
+                    try {
+                        Mail::to(User::where('user_type', 'admin')->first()->email)->queue(new ProductMailManager($array));
+                    } catch (\Exception $e) {
+                        // dd($e->getMessage());
+                    }
+                }
+                return true;
+            }
+        return ;
     }
 
     public function update(array $data, Product $product)
