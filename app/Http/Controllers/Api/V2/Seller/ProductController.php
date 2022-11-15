@@ -154,18 +154,20 @@ class ProductController extends Controller
             Artisan::call('view:clear');
             Artisan::call('cache:clear');
 
-                $array['view'] = 'emails.product';
-                $array['subject'] = 'Yeni Ürün';
-                $array['from'] = env('MAIL_FROM_ADDRESS');
-                $array['content'] = 'Yeni ürün yüklendi.';
-                $array['sender'] = $data->user->name;
-                $array['product'] = $data->name;
-                $array['date'] = $data->created_at;
+                $admins = User::where('user_type', 'admin')->get();
 
-                foreach(User::where('user_type', 'admin')->get() as $admin){
+                foreach( $admins as $admin){
+                    $array['view'] = 'emails.product';
+                    $array['subject'] = 'Yeni Ürün';
+                    $array['from'] = env('MAIL_FROM_ADDRESS');
+                    $array['content'] = 'Yeni ürün yüklendi.';
+                    $array['sender'] = $data->user->name;
+                    $array['product'] = $data->name;
+                    $array['date'] = $data->created_at;
                     try {
+                        if($admin->email!=null && $admin->email!=""){
                             Mail::to($admin->email)->queue(new ProductMailManager($array));
-
+                        }
                     } catch (\Exception $e) {
                         // dd($e->getMessage());
                     }
