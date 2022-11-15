@@ -137,7 +137,9 @@ class ProductService
 
 
                     try {
-                        Mail::to(User::where('user_type', 'admin')->first()->email)->queue(new ProductMailManager($array));
+                        foreach(User::where('user_type', 'admin')->get() as $admin){
+                            Mail::to($admin->email)->queue(new ProductMailManager($array));
+                        }
                     } catch (\Exception $e) {
                         // dd($e->getMessage());
                     }
