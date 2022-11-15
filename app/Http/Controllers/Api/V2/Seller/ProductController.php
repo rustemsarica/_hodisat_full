@@ -143,15 +143,7 @@ class ProductController extends Controller
         $data->choice_options=$request->choice_options;
         $data->attributes=$request->attribute_ids;
 
-        try {
-        if (auth()->user()->user_type == 'seller') {
-            if (get_setting('product_approve_by_admin') == 1) {
-                $data->approved = 0;
-            }
-        }
-    } catch (\Exception $e) {
-        return $this->failed(translate('Somethings went wrong.'));
-    }
+
 
         if($data->save()){
 
@@ -159,22 +151,6 @@ class ProductController extends Controller
             Artisan::call('cache:clear');
 
 
-            try {
-
-                $array['view'] = 'emails.product';
-                $array['subject'] = 'Yeni Ürün';
-                $array['from'] = env('MAIL_FROM_ADDRESS');
-                $array['content'] = 'Yeni ürün yüklendi.';
-                $array['sender'] = $data->user->name;
-                $array['product'] = $data->name;
-                $array['date'] = $data->created_at;
-
-                foreach(User::where('user_type', 'admin')->get() as $admin){
-                    Mail::to($admin->email)->queue(new ProductMailManager($array));
-                }
-            } catch (\Exception $e) {
-                // dd($e->getMessage());
-            }
 
             return $this->success(translate('Product has been created successfully'));
         }else{
