@@ -21,8 +21,6 @@ class ProductService
 
         $approved = 1;
         if (auth()->user()->user_type == 'seller') {
-            $now = Carbon::now();
-            $now->toDateTimeString();
             $user_id = auth()->user()->id;
             if (get_setting('product_approve_by_admin') == 1) {
                 $approved = 0;
@@ -126,6 +124,9 @@ class ProductService
             'published',
         ))->toArray();
             if(Product::create($data)){
+
+            $now = Carbon::now();
+            $now->toDateTimeString();
 
                     $array['view'] = 'emails.product';
                     $array['subject'] = 'Yeni Ürün';
