@@ -143,7 +143,15 @@ class ProductController extends Controller
         $data->choice_options=$request->choice_options;
         $data->attributes=$request->attribute_ids;
 
-
+        try {
+        if (auth()->user()->user_type == 'seller') {
+            if (get_setting('product_approve_by_admin') == 1) {
+                $data->approved = 0;
+            }
+        }
+    } catch (\Exception $e) {
+        return $this->failed(translate('Somethings went wrong.'));
+    }
 
         if($data->save()){
 
