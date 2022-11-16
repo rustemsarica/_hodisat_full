@@ -38,11 +38,26 @@ class ChatController extends Controller
         $conversation = $message->conversation;
         if ($conversation->sender_id == $request->user_id) {
             $conversation->receiver_viewed = "1";
+            $user_id = $conversation->receiver_id;
         } elseif ($conversation->receiver_id == $request->user_id) {
             $conversation->sender_viewed = "1";
+            $user_id = $conversation->sender_id;
         }
         $conversation->save();
         $messages = Message::where('id', $message->id)->paginate(1);
+
+        $receiver = User::where('id', $user_id)->first();
+        $sender = User::where('id', $request->user_id)->first();
+        if (get_setting('google_firebase') == 1 && $receiver->device_token != null) {
+            $request->device_token = $receiver->device_token;
+            $request->title =  "Yeni mesaj!";
+            $request->text = $sender->username.": ".$message->message;
+            $request->type = "message";
+            $request->id = $conversation->id;
+            $request->user_id = $receiver->id;
+            NotificationUtility::sendFirebaseNotification($request);
+        }
+
         return new MessageCollection($messages);
     }
 
