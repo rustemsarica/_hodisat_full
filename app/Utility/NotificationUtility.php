@@ -111,14 +111,15 @@ class NotificationUtility
 
         $result = curl_exec($ch);
         curl_close($ch);
+        if($req->type!="message"){
+            $firebase_notification = new FirebaseNotification;
+            $firebase_notification->title = $req->title;
+            $firebase_notification->text = $req->text;
+            $firebase_notification->item_type = $req->type;
+            $firebase_notification->item_type_id = $req->id;
+            $firebase_notification->receiver_id = $req->user_id;
+            $firebase_notification->save();
+        }
 
-        $firebase_notification = new FirebaseNotification;
-        $firebase_notification->title = $req->title;
-        $firebase_notification->text = $req->text;
-        $firebase_notification->item_type = $req->type;
-        $firebase_notification->item_type_id = $req->id;
-        $firebase_notification->receiver_id = $req->user_id;
-
-        $firebase_notification->save();
     }
 }
