@@ -162,8 +162,8 @@ class SellerController extends Controller
         $shop = Shop::findOrFail($id);
         $products = Product::where('user_id', $shop->user_id)->pluck('id')->toArray();
         if(count($products)>0){
-            Cart::whereIn('product_id', $products)->detele();
-            Wishlist::whereIn('product_id', $products)->detele();
+            Cart::whereIn('product_id', $products)->delete();
+            Wishlist::whereIn('product_id', $products)->delete();
             Product::where('user_id', $shop->user_id)->delete();
         }
 
