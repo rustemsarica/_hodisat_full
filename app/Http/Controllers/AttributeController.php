@@ -19,8 +19,8 @@ class AttributeController extends Controller
      */
     public function index()
     {
-        
-        
+
+
         $attributes = Attribute::orderBy('created_at', 'desc')->get();
         return view('backend.product.attribute.index', compact('attributes'));
     }
@@ -122,7 +122,7 @@ class AttributeController extends Controller
 
         Attribute::destroy($id);
         flash(translate('Attribute has been deleted successfully'))->success();
-        return redirect()->route('attributes.index');
+        return redirect()->route('admin.attributes.index');
 
     }
 
@@ -146,10 +146,10 @@ class AttributeController extends Controller
     public function update_attribute_value(Request $request, $id)
     {
         $attribute_value = AttributeValue::findOrFail($id);
-        
+
         $attribute_value->attribute_id = $request->attribute_id;
         $attribute_value->value = ucfirst($request->value);
-        
+
         $attribute_value->save();
 
         flash(translate('Attribute value has been updated successfully'))->success();
@@ -160,12 +160,12 @@ class AttributeController extends Controller
     {
         $attribute_values = AttributeValue::findOrFail($id);
         AttributeValue::destroy($id);
-        
+
         flash(translate('Attribute value has been deleted successfully'))->success();
         return redirect()->route('attributes.show', $attribute_values->attribute_id);
 
     }
-    
+
     public function colors(Request $request) {
         $sort_search = null;
         $colors = Color::orderBy('code', 'desc');
@@ -178,7 +178,7 @@ class AttributeController extends Controller
 
         return view('backend.product.color.index', compact('colors', 'sort_search'));
     }
-    
+
     public function store_color(Request $request) {
         $request->validate([
             'name' => 'required',
@@ -187,13 +187,13 @@ class AttributeController extends Controller
         $color = new Color;
         $color->name = Str::replace(' ', '', $request->name);
         $color->code = $request->code;
-        
+
         $color->save();
 
         flash(translate('Color has been inserted successfully'))->success();
         return redirect()->route('colors');
     }
-    
+
     public function edit_color(Request $request, $id)
     {
         $color = Color::findOrFail($id);
@@ -214,23 +214,23 @@ class AttributeController extends Controller
         $request->validate([
             'code' => 'required|unique:colors,code,'.$color->id,
         ]);
-        
+
         $color->name = Str::replace(' ', '', $request->name);
         $color->code = $request->code;
-        
+
         $color->save();
 
         flash(translate('Color has been updated successfully'))->success();
         return back();
     }
-    
+
     public function destroy_color($id)
     {
         Color::destroy($id);
-        
+
         flash(translate('Color has been deleted successfully'))->success();
         return redirect()->route('colors');
 
     }
-    
+
 }
