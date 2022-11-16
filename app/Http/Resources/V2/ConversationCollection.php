@@ -15,7 +15,7 @@ class ConversationCollection extends ResourceCollection
                     'receiver_id' => intval($data->receiver_id) ,
                     'receiver_type'=> $data->receiver->user_type,
                     'shop_id' => $data->receiver->id == auth()->user()->id ? $data->sender->shop->id : $data->receiver->shop->id  ,
-                    'shop_name' => $data->receiver->id == auth()->user()->id ? $data->sender->user_name: $data->receiver->username,
+                    'shop_name' => $data->receiver->id == auth()->user()->id ? $data->sender->username : $data->receiver->username,
                     'shop_logo' => $data->receiver->id == auth()->user()->id ? uploaded_asset($data->sender->shop->logo) :  uploaded_asset($data->receiver->shop->logo),
                     'title'=> $data->title,
                     'sender_viewed'=> intval($data->sender_viewed),
