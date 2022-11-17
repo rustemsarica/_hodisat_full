@@ -60,7 +60,7 @@ class OrderTracking extends Command
                            'withCargoLifeCycle'    => 0,
                            ];
                    $response = $istek->listInvDocumentInterfaceByReference($data);
-                   DB::table('logs')->insert(['text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
+                   DB::table('logs')->insert(['title'=>'order tracking cron','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
             }
         }
 

@@ -343,9 +343,9 @@ class OrderService{
                $order->tracking_url = $tracking_url;
                $order->delivery_status = 'picked_up';
                $order->save();
-               DB::table('logs')->insert(['text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
+               DB::table('logs')->insert(['title'=>'tracking code response','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
 		   }else{
-            DB::table('logs')->insert(['text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
+            DB::table('logs')->insert(['title'=>'error tracking code response','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
 		   }
     }
 
