@@ -36,7 +36,7 @@ class PurchaseHistoryCollection extends ResourceCollection
                     'shipping_cost' => format_price($data->orderDetails->sum('shipping_cost')),
                     'subtotal' => format_price($data->orderDetails->sum('price')),
                     'date' => date('d.m.Y', strtotime($data->created_at)),
-                    'can_cancel' => false,
+                    'can_cancel' => $data->delivery_status=="pending",
                     'can_review' => Review::where('order_id', $data->id)->count()==0,
                     'manually_payable' => $data->manual_payment && $data->manual_payment_data == null,
                     'links' => [
