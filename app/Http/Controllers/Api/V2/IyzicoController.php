@@ -32,7 +32,7 @@ class IyzicoController extends Controller
             $options->setBaseUrl("https://api.iyzipay.com");
         }
 
-        $iyzicoRequest = new \Iyzipay\Request\CreateCheckoutFormInitializeRequest();
+        $iyzicoRequest = new \Iyzipay\Request\CreatePayWithIyzicoInitializeRequest();
         $iyzicoRequest->setLocale(\Iyzipay\Model\Locale::TR);
         $iyzicoRequest->setConversationId('123456789');
 
