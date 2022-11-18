@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Api\V2;
 use App\Models\BusinessSetting;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\WalletController;
+use App\Http\Controllers\OrderController;
 use App\Models\CombinedOrder;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -162,8 +163,8 @@ class IyzicoController extends Controller
 
             if ($payment_type == 'cart_payment') {
 
-
-                checkout_done($request->combined_order_id, $request->payment_details);
+                $order=(new OrderController)->store($request);
+                checkout_done($order->combined_order_id, $request->payment_details);
             }
 
             if ($payment_type == 'wallet_payment') {
