@@ -35,7 +35,7 @@ class IyzicoController extends Controller
         }
 
         if(Session::has('payment_type')){
-            $iyzicoRequest = new \Iyzipay\Request\CreatePayWithIyzicoInitializeRequest();
+            $iyzicoRequest = new \Iyzipay\Request\CreateCheckoutFormInitializeRequest();
             $iyzicoRequest->setLocale(\Iyzipay\Model\Locale::TR);
             $iyzicoRequest->setConversationId('123456789');
 
@@ -180,10 +180,11 @@ class IyzicoController extends Controller
 
 
             # make request
-            $payWithIyzicoInitialize = \Iyzipay\Model\PayWithIyzicoInitialize::create($iyzicoRequest, $options);
+            $payWithIyzicoInitialize = \Iyzipay\Model\CheckoutFormInitialize::create($iyzicoRequest, $options);
 
             # print result
-            return Redirect::to($payWithIyzicoInitialize->getPayWithIyzicoPageUrl());
+            //return Redirect::to($payWithIyzicoInitialize->getPayWithIyzicoPageUrl());
+            return Redirect::to($payWithIyzicoInitialize->getPaymentPageUrl());
         }
         else {
             flash(translate('Opps! Something went wrong.'))->warning();
