@@ -122,7 +122,7 @@ class IyzicoController extends Controller
 
         //print_r($payWithIyzicoInitialize);
         # print result
-        return Redirect::to($payWithIyzicoInitialize->paymentPageUrl);
+        return Redirect::to($payWithIyzicoInitialize['paymentPageUrl']);
     }
 
     public function callback(Request $request)
