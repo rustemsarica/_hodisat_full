@@ -44,10 +44,11 @@ class ChatController extends Controller
             $user_id = $conversation->sender_id;
         }
         $conversation->save();
+
         $messages = Message::where('id', $message->id)->paginate(1);
 
         $receiver = User::where('id', $user_id)->first();
-        $sender = User::where('id', $request->user_id)->first();
+        $sender = User::where('id', auth()->user()->id)->first();
         if (get_setting('google_firebase') == 1 && $receiver->device_token != null) {
             $request->device_token = $receiver->device_token;
             $request->title =  "Yeni mesaj!";
