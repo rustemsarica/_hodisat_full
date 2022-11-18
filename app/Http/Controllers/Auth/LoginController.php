@@ -93,13 +93,19 @@ class LoginController extends Controller
             } else {
                 //create a new user
                 $newUser = new User;
-                $newUser->username = Str::lower(explode(' ',$user->name)[0]);
+
+                $username = Str::lower(explode('@',$user->email)[0]);
+                $usernameCount = User::where('username', $username)->count();
+                if($usernameCount>0){
+                    $newUser->username = $username.$usernameCount;
+                }else{
+                    $newUser->username = $username;
+                }
+
                 $newUser->name = $user->name;
                 $newUser->email = $user->email;
                 $newUser->email_verified_at = date('Y-m-d Hms');
                 $newUser->provider_id = $user->id;
-                $newUser->save();
-                $newUser->username = $newUser->username.$newUser->id;
                 $newUser->save();
 
                 $seller = new Seller;
