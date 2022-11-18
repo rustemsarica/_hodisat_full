@@ -34,7 +34,7 @@ class IyzicoController extends Controller
         }
 
         if(Session::has('payment_type')){
-            $iyzicoRequest = new \Iyzipay\Request\CreatePaymentRequest();
+            $iyzicoRequest = new \Iyzipay\Request\CreatePayWithIyzicoInitializeRequest();
             $iyzicoRequest->setLocale(\Iyzipay\Model\Locale::TR);
             $iyzicoRequest->setConversationId('123456789');
 
