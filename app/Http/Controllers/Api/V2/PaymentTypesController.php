@@ -31,7 +31,7 @@ class PaymentTypesController
                 $payment_type['payment_type_key'] = 'paypal';
                 $payment_type['image'] = static_asset('assets/img/cards/paypal.png');
                 $payment_type['name'] = "Paypal";
-                $payment_type['title'] = "Checkout with Paypal";
+                $payment_type['title'] = translate("Checkout with Paypal");
                 $payment_type['offline_payment_id'] = 0;
                 $payment_type['details'] = "";
                 if ($mode == 'wallet') {
@@ -47,7 +47,7 @@ class PaymentTypesController
                 $payment_type['payment_type_key'] = 'stripe';
                 $payment_type['image'] = static_asset('assets/img/cards/stripe.png');
                 $payment_type['name'] = "Stripe";
-                $payment_type['title'] = "Checkout with Stripe";
+                $payment_type['title'] = translate("Checkout with Stripe");
                 $payment_type['offline_payment_id'] = 0;
                 $payment_type['details'] = "";
                 if ($mode == 'wallet') {
@@ -95,7 +95,7 @@ class PaymentTypesController
                 $payment_type['payment_type_key'] = 'iyzico';
                 $payment_type['image'] = static_asset('assets/img/cards/iyzico.png');
                 $payment_type['name'] = "Iyzico";
-                $payment_type['title'] = "Checkout with Iyzico";
+                $payment_type['title'] = translate("Checkout with Iyzico");
                 $payment_type['offline_payment_id'] = 0;
                 $payment_type['details'] = "";
                 if ($mode == 'wallet') {
@@ -191,7 +191,7 @@ class PaymentTypesController
 
 
 
-        // you cannot recharge wallet by wallet 
+        // you cannot recharge wallet by wallet
         if ($mode != 'wallet' && $mode != 'seller_package' && $list != "offline") {
             if (get_setting('wallet_system') == 1) {
                 $payment_type = array();
@@ -199,7 +199,7 @@ class PaymentTypesController
                 $payment_type['payment_type_key'] = 'wallet';
                 $payment_type['image'] = static_asset('assets/img/cards/wallet.png');
                 $payment_type['name'] = "Wallet";
-                $payment_type['title'] = "Wallet Payment";
+                $payment_type['title'] = translate("Wallet Payment");
                 $payment_type['offline_payment_id'] = 0;
                 $payment_type['details'] = "";
 
