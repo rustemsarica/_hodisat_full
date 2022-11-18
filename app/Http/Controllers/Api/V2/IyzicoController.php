@@ -33,7 +33,7 @@ class IyzicoController extends Controller
             $options->setBaseUrl("https://api.iyzipay.com");
         }
 
-        $iyzicoRequest = new \Iyzipay\Request\CreatePayWithIyzicoInitializeRequest();
+        $iyzicoRequest = new \Iyzipay\Request\CreatePaymentRequest();
         $iyzicoRequest->setLocale(\Iyzipay\Model\Locale::TR);
         $iyzicoRequest->setConversationId('123456789');
 
@@ -118,10 +118,11 @@ class IyzicoController extends Controller
             $iyzicoRequest->setBasketItems($basketItems);
         }
 
-        $payWithIyzicoInitialize = \Iyzipay\Model\PayWithIyzicoInitialize::create($iyzicoRequest, $options);
+        $payWithIyzicoInitialize = \Iyzipay\Model\Payment::create($iyzicoRequest, $options);
 
+        print_r($payWithIyzicoInitialize);
         # print result
-        return Redirect::to($payWithIyzicoInitialize->getPayWithIyzicoPageUrl());
+       // return Redirect::to($payWithIyzicoInitialize->getPayWithIyzicoPageUrl());
     }
 
     public function callback(Request $request)
