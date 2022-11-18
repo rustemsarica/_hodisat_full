@@ -121,7 +121,7 @@ class IyzicoController extends Controller
         $payWithIyzicoInitialize = \Iyzipay\Model\CheckoutFormInitialize::create($iyzicoRequest, $options);
 
         # print result
-        return Redirect::to($payWithIyzicoInitialize->paymentPageUrl);
+        return Redirect::to($payWithIyzicoInitialize->getPaymentPageUrl());
     }
 
     public function callback(Request $request)
