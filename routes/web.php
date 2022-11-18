@@ -231,7 +231,7 @@ Route::group(['middleware' => ['user', 'verified', 'unbanned']], function() {
 
 });
 
-Route::group(['middleware' => ['user', 'unbanned']], function() {
+Route::group(['middleware' => ['user', 'verified', 'unbanned']], function() {
 
     // Checkout Routs
     Route::group(['prefix' => 'checkout'], function() {
