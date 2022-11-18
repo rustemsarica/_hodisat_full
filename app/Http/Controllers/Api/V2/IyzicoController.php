@@ -28,6 +28,8 @@ class IyzicoController extends Controller
         $options->setSecretKey(env('IYZICO_SECRET_KEY'));
 
         if (get_setting('iyzico_sandbox') == 1) {
+            $options->setApiKey("sandbox-afXhZPW0MQlE4dCUUlHcEopnMBgXnAZI");
+            $options->setSecretKey("sandbox-wbwpzKIiplZxI3hh5ALI4FJyAcZKL6kq");
             $options->setBaseUrl("https://sandbox-api.iyzipay.com");
         } else {
             $options->setBaseUrl("https://api.iyzipay.com");
