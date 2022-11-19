@@ -161,7 +161,7 @@ class AuthController extends Controller
                 }
                 return $this->loginSuccess($user);
             } else {
-                return response()->json(['result' => false, 'message' => translate('Unauthorized'), 'user' => null], 401);
+                return response()->json(['result' => false, 'message' => translate('Password is incorrect'), 'user' => null], 401);
             }
         } else {
             return response()->json(['result' => false, 'message' => translate('User not found'), 'user' => null], 401);
