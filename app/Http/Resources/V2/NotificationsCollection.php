@@ -6,8 +6,8 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
-use \App\Models\Product;
-use \App\Models\Shop;
+use App\Models\Product;
+use App\Models\Shop;
 
 class NotificationsCollection extends ResourceCollection
 {
@@ -20,10 +20,10 @@ class NotificationsCollection extends ResourceCollection
                 $images="";
                 if($data->item_type=='product' || $data->item_type=='offer'){
                     $product=Product::find($data->item_type_id);
-                    $images = \uploaded_asset($product->thumbnail_img);
+                    $images = uploaded_asset($product->thumbnail_img);
                 }else if($data->item_type=='user'){
                     $shop = Shop::find($data->item_type_id);
-                    $images = \uploaded_asset($shop->logo);
+                    $images = uploaded_asset($shop->logo);
                 }
 
                 return [
