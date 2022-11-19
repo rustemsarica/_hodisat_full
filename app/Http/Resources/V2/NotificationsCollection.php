@@ -20,7 +20,7 @@ class NotificationsCollection extends ResourceCollection
                 $images="";
                 if($data->item_type=='product' || $data->item_type=='offer'){
                     $product=Product::find($data->item_type_id);
-                    $images = \uploaded_asset($product->thumbnail_img);
+                    $images = $product->thumbnail->file_name;
                 }else if($data->item_type=='user'){
                     $shop = Shop::find($data->item_type_id);
                     $images = \uploaded_asset($shop->logo);
