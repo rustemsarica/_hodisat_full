@@ -7,6 +7,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CustomerPackageController;
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\SellerPackageController;
+use App\Http\Controllers\Api\V2\OrderController;
 use Illuminate\Http\Request;
 use App\Models\CombinedOrder;
 use App\Models\CustomerPackage;
@@ -108,6 +109,10 @@ class PaystackController extends Controller
             $payment = Paystack::getPaymentData();
             $payment_details = json_encode($payment);
             if (!empty($payment['data']) && $payment['data']['status'] == 'success') {
+                $request = new Request();
+                $request->payment_type='cart_payment';
+                $order=(new OrderController)->store($request);
+                checkout_done($order->combined_order_id, $payment_details);
                 return response()->json(['result' => true, 'message' => "Payment is successful", 'payment_details' => $payment_details]);
             } else {
                 return response()->json(['result' => false, 'message' => "Payment unsuccessful", 'payment_details' => $payment_details]);
