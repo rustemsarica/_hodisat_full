@@ -56,8 +56,8 @@ class PaystackController extends Controller
             $payment_type = $request->payment_type;
 
             if ($payment_type == 'cart_payment') {
-                $order=(new OrderController)->store($request);
-                checkout_done($order, $request->payment_details);
+                // $order=(new OrderController)->store($request);
+                // checkout_done($order, $request->payment_details);
             }
 
             if ($payment_type == 'wallet_payment') {
