@@ -164,7 +164,7 @@ class IyzicoController extends Controller
             if ($payment_type == 'cart_payment') {
 
                 $order=(new OrderController)->store($request);
-                checkout_done($order->combined_order_id, $request->payment_details);
+                checkout_done($order, $request->payment_details);
             }
 
             if ($payment_type == 'wallet_payment') {
