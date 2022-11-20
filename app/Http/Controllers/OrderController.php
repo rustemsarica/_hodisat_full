@@ -289,7 +289,7 @@ class OrderController extends Controller
 
                         $product_stock = Product::where('id', $orderDetail->product_id)->first();
                         if ($product_stock != null) {
-                            $product_stock->current_stock += $orderDetail->quantity;
+                            $product_stock->current_stock += 1;
                             $product_stock->save();
                         }
 
