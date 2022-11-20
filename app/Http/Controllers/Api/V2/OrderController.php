@@ -190,7 +190,7 @@ class OrderController extends Controller
         Cart::where('user_id', auth()->user()->id)->delete();
 
 
-        return $order;
+        //return $order;
         return response()->json([
             'combined_order_id' => $combined_order->id,
             'result' => true,
