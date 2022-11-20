@@ -113,10 +113,10 @@ class OrderController extends Controller
                         'message' => translate('The requested quantity is not available for ') . $product->name
                     ]);
                 }
-                // else {
-                //     $product->current_stock -= 1;
-                //     $product->save();
-                // }
+                else {
+                    $product->current_stock -= 1;
+                    $product->save();
+                }
 
                 $order_detail = new OrderDetail;
                 $order_detail->order_id = $order->id;
