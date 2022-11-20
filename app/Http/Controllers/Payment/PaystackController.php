@@ -109,10 +109,10 @@ class PaystackController extends Controller
             $payment = Paystack::getPaymentData();
             $payment_details = json_encode($payment);
             if (!empty($payment['data']) && $payment['data']['status'] == 'success') {
-                $request = new Request();
-                $request->payment_type='cart_payment';
-                $order=(new OrderController)->store($request);
-                checkout_done($order, $payment_details);
+                // $request = new Request();
+                // $request->payment_type='cart_payment';
+                // $order=(new OrderController)->store($request);
+                // checkout_done($order, $payment_details);
                 return response()->json(['result' => true, 'message' => "Payment is successful", 'payment_details' => $payment_details]);
             } else {
                 return response()->json(['result' => false, 'message' => "Payment unsuccessful", 'payment_details' => $payment_details]);
