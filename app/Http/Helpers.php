@@ -997,7 +997,7 @@ if (!function_exists('calculateCommissionAffilationClubPoint')) {
                 (new ClubPointController)->processClubPoints($order);
             }
         }
-        (new OrderService)->create_shipping_code($order->id);
+        //(new OrderService)->create_shipping_code($order->id);
         $order->commission_calculated = 1;
         $order->save();
     }
