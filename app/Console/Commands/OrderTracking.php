@@ -38,7 +38,7 @@ class OrderTracking extends Command
 	public function handle()
 	{
 
-        $orders = Order::where('payment_status', 'paid')->where('delivery_status', '!=', 'confirmed')->get();
+        $orders = Order::where('payment_status', 'paid')->where('delivery_status', '!=', 'confirmed')->where('delivery_status', '!=', 'delivered')->get();
 
         foreach($orders as $order){
             if($order->delivery_status=='pending'){
@@ -60,6 +60,34 @@ class OrderTracking extends Command
                            'withCargoLifeCycle'    => 0,
                            ];
                    $response = $istek->listInvDocumentInterfaceByReference($data);
+                   if($response->ShippingDataResponseVO->outFlag==0){
+                        try{
+                            if($response->ShippingDataResponseVO->shippingDataDetailVOArray->cargoEventExplanation=='Teslim Edildi'){
+                                $request = new Request();
+                                $request->order_id = $order->id;
+                                $request->status = 'delivered';
+                                (new OrderService)->handle_delivery_status($request);
+                            }
+
+                            elseif($response->ShippingDataResponseVO->shippingDataDetailVOArray->cargoEventExplanation=='Yolda'){
+                                $request = new Request();
+                                $request->order_id = $order->id;
+                                $request->status = 'on_the_way';
+                                (new OrderService)->handle_delivery_status($request);
+                            }
+
+                            elseif($response->ShippingDataResponseVO->shippingDataDetailVOArray->cargoEventExplanation=='Dağıtımda'){
+                                $request = new Request();
+                                $request->order_id = $order->id;
+                                $request->status = 'on_delivery';
+                                (new OrderService)->handle_delivery_status($request);
+                            }
+                        }
+                        catch(\Exception $e){
+
+                        }
+                    }
+
                    DB::table('logs')->insert(['title'=>'order tracking cron','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
             }
         }
