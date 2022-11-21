@@ -28,6 +28,7 @@ class OrderService{
         $order->save();
 
         if ($request->status == 'cancelled') {
+            $this->cancel_shipping_code($order->shipping_code);
             $shop = Shop::where('user_id', $order->user_id)->first();
             $shop->admin_to_pay += $order->grand_total;
             $shop->save();
@@ -294,17 +295,15 @@ class OrderService{
 
     }
 
-    public function cancel_shipping_code($id) {
+    public function cancel_shipping_code($code) {
 
-        $order = Order::findOrFail($id);
-        $key=$order->shipping_code;
             $istek = Soap::to('https://ws.yurticikargo.com/KOPSWebServices/NgiShipmentInterfaceServices?wsdl');
             $data=[
                     'wsUserName'        		=> 'CIZGITURIZMYENI',
                     'wsPassword'        		=> '02v1d1pp3dmn7d15',
                     'wsUserLanguage'      		=> 'TR',
-                    'ngiCargoKey'               => $key,
-                    'ngiDocumentKey'            => $key,
+                    'ngiCargoKey'               => $code,
+                    'ngiDocumentKey'            => $code,
                     'cancellationDescription'   => 'İPTAL İŞLEMİ MÜŞTERİ İSTEĞİ İLE',
 
                     ];
