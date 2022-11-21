@@ -283,12 +283,12 @@ class OrderService{
                 $order->save();
                 return $shipping_key;
             }elseif($response->XShipmentDataResponse->outFlag==2){
-                DB::table('logs')->insert(['text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
+                DB::table('logs')->insert(['title'=>'order services create code','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
                 return false;
             }
 
         }catch(Exception $e){
-            DB::table('logs')->insert(['text'=>$e->getMessage()]);
+            DB::table('logs')->insert(['title'=>'order services create code error','text'=>$e->getMessage()]);
 			return false;
         }
 

@@ -96,7 +96,6 @@ class ProductController extends Controller
             $attributes = explode(',', $request->attrs);
         }
         if (!empty($colors)) {
-            DB::table('logs')->insert(['text'=>$colors[0]]);
             $products->whereIn('colors', $colors);
             $products->whereNotNull('colors');
         }
@@ -241,7 +240,6 @@ class ProductController extends Controller
         }
 
         if (!empty($colors)) {
-            DB::table('logs')->insert(['text'=>$colors[0]]);
             $products->whereIn('colors', $colors);
             $products->whereNotNull('colors');
         }
