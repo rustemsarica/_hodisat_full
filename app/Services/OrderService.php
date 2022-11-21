@@ -29,6 +29,8 @@ class OrderService{
 
         if ($request->status == 'cancelled') {
             $this->cancel_shipping_code($order->shipping_code);
+            $order->shipping_code = translate("Order canceled");
+            $order->save();
             $shop = Shop::where('user_id', $order->user_id)->first();
             $shop->admin_to_pay += $order->grand_total;
             $shop->save();
