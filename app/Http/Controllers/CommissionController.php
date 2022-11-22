@@ -93,24 +93,24 @@ class CommissionController extends Controller
             foreach ($order->orderDetails as $orderDetail) {
                 $orderDetail->payment_status = 'paid';
                 $orderDetail->save();
-                $commission_percentage = 0;
+                // $commission_percentage = 0;
 
-                if(get_setting('vendor_commission_activation')){
-                    if (get_setting('category_wise_commission')) {
-                        $commission_percentage = $orderDetail->product->category->commision_rate;
-                    } else if ($orderDetail->product->user->user_type == 'seller') {
-                        $commission_percentage = get_setting('vendor_commission');
-                    }
-                }
+                // if(get_setting('vendor_commission_activation')){
+                //     if (get_setting('category_wise_commission')) {
+                //         $commission_percentage = $orderDetail->product->category->commision_rate;
+                //     } else if ($orderDetail->product->user->user_type == 'seller') {
+                //         $commission_percentage = get_setting('vendor_commission');
+                //     }
+                // }
 
                 if ($orderDetail->product->user->user_type == 'seller') {
                     $shop = $orderDetail->product->user->shop;
-
-                    if(get_setting('vendor_commission_type')== 'percent'){
-                        $admin_commission = ($orderDetail->price * $commission_percentage)/100;
-                    }elseif(get_setting('vendor_commission_type')== 'amount'){
-                        $admin_commission = $commission_percentage;
-                    }
+                    $admin_commission = 0;
+                    // if(get_setting('vendor_commission_type')== 'percent'){
+                    //     $admin_commission = ($orderDetail->price * $commission_percentage)/100;
+                    // }elseif(get_setting('vendor_commission_type')== 'amount'){
+                    //     $admin_commission = $commission_percentage;
+                    // }
 
 
                     if (get_setting('product_manage_by_admin') == 1) {
@@ -122,24 +122,17 @@ class CommissionController extends Controller
                     }
                     $shop->save();
 
-                    $commission_history = new CommissionHistory;
-                    $commission_history->order_id = $order->id;
-                    $commission_history->order_detail_id = $orderDetail->id;
-                    $commission_history->seller_id = $orderDetail->seller_id;
-                    $commission_history->admin_commission = $admin_commission;
-                    $commission_history->seller_earning = $seller_earning;
+                    // $commission_history = new CommissionHistory;
+                    // $commission_history->order_id = $order->id;
+                    // $commission_history->order_detail_id = $orderDetail->id;
+                    // $commission_history->seller_id = $orderDetail->seller_id;
+                    // $commission_history->admin_commission = $admin_commission;
+                    // $commission_history->seller_earning = $seller_earning;
 
-                    $commission_history->save();
+                    // $commission_history->save();
                 }
             }
-            // if($order->shop != null){
-            //     $shop->admin_to_pay -= $order->coupon_discount;
-            //     $shop->save();
-            // }else{
-            //     $seller = $order->seller;
-            //     $seller->num_of_sale+=1;
-            //     $seller->save();
-            // }
+
 
     }
 }

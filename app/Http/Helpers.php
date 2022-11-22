@@ -996,7 +996,7 @@ if (!function_exists('product_restock')) {
 if (!function_exists('calculateCommissionAffilationClubPoint')) {
     function calculateCommissionAffilationClubPoint($order)
     {
-        (new CommissionController)->calculateCommission($order);
+        //(new CommissionController)->calculateCommission($order);
 
         if (addon_is_activated('affiliate_system')) {
             (new AffiliateController)->processAffiliatePoints($order);
@@ -1010,6 +1010,9 @@ if (!function_exists('calculateCommissionAffilationClubPoint')) {
         //(new OrderService)->create_shipping_code($order->id);
         $order->commission_calculated = 1;
         $order->save();
+        $seller = Seller::where('user_id', $order->seller_id)->first();
+        $seller->num_of_sale+=1;
+        $seller->save();
     }
 }
 
