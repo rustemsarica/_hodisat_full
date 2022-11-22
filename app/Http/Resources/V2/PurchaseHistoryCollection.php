@@ -34,6 +34,7 @@ class PurchaseHistoryCollection extends ResourceCollection
                     'plane_grand_total' => $data->grand_total,
                     'coupon_discount' => format_price($data->coupon_discount),
                     'shipping_cost' => format_price($data->orderDetails->sum('shipping_cost')),
+                    'service_cost' => format_price($data->service_cost),
                     'subtotal' => format_price($data->orderDetails->sum('price')),
                     'date' => date('d.m.Y', strtotime($data->created_at)),
                     'can_cancel' => $data->delivery_status=="pending",
