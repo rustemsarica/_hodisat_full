@@ -22,8 +22,7 @@ class NotificationUtility
         $array['from'] = env('MAIL_FROM_ADDRESS');
         $array['order'] = $order;
         try {
-            Mail::to($order->user->email)->queue(new InvoiceEmailManager($array));
-            Mail::to($order->orderDetails->first()->product->user->email)->queue(new InvoiceEmailManager($array));
+            Mail::to($order->seller->user->email)->queue(new InvoiceEmailManager($array));
         } catch (\Exception $e) {
 
         }
