@@ -13,7 +13,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Redirect;
 use Illuminate\Support\Arr;
-
+use App\Http\Controllers\Api\V2\PaystackController;
 class IyzicoController extends Controller
 {
 
@@ -146,6 +146,8 @@ class IyzicoController extends Controller
         $payment = $payWithIyzico->getRawResult();
 
         if ($payWithIyzico->getStatus() == 'success') {
+            $request->payment_details=$payment;
+            return (new PaystackController)->success($request);
             return response()->json(['result' => true, 'message' => translate("Payment is successful"), 'payment_details' => $payment]);
         } else {
             return response()->json(['result' => false, 'message' => translate("Payment unsuccessful"), 'payment_details' => $payment]);
