@@ -588,6 +588,7 @@ function remove_invalid_charcaters($str)
 
 function getShippingCost($carts, $index, $carrier = '')
 {
+
     $shipping_type = get_setting('shipping_type');
     $admin_products = array();
     $seller_products = array();
@@ -646,6 +647,15 @@ function getShippingCost($carts, $index, $carrier = '')
         if ($product->added_by == 'admin') {
             return get_setting('shipping_cost_admin') / count($admin_products);
         } else {
+            if(count($seller_products[$product->user_id])<=2){
+                return 15 / count($seller_products[$product->user_id]);
+            }
+            elseif(count($seller_products[$product->user_id])>2 && count($seller_products[$product->user_id])<=4){
+                return 22 / count($seller_products[$product->user_id]);
+            }
+            else{
+                return 28 / count($seller_products[$product->user_id]);
+            }
             return get_setting('flat_rate_shipping_cost') / count($seller_products[$product->user_id]);
         }
     } elseif ($shipping_type == 'area_wise_shipping') {
