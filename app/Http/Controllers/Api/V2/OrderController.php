@@ -204,6 +204,7 @@ class OrderController extends Controller
                 $wallet->amount = $order->grand_total;
                 $wallet->payment_method = "#".$order->code;
                 $wallet->payment_details = $order->code;
+                $wallet->approval = 1;
                 $wallet->action = "-";
                 $wallet->save();
 
