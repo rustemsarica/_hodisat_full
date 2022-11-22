@@ -177,6 +177,7 @@ class OrderController extends Controller
                     $commission += $commission_percentage;
                 }
                 $order->service_cost = $commission;
+                $order->grand_total += $commission;
             }
 
             $combined_order->grand_total += $order->grand_total;
