@@ -3,11 +3,11 @@ namespace App\Services;
 
 use Illuminate\Http\Request;
 
+use App\Models\User;
 use App\Models\Order;
 use App\Models\Shop;
 use App\Models\Product;
 use App\Models\SmsTemplate;
-use App\Models\User;
 use App\Models\Shippingkey;
 use App\Models\Address;
 use App\Models\City;
