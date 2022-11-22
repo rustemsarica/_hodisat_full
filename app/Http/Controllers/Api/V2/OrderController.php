@@ -14,6 +14,7 @@ use App\Models\Coupon;
 use App\Models\CouponUsage;
 use App\Models\BusinessSetting;
 use App\Models\User;
+use App\Models\Wallet;
 use DB;
 use \App\Utility\NotificationUtility;
 use App\Models\CombinedOrder;
@@ -197,6 +198,14 @@ class OrderController extends Controller
             {
                 (new OrderService)->create_shipping_code($order->id);
                 NotificationUtility::sendOrderPlacedNotification($order);
+
+                $wallet = new Wallet;
+                $wallet->user_id = $request->user_id;
+                $wallet->amount = $order->grand_total;
+                $wallet->payment_method = "#".$order->code;
+                $wallet->payment_details = $order->code;
+                $wallet->action = "-";
+                $wallet->save();
 
                 return response()->json([
                     'combined_order_id' => $combined_order->id,
