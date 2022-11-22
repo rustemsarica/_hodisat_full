@@ -127,7 +127,7 @@ class OrderController extends Controller
                 $order_detail->shipping_type = $cartItem['shipping_type'];
                 $order_detail->product_referral_code = $cartItem['product_referral_code'];
                 $order_detail->shipping_cost = $cartItem['shipping_cost'];
-
+                $order_detail->payment_status = 'paid';
                 $shipping += $order_detail->shipping_cost;
 
                 if ($cartItem['shipping_type'] == 'pickup_point') {

@@ -91,8 +91,8 @@ class CommissionController extends Controller
     public function calculateCommission($order){
 
             foreach ($order->orderDetails as $orderDetail) {
-                $orderDetail->payment_status = 'paid';
-                $orderDetail->save();
+                // $orderDetail->payment_status = 'paid';
+                // $orderDetail->save();
                 // $commission_percentage = 0;
 
                 // if(get_setting('vendor_commission_activation')){
