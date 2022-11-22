@@ -46,7 +46,7 @@ class NotificationUtility
             $request->title = "Yeni sipariş!";
             $request->text = "Bir yeni siparişin var.";
 
-            $request->type = "order";
+            $request->type = "sell";
             $request->id = $order->id;
             $request->user_id = $order->seller_id;
 

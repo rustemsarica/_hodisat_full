@@ -105,7 +105,7 @@ class OrderService{
                 $request->title = "Siparişin {$status}";
                 $request->text = "{$order->code} numaralı siparişin {$status}";
 
-                $request->type = "order";
+                $request->type = "sell";
                 $request->id = $order->id;
                 $request->user_id = $order->seller->user->id;
 
