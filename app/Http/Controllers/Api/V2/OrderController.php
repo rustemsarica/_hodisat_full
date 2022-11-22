@@ -176,19 +176,23 @@ class OrderController extends Controller
 
             }
 
-            if ( $request->payment_type == 'wallet')
-            {
-                (new OrderService)->create_shipping_code($order->id);
-                NotificationUtility::sendOrderPlacedNotification($order);
-            }
 
         }
         $combined_order->save();
 
-
-
         Cart::where('user_id', $request->user_id)->delete();
 
+            if ( $request->payment_type == 'wallet')
+            {
+                (new OrderService)->create_shipping_code($order->id);
+                NotificationUtility::sendOrderPlacedNotification($order);
+
+                return response()->json([
+                    'combined_order_id' => $combined_order->id,
+                    'result' => true,
+                    'message' => translate('Your order has been placed successfully')
+                ]);
+            }
 
         return $combined_order->id;
         return response()->json([
