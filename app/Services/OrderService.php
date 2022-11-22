@@ -36,7 +36,7 @@ class OrderService{
             $wallet = new Wallet;
             $wallet->user_id = $order->user_id;
             $wallet->amount = $order->grand_total;
-            $wallet->payment_method = traslate("Order canceled");
+            $wallet->payment_method = translate("Order canceled");
             $wallet->payment_details = $order->code;
             $wallet->action = "+";
             $wallet->save();
