@@ -17,10 +17,9 @@ class WalletController extends Controller
             if(Session::get('payment_type') == 'cart_payment'){
                 $user = Auth::user();
                 $combined_order = CombinedOrder::findOrFail(Session::get('combined_order_id'));
-                if ($user->shop->admin_to_pay >= $combined_order->grand_total) {
-                    $shop= $user->shop;
-                    $shop->admin_to_pay -= $combined_order->grand_total;
-                    $shop->save();
+                if ($user->balance >= $combined_order->grand_total) {
+                    $user->balance -= $combined_order->grand_total;
+                    $user->save();
                     return (new CheckoutController)->checkout_done($combined_order->id, null);
                 }
             }

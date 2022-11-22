@@ -10,12 +10,12 @@
       <table class="table table-striped table-bordered" >
           <tbody>
               <tr>
-                  @if($shop->admin_to_pay >= 0)
+                  @if($shop->user->balance >= 0)
                       <td>{{ translate('Due to seller') }}</td>
-                      <td>{{ single_price($shop->admin_to_pay) }}</td>
+                      <td>{{ single_price($shop->user->balance) }}</td>
                   @else
                       <td>{{ translate('Due to admin') }}</td>
-                      <td>{{ single_price(abs($shop->admin_to_pay)) }}</td>
+                      <td>{{ single_price(abs($shop->user->balance)) }}</td>
                   @endif
               </tr>
                   <tr>
@@ -29,11 +29,11 @@
           </tbody>
       </table>
 
-      @if ($shop->admin_to_pay > 0)
+      @if ($shop->user->balance > 0)
           <div class="form-group row">
               <label class="col-md-3 col-from-label" for="amount">{{translate('Amount')}}</label>
               <div class="col-md-9">
-                  <input type="number" lang="en" min="0" step="0.01" name="amount" id="amount" value="{{ $shop->admin_to_pay }}" class="form-control" required>
+                  <input type="number" lang="en" min="0" step="0.01" name="amount" id="amount" value="{{ $shop->user->balance }}" class="form-control" required>
               </div>
           </div>
 
@@ -56,7 +56,7 @@
           <div class="form-group row">
               <label class="col-md-3 col-from-label" for="amount">{{translate('Amount')}}</label>
               <div class="col-md-9">
-                  <input type="number" lang="en" min="0" step="0.01" name="amount" id="amount" value="{{ abs($shop->admin_to_pay) }}" class="form-control" required>
+                  <input type="number" lang="en" min="0" step="0.01" name="amount" id="amount" value="{{ abs($shop->user->balance) }}" class="form-control" required>
               </div>
           </div>
           <div class="form-group row" id="txn_div">
@@ -68,7 +68,7 @@
       @endif
     </div>
     <div class="modal-footer">
-      @if ($shop->admin_to_pay > 0)
+      @if ($shop->user->balance > 0)
           <button type="submit" class="btn btn-primary">{{translate('Pay')}}</button>
       @else
           <button type="submit" class="btn btn-primary">{{translate('Clear due')}}</button>

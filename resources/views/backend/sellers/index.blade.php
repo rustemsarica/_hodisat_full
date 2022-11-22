@@ -80,10 +80,10 @@
                         <td>{{$shop->user->email}}</td>
                         <td>{{ $shop->user->products->count() }}</td>
                         <td>
-                            @if ($shop->admin_to_pay >= 0)
-                                {{ single_price($shop->admin_to_pay) }}
+                            @if ($shop->user->balance >= 0)
+                                {{ single_price($shop->user->balance) }}
                             @else
-                                {{ single_price(abs($shop->admin_to_pay)) }} ({{ translate('Due to Admin') }})
+                                {{ single_price(abs($shop->user->balance)) }} ({{ translate('Due to Admin') }})
                             @endif
                         </td>
                         <td>

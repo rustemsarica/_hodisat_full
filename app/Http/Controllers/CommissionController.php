@@ -37,7 +37,7 @@ class CommissionController extends Controller
             $payment_data = $request->session()->get('payment_data');
 
             $shop = Shop::findOrFail($payment_data['shop_id']);
-            $shop->admin_to_pay = $shop->admin_to_pay + $payment_data['amount'];
+            $shop->user->balance = $shop->user->balance + $payment_data['amount'];
             $shop->save();
 
             $payment = new Payment;
@@ -56,7 +56,7 @@ class CommissionController extends Controller
     //redirects to this method after successfull seller payment
     public function seller_payment_done($payment_data, $payment_details){
         $shop = Shop::findOrFail($payment_data['shop_id']);
-        $shop->admin_to_pay = $shop->admin_to_pay - $payment_data['amount'];
+        $shop->user->balance = $shop->user->balance - $payment_data['amount'];
         $shop->save();
 
         $payment = new Payment;
@@ -104,7 +104,7 @@ class CommissionController extends Controller
                 // }
 
                 if ($orderDetail->product->user->user_type == 'seller') {
-                    $shop = $orderDetail->product->user->shop;
+                    $user = $orderDetail->product->user;
                     $admin_commission = 0;
                     // if(get_setting('vendor_commission_type')== 'percent'){
                     //     $admin_commission = ($orderDetail->price * $commission_percentage)/100;
@@ -115,10 +115,10 @@ class CommissionController extends Controller
 
                     if (get_setting('product_manage_by_admin') == 1) {
                         $seller_earning = ($orderDetail->price) - $admin_commission;
-                        $shop->admin_to_pay += $seller_earning;
+                        $user->balance += $seller_earning;
                     } else {
                         $seller_earning = ($orderDetail->shipping_cost + $orderDetail->price) - $admin_commission;
-                        $shop->admin_to_pay += $seller_earning;
+                        $user->balance += $seller_earning;
                     }
                     $shop->save();
 

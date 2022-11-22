@@ -501,8 +501,8 @@ class UpdateController extends Controller
                     $shop->product_upload_limit = $seller->product_upload_limit;
                     $shop->package_invalid_at = $seller->invalid_at;
                 }
-                if ($shop->admin_to_pay == 0) {
-                    $shop->admin_to_pay = $seller->admin_to_pay;
+                if ($shop->user->balance == 0) {
+                    $shop->user->balance = $seller->admin_to_pay;
                 }
                 if (!$shop->bank_name) {
                     $shop->bank_name = $seller->bank_name;

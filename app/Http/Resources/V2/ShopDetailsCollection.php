@@ -36,7 +36,7 @@ class ShopDetailsCollection extends JsonResource
             'sliders' => get_images_path($this->sliders)[0],
             'sliders_id' => $this->sliders,
             'address' => $this->address,
-            'admin_to_pay' => format_price( $this->admin_to_pay),
+            'admin_to_pay' => format_price( $this->user->balance),
             'phone' => $this->phone,
 
             "following_count" =>Follow::where('user_id',$this->user_id)->count(),

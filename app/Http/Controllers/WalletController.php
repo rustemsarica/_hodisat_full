@@ -32,9 +32,7 @@ class WalletController extends Controller
     public function wallet_payment_done($payment_data, $payment_details)
     {
         $user = Auth::user();
-        $shop = Shop::where('user_id',$user->id)->first();
-        $shop->admin_to_pay = $shop->admin_to_pay + $payment_data['amount'];
-        $shop->save();
+        $user->balance += $payment_data['amount'];
 
         $wallet = new Wallet;
         $wallet->user_id = $user->id;

@@ -17,7 +17,7 @@ class WalletController extends Controller
         return response()->json([
 			'bank_name' => $user->seller->bank_name,
 			'bank_acc_name' => $user->seller->bank_acc_name,
-            'balance' => format_price($user->shop->admin_to_pay),
+            'balance' => format_price($user->balance),
             'last_recharged' => $latest == null ? "Not Available" : $latest->created_at->diffForHumans(),
         ]);
     }
@@ -30,15 +30,15 @@ class WalletController extends Controller
     public function processPayment(Request $request)
     {
         $order = new OrderController;
-        $shop = Shop::where('user_id',$request->user_id)->first();
+        $user = User::where('id',$request->user_id)->first();
 
-        if ($shop->admin_to_pay >= $request->amount) {
+        if ($user->balance >= $request->amount) {
 
             $response =  $order->store($request, true);
             $decoded_response = $response->original;
-            if ($decoded_response['result'] == true) { 
-                $shop->admin_to_pay -= $request->amount;
-                $shop->save();
+            if ($decoded_response['result'] == true) {
+                $user->balance -= $request->amount;
+                $user->save();
             }
 
             return $response;

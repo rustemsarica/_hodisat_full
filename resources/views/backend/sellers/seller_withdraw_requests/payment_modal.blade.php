@@ -9,13 +9,13 @@
       <table class="table table-striped table-bordered" >
           <tbody>
                 <tr>
-                    @if($user->shop->admin_to_pay >= 0)
+                    @if($user->balance >= 0)
                         <td>{{ translate('Due to seller') }}</td>
-                        <td>{{ single_price($user->shop->admin_to_pay) }}</td>
+                        <td>{{ single_price($user->balance) }}</td>
                     @endif
                 </tr>
                 <tr>
-                    @if($seller_withdraw_request->amount > $user->shop->admin_to_pay)
+                    @if($seller_withdraw_request->amount > $user->balance)
                         <td>{{ translate('Requested Amount is ') }}</td>
                         <td>{{ single_price($seller_withdraw_request->amount) }}</td>
                     @endif
@@ -41,15 +41,15 @@
             </tbody>
         </table>
 
-        @if ($user->shop->admin_to_pay > 0)
+        @if ($user->balance > 0)
             <input type="hidden" name="shop_id" value="{{ $user->shop->id }}">
             <input type="hidden" name="payment_withdraw" value="withdraw_request">
             <input type="hidden" name="withdraw_request_id" value="{{ $seller_withdraw_request->id }}">
             <div class="form-group row">
                 <label class="col-sm-3 col-from-label" for="amount">{{translate('Requested Amount')}}</label>
                 <div class="col-sm-9">
-                    @if ($seller_withdraw_request->amount > $user->shop->admin_to_pay)
-                        <input type="number" lang="en" min="0" step="0.01" name="amount" id="amount" value="{{ $user->shop->admin_to_pay }}" class="form-control" required>
+                    @if ($seller_withdraw_request->amount > $user->balance)
+                        <input type="number" lang="en" min="0" step="0.01" name="amount" id="amount" value="{{ $user->balance }}" class="form-control" required>
                     @else
                         <input type="number" lang="en" min="0" step="0.01" name="amount" id="amount" value="{{ $seller_withdraw_request->amount }}" class="form-control" required>
                     @endif
@@ -72,7 +72,7 @@
 
     </div>
     <div class="modal-footer">
-      @if ($user->shop->admin_to_pay > 0)
+      @if ($user->balance > 0)
         <button type="submit" class="btn btn-primary">{{translate('Pay')}}</button>
       @endif
       <button type="button" class="btn btn-light" data-dismiss="modal">{{translate('Cancel')}}</button>
