@@ -176,11 +176,10 @@ class OrderController extends Controller
 
             }
 
-            if ( $request->payment_type == 'wallet')
-            {
+
                 (new OrderService)->create_shipping_code($order->id);
                 NotificationUtility::sendOrderPlacedNotification($order);
-            }
+
 
         }
         $combined_order->save();
