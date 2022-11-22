@@ -59,7 +59,7 @@ class OrderService{
                 $product = Product::where('id', $orderDetail->product_id)->first();
 
                     if ($product != null) {
-                        $product->current_stock += $orderDetail->quantity;
+                        $product->current_stock = 1;
                         $product->save();
                     }
 
