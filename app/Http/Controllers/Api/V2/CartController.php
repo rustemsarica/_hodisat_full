@@ -53,15 +53,15 @@ class CartController extends Controller
                         $bulk_sell_discount+=($seller_total_price/100)*$shop_data->discount_percentage;
                     }
                 }
-            }
-            if(get_setting('vendor_commission_activation')){
-                $commission_percentage = get_setting('vendor_commission');
-                if(get_setting('vendor_commission_type')== 'percent'){
-                    $commission += ($seller_total_price * $commission_percentage)/100;
-                }elseif(get_setting('vendor_commission_type')== 'amount'){
-                    $commission += $commission_percentage;
-                }
+                if(get_setting('vendor_commission_activation')){
+                    $commission_percentage = get_setting('vendor_commission');
+                    if(get_setting('vendor_commission_type')== 'percent'){
+                        $commission += ($seller_total_price * $commission_percentage)/100;
+                    }elseif(get_setting('vendor_commission_type')== 'amount'){
+                        $commission += $commission_percentage;
+                    }
 
+                }
             }
         }
 
