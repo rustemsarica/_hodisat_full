@@ -20,6 +20,7 @@ class CartController extends Controller
             return response()->json([
                 'sub_total' => format_price(0.00),
                 'shipping_cost' => format_price(0.00),
+                'service_cost' => format_price(0.00),
                 'discount' => format_price(0.00),
                 'grand_total' => format_price(0.00),
                 'grand_total_value' => 0.00,
@@ -30,6 +31,7 @@ class CartController extends Controller
 
         $sum = 0.00;
         $subtotal = 0.00;
+        $commission = 0.00;
         foreach ($items as $cartItem) {
             $item_sum = 0.00;
             $item_sum += $cartItem->price * $cartItem->quantity;
@@ -52,11 +54,25 @@ class CartController extends Controller
                     }
                 }
             }
+            if(get_setting('vendor_commission_activation')){
+                $commission_percentage = get_setting('vendor_commission');
+                if(get_setting('vendor_commission_type')== 'percent'){
+                    $commission += ($orderDetail->price * $commission_percentage)/100;
+                }elseif(get_setting('vendor_commission_type')== 'amount'){
+                    $commission += $commission_percentage;
+                }
+
+            }
         }
+
+
+
+        $sum += $commission;
 
         return response()->json([
             'sub_total' => format_price($subtotal),
             'shipping_cost' => format_price($items->sum('shipping_cost')),
+            'service_cost' => format_price($commission),
             'discount' => format_price($items->sum('discount')+$bulk_sell_discount),
             'grand_total' => format_price($sum-$bulk_sell_discount),
             'grand_total_value' => convert_price($sum-$bulk_sell_discount),
