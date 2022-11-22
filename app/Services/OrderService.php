@@ -32,14 +32,15 @@ class OrderService{
             $this->cancel_shipping_code($order->shipping_code);
             $order->shipping_code = translate("Order canceled");
             $order->save();
+
             $wallet = new Wallet;
             $wallet->user_id = $order->user_id;
             $wallet->amount = $order->grand_total;
             $wallet->payment_method = traslate("Order canceled");
             $wallet->payment_details = $order->code;
-            $wallet->approval = 1;
             $wallet->action = "+";
             $wallet->save();
+
             $user = User::where('id', $order->user_id)->first();
             $user->balance += $order->grand_total;
             $user->save();
