@@ -43,6 +43,7 @@ class OrderService{
             $user = User::where('id', $order->user_id)->first();
             $user->balance += $order->grand_total;
             $user->save();
+
         }
 
         if($request->status=='confirmed'){

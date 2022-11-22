@@ -997,7 +997,7 @@ if (!function_exists('product_restock')) {
 if (!function_exists('calculateCommissionAffilationClubPoint')) {
     function calculateCommissionAffilationClubPoint($order)
     {
-        //(new CommissionController)->calculateCommission($order);
+        (new CommissionController)->calculateCommission($order);
 
         if (addon_is_activated('affiliate_system')) {
             (new AffiliateController)->processAffiliatePoints($order);
