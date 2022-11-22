@@ -120,7 +120,7 @@ class CommissionController extends Controller
                         $seller_earning = ($orderDetail->shipping_cost + $orderDetail->price) - $admin_commission;
                         $user->balance += $seller_earning;
                     }
-                    $shop->save();
+                    $user->save();
 
                     // $commission_history = new CommissionHistory;
                     // $commission_history->order_id = $order->id;
