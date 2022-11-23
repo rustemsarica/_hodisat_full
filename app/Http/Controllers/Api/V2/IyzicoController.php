@@ -147,7 +147,7 @@ class IyzicoController extends Controller
         $payment = $payWithIyzico->getRawResult();
 
         if ($payWithIyzico->getStatus() == 'success') {
-            $payment->message=translate("Payment is successful");
+            $payment['message']=translate("Payment is successful");
             return response()->json($payment);
         } else {
             return response()->json(['result' => false, 'message' => translate("Payment unsuccessful"), 'payment_details' => $payment]);
