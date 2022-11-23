@@ -148,12 +148,12 @@ class IyzicoController extends Controller
 
         if ($payWithIyzico->getStatus() == 'success') {
 
-            $payment = json_decode($payment);
-            $payment->result = true;
-            $payment->message = translate("Payment is successful");
-            $payment->itemTransactions = json_encode($payment->itemTransactions,JSON_UNESCAPED_UNICODE);
-            return json_encode($payment, JSON_UNESCAPED_UNICODE);
-            return response()->json(['result' => true, 'message' => translate("Payment is successful")]);
+            // $payment = json_decode($payment);
+            // $payment->result = true;
+            // $payment->message = translate("Payment is successful");
+            // $payment->itemTransactions = json_encode($payment->itemTransactions,JSON_UNESCAPED_UNICODE);
+            // return json_encode($payment, JSON_UNESCAPED_UNICODE);
+            return response()->json(['result' => true, 'message' => translate("Payment is successful"), 'payment_details' => $payment]);
         } else {
             return response()->json(['result' => false, 'message' => translate("Payment unsuccessful"), 'payment_details' => $payment]);
         }
