@@ -933,7 +933,7 @@ if (!function_exists('checkout_done')) {
             $order->save();
 
             try {
-                (new OrderService)->create_shipping_code($order->id);
+                //(new OrderService)->create_shipping_code($order->id);
                 NotificationUtility::sendOrderPlacedNotification($order);
             } catch (\Exception $e) {
             }
