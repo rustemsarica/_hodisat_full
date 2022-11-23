@@ -211,7 +211,7 @@ Route::group(['prefix' => 'v2', 'as' =>'api.', 'middleware' => ['app_language']]
     Route::post('paystack/success', 'App\Http\Controllers\Api\V2\PaystackController@success')->name('paystack.success');
 
     Route::any('iyzico/init', 'App\Http\Controllers\Api\V2\IyzicoController@init')->name('iyzico.init');
-    Route::any('iyzico/callback/{id}/{type}', 'App\Http\Controllers\Api\V2\IyzicoController@callback')->name('iyzico.callback');
+    Route::any('iyzico/callback', 'App\Http\Controllers\Api\V2\IyzicoController@callback')->name('iyzico.callback');
     Route::post('iyzico/success', 'App\Http\Controllers\Api\V2\IyzicoController@success')->name('iyzico.success');
 
     Route::get('bkash/begin', 'App\Http\Controllers\Api\V2\BkashController@begin')->middleware('auth:sanctum');
