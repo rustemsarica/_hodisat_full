@@ -151,7 +151,7 @@ class IyzicoController extends Controller
             $payment->message=translate("Payment is successful");
             $payment->result=true;
             $payment = json_encode($payment,JSON_UNESCAPED_UNICODE);
-            return response()->json($payment);
+            return $payment;
         } else {
             return response()->json(['result' => false, 'message' => translate("Payment unsuccessful"), 'payment_details' => $payment]);
         }
