@@ -173,7 +173,7 @@ class IyzicoController extends Controller
                     seller_purchase_payment_done($request->user_id, $request->package_id, $request->amount, 'Paystack', $request->payment_details);
                 }
 
-                return json_encode(['result' => true, 'message' => translate("Payment is successful")], JSON_UNESCAPED_UNICODE);
+                return response()->json(['result' => true, 'message' => translate("Payment is successful")], JSON_UNESCAPED_UNICODE);
 
 
             } catch (\Exception $e) {
