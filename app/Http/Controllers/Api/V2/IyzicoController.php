@@ -69,7 +69,7 @@ class IyzicoController extends Controller
             $iyzicoRequest->setCurrency(\Iyzipay\Model\Currency::TL);
             $iyzicoRequest->setBasketId(rand(000000, 999999));
             $iyzicoRequest->setPaymentGroup(\Iyzipay\Model\PaymentGroup::SUBSCRIPTION);
-            $iyzicoRequest->setCallbackUrl(route('api.iyzico.callback'));
+            $iyzicoRequest->setCallbackUrl(route('api.iyzico.callback', ["id"=>$user_id, "type"=>$payment_type]));
 
             $basketItems = array();
             $firstBasketItem = new \Iyzipay\Model\BasketItem();
@@ -125,7 +125,7 @@ class IyzicoController extends Controller
         return Redirect::to($payWithIyzicoInitialize->getPaymentPageUrl());
     }
 
-    public function callback(Request $request)
+    public function callback(Request $request, $id, $type)
     {
         $options = new \Iyzipay\Options();
         $options->setApiKey(env('IYZICO_API_KEY'));
@@ -153,6 +153,33 @@ class IyzicoController extends Controller
             // $payment->message = translate("Payment is successful");
             // $payment->itemTransactions = json_encode($payment->itemTransactions,JSON_UNESCAPED_UNICODE);
             // return json_encode($payment, JSON_UNESCAPED_UNICODE);
+
+            try {
+                $request->user_id = $id;
+                $request->payment_type = $type;
+
+                if ($type == 'cart_payment') {
+                    $order=(new OrderController)->store($request);
+                    checkout_done($order, $request->payment_details);
+                }
+
+                elseif ($type == 'wallet_payment') {
+
+                    wallet_payment_done($request->user_id, $request->amount, 'Paystack', $request->payment_details);
+                }
+
+                elseif ($type == 'seller_package_payment') {
+
+                    seller_purchase_payment_done($request->user_id, $request->package_id, $request->amount, 'Paystack', $request->payment_details);
+                }
+
+                return response()->json(['result' => true, 'message' => translate("Payment is successful")]);
+
+
+            } catch (\Exception $e) {
+                return response()->json(['result' => false, 'message' => $e->getMessage()]);
+            }
+
             return response()->json(['result' => true, 'message' => translate("Payment is successful"), 'payment_details' => $payment]);
         } else {
             return response()->json(['result' => false, 'message' => translate("Payment unsuccessful"), 'payment_details' => $payment]);

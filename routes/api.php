@@ -23,7 +23,7 @@ Route::group(['prefix' => 'v2', 'as' =>'api.', 'middleware' => ['app_language']]
     Route::get('languages', 'App\Http\Controllers\Api\V2\LanguageController@getList');
 
     Route::get('chat/conversations', 'App\Http\Controllers\Api\V2\ChatController@conversations')->middleware('auth:sanctum');
-    Route::get('chat/messages/{id}', 'App\Http\Controllers\Api\V2\ChatController@messages')->middleware('auth:sanctum');
+    Route::get('chat/messages/{id}/{type}', 'App\Http\Controllers\Api\V2\ChatController@messages')->middleware('auth:sanctum');
     Route::post('chat/insert-message', 'App\Http\Controllers\Api\V2\ChatController@insert_message')->middleware('auth:sanctum');
     Route::get('chat/get-new-messages/{conversation_id}/{last_message_id}', 'App\Http\Controllers\Api\V2\ChatController@get_new_messages')->middleware('auth:sanctum');
     Route::post('chat/create-conversation', 'App\Http\Controllers\Api\V2\ChatController@create_conversation')->middleware('auth:sanctum');
@@ -211,7 +211,7 @@ Route::group(['prefix' => 'v2', 'as' =>'api.', 'middleware' => ['app_language']]
     Route::post('paystack/success', 'App\Http\Controllers\Api\V2\PaystackController@success')->name('paystack.success');
 
     Route::any('iyzico/init', 'App\Http\Controllers\Api\V2\IyzicoController@init')->name('iyzico.init');
-    Route::any('iyzico/callback', 'App\Http\Controllers\Api\V2\IyzicoController@callback')->name('iyzico.callback');
+    Route::any('iyzico/callback/{id}', 'App\Http\Controllers\Api\V2\IyzicoController@callback')->name('iyzico.callback');
     Route::post('iyzico/success', 'App\Http\Controllers\Api\V2\IyzicoController@success')->name('iyzico.success');
 
     Route::get('bkash/begin', 'App\Http\Controllers\Api\V2\BkashController@begin')->middleware('auth:sanctum');
