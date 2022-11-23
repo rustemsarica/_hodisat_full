@@ -69,7 +69,7 @@ class IyzicoController extends Controller
             $iyzicoRequest->setCurrency(\Iyzipay\Model\Currency::TL);
             $iyzicoRequest->setBasketId(rand(000000, 999999));
             $iyzicoRequest->setPaymentGroup(\Iyzipay\Model\PaymentGroup::SUBSCRIPTION);
-            $iyzicoRequest->setCallbackUrl(route('api.iyzico.callback', $user_id, $payment_type));
+            $iyzicoRequest->setCallbackUrl(route('api.iyzico.callback', ["id"=>$user_id, "type"=>$payment_type]));
 
             $basketItems = array();
             $firstBasketItem = new \Iyzipay\Model\BasketItem();
