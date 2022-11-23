@@ -125,7 +125,7 @@ class IyzicoController extends Controller
         return Redirect::to($payWithIyzicoInitialize->getPaymentPageUrl());
     }
 
-    public function callback(Request $request, $id, $type)
+    public function callback(Request $request)
     {
         $options = new \Iyzipay\Options();
         $options->setApiKey(env('IYZICO_API_KEY'));
