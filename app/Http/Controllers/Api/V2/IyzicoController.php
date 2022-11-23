@@ -147,6 +147,7 @@ class IyzicoController extends Controller
         $payment = $payWithIyzico->getRawResult();
 
         if ($payWithIyzico->getStatus() == 'success') {
+            return $request;
             $order=(new OrderController)->store($request);
             checkout_done($order, $payment);
             return response()->json(['result' => true, 'message' => translate("Payment is successful"), 'payment_details' => $payment]);
