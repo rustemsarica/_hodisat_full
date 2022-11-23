@@ -7,13 +7,14 @@ namespace App\Http\Controllers\Api\V2;
 use App\Models\BusinessSetting;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\WalletController;
-use App\Http\Controllers\OrderController;
 use App\Models\CombinedOrder;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Redirect;
 use Illuminate\Support\Arr;
 use App\Http\Controllers\Api\V2\PaystackController;
+use App\Http\Controllers\Api\V2\OrderController;
+
 class IyzicoController extends Controller
 {
 
@@ -146,7 +147,8 @@ class IyzicoController extends Controller
         $payment = $payWithIyzico->getRawResult();
 
         if ($payWithIyzico->getStatus() == 'success') {
-
+            $order=(new OrderController)->store($request);
+            checkout_done($order, $payment);
             return response()->json(['result' => true, 'message' => translate("Payment is successful"), 'payment_details' => $payment]);
         } else {
             return response()->json(['result' => false, 'message' => translate("Payment unsuccessful"), 'payment_details' => $payment]);
