@@ -258,6 +258,10 @@ class AuthController extends Controller
             $shop->user_id = $user->id;
             $shop->slug = $user->username;
             $shop->save();
+
+            $notif = new UserNotificationPermission;
+            $notif->user_id = $user->id;
+            $notif->save();
         }
         }
         return $this->loginSuccess($user);
