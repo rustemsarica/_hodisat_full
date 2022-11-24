@@ -155,6 +155,10 @@
 			            <th class="gry-color text-left">{{ translate('Shipping Cost') }}</th>
 			            <td class="currency">{{ single_price($order->orderDetails->sum('shipping_cost')) }}</td>
 			        </tr>
+                    <tr>
+			            <th class="gry-color text-left">{{ translate('Service Cost') }}</th>
+			            <td class="currency">{{ single_price($order->service_cost) }}</td>
+			        </tr>
                     <tr class="border-bottom">
 			            <th class="gry-color text-left">{{ translate('Coupon') }}</th>
 			            <td class="currency">{{ single_price($order->coupon_discount) }}</td>
