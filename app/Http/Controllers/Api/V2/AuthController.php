@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Shop;
 use App\Models\Seller;
+use App\Models\UserNotificationPermission;
 use App\Notifications\AppEmailVerificationNotification;
 use Hash;
 use Socialite;
@@ -80,7 +81,9 @@ class AuthController extends Controller
                 $shop->save();
 
             }
-
+        $notif = new UserNotificationPermission;
+        $notif->user_id = $user->id;
+        $notif->save();
         //create token
         $user->createToken('tokens')->plainTextToken;
 

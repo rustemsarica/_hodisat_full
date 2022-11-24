@@ -70,7 +70,12 @@ class ChatController extends Controller
 
     public function create_conversation(Request $request)
     {
-        $seller_user = Product::findOrFail($request->product_id)->user;
+        if($request->type=="shop"){
+            $seller_user = Shop::findOrFail($request->product_id)->user;
+        }else{
+            $seller_user = Product::findOrFail($request->product_id)->user;
+        }
+
         $user = User::find(auth()->user()->id);
         $conversation = new Conversation;
         $conversation->sender_id = $user->id;
