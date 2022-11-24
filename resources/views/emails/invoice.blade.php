@@ -148,24 +148,24 @@
 	        <table style="width: 40%;margin-left:auto;" class="text-right sm-padding small strong">
 		        <tbody>
 			        <tr>
-			            <th class="gry-color text-left">{{ translate('Sub Total') }}</th>
-			            <td class="currency">{{ single_price($order->orderDetails->sum('price')) }}</td>
+			            <th class="gry-color text-right">{{ translate('Sub Total') }}</th>
+			            <td class="currency text-right">{{ single_price($order->orderDetails->sum('price')) }}</td>
 			        </tr>
 			        <tr>
-			            <th class="gry-color text-left">{{ translate('Shipping Cost') }}</th>
-			            <td class="currency">{{ single_price($order->orderDetails->sum('shipping_cost')) }}</td>
+			            <th class="gry-color text-right">{{ translate('Shipping Cost') }}</th>
+			            <td class="currency text-right">{{ single_price($order->orderDetails->sum('shipping_cost')) }}</td>
 			        </tr>
                     <tr>
-			            <th class="gry-color text-left">{{ translate('Service Cost') }}</th>
-			            <td class="currency">{{ single_price($order->service_cost) }}</td>
+			            <th class="gry-color text-right">{{ translate('Service Cost') }}</th>
+			            <td class="currency text-right">{{ single_price($order->service_cost) }}</td>
 			        </tr>
                     <tr class="border-bottom">
-			            <th class="gry-color text-left">{{ translate('Coupon') }}</th>
-			            <td class="currency">{{ single_price($order->coupon_discount) }}</td>
+			            <th class="gry-color text-right">{{ translate('Coupon') }}</th>
+			            <td class="currency text-right">{{ single_price($order->coupon_discount) }}</td>
 			        </tr>
 			        <tr>
-			            <th class="text-left strong">{{ translate('Grand Total') }}</th>
-			            <td class="currency">{{ single_price($order->grand_total) }}</td>
+			            <th class="text-right strong">{{ translate('Grand Total') }}</th>
+			            <td class="currency text-right">{{ single_price($order->grand_total) }}</td>
 			        </tr>
 		        </tbody>
 		    </table>
