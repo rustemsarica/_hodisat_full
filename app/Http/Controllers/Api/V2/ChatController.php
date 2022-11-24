@@ -79,7 +79,7 @@ class ChatController extends Controller
         $user = User::find(auth()->user()->id);
         $conversation = new Conversation;
         $conversation->sender_id = $user->id;
-        $conversation->receiver_id = Product::findOrFail($request->product_id)->user->id;
+        $conversation->receiver_id = $seller_user->id;
         $conversation->title = $request->title;
 
         if ($conversation->save()) {
