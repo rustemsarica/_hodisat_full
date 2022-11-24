@@ -9,6 +9,7 @@ use App\Mail\ConversationMailManager;
 use App\Models\Message;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Shop;
 use Illuminate\Http\Request;
 use Mail;
 use App\Utility\NotificationUtility;
