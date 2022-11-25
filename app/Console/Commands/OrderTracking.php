@@ -86,9 +86,9 @@ class OrderTracking extends Command
                         catch(\Exception $e){
 
                         }
-                    }
 
-                   DB::table('logs')->insert(['title'=>'order tracking cron','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
+                    }
+                    DB::table('logs')->insert(['title'=>'order tracking cron','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
             }
         }
 
