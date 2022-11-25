@@ -112,14 +112,9 @@ class CommissionController extends Controller
                     //     $admin_commission = $commission_percentage;
                     // }
 
-
-                    if (get_setting('product_manage_by_admin') == 1) {
                         $seller_earning = ($orderDetail->price) - $admin_commission;
                         $user->balance += $seller_earning;
-                    } else {
-                        $seller_earning = ($orderDetail->shipping_cost + $orderDetail->price) - $admin_commission;
-                        $user->balance += $seller_earning;
-                    }
+
                     $user->save();
 
                     // $commission_history = new CommissionHistory;
