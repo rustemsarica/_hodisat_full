@@ -357,6 +357,7 @@ class OrderService{
 			];
 
             $response = $istek->kabulEkle2(['input'=>$data]);
+            DB::table('logs')->insert(['title'=>'order services create code','text'=>json_encode($response->kabulEkle2Response,JSON_UNESCAPED_UNICODE)]);
             return $response->kabulEkle2Response;
             if($response->kabulEkle2Response->hataKodu==1){
                 Shippingkey::insert(['shipping_key'=>$shipping_key]);
