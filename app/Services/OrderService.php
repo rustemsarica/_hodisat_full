@@ -356,7 +356,7 @@ class OrderService{
 				'sifre'			=> 'jSr1hVrJyJoLNr7nNqMPYw',
 			];
 
-            $response = $istek->kabulEkle2Request($data);
+            $response = $istek->kabulEkle2($data);
             DB::table('logs')->insert(['title'=>'order services create code','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
             return $response;
             if($response->kabulEkle2Response->return==0){
