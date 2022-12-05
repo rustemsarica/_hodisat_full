@@ -325,14 +325,6 @@ class OrderService{
 
             $istek = Soap::to('https://pttws.ptt.gov.tr/PttVeriYuklemeTest/services/Sorgu?wsdl');
 
-
-			$dongu=[
-				'aAdres' 		        => $shipping_address['address'].' '.$shipping_address['state'].'/'.$shipping_address['city'],
-				'aliciAdi' 			    => $shipping_address['name'],
-				'gondericibilgi' 	    => $gondericiBilgi,
-
-			];
-
             $name_array = explode(' ', $seller->name);
             $sellersurname = $name_array[count($name_array)-1];
             $sellername = $name_array[0];
@@ -345,6 +337,13 @@ class OrderService{
 				'gonderici_ilce_ad'		=> $seller_city->name,
 				'gonderici_soyadi'		=> $sellersurname,
                 'gonderici_ulke_id'     => "052"
+			];
+
+			$dongu=[
+				'aAdres' 		        => $shipping_address['address'].' '.$shipping_address['state'].'/'.$shipping_address['city'],
+				'aliciAdi' 			    => $shipping_address['name'],
+				'gondericibilgi' 	    => $gondericiBilgi,
+
 			];
 
 			$data=[
