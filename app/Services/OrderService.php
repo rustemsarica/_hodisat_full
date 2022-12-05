@@ -205,6 +205,109 @@ class OrderService{
         return $shipping_key;
     }
 
+    // public function create_shipping_code($id) {
+
+    //     $order = Order::findOrFail($id);
+    //     $seller=User::find($order->seller_id);
+
+    //     $shipping_address = json_decode($order->shipping_address, true);
+
+    //     $state=State::where('name',$shipping_address['state'])->first();
+
+    //     $seller_city=City::where('id',$seller->city)->first();
+    //     $seller_state=State::where('id',$seller->state)->first();
+    //     $shipping_key=$this->generateUniqueCode();
+
+    //     //return redirect('/orders')->with('status', 'Gönderi kodu oluşturuldu!'.$shipping_key);
+    //     try{
+
+    //         $istek = Soap::to('https://ws.yurticikargo.com/KOPSWebServices/NgiShipmentInterfaceServices?wsdl');
+
+
+	// 		$shipmentData=[
+	// 			'ngiDocumentKey' 		=> $shipping_key,
+	// 			'cargoType' 			=> 1,
+	// 			'totalCargoCount' 		=> 1,
+	// 			'totalDesi' 			=> 1,
+	// 			'totalWeight' 			=> null,
+	// 			'personGiver' 			=> 'DEPO OPERASYON SORUMLUSU',
+	// 			'description' 			=> 'ENTEGRASYON TEST KAYDI',
+	// 			'selectedArrivalUnitId' => null,
+	// 			'selectedArrivalTransferUnitId' => null,
+	// 			'productCode' 			=> 'STA',
+	// 			'complementaryProductDataArray' => array('complementaryProductCode' =>null),
+	// 			'docCargoDataArray' => array(
+	// 				'ngiCargoKey' =>$shipping_key,
+	// 				'cargoType' =>1,
+	// 				'cargoDesi' =>1,
+	// 				'cargoWeight' =>null,
+	// 				'cargoCount' =>1,
+	// 				'length' =>null,
+	// 				'width' =>null,
+	// 				'height' =>null,
+	// 				'docCargoSpecialFieldDataArray' =>null,
+	// 			),
+	// 			'specialFieldDataArray' => array(
+	// 				'specialFieldName' => '54',
+	// 				'specialFieldValue' => $shipping_key,
+	// 			),
+	// 			'codData' => array(
+	// 				'ttInvoiceAmount' =>null,
+	// 				'dcSelectedCredit' =>null,
+	// 			),
+	// 		];
+
+	// 		$XSenderCustAddress=[
+	// 			'senderCustName'		=> $seller->name,
+	// 			'senderAddress'			=> $seller->address.' '.$seller_city->name.'/'.$seller_state->name,
+	// 			'cityId'				=> $seller->state,
+	// 			'townName'				=> $seller_city->name,
+	// 			'senderMobilePhone'		=> str_replace(['+',' '],'',$seller->phone),
+	// 		];
+
+	// 		$XConsigneeCustAddress=[
+	// 			'consigneeCustName'		=> $shipping_address['name'],
+	// 			'consigneeAddress'		=> $shipping_address['address'].' '.$shipping_address['city'].'/'.$shipping_address['state'],
+	// 			'cityId'				=> $state->id,
+	// 			'townName'				=> $shipping_address['city'],
+	// 			'consigneeMobilePhone'	=> $shipping_address['phone'],
+	// 		];
+
+	// 		$XPayerCustData=[
+	// 			'invCustId'				=> 909344613,
+	// 			'invAddressId'			=> null,
+	// 		];
+
+	// 		$data=[
+	// 			'wsUserName'        	=> 'CIZGITURIZMYENI',
+	// 			'wsPassword'        	=> '02v1d1pp3dmn7d15',
+	// 			'wsUserLanguage'      	=> 'TR',
+	// 			'shipmentData'			=> $shipmentData,
+	// 			'XSenderCustAddress'	=> $XSenderCustAddress,
+	// 			'XConsigneeCustAddress'	=> $XConsigneeCustAddress,
+	// 			'payerCustData'			=> $XPayerCustData,
+	// 		];
+
+    //         $response = $istek->createNgiShipmentWithAddress($data);
+    //         if($response->XShipmentDataResponse->outFlag==0){
+    //             Shippingkey::insert(['shipping_key'=>$shipping_key]);
+	// 			$order->shipping_comp = "yurtici_kargo";
+	// 			$order->shipping_code = $shipping_key;
+    //             $order->save();
+    //             return $shipping_key;
+    //         }elseif($response->XShipmentDataResponse->outFlag==2){
+    //             DB::table('logs')->insert(['title'=>'order services create code','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
+    //             return false;
+    //         }
+
+    //     }catch(Exception $e){
+    //         DB::table('logs')->insert(['title'=>'order services create code error','text'=>$e->getMessage()]);
+	// 		return false;
+    //     }
+
+
+    // }
+
     public function create_shipping_code($id) {
 
         $order = Order::findOrFail($id);
@@ -218,78 +321,45 @@ class OrderService{
         $seller_state=State::where('id',$seller->state)->first();
         $shipping_key=$this->generateUniqueCode();
 
-        //return redirect('/orders')->with('status', 'Gönderi kodu oluşturuldu!'.$shipping_key);
         try{
 
-            $istek = Soap::to('https://ws.yurticikargo.com/KOPSWebServices/NgiShipmentInterfaceServices?wsdl');
+            $istek = Soap::to('https://pttws.ptt.gov.tr/PttVeriYuklemeTest/services/Sorgu?wsdl');
 
 
-			$shipmentData=[
-				'ngiDocumentKey' 		=> $shipping_key,
-				'cargoType' 			=> 1,
-				'totalCargoCount' 		=> 1,
-				'totalDesi' 			=> 1,
-				'totalWeight' 			=> null,
-				'personGiver' 			=> 'DEPO OPERASYON SORUMLUSU',
-				'description' 			=> 'ENTEGRASYON TEST KAYDI',
-				'selectedArrivalUnitId' => null,
-				'selectedArrivalTransferUnitId' => null,
-				'productCode' 			=> 'STA',
-				'complementaryProductDataArray' => array('complementaryProductCode' =>null),
-				'docCargoDataArray' => array(
-					'ngiCargoKey' =>$shipping_key,
-					'cargoType' =>1,
-					'cargoDesi' =>1,
-					'cargoWeight' =>null,
-					'cargoCount' =>1,
-					'length' =>null,
-					'width' =>null,
-					'height' =>null,
-					'docCargoSpecialFieldDataArray' =>null,
-				),
-				'specialFieldDataArray' => array(
-					'specialFieldName' => '54',
-					'specialFieldValue' => $shipping_key,
-				),
-				'codData' => array(
-					'ttInvoiceAmount' =>null,
-					'dcSelectedCredit' =>null,
-				),
+			$dongu=[
+				'aAdres' 		        => $shipping_address['address'].' '.$shipping_address['state'].'/'.$shipping_address['city'],
+				'aliciAdi' 			    => $shipping_address['name'],
+				'gondericibilgi' 	    => $gondericiBilgi,
+
 			];
 
-			$XSenderCustAddress=[
-				'senderCustName'		=> $seller->name,
-				'senderAddress'			=> $seller->address.' '.$seller_city->name.'/'.$seller_state->name,
-				'cityId'				=> $seller->state,
-				'townName'				=> $seller_city->name,
-				'senderMobilePhone'		=> str_replace(['+',' '],'',$seller->phone),
-			];
+            $name_array = explode(' ', $seller->name);
+            $sellersurname = $name_array[count($name_array)-1];
+            $sellername = $name_array[0];
 
-			$XConsigneeCustAddress=[
-				'consigneeCustName'		=> $shipping_address['name'],
-				'consigneeAddress'		=> $shipping_address['address'].' '.$shipping_address['city'].'/'.$shipping_address['state'],
-				'cityId'				=> $state->id,
-				'townName'				=> $shipping_address['city'],
-				'consigneeMobilePhone'	=> $shipping_address['phone'],
-			];
-
-			$XPayerCustData=[
-				'invCustId'				=> 909344613,
-				'invAddressId'			=> null,
+			$gondericiBilgi=[
+				'gonderici_adi'		    => $sellername,
+				'gonderici_adresi'		=> $seller->address.' '.$seller_city->name.'/'.$seller_state->name,
+                'gonderici_email'       => $seller->email,
+				'gonderici_il_ad'		=> $seller_state->name,
+				'gonderici_ilce_ad'		=> $seller_city->name,
+				'gonderici_soyadi'		=> $sellersurname,
+                'gonderici_ulke_id'     => "052"
 			];
 
 			$data=[
-				'wsUserName'        	=> 'CIZGITURIZMYENI',
-				'wsPassword'        	=> '02v1d1pp3dmn7d15',
-				'wsUserLanguage'      	=> 'TR',
-				'shipmentData'			=> $shipmentData,
-				'XSenderCustAddress'	=> $XSenderCustAddress,
-				'XConsigneeCustAddress'	=> $XConsigneeCustAddress,
-				'payerCustData'			=> $XPayerCustData,
+				'dongu'        	=> $dongu,
+				'dosyaAdi'      => $shipping_key,
+				'gonderiTip'	=> 'NORMAL',
+				'gonderiTur'	=> 'KARGO',
+				'kullanici'	    => 'PttWs',
+				'musteriId'		=> '904875811',
+				'sifre'			=> 'jSr1hVrJyJoLNr7nNqMPYw',
 			];
 
-            $response = $istek->createNgiShipmentWithAddress($data);
-            if($response->XShipmentDataResponse->outFlag==0){
+            $response = $istek->kabulEkle2($data);
+            return $response;
+            if($response->kabulEkle2Response->return==0){
                 Shippingkey::insert(['shipping_key'=>$shipping_key]);
 				$order->shipping_comp = "yurtici_kargo";
 				$order->shipping_code = $shipping_key;
