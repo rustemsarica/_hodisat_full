@@ -358,7 +358,7 @@ class OrderService{
 
             $response = $istek->kabulEkle2(['input'=>$data]);
 
-            if($response->kabulEkle2Response->return==0){
+            if($response->kabulEkle2Response->hataKodu==1){
                 Shippingkey::insert(['shipping_key'=>$shipping_key]);
 				$order->shipping_comp = "ptt_kargo";
 				$order->shipping_code = $shipping_key;
