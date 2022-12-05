@@ -364,7 +364,7 @@ class OrderService{
 				$order->shipping_code = $shipping_key;
                 $order->save();
                 return $shipping_key;
-            }elseif($response->XShipmentDataResponse->outFlag==2){
+            }else{
                 DB::table('logs')->insert(['title'=>'order services create code','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
                 return false;
             }
