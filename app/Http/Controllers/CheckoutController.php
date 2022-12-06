@@ -96,6 +96,7 @@ class CheckoutController extends Controller
                 $product = Product::find($detail->product->id);
                 $product->current_stock=0;
                 $product->save();
+                Cart::where('product_id',$product->id)->delete();
             }
             calculateCommissionAffilationClubPoint($order);
             //NotificationUtility::sendOrderPlacedNotification($order);
