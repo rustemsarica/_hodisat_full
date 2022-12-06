@@ -343,7 +343,7 @@ class OrderService{
 				'aAdres' 		        => $shipping_address['address'].' '.$shipping_address['state'].'/'.$shipping_address['city'],
 				'aliciAdi' 			    => $shipping_address['name'],
 				'gondericibilgi' 	    => $gondericiBilgi,
-
+                'musteriReferansNo'     => $shipping_key,
 			];
 
 			$data=[
@@ -357,6 +357,7 @@ class OrderService{
 			];
 
             $response = $istek->kabulEkle2(['input'=>$data]);
+            DB::table('logs')->insert(['title'=>'order services create code','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
             if($response->response->return->hataKodu==1){
                 Shippingkey::insert(['shipping_key'=>$shipping_key]);
 				$order->shipping_comp = "ptt_kargo";
@@ -376,6 +377,7 @@ class OrderService{
 
     }
 
+    /*
     public function cancel_shipping_code($code) {
 
             $istek = Soap::to('https://ws.yurticikargo.com/KOPSWebServices/NgiShipmentInterfaceServices?wsdl');
@@ -396,6 +398,25 @@ class OrderService{
             }
 
     }
+    */
+
+   public function cancel_shipping_code($code) {
+
+    $istek = Soap::to('https://pttws.ptt.gov.tr/PttVeriYuklemeTest/services/Sorgu?wsdl');
+    $data=[
+            'dosyaAdi'        		=> $code,
+            'musteriId'        		=> '904875811',
+            'referansNo'      		=> 'TR',
+            'sifre'                 => 'jSr1hVrJyJoLNr7nNqMPYw',
+        ];
+    $response = $istek->referansVeriSil(['inpRefDelete'=>$data]);
+    if($response->hataKodu==1){
+        return true;
+    }else{
+        return false;
+    }
+
+}
 
     public function get_tracking_code($id)
     {
