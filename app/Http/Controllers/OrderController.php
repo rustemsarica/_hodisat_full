@@ -171,10 +171,6 @@ class OrderController extends Controller
                     $order->delete();
                     return redirect()->route('cart')->send();
                 }
-                // else{
-                //     $product->current_stock-=1;
-                //     $product->save();
-                // }
 
                 $order_detail = new OrderDetail;
                 $order_detail->order_id = $order->id;
@@ -203,11 +199,6 @@ class OrderController extends Controller
                     $order->carrier_id = $cartItem['carrier_id'];
                 }
 
-                if ($product->added_by == 'seller' && $product->user->seller != null){
-                    $seller = $product->user->seller;
-                    $seller->num_of_sale += 1;
-                    $seller->save();
-                }
 
                 if (addon_is_activated('affiliate_system')) {
                     if ($order_detail->product_referral_code) {
