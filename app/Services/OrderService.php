@@ -344,6 +344,7 @@ class OrderService{
 				'aliciAdi' 			    => $shipping_address['name'],
 				'gondericibilgi' 	    => $gondericiBilgi,
                 'musteriReferansNo'     => $shipping_key,
+                'aliciSms'              => substr($shipping_address['phone'], strpos($shipping_address['phone'], "5") + 1)
 			];
 
 			$data=[
@@ -406,7 +407,7 @@ class OrderService{
     $data=[
             'dosyaAdi'        		=> $code,
             'musteriId'        		=> '904875811',
-            'referansNo'      		=> 'TR',
+            'referansNo'      		=> $code,
             'sifre'                 => 'jSr1hVrJyJoLNr7nNqMPYw',
         ];
     $response = $istek->referansVeriSil(['inpRefDelete'=>$data]);
