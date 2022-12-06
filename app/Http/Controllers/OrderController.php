@@ -279,7 +279,7 @@ class OrderController extends Controller
                     try {
 
                         $product_stock = Product::where('id', $orderDetail->product_id)->first();
-                        if ($product_stock == 0) {
+                        if ($product_stock->current_stock  == 0) {
                             $product_stock->current_stock = 1;
                             $product_stock->save();
                         }
