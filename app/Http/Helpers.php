@@ -647,8 +647,11 @@ function getShippingCost($carts, $index, $carrier = '')
         if ($product->added_by == 'admin') {
             return get_setting('shipping_cost_admin') / count($admin_products);
         } else {
-            if(count($seller_products[$product->user_id])<=2){
-                return 15 / count($seller_products[$product->user_id]);
+
+            return (19.99 + count($seller_products[$product->user_id])- 1) / count($seller_products[$product->user_id]);
+
+            if(count($seller_products[$product->user_id])==1){
+                return 20 / count($seller_products[$product->user_id]);
             }
             elseif(count($seller_products[$product->user_id])>2 && count($seller_products[$product->user_id])<=4){
                 return 22 / count($seller_products[$product->user_id]);
