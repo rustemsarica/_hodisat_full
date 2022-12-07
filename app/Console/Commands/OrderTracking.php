@@ -45,6 +45,20 @@ class OrderTracking extends Command
                 (new OrderService)->get_tracking_code($order->id);
             }else{
                 $order = Order::find($id);
+                $istek = Soap::to('https://pttws.ptt.gov.tr/GonderiTakipV2Test/services/Sorgu?wsdl');
+
+                    $data=[
+                        'kullanici'      => '904875811',
+                        'referansNo'     => $order->shipping_code,
+                        'sifre'      	 => 'jSr1hVrJyJoLNr7nNqMPYw',
+                    ];
+
+                    $response = $istek->gonderiSorgu_referansNo(['input'=>$data]);
+                    if(DB::table('logs')->where('text',json_encode($response,JSON_UNESCAPED_UNICODE))->count()==0){
+                        DB::table('logs')->insert(['title'=>'order tracking cron','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
+                    }
+
+                /*
                 $istek = Soap::to('https://ws.yurticikargo.com/KOPSWebServices/WsReportWithReferenceServices?wsdl');
                    $data=[
                            'userName'        		=> 'CIZGITURIZMYENI',
@@ -89,6 +103,7 @@ class OrderTracking extends Command
 
                     }
                     DB::table('logs')->insert(['title'=>'order tracking cron','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
+                    */
             }
         }
 
