@@ -439,8 +439,9 @@ class OrderService{
                $order->delivery_status = 'picked_up';
                $order->save();
 
-               NotificationUtility::sendNotification($order, $request->status);
+               NotificationUtility::sendNotification($order, $order->delivery_status);
                 if (get_setting('google_firebase') == 1 && $order->user->device_token != null) {
+                    $request = new Request();
                     $request->device_token = $order->user->device_token;
                     $status = translate(str_replace("_", " ", $order->delivery_status));
                     $request->title = "Siparişin {$status}";
