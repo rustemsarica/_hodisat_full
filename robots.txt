@@ -3,3 +3,5 @@ Allow: /
 
 User-agent: *
 Disallow: /admin/
+
+Sitemap: https://hodisat.com/sitemap.xml
