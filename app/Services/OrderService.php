@@ -438,6 +438,20 @@ class OrderService{
                $order->tracking_url = $tracking_url;
                $order->delivery_status = 'picked_up';
                $order->save();
+
+               NotificationUtility::sendNotification($order, $request->status);
+                if (get_setting('google_firebase') == 1 && $order->user->device_token != null) {
+                    $request->device_token = $order->user->device_token;
+                    $status = translate(str_replace("_", " ", $order->delivery_status));
+                    $request->title = "Siparişin {$status}";
+                    $request->text = "{$order->code} numaralı siparişin {$status}";
+
+                    $request->type = "order";
+                    $request->id = $order->id;
+                    $request->user_id = $order->user->id;
+
+                    NotificationUtility::sendFirebaseNotification($request);
+                }
                //DB::table('logs')->insert(['title'=>'tracking code response','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
 		   }else{
             DB::table('logs')->insert(['title'=>'error tracking code response','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
