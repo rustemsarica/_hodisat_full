@@ -422,22 +422,15 @@ class OrderService{
     public function get_tracking_code($id)
     {
         $order = Order::find($id);
-        $istek = Soap::to('https://ws.yurticikargo.com/KOPSWebServices/WsReportWithReferenceServices?wsdl');
+        $istek = Soap::to('https://pttws.ptt.gov.tr/GonderiTakipV2Test/services/Sorgu?wsdl');
 		   $data=[
-				   'userName'        		=> 'CIZGITURIZMYENI',
-				   'password'        		=> '02v1d1pp3dmn7d15',
-				   'language'      		=> 'TR',
-				   'custParamsVO'				=> array(
-					   'invCustIdArray' => "909344613" ),
-				   'fieldName'      		=> 54,
-				   'fieldValue'      		=> $order->shipping_code,
-				   'startDate'      		=> null,
-				   'endDate'      			=> null,
-				   'dateParamType'      	=> null,
-				   'withCargoLifeCycle'    => 0,
+				   'kullanici'      => '904875811',
+				   'referansNo'     => $order->shipping_code,
+				   'sifre'      	=> 'jSr1hVrJyJoLNr7nNqMPYw',
 				   ];
-		   $response = $istek->listInvDocumentInterfaceByReference($data);
-
+		   $response = $istek->gonderiSorgu_referansNo(['input'=>$data]);
+           DB::table('logs')->insert(['title'=>'tracking code response','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
+           /*
 		   if($response->ShippingDataResponseVO->outFlag==0){
 			   $tracking_number=$response->ShippingDataResponseVO->shippingDataDetailVOArray->docId; //kargo takip numarası
 			   $tracking_url=$response->ShippingDataResponseVO->shippingDataDetailVOArray->trackingUrl; //kargo takip linki
@@ -449,6 +442,7 @@ class OrderService{
 		   }else{
             DB::table('logs')->insert(['title'=>'error tracking code response','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
 		   }
+           */
     }
 
 }
