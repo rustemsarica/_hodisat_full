@@ -430,19 +430,19 @@ class OrderService{
 				   ];
 		   $response = $istek->gonderiSorgu_referansNo(['input'=>$data]);
            //DB::table('logs')->insert(['title'=>'tracking code response','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
-           /*
-		   if($response->ShippingDataResponseVO->outFlag==0){
-			   $tracking_number=$response->ShippingDataResponseVO->shippingDataDetailVOArray->docId; //kargo takip numarası
-			   $tracking_url=$response->ShippingDataResponseVO->shippingDataDetailVOArray->trackingUrl; //kargo takip linki
+
+		   if($response->response->return->BARNO!=""){
+			   $tracking_number=$response->response->return->BARNO; //kargo takip numarası
+			   $tracking_url=str_replace('\"','',$response->response->return->sonucAciklama); //kargo takip linki
                $order->tracking_code = $tracking_number;
                $order->tracking_url = $tracking_url;
                $order->delivery_status = 'picked_up';
                $order->save();
-               DB::table('logs')->insert(['title'=>'tracking code response','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
+               //DB::table('logs')->insert(['title'=>'tracking code response','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
 		   }else{
             DB::table('logs')->insert(['title'=>'error tracking code response','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
 		   }
-           */
+
     }
 
 }
