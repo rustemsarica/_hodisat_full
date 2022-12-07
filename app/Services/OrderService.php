@@ -429,7 +429,7 @@ class OrderService{
 				   'sifre'      	=> 'jSr1hVrJyJoLNr7nNqMPYw',
 				   ];
 		   $response = $istek->gonderiSorgu_referansNo(['input'=>$data]);
-           DB::table('logs')->insert(['title'=>'tracking code response','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
+           //DB::table('logs')->insert(['title'=>'tracking code response','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
            /*
 		   if($response->ShippingDataResponseVO->outFlag==0){
 			   $tracking_number=$response->ShippingDataResponseVO->shippingDataDetailVOArray->docId; //kargo takip numarası
