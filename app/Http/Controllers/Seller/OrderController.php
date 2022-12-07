@@ -119,7 +119,7 @@ class OrderController extends Controller
 
             $request->type = "order";
             $request->id = $order->id;
-            $request->user_id = $order->user->id;
+            $request->user_id = $order->user_id;
 
             NotificationUtility::sendFirebaseNotification($request);
         }
@@ -163,7 +163,7 @@ class OrderController extends Controller
 
             $request->type = "order";
             $request->id = $order->id;
-            $request->user_id = $order->user->id;
+            $request->user_id = $order->user_id;
 
             NotificationUtility::sendFirebaseNotification($request);
         }
