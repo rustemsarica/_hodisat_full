@@ -45,7 +45,7 @@ class OrderTracking extends Command
                 (new OrderService)->get_tracking_code($order->id);
             }else{
                 $order = Order::find($id);
-                $istek = Soap::to('https://pttws.ptt.gov.tr/GonderiTakipV2/services/Sorgu?wsdl');
+                $istek = Soap::to('https://pttws.ptt.gov.tr/GonderiTakipV2Test/services/Sorgu?wsdl');
 
                     $data=[
                         'kullanici'      => '904875811',
