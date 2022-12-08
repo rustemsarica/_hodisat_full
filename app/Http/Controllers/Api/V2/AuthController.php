@@ -315,7 +315,6 @@ class AuthController extends Controller
         $user = request()->user();
         $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
 
-		User::where("id", $user->id)->delete();
         DB::table('wishlists')->where("user_id", $user->id)->delete();
         DB::table('addresses')->where("user_id", $user->id)->delete();
         DB::table('sellers')->where("user_id", $user->id)->delete();
@@ -324,7 +323,17 @@ class AuthController extends Controller
         DB::table('firebase_notifications')->where("receiver_id", $user->id)->delete();
         DB::table('carts')->where("user_id", $user->id)->delete();
         DB::table('products')->where("user_id", $user->id)->delete();
+        DB::table('follows')->where("user_id", $user->id)->delete();
+        $conversations=DB::table('conversations')->where("sender_id", $user->id)->orWhere("receiver_id", $user->id);
+        DB::table('messages')->whereIn("conversation_id", $conversations->pluck('id')->toArray())->delete();
+        $conversations->delete();
+        DB::table('notifications')->where("notifiable_id", $user->id)->delete();
+        DB::table('offers')->where("user_id", $user->id)->delete();
+        DB::table('reviews')->where("user_id", $user->id)->delete();
+        DB::table('user_notification_permissions')->where("user_id", $user->id)->delete();
+        DB::table('wallets')->where("user_id", $user->id)->delete();
 
+		User::where("id", $user->id)->delete();
 
 
         return response()->json([
