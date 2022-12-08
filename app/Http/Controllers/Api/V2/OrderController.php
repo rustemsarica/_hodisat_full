@@ -119,6 +119,12 @@ class OrderController extends Controller
                 $order_detail->order_id = $order->id;
                 $order_detail->seller_id = $product->user_id;
                 $order_detail->product_id = $product->id;
+                $order_detail->product_info = json_encode([
+                    'id'            =>$product->id,
+                    'name'          =>$product->name,
+                    'thumbnail_img' =>$product->thumbnail_img,
+                ],JSON_UNESCAPED_UNICODE);
+
                 $order_detail->variation = $product_variation;
                 $order_detail->price = cart_product_price($cartItem, $product, false) * 1;
                 $order_detail->shipping_type = $cartItem['shipping_type'];

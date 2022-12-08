@@ -16,6 +16,7 @@ use App\Notifications\AppEmailVerificationNotification;
 use Hash;
 use Socialite;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -306,6 +307,29 @@ class AuthController extends Controller
         return response()->json([
             'result' => true
         ]);
+    }
 
+    public function delete(Request $request)
+    {
+
+        $user = request()->user();
+        $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
+
+		User::where("id", $user->id)->delete();
+        DB::table('wishlists')->where("user_id", $user->id)->delete();
+        DB::table('addresses')->where("user_id", $user->id)->delete();
+        DB::table('sellers')->where("user_id", $user->id)->delete();
+        DB::table('shops')->where("user_id", $user->id)->delete();
+        DB::table('blocked_users')->where("user_id", $user->id)->delete();
+        DB::table('firebase_notifications')->where("receiver_id", $user->id)->delete();
+        DB::table('carts')->where("user_id", $user->id)->delete();
+        DB::table('products')->where("user_id", $user->id)->delete();
+
+
+
+        return response()->json([
+            'result' => true,
+            'message' => translate('Account deleted successfully')
+        ]);
     }
 }
