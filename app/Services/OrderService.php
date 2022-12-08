@@ -455,7 +455,9 @@ class OrderService{
                 }
                //DB::table('logs')->insert(['title'=>'tracking code response','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
 		   }else{
-            DB::table('logs')->insert(['title'=>'error tracking code response','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
+            if(DB::table('logs')->where('text',json_encode($response,JSON_UNESCAPED_UNICODE))->count()==0){
+                DB::table('logs')->insert(['title'=>'error tracking code response','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
+            }
 		   }
 
     }
