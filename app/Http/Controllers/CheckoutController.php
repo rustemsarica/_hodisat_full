@@ -347,11 +347,11 @@ class CheckoutController extends Controller
         $combined_order = CombinedOrder::findOrFail(Session::get('combined_order_id'));
 
         Cart::where('user_id', $combined_order->user_id)->delete();
-
         //Session::forget('club_point');
         //Session::forget('combined_order_id');
 
         foreach($combined_order->orders as $order){
+            (new OrderService)->create_shipping_code($order->id);
             NotificationUtility::sendOrderPlacedNotification($order);
         }
 
