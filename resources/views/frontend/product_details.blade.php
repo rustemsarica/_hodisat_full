@@ -806,7 +806,7 @@
                     url:'{{ route('offer.create') }}',
                     data:{
                         product_id: {{$detailedProduct->id}},
-                        offer_value: $('#offer_amount').val
+                        offer_value: $('#offer_amount').value
                     },
                     success: function(data) {
                         var obj = JSON.parse(data);
