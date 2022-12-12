@@ -66,7 +66,7 @@ class OfferController extends Controller
 
         $offer = new Offer;
         $offer->product_id = $request->product_id;
-        $offer->user_id = auth()->user()->id;
+        $offer->user_id = Auth::user()->id;
         $offer->offer_value = $request->offer_value;
 
         if($offer->save()){
