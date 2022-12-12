@@ -235,7 +235,7 @@
                         <label class="col-lg-3 col-from-label">{{translate('Discount')}}</label>
                         <div class="col-lg-6">
                             <input type="number" lang="en" min="0" step="0.01" placeholder="{{translate('Discount')}}"
-                                name="discount" class="form-control" value="{{ $product->discount }}" required>
+                                name="discount" class="form-control" value="{{ $product->discount }}">
                         </div>
                         <div class="col-lg-3">
                             <select class="form-control aiz-selectpicker" name="discount_type" required>
