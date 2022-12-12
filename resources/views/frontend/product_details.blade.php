@@ -803,7 +803,7 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     type:"POST",
-                    url:'{{ route('admin.products.add-more-choice-option') }}',
+                    url:'{{ route('offer.create') }}',
                     data:{
                         product_id: {{$detailedProduct->id}},
                         offer_value: $('#offer_amount').val
