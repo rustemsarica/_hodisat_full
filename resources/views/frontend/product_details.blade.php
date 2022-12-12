@@ -799,7 +799,7 @@
 
             $(document).on('click', '#offer_create', function(e) {
                 console.log(
-                    $('#offer_amount').attr('value')
+                    $('#offer_amount').val()
                 )
                 $.ajax({
                     headers: {
