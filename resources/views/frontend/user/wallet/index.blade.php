@@ -20,14 +20,14 @@
             </div>
           </div>
       </div>
-      <div class="col-md-4 mx-auto mb-3" >
+      {{-- <div class="col-md-4 mx-auto mb-3" >
         <div class="p-3 rounded mb-3 c-pointer text-center bg-white shadow-sm hov-shadow-lg has-transition" onclick="show_wallet_modal()">
             <span class="size-60px rounded-circle mx-auto bg-secondary d-flex align-items-center justify-content-center mb-3">
                 <i class="las la-plus la-3x text-white"></i>
             </span>
             <div class="fs-18 text-primary">{{ translate('Recharge Wallet') }}</div>
         </div>
-      </div>
+      </div> --}}
       @if (addon_is_activated('offline_payment'))
           <div class="col-md-4 mx-auto mb-3" >
               <div class="p-3 rounded mb-3 c-pointer text-center bg-white shadow-sm hov-shadow-lg has-transition" onclick="show_make_wallet_recharge_modal()">
