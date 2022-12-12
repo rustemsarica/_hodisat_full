@@ -115,12 +115,18 @@
                 </tr>
 
                 <tr class="cart-shipping">
-                    <th>{{ translate('Total Shipping') }}</th>
+                    <th>{{ translate('Shipping') }}</th>
                     <td class="text-right">
                         <span class="font-italic">{{ single_price($shipping) }}</span>
                     </td>
                 </tr>
 
+                <tr class="cart-shipping">
+                    <th>{{ translate('Service Cost') }}</th>
+                    <td class="text-right">
+                        <span class="font-italic">{{ single_price($commission) }}</span>
+                    </td>
+                </tr>
                 @if (Session::has('club_point'))
                     <tr class="cart-shipping">
                         <th>{{ translate('Redeem point') }}</th>

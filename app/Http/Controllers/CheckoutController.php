@@ -164,6 +164,7 @@ class CheckoutController extends Controller
         $total = 0;
         $shipping = 0;
         $subtotal = 0;
+        $commission = 0;
 
         if ($carts && count($carts) > 0) {
             foreach ($carts as $key => $cartItem) {
@@ -188,12 +189,21 @@ class CheckoutController extends Controller
                     $cartItem['shipping_cost'] = getShippingCost($carts, $key, $cartItem['carrier_id']);
                 }
 
+                if(get_setting('vendor_commission_activation')){
+                    $commission_percentage = get_setting('vendor_commission');
+                    if(get_setting('vendor_commission_type')== 'percent'){
+                        $commission += ($seller_total_price * $commission_percentage)/100;
+                    }elseif(get_setting('vendor_commission_type')== 'amount'){
+                        $commission += $commission_percentage;
+                    }
+                }
+
                 $shipping += $cartItem['shipping_cost'];
                 $cartItem->save();
             }
-            $total = $subtotal + $shipping;
+            $total = $subtotal + $shipping + $commission;
 
-            return view('frontend.payment_select', compact('carts', 'shipping_info', 'total'));
+            return view('frontend.payment_select', compact('carts', 'shipping_info', 'total', 'commission'));
 
         } else {
             flash(translate('Your Cart was empty'))->warning();
