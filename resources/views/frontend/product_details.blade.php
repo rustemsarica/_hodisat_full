@@ -809,7 +809,7 @@
                     url:'{{ route('offer.create') }}',
                     data:{
                         product_id: {{$detailedProduct->id}},
-                        offer_value: $('#offer_amount').val(),
+                        offer_value: $('input[name=offer_amount]').val(),
                     },
                     success: function(data) {
                         var obj = JSON.parse(data);
