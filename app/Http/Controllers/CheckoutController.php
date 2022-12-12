@@ -88,7 +88,7 @@ class CheckoutController extends Controller
 
         foreach ($combined_order->orders as $key => $order) {
             $order = Order::findOrFail($order->id);
-            $order->payment_status = 'paid';
+            $order->payment_status = 'assspaid';
             $order->payment_details = $payment;
             $order->save();
 
