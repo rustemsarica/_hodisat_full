@@ -934,7 +934,12 @@ if (!function_exists('checkout_done')) {
             $order->payment_status = 'paid';
             $order->payment_details = $payment;
             $order->save();
-
+            foreach($order->orderDetails as $detail){
+                $product = Product::find($detail->product->id);
+                $product->current_stock=0;
+                $product->save();
+                Cart::where('product_id',$product->id)->delete();
+            }
             try {
                 (new OrderService)->create_shipping_code($order->id);
                 NotificationUtility::sendOrderPlacedNotification($order);
