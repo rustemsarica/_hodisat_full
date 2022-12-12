@@ -210,21 +210,22 @@
                                     <textarea class="form-control mb-3" placeholder="{{ translate('Your Address')}}" rows="2" name="address" required></textarea>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <label>{{ translate('Country')}}</label>
-                                </div>
-                                <div class="col-md-10">
-                                    <div class="mb-3">
-                                        <select class="form-control aiz-selectpicker" data-live-search="true" data-placeholder="{{ translate('Select your country') }}" name="country_id" required>
-                                            <option value="">{{ translate('Select your country') }}</option>
-                                            @foreach (\App\Models\Country::where('status', 1)->get() as $key => $country)
-                                                <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                            <input type="hidden" name="country_id" value="222">
+                        {{-- <div class="row">
+                            <div class="col-md-2">
+                                <label>{{ translate('Country')}}</label>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="mb-3">
+                                    <select class="form-control aiz-selectpicker" data-live-search="true" data-placeholder="{{ translate('Select your country') }}" name="country_id" required>
+                                        <option value="">{{ translate('Select your country') }}</option>
+                                        @foreach (\App\Models\Country::where('status', 1)->get() as $key => $country)
+                                            <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
+                        </div> --}}
 
                             <div class="row">
                                 <div class="col-md-2">
@@ -379,6 +380,10 @@
                 }
             });
         }
+
+        $(document).ready(function() {
+            get_states(222);
+        });
 
         $(document).on('change', '[name=country_id]', function() {
             var country_id = $(this).val();
