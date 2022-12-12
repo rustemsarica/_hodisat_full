@@ -583,7 +583,7 @@
                                 <label>{{ translate('Amount')}} <span class="text-danger">*</span></label>
                             </div>
                             <div class="col-md-8">
-                                <input type="number" lang="en" class="form-control mb-3" id="offer_amount" name="offer_amount" placeholder="{{ translate('Amount')}}" value="" required>
+                                <input type="number" class="form-control mb-3" id="offer_amount" name="offer_amount" placeholder="{{ translate('Amount')}}" value="0" required>
                             </div>
                         </div>
                         <div class="form-group text-right">
