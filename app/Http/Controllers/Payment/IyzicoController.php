@@ -73,7 +73,7 @@ class IyzicoController extends Controller
                 $iyzicoRequest->setBasketId(rand(000000,999999));
                 $iyzicoRequest->setPaymentGroup(\Iyzipay\Model\PaymentGroup::SUBSCRIPTION);
                 $iyzicoRequest->setCallbackUrl(route('iyzico.callback', [
-                    'payment_type' => Session::get('payment_type'),
+                    'payment_type' => 'cart_payment',
                     'amount' => 0,
                     'payment_method' => 0,
                     'combined_order_id' => Session::get('combined_order_id'),
