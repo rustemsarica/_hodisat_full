@@ -810,8 +810,8 @@
                         offer_value: $('#offer_amount').val(),
                     },
                     success: function(data) {
+                        console.log(data)
                         var obj = JSON.parse(data);
-                        console.log(obj)
                         if(obj.status){
                             success(obj.message);
                         }else{
