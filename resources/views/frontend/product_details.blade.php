@@ -810,12 +810,10 @@
                         offer_value: $('#offer_amount').val(),
                     },
                     success: function(data) {
-                        console.log(data)
-                        var obj = JSON.parse(data);
-                        if(obj.status){
-                            success(obj.message);
+                        if(data.status){
+                            success(data.message);
                         }else{
-                            alert(obj.message);
+                            alert(data.message);
                         }
                         AIZ.plugins.bootstrapSelect('refresh');
                     }
