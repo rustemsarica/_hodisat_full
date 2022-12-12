@@ -91,7 +91,7 @@ class CheckoutController extends Controller
 
         foreach ($combined_order->orders as $key => $order) {
             $order = Order::findOrFail($order->id);
-            $order->payment_status = 'assspaid';
+            $order->payment_status = 'paid';
             $order->payment_details = $payment;
             $order->save();
 
@@ -104,7 +104,7 @@ class CheckoutController extends Controller
             //calculateCommissionAffilationClubPoint($order);
             //NotificationUtility::sendOrderPlacedNotification($order);
         }
-        Session::put('combined_order_id', $combined_order_id);
+        $request->session()->put('combined_order_id', $combined_order_id);
         return redirect()->route('order_confirmed');
     }
 
