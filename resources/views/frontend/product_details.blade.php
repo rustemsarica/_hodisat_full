@@ -798,7 +798,9 @@
             });
 
             $(document).on('click', '#offer_create', function(e) {
-
+                console.log(
+                    $('#offer_amount').attr('value')
+                )
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
