@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="border-bottom mt-5"></div>
-            <div class="row align-items-center">
+            {{-- <div class="row align-items-center">
                 <div class="col-lg-6 order-2 order-lg-0">
                     <ul class="list-inline mb-0 text-center text-lg-left">
                         <li class="list-inline-item ">
@@ -62,7 +62,7 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </section>
 
