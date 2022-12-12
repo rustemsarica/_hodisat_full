@@ -41,7 +41,7 @@ class OfferController extends Controller
 
         $product = Product::where('id',$request->product_id)->first();
         $min_offer_value = ( $product->unit_price / 100 ) * ( 100 - 20 );
-        $unansweredOffers = Offer::where(['user_id'=> auth()->user()->id, 'product_id'=> $request->product_id, 'answer'=>null])->count();
+        $unansweredOffers = Offer::where(['user_id'=> auth()->user()->id, 'product_id'=> $request->product_id, 'answer'=>2])->count();
 
         if($unansweredOffers>0){
             return response()->json([
