@@ -354,7 +354,7 @@
         <div class="container">
             <div class="row gutters-10">
                 <div class="col-xl-3 order-1 order-xl-0">
-                    @if ($detailedProduct->added_by == 'seller' && $detailedProduct->user->shop != null)
+                    @if ($detailedProduct->added_by == 'seller' && $detailedProduct->user->shop != null && $detailedProduct->user->seller != null)
                         <div class="bg-white shadow-sm mb-3">
                             <div class="position-relative p-3 text-left">
 
