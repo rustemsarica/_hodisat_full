@@ -811,9 +811,9 @@
                     },
                     success: function(data) {
                         if(data.status){
-                            success(data.message);
+                            AIZ.plugins.notify('success', data.message);
                         }else{
-                            danger(data.message);
+                            AIZ.plugins.notify('warning', data.message);
                         }
                         AIZ.plugins.bootstrapSelect('refresh');
                     }
