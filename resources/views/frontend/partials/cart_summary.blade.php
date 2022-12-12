@@ -146,7 +146,7 @@
                 @endif
 
                 @php
-                    $total = $subtotal + $shipping;
+                    $total = $subtotal + $shipping + $commission;
                     if (Session::has('club_point')) {
                         $total -= Session::get('club_point');
                     }
