@@ -16,6 +16,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
 use Session;
 use Redirect;
+use DB;
 
 class IyzicoController extends Controller
 {
@@ -218,6 +219,7 @@ class IyzicoController extends Controller
             if($payment_type == 'cart_payment'){
                 $payment = $payWithIyzico->getRawResult();
                 //$order=(new OrderController)->store($request);
+                DB::table('logs')->insert(['title'=> " iyzico success"]);
                 return (new CheckoutController)->checkout_done($combined_order_id, $payment);
             }
             elseif ($payment_type == 'wallet_payment') {
