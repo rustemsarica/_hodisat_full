@@ -19,6 +19,7 @@
                                 <textarea class="form-control mb-3" placeholder="{{ translate('Your Address')}}" rows="2" name="address" required></textarea>
                             </div>
                         </div>
+                        <input type="hidden" name="country_id" value="222">
                         {{-- <div class="row">
                             <div class="col-md-2">
                                 <label>{{ translate('Country')}}</label>

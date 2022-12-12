@@ -9,7 +9,8 @@
                 <textarea class="form-control mb-3" placeholder="{{ translate('Your Address')}}" rows="2" name="address" required>{{ $address_data->address }}</textarea>
             </div>
         </div>
-        <div class="row">
+        <input type="hidden" name="country_id" value="222">
+        {{-- <div class="row">
             <div class="col-md-2">
                 <label>{{ translate('Country')}}</label>
             </div>
@@ -25,7 +26,7 @@
                     </select>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="row">
             <div class="col-md-2">
@@ -56,7 +57,7 @@
                 </select>
             </div>
         </div>
-        
+
         @if (get_setting('google_map') == 1)
             <div class="row">
                 <input id="edit_searchInput" class="controls" type="text" placeholder="Enter a location">
@@ -87,7 +88,7 @@
                 </div>
             </div>
         @endif
-        
+
         <div class="row">
             <div class="col-md-2">
                 <label>{{ translate('Postal code')}}</label>
