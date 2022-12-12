@@ -70,12 +70,12 @@
                             </a>
                         </li>
 
-                        <li class="aiz-side-nav-item">
+                        {{-- <li class="aiz-side-nav-item">
                             <a href="{{ route('compare') }}" class="aiz-side-nav-link {{ areActiveRoutes(['compare'])}}">
                                 <i class="la la-refresh aiz-side-nav-icon"></i>
                                 <span class="aiz-side-nav-text">{{ translate('Compare') }}</span>
                             </a>
-                        </li>
+                        </li> --}}
 
 
                     @if (get_setting('wallet_system') == 1)
