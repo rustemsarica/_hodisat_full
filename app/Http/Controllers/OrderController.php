@@ -293,7 +293,7 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
         if ($order != null) {
 
-            if($order->commission_calculated == 1){
+
                 foreach ($order->orderDetails as $key => $orderDetail) {
                     try {
 
@@ -307,7 +307,7 @@ class OrderController extends Controller
 
                     $orderDetail->delete();
                 }
-            }
+
             $order->delete();
             flash(translate('Order has been deleted successfully'))->success();
         } else {
