@@ -14,7 +14,7 @@ class OfferController extends Controller
 
     public function offers(Request $request)
     {
-        $productIds = Product::where('user_id', Auth::user()->id)->pluck('id')->toArray();
+        $productIds = Product::where('user_id', auth()->user()->id)->pluck('id')->toArray();
 
         if($request->status=="" || $request->status==null){
             $offers = Offer::whereIn('product_id',$productIds)->get();
@@ -28,11 +28,11 @@ class OfferController extends Controller
     public function myOffers(Request $request)
     {
         if($request->status=="" || $request->status==null){
-            $offers = Offer::where('user_id',Auth::user()->id)->get();
+            $offers = Offer::where('user_id',auth()->user()->id)->get();
             return new OfferCollection($offers);
         }
 
-        $offers = Offer::where('user_id',Auth::user()->id)->where('answer',$request->status)->get();
+        $offers = Offer::where('user_id',auth()->user()->id)->where('answer',$request->status)->get();
         return new OfferCollection($offers);
     }
 
@@ -66,7 +66,7 @@ class OfferController extends Controller
 
         $offer = new Offer;
         $offer->product_id = $request->product_id;
-        $offer->user_id = Auth::user()->id;
+        $offer->user_id = auth()->user()->id;
         $offer->offer_value = $request->offer_value;
 
         if($offer->save()){
@@ -134,7 +134,7 @@ class OfferController extends Controller
 
     public function check_offer(Request $request)
     {
-       $offer = Offer::where(['user_id'=>Auth::user()->id, 'product_id'=>$request->product_id])->get();
+       $offer = Offer::where(['user_id'=>auth()->user()->id, 'product_id'=>$request->product_id])->get();
        return new OfferCollection($offer);
     }
 
