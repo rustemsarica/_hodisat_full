@@ -323,7 +323,7 @@ class OrderService{
 
         try{
 
-            $istek = Soap::to('https://pttws.ptt.gov.tr/PttVeriYukleme/services/Sorgu?wsdl');
+            $istek = Soap::to('https://pttws.ptt.gov.tr/PttVeriYuklemeTest/services/Sorgu?wsdl');
 
             $name_array = explode(' ', $seller->name);
             $sellersurname = $name_array[count($name_array)-1];
