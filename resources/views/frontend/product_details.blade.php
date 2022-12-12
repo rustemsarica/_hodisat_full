@@ -811,6 +811,7 @@
                     },
                     success: function(data) {
                         var obj = JSON.parse(data);
+                        console.log(obj)
                         if(obj.status){
                             success(obj.message);
                         }else{
