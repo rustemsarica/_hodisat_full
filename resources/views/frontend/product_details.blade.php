@@ -813,7 +813,7 @@
                         if(data.status){
                             success(data.message);
                         }else{
-                            alert(data.message);
+                            danger(data.message);
                         }
                         AIZ.plugins.bootstrapSelect('refresh');
                     }
