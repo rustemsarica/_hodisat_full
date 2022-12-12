@@ -262,6 +262,12 @@
                                         <span class="d-none d-md-inline-block"> {{ translate('Remove from cart') }}</span>
                                     </button>
                                 @elseif($detailedProduct->current_stock>0)
+
+                                    <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600"
+                                        onclick="show_offer_modal()">
+                                        <i class="las la-hammer></i>
+                                        <span class="d-none d-md-inline-block"> {{ translate('Offer') }}</span>
+                                    </button>
                                     <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600"
                                         onclick="addToCart()">
                                         <i class="las la-shopping-bag"></i>
@@ -563,6 +569,31 @@
 @endsection
 
 @section('modal')
+
+    <div class="modal fade" id="offer_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{ translate('Recharge Wallet') }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                    <div class="modal-body gry-bg px-3 pt-3">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>{{ translate('Amount')}} <span class="text-danger">*</span></label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="number" lang="en" class="form-control mb-3" id="offer_amount" name="offer_amount" placeholder="{{ translate('Amount')}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group text-right">
+                            <button type="submit" id="offer_create" class="btn btn-sm btn-primary transition-3d-hover mr-1">{{translate('Confirm')}}</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="chat_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
@@ -752,13 +783,41 @@
             }
         });
 
+        function show_offer_modal(){
+            $('#offer_modal').modal('show');
+        }
+
         $(document).ready(function() {
             $(document).on('click', '.pagination a', function(e) {
                 getQuestions($(this).attr('href').split('page=')[1]);
                 e.preventDefault();
             });
+
             $(document).on('click', '.remove-from-cart', function(e) {
                 location.reload();
+            });
+
+            $(document).on('click', '#offer_create', function(e) {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type:"POST",
+                    url:'{{ route('admin.products.add-more-choice-option') }}',
+                    data:{
+                        product_id: {{$detailedProduct->id}},
+                        offer_value: $('#offer_amount').val
+                    },
+                    success: function(data) {
+                        var obj = JSON.parse(data);
+                        if(obj.status){
+                            success(obj.message);
+                        }else{
+                            alert(obj.message);
+                        }
+                        AIZ.plugins.bootstrapSelect('refresh');
+                    }
+                });
             });
         });
 

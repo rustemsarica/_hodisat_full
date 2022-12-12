@@ -24,6 +24,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\SupportTicketController;
 use App\Http\Controllers\WalletController;
+use App\Http\Controllers\OfferController;
 
 use App\Http\Controllers\Payment\AamarpayController;
 use App\Http\Controllers\Payment\AuthorizenetController;
@@ -305,6 +306,12 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('/addresses/update/{id}', 'update')->name('addresses.update');
         Route::get('/addresses/destroy/{id}', 'destroy')->name('addresses.destroy');
         Route::get('/addresses/set_default/{id}', 'set_default')->name('addresses.set_default');
+    });
+
+    Route::controller(OfferController::class)->group(function () {
+        Route::post('/create-offer', 'create_offer')->name('offer.create');
+        Route::post('/answer-offer', 'answer')->name('offer.answer');
+        Route::get('/offers', 'offers')->name('offers');
     });
 });
 
