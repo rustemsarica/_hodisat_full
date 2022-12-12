@@ -133,9 +133,9 @@ class ProductService
             $array['subject'] = 'Yeni Ürün';
             $array['from'] = env('MAIL_FROM_ADDRESS');
             $array['content'] = 'Yeni ürün yüklendi.';
-            $array['sender'] = $data->user->name;
-            $array['product'] = $data->name;
-            $array['date'] = $data->created_at;
+            $array['sender'] = $new_product->user->name;
+            $array['product'] = $new_product->name;
+            $array['date'] = $new_product->created_at;
             try {
                 if($admin->email!=null && $admin->email!=""){
                     Mail::to($admin->email)->queue(new ProductMailManager($array));
