@@ -98,7 +98,7 @@ class CheckoutController extends Controller
                 $product->save();
                 Cart::where('product_id',$product->id)->delete();
             }
-            calculateCommissionAffilationClubPoint($order);
+            //calculateCommissionAffilationClubPoint($order);
             //NotificationUtility::sendOrderPlacedNotification($order);
         }
         Session::put('combined_order_id', $combined_order_id);
