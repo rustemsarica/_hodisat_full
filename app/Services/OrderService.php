@@ -436,7 +436,7 @@ class OrderService{
 			   $tracking_url=str_replace('\"','',$response->response->return->sonucAciklama); //kargo takip linki
                $order->tracking_code = $tracking_number;
                $order->tracking_url = $tracking_url;
-               $order->delivery_status = 'picked_up';
+               $order->delivery_status = 'on_delivery';
                $order->save();
 
                NotificationUtility::sendNotification($order, $order->delivery_status);
