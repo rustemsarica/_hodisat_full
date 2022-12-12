@@ -262,12 +262,14 @@
                                         <span class="d-none d-md-inline-block"> {{ translate('Remove from cart') }}</span>
                                     </button>
                                 @elseif($detailedProduct->current_stock>0)
-
-                                    <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600"
+                                    @auth
+                                       <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600"
                                         onclick="show_offer_modal()">
-                                        <i class="las la-hammer></i>
-                                        <span class="d-none d-md-inline-block"> {{ translate('Offer') }}</span>
-                                    </button>
+                                            <i class="las la-gavel"></i>
+                                            <span class="d-none d-md-inline-block"> {{ translate('Offer') }}</span>
+                                        </button>
+                                    @endauth
+
                                     <button type="button" class="btn btn-soft-primary mr-2 add-to-cart fw-600"
                                         onclick="addToCart()">
                                         <i class="las la-shopping-bag"></i>
