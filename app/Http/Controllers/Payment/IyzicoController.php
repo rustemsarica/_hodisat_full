@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Payment;
+use App\Services\OrderService;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
 use Session;
 use Redirect;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class IyzicoController extends Controller
 {
