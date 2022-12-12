@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\OrderService;
+
 use App\Utility\PayfastUtility;
 use Illuminate\Http\Request;
 use App\Models\Category;
@@ -17,6 +19,7 @@ use App\Utility\PayhereUtility;
 use App\Utility\NotificationUtility;
 use Session;
 use Auth;
+use Illuminate\Support\Facades\DB;
 
 class CheckoutController extends Controller
 {
