@@ -169,7 +169,7 @@
             </div>
         </div>
 
-        <div class="col-12">
+        <div class="col-lg-8 m-auto">
             <div class="mar-all text-right mb-2">
                 <button type="submit" name="button" value="publish"
                     class="btn btn-primary">{{ translate('Upload Product') }}</button>
