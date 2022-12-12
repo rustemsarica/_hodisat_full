@@ -40,21 +40,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        foreach($users as $user){
-
-            if($user->seller==null){
-                $seller = new Seller;
-                $seller->user_id = $user->id;
-                $seller->save();
-            }
-            if($user->shop==null){
-                $shop = new Shop;
-                $shop->user_id = $user->id;
-                $shop->slug = $user->username;
-                $shop->save();
-            }
-        }
         return view('frontend.index');
     }
 
