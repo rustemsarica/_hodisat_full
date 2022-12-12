@@ -798,6 +798,10 @@
             });
 
             $(document).on('click', '#offer_create', function(e) {
+                console.log({
+                        product_id: {{$detailedProduct->id}},
+                        offer_value: $('#offer_amount').value
+                })
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
