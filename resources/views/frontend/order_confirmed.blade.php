@@ -72,7 +72,7 @@
                                     </tr>
                                     <tr>
                                         <td class="w-50 fw-600">{{ translate('Shipping address')}}:</td>
-                                        <td>{{ json_decode($first_order->shipping_address)->address }}, {{ json_decode($first_order->shipping_address)->city }}, {{ json_decode($first_order->shipping_address)->country }}</td>
+                                        <td>{{ json_decode($first_order->shipping_address)->address }}, {{ json_decode($first_order->shipping_address)->city }}, {{ json_decode($first_order->shipping_address)->state }}</td>
                                     </tr>
                                 </table>
                             </div>
