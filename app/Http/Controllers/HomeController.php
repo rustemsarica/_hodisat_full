@@ -152,7 +152,7 @@ class HomeController extends Controller
             $user->password = Hash::make($request->new_password);
         }
 
-        $user->avatar_original = $request->photo;
+        //$user->avatar_original = $request->photo;
         $user->save();
 
         flash(translate('Your Profile has been updated successfully!'))->success();
