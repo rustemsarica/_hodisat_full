@@ -277,6 +277,11 @@ Route::group(['middleware' => ['user', 'verified', 'unbanned']], function() {
     // Product Review
     Route::post('/product_review_modal', [ReviewController::class, 'product_review_modal'])->name('product_review_modal');
 
+    Route::controller(OfferController::class)->group(function () {
+        Route::post('/create-offer', 'create_offer')->name('offer.create');
+        Route::post('/answer-offer', 'answer')->name('offer.answer');
+        Route::get('/offers', 'offers')->name('offers');
+    });
 });
 
 Route::group(['middleware' => ['auth']], function() {
@@ -308,11 +313,6 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/addresses/set_default/{id}', 'set_default')->name('addresses.set_default');
     });
 
-    Route::controller(OfferController::class)->group(function () {
-        Route::post('/create-offer', 'create_offer')->name('offer.create');
-        Route::post('/answer-offer', 'answer')->name('offer.answer');
-        Route::get('/offers', 'offers')->name('offers');
-    });
 });
 
 Route::resource('shops', ShopController::class);
