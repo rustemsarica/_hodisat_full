@@ -154,7 +154,7 @@ Route::get('/sitemap.xml', function() {
 });
 
 Route::get('/.well-known/assetlinks.json', function() {
-    return response()->json(json_decode('[
+    return response('[
         {
           "relation": [
             "delegate_permission/common.handle_all_urls"
@@ -168,7 +168,7 @@ Route::get('/.well-known/assetlinks.json', function() {
             ]
           }
         }
-      ]'))->header('Content-Type', 'application/json');
+      ]')->header('Content-Type', 'application/json');
 });
 
 // Search
