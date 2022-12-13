@@ -154,7 +154,7 @@ Route::get('/sitemap.xml', function() {
 });
 
 Route::get('/.well-known/assetlinks.json', function() {
-    return base_path('.well-known/assetlinks.json');
+    return base_path('assetlinks.json');
 });
 
 // Search
