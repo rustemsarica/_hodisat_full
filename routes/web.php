@@ -172,7 +172,7 @@ Route::get('/.well-known/assetlinks.json', function() {
 });
 
 Route::get('/apple-app-site-association', function() {
-    $json = file_get_contents(base_path('apple-app-site-association'));
+    $json = file_get_contents(base_path('.well-known/apple-app-site-association'));
     return response($json, 200)->header('Content-Type', 'application/json');
 });
 
