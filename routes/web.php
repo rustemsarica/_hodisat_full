@@ -173,7 +173,17 @@ Route::get('/.well-known/assetlinks.json', function() {
 
 Route::get('/apple-app-site-association', function() {
     $json = file_get_contents(base_path('apple-app-site-association'));
-    return response($json)->header('Content-Type', 'application/json');
+    return response('{
+        "applinks": {
+          "apps": [],
+          "details": [
+          {
+            "appID": "T8GSP4HY2V.com.hodisat",
+            "paths": ["*"]
+          }
+          ]
+        }
+      }')->header('Content-Type', 'application/json');
 });
 
 // Search
