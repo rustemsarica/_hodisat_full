@@ -171,6 +171,10 @@ Route::get('/.well-known/assetlinks.json', function() {
       ]')->header('Content-Type', 'application/json');
 });
 
+Route::get('/apple-app-site-association', function() {
+    return base_path('apple-app-site-association');
+});
+
 // Search
 Route::controller(SearchController::class)->group(function () {
     Route::get('/search', 'index')->name('search');
