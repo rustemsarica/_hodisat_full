@@ -153,6 +153,9 @@ Route::get('/sitemap.xml', function() {
     return base_path('sitemap.xml');
 });
 
+Route::get('/.well-known/assetlinks.json', function() {
+    return base_path('.well-known/assetlinks.json');
+});
 
 // Search
 Route::controller(SearchController::class)->group(function () {
@@ -402,4 +405,6 @@ Route::controller(CategoryController::class)->group(function () {
     Route::post('/categories/subcategories', 'get_subcategories')->name('categories.getSubcategories');
     Route::post('/categories/fields', 'getCategoryfields')->name('categories.getCategoryfields');
 });
+
+
 
