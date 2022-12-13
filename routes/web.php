@@ -154,7 +154,21 @@ Route::get('/sitemap.xml', function() {
 });
 
 Route::get('/.well-known/assetlinks.json', function() {
-    return base_path('assetlinks.json')->header('Content-Type', 'application/json');
+    return response()->json(json_decode('[
+        {
+          "relation": [
+            "delegate_permission/common.handle_all_urls"
+          ],
+          "target": {
+            "namespace": "android_app",
+            "package_name": "com.hodisat",
+            "sha256_cert_fingerprints": [
+              "8D:9B:90:88:4B:40:A5:3E:F0:6B:45:C5:19:A0:4F:89:9F:7F:D1:34:5C:C0:9B:C1:4B:82:A6:D8:62:16:15:0C",
+              "9E:87:9D:EC:96:EE:2F:AB:AB:74:6E:ED:F7:66:07:97:D5:F7:E2:47:1C:D6:5A:4D:8D:A1:CD:B1:CF:70:57:EB"
+            ]
+          }
+        }
+      ]'))->header('Content-Type', 'application/json');
 });
 
 // Search
