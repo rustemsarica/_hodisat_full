@@ -309,13 +309,6 @@ class OrderController extends Controller
                 }
 
             DB::table('firebase_notifications')->where("item_type", 'sell')->orWhere("item_type", 'order')->where('item_type_id', $order->id)->delete();
-            $order_notification = array();
-            $order_notification['order_id'] = $order->id;
-            $order_notification['order_code'] = $order->code;
-            $order_notification['user_id'] = $order->user_id;
-            $order_notification['seller_id'] = $order->seller_id;
-            $order_notification['status'] = $order_status;
-            DB::table('notifications')->where("type", 'App\Notifications\OrderNotification')->where('data', json_encode($order_notification))->delete();
             $order->delete();
             flash(translate('Order has been deleted successfully'))->success();
         } else {
