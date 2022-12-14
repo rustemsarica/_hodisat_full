@@ -42,7 +42,7 @@ class OrderDelivered extends Command
 
         foreach($orders as $order){
 
-                $order = Order::find($id);
+                $order = Order::find($order->id);
                 $istek = Soap::to('https://pttws.ptt.gov.tr/GonderiTakipV2Test/services/Sorgu?wsdl');
 		        $data=[
 				   'kullanici'      => '904875811',
@@ -50,8 +50,8 @@ class OrderDelivered extends Command
 				   'sifre'      	=> 'jSr1hVrJyJoLNr7nNqMPYw',
 				   ];
 		        $response = $istek->gonderiSorgu_referansNo(['input'=>$data]);
-                    DB::table('logs')->insert(['title'=>'order tracking cron','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
-                    if(DB::table('logs')->where(['title'=>'order tracking cron','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)])->first()==null){
+
+                    if(DB::table('logs')->where(['title'=>'order tracking cron','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)])->count()==0){
                         DB::table('logs')->insert(['title'=>'order tracking cron','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
                     }
 
