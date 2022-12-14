@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Cart;
 use App\Models\Seller;
 use App\Models\Shop;
+use App\Models\UserNotificationPermission;
 use App\Models\BusinessSetting;
 use App\OtpConfiguration;
 use App\Http\Controllers\Controller;
@@ -100,15 +101,6 @@ class RegisterController extends Controller
             }
         }
 
-            $seller = new Seller;
-            $seller->user_id = $user->id;
-            $seller->save();
-
-            $shop = new Shop;
-            $shop->user_id = $user->id;
-            $shop->slug = $user->username;
-            $shop->save();
-
 
 
         if(session('temp_user_id') != null){
@@ -156,6 +148,20 @@ class RegisterController extends Controller
             if(BusinessSetting::where('type', 'email_verification')->first()->value != 1){
                 $user->email_verified_at = date('Y-m-d H:m:s');
                 $user->save();
+
+                $seller = new Seller;
+                $seller->user_id = $user->id;
+                $seller->save();
+
+                $shop = new Shop;
+                $shop->user_id = $user->id;
+                $shop->slug = $user->username;
+                $shop->save();
+
+                $notif = new UserNotificationPermission;
+                $notif->user_id = $user->id;
+                $notif->save();
+
                 flash(translate('Registration successful.'))->success();
             }
             else {
@@ -163,6 +169,7 @@ class RegisterController extends Controller
                     $user->sendEmailVerificationNotification();
                     flash(translate('Registration successful. Please verify your email.'))->success();
                 } catch (\Throwable $th) {
+
                     $user->delete();
                     flash(translate('Registration failed. Please try again later.'))->error();
                 }

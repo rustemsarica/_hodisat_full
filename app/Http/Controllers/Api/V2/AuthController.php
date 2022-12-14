@@ -72,19 +72,19 @@ class AuthController extends Controller
 
         $user->save();
 
-            $seller = new Seller;
-            $seller->user_id = $user->id;
+        $seller = new Seller;
+        $seller->user_id = $user->id;
+        $seller->save();
 
-            if ($seller->save()) {
-                $shop = new Shop;
-                $shop->user_id = $user->id;
-                $shop->slug = $user->username;
-                $shop->save();
+        $shop = new Shop;
+        $shop->user_id = $user->id;
+        $shop->slug = $user->username;
+        $shop->save();
 
-            }
         $notif = new UserNotificationPermission;
         $notif->user_id = $user->id;
         $notif->save();
+
         //create token
         $user->createToken('tokens')->plainTextToken;
 
