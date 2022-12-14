@@ -320,7 +320,7 @@ class OrderService{
         $seller_city=City::where('id',$seller->city)->first();
         $seller_state=State::where('id',$seller->state)->first();
         $shipping_key=$this->generateUniqueCode();
-
+        $shipping_address['phone'] = str_replace(' ', '', $shipping_address['phone']);
         try{
 
             $istek = Soap::to('https://pttws.ptt.gov.tr/PttVeriYuklemeTest/services/Sorgu?wsdl');
@@ -336,7 +336,8 @@ class OrderService{
 				'gonderici_il_ad'		=> $seller_state->name,
 				'gonderici_ilce_ad'		=> $seller_city->name,
 				'gonderici_soyadi'		=> $sellersurname,
-                'gonderici_ulke_id'     => "052"
+                'gonderici_ulke_id'     => "052",
+                'gonderici_sms'         => substr($seller->phone, strpos($seller->phone, "5"))
 			];
 
 			$dongu=[
@@ -344,7 +345,7 @@ class OrderService{
 				'aliciAdi' 			    => $shipping_address['name'],
 				'gondericibilgi' 	    => $gondericiBilgi,
                 'musteriReferansNo'     => $shipping_key,
-                'aliciSms'              => substr($shipping_address['phone'], strpos($shipping_address['phone'], "5") + 1),
+                'aliciSms'              => substr($shipping_address['phone'], strpos($shipping_address['phone'], "5")),
                 'odemesekli'            => 'N'
 			];
 
