@@ -366,7 +366,7 @@ class OrderService{
 				$order->shipping_comp = "ptt_kargo";
 				$order->shipping_code = $shipping_key;
                 $order->save();
-                return $shipping_key;
+                return true;
             }else{
                 DB::table('logs')->insert(['title'=>'order services create code','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
                 return false;

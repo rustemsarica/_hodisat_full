@@ -941,8 +941,11 @@ if (!function_exists('checkout_done')) {
                 Cart::where('product_id',$product->id)->delete();
             }
             try {
-                (new OrderService)->create_shipping_code($order->id);
-                NotificationUtility::sendOrderPlacedNotification($order);
+                $shipping_key=(new OrderService)->create_shipping_code($order->id);
+                if($shipping_key){
+                    NotificationUtility::sendOrderPlacedNotification($order);
+                }
+
             } catch (\Exception $e) {
             }
         }
