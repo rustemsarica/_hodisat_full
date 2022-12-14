@@ -424,7 +424,7 @@ class OrderService{
     public function get_tracking_code($id)
     {
         $order = Order::find($id);
-        $istek = Soap::to('https://pttws.ptt.gov.tr/GonderiTakipV2/services/Sorgu?wsdl');
+        $istek = Soap::to('https://pttws.ptt.gov.tr/GonderiTakipV2Test/services/Sorgu?wsdl');
 		   $data=[
 				   'kullanici'      => '904875811',
 				   'referansNo'     => $order->shipping_code,
