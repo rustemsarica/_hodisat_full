@@ -51,9 +51,9 @@ class OrderDelivered extends Command
 				   ];
 		        $response = $istek->gonderiSorgu_referansNo(['input'=>$data]);
 
-                    if(DB::table('logs')->where(['title'=>'order tracking cron','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)])->count()==0){
-                        DB::table('logs')->insert(['title'=>'order tracking cron','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
-                    }
+                if(DB::table('logs')->where(['title'=>'order tracking cron','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)])->count()==0){
+                    DB::table('logs')->insert(['title'=>'order tracking cron','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
+                }
 
         }
 
