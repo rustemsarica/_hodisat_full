@@ -30,13 +30,13 @@ class OrderService{
 
         if ($request->status == 'cancelled') {
             $this->cancel_shipping_code($order->shipping_code);
-            $order->shipping_code = translate("Order canceled");
+            $order->shipping_code = translate("Order cancelled");
             $order->save();
 
             $wallet = new Wallet;
             $wallet->user_id = $order->user_id;
             $wallet->amount = $order->grand_total;
-            $wallet->payment_method = translate("Order canceled");
+            $wallet->payment_method = translate("Order cancelled");
             $wallet->payment_details = $order->code;
             $wallet->action = "+";
             $wallet->save();
