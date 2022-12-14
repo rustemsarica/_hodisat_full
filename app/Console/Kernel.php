@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('orderConfirm')->hourly();
         $schedule->command('orderTracking')->everyMinute();
-        $schedule->command('orderDelivered')->everyFiveMinutes();
+        $schedule->command('orderDelivered')->everyTenMinutes();
     }
 
     /**
