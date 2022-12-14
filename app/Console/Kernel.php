@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
 		\App\Console\Commands\OrderConfirm::class,
 		\App\Console\Commands\OrderTracking::class,
+		\App\Console\Commands\OrderDelivered::class,
     ];
 
     /**
@@ -27,6 +28,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('orderConfirm')->hourly();
         $schedule->command('orderTracking')->everyMinute();
+        $schedule->command('orderDelivered')->everyFiveMinutes();
     }
 
     /**
