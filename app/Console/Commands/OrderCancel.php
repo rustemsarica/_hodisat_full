@@ -28,7 +28,7 @@ class OrderCancel extends Command
 	protected $description = 'Cancel order';
 
 
-    private $unconfirmedOrderExpiration = 7; // Confirm the uncorfirmed orders after this expiration
+    private $cancelOrderExpiration = 7; // Confirm the uncorfirmed orders after this expiration
 
 
 	public function __construct()
@@ -42,7 +42,7 @@ class OrderCancel extends Command
 
         $orders = Order::where('delivery_status','pending')->get();
         foreach($orders as $order){
-            if($today->diffInDays($order->updated_at) >= $this->unconfirmedOrderExpiration)
+            if($today->diffInDays($order->updated_at) >= $this->cancelOrderExpiration)
             {
                 $request = new Request();
                 $request->order_id = $order->id;
