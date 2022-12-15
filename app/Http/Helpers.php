@@ -685,7 +685,11 @@ function getShippingCost($carts, $index, $carrier = '')
         }
         return 0;
     } elseif ($shipping_type == 'seller_and_piece_count') {
-
+        if($seller_products[$product->user_id][0]==$cartItem['product_id']){
+            return get_setting('seller_and_piece_count_first');
+        }else{
+            return get_setting('seller_and_piece_count_others');
+        }
         return (get_setting('seller_and_piece_count_first') + (get_setting('seller_and_piece_count_others') * (count($seller_products[$product->user_id])- 1))) / count($seller_products[$product->user_id]);
 
     } else {
