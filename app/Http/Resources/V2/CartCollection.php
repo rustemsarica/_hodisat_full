@@ -18,7 +18,7 @@ class CartCollection extends ResourceCollection
                         'image' => uploaded_asset($data->product->thumbnail_img)
                     ],
                     'variation' => $data->variation,
-                    'price' => (double) cart_product_price($data, $data->product, false, false),
+                    'price' => (integer) cart_product_price($data, $data->product, false, false),
                     'shipping_cost' => (double) $data->shipping_cost,
                     'quantity' => (integer) $data->quantity,
                     'date' => $data->created_at->diffForHumans()
