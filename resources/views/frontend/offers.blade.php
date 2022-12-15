@@ -20,7 +20,7 @@
                         @foreach ($offers as $key => $offer)
 
                                 <tr>
-                                    <td>{{ $offer->created_at }}</td>
+                                    <td>{{ date('d-m-Y H:i', $offer->created_at) }}</td>
                                     <td>
                                         {{$offer->product->name}}
                                     </td>
