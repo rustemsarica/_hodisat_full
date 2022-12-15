@@ -648,17 +648,6 @@ function getShippingCost($carts, $index, $carrier = '')
             return get_setting('shipping_cost_admin') / count($admin_products);
         } else {
 
-            return (19.99 + count($seller_products[$product->user_id])- 1) / count($seller_products[$product->user_id]);
-
-            if(count($seller_products[$product->user_id])==1){
-                return 20 / count($seller_products[$product->user_id]);
-            }
-            elseif(count($seller_products[$product->user_id])>2 && count($seller_products[$product->user_id])<=4){
-                return 22 / count($seller_products[$product->user_id]);
-            }
-            else{
-                return 28 / count($seller_products[$product->user_id]);
-            }
             return get_setting('flat_rate_shipping_cost') / count($seller_products[$product->user_id]);
         }
     } elseif ($shipping_type == 'area_wise_shipping') {
@@ -697,7 +686,7 @@ function getShippingCost($carts, $index, $carrier = '')
         return 0;
     } elseif ($shipping_type == 'seller_and_piece_count') {
 
-        return (19.99 + count($seller_products[$product->user_id])- 1) / count($seller_products[$product->user_id]);
+        return (get_setting('seller_and_piece_count_first') + (get_setting('seller_and_piece_count_others') * (count($seller_products[$product->user_id])- 1))) / count($seller_products[$product->user_id]);
 
     } else {
         if ($product->is_quantity_multiplied && ($shipping_type == 'product_wise_shipping')) {
