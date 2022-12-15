@@ -21,7 +21,7 @@ class NotificationsCollection extends ResourceCollection
                 $images="";
                 if($data->item_type=='product' || $data->item_type=='offer'){
                     $product = Product::where('id',$data->item_type_id)->count();
-                    if($product == 0){
+                    if($product < 1){
                         return ;
                     }
                     $images = uploaded_asset($product->thumbnail_img);
