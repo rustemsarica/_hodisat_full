@@ -172,9 +172,9 @@
                         <div class="form-group mb-0 text-right">
                             <button type="submit" class="btn btn-sm btn-primary">{{translate('Save')}}</button>
                         </div>
-                  </form>
+                </form>
 
-                  <form action="{{ route('admin.shipping_configuration.update') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.shipping_configuration.update') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="type" value="seller_and_piece_count_others">
                     <div class="form-group">
@@ -189,23 +189,24 @@
 
             </div>
         </div>
-        <div class="col-lg-6">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="mb-0 h6">{{translate('Note')}}</h5>
-                </div>
-                <div class="card-body">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            {{ translate('1. Fill in the first field for the first item shipping cost. This price will also be valid for one product.') }}
-                        </li>
-                        <li class="list-group-item">
-                            {{ translate('2. Fill in the second field for the cost to be added for each product.') }}
-                        </li>
-                    </ul>
-                </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0 h6">{{translate('Note')}}</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        {{ translate('1. Fill in the first field for the first item shipping cost. This price will also be valid for one product.') }}
+                    </li>
+                    <li class="list-group-item">
+                        {{ translate('2. Fill in the second field for the cost to be added for each product.') }}
+                    </li>
+                </ul>
             </div>
         </div>
+    </div>
 </div>
 
 @endsection
