@@ -34,7 +34,7 @@ class AuthController extends Controller
 
         if ($request->register_by == 'email') {
             $user = new User([
-                'username'=> $request->username,
+                'username'=> strtolower($request->username),
                 'name' => $request->name,
                 'email' => $request->email_or_phone,
                 'password' => bcrypt($request->password),
@@ -42,7 +42,7 @@ class AuthController extends Controller
             ]);
         } else {
             $user = new User([
-                'username'=> $request->username,
+                'username'=> strtolower($request->username),
                 'name' => $request->name,
                 'phone' => $request->email_or_phone,
                 'password' => bcrypt($request->password),
