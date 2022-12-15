@@ -39,7 +39,7 @@
                     </div>
                     <div class="radio mar-btm">
                         <input id="piece-shipping" class="magic-radio" type="radio" name="shipping_type" value="seller_and_piece_count" @if(get_setting('shipping_type') == 'seller_and_piece_count') checked @endif>
-                        <label for="weight-shipping">
+                        <label for="piece-shipping">
                             {{translate('Seller and piece count')}}
                         </label>
                     </div>
