@@ -65,7 +65,7 @@
                         @php
                             $productIds = App\Models\Product::where('user_id', auth()->user()->id)->pluck('id')->toArray();
 
-                            $offers = App\Models\Offer::whereIn('product_id',$productIds)->->where('answer', 2)->get()->count();
+                            $offers = App\Models\Offer::whereIn('product_id',$productIds)->->where('answer', 2)->count();
                         @endphp
                         <li class="aiz-side-nav-item">
                             <a href="{{ route('offers') }}"
