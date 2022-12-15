@@ -10,6 +10,9 @@ class ConversationCollection extends ResourceCollection
     {
         return [
             'data' => $this->collection->map(function($data) {
+                if($data->receiver == null || $data->sender == null){
+                    return;
+                }
                 return [
                     'id' => $data->id,
                     'receiver_id' => intval($data->receiver_id) ,
