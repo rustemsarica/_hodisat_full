@@ -70,11 +70,11 @@ class CartController extends Controller
         $sum += $commission;
 
         return response()->json([
-            'sub_total' => (integer)format_price($subtotal),
-            'shipping_cost' => (integer)format_price($items->sum('shipping_cost')),
-            'service_cost' => (integer)format_price($commission),
-            'discount' => (integer)format_price($items->sum('discount')+$bulk_sell_discount),
-            'grand_total' => (integer)format_price($sum-$bulk_sell_discount),
+            'sub_total' => format_price($subtotal),
+            'shipping_cost' => format_price($items->sum('shipping_cost')),
+            'service_cost' => format_price($commission),
+            'discount' => format_price($items->sum('discount')+$bulk_sell_discount),
+            'grand_total' => format_price($sum-$bulk_sell_discount),
             'grand_total_value' => convert_price($sum-$bulk_sell_discount),
             'coupon_code' => $items[0]->coupon_code,
             'coupon_applied' => $items[0]->coupon_applied == 1,
