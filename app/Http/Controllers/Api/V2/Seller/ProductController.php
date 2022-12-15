@@ -12,6 +12,7 @@ use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Review;
 use App\Models\User;
+use App\Models\FirebaseNotification;
 use App\Services\ProductService;
 use Artisan;
 use DB;
@@ -104,6 +105,8 @@ class ProductController extends Controller
 
         if (Product::destroy($id)) {
             Cart::where('product_id', $id)->delete();
+            FirebaseNotification::where('item_type_id', $id)->where('item_type', 'product')->delete();
+            FirebaseNotification::where('item_type_id', $id)->where('item_type', 'offer')->delete();
 
             return $this->success(translate('Product has been deleted successfully'));
 

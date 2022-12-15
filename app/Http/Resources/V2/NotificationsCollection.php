@@ -22,9 +22,10 @@ class NotificationsCollection extends ResourceCollection
                 if($data->item_type=='product' || $data->item_type=='offer'){
                     if(Product::where('id',$data->item_type_id)->doesntExist()){
                         return false;
-                    }else{
-                        $images = uploaded_asset(Product::where('id',$data->item_type_id)->first()->thumbnail_img);
                     }
+
+                    $images = uploaded_asset(Product::where('id',$data->item_type_id)->first()->thumbnail_img);
+
 
                 }else if($data->item_type=='user'){
                     if(Shop::where('id',$data->item_type_id)->doesntExist()){
