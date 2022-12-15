@@ -29,6 +29,7 @@
                                     </td>
                                     <td class="text-right">
                                         @if ($offer->answer == 2)
+                                        <div class="row">
                                             <form action="{{ route('offer.answer') }}" method="post">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{$offer->id}}">
@@ -41,6 +42,7 @@
                                                 <input type="hidden" name="answer" value="0">
                                                 <button type="submit" class="btn btn-soft-danger btn-icon btn-circle btn-sm"><i class="las la-times"></i></button>
                                             </form>
+                                        </div>
                                         @elseif($offer->answer == 1)
                                             {{translate("Accepted")}}
                                         @elseif($offer->answer == 0)
