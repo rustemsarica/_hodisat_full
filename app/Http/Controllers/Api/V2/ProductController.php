@@ -143,7 +143,7 @@ class ProductController extends Controller
                 break;
         }
 
-        return new ProductMiniCollection(filter_products($products)->get());
+        return new ProductMiniCollection(filter_products($products)->paginate(50));
     }
 
     public function todaysDeal()
