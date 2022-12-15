@@ -695,6 +695,10 @@ function getShippingCost($carts, $index, $carrier = '')
             }
         }
         return 0;
+    } elseif ($shipping_type == 'seller_and_piece_count') {
+
+        return (19.99 + count($seller_products[$product->user_id])- 1) / count($seller_products[$product->user_id]);
+
     } else {
         if ($product->is_quantity_multiplied && ($shipping_type == 'product_wise_shipping')) {
             return  $product->shipping_cost * 1;
