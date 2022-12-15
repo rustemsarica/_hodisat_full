@@ -21,7 +21,7 @@ class NotificationsCollection extends ResourceCollection
                 $images="";
                 if($data->item_type=='product' || $data->item_type=='offer'){
                     if(Product::where('id',$data->item_type_id)->doesntExist()){
-                        return [];
+                        return false;
                     }else{
                         $images = uploaded_asset(Product::where('id',$data->item_type_id)->first()->thumbnail_img);
                     }
