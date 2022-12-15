@@ -62,12 +62,17 @@
                             </li>
                         @endif
 
+                        @php
+                            $productIds = App\Models\Product::where('user_id', auth()->user()->id)->pluck('id')->toArray();
 
+                            $offers = App\Models\Offer::whereIn('product_id',$productIds)->->where('answer', 2)->count();
+                        @endphp
                         <li class="aiz-side-nav-item">
                             <a href="{{ route('offers') }}"
-                                class="aiz-side-nav-link {{ areActiveRoutes(['offers', 'offers']) }}">
+                                class="aiz-side-nav-link {{ areActiveRoutes(['offers']) }}">
                                 <i class="las la-gavel aiz-side-nav-icon"></i>
                                 <span class="aiz-side-nav-text">{{ translate('Offers') }}</span>
+                                @if($offers > 0 )<span class="badge badge-inline badge-success">{{ translate('New') }}</span>@endif
                             </a>
                         </li>
 
