@@ -26,14 +26,14 @@ class NotificationsCollection extends ResourceCollection
                     }
                     $images = uploaded_asset($product->thumbnail_img);
                 }else if($data->item_type=='user'){
-                    $shop = Shop::where('id',$data->item_type_id)->count();
-                    if($shop == 0){
+                    $shop = Shop::where('id',$data->item_type_id)->first();
+                    if(!$shop){
                         return ;
                     }
                     $images = uploaded_asset($shop->logo);
                 }else if($data->item_type=='order' || $data->item_type=='sell'){
-                    $order = Order::where('id',$data->item_type_id)->count();
-                    if($order == 0){
+                    $order = Order::where('id',$data->item_type_id)->first();
+                    if(!$order){
                         return ;
                     }
                 }
