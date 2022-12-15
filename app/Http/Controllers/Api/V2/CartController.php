@@ -18,12 +18,12 @@ class CartController extends Controller
         $items = auth()->user()->carts;
         if ($items->isEmpty()) {
             return response()->json([
-                'sub_total' => format_price(0.00),
-                'shipping_cost' => format_price(0.00),
-                'service_cost' => format_price(0.00),
-                'discount' => format_price(0.00),
-                'grand_total' => format_price(0.00),
-                'grand_total_value' => 0.00,
+                'sub_total' => format_price(0),
+                'shipping_cost' => format_price(0),
+                'service_cost' => format_price(0),
+                'discount' => format_price(0),
+                'grand_total' => format_price(0),
+                'grand_total_value' => 0,
                 'coupon_code' => "",
                 'coupon_applied' => false,
             ]);
