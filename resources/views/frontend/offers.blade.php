@@ -20,8 +20,8 @@
                         @foreach ($offers as $key => $offer)
 
                                 <tr>
-                                    <td>{{ date('d.m.Y H:i', strtotime($offer->created_at)) }}</td>
-                                    <td>
+                                    <td style="vertical-align: middle;">{{ date('d.m.Y H:i', strtotime($offer->created_at)) }}</td>
+                                    <td style="vertical-align: middle;">
                                         <a href="{{ route('product', $offer->product->slug) }}"
                                             class="text-reset d-flex align-items-center flex-grow-1">
                                             <img src="{{ static_asset('assets/img/placeholder.jpg') }}"
@@ -35,10 +35,10 @@
                                             </span>
                                         </a>
                                     </td>
-                                    <td>
+                                    <td style="vertical-align: middle;">
                                         {{ single_price($offer->offer_value) }}
                                     </td>
-                                    <td class="text-right">
+                                    <td style="vertical-align: middle;">
                                         @if ($offer->answer == 2)
                                         <div class="row text-right float-right">
                                             <form action="{{ route('offer.answer') }}" method="post">
