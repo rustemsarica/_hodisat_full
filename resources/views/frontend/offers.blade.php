@@ -38,7 +38,7 @@
                                     <td style="vertical-align: middle;">
                                         {{ single_price($offer->offer_value) }}
                                     </td>
-                                    <td style="vertical-align: middle;">
+                                    <td class="text-right" style="vertical-align: middle;">
                                         @if ($offer->answer == 2)
                                         <div class="row text-right float-right">
                                             <form action="{{ route('offer.answer') }}" method="post">
