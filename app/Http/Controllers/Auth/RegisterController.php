@@ -139,6 +139,11 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
+        if(count(explode(' ', $request->name))<2){
+            flash(translate('Please enter your first and last name with spaces in between.'));
+            return back();
+        }
+
         if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
             if(User::where('email', $request->email)->first() != null){
                 flash(translate('Email or Phone already exists.'));
