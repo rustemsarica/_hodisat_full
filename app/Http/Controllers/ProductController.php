@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\AttributeValue;
 use App\Models\Cart;
+use App\Models\Offer;
 use Carbon\Carbon;
 use Combinations;
 use CoreComponentRepository;
@@ -272,6 +273,7 @@ class ProductController extends Controller
 
         if (Product::destroy($id)) {
             Cart::where('product_id', $id)->delete();
+            Offer::where('product_id', $id)->delete();
 
             flash(translate('Product has been deleted successfully'))->success();
 
