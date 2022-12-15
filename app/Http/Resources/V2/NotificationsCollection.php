@@ -21,7 +21,7 @@ class NotificationsCollection extends ResourceCollection
                 $images="";
                 if($data->item_type=='product' || $data->item_type=='offer'){
                     if(DB::table('products')->where('id',$data->item_type_id)->doesntExist()){
-                        return null;
+                        return;
                     }
 
                     if($data->item_type=='product'){
