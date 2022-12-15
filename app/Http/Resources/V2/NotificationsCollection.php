@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 use App\Models\Product;
 use App\Models\Shop;
+use App\Models\Order;
 
 class NotificationsCollection extends ResourceCollection
 {
@@ -30,6 +31,11 @@ class NotificationsCollection extends ResourceCollection
                         return ;
                     }
                     $images = uploaded_asset($shop->logo);
+                }else if($data->item_type=='order' || $data->item_type=='sell'){
+                    $order = Order::find($data->item_type_id);
+                    if($order == null){
+                        return ;
+                    }
                 }
 
                 return [
