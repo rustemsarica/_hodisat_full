@@ -16,25 +16,10 @@ class OfferController extends Controller
     {
         $productIds = Product::where('user_id', auth()->user()->id)->pluck('id')->toArray();
 
-        if($request->status=="" || $request->status==null){
-            $offers = Offer::whereIn('product_id',$productIds)->get();
-            return new OfferCollection($offers);
-        }
-
-        $offers = Offer::whereIn('product_id',$productIds)->where('answer',$request->status)->get();
-        return new OfferCollection($offers);
+        $offers = Offer::whereIn('product_id',$productIds)->paginate(20);
+        return view('frontend.offers', compact('offers'));
     }
 
-    public function myOffers(Request $request)
-    {
-        if($request->status=="" || $request->status==null){
-            $offers = Offer::where('user_id',auth()->user()->id)->get();
-            return new OfferCollection($offers);
-        }
-
-        $offers = Offer::where('user_id',auth()->user()->id)->where('answer',$request->status)->get();
-        return new OfferCollection($offers);
-    }
 
     public function create_offer(Request $request)
     {
