@@ -28,10 +28,13 @@ class NotificationsCollection extends ResourceCollection
 
 
                 }else if($data->item_type=='user'){
+
                     if(Shop::where('id',$data->item_type_id)->doesntExist()){
                         return false;
                     }
+
                     $images = uploaded_asset(Shop::where('id',$data->item_type_id)->first()->logo);
+
                 }else if($data->item_type=='order' || $data->item_type=='sell'){
                     if( Order::where('id',$data->item_type_id)->doesntExist()){
                         return false;
