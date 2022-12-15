@@ -22,7 +22,18 @@
                                 <tr>
                                     <td>{{ date('d.m.Y H:i', strtotime($offer->created_at)) }}</td>
                                     <td>
-                                        {{$offer->product->name}}
+                                        <a href="{{ route('product', $offer->product->slug) }}"
+                                            class="text-reset d-flex align-items-center flex-grow-1">
+                                            <img src="{{ static_asset('assets/img/placeholder.jpg') }}"
+                                                data-src="{{ uploaded_asset($offer->product->thumbnail_img) }}"
+                                                class="img-fit lazyload size-60px rounded"
+                                                alt="{{ $offer->product->name }}">
+                                            <span class="minw-0 pl-2 flex-grow-1">
+                                                <span class="fw-600 mb-1 text-truncate-2">
+                                                    {{ $offer->product->name }}
+                                                </span>
+                                            </span>
+                                        </a>
                                     </td>
                                     <td>
                                         {{ single_price($offer->offer_value) }}
