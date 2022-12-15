@@ -33,12 +33,12 @@ class ShopController extends Controller
     {
         return new ShopDetailsCollection(Shop::where('id', $id)->first());
     }
-    
+
     public function shopOfUserDetail($id)
     {
         return new ShopDetailsCollection(Shop::where('user_id', $id)->first());
     }
-    
+
     public function shopIdOfUser($id)
     {
         return new ShopDetailsCollection(Shop::where('user_id', $id)->first());
@@ -58,7 +58,7 @@ class ShopController extends Controller
     public function topSellingProducts($id)
     {
         $shop = Shop::findOrFail($id);
-        
+
         return Cache::remember("app.top_selling_products-$id", 86400, function () use ($shop){
             return new ProductMiniCollection(Product::where('user_id', $shop->user_id)->where('published',1)->limit(10)->get());
         });
@@ -68,9 +68,7 @@ class ShopController extends Controller
     {
         $shop = Shop::findOrFail($id);
 
-        return Cache::remember("app.featured_products-$id", 86400, function () use ($shop){
-            return new ProductMiniCollection(Product::where(['user_id' => $shop->user_id, 'featured' => 1])->where('published',1)->latest()->limit(10)->get());
-        });
+        return new ProductMiniCollection(Product::where(['user_id' => $shop->user_id, 'featured' => 1])->where('published',1)->latest()->limit(10)->get());
     }
 
     public function newProducts($id)
