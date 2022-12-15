@@ -55,9 +55,9 @@
                                             </form>
                                         </div>
                                         @elseif($offer->answer == 1)
-                                            {{translate("Accepted")}}
+                                        <span class="badge badge-inline badge-success">{{translate("Accepted")}}</span>
                                         @elseif($offer->answer == 0)
-                                            {{translate("Denied")}}
+                                        <span class="badge badge-inline badge-danger">{{translate("Denied")}}</span>
                                         @endif
                                     </td>
                                 </tr>
