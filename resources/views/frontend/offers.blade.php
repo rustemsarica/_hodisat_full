@@ -41,6 +41,10 @@
                                                 <input type="hidden" name="answer" value="0">
                                                 <button type="submit" class="btn btn-soft-danger btn-icon btn-circle btn-sm"><i class="las la-times"></i></button>
                                             </form>
+                                        @elseif($offer->answer == 1)
+                                            {{translate("Accepted")}}
+                                        @elseif($offer->answer == 0)
+                                            {{translate("Denied")}}
                                         @endif
                                     </td>
                                 </tr>
