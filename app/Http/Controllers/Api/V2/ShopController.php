@@ -59,9 +59,8 @@ class ShopController extends Controller
     {
         $shop = Shop::findOrFail($id);
 
-        return Cache::remember("app.top_selling_products-$id", 86400, function () use ($shop){
-            return new ProductMiniCollection(Product::where('user_id', $shop->user_id)->where('published',1)->limit(10)->get());
-        });
+        return new ProductMiniCollection(Product::where('user_id', $shop->user_id)->where('published',1)->limit(10)->get());
+
     }
 
     public function featuredProducts($id)
@@ -75,9 +74,7 @@ class ShopController extends Controller
     {
         $shop = Shop::findOrFail($id);
 
-        return Cache::remember("app.new_products-$id", 86400, function () use ($shop){
-            return new ProductMiniCollection(Product::where('user_id', $shop->user_id)->where('published',1)->orderBy('created_at', 'desc')->limit(10)->get());
-        });
+        return new ProductMiniCollection(Product::where('user_id', $shop->user_id)->where('published',1)->orderBy('created_at', 'desc')->limit(10)->get());
     }
 
     public function brands($id)
