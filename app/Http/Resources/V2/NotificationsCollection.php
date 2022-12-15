@@ -20,20 +20,20 @@ class NotificationsCollection extends ResourceCollection
 
                 $images="";
                 if($data->item_type=='product' || $data->item_type=='offer'){
-                    $product = Product::find($data->item_type_id);
-                    if($product == null){
+                    $product = Product::where('id',$data->item_type_id)->count();
+                    if($product == 0){
                         return ;
                     }
                     $images = uploaded_asset($product->thumbnail_img);
                 }else if($data->item_type=='user'){
-                    $shop = Shop::find($data->item_type_id);
-                    if($shop == null){
+                    $shop = Shop::where('id',$data->item_type_id)->count();
+                    if($shop == 0){
                         return ;
                     }
                     $images = uploaded_asset($shop->logo);
                 }else if($data->item_type=='order' || $data->item_type=='sell'){
-                    $order = Order::find($data->item_type_id);
-                    if($order == null){
+                    $order = Order::where('id',$data->item_type_id)->count();
+                    if($order == 0){
                         return ;
                     }
                 }
