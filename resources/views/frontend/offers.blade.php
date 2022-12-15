@@ -29,7 +29,7 @@
                                     </td>
                                     <td class="text-right">
                                         @if ($offer->answer == 2)
-                                        <div class="row text-right">
+                                        <div class="row text-right float-right">
                                             <form action="{{ route('offer.answer') }}" method="post">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{$offer->id}}">
