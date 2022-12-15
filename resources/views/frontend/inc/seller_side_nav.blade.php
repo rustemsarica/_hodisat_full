@@ -64,6 +64,14 @@
 
 
                         <li class="aiz-side-nav-item">
+                            <a href="{{ route('offers') }}"
+                                class="aiz-side-nav-link {{ areActiveRoutes(['offers', 'offers']) }}">
+                                <i class="las la-money-bill aiz-side-nav-icon"></i>
+                                <span class="aiz-side-nav-text">{{ translate('Offers') }}</span>
+                            </a>
+                        </li>
+
+                        <li class="aiz-side-nav-item">
                             <a href="{{ route('wishlists.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['wishlists.index'])}}">
                                 <i class="la la-heart-o aiz-side-nav-icon"></i>
                                 <span class="aiz-side-nav-text">{{ translate('Wishlist') }}</span>

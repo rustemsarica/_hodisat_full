@@ -94,13 +94,6 @@
                     </a>
                 </li>
 
-                <li class="aiz-side-nav-item">
-                    <a href="{{ route('offers') }}"
-                        class="aiz-side-nav-link {{ areActiveRoutes(['offers', 'offers']) }}">
-                        <i class="las la-money-bill aiz-side-nav-icon"></i>
-                        <span class="aiz-side-nav-text">{{ translate('Offers') }}</span>
-                    </a>
-                </li>
 
                 @if (addon_is_activated('refund_request'))
                     <li class="aiz-side-nav-item">
