@@ -105,15 +105,11 @@ class OfferController extends Controller
 
                 NotificationUtility::sendFirebaseNotification($request);
             }
-            return response()->json([
-                'status' => true,
-                'message' => 'Teklif cevaplandı.'
-            ]);
+            flash($request->text)->success();
+            return back();
         }else{
-            return response()->json([
-                'status' => false,
-                'message' => 'Bir hata oluştu'
-            ]);
+            flash(translate('Something went wrong'))->error();
+            return back();
         }
     }
 
