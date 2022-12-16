@@ -72,11 +72,5 @@ class ShopDetailsCollection extends JsonResource
         ];
     }
 
-    protected function convertPhotos($data){
-        $result = array();
-        foreach ($data as $key => $item) {
-            array_push($result, uploaded_asset($item));
-        }
-        return $result;
-    }
+
 }
