@@ -213,7 +213,12 @@ class ProductController extends Controller
         }
 
 
-        $products = Product::query();
+        $products = Product::withOut(['user','thumbnail'])->where('published',1)
+            ->join('users', 'users.id', '=', 'products.user_id')
+            ->join('uploads', 'uploads.id', '=', 'products.thumbnail_img')
+            ->join('shops', 'products.user_id', '=', 'shops.user_id')
+            ->join('brands', 'brands.id', '=', 'products.brand_id')
+            ->select('products.*', 'users.username', 'uploads.file_name', 'shops.id as shop_id', 'shops.logo', 'brands.name as brand_name');
         //return $products = DB::table('products')->join('users', 'users.id', '=', 'products.user_id')->join('uploads', 'uploads.id', '=', 'products.thumbnail_img')->select('products.*', 'users.username', 'uploads.file_name')->paginate(50);
 
         $category_ids = [];
@@ -308,7 +313,7 @@ class ProductController extends Controller
                 break;
         }
 
-        return new ProductMiniCollection(filter_products($products)->paginate(50));
+        return new ProductCardCollection(filter_products($products)->paginate(50));
     }
 
 
