@@ -15,13 +15,13 @@ class ShopDetailsCollection extends JsonResource
         $followed=false;
 
         if(auth('sanctum')->check()){
-            $user=DB::table('blocked_users')->where(['user_id'=> auth('sanctum')->user()->id, 'blocked_user' => $this->user_id])->count();
-            $follow=Follow::where(['user_id'=> auth('sanctum')->user()->id, 'followed_user_id' => $this->user_id])->count();
+            $user=DB::table('blocked_users')->where(['user_id'=> auth('sanctum')->user()->id, 'blocked_user' => $this->user_id])->exists();
+            $follow=Follow::where(['user_id'=> auth('sanctum')->user()->id, 'followed_user_id' => $this->user_id])->exists();
 
-			if($user>0){
+			if($user){
             	$blocked=true;
 			}
-            if($follow>0){
+            if($follow){
                 $followed = true;
             }
         }
