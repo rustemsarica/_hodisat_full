@@ -38,7 +38,7 @@ class ProductCardCollection extends ResourceCollection
                         'main_price' => $has_discount ? home_discounted_base_price($data) : home_base_price($data->unit_price),
                         'seller_id' => $shop->id,
                         'seller_name'=> $data->username,
-                        'seller_avatar' =>  $shop_logo,
+                        'seller_avatar' =>  \uploaded_asset($data->shop->logo),
                         'is_in_wishlist'=> $is_in_wishlist,
                         'current_stock' => $data->current_stock,
                         'links' => [

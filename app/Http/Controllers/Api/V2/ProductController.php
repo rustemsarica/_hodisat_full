@@ -201,7 +201,8 @@ class ProductController extends Controller
 
         if($request->categories == "" && $request->brands == "" && $request->colors == "" && $request->attrs == "" && $request->min == "" && $request->max == "" && $request->name == ""){
 
-             $products = DB::table('products')->join('users', 'users.id', '=', 'products.user_id')->join('uploads', 'uploads.id', '=', 'products.thumbnail_img')->select('products.*', 'users.username', 'uploads.file_name');
+             $products = DB::table('products')->join('users', 'users.id', '=', 'products.user_id')->join('uploads', 'uploads.id', '=', 'products.thumbnail_img')->with('shops')->select('products.*', 'users.username', 'uploads.file_name');
+
             return new ProductCardCollection($products->paginate(50));
         }
 
