@@ -12,7 +12,7 @@ class ProductCardCollection extends JsonResource
     {
 
             return [
-                'data' => $this->collection->map(function($data) {
+                'data' => $this->map(function($data) {
 
                     $is_in_wishlist=false;
 
