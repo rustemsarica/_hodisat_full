@@ -200,7 +200,7 @@ class ProductController extends Controller
     {
 
         if($request->categories == "" && $request->brands == "" && $request->colors == "" && $request->attrs == "" && $request->min == "" && $request->max == "" && $request->name == ""){
-            $products = Product::where(['approved'=> '1', 'published'=> '1']);
+            $products = Product::with('shop')->where(['approved'=> '1', 'published'=> '1']);
             $products->inRandomOrder();
             return new ProductMiniCollection($products->paginate(50));
         }
