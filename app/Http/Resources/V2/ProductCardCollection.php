@@ -11,7 +11,7 @@ class ProductCardCollection extends ResourceCollection
     public function toArray($request)
     {
 
-            return [
+            return
                 $this->collection->map(function($data) {
 
                     $is_in_wishlist=false;
@@ -47,7 +47,7 @@ class ProductCardCollection extends ResourceCollection
                         'brand' => $data->brand_name
                     ];
                 })
-            ];
+            ;
 
 
 
