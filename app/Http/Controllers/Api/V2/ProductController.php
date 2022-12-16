@@ -207,9 +207,9 @@ class ProductController extends Controller
             ->join('uploads', 'uploads.id', '=', 'products.thumbnail_img')
             ->join('shops', 'products.user_id', '=', 'shops.user_id')
             ->join('brands', 'brands.id', '=', 'products.brand_id')
-            ->select('products.*', 'users.username', 'uploads.file_name', 'shops.id as shop_id', 'shops.logo', 'brands.name as brand_name')->simplePaginate(50);
+            ->select('products.*', 'users.username', 'uploads.file_name', 'shops.id as shop_id', 'shops.logo', 'brands.name as brand_name')->paginate(50);
 
-            return new ProductCardCollection($products->paginate(50));
+            return new ProductCardCollection($products);
         }
 
 
