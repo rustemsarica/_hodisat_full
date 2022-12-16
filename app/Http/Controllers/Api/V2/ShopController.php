@@ -31,38 +31,6 @@ class ShopController extends Controller
 
     public function info($id)
     {
-        return response()->json('{
-            "data": {
-                "id": 270,
-                "user_id": 127,
-                "name": "John Doe",
-                "slug": "johndoe",
-                "description": "Test Açıklama",
-                "logo": "https://hodisat.com/public/default-users.webp",
-                "upload_id": "2469",
-                "sliders": "https://hodisat.com/public/assets/img/placeholder.jpg",
-                "sliders_id": null,
-                "address": null,
-                "admin_to_pay": "244.99 ₺",
-                "phone": null,
-                "following_count": 1,
-                "follower_count": 1,
-                "bank_name": "John Doe",
-                "bank_acc_name": "TR0000000000000000000000000000",
-                "apply_discount": 0,
-                "min_product_count": null,
-                "discount_percentage": null,
-                "rating": 0,
-                "email": "johndoe@example.com",
-                "products": 1,
-                "orders": 0,
-                "sales": 0,
-                "is_blocked": false,
-                "is_followed": false
-            },
-            "success": true,
-            "status": 200
-        }');
         return new ShopDetailsCollection(Shop::with('seller')->where('id', $id)->first());
     }
 
