@@ -4,7 +4,6 @@ namespace App\Http\Resources\V2;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use \App\Models\Product;
-use \App\Models\Follow;
 use Illuminate\Support\Facades\DB;
 
 class ShopDetailsCollection extends JsonResource
@@ -16,7 +15,7 @@ class ShopDetailsCollection extends JsonResource
 
         if(auth('sanctum')->check()){
             $user=DB::table('blocked_users')->where(['user_id'=> auth('sanctum')->user()->id, 'blocked_user' => $this->user_id])->exists();
-            $follow=Follow::where(['user_id'=> auth('sanctum')->user()->id, 'followed_user_id' => $this->user_id])->exists();
+            $follow=DB::table('follows')->where(['user_id'=> auth('sanctum')->user()->id, 'followed_user_id' => $this->user_id])->exists();
 
 			if($user){
             	$blocked=true;
@@ -41,8 +40,8 @@ class ShopDetailsCollection extends JsonResource
             'admin_to_pay' => format_price( $this->user->balance),
             'phone' => $this->phone,
 
-            "following_count" =>Follow::where('user_id',$this->user_id)->count(),
-            "follower_count" =>Follow::where('followed_user_id',$this->user_id)->count(),
+            "following_count" =>DB::table('follows')->where('user_id',$this->user_id)->count(),
+            "follower_count" =>DB::table('follows')->where('followed_user_id',$this->user_id)->count(),
 
             'bank_name' => $this->seller->bank_name,
             'bank_acc_name' => $this->seller->bank_acc_name,
