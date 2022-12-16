@@ -29,7 +29,7 @@ class ShopController extends Controller
     public function info($id)
     {
         //return DB::table('shops')->join('sellers', 'sellers.user_id', '=', 'shops.user_id')->where('shops.id', $id)->first();
-        return new ShopDetailsCollection(Shop::with('seller')->where('id', $id)->first());
+        return new ShopDetailsCollection(DB::table('shops')->join('sellers', 'sellers.user_id', '=', 'shops.user_id')->where('shops.id', $id)->first());
     }
 
     public function shopOfUserDetail($id)
