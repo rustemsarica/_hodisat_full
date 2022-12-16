@@ -2,11 +2,11 @@
 
 namespace App\Http\Resources\V2;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 use App\Models\Wishlist;
 
-class ProductCardCollection extends ResourceCollection
+class ProductCardCollection extends JsonResource
 {
     public function toArray($request)
     {
