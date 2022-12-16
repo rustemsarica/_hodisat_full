@@ -202,7 +202,7 @@ class ProductController extends Controller
 
         if($request->categories == "" && $request->brands == "" && $request->colors == "" && $request->attrs == "" && $request->min == "" && $request->max == "" && $request->name == ""){
 
-             $products = DB::table('products')
+            return $products = DB::table('products')
             ->join('users', 'users.id', '=', 'products.user_id')
             ->join('uploads', 'uploads.id', '=', 'products.thumbnail_img')
             ->join('shops', 'products.user_id', '=', 'shops.user_id')

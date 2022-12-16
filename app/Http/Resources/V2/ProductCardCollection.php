@@ -48,6 +48,7 @@ class ProductCardCollection extends JsonResource
                     ];
                 }),
                 'meta' => [
+                    'current_page'=> $this->current_page,
                     'from'=> $this->from,
                     'last_page'=> $this->last_page,
                     'path'=> $this->path,
