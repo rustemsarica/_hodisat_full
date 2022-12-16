@@ -13,7 +13,7 @@ class ProductCardCollection extends ResourceCollection
 
             return [
 
-                'data' => $this->collection(function($data) {
+                'data' => $this->collection->map(function($data) {
 
                     $is_in_wishlist=false;
 
