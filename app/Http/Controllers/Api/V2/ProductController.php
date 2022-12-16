@@ -199,6 +199,12 @@ class ProductController extends Controller
     public function search(Request $request)
     {
 
+        if($request->categories == "" && $request->brands == "" && $request->colors == "" && $request->attrs == "" && $request->min == "" && $request->max == "" && $request->name == ""){
+            $products = Product::query();
+            $products->inRandomOrder();
+            return new ProductMiniCollection(filter_products($products)->paginate(50));
+        }
+
         $category_ids = [];
         $brand_ids = [];
         $colors = [];
