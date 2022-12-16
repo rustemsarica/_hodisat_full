@@ -323,7 +323,7 @@ class OrderService{
         $shipping_address['phone'] = str_replace(' ', '', $shipping_address['phone']);
         try{
 
-            $istek = Soap::to('https://pttws.ptt.gov.tr/PttVeriYuklemeTest/services/Sorgu?wsdl');
+            $istek = Soap::to('https://pttws.ptt.gov.tr/PttVeriYukleme/services/Sorgu?wsdl');
 
             $name_array = explode(' ', $seller->name);
             $sellersurname = $name_array[count($name_array)-1];
@@ -424,7 +424,7 @@ class OrderService{
     public function get_tracking_code($id)
     {
         $order = Order::find($id);
-        $istek = Soap::to('https://pttws.ptt.gov.tr/GonderiTakipV2Test/services/Sorgu?wsdl');
+        $istek = Soap::to('https://pttws.ptt.gov.tr/GonderiTakipV2/services/Sorgu?wsdl');
 		   $data=[
 				   'kullanici'      => '904875811',
 				   'referansNo'     => $order->shipping_code,

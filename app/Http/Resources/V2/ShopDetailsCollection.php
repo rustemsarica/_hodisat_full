@@ -13,6 +13,7 @@ class ShopDetailsCollection extends JsonResource
     {
         $blocked=false;
         $followed=false;
+
         if(auth('sanctum')->check()){
             $user=DB::table('blocked_users')->where(['user_id'=> auth('sanctum')->user()->id, 'blocked_user' => $this->user_id])->count();
             $follow=Follow::where(['user_id'=> auth('sanctum')->user()->id, 'followed_user_id' => $this->user_id])->count();
@@ -24,6 +25,7 @@ class ShopDetailsCollection extends JsonResource
                 $followed = true;
             }
         }
+
         return
         [
             'id' => $this->id,
@@ -52,8 +54,10 @@ class ShopDetailsCollection extends JsonResource
             'rating' => (double) $this->seller->rating,
             'email'=> $this->user->email,
             'products'=> $this->user->products()->count(),
-            'orders'=> $this->user->seller_orders()->where("delivery_status","delivered")->count(),
-            'sales'=>format_price( $this->user->seller_sales()->where("payment_status","paid")->sum('price'),true),
+            'orders'=>0,
+            //'orders'=> $this->user->seller_orders()->where("delivery_status","delivered")->count(),
+            'sales'=>0,
+            // 'sales'=>format_price( $this->user->seller_sales()->where("payment_status","paid")->sum('price'),true),
 
             'is_blocked'=>$blocked,
             'is_followed'=>$followed

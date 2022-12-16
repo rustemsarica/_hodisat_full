@@ -43,7 +43,7 @@ class OrderDelivered extends Command
         foreach($orders as $order){
 
                 $order = Order::find($order->id);
-                $istek = Soap::to('https://pttws.ptt.gov.tr/GonderiTakipV2Test/services/Sorgu?wsdl');
+                $istek = Soap::to('https://pttws.ptt.gov.tr/GonderiTakipV2/services/Sorgu?wsdl');
 		        $data=[
 				   'kullanici'      => '904875811',
 				   'referansNo'     => $order->shipping_code,

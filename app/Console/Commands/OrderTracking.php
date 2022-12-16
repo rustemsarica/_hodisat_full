@@ -42,7 +42,7 @@ class OrderTracking extends Command
 
         foreach($orders as $order){
 
-                (new OrderService)->get_tracking_code($order->id);
+            (new OrderService)->get_tracking_code($order->id);
 
 
                 /*
