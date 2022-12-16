@@ -105,6 +105,9 @@ class OfferController extends Controller
 
                 NotificationUtility::sendFirebaseNotification($request);
             }
+            if($request->answer==0){
+                Offer::where('id', $request->id)->delete();
+            }
             flash($request->text)->success();
             return back();
         }else{

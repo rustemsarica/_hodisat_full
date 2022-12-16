@@ -120,6 +120,9 @@ class OfferController extends Controller
 
                 NotificationUtility::sendFirebaseNotification($request);
             }
+            if($request->answer==0){
+                Offer::where('id', $request->id)->delete();
+            }
             return response()->json([
                 'status' => true,
                 'message' => 'Teklif cevaplandı.'
