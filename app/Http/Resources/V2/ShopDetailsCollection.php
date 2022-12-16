@@ -2,12 +2,12 @@
 
 namespace App\Http\Resources\V2;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 use \App\Models\Product;
 use \App\Models\Follow;
 use Illuminate\Support\Facades\DB;
 
-class ShopDetailsCollection extends JsonResource
+class ShopDetailsCollection extends ResourceCollection
 {
     public function toArray($request)
     {
