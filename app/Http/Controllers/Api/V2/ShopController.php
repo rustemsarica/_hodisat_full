@@ -27,7 +27,6 @@ class ShopController extends Controller
 
     public function info($id)
     {
-        return ;
         return new ShopDetailsCollection(Shop::with('seller')->where('id', $id)->first());
     }
 
