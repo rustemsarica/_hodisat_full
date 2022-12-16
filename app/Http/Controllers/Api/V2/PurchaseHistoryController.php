@@ -55,7 +55,7 @@ class PurchaseHistoryController extends Controller
     public function purchased($id)
     {
         $shop = Shop::findOrFail($id);
-        $orders = Order::where('user_id', $shop->user_id)->pluck('id')->toArray();
+        $orders = Order::where(['user_id'=>$shop->user_id, 'delivery_status'=>'confirmed'])->pluck('id')->toArray();
         $product_ids=OrderDetail::whereIn('order_id', $orders)->pluck('product_id')->toArray();
         $existing_product_ids = Product::whereIn('id', $product_ids);
 
