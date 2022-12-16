@@ -50,7 +50,7 @@ class ProductController extends Controller
     public function sellerSold($id)
     {
         $shop = Shop::findOrFail($id);
-        $orders=Order::where('seller_id',$shop->user_id)->pluck('id')->toArray();
+        $orders=Order::where(['seller_id'=>$shop->user_id, 'delivery_status'=>'confirmed'])->pluck('id')->toArray();
         $orderedP=OrderDetail::whereIn('order_id',$orders)->pluck('product_id')->toArray();
         $products = Product::whereIn('id', $orderedP);
 
