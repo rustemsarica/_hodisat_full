@@ -23,13 +23,11 @@ class ShopController extends Controller
         }
 
         return new ShopCollection($shop_query->whereIn('user_id', verified_sellers_id())->paginate(10));
-
-        //remove this , this is for testing
-        //return new ShopCollection($shop_query->paginate(10));
     }
 
     public function info($id)
     {
+        return response()->json(['a']);
         return new ShopDetailsCollection(Shop::with('seller')->where('id', $id)->first());
     }
 
