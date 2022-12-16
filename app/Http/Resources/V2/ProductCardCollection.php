@@ -10,7 +10,7 @@ class ProductCardCollection extends ResourceCollection
 {
     public function toArray($request)
     {
-
+            return $this->collection;
             return [
                 'data' => $this->collection->map(function($data) {
 
@@ -51,20 +51,5 @@ class ProductCardCollection extends ResourceCollection
 
     }
 
-    public function with($request)
-    {
-        return [
-            'success' => true,
-            'status' => 200,
-            'meta' => [
-                'current_page'=> $current_page,
-                'from'=> $from,
-                'last_page'=> $last_page,
-                'path'=> $path,
-                'per_page'=> $per_page,
-                'to'=> $to,
-                'total'=> $total,
-            ]
-        ];
-    }
+
 }
