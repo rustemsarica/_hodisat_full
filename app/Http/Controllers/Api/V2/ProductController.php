@@ -227,7 +227,7 @@ class ProductController extends Controller
         }
 
         //$products = Product::query();
-        $products = DB::table('products')->join('users', 'users.id', '=', 'products.user_id')->join('uploads', 'uploads.id', '=', 'products.thumbnail_img')->select('products.*', 'users.username', 'uploads.file_name');
+        return $products = DB::table('products')->join('users', 'users.id', '=', 'products.user_id')->join('uploads', 'uploads.id', '=', 'products.thumbnail_img')->select('products.*', 'users.username', 'uploads.file_name');
 
         if (!empty($brand_ids)) {
             $products->whereIn('brand_id', $brand_ids);
