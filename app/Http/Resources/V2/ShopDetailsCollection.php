@@ -41,11 +41,11 @@ class ShopDetailsCollection extends JsonResource
             'admin_to_pay' => format_price( $this->user->balance),
             'phone' => $this->phone,
 
-            "following_count" =>Follow::where('user_id',$this->user_id)->count(),
-            "follower_count" =>Follow::where('followed_user_id',$this->user_id)->count(),
+            "following_count" =>0,
+            "follower_count" =>0,
 
-            'bank_name' => $this->user->seller->bank_name,
-            'bank_acc_name' => $this->user->seller->bank_acc_name,
+            'bank_name' => $this->seller->bank_name,
+            'bank_acc_name' => $this->seller->bank_acc_name,
 
             "apply_discount" => $this->apply_discount,
             "min_product_count" => $this->min_product_count,
