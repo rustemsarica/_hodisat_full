@@ -18,6 +18,14 @@ class ProductMiniCollection extends ResourceCollection
                 'data' => $this->collection->map(function($data) {
 
                     $shop = $data->shop;
+                    if($shop->logo!=null && $shop->logo != ''){
+                        $shop_logo=uploaded_asset($shop->logo);
+                        if($shop_logo==null || $seller_logo==''){
+                            $shop_logo='https://hodisat.com/public/assets/img/avatar-place.png';
+                        }
+                    }else{
+                       $shop_logo='https://hodisat.com/public/assets/img/avatar-place.png';
+                    }
 
                     $is_in_wishlist=false;
 
