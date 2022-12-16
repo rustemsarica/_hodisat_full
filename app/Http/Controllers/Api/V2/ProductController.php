@@ -190,7 +190,6 @@ class ProductController extends Controller
         return Cache::remember("app.top_from_this_seller_products-$id", 86400, function() use ($id){
             $product = Product::find($id);
             $products = Product::where('user_id', $product->user_id)->orderBy('views', 'desc');
-            return $products = DB::table('products')->join('users', 'users.id', '=', 'products.user_id')->join('uploads', 'uploads.id', '=', 'products.thumbnail_img')->select('products.*', 'users.username', 'uploads.file_name')->paginate(50);
             return new ProductMiniCollection(filter_products($products)->limit(20)->get());
         });
     }
@@ -200,8 +199,8 @@ class ProductController extends Controller
     {
 
         if($request->categories == "" && $request->brands == "" && $request->colors == "" && $request->attrs == "" && $request->min == "" && $request->max == "" && $request->name == ""){
-            $products = Product::with('shop')->where(['approved'=> '1', 'published'=> '1']);
-            $products->inRandomOrder();
+
+            return $products = DB::table('products')->join('users', 'users.id', '=', 'products.user_id')->join('uploads', 'uploads.id', '=', 'products.thumbnail_img')->select('products.*', 'users.username', 'uploads.file_name')->paginate(50);
             return new ProductMiniCollection($products->paginate(50));
         }
 
