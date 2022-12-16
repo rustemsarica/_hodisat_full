@@ -17,20 +17,20 @@ class ProductMiniCollection extends ResourceCollection
             return [
                 'data' => $this->collection->map(function($data) {
 
-                    $shop = $data->shop;
-                    if($shop->logo!=null && $shop->logo != ''){
-                        $shop_logo=uploaded_asset($shop->logo);
-                        if($shop_logo==null || $seller_logo==''){
-                            $shop_logo='https://hodisat.com/public/assets/img/avatar-place.png';
+                    $seller = $data->shop;
+                    if($seller->logo!=null && $seller->logo != ''){
+                        $seller_logo=uploaded_asset($seller->logo);
+                        if($seller_logo==null || $seller_logo==''){
+                            $seller_logo='https://hodisat.com/public/assets/img/avatar-place.png';
                         }
                     }else{
-                       $shop_logo='https://hodisat.com/public/assets/img/avatar-place.png';
+                       $seller_logo='https://hodisat.com/public/assets/img/avatar-place.png';
                     }
 
                     $is_in_wishlist=false;
 
-                    $wishlists = Wishlist::where('user_id', auth('sanctum')->user()->id)->where('product_id',$data->id)->exists();
-                    if($wishlists){
+                    $wishlists = Wishlist::where('user_id', auth('sanctum')->user()->id)->where('product_id',$data->id)->count();
+                    if($wishlists>0){
                         $is_in_wishlist=true;
                     }
 
@@ -44,9 +44,9 @@ class ProductMiniCollection extends ResourceCollection
                         'discount'=> $has_discount ? "-".discount_in_percentage($data)."%" : "",
                         'stroked_price' => $has_discount ? home_base_price($data->unit_price) : "",
                         'main_price' => $has_discount ? home_discounted_base_price($data) : home_base_price($data->unit_price),
-                        'seller_id' => $shop->id,
+                        'seller_id' => $seller->id,
                         'seller_name'=> $data->user->username,
-                        'seller_avatar' =>  $shop_logo,
+                        'seller_avatar' =>  $seller_logo,
                         'is_in_wishlist'=> $is_in_wishlist,
                         'current_stock' => $data->current_stock,
                         'links' => [
