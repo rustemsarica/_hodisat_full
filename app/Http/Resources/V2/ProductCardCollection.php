@@ -10,7 +10,7 @@ class ProductCardCollection extends ResourceCollection
 {
     public function toArray($request)
     {
-            return $this->collection;
+            return $this;
             return [
                 'data' => $this->collection->map(function($data) {
 
