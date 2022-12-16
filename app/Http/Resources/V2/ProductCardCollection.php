@@ -45,7 +45,7 @@ class ProductCardCollection extends ResourceCollection
                         'published' => $data->published,
                         'approved' => $data->approved,
                         'wish_count' => 0,
-                        'brand' => $data->brand->name
+                        'brand' => $data->brand_name
                     ];
                 })
             ];
