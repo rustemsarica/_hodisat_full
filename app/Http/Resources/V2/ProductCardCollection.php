@@ -55,7 +55,16 @@ class ProductCardCollection extends ResourceCollection
     {
         return [
             'success' => true,
-            'status' => 200
+            'status' => 200,
+            'meta' => [
+                'current_page'=> $current_page,
+                'from'=> $from,
+                'last_page'=> $last_page,
+                'path'=> $path,
+                'per_page'=> $per_page,
+                'to'=> $to,
+                'total'=> $total,
+            ]
         ];
     }
 }
