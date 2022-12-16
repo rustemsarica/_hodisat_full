@@ -43,12 +43,12 @@ class FollowController extends Controller
                 }
                 $request->device_token = $user->device_token;
                 $request->title = "Yeni takipçi!";
-                $request->text = $user->username.", seni takip etmeye başladı.";
+                $request->text = auth()->user()->username.", seni takip etmeye başladı.";
 
                 $request->type = "user";
-                $request->id = $user->shop->id;
+                $request->id = auth()->user()->shop->id;
                 $request->user_id = $user->id;
-                $request->image = uploaded_asset($user->shop->logo);
+                $request->image = uploaded_asset(auth()->user()->shop->logo);
 
                 NotificationUtility::sendFirebaseNotification($request);
             }
