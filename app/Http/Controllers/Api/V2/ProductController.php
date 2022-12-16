@@ -209,7 +209,7 @@ class ProductController extends Controller
             ->join('brands', 'brands.id', '=', 'products.brand_id')
             ->select('products.*', 'users.username', 'uploads.file_name', 'shops.id as shop_id', 'shops.logo', 'brands.name as brand_name');
 
-            return new ProductCardCollection($products->paginate(50));
+            return ProductCardCollection::collection($products->paginate(50));
         }
 
 
