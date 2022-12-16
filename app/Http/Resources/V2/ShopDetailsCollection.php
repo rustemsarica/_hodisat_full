@@ -30,6 +30,43 @@ class ShopDetailsCollection extends JsonResource
         [
             'id' => $this->id,
             'user_id' => $this->user_id,
+            'name' => $this->name,
+            "slug" => $this->username,
+            'description' => $this->meta_description,
+            'logo' => uploaded_asset($this->logo),
+            'upload_id' => $this->logo,
+            'sliders' => uploaded_asset($this->sliders),
+            'sliders_id' => $this->sliders,
+            'address' => $this->address,
+            'admin_to_pay' => format_price( $this->balance),
+            'phone' => $this->phone,
+
+            "following_count" =>Follow::where('user_id',$this->user_id)->count(),
+            "follower_count" =>Follow::where('followed_user_id',$this->user_id)->count(),
+
+            'bank_name' => $this->bank_name,
+            'bank_acc_name' => $this->bank_acc_name,
+
+            "apply_discount" => $this->apply_discount,
+            "min_product_count" => $this->min_product_count,
+            "discount_percentage" => $this->discount_percentage,
+
+            'rating' => (double) $this->rating,
+            'email'=> $this->email,
+            'products'=> 0,
+            'orders'=>0,
+            //'orders'=> $this->user->seller_orders()->where("delivery_status","delivered")->count(),
+            'sales'=>0,
+            // 'sales'=>format_price( $this->user->seller_sales()->where("payment_status","paid")->sum('price'),true),
+
+            'is_blocked'=>$blocked,
+            'is_followed'=>$followed
+        ];
+
+        return
+        [
+            'id' => $this->id,
+            'user_id' => $this->user_id,
             'name' => $this->user->name,
             "slug" => $this->user->username,
             'description' => $this->meta_description,
