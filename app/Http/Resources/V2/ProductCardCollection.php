@@ -46,7 +46,16 @@ class ProductCardCollection extends JsonResource
                         'wish_count' => 0,
                         'brand' => $data->brand_name
                     ];
-                })
+                }),
+                'meta' => [
+                    'current_page'=> $this->current_page,
+                    'from'=> $this->from,
+                    'last_page'=> $this->last_page,
+                    'path'=> $this->path,
+                    'per_page'=> $this->per_page,
+                    'to'=> $this->to,
+                    'total'=> $this->total,
+                ]
             ];
 
     }
@@ -56,15 +65,7 @@ class ProductCardCollection extends JsonResource
         return [
             'success' => true,
             'status' => 200,
-            'meta' => [
-                'current_page'=> $request->current_page,
-                'from'=> $request->from,
-                'last_page'=> $request->last_page,
-                'path'=> $request->path,
-                'per_page'=> $request->per_page,
-                'to'=> $request->to,
-                'total'=> $request->total,
-            ]
+
         ];
     }
 }
