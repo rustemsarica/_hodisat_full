@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V2;
 
 use App\Http\Resources\V2\ProductCollection;
 use App\Http\Resources\V2\ProductMiniCollection;
+use App\Http\Resources\V2\ProductCardCollection;
 use App\Http\Resources\V2\ProductDetailCollection;
 use App\Http\Resources\V2\FlashDealCollection;
 use App\Models\FlashDeal;
@@ -201,7 +202,7 @@ class ProductController extends Controller
         if($request->categories == "" && $request->brands == "" && $request->colors == "" && $request->attrs == "" && $request->min == "" && $request->max == "" && $request->name == ""){
 
              $products = DB::table('products')->join('users', 'users.id', '=', 'products.user_id')->join('uploads', 'uploads.id', '=', 'products.thumbnail_img')->select('products.*', 'users.username', 'uploads.file_name');
-            return new ProductMiniCollection($products->paginate(50));
+            return new ProductCardCollection($products->paginate(50));
         }
 
 
