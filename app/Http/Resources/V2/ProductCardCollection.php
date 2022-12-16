@@ -49,8 +49,6 @@ class ProductCardCollection extends ResourceCollection
                 })
             ];
 
-
-
     }
 
     public function with($request)
