@@ -53,7 +53,7 @@ class ShopDetailsCollection extends JsonResource
 
             'rating' => (double) $this->seller->rating,
             'email'=> $this->user->email,
-            'products'=> $this->user->products()->count(),
+            'products'=> 0,
             'orders'=>0,
             //'orders'=> $this->user->seller_orders()->where("delivery_status","delivered")->count(),
             'sales'=>0,
