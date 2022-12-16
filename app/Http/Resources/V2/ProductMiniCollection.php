@@ -29,8 +29,8 @@ class ProductMiniCollection extends ResourceCollection
 
                     $is_in_wishlist=false;
 
-                    $wishlists = Wishlist::where('user_id', auth('sanctum')->user()->id)->where('product_id',$data->id)->count();
-                    if($wishlists>0){
+                    $wishlists = Wishlist::where('user_id', auth('sanctum')->user()->id)->where('product_id',$data->id)->exists();
+                    if($wishlists){
                         $is_in_wishlist=true;
                     }
 
