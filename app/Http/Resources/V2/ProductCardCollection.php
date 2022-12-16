@@ -57,7 +57,7 @@ class ProductCardCollection extends JsonResource
             'success' => true,
             'status' => 200,
             'meta' => [
-                'current_page'=> $request->current_page,
+                'current_page'=> $current_page,
                 'from'=> $request->from,
                 'last_page'=> $request->last_page,
                 'path'=> $request->path,
