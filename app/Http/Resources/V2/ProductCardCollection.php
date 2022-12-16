@@ -22,8 +22,8 @@ class ProductCardCollection extends ResourceCollection
                             $is_in_wishlist=true;
                         }
                     }
-
-                    $has_discount = $data->unit_price != home_discounted_base_price($data, false);
+                    $home_discounted_base_price = home_discounted_base_price($data, false);
+                    $has_discount = $data->unit_price != $home_discounted_base_price;
 
                     return [
                         'id' => $data->id,
@@ -32,7 +32,7 @@ class ProductCardCollection extends ResourceCollection
                         'has_discount' => $has_discount,
                         'discount'=> $has_discount ? "-".discount_in_percentage($data)."%" : "",
                         'stroked_price' => $has_discount ? home_base_price($data->unit_price) : "",
-                        'main_price' => $has_discount ? home_discounted_base_price($data) : home_base_price($data->unit_price),
+                        'main_price' => $has_discount ? home_base_price($home_discounted_base_price) : home_base_price($data->unit_price),
                         'seller_id' => $data->shop_id,
                         'seller_name'=> $data->username,
                         'seller_avatar' =>  uploaded_asset($data->logo),
