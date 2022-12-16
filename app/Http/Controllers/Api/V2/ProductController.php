@@ -202,6 +202,7 @@ class ProductController extends Controller
         $category_ids = [];
         $brand_ids = [];
         $colors = [];
+        $attributes = [];
 
         if ($request->categories != null && $request->categories != "") {
             $category_ids = CategoryUtility::children_ids($request->categories);
@@ -221,15 +222,12 @@ class ProductController extends Controller
         $min = (int)$request->min;
         $max = (int)$request->max;
 
-        $attributes = [];
-
         if($request->attrs != null && $request->attrs != ""){
             $attributes = explode(',', $request->attrs);
         }
 
-        $products = Product::query();
-
-        $products->where('published', 1);
+        //$products = Product::query();
+        $products = DB::table('products')->join('users', 'users.id', '=', 'products.user_id')->join('uploads', 'uploads.id', '=', 'products.thumbnail_img')->select('products.*', 'users.username', 'uploads.file_name');
 
         if (!empty($brand_ids)) {
             $products->whereIn('brand_id', $brand_ids);
