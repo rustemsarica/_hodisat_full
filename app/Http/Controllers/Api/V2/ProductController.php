@@ -226,8 +226,8 @@ class ProductController extends Controller
             $attributes = explode(',', $request->attrs);
         }
 
-        return $products = Product::query()->paginate(50);
-        return $products = DB::table('products')->join('users', 'users.id', '=', 'products.user_id')->join('uploads', 'uploads.id', '=', 'products.thumbnail_img')->select('products.*', 'users.username', 'uploads.file_name')->paginate(50);
+        return $products = Product::query();
+        //return $products = DB::table('products')->join('users', 'users.id', '=', 'products.user_id')->join('uploads', 'uploads.id', '=', 'products.thumbnail_img')->select('products.*', 'users.username', 'uploads.file_name')->paginate(50);
 
         if (!empty($brand_ids)) {
             $products->whereIn('brand_id', $brand_ids);
