@@ -93,10 +93,9 @@ if (!function_exists('filter_products')) {
     {
 
         if (get_setting('vendor_system_activation') == 1) {
-            return $products->where('approved', '1')
-                ->where('published', '1');
+            return $products->where(['approved'=> '1', 'published'=> '1']);
         } else {
-            return $products->where('published', '1')->where('added_by', 'admin');
+            return $products->where(['added_by'=> 'admin', 'published'=> '1']);
         }
     }
 }
