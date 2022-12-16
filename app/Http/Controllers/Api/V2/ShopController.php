@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use App\Utility\SearchUtility;
+use DB;
 
 class ShopController extends Controller
 {
@@ -27,6 +28,7 @@ class ShopController extends Controller
 
     public function info($id)
     {
+        return new ShopDetailsCollection(DB::table('shops')->join('sellers', 'sellers.user_id', '=', 'shops.user_id')->where('id', $id)->first());
         return new ShopDetailsCollection(Shop::with('seller')->where('id', $id)->first());
     }
 
