@@ -205,6 +205,10 @@ class ProductController extends Controller
             return new ProductMiniCollection(filter_products($products)->paginate(50));
         }
 
+
+        $products = Product::query();
+        //return $products = DB::table('products')->join('users', 'users.id', '=', 'products.user_id')->join('uploads', 'uploads.id', '=', 'products.thumbnail_img')->select('products.*', 'users.username', 'uploads.file_name')->paginate(50);
+
         $category_ids = [];
         $brand_ids = [];
         $colors = [];
@@ -213,14 +217,27 @@ class ProductController extends Controller
         if ($request->categories != null && $request->categories != "") {
             $category_ids = CategoryUtility::children_ids($request->categories);
             $category_ids[] = $request->categories;
+
+            if (!empty($category_ids)) {
+                $products->whereIn('category_id', $category_ids);
+            }
         }
 
         if ($request->brands != null && $request->brands != "") {
             $brand_ids = explode(',', $request->brands);
+
+            if (!empty($brand_ids)) {
+                $products->whereIn('brand_id', $brand_ids);
+            }
         }
 
         if ($request->colors != null && $request->colors != "") {
             $colors = Color::whereIn('id',explode(',', $request->colors))->pluck('code')->toArray();
+
+            if (!empty($colors)) {
+                $products->whereIn('colors', $colors);
+                $products->whereNotNull('colors');
+            }
         }
 
         $sort_by = $request->sort_key;
@@ -230,31 +247,15 @@ class ProductController extends Controller
 
         if($request->attrs != null && $request->attrs != ""){
             $attributes = explode(',', $request->attrs);
-        }
 
-        $products = Product::query();
-        //return $products = DB::table('products')->join('users', 'users.id', '=', 'products.user_id')->join('uploads', 'uploads.id', '=', 'products.thumbnail_img')->select('products.*', 'users.username', 'uploads.file_name')->paginate(50);
-
-        if (!empty($brand_ids)) {
-            $products->whereIn('brand_id', $brand_ids);
-        }
-
-        if (!empty($category_ids)) {
-            $products->whereIn('category_id', $category_ids);
-        }
-
-        if (!empty($colors)) {
-            $products->whereIn('colors', $colors);
-            $products->whereNotNull('colors');
-        }
-
-        if(!empty($attributes)){
-            $products->where(function ($query) use($attributes) {
-                foreach ($attributes as $value) {
-                    $str = '"' . $value . '"';
-                    $query->orWhere('choice_options', 'like', '%' . $str . '%');
-                }
-            });
+            if(!empty($attributes)){
+                $products->where(function ($query) use($attributes) {
+                    foreach ($attributes as $value) {
+                        $str = '"' . $value . '"';
+                        $query->orWhere('choice_options', 'like', '%' . $str . '%');
+                    }
+                });
+            }
         }
 
         if ($name != null && $name != "") {
