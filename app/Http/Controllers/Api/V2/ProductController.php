@@ -20,6 +20,7 @@ use App\Utility\SearchUtility;
 use Cache;
 use Auth;
 use Illuminate\Support\Facades\DB;
+
 class ProductController extends Controller
 {
     public function index()
