@@ -12,6 +12,15 @@ class ProductCardCollection extends JsonResource
     {
 
             return [
+                'meta' => [
+                    'current_page'=> $this->current_page,
+                    'from'=> $this->from,
+                    'last_page'=> $this->last_page,
+                    'path'=> $this->path,
+                    'per_page'=> $this->per_page,
+                    'to'=> $this->to,
+                    'total'=> $this->total,
+                ],
                 'data' => $this->map(function($data) {
 
                     $is_in_wishlist=false;
@@ -47,15 +56,6 @@ class ProductCardCollection extends JsonResource
                         'brand' => $data->brand_name
                     ];
                 }),
-                'meta' => [
-                    'current_page'=> $this->current_page,
-                    'from'=> $this->from,
-                    'last_page'=> $this->last_page,
-                    'path'=> $this->path,
-                    'per_page'=> $this->per_page,
-                    'to'=> $this->to,
-                    'total'=> $this->total,
-                ]
             ];
 
     }
