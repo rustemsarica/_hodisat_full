@@ -15,8 +15,6 @@ class ProductCardCollection extends ResourceCollection
             return [
                 'data' => $this->collection->map(function($data) {
 
-                    $shop = $data->shop;
-
                     $is_in_wishlist=false;
 
                     if(auth('sanctum')->check()){
@@ -36,9 +34,9 @@ class ProductCardCollection extends ResourceCollection
                         'discount'=> $has_discount ? "-".discount_in_percentage($data)."%" : "",
                         'stroked_price' => $has_discount ? home_base_price($data->unit_price) : "",
                         'main_price' => $has_discount ? home_discounted_base_price($data) : home_base_price($data->unit_price),
-                        'seller_id' => $shop->id,
+                        'seller_id' => $data->shop_id,
                         'seller_name'=> $data->username,
-                        'seller_avatar' =>  \uploaded_asset($data->shop->logo),
+                        'seller_avatar' =>  \uploaded_asset($data->logo),
                         'is_in_wishlist'=> $is_in_wishlist,
                         'current_stock' => $data->current_stock,
                         'links' => [
