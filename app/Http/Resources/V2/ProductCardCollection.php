@@ -13,7 +13,7 @@ class ProductCardCollection extends JsonResource
 
             return [
                 'meta' => [
-                    'current_page'=> $this->data,
+                    'current_page'=> $data,
                 ],
                 'data' => $this->map(function($data) {
 
