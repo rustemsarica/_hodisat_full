@@ -10,7 +10,7 @@ use App\Models\Product;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use App\Utility\SearchUtility;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class ShopController extends Controller
 {
