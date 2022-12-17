@@ -23,8 +23,8 @@ class NotificationUtility
         $array['order'] = $order;
         try {
             Mail::to($order->user->email)->queue(new InvoiceEmailManager($array));
-            $array['view'] = 'emails.new_order';
-            Mail::to($order->seller->user->email)->queue(new InvoiceEmailManager($array));
+            //$array['view'] = 'emails.new_order';
+            //Mail::to($order->seller->user->email)->queue(new InvoiceEmailManager($array));
         } catch (\Exception $e) {
 
         }
