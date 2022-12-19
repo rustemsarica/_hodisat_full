@@ -44,8 +44,8 @@ class ShopDetailsCollection extends JsonResource
             "following_count" =>Follow::where('user_id',$this->user_id)->count(),
             "follower_count" =>Follow::where('followed_user_id',$this->user_id)->count(),
 
-            'bank_name' => $this->bank_name,
-            'bank_acc_name' => $this->bank_acc_name,
+            'bank_name' => $this->seller->bank_name,
+            'bank_acc_name' => $this->seller->bank_acc_name,
 
             "apply_discount" => $this->apply_discount,
             "min_product_count" => $this->min_product_count,
