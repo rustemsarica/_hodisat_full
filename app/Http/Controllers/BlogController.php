@@ -151,7 +151,7 @@ class BlogController extends Controller
     {
         Blog::find($id)->delete();
 
-        return redirect('admin/blogs');
+        return back();
     }
 
 
