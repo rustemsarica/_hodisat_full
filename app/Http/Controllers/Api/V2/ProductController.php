@@ -79,7 +79,7 @@ class ProductController extends Controller
         $products = Product::where('brand_id', $id);
         if ($request->name != "" || $request->name != null) {
             $products = $products->where('name', 'like', '%' . $request->name . '%');
-            SearchUtility::store($name);
+            SearchUtility::store($request->name);
         }
 
         if ($request->colors != null && $request->colors != "") {

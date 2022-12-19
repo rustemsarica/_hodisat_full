@@ -92,7 +92,7 @@ class OrderController extends Controller
             $subtotal = 0;
             $shipping = 0;
             $coupon_discount = 0;
-
+            $seller_total_price = 0;
             //Order Details Storing
             foreach ($seller_product as $cartItem) {
                 $product = Product::find($cartItem['product_id']);
@@ -138,7 +138,7 @@ class OrderController extends Controller
 
                 $order_detail->quantity = 1;
                 $order_detail->save();
-
+                $seller_total_price+=$order_detail->price;
                 $product->save();
 
                 $order->seller_id = $product->user_id;
