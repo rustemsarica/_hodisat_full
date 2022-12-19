@@ -131,7 +131,7 @@ class BrandController extends Controller
         Brand::destroy($id);
 
         flash(translate('Brand has been deleted successfully'))->success();
-        return redirect()->route('brands.index');
+        return redirect()->route('admin.brands.index');
 
     }
 
