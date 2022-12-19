@@ -21,11 +21,11 @@
                     @endif
                 </tr>
                     <tr>
-                        <td>{{ translate('Bank Name') }}</td>
+                        <td>{{ translate('Receiver') }}</td>
                         <td>{{ $user->seller->bank_name }}</td>
                     </tr>
                     <tr>
-                        <td>{{ translate('Bank Account Name') }}</td>
+                        <td>{{ translate('IBAN') }}</td>
                         <td>{{ $user->seller->bank_acc_name }}</td>
                     </tr>
             </tbody>
