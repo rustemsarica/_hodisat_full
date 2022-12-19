@@ -189,7 +189,7 @@ class CategoryController extends Controller
         if(count($array)>0){
             $category->parent_tree = collect($array)->implode(',');
         }else{
-            $category->parent_tree ='';
+            $category->parent_tree =null;
         }
 
         if ($category->parent_id != "0") {
