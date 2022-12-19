@@ -20,7 +20,7 @@
         "laracon21/colorcodeconverter": "1.2",
         "laracon21/combinations": "1.2",
         "laracon21/timezones": "1.2",
-        "laravel/framework": "8.*",
+        "laravel/framework": "^8.0",
         "laravel/sanctum": "^2.12",
         "laravel/socialite": "^5.0",
         "laravel/tinker": "^2.0",

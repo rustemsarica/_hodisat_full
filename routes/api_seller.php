@@ -6,7 +6,6 @@ use App\Http\Controllers\Api\V2\Seller\OrderController;
 use App\Http\Controllers\Api\V2\Seller\ProductController;
 use App\Http\Controllers\Api\V2\Seller\ShopController;
 use App\Http\Controllers\Api\V2\Seller\RefundController;
-use App\Http\Controllers\Api\V2\Seller\SellerPackageController;
 use App\Http\Controllers\Api\V2\Seller\WithdrawRequestController;
 
 Route::group(['prefix' => 'v2/seller', 'middleware' => ['app_language', 'auth:sanctum']], function () {
@@ -79,13 +78,6 @@ Route::group(['prefix' => 'v2/seller', 'middleware' => ['app_language', 'auth:sa
         Route::get('conversations', 'index');
         Route::get('conversations/show/{id}', 'showMessages');
         Route::post('conversations/message/store', 'send_message_to_customer');
-    });
-
-    //Seller Package
-    Route::controller(SellerPackageController::class)->group(function () {
-        Route::get('seller-packages-list', 'seller_packages_list');
-        Route::post('seller-package/offline-payment', 'purchase_package_offline');
-        Route::post('seller-package/free-package', 'purchase_free_package');
     });
 
 });

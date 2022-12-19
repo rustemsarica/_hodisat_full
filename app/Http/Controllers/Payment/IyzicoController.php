@@ -6,10 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CombinedOrder;
 use App\Models\BusinessSetting;
-use App\Models\CustomerPackage;
-use App\Models\SellerPackage;
-use App\Http\Controllers\CustomerPackageController;
-use App\Http\Controllers\SellerPackageController;
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\CheckoutController;
 use Session;
@@ -118,64 +114,6 @@ class IyzicoController extends Controller
                 $iyzicoRequest->setBasketItems($basketItems);
             }
 
-            if(Session::get('payment_type') == 'customer_package_payment'){
-                $customer_package = CustomerPackage::findOrFail(Session::get('payment_data')['customer_package_id']);
-
-                $iyzicoRequest->setPrice(round($customer_package->amount));
-                $iyzicoRequest->setPaidPrice(round($customer_package->amount));
-                $iyzicoRequest->setCurrency(\Iyzipay\Model\Currency::TL);
-                $iyzicoRequest->setBasketId(rand(000000,999999));
-                $iyzicoRequest->setPaymentGroup(\Iyzipay\Model\PaymentGroup::SUBSCRIPTION);
-                $iyzicoRequest->setCallbackUrl(route('iyzico.callback', [
-                    'payment_type' => Session::get('payment_type'),
-                    'amount' => 0.0,
-                    'payment_method' => Session::get('payment_data')['payment_method'],
-                    'combined_order_id' => 0,
-                    'customer_package_id' => Session::get('payment_data')['customer_package_id'],
-                    'seller_package_id' => 0
-                ]));
-
-                $basketItems = array();
-                $firstBasketItem = new \Iyzipay\Model\BasketItem();
-                $firstBasketItem->setId(rand(1000,9999));
-                $firstBasketItem->setName("Package Payment");
-                $firstBasketItem->setCategory1("Package");
-                $firstBasketItem->setItemType(\Iyzipay\Model\BasketItemType::VIRTUAL);
-                $firstBasketItem->setPrice(round($customer_package->amount));
-                $basketItems[0] = $firstBasketItem;
-
-                $iyzicoRequest->setBasketItems($basketItems);
-            }
-
-            if(Session::get('payment_type') == 'seller_package_payment'){
-                $seller_package = SellerPackage::findOrFail(Session::get('payment_data')['seller_package_id']);
-
-                $iyzicoRequest->setPrice(round($seller_package->amount));
-                $iyzicoRequest->setPaidPrice(round($seller_package->amount));
-                $iyzicoRequest->setCurrency(\Iyzipay\Model\Currency::TL);
-                $iyzicoRequest->setBasketId(rand(000000,999999));
-                $iyzicoRequest->setPaymentGroup(\Iyzipay\Model\PaymentGroup::SUBSCRIPTION);
-                $iyzicoRequest->setCallbackUrl(route('iyzico.callback', [
-                    'payment_type' => Session::get('payment_type'),
-                    'amount' => 0,
-                    'payment_method' => Session::get('payment_data')['payment_method'],
-                    'combined_order_id' => 0,
-                    'customer_package_id' => 0,
-                    'seller_package_id' => Session::get('payment_data')['seller_package_id']
-                ]));
-
-                $basketItems = array();
-                $firstBasketItem = new \Iyzipay\Model\BasketItem();
-                $firstBasketItem->setId(rand(1000,9999));
-                $firstBasketItem->setName("Package Payment");
-                $firstBasketItem->setCategory1("Package");
-                $firstBasketItem->setItemType(\Iyzipay\Model\BasketItemType::VIRTUAL);
-                $firstBasketItem->setPrice(round($seller_package->amount));
-                $basketItems[0] = $firstBasketItem;
-
-                $iyzicoRequest->setBasketItems($basketItems);
-            }
-
 
             # make request
             $payWithIyzicoInitialize = \Iyzipay\Model\CheckoutFormInitialize::create($iyzicoRequest, $options);
@@ -225,22 +163,6 @@ class IyzicoController extends Controller
                 $data['payment_method'] = $payment_method;
 
                 return (new WalletController)->wallet_payment_done($data, $payment);
-            }
-            elseif ($payment_type == 'customer_package_payment') {
-                $payment = $payWithIyzico->getRawResult();
-
-                $data['customer_package_id'] = $customer_package_id;
-                $data['payment_method'] = $payment_method;
-
-                return (new CustomerPackageController)->purchase_payment_done($data, $payment);
-            }
-            elseif ($payment_type == 'seller_package_payment') {
-                $payment = $payWithIyzico->getRawResult();
-
-                $data['seller_package_id'] = $seller_package_id;
-                $data['payment_method'] = $payment_method;
-
-                return (new SellerPackageController)->purchase_payment_done($data, $payment);
             }
             else {
                 dd($payment_type);

@@ -4,11 +4,7 @@ namespace App\Http\Controllers\Payment;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\CustomerPackage;
-use App\Models\SellerPackage;
 use App\Models\CombinedOrder;
-use App\Http\Controllers\CustomerPackageController;
-use App\Http\Controllers\SellerPackageController;
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\CheckoutController;
 use Session;
@@ -21,7 +17,7 @@ class AamarpayController extends Controller
             flash('Please add phone number to your profile')->warning();
             return redirect()->route('profile');
         }
-        
+
         if (Auth::user()->email == null) {
             $email = 'customer@exmaple.com';
         }
@@ -44,14 +40,6 @@ class AamarpayController extends Controller
             }
             elseif (Session::get('payment_type') == 'wallet_payment') {
                 $amount = round(Session::get('payment_data')['amount']);
-            }
-            elseif (Session::get('payment_type') == 'customer_package_payment') {
-                $customer_package = CustomerPackage::findOrFail(Session::get('payment_data')['customer_package_id']);
-                $amount = round($customer_package->amount);
-            }
-            elseif (Session::get('payment_type') == 'seller_package_payment') {
-                $seller_package = SellerPackage::findOrFail(Session::get('payment_data')['seller_package_id']);
-                $amount = round($seller_package->amount);
             }
         }
 
@@ -139,12 +127,6 @@ class AamarpayController extends Controller
             return (new WalletController)->wallet_payment_done(json_decode($request->opt_c), json_encode($request->all()));
         }
 
-        if ($payment_type == 'customer_package_payment') {
-            return (new CustomerPackageController)->purchase_payment_done(json_decode($request->opt_c), json_encode($request->all()));
-        }
-        if($payment_type == 'seller_package_payment') {
-            return (new SellerPackageController)->purchase_payment_done(json_decode($request->opt_c), json_encode($request->all()));
-        }
     }
 
     public function fail(Request $request){

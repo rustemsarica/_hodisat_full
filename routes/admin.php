@@ -36,7 +36,6 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\SupportTicketController;
-use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\ZoneController;
 
