@@ -49,7 +49,7 @@ class CommissionController extends Controller
             $payment->save();
 
             flash(translate('Payment completed'))->success();
-            return redirect()->route('sellers.index');
+            return redirect()->route('admin.sellers.index');
         }
     }
 
@@ -79,11 +79,11 @@ class CommissionController extends Controller
 
         if ($payment_data['payment_withdraw'] == 'withdraw_request') {
             flash(translate('Payment completed'))->success();
-            return redirect()->route('withdraw_requests_all');
+            return redirect()->route('admin.withdraw_requests_all');
         }
         else {
             flash(translate('Payment completed'))->success();
-            return redirect()->route('sellers.index');
+            return redirect()->route('admin.sellers.index');
         }
     }
 
