@@ -52,9 +52,9 @@
                     <select name="payment_option" id="payment_option" class="form-control demo-select2-placeholder" required>
                         <option value="">{{translate('Select Payment Method')}}</option>
 
-                        @if($user->shop->bank_payment_status == 1)
-                            <option value="bank_payment">{{translate('Bank Payment')}}</option>
-                        @endif
+
+                        <option value="bank_payment">{{translate('Bank Payment')}}</option>
+
                     </select>
                 </div>
             </div>
