@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div id="category_select_container">
-                        @if ($category->parent_tree=='')
+                        @if ($category->parent_tree=='' || $category->parent_tree==null)
                             <div class="form-group row" data-select-id="0">
                                 <label class="col-lg-3 col-from-label">{{translate('Category')}}</label>
                                 <div class="col-lg-8">
