@@ -41,6 +41,7 @@
                                 <label class="col-lg-3 col-from-label">{{translate('Category')}}</label>
                                 <div class="col-lg-8">
                                     <select class="form-control aiz-selectpicker" name="parent_ids[]" data-selected="{{ $category->id }}" onchange="get_subcategories(this.value, 0);"data-live-search="true" required>
+                                        <option value="0"></option>
                                         @foreach ($categories as $cat)
                                         <option value="{{ $cat->id }}">{{ $cat->getTranslation('name') }}</option>
                                         @endforeach
