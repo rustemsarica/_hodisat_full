@@ -65,7 +65,7 @@ class BrandController extends Controller
         $brand_translation->save();
 
         flash(translate('Brand has been inserted successfully'))->success();
-        return redirect()->route('brands.index');
+        return redirect()->route('admin.brands.index');
 
     }
 
@@ -136,16 +136,14 @@ class BrandController extends Controller
     {
         $brand = Brand::findOrFail($id);
         Product::where('brand_id', $brand->id)->delete();
-        foreach ($brand->brand_translations as $key => $brand_translation) {
-            $brand_translation->delete();
-        }
+
         Brand::destroy($id);
 
         flash(translate('Brand has been deleted successfully'))->success();
         return redirect()->route('brands.index');
 
     }
-	
+
 	public function changeTop(Request $request)
     {
         $brand = Brand::findOrFail($request->id);
