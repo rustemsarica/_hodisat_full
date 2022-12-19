@@ -33,24 +33,17 @@ class UserController extends Controller
 
         $false_response = [
             'result' => false,
-            'message' => translate('Successfully logged in'),
-            'access_token' => "",
-            'token_type' => 'Bearer',
-            'expires_at' => null,
-            'shop_id'=> 0,
-            'logo' => "https://hodisat.com/public/uploads/avatar-place.png",
-            'sliders' => null,
+            'id' => 0,
+            'name' => "",
+            'email' => "",
+            'username' => "",
+            'shop_id' => 0,
+            'shop_logo' => "https://hodisat.com/public/uploads/avatar-place.png",
+            'cover_image' => "https://hodisat.com/public/uploads/bg.jpg",
             'description' => "",
-            'user' => [
-                'id' => 0,
-                'type' => "",
-                'name' => "",
-                'username'=> "",
-                'email' => "",
-                'phone' => "",
-                'vacation_mode' => 0,
-                'address_status' => false
-            ]
+            'phone' => "",
+            'vacation_mode'=> "",
+            'address_status' => false
         ];
 
 
@@ -68,27 +61,20 @@ class UserController extends Controller
             return response()->json($false_response);
 
         }
-        $shop=Shop::where('user_id',$user->id)->first();
+
         return response()->json([
             'result' => true,
-            'message' => translate('Successfully logged in'),
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-            'expires_at' => null,
-            'shop_id'=> $shop->id,
-            'logo' => $shop->logo == null ? "https://hodisat.com/public/uploads/avatar-place.png" : uploaded_asset($shop->logo),
-            'sliders' => uploaded_asset($shop->sliders),
-            'description' => $shop->meta_descriptions,
-            'user' => [
-                'id' => $user->id,
-                'type' => $user->user_type,
-                'name' => $user->name,
-                'username'=> $user->username,
-                'email' => $user->email,
-                'phone' => $user->phone,
-                'vacation_mode' => $user->vacation_mode,
-                'address_status' => $user->address == null || $user->state == null || $user->city == null ? false : true
-            ]
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'username' => $user->username,
+            'shop_id' => $user->shop->id,
+            'shop_logo' => $user->shop->logo==null ? "https://hodisat.com/public/uploads/avatar-place.png" : uploaded_asset($user->shop->logo),
+            'cover_image' => uploaded_asset($user->shop->sliders),
+            'description' => $user->shop->meta_description,
+            'phone' => $user->phone,
+            'vacation_mode' => (string)$user->vacation_mode,
+            'address_status' => $user->address == null || $user->state == null || $user->city == null ? false : true
         ]);
 
     }
