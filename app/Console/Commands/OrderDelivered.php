@@ -4,6 +4,7 @@
 namespace App\Console\Commands;
 
 use App\Services\OrderService;
+use Illuminate\Http\Request;
 
 use App\Models\Order;
 
@@ -50,7 +51,12 @@ class OrderDelivered extends Command
 				   'sifre'      	=> 'jSr1hVrJyJoLNr7nNqMPYw',
 				   ];
 		        $response = $istek->gonderiSorgu_referansNo(['input'=>$data]);
-
+                if($response->response->return->TESALAN!="" && $response->response->return->TESALAN!=NULL && $response->response->return->TESALAN!=" "){
+                    $request = new Request();
+                    $request->order_id = $order->id;
+                    $request->status = 'delivered';
+                    (new OrderService)->handle_delivery_status($request);
+                }
                 if(DB::table('logs')->where(['title'=>'order tracking cron','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)])->count()==0){
                     DB::table('logs')->insert(['title'=>'order tracking cron','text'=>json_encode($response,JSON_UNESCAPED_UNICODE)]);
                 }
