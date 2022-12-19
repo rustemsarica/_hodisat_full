@@ -119,7 +119,7 @@ class ProductService
             'colors',
             'choice_options',
             'attributes',
-            'published',
+            'published'
         ))->toArray();
 
         $new_product=Product::create($data);
@@ -256,7 +256,7 @@ class ProductService
             'slug',
             'colors',
             'choice_options',
-            'attributes',
+            'attributes'
         ))->toArray();
 
         $product->update($data);
