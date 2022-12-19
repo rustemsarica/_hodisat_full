@@ -21,8 +21,8 @@
   <p><i class="demo-pli-old-telephone icon-lg icon-fw mr-1"></i>{{ $shop->user->phone }}</p>
 
   <h6 class="mb-4">{{translate('Payout Info')}}</h6>
-  <p>{{translate('Name')}} : {{ $shop->seller->bank_name }}</p>
-  <p>{{translate('Iban')}} : {{ $shop->seller->bank_acc_name }}</p>
+  <p>{{translate('Name')}} : {{ $shop->bank_name }}</p>
+  <p>{{translate('Iban')}} : {{ $shop->bank_acc_name }}</p>
 
   <br>
 

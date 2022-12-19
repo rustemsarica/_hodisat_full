@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Shop;
-use App\Models\Seller;
 use App\Models\UserNotificationPermission;
 use App\Notifications\AppEmailVerificationNotification;
 use Hash;
@@ -71,10 +70,6 @@ class AuthController extends Controller
         }
 
         $user->save();
-
-        $seller = new Seller;
-        $seller->user_id = $user->id;
-        $seller->save();
 
         $shop = new Shop;
         $shop->user_id = $user->id;
@@ -249,10 +244,6 @@ class AuthController extends Controller
             $user->save();
             $user->username = $user->username.$user->id;
             $user->save();
-
-            $seller = new Seller;
-            $seller->user_id = $user->id;
-            $seller->save();
 
             $shop = new Shop;
             $shop->user_id = $user->id;

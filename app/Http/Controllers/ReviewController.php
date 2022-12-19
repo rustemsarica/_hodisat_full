@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Review;
 use App\Models\Order;
-use App\Models\Seller;
+use App\Models\Shop;
 use Auth;
 
 class ReviewController extends Controller
@@ -115,7 +115,7 @@ class ReviewController extends Controller
         $review->status = $request->status;
         $review->save();
 
-        $seller = Seller::where('user_id', $review->seller_id)->first();
+        $seller = Shop::where('user_id', $review->seller_id)->first();
         $order = Order::findOrFail($review->order_id);
 
 

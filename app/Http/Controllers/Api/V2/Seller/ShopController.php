@@ -16,7 +16,6 @@ use App\Models\OrderDetail;
 use App\Models\Payment;
 use App\Models\Product;
 use App\Models\Shop;
-use App\Models\Seller;
 use Illuminate\Http\Request;
 use App\Utility\SearchUtility;
 use Cache;
@@ -72,9 +71,9 @@ class ShopController extends Controller
 
         if($request->has('bank_name') || $request->has('bank_acc_name'))
         {
-            $seller = Seller::where('user_id',auth()->user()->id)->first();
-            $seller->bank_name = $request->bank_name;
-            $seller->bank_acc_name = $request->bank_acc_name;
+            $shop = Shop::where('user_id',auth()->user()->id)->first();
+            $shop->bank_name = $request->bank_name;
+            $shop->bank_acc_name = $request->bank_acc_name;
 
             $successMessage=translate('Payment info updated successfully');
 

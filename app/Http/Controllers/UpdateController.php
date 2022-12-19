@@ -7,7 +7,6 @@ use DB;
 use Artisan;
 use App\Models\Upload;
 use App\Models\Product;
-use App\Models\Seller;
 use App\Models\SellerPackage;
 use App\Models\SellerWithdrawRequest;
 use App\Models\Shop;
@@ -566,7 +565,7 @@ class UpdateController extends Controller
 
     public function convertRatingAndSales()
     {
-        foreach (\App\Models\Seller::all() as $seller) {
+        foreach (\App\Models\Shop::all() as $seller) {
             $total = 0;
             $rating = 0;
             $num_of_sale = 0;

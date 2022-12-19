@@ -20,11 +20,11 @@
               </tr>
                   <tr>
                       <td>{{ translate('Name') }}</td>
-                      <td>{{ $shop->seller->bank_name }}</td>
+                      <td>{{ $shop->bank_name }}</td>
                   </tr>
                   <tr>
                       <td>{{ translate('Iban') }}</td>
-                      <td>{{ $shop->seller->bank_acc_name }}</td>
+                      <td>{{ $shop->bank_acc_name }}</td>
                   </tr>
           </tbody>
       </table>

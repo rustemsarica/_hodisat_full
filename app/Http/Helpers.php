@@ -8,7 +8,6 @@ use App\Models\Shop;
 use App\Models\User;
 use App\Models\Addon;
 use App\Models\Coupon;
-use App\Models\Seller;
 use App\Models\Upload;
 use App\Models\Wallet;
 use App\Models\Address;
@@ -1018,9 +1017,9 @@ if (!function_exists('calculateCommissionAffilationClubPoint')) {
         //(new OrderService)->create_shipping_code($order->id);
         $order->commission_calculated = 1;
         $order->save();
-        $seller = Seller::where('user_id', $order->seller_id)->first();
-        $seller->num_of_sale+=1;
-        $seller->save();
+        $shop = Shop::where('user_id', $order->seller_id)->first();
+        $shop->num_of_sale+=1;
+        $shop->save();
     }
 }
 

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Models\Cart;
-use App\Models\Seller;
 use App\Models\Shop;
 use App\Models\UserNotificationPermission;
 use App\Models\BusinessSetting;
@@ -101,10 +100,6 @@ class RegisterController extends Controller
             }
         }
 
-            $seller = new Seller;
-            $seller->user_id = $user->id;
-            $seller->save();
-
             $shop = new Shop;
             $shop->user_id = $user->id;
             $shop->save();
@@ -171,7 +166,6 @@ class RegisterController extends Controller
                     $user->sendEmailVerificationNotification();
                     flash(translate('Registration successful. Please verify your email.'))->success();
                 } catch (\Throwable $th) {
-                    Seller::where('user_id', $user->id)->delete();
                     Shop::where('user_id', $user->id)->delete();
                     UserNotificationPermission::where('user_id', $user->id)->delete();
                     $user->delete();

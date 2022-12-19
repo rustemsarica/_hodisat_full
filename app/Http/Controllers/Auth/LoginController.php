@@ -7,7 +7,6 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
 use App\Models\User;
 use App\Models\Cart;
-use App\Models\Seller;
 use App\Models\Shop;
 use Session;
 use Illuminate\Http\Request;
@@ -107,10 +106,6 @@ class LoginController extends Controller
                 $newUser->email_verified_at = date('Y-m-d Hms');
                 $newUser->provider_id = $user->id;
                 $newUser->save();
-
-                $seller = new Seller;
-                $seller->user_id = $newUser->id;
-                $seller->save();
 
                 $shop = new Shop;
                 $shop->user_id = $newUser->id;

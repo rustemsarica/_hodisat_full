@@ -12,7 +12,6 @@ use App\Models\Product;
 use App\Models\PickupPoint;
 use App\Models\User;
 use App\Models\Shop;
-use App\Models\Seller;
 use App\Models\Order;
 use App\Models\Coupon;
 use App\Models\Upload;

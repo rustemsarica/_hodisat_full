@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Seller;
 use App\Models\User;
 use App\Models\Shop;
 use App\Models\Product;
@@ -84,17 +83,14 @@ class SellerController extends Controller
             }
             $user->save();
 
-            $seller = new Seller;
-            $seller->user_id = $user->id;
 
-            if ($seller->save()) {
                 $shop = new Shop;
                 $shop->user_id = $user->id;
                 $shop->save();
 
                 flash(translate('Seller has been inserted successfully'))->success();
                 return redirect()->route('sellers.index');
-            }
+
         }
         flash(translate('Something went wrong'))->error();
         return back();
@@ -174,7 +170,6 @@ class SellerController extends Controller
         Order::where('user_id', $shop->user_id)->delete();
 
         User::destroy($shop->user_id);
-        Seller::where('user_id',$shop->user_id)->delete();
 
         if (Shop::destroy($id)) {
             Artisan::call('cache:clear');
