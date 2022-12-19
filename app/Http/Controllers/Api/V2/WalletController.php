@@ -15,8 +15,8 @@ class WalletController extends Controller
         $user = User::find(auth()->user()->id);
         $latest = Wallet::where('user_id', auth()->user()->id)->latest()->first();
         return response()->json([
-			'bank_name' => $user->seller->bank_name,
-			'bank_acc_name' => $user->seller->bank_acc_name,
+			'bank_name' => $user->shop->bank_name,
+			'bank_acc_name' => $user->shop->bank_acc_name,
             'balance' => format_price($user->balance),
             'last_recharged' => $latest == null ? "Not Available" : $latest->created_at->diffForHumans(),
         ]);

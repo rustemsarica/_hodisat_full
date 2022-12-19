@@ -60,7 +60,7 @@
                 <div class="row">
                     <label class="col-md-3 col-form-label" for="bank_name">{{ translate('Name') }}</label>
                     <div class="col-md-9">
-                        <input type="text" name="bank_name" value="{{ $user->seller->bank_name }}" id="bank_name" class="form-control mb-3" placeholder="{{ translate('Name')}}">
+                        <input type="text" name="bank_name" value="{{ $user->shop->bank_name }}" id="bank_name" class="form-control mb-3" placeholder="{{ translate('Name')}}">
                         @error('bank_name')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
@@ -69,7 +69,7 @@
                 <div class="row">
                     <label class="col-md-3 col-form-label" for="bank_acc_name">{{ translate('Iban') }}</label>
                     <div class="col-md-9">
-                        <input type="text" name="bank_acc_name" value="{{ $user->seller->bank_acc_name }}" id="bank_acc_name" class="form-control mb-3" placeholder="{{ translate('Iban')}}">
+                        <input type="text" name="bank_acc_name" value="{{ $user->shop->bank_acc_name }}" id="bank_acc_name" class="form-control mb-3" placeholder="{{ translate('Iban')}}">
                         @error('bank_acc_name')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror

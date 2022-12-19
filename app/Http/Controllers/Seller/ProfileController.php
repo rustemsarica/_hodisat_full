@@ -40,7 +40,7 @@ class ProfileController extends Controller
         }
 
 
-        $shop = $user->seller;
+        $shop = $user->shop;
 
         if($shop){
             $shop->bank_name = $request->bank_name;

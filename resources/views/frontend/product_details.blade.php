@@ -362,7 +362,7 @@
         <div class="container">
             <div class="row gutters-10">
                 <div class="col-xl-3 order-1 order-xl-0">
-                    @if ($detailedProduct->added_by == 'seller' && $detailedProduct->user->shop != null && $detailedProduct->user->seller != null)
+                    @if ($detailedProduct->added_by == 'seller' && $detailedProduct->user->shop != null)
                         <div class="bg-white shadow-sm mb-3">
                             <div class="position-relative p-3 text-left">
 
@@ -373,13 +373,13 @@
                                 </a>
                                 <div class="text-center border rounded p-2 mt-3">
                                     <div class="rating">
-                                        @if ($detailedProduct->user->seller->num_of_reviews > 0)
-                                            {{ renderStarRating($detailedProduct->user->seller->rating) }}
+                                        @if ($detailedProduct->user->shop->num_of_reviews > 0)
+                                            {{ renderStarRating($detailedProduct->user->shop->rating) }}
                                         @else
                                             {{ renderStarRating(0) }}
                                         @endif
                                     </div>
-                                    <div class="opacity-60 fs-12">({{ $detailedProduct->user->seller->num_of_reviews  }}
+                                    <div class="opacity-60 fs-12">({{ $detailedProduct->user->shop->num_of_reviews  }}
                                         {{ translate('customer reviews') }})</div>
                                 </div>
                             </div>
