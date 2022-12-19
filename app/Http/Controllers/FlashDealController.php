@@ -77,7 +77,7 @@ class FlashDealController extends Controller
             $flash_deal_translation->save();
 
             flash(translate('Flash Deal has been inserted successfully'))->success();
-            return redirect()->route('flash_deals.index');
+            return redirect()->route('admin.flash_deals.index');
         }
         else{
             flash(translate('Something went wrong'))->error();
@@ -186,7 +186,7 @@ class FlashDealController extends Controller
 
         FlashDeal::destroy($id);
         flash(translate('FlashDeal has been deleted successfully'))->success();
-        return redirect()->route('flash_deals.index');
+        return redirect()->route('admin.flash_deals.index');
     }
 
     public function update_status(Request $request)

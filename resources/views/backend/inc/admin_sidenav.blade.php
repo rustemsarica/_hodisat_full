@@ -333,7 +333,7 @@
                         <ul class="aiz-side-nav-list level-2">
                             @if(Auth::user()->user_type == 'admin' || in_array('2', json_decode(Auth::user()->staff->role->permissions)))
                                 <li class="aiz-side-nav-item">
-                                    <a href="{{ route('admin.flash_deals.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['flash_deals.index', 'flash_deals.create', 'flash_deals.edit'])}}">
+                                    <a href="{{ route('admin.flash_deals.index') }}" class="aiz-side-nav-link {{ areActiveRoutes(['admin.flash_deals.index', 'admin.flash_deals.create', 'admin.flash_deals.edit'])}}">
                                         <span class="aiz-side-nav-text">{{ translate('Flash deals') }}</span>
                                     </a>
                                 </li>
