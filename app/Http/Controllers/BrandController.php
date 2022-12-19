@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Brand;
-use App\Models\BrandTranslation;
 use App\Models\Product;
 use Illuminate\Support\Str;
 
@@ -60,10 +59,6 @@ class BrandController extends Controller
         $brand->logo = $request->logo;
         $brand->save();
 
-        $brand_translation = BrandTranslation::firstOrNew(['lang' => env('DEFAULT_LANGUAGE'), 'brand_id' => $brand->id]);
-        $brand_translation->name = $request->name;
-        $brand_translation->save();
-
         flash(translate('Brand has been inserted successfully'))->success();
         return redirect()->route('admin.brands.index');
 
@@ -103,9 +98,9 @@ class BrandController extends Controller
     public function update(Request $request, $id)
     {
         $brand = Brand::findOrFail($id);
-        if($request->lang == env("DEFAULT_LANGUAGE")){
-            $brand->name = $request->name;
-        }
+
+        $brand->name = $request->name;
+
         $brand->meta_title = $request->meta_title;
         $brand->meta_description = $request->meta_description;
         if ($request->slug != null) {
@@ -116,10 +111,6 @@ class BrandController extends Controller
         }
         $brand->logo = $request->logo;
         $brand->save();
-
-        $brand_translation = BrandTranslation::firstOrNew(['lang' => $request->lang, 'brand_id' => $brand->id]);
-        $brand_translation->name = $request->name;
-        $brand_translation->save();
 
         flash(translate('Brand has been updated successfully'))->success();
         return back();
