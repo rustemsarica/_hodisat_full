@@ -24,14 +24,14 @@ class SliderController extends Controller
     public function bannerTwo()
     {
 
-            return new SliderCollection(json_decode(get_setting('home_banner2_images'), true));
+            return new SliderCollection(json_decode(get_setting('home_banner2_images')==null ? '[]' : get_setting('home_banner2_images'), true));
 
     }
 
     public function bannerThree()
     {
 
-        return new SliderCollection(json_decode(get_setting('home_banner3_images'), true));
+        return new SliderCollection(json_decode(get_setting('home_banner3_images')==null ? '[]' : get_setting('home_banner3_images'), true));
 
     }
 }
