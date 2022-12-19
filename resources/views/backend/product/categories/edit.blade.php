@@ -40,7 +40,7 @@
                             <div class="form-group row" data-select-id="0">
                                 <label class="col-lg-3 col-from-label">{{translate('Category')}}</label>
                                 <div class="col-lg-8">
-                                    <select class="form-control aiz-selectpicker" name="parent_ids[]" data-selected="{{ $category->id }}" onchange="get_subcategories(this.value, 0);"data-live-search="true" required>
+                                    <select class="form-control aiz-selectpicker" name="parent_ids[]" data-selected="{{ $category->parent_id }}" onchange="get_subcategories(this.value, 0);"data-live-search="true" required>
                                         <option value="0" @if($category->parent_id==0) selected @endif>{{ translate('No Parent') }}</option>
                                         @foreach ($categories as $cat)
                                         <option value="{{ $cat->id }}">{{ $cat->getTranslation('name') }}</option>
