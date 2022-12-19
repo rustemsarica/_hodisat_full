@@ -20,7 +20,6 @@
 	            @endforeach
   			</ul>
             <form class="p-4" action="{{ route('admin.support_ticket.updateSupport') }}" method="POST" enctype="multipart/form-data">
-                <input name="_method" type="hidden" value="PATCH">
                 <input type="hidden" name="lang" value="{{ $lang }}">
                 <input type="hidden" name="id" value="{{$support->id}}">
                 @csrf
