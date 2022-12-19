@@ -308,22 +308,23 @@ class AuthController extends Controller
 
         DB::table('wishlists')->where("user_id", $user->id)->delete();
         DB::table('addresses')->where("user_id", $user->id)->delete();
-        DB::table('shops')->where("user_id", $user->id)->delete();
+        $shop=DB::table('shops')->where("user_id", $user->id)->first();
 
         $products = Product::where('user_id', $shop->user_id)->pluck('id')->toArray();
         if(count($products)>0){
             DB::table('carts')->whereIn('product_id', $products)->delete();
             DB::table('wishlists')->whereIn('product_id', $products)->delete();
             DB::table('offers')->whereIn("product_id", $products)->delete();
+            DB::table('firebase_notifications')->where("item_type", 'product')->whereIn('item_type_id', $products)->delete();
 
             DB::table('products')->where("user_id", $user->id)->delete();
-
         }
 
         DB::table('carts')->where("user_id", $user->id)->delete();
         DB::table('offers')->where("user_id", $user->id)->delete();
 
         DB::table('firebase_notifications')->where("receiver_id", $user->id)->delete();
+        DB::table('firebase_notifications')->where("item_type", 'user')->where('item_type_id', $shop->id)->delete();
         DB::table('notifications')->where("notifiable_id", $user->id)->delete();
 
         DB::table('blocked_users')->where("user_id", $user->id)->orWhere('blocked_user', $user->id)->delete();
@@ -335,11 +336,12 @@ class AuthController extends Controller
 
         DB::table('reviews')->where("user_id", $user->id)->delete();
         DB::table('reviews')->where("seller_id", $user->id)->delete();
-        
+
         DB::table('user_notification_permissions')->where("user_id", $user->id)->delete();
         DB::table('wallets')->where("user_id", $user->id)->delete();
 
 		User::where("id", $user->id)->delete();
+        $shop->delete();
 
         Artisan::call('cache:clear');
 

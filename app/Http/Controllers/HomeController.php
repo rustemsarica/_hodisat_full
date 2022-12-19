@@ -78,9 +78,9 @@ class HomeController extends Controller
     {
         $user = null;
         if ($request->get('phone') != null) {
-            $user = User::whereIn('user_type', ['customer', 'seller'])->where('phone', "+{$request['country_code']}{$request['phone']}")->first();
+            $user = User::where('user_type', 'seller')->where('phone', "+{$request['country_code']}{$request['phone']}")->first();
         } elseif ($request->get('email') != null) {
-            $user = User::whereIn('user_type', ['customer', 'seller'])->where('email', $request->email)->first();
+            $user = User::where('user_type', 'seller')->where('email', $request->email)->first();
         }
 
         if ($user != null) {
