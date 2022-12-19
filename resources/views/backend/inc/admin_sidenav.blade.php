@@ -83,16 +83,7 @@
                                     </a>
                                 </li>
                             @endif
-                            <li class="aiz-side-nav-item">
-                                <a href="{{ route('admin.product_bulk_upload.index') }}" class="aiz-side-nav-link" >
-                                    <span class="aiz-side-nav-text">{{ translate('Bulk Import') }}</span>
-                                </a>
-                            </li>
-                            <li class="aiz-side-nav-item">
-                                <a href="{{route('admin.product_bulk_export.index')}}" class="aiz-side-nav-link">
-                                    <span class="aiz-side-nav-text">{{translate('Bulk Export')}}</span>
-                                </a>
-                            </li>
+
                             <li class="aiz-side-nav-item">
                                 <a href="{{route('admin.categories.index')}}" class="aiz-side-nav-link {{ areActiveRoutes(['categories.index', 'categories.create', 'categories.edit'])}}">
                                     <span class="aiz-side-nav-text">{{translate('Category')}}</span>
