@@ -81,7 +81,12 @@ class CategoryController extends Controller
         if($request->order_level != null) {
             $category->order_level = $request->order_level;
         }
-        $category->banner = $request->banner;
+        if($request->banner!=null){
+            $category->banner = $request->banner;
+        }else{
+            $category->banner = "2468";
+        }
+
         $category->icon = $request->icon;
         $category->meta_title = $request->meta_title;
         $category->meta_description = $request->meta_description;
