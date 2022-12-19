@@ -6,6 +6,7 @@ use App\Models\CommissionHistory;
 use Illuminate\Http\Request;
 use App\Models\SellerWithdrawRequest;
 use App\Models\Payment;
+use App\Models\Wallet;
 use App\Models\Shop;
 use Session;
 
@@ -56,8 +57,9 @@ class CommissionController extends Controller
     //redirects to this method after successfull seller payment
     public function seller_payment_done($payment_data, $payment_details){
         $shop = Shop::findOrFail($payment_data['shop_id']);
-        $shop->user->balance = $shop->user->balance - $payment_data['amount'];
-        $shop->save();
+        $user = $shop->user;
+        $user->balance = $user->balance - $payment_data['amount'];
+        $user->save();
 
         $payment = new Payment;
         $payment->seller_id = $shop->user->id;
@@ -68,6 +70,14 @@ class CommissionController extends Controller
         $payment->save();
 
         if ($payment_data['payment_withdraw'] == 'withdraw_request') {
+            $wallet = new Wallet;
+            $wallet->user_id = $user->id;
+            $wallet->amount = $payment_data['amount'];
+            $wallet->payment_method = translate("Withdraw Request");
+            $wallet->payment_details = translate("Withdraw Request");
+            $wallet->action = "-";
+            $wallet->save();
+
             $seller_withdraw_request = SellerWithdrawRequest::findOrFail($payment_data['withdraw_request_id']);
             $seller_withdraw_request->status = '1';
             $seller_withdraw_request->viewed = '1';
