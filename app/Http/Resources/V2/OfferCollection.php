@@ -15,15 +15,15 @@ class OfferCollection extends ResourceCollection
             return [
             'data' => $this->collection->map(function($data) {
                 $user = User::where('id', $data->user_id)->first();
-                $seller = Shop::where('user_id',$data->product->user_id)->first();
+                $shop = Shop::where('user_id',$data->product->user_id)->first();
 
-                if($seller->logo!=null || $seller->logo != ''){
-                    $seller_logo=uploaded_asset($seller->logo);
-                    if($seller_logo==null || $seller_logo==''){
-                        $seller_logo='https://hodisat.com/public/assets/img/avatar-place.png';
+                if($shop->logo!=null || $shop->logo != ''){
+                    $shop_logo=uploaded_asset($shop->logo);
+                    if($shop_logo==null || $shop_logo==''){
+                        $shop_logo='https://hodisat.com/public/assets/img/avatar-place.png';
                     }
                 }else{
-                   $seller_logo='https://hodisat.com/public/assets/img/avatar-place.png';
+                   $shop_logo='https://hodisat.com/public/assets/img/avatar-place.png';
                 }
 
                 return [
@@ -39,9 +39,9 @@ class OfferCollection extends ResourceCollection
                         'name' => $data->product->name,
                         'thumbnail_image' => uploaded_asset($data->product->thumbnail_img),
                         'base_price' => format_price($data->product->unit_price),
-                        'seller_id' => $seller->id,
-                        'seller_name'=> $seller->user->username,
-                        'seller_avatar' =>  $seller_logo,
+                        'seller_id' => $shop->id,
+                        'seller_name'=> $shop->user->username,
+                        'seller_avatar' =>  $shop_logo,
                         'is_in_wishlist'=> false,
                         'current_stock' => $data->product->current_stock
                     ],

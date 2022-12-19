@@ -77,7 +77,7 @@ class ShopController extends Controller
 
             $successMessage=translate('Payment info updated successfully');
 
-			if ($seller->save()) {
+			if ($shop->save()) {
 				return $this->success(translate($successMessage));
 			}
         }

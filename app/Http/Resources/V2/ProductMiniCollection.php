@@ -17,14 +17,14 @@ class ProductMiniCollection extends ResourceCollection
             return [
                 'data' => $this->collection->map(function($data) {
 
-                    $seller = $data->shop;
-                    if($seller->logo!=null && $seller->logo != ''){
-                        $seller_logo=uploaded_asset($seller->logo);
-                        if($seller_logo==null || $seller_logo==''){
-                            $seller_logo='https://hodisat.com/public/assets/img/avatar-place.png';
+                    $shop = $data->shop;
+                    if($shop->logo!=null && $shop->logo != ''){
+                        $shop_logo=uploaded_asset($shop->logo);
+                        if($shop_logo==null || $shop_logo==''){
+                            $shop_logo='https://hodisat.com/public/assets/img/avatar-place.png';
                         }
                     }else{
-                       $seller_logo='https://hodisat.com/public/assets/img/avatar-place.png';
+                       $shop_logo='https://hodisat.com/public/assets/img/avatar-place.png';
                     }
 
                     $is_in_wishlist=false;
@@ -44,9 +44,9 @@ class ProductMiniCollection extends ResourceCollection
                         'discount'=> $has_discount ? "-".discount_in_percentage($data)."%" : "",
                         'stroked_price' => $has_discount ? home_base_price($data->unit_price) : "",
                         'main_price' => $has_discount ? home_discounted_base_price($data) : home_base_price($data->unit_price),
-                        'seller_id' => $seller->id,
+                        'seller_id' => $shop->id,
                         'seller_name'=> $data->user->username,
-                        'seller_avatar' =>  $seller_logo,
+                        'seller_avatar' =>  $shop_logo,
                         'is_in_wishlist'=> $is_in_wishlist,
                         'current_stock' => $data->current_stock,
                         'links' => [
@@ -63,15 +63,15 @@ class ProductMiniCollection extends ResourceCollection
             return [
             'data' => $this->collection->map(function($data) {
 
-                $seller = Shop::where('user_id',$data->user_id)->first();
-                if($seller->logo!=null && $seller->logo != ''){
+                $shop = Shop::where('user_id',$data->user_id)->first();
+                if($shop->logo!=null && $shop->logo != ''){
 
-                    $seller_logo=uploaded_asset($seller->logo);
-                    if($seller_logo==null || $seller_logo==''){
-                        $seller_logo='https://hodisat.com/public/assets/img/avatar-place.png';
+                    $shop_logo=uploaded_asset($shop->logo);
+                    if($shop_logo==null || $shop_logo==''){
+                        $shop_logo='https://hodisat.com/public/assets/img/avatar-place.png';
                     }
                 }else{
-                   $seller_logo='https://hodisat.com/public/assets/img/avatar-place.png';
+                   $shop_logo='https://hodisat.com/public/assets/img/avatar-place.png';
                 }
 
 
@@ -85,9 +85,9 @@ class ProductMiniCollection extends ResourceCollection
                     'stroked_price' => home_base_price($data->unit_price),
                     'main_price' => home_discounted_base_price($data),
                     'rating' => (double) $data->rating,
-                    'seller_id' => $seller->id,
+                    'seller_id' => $shop->id,
                     'seller_name'=> $data->user->username,
-                    'seller_avatar' =>  $seller_logo,
+                    'seller_avatar' =>  $shop_logo,
                     'is_in_wishlist' => false,
                     'current_stock' => $data->current_stock,
                     'links' => [

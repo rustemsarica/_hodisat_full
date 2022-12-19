@@ -14,15 +14,15 @@ class WishlistCollection extends ResourceCollection
         if(auth()->user()){
             return [
             'data' => $this->collection->map(function($data) {
-                $seller = Shop::where('user_id',$data->product->user_id)->first();
-                if($seller->logo!=null || $seller->logo != ''){
+                $shop = Shop::where('user_id',$data->product->user_id)->first();
+                if($shop->logo!=null || $shop->logo != ''){
 
-                    $seller_logo=uploaded_asset($seller->logo);
-                    if($seller_logo==null || $seller_logo==''){
-                        $seller_logo='https://hodisat.com/public/assets/img/avatar-place.png';
+                    $shop_logo=uploaded_asset($shop->logo);
+                    if($shop_logo==null || $shop_logo==''){
+                        $shop_logo='https://hodisat.com/public/assets/img/avatar-place.png';
                     }
                 }else{
-                   $seller_logo='https://hodisat.com/public/assets/img/avatar-place.png';
+                   $shop_logo='https://hodisat.com/public/assets/img/avatar-place.png';
                 }
 
                 $is_in_wishlist=false;
@@ -39,9 +39,9 @@ class WishlistCollection extends ResourceCollection
                         'thumbnail_image' => uploaded_asset($data->product->thumbnail_img),
                         'base_price' => format_price($data->product->unit_price) ,
                         'rating' => (double) $data->product->rating,
-                        'seller_id' => $seller->id,
-                        'seller_name'=> $seller->product->user->username,
-                        'seller_avatar' =>  $seller_logo,
+                        'seller_id' => $shop->id,
+                        'seller_name'=> $shop->product->user->username,
+                        'seller_avatar' =>  $shop_logo,
                         'is_in_wishlist'=> $is_in_wishlist,
                         'current_stock' => $data->product->current_stock,
                     ]
@@ -51,15 +51,15 @@ class WishlistCollection extends ResourceCollection
         }else{
             return [
             'data' => $this->collection->map(function($data) {
-                $seller = Shop::where('user_id',$data->product->user_id)->first();
-                if($seller->logo!=null || $seller->logo != ''){
+                $shop = Shop::where('user_id',$data->product->user_id)->first();
+                if($shop->logo!=null || $shop->logo != ''){
 
-                    $seller_logo=uploaded_asset($seller->logo);
-                    if($seller_logo==null || $seller_logo==''){
-                        $seller_logo='https://hodisat.com/public/assets/img/avatar-place.png';
+                    $shop_logo=uploaded_asset($shop->logo);
+                    if($shop_logo==null || $shop_logo==''){
+                        $shop_logo='https://hodisat.com/public/assets/img/avatar-place.png';
                     }
                 }else{
-                   $seller_logo='https://hodisat.com/public/assets/img/avatar-place.png';
+                   $shop_logo='https://hodisat.com/public/assets/img/avatar-place.png';
                 }
 
                 return [
@@ -70,9 +70,9 @@ class WishlistCollection extends ResourceCollection
                         'thumbnail_image' => uploaded_asset($data->product->thumbnail_img),
                         'base_price' => format_price(home_base_price($data->product->unit_price, false)) ,
                         'rating' => (double) $data->product->rating,
-                        'seller_id' => $seller->id,
-                        'seller_name'=> $seller->name,
-                        'seller_avatar' =>  $seller_logo,
+                        'seller_id' => $shop->id,
+                        'seller_name'=> $shop->name,
+                        'seller_avatar' =>  $shop_logo,
                         'is_in_wishlist'=> false,
                         'current_stock' => $data->product->current_stock
                     ]
