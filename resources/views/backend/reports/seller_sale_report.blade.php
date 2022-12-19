@@ -26,11 +26,7 @@
                             @if($seller != null)
                                 <tr>
                                     <td>{{ $seller->user->name }}</td>
-                                    @if($seller->shop != null)
-                                        <td>{{ $seller->name }}</td>
-                                    @else
-                                        <td>--</td>
-                                    @endif
+                                    <td>{{ $seller->user->username }}</td>
                                     <td>
                                         @php
                                             $num_of_sale = 0;
