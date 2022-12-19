@@ -235,7 +235,7 @@ class AuthController extends Controller
             }else{
 
             $user = new User([
-                'username'=> Str::lower(explode(' ',$user->name)[0]),
+                'username'=> Str::slug(explode(' ',$request->name)[0]),
                 'name' => $request->name,
                 'email' => $request->email,
                 'provider_id' => $request->provider,

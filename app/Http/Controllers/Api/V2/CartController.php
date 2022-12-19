@@ -45,10 +45,10 @@ class CartController extends Controller
         if (!empty($owner_ids)) {
             foreach ($owner_ids as $owner_id) {
                 $shop_data = Shop::where('user_id', $owner_id)->first();
+                $seller_total_price=Cart::where(['user_id'=> auth()->user()->id, 'owner_id' => $owner_id])->sum('price');
                 if($shop_data->apply_discount==1){
                     $cart_items_count=Cart::where(['user_id'=> auth()->user()->id, 'owner_id' => $owner_id])->count();
                     if($cart_items_count>=$shop_data->min_product_count){
-                        $seller_total_price=Cart::where(['user_id'=> auth()->user()->id, 'owner_id' => $owner_id])->sum('price');
                         $bulk_sell_discount+=($seller_total_price/100)*$shop_data->discount_percentage;
                     }
                 }

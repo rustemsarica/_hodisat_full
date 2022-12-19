@@ -123,6 +123,7 @@ class ChatController extends Controller
             Mail::to($conversation->receiver->email)->queue(new ConversationMailManager($array));
             $user = User::where('email', $conversation->receiver->email)->first();
             if (get_setting('google_firebase') == 1 && $seller_user->device_token != null) {
+                $request = new Request();
                 $request->device_token = $seller_user->device_token;
                 $request->title =  "Yeni mesaj!";
                 $request->text = $user->username.":".$message->message;
