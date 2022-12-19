@@ -33,15 +33,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Seller', 'prefix' => 'seller'
         Route::get('/products/destroy/{id}', 'destroy')->name('products.destroy');
     });
 
-    // Product Bulk Upload
-    Route::controller(ProductBulkUploadController::class)->group(function () {
-        Route::get('/product-bulk-upload/index', 'index')->name('product_bulk_upload.index');
-        Route::post('/product-bulk-upload/store', 'bulk_upload')->name('bulk_product_upload');
-        Route::group(['prefix' => 'bulk-upload/download'], function() {
-            Route::get('/category', 'pdf_download_category')->name('pdf.download_category');
-            Route::get('/brand', 'pdf_download_brand')->name('pdf.download_brand');
-        });
-    });
+
 
     //Coupon
     Route::resource('coupon', CouponController::class)->except('destroy');

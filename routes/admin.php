@@ -24,7 +24,6 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PickupPointController;
-use App\Http\Controllers\ProductBulkUploadController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductQueryController;
 use App\Http\Controllers\ProfileController;
@@ -51,14 +50,10 @@ use App\Http\Controllers\ZoneController;
   | contains the "web" middleware group. Now create something great!
   |
  */
-//Update Routes
-Route::controller(UpdateController::class)->group(function () {
-    Route::post('/update', 'step0')->name('update');
-    Route::get('/update/step1', 'step1')->name('update.step1');
-    Route::get('/update/step2', 'step2')->name('update.step2');
-});
+
 
 Route::get('/admin', [AdminController::class, 'admin_dashboard'])->name('admin.dashboard')->middleware(['auth', 'admin']);
+
 Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => ['auth', 'admin']], function() {
 
     // category
@@ -104,21 +99,7 @@ Route::group(['prefix' => 'admin', 'as'=> 'admin.', 'middleware' => ['auth', 'ad
         Route::post('/products/add-more-choice-option', 'add_more_choice_option')->name('products.add-more-choice-option');
     });
 
-    Route::controller(ProductBulkUploadController::class)->group(function () {
-        //Product Export
-        Route::get('/product-bulk-export', 'export')->name('product_bulk_export.index');
 
-        //Product Bulk Upload
-        Route::get('/product-bulk-upload/index', 'index')->name('product_bulk_upload.index');
-        Route::post('/bulk-product-upload', 'bulk_upload')->name('bulk_product_upload');
-        Route::get('/product-csv-download/{type}', 'import_product')->name('product_csv.download');
-        Route::get('/vendor-product-csv-download/{id}', 'import_vendor_product')->name('import_vendor_product.download');
-        Route::group(['prefix' => 'bulk-upload/download'], function() {
-            Route::get('/category', 'pdf_download_category')->name('pdf.download_category');
-            Route::get('/brand', 'pdf_download_brand')->name('pdf.download_brand');
-            Route::get('/seller', 'pdf_download_seller')->name('pdf.download_seller');
-        });
-    });
 
     // Seller
     Route::resource('sellers', SellerController::class)->except('destroy');

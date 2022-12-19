@@ -125,10 +125,6 @@ class SslCommerzController extends Controller
 
                     wallet_payment_done($request->value_a, $request->value_d, 'SslCommerz', $payment);
 
-                } elseif ($request->value_c == 'seller_package_payment') {
-
-                    seller_purchase_payment_done($request->value_a, $request->value_b, $request->value_d, 'SslCommerz', $payment);
-
                 }
 
                 return response()->json(['result' => true, 'message' => translate("Payment is successful")]);

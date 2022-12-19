@@ -16,7 +16,8 @@ use Hash;
 use Socialite;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
-
+use Cache;
+use Artisan;
 
 
 class AuthController extends Controller
@@ -304,26 +305,43 @@ class AuthController extends Controller
         $user = request()->user();
         $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
 
+
         DB::table('wishlists')->where("user_id", $user->id)->delete();
         DB::table('addresses')->where("user_id", $user->id)->delete();
-        DB::table('sellers')->where("user_id", $user->id)->delete();
         DB::table('shops')->where("user_id", $user->id)->delete();
-        DB::table('blocked_users')->where("user_id", $user->id)->delete();
-        DB::table('firebase_notifications')->where("receiver_id", $user->id)->delete();
+
+        $products = Product::where('user_id', $shop->user_id)->pluck('id')->toArray();
+        if(count($products)>0){
+            DB::table('carts')->whereIn('product_id', $products)->delete();
+            DB::table('wishlists')->whereIn('product_id', $products)->delete();
+            DB::table('offers')->whereIn("product_id", $products)->delete();
+
+            DB::table('products')->where("user_id", $user->id)->delete();
+
+        }
+
         DB::table('carts')->where("user_id", $user->id)->delete();
-        DB::table('products')->where("user_id", $user->id)->delete();
-        DB::table('follows')->where("user_id", $user->id)->delete();
+        DB::table('offers')->where("user_id", $user->id)->delete();
+
+        DB::table('firebase_notifications')->where("receiver_id", $user->id)->delete();
+        DB::table('notifications')->where("notifiable_id", $user->id)->delete();
+
+        DB::table('blocked_users')->where("user_id", $user->id)->orWhere('blocked_user', $user->id)->delete();
+        DB::table('follows')->where("user_id", $user->id)->orWhere('followed_user_id', $user->id)->delete();
+
         $conversations=DB::table('conversations')->where("sender_id", $user->id)->orWhere("receiver_id", $user->id);
         DB::table('messages')->whereIn("conversation_id", $conversations->pluck('id')->toArray())->delete();
         $conversations->delete();
-        DB::table('notifications')->where("notifiable_id", $user->id)->delete();
-        DB::table('offers')->where("user_id", $user->id)->delete();
+
         DB::table('reviews')->where("user_id", $user->id)->delete();
+        DB::table('reviews')->where("seller_id", $user->id)->delete();
+        
         DB::table('user_notification_permissions')->where("user_id", $user->id)->delete();
         DB::table('wallets')->where("user_id", $user->id)->delete();
 
 		User::where("id", $user->id)->delete();
 
+        Artisan::call('cache:clear');
 
         return response()->json([
             'result' => true,

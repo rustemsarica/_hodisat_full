@@ -57,7 +57,7 @@ class BkashController extends Controller
             }
 
             if($payment_type == 'wallet_payment'){
-            
+
                 $amount = $request->amount;
             }
             if($payment_type == 'seller_package_payment'){
@@ -156,11 +156,6 @@ class BkashController extends Controller
             if ($payment_type == 'wallet_payment') {
 
                 wallet_payment_done($request->user_id, $request->amount, 'Bkash', $request->payment_details);
-            }
-
-            if ($payment_type == 'seller_package_payment') {
-
-                seller_purchase_payment_done($request->user_id, $request->package_id, $request->amount, 'Bkash', $request->payment_details);
             }
 
             return response()->json(['result' => true, 'message' => translate("Payment is successful")]);

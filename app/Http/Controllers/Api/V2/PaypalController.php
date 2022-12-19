@@ -117,10 +117,6 @@ class PaypalController extends Controller
                 wallet_payment_done($request->user_id, $request->amount, 'Paypal', json_encode($response));
             }
 
-            if ($request->payment_type == 'seller_package_payment') {
-                seller_purchase_payment_done($request->user_id, $request->package_id, $request->amount, 'Paypal', json_encode($response));
-            }
-
             return response()->json(['result' => true, 'message' => translate("Payment is successful")]);
         } catch (HttpException $ex) {
             return response()->json(['result' => false, 'message' => translate("Payment failed")]);

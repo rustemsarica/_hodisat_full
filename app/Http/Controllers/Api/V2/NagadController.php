@@ -49,7 +49,7 @@ class NagadController
             $this->amount = $combined_order->grand_total;
         } else if ($request->payment_type == 'wallet_payment') {
             $this->tnx = rand(10000, 99999);
-        
+
         } else if ($request->payment_type == 'seller_package_payment') {
             $this->tnx = rand(10000, 99999);
         }
@@ -201,11 +201,6 @@ class NagadController
             if ($payment_type == 'wallet_payment') {
 
                 wallet_payment_done($request->user_id, $request->amount, 'Nagad', $request->payment_details);
-            }
-
-            if ($payment_type == 'seller_package_payment') {
-
-                seller_purchase_payment_done($request->user_id, $request->package_id, $request->amount, 'Nagad', $request->payment_details);
             }
 
             return response()->json(['result' => true, 'message' => translate("Payment is successful")]);

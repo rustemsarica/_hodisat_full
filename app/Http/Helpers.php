@@ -19,11 +19,9 @@ use App\Models\Currency;
 use App\Models\CouponUsage;
 use App\Models\Translation;
 use App\Models\CombinedOrder;
-use App\Models\SellerPackage;
 use App\Models\BusinessSetting;
 use App\Utility\SendSMSUtility;
 use App\Utility\CategoryUtility;
-use App\Models\SellerPackagePayment;
 use App\Utility\NotificationUtility;
 use App\Http\Resources\V2\CarrierCollection;
 use App\Http\Controllers\AffiliateController;
@@ -965,26 +963,6 @@ if (!function_exists('wallet_payment_done')) {
 }
 
 
-if (!function_exists('seller_purchase_payment_done')) {
-    function seller_purchase_payment_done($user_id, $seller_package_id, $amount, $payment_method, $payment_details)
-    {
-        $seller = Shop::where('user_id', $user_id)->first();
-        $seller->seller_package_id = $seller_package_id;
-        $seller_package = SellerPackage::findOrFail($seller_package_id);
-        $seller->product_upload_limit = $seller_package->product_upload_limit;
-        $seller->package_invalid_at = date('Y-m-d', strtotime($seller->package_invalid_at . ' +' . $seller_package->duration . 'days'));
-        $seller->save();
-
-        $seller_package = new SellerPackagePayment();
-        $seller_package->user_id = $user_id;
-        $seller_package->seller_package_id = $seller_package_id;
-        $seller_package->payment_method = $payment_method;
-        $seller_package->payment_details = $payment_details;
-        $seller_package->approval = 1;
-        $seller_package->offline_payment = 2;
-        $seller_package->save();
-    }
-}
 
 if (!function_exists('product_restock')) {
     function product_restock($orderDetail)
