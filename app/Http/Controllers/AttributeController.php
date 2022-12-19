@@ -134,7 +134,7 @@ class AttributeController extends Controller
         $attribute_value->save();
 
         flash(translate('Attribute value has been inserted successfully'))->success();
-        return redirect()->route('attributes.show', $request->attribute_id);
+        return redirect()->route('admin.attributes.show', $request->attribute_id);
     }
 
     public function edit_attribute_value(Request $request, $id)
