@@ -5,7 +5,7 @@
       <div class="row align-items-center">
         <div class="col-md-6">
             <h1 class="h3">{{ translate('Shop Verification')}}
-                <a href="{{ route('shop.visit', $shop->slug) }}" class="btn btn-link btn-sm" target="_blank">({{ translate('Visit Shop')}})<i class="la la-external-link"></i>)</a>
+                <a href="{{ route('shop.visit', $shop->user->username) }}" class="btn btn-link btn-sm" target="_blank">({{ translate('Visit Shop')}})<i class="la la-external-link"></i>)</a>
             </h1>
         </div>
       </div>

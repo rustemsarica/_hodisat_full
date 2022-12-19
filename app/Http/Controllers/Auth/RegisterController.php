@@ -107,7 +107,6 @@ class RegisterController extends Controller
 
             $shop = new Shop;
             $shop->user_id = $user->id;
-            $shop->slug = $user->username;
             $shop->save();
 
             $notif = new UserNotificationPermission;

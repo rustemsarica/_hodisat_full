@@ -78,7 +78,6 @@ class AuthController extends Controller
 
         $shop = new Shop;
         $shop->user_id = $user->id;
-        $shop->slug = $user->username;
         $shop->save();
 
         $notif = new UserNotificationPermission;
@@ -257,7 +256,6 @@ class AuthController extends Controller
 
             $shop = new Shop;
             $shop->user_id = $user->id;
-            $shop->slug = $user->username;
             $shop->save();
 
             $notif = new UserNotificationPermission;

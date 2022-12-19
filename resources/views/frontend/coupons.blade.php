@@ -75,7 +75,7 @@
                                             <a
                                                 class="btn bg-white fw-700"
                                                 @if($coupon->user->user_type != 'admin')
-                                                    href="{{ route('shop.visit', $shop->slug) }}"
+                                                    href="{{ route('shop.visit', $shop->user->username) }}"
                                                 @else
                                                     href="{{ route('inhouse.all') }}"
                                                 @endif
@@ -107,7 +107,7 @@
                                             <a
                                                 class="btn bg-white fw-700"
                                                 @if($coupon->user->user_type != 'admin')
-                                                    href="{{ route('shop.visit', $shop->slug) }}"
+                                                    href="{{ route('shop.visit', $shop->user->username) }}"
                                                 @else
                                                     href="{{ route('inhouse.all') }}"
                                                 @endif

@@ -83,7 +83,6 @@ class ShopController extends Controller
             $shop->user_id = $user->id;
             $shop->user->username = $request->name;
             $shop->address = $request->address;
-            $shop->slug = preg_replace('/\s+/', '-', $request->name);
 
             if ($shop->save()) {
                 auth()->login($user, false);

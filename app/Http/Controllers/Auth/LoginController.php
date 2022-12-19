@@ -114,7 +114,6 @@ class LoginController extends Controller
 
                 $shop = new Shop;
                 $shop->user_id = $newUser->id;
-                $shop->slug = $newUser->username;
                 $shop->save();
                 auth()->login($newUser, true);
             }

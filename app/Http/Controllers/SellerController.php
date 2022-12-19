@@ -90,7 +90,6 @@ class SellerController extends Controller
             if ($seller->save()) {
                 $shop = new Shop;
                 $shop->user_id = $user->id;
-                $shop->slug = 'demo-shop-' . $user->id;
                 $shop->save();
 
                 flash(translate('Seller has been inserted successfully'))->success();

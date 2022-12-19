@@ -28,7 +28,7 @@
                         <div class="col">
                             <div class="row no-gutters bg-white align-items-center border border-light rounded hov-shadow-md mb-3 has-transition">
                                 <div class="col-4">
-                                    <a href="{{ route('shop.visit', $shop->slug) }}" class="d-block p-3" tabindex="0">
+                                    <a href="{{ route('shop.visit', $shop->user->username) }}" class="d-block p-3" tabindex="0">
                                         <img
                                             src="{{ static_asset('assets/img/placeholder-rect.jpg') }}"
                                             data-src="{{ uploaded_asset($shop->logo) }}"
@@ -41,12 +41,12 @@
                                 <div class="col-8 border-left border-light">
                                     <div class="p-3 text-left">
                                         <h2 class="h6 fw-600 text-truncate">
-                                            <a href="{{ route('shop.visit', $shop->slug) }}" class="text-reset" tabindex="0">{{ $shop->user->username }}</a>
+                                            <a href="{{ route('shop.visit', $shop->user->username) }}" class="text-reset" tabindex="0">{{ $shop->user->username }}</a>
                                         </h2>
                                         <div class="rating rating-sm mb-2">
                                             {{ renderStarRating($shop->rating) }}
                                         </div>
-                                        <a href="{{ route('shop.visit', $shop->slug) }}" class="btn btn-soft-primary btn-sm" tabindex="0">
+                                        <a href="{{ route('shop.visit', $shop->user->username) }}" class="btn btn-soft-primary btn-sm" tabindex="0">
                                             {{ translate('Visit Store') }}
                                             <i class="las la-angle-right"></i>
                                         </a>
