@@ -20,7 +20,6 @@
                         <td>{{ single_price($seller_withdraw_request->amount) }}</td>
                     @endif
                 </tr>
-                @if ($user->shop->bank_payment_status == 1)
                     <tr>
                         <td>{{ translate('Bank Name') }}</td>
                         <td>{{ $user->shop->bank_name }}</td>
@@ -29,15 +28,6 @@
                         <td>{{ translate('Bank Account Name') }}</td>
                         <td>{{ $user->shop->bank_acc_name }}</td>
                     </tr>
-                    <tr>
-                        <td>{{ translate('Bank Account Number') }}</td>
-                        <td>{{ $user->shop->bank_acc_no }}</td>
-                    </tr>
-                    <tr>
-                        <td>{{ translate('Bank Routing Number') }}</td>
-                        <td>{{ $user->shop->bank_routing_no }}</td>
-                    </tr>
-                @endif
             </tbody>
         </table>
 
