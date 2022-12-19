@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use Auth;
-use DB;
 
 class PurchaseHistoryController extends Controller
 {

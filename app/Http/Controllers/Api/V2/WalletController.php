@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\V2;
 use App\Http\Resources\V2\WalletCollection;
 use App\Models\User;
 use App\Models\Wallet;
-use App\Models\Shop;
 use Illuminate\Http\Request;
 
 class WalletController extends Controller

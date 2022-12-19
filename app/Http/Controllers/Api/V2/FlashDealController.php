@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api\V2;
 
 use App\Http\Resources\V2\FlashDealCollection;
-use App\Http\Resources\V2\ProductCollection;
 use App\Http\Resources\V2\ProductMiniCollection;
 use App\Models\FlashDeal;
 use App\Models\Product;
@@ -16,7 +15,7 @@ class FlashDealController extends Controller
             ->where('start_date', '<=', strtotime(date('d-m-Y')))
             ->where('end_date', '>=', strtotime(date('d-m-Y')))
             ->get();
-            
+
         return new FlashDealCollection($flash_deals);
     }
 

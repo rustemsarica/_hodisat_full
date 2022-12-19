@@ -15,11 +15,9 @@ use App\Models\Address;
 use App\Models\Carrier;
 use App\Models\CombinedOrder;
 use App\Models\Product;
-use App\Utility\PayhereUtility;
 use App\Utility\NotificationUtility;
 use Session;
 use Auth;
-use Illuminate\Support\Facades\DB;
 
 class CheckoutController extends Controller
 {

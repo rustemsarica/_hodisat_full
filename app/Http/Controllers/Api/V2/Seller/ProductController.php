@@ -2,25 +2,17 @@
 
 namespace App\Http\Controllers\Api\V2\Seller;
 
-use App\Http\Requests\ProductRequest;
-use App\Http\Resources\V2\ReviewCollection;
-use App\Http\Resources\V2\Seller\ProductCollection;
 use App\Http\Resources\V2\Seller\ProductResource;
-use App\Http\Resources\V2\Seller\ProductReviewCollection;
 use App\Http\Resources\V2\ProductMiniCollection;
 use App\Models\Cart;
 use App\Models\Product;
-use App\Models\Review;
 use App\Models\User;
 use App\Models\FirebaseNotification;
-use App\Services\ProductService;
 use Artisan;
-use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 use App\Models\Upload;
-use Illuminate\Support\Facades\File;
 use Storage;
 
 use Mail;

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\V2;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Shop;
-use App\Models\User;
 use App\Models\Offer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

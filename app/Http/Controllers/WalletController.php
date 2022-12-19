@@ -3,7 +3,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Wallet;
-use App\Models\Shop;
 use Auth;
 use Session;
 

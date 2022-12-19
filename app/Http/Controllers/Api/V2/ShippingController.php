@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use App\Http\Resources\V2\AddressCollection;
 use App\Http\Resources\V2\PickupPointResource;
 use App\Models\Cart;
-use App\Models\City;
 use App\Models\PickupPoint;
 use App\Models\Product;
 use App\Models\Shop;

@@ -3,7 +3,6 @@
 namespace App\Http\Resources\V2\Seller;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
-use App\Models\Review;
 use App\Models\Attribute;
 use App\Models\Category;
 use App\Utility\CategoryUtility;

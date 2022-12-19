@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\V2;
 use Illuminate\Http\Request;
 use App\Models\Ticket;
 use App\Models\User;
-use App\Models\TicketReply;
 use App\Mail\SupportMailManager;
 use Mail;
 use App\Http\Resources\V2\SupportCollection;

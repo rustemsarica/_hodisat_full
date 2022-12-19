@@ -8,7 +8,6 @@ use Carbon\Carbon;
 
 use App\Models\Product;
 use App\Models\Shop;
-use App\Models\Order;
 
 class NotificationsCollection extends ResourceCollection
 {

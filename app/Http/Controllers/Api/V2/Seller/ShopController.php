@@ -5,23 +5,19 @@ namespace App\Http\Controllers\Api\V2\Seller;
 use App\Http\Resources\V2\Seller\ProductCollection;
 use App\Http\Resources\V2\Seller\ProductMiniCollection;
 use App\Http\Resources\V2\Seller\CommissionHistoryResource;
-use App\Http\Resources\V2\Seller\SellerPackageResource;
 use App\Http\Resources\V2\Seller\SellerPaymentResource;
 use App\Http\Resources\V2\ShopCollection;
 use App\Http\Resources\V2\ShopDetailsCollection;
 use App\Models\Category;
 use App\Models\CommissionHistory;
 use App\Models\Order;
-use App\Models\OrderDetail;
 use App\Models\Payment;
 use App\Models\Product;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use App\Utility\SearchUtility;
-use Cache;
 use Carbon\Carbon;
 use DB;
-use Response;
 
 class ShopController extends Controller
 {

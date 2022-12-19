@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Api\V2;
 
 use App\Models\Cart;
 use App\Models\Carrier;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\V2\CarrierCollection;
 use App\Models\Country;
 
 class CarrierController extends Controller

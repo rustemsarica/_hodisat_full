@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Conversation;
 use App\Models\BusinessSetting;
 use App\Models\Message;
-use App\Models\ProductQuery;
 use Auth;
 
 class ConversationController extends Controller
@@ -87,5 +86,5 @@ class ConversationController extends Controller
 
         return back();
     }
-    
+
 }

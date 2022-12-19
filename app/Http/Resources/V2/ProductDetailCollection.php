@@ -3,7 +3,6 @@
 namespace App\Http\Resources\V2;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
-use App\Models\Review;
 use App\Models\Attribute;
 use App\Models\Cart;
 use App\Models\Wishlist;

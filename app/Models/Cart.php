@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\User;
-use App\Models\Address;
 use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model

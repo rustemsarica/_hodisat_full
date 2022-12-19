@@ -5,9 +5,6 @@ namespace App\Http\Controllers\Api\V2;
 use App\Notifications\AppEmailVerificationNotification;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\PasswordReset;
-use App\Notifications\PasswordResetRequest;
-use Illuminate\Support\Str;
 use App\Http\Controllers\OTPVerificationController;
 
 use Hash;

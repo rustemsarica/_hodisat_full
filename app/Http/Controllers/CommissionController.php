@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CommissionHistory;
 use Illuminate\Http\Request;
 use App\Models\SellerWithdrawRequest;
 use App\Models\Payment;

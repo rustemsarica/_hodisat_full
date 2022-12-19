@@ -3,9 +3,6 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\WalletController;
-use App\Http\Controllers\Api\V2\OrderController;
 use App\Models\CombinedOrder;
 use App\Models\User;
 use Illuminate\Http\Request;

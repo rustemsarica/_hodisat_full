@@ -7,7 +7,6 @@ use App\Menu;
 use Illuminate\Http\Request;
 use ZipArchive;
 use DB;
-use Auth;
 use App\Models\BusinessSetting;
 use CoreComponentRepository;
 use Illuminate\Support\Str;

@@ -5,89 +5,88 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\BusinessSetting;
 use Artisan;
-use CoreComponentRepository;
 
 class BusinessSettingsController extends Controller
 {
     public function general_setting(Request $request)
     {
-        
-        
+
+
     	return view('backend.setup_configurations.general_settings');
     }
 
     public function activation(Request $request)
     {
-        
-        
+
+
     	return view('backend.setup_configurations.activation');
     }
 
     public function social_login(Request $request)
     {
-        
-        
+
+
         return view('backend.setup_configurations.social_login');
     }
 
     public function smtp_settings(Request $request)
     {
-        
-        
+
+
         return view('backend.setup_configurations.smtp_settings');
     }
 
     public function google_analytics(Request $request)
     {
-        
-        
+
+
         return view('backend.setup_configurations.google_configuration.google_analytics');
     }
 
     public function google_recaptcha(Request $request)
     {
-        
-        
+
+
         return view('backend.setup_configurations.google_configuration.google_recaptcha');
     }
-    
+
     public function google_map(Request $request) {
-        
-        
+
+
         return view('backend.setup_configurations.google_configuration.google_map');
     }
-    
+
     public function google_firebase(Request $request) {
-        
-        
+
+
         return view('backend.setup_configurations.google_configuration.google_firebase');
     }
 
     public function facebook_chat(Request $request)
     {
-        
-        
+
+
         return view('backend.setup_configurations.facebook_chat');
     }
 
     public function facebook_comment(Request $request)
     {
-        
-        
+
+
         return view('backend.setup_configurations.facebook_configuration.facebook_comment');
     }
 
     public function payment_method(Request $request)
     {
-        
-        
+
+
         return view('backend.setup_configurations.payment_method');
     }
 
     public function file_system(Request $request)
     {
-        
-        
+
+
         return view('backend.setup_configurations.file_system');
     }
 
@@ -361,7 +360,7 @@ class BusinessSettingsController extends Controller
         $business_settings->value = json_encode($form);
         if($business_settings->save()){
             Artisan::call('cache:clear');
-            
+
             flash(translate("Verification form updated successfully"))->success();
             return back();
         }

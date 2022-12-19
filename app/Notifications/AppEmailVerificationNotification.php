@@ -6,10 +6,6 @@ use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Support\Facades\URL;
-use App\Mail\EmailManager;
-use Auth;
-use App\Models\User;
 
 class AppEmailVerificationNotification extends Notification
 {

@@ -9,11 +9,6 @@ use Illuminate\Http\Request;
 use App\Models\Conversation;
 use App\Models\BusinessSetting;
 use App\Models\Message;
-use Auth;
-use App\Models\Product;
-use Mail;
-use App\Mail\ConversationMailManager;
-use DB;
 
 class ConversationController extends Controller
 {
@@ -90,7 +85,7 @@ class ConversationController extends Controller
             return $this->failed(translate('You can not see this message.'));
 
         }
-        
+
     }
 
 

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api\V2;
 
 use App\Http\Resources\V2\CategoryCollection;
-use App\Models\BusinessSetting;
 use App\Models\Category;
 use App\Models\AttributeCategory;
 use App\Models\Attribute;

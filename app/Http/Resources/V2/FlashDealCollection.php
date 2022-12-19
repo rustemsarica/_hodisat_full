@@ -4,8 +4,6 @@ namespace App\Http\Resources\V2;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use App\Http\Resources\ProductCollection;
-use App\Models\FlashDeal;
-use App\Models\Product;
 
 class FlashDealCollection extends ResourceCollection
 {

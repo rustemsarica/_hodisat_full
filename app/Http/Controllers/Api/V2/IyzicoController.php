@@ -5,15 +5,10 @@ namespace App\Http\Controllers\Api\V2;
 
 
 use App\Models\BusinessSetting;
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\WalletController;
-use App\Models\CombinedOrder;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Redirect;
 use Illuminate\Support\Arr;
-use App\Http\Controllers\Api\V2\PaystackController;
-use App\Http\Controllers\Api\V2\OrderController;
 
 class IyzicoController extends Controller
 {

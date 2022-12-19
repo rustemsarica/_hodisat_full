@@ -12,14 +12,11 @@ use App\Models\Product;
 use App\Models\Shop;
 use App\Models\Color;
 use App\Models\Order;
-use App\Models\Category;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use App\Utility\CategoryUtility;
 use App\Utility\SearchUtility;
 use Cache;
-use Auth;
-use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {

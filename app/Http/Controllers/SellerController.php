@@ -12,7 +12,6 @@ use App\Models\Cart;
 use App\Models\Wishlist;
 use Illuminate\Support\Facades\Hash;
 use App\Notifications\EmailVerificationNotification;
-use Cache;
 use Artisan;
 
 class SellerController extends Controller

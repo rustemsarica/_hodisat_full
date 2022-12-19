@@ -11,7 +11,6 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
 
 use RicorocksDigitalAgency\Soap\Facades\Soap;
-use Illuminate\Support\Facades\DB;
 
 class OrderTracking extends Command
 {

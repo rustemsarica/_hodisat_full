@@ -4,8 +4,6 @@
 namespace App\Http\Controllers\Api\V2;
 
 
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\WalletController;
 use App\Models\CombinedOrder;
 use App\Models\User;
 use Illuminate\Http\Request;

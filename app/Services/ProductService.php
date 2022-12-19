@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Models\Color;
 use App\Models\Product;
 use App\Models\User;
 use App\Utility\ProductUtility;

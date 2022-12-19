@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Api\V2\Seller;
 use App\Http\Resources\V2\Seller\SellerWithdrawResource;
 use Illuminate\Http\Request;
 use App\Models\SellerWithdrawRequest;
-use Auth;
-use Response;
 
 class WithdrawRequestController extends Controller
 {

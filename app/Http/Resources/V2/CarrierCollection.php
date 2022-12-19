@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources\V2;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class CarrierCollection extends ResourceCollection
@@ -13,7 +12,7 @@ class CarrierCollection extends ResourceCollection
         $this->ownerId = $owner_id;
         return $this;
     }
-    
+
     public function toArray($request)
     {
         return [

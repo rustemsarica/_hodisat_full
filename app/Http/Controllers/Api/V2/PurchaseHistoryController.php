@@ -9,10 +9,8 @@ use App\Http\Resources\V2\ProductMiniCollection;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\Shop;
 use App\Models\Product;
-use Illuminate\Support\Facades\DB;
 
 class PurchaseHistoryController extends Controller
 {

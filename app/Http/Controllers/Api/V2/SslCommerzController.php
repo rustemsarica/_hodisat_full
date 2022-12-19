@@ -7,8 +7,6 @@ namespace App\Http\Controllers\Api\V2;
 use App\Models\BusinessSetting;
 use App\Http\Controllers\SSLCommerz;
 use App\Models\CombinedOrder;
-use App\Models\User;
-use App\Models\Wallet;
 use Illuminate\Http\Request;
 # IF BROWSE FROM LOCAL HOST, KEEP true
 if(!defined("SSLCZ_IS_LOCAL_HOST")){

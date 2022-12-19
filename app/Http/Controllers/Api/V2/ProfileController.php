@@ -2,12 +2,6 @@
 
 namespace App\Http\Controllers\Api\V2;
 
-use App\Models\City;
-use App\Models\Country;
-use App\Http\Resources\V2\AddressCollection;
-use App\Models\Address;
-use App\Http\Resources\V2\CitiesCollection;
-use App\Http\Resources\V2\CountriesCollection;
 use App\Models\Order;
 use App\Models\Upload;
 use App\Models\User;

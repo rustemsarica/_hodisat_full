@@ -3,14 +3,13 @@
 namespace App\Utility;
 
 use App\Models\Color;
-use Combinations;
 
 class ProductUtility
 {
     public static function get_attribute_options($collection)
     {
-        $options = array();   
-        
+        $options = array();
+
         if (isset($collection['choice_no']) && $collection['choice_no']) {
             foreach ($collection['choice_no'] as $key => $no) {
                 $name = 'choice_options_' . $no;

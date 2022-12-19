@@ -14,7 +14,6 @@ use App\Models\User;
 use App\Models\Shop;
 use App\Models\Order;
 use App\Models\Coupon;
-use App\Models\Upload;
 use Cookie;
 use Illuminate\Support\Str;
 use App\Mail\SecondEmailVerifyMailManager;
@@ -27,9 +26,7 @@ use Illuminate\Auth\Events\PasswordReset;
 use Cache;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\DB;
 
-use App\Http\Resources\V2\ProductMiniCollection;
 class HomeController extends Controller
 {
     /**

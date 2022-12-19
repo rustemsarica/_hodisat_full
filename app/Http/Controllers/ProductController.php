@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
@@ -11,7 +10,6 @@ use App\Models\Cart;
 use App\Models\Offer;
 use Carbon\Carbon;
 use Combinations;
-use CoreComponentRepository;
 use Artisan;
 use Cache;
 use Str;

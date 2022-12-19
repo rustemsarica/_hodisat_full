@@ -10,7 +10,6 @@ use App\Models\Cart;
 use App\Models\Shop;
 use Session;
 use Illuminate\Http\Request;
-use CoreComponentRepository;
 use Illuminate\Support\Str;
 
 class LoginController extends Controller

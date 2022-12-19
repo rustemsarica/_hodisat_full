@@ -7,8 +7,6 @@ use App\Models\Category;
 use App\Models\Product;
 use Artisan;
 use Cache;
-use CoreComponentRepository;
-
 class AdminController extends Controller
 {
     /**

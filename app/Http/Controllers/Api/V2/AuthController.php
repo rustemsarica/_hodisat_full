@@ -16,7 +16,6 @@ use Hash;
 use Socialite;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
-use Cache;
 use Artisan;
 
 

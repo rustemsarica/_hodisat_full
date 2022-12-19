@@ -10,7 +10,6 @@ use App\Models\BusinessSetting;
 use App\OtpConfiguration;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\OTPVerificationController;
-use App\Notifications\EmailVerificationNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -20,7 +19,6 @@ use Cookie;
 use Session;
 use Nexmo;
 use Twilio\Rest\Client;
-use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {

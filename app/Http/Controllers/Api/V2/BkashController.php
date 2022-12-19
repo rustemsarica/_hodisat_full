@@ -4,8 +4,6 @@
 namespace App\Http\Controllers\Api\V2;
 
 use App\Models\CombinedOrder;
-use App\Models\User;
-use App\Models\Wallet;
 use Illuminate\Http\Request;
 
 class BkashController extends Controller
