@@ -11,10 +11,10 @@
         <div class="card-body p-0">
 
             <form class="p-4" action="{{ route('admin.brands.update', $brand->id) }}" method="POST" enctype="multipart/form-data">
-
+                <input name="_method" type="hidden" value="PATCH">
                 @csrf
                 <div class="form-group row">
-                    <label class="col-sm-3 col-from-label" for="name">{{translate('Name')}}</label>
+                    <label class="col-sm-3 col-from-label" for="name">{{translate('Name')}} </label>
                     <div class="col-sm-9">
                         <input type="text" placeholder="{{translate('Name')}}" id="name" name="name" value="{{ $brand->name }}" class="form-control" required>
                     </div>
