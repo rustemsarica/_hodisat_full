@@ -42,7 +42,7 @@ class CommissionController extends Controller
             $shop->save();
 
             $payment = new Payment;
-            $payment->seller_id = $shop->user->id;
+            $payment->seller_id = $shop->user_id;
             $payment->amount = $payment_data['amount'];
             $payment->payment_method = 'Seller paid to admin';
             $payment->txn_code = $payment_data['txn_code'];
@@ -62,7 +62,7 @@ class CommissionController extends Controller
         $user->save();
 
         $payment = new Payment;
-        $payment->seller_id = $shop->user->id;
+        $payment->seller_id = $shop->user_id;
         $payment->amount = $payment_data['amount'];
         $payment->payment_method = $payment_data['payment_method'];
         $payment->txn_code = $payment_data['txn_code'];

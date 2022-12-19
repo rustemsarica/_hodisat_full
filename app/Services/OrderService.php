@@ -99,15 +99,15 @@ class OrderService{
 
         if($request->status == 'cancelled'){
             NotificationUtility::sendNotification($order, $request->status);
-            if (get_setting('google_firebase') == 1 && $order->seller->user->device_token != null) {
-                $request->device_token = $order->seller->user->device_token;
+            if (get_setting('google_firebase') == 1 && $order->seller->device_token != null) {
+                $request->device_token = $order->seller->device_token;
                 $status = translate(str_replace("_", " ", $order->delivery_status));
                 $request->title = "Siparişin {$status}";
                 $request->text = "{$order->code} numaralı siparişin {$status}";
 
                 $request->type = "sell";
                 $request->id = $order->id;
-                $request->user_id = $order->seller->user->id;
+                $request->user_id = $order->seller->id;
 
                 NotificationUtility::sendFirebaseNotification($request);
             }
