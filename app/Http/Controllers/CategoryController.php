@@ -187,9 +187,12 @@ class CategoryController extends Controller
         $category->parent_id = Arr::last($array);
         $category->save();
         if(count($array)>0){
-            $category->parent_tree = collect($array)->implode(',');
-        }else{
-            $category->parent_tree =null;
+            if(count($array)==1 && $array[0]==0){
+                $category->parent_tree =null;
+            }else{
+               $category->parent_tree = collect($array)->implode(',');
+            }
+
         }
 
         if ($category->parent_id != "0") {
