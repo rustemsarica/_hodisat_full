@@ -48,7 +48,7 @@ class UserController extends Controller
                 'username'=> "",
                 'email' => "",
                 'phone' => "",
-                'vacation_mode' => "",
+                'vacation_mode' => 0,
                 'address_status' => false
             ]
         ];
