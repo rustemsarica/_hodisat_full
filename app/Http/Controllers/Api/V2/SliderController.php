@@ -16,7 +16,7 @@ class SliderController extends Controller
 
     public function bannerOne()
     {
-
+            
             return new SliderCollection(json_decode(get_setting('home_banner1_images'), true));
 
     }
