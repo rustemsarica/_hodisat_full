@@ -51,7 +51,7 @@ class AttributeController extends Controller
         $attribute_translation->save();
 
         flash(translate('Attribute has been inserted successfully'))->success();
-        return redirect()->route('attributes.index');
+        return redirect()->route('admin.attributes.index');
     }
 
     /**
