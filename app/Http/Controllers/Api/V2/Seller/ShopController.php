@@ -150,8 +150,7 @@ class ShopController extends Controller
 
     public function info()
     {
-       // dd(auth()->user()->shop);
-        return new ShopDetailsCollection(auth()->user()->shop);
+        return new ShopDetailsCollection(DB::table('shops')->join('sellers', 'sellers.user_id', '=', 'shops.user_id')->join('users', 'users.id','=','shops.user_id')->where('shops.id', auth()->user()->shop->id)->select('shops.id','shops.user_id','users.name','users.username','shops.meta_description','shops.logo','shops.sliders','users.address','users.balance','users.phone','sellers.bank_acc_name','sellers.bank_name', 'shops.apply_discount', 'shops.min_product_count', 'shops.discount_percentage', 'sellers.rating', 'users.email')->first());
     }
 
     public function pacakge()
