@@ -145,6 +145,9 @@
 										</div>
 									</div>
 								@endforeach
+                            @else
+                                    <input type="hidden" name="home_banner1_links[]" value="[]">
+                                    <input type="hidden" name="home_banner1_images[]" value="[]">
 							@endif
 						</div>
 						<button
