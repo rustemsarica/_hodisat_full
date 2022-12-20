@@ -111,7 +111,7 @@ class ShippingController extends Controller
                     $shop['cart_items'] = $shop_items_data;
 
                 }
-                $shop['carriers'] = seller_base_carrier_list($owner_id);
+                $shop['carriers'] ;
                 $pickup_point_list ;
                 $shop['pickup_points']  ;
 
