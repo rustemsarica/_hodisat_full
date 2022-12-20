@@ -28,7 +28,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::withCount('wishlists')->where('id', $id)->get();
-        if($product == null){
+        if($product == null || count($product)==0){
             return response()->json([
                 'success' => false,
                 'status' => 200,
