@@ -112,8 +112,8 @@ class ShippingController extends Controller
 
                 }
                 $shop['carriers'] = seller_base_carrier_list($owner_id);
-                $pickup_point_list = PickupPoint::where('pick_up_status', '=', 1)->get();
-                $shop['pickup_points']  = PickupPointResource::collection($pickup_point_list);
+                $pickup_point_list ;
+                $shop['pickup_points']  ;
 
                 $shops[] = $shop;
             }
