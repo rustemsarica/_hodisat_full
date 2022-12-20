@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laravel</title>
+    <title>Hodisat</title>
     <meta http-equiv="Content-Type" content="text/html;"/>
     <meta charset="UTF-8">
 	<style media="all">
@@ -145,7 +145,7 @@
 		</div>
 
 	    <div style="padding:0 1.5rem;">
-	        <table style="width: 40%;margin-left:auto;" class="text-right sm-padding small strong">
+	        <table style="width: 50%;margin-left:auto;" class="text-right sm-padding small strong">
 		        <tbody>
 			        <tr>
 			            <th class="gry-color text-right">{{ translate('Sub Total') }}</th>
