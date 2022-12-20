@@ -55,7 +55,11 @@ class ProductController extends Controller
                     'current_stock' => 0,
                     'earn_point' => 0.00,
                     'description' => "",
-                    'brand' => new Brand(),
+                    'brand' => [
+                        'id'=> 0,
+                        'name'=> "",
+                        'logo'=> "",
+                    ],
                     'link' => "",
                     'category_id'=>0,
                     'is_in_wishlist'=> false,
