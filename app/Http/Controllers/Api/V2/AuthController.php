@@ -307,7 +307,7 @@ class AuthController extends Controller
 
         DB::table('wishlists')->where("user_id", $user->id)->delete();
         DB::table('addresses')->where("user_id", $user->id)->delete();
-        $shop=DB::table('shops')->where("user_id", $user->id)->first();
+        $shop=Shop::where("user_id", $user->id)->first();
 
         $products = Product::where('user_id', $shop->user_id)->pluck('id')->toArray();
         if(count($products)>0){
