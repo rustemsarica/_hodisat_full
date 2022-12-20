@@ -29,6 +29,10 @@ class FollowController extends Controller
 
     public function add(Request $request)
     {
+        if($request->followed_user_id == auth()->user()->id){
+            return response()->json(['result' => false], 200);
+        }
+
         $product = Follow::where(['followed_user_id' => $request->followed_user_id, 'user_id' => auth()->user()->id])->count();
         if ($product == 0) {
 
