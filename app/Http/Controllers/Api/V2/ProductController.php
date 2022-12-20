@@ -27,6 +27,14 @@ class ProductController extends Controller
 
     public function show($id)
     {
+        $product = Product::withCount('wishlists')->where('id', $id)->get();
+        if($product == null){
+            return response()->json([
+                'success' => false,
+                'status' => 200,
+                'data' => []
+            ]);
+        }
         return new ProductDetailCollection(Product::withCount('wishlists')->where('id', $id)->get());
     }
 
