@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Shop;
 use App\Models\Product;
+use App\Models\Order;
 use App\Models\UserNotificationPermission;
 use App\Notifications\AppEmailVerificationNotification;
 use Hash;
@@ -18,6 +19,8 @@ use Socialite;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Artisan;
+
+use App\Services\OrderService;
 
 
 class AuthController extends Controller
@@ -305,6 +308,17 @@ class AuthController extends Controller
 
         $user = request()->user();
         $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
+
+        $orders = Order::where(['delivery_status'=>'pending', 'user_id'=>$user->id])->orWhere(['delivery_status'=>'pending', 'seller_id'=>$user->id])->pluck('id')->toArray();
+
+        if(count($orders)>0){
+            foreach($orders as $id){
+                $request = new Request();
+                $request->order_id = $id;
+                $request->status = 'cancelled';
+                (new OrderService)->handle_delivery_status($request);
+            }
+        }
 
         DB::table('wishlists')->where("user_id", $user->id)->delete();
         DB::table('addresses')->where("user_id", $user->id)->delete();

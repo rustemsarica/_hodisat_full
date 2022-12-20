@@ -30,18 +30,19 @@ class OrderService{
             $this->cancel_shipping_code($order->shipping_code);
             $order->shipping_code = translate("Order cancelled");
             $order->save();
+            if($order->payment_status=='paid'){
+                $wallet = new Wallet;
+                $wallet->user_id = $order->user_id;
+                $wallet->amount = $order->grand_total;
+                $wallet->payment_method = translate("Order cancelled");
+                $wallet->payment_details = $order->code;
+                $wallet->action = "+";
+                $wallet->save();
 
-            $wallet = new Wallet;
-            $wallet->user_id = $order->user_id;
-            $wallet->amount = $order->grand_total;
-            $wallet->payment_method = translate("Order cancelled");
-            $wallet->payment_details = $order->code;
-            $wallet->action = "+";
-            $wallet->save();
-
-            $user = User::where('id', $order->user_id)->first();
-            $user->balance += $order->grand_total;
-            $user->save();
+                $user = User::where('id', $order->user_id)->first();
+                $user->balance += $order->grand_total;
+                $user->save();
+            }
 
         }
 
