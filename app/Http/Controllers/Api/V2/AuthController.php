@@ -301,6 +301,7 @@ class AuthController extends Controller
 
     public function delete(Request $request)
     {
+        try{
 
         $user = request()->user();
         $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
@@ -342,6 +343,9 @@ class AuthController extends Controller
 		User::where("id", $user->id)->delete();
         $shop->delete();
 
+    }catch(\Exception $e){
+        DB::table('logs')->insert(['title'=>'Error', 'text'=> json_encode($e)]);
+    }
         Artisan::call('cache:clear');
 
         return response()->json([
