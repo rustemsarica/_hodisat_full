@@ -43,17 +43,22 @@ class PurchaseHistoryItemsCollection extends ResourceCollection
                         $refund_label = "Non-refundable";
                     }
                 }
+                if($data->product==null){
+                   $product = json_decode($data->product_info);
+                }else{
+                    $product = $data->product;
+                }
 
                 return [
                     'id' => $data->id,
-                    'product_id' => $data->product->id,
-                    'product_name' => $data->product->name,
+                    'product_id' => $product->id,
+                    'product_name' => $product->name,
                     'variation' => $data->variation,
                     'price' => format_price($data->price),
                     'shipping_cost' => format_price($data->shipping_cost),
                     'coupon_discount' => format_price($data->coupon_discount),
                     'quantity' => (int)$data->quantity,
-                    'thumbnail_image' => uploaded_asset($data->product->thumbnail_img),
+                    'thumbnail_image' => uploaded_asset($product->thumbnail_img),
                     'payment_status' => $data->payment_status,
                     'payment_status_string' => translate(ucwords(str_replace('_', ' ', $data->payment_status))),
                     'delivery_status' => $data->delivery_status,
