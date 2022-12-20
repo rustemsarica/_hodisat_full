@@ -11,6 +11,7 @@ Route::group(['prefix' => 'v2/auth', 'middleware' => ['app_language']], function
     Route::middleware('auth:sanctum')->group(function () {
         Route::get('logout', 'App\Http\Controllers\Api\V2\AuthController@logout');
         Route::get('user', 'App\Http\Controllers\Api\V2\AuthController@user');
+        Route::get('auth/delete', 'App\Http\Controllers\Api\V2\AuthController@delete');
     });
     Route::post('resend_code', 'App\Http\Controllers\Api\V2\AuthController@resendCode');
     Route::post('confirm_code', 'App\Http\Controllers\Api\V2\AuthController@confirmCode');
