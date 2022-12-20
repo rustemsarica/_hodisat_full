@@ -32,39 +32,7 @@ class ProductController extends Controller
             return response()->json([
                 'success' => false,
                 'status' => 200,
-                'data' => [
-                    'id' => 0,
-                    'name' => "",
-                    'added_by' => "",
-                    'seller_id' => 0,
-                    'seller_vacation_mode' => 0,
-                    'shop_id' =>  0 ,
-                    'shop_name' => "",
-                    'shop_logo' => "",
-                    'photos' => "",
-                    'string_photos' => "",
-                    'thumbnail_image' => "",
-                    'choice_options' => "",
-                    'colors' => "",
-                    'has_discount' => "",
-                    'discount'=> "",
-                    'stroked_price' => "",
-                    'main_price' => "",
-                    'calculable_price' => 0,
-                    'currency_symbol' => "",
-                    'current_stock' => 0,
-                    'earn_point' => 0.00,
-                    'description' => "",
-                    'brand' => [
-                        'id'=> 0,
-                        'name'=> "",
-                        'logo'=> "",
-                    ],
-                    'link' => "",
-                    'category_id'=>0,
-                    'is_in_wishlist'=> false,
-                    'is_in_cart'=> false,
-                    'wish_count' => 0]
+                'data' => []
             ]);
         }
         return new ProductDetailCollection(Product::withCount('wishlists')->where('id', $id)->get());
