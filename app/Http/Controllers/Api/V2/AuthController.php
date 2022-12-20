@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Shop;
+use App\Models\Product;
 use App\Models\UserNotificationPermission;
 use App\Notifications\AppEmailVerificationNotification;
 use Hash;
@@ -303,7 +304,6 @@ class AuthController extends Controller
 
         $user = request()->user();
         $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
-
 
         DB::table('wishlists')->where("user_id", $user->id)->delete();
         DB::table('addresses')->where("user_id", $user->id)->delete();
