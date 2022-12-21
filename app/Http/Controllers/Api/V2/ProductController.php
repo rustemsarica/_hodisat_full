@@ -46,7 +46,7 @@ class ProductController extends Controller
     public function seller($id, Request $request)
     {
         $shop = Shop::findOrFail($id);
-        $products = Product::where('added_by', 'seller')->where('user_id', $shop->user_id);
+        $products = Product::where('approved', 1)->where('user_id', $shop->user_id);
         if ($request->name != "" || $request->name != null) {
             $products = $products->where('name', 'like', '%' . $request->name . '%');
         }
@@ -74,7 +74,7 @@ class ProductController extends Controller
         if ($request->name != "" || $request->name != null) {
             $products = $products->where('name', 'like', '%' . $request->name . '%');
         }
-        $products->where('published', 1);
+        $products->where('published', 1)->where('approved', 1);
         return new ProductMiniCollection(filter_products($products)->latest()->paginate(20));
     }
 
@@ -84,7 +84,7 @@ class ProductController extends Controller
         $colors = [];
         $attributes = [];
 
-        $products = Product::where('brand_id', $id);
+        $products = Product::where('brand_id', $id)->where('published', 1)->where('approved', 1);
         if ($request->name != "" || $request->name != null) {
             $products = $products->where('name', 'like', '%' . $request->name . '%');
             SearchUtility::store($request->name);
@@ -171,7 +171,7 @@ class ProductController extends Controller
 
     public function featured()
     {
-        $products = Product::where('featured', 1);
+        $products = Product::where('featured', 1)->where('published', 1)->where('approved', 1);
         return new ProductMiniCollection(filter_products($products)->latest()->paginate(20));
     }
 
