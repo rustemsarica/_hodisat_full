@@ -345,7 +345,7 @@ class OrderService{
 				'gondericibilgi' 	    => $gondericiBilgi,
                 'musteriReferansNo'     => $shipping_key,
                 'aliciSms'              => substr($shipping_address['phone'], strpos($shipping_address['phone'], "5")),
-                'odemesekli'            => 'N'
+                'odemesekli'            => 'MH'
 			];
 
 			$data=[
