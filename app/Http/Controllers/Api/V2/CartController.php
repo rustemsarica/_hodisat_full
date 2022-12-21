@@ -178,6 +178,10 @@ class CartController extends Controller
 
         $product = Product::findOrFail($request->id);
 
+        if($product->approved!=1){
+            return response()->json(['result' => false, 'message' => translate("Sorry. This product is not ready for sale.") ], 200);
+        }
+
         if($product->user_id==auth()->user()->id){
             return response()->json(['result' => false, 'message' => translate("You cannot buy your own products.") ], 200);
         }
