@@ -178,6 +178,9 @@ class CartController extends Controller
 
         $product = Product::findOrFail($request->id);
 
+        if($product->user_id==auth()->user()->id){
+            return response()->json(['result' => false, 'message' => translate("You cannot buy your own products.") ], 200);
+        }
         $variant = $request->variant;
 
 
