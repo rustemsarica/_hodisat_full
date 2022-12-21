@@ -21,7 +21,7 @@ class OrderDetailResource extends JsonResource
             'order_date'        => date('d.m.Y', strtotime($this->created_at)),
             'payment_status'    => translate($this->payment_status),
             'delivery_status'   => translate($this->delivery_status),
-            'shipping_code'     => implode(' ',str_split($this->shipping_code,3)),
+            'shipping_code'     => $this->shipping_code,
             'shipping_cost'     => format_price($this->orderDetails->sum('shipping_cost')),
             'subtotal'          => format_price($this->orderDetails->sum('price')),
             'coupon_discount'   => format_price($this->coupon_discount),
