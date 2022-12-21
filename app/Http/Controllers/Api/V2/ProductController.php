@@ -22,7 +22,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return new ProductMiniCollection(Product::latest()->paginate(20));
+        return new ProductMiniCollection(Product::where(['published'=>1, 'approved'=>1])->latest()->paginate(20));
     }
 
     public function show($id)
@@ -46,11 +46,10 @@ class ProductController extends Controller
     public function seller($id, Request $request)
     {
         $shop = Shop::findOrFail($id);
-        $products = Product::where('approved', 1)->where('user_id', $shop->user_id);
+        $products = Product::where('approved', 1)->where('user_id', $shop->user_id)->where('published', 1)->where('current_stock','>',0);
         if ($request->name != "" || $request->name != null) {
             $products = $products->where('name', 'like', '%' . $request->name . '%');
         }
-        $products->where('published', 1)->where('current_stock','>',0);
         return new ProductMiniCollection($products->latest()->paginate(20));
     }
 
