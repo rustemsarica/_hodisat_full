@@ -191,13 +191,13 @@
                                             <div class="col-10">
                                                 <div class="aiz-radio-inline">
                                                     @foreach ($choice->values as $key => $value)
-                                                        <label class="aiz-megabox pl-0 mr-2">
+                                                        <label class="aiz-megabox pl-0 mr-2" style="width: 75px">
                                                             <input type="radio"
                                                                 name="attribute_id_{{ $choice->attribute_id }}"
                                                                 value="{{ $value }}"
                                                                 @if ($key == 0) checked @endif>
                                                             <span
-                                                                class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2" style="width: 75px">
+                                                                class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">
                                                                 {{ $value }}
                                                             </span>
                                                         </label>
