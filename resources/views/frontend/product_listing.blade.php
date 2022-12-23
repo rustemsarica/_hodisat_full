@@ -139,11 +139,11 @@
                                 @foreach ($attributes as $attribute)
                                     <div class="bg-white shadow-sm rounded mb-3">
                                         <div class="fs-15 fw-600 p-3 border-bottom">
-                                            <a href="#" class="dropdown-toggle text-dark filter-section collapsed" data-toggle="collapse" data-target="#collapse_{{ str_replace(' ', '',$attribute->name) }}">
+                                            <a href="#" class="dropdown-toggle text-dark filter-section collapsed" data-toggle="collapse" data-target="#collapse_{{ $attribute->id }}">
                                                 {{ $attribute->getTranslation('name') }}
                                             </a>
                                         </div>
-                                        <div class="collapse" id="collapse_{{ str_replace(' ', '',$attribute->name) }}">
+                                        <div class="collapse" id="collapse_{{ $attribute->id  }}">
                                             <div class="p-3  aiz-checkbox-list">
                                                         @php
                                                             $arr= $attribute->attribute_values->pluck('value')->toArray();
