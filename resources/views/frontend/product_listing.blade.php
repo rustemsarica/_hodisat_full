@@ -148,10 +148,10 @@
                                                         @php
                                                             $arr= $attribute->attribute_values->pluck('value')->toArray();
                                                             $lengths = array_map('strlen', $arr);
-                                                            echo "The shortest is " . min($lengths) . ". The longest is " . max($lengths);
+                                                            $max = max($lengths);
                                                         @endphp
                                                 @foreach ($attribute->attribute_values as $attribute_value)
-                                                    <label class="aiz-megabox pl-0 mr-2" @if(count($attribute->attribute_values)>25) style="width: 60px !important;" @endif>
+                                                    <label class="aiz-megabox pl-0 mr-2" @if(count($max)<5) style="width: 60px !important;" @endif>
                                                         <input
                                                             type="checkbox"
                                                             name="selected_attribute_values[]"
