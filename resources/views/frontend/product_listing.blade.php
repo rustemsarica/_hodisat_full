@@ -146,7 +146,7 @@
                                         <div class="collapse" id="collapse_{{ str_replace(' ', '',$attribute->name) }}">
                                             <div class="p-3  aiz-checkbox-list">
                                                 @foreach ($attribute->attribute_values as $attribute_value)
-                                                    <label class="aiz-megabox pl-0 mr-2">
+                                                    <label class="aiz-megabox pl-0 mr-2"  style="width: 60px !importand;">
                                                         <input
                                                             type="checkbox"
                                                             name="selected_attribute_values[]"
@@ -171,7 +171,7 @@
                                         <div class="collapse" id="collapse_color">
                                             <div class="p-3 aiz-radio-inline">
                                                 @foreach ($colors as $key => $color)
-                                                <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="{{ $color->name }}"  style="width: 60px !importand;">
+                                                <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="{{ $color->name }}">
                                                     <input
                                                         type="radio"
                                                         name="color"
