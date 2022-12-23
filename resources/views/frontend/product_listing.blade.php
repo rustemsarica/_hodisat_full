@@ -148,7 +148,7 @@
                                                 @foreach ($attribute->attribute_values as $attribute_value)
                                                     <label class="aiz-megabox pl-0 mr-2" @if(count($attribute->attribute_values)>25) style="width: 60px !important;" @endif>
                                                         @php
-                                                            print_r(max(array_map('strlen', array_map('array_pop', $attribute->attribute_values))));
+                                                            echo max(array_map('strlen', array_map('array_pop', $attribute->attribute_values)));
                                                         @endphp
                                                         <input
                                                             type="checkbox"
