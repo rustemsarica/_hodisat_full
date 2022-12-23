@@ -152,7 +152,14 @@
                                                             echo $max;
                                                         @endphp
                                                 @foreach ($attribute->attribute_values as $attribute_value)
-                                                    <label class="aiz-megabox pl-0 mr-2" @if($max<5) style="width: 60px !important;" @endif>
+                                                    <label class="aiz-megabox pl-0 mr-2"
+                                                    @if($max<5)
+                                                        style="width: 60px !important;"
+                                                    @elseif($max < 8)
+                                                        style="width: 82px !important;"
+                                                    @elseif($max < 17)
+                                                        style="width: 128px !important;"
+                                                    @endif>
                                                         <input
                                                             type="checkbox"
                                                             name="selected_attribute_values[]"
