@@ -144,7 +144,7 @@
                                             </a>
                                         </div>
                                         <div class="collapse" id="collapse_{{ str_replace(' ', '',$attribute->name) }}">
-                                            <div class="p-3  aiz-checkbox-list" style="column-count: 3">
+                                            <div class="p-3  aiz-checkbox-list">
                                                 @foreach ($attribute->attribute_values as $attribute_value)
                                                     <label class="aiz-megabox pl-0 mr-2">
                                                         <input
