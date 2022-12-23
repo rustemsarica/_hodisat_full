@@ -139,21 +139,21 @@
                                 @foreach ($attributes as $attribute)
                                     <div class="bg-white shadow-sm rounded mb-3">
                                         <div class="fs-15 fw-600 p-3 border-bottom">
-                                            <a href="#" class="dropdown-toggle text-dark filter-section collapsed" data-toggle="collapse" data-target="#collapse_{{ $attribute->name }}">
+                                            <a href="#" class="dropdown-toggle text-dark filter-section collapsed" data-toggle="collapse" data-target="#collapse_{{ str_replace(' ', '',$attribute->name) }}">
                                                 {{ $attribute->getTranslation('name') }}
                                             </a>
                                         </div>
-                                        <div class="collapse" id="collapse_{{ $attribute->name }}">
+                                        <div class="collapse" id="collapse_{{ str_replace(' ', '',$attribute->name) }}">
                                             <div class="p-3  aiz-checkbox-list">
                                                 @foreach ($attribute->attribute_values as $attribute_value)
-                                                    <label class="aiz-checkbox">
+                                                    <label class="aiz-megabox">
                                                         <input
                                                             type="checkbox"
                                                             name="selected_attribute_values[]"
                                                             value="{{ $attribute_value->value }}" @if (in_array($attribute_value->value, $selected_attribute_values)) checked @endif
                                                             onchange="filter()"
                                                         >
-                                                        <span class="aiz-square-check"></span>
+                                                        <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2"></span>
                                                         <span>{{ $attribute_value->value }}</span>
                                                     </label>
                                                 @endforeach
