@@ -155,9 +155,9 @@
                                                     <label class="aiz-megabox pl-0 mr-2"
                                                     @if($max<5)
                                                         style="width: 60px !important;"
-                                                    @elseif($max < 10)
+                                                    @elseif($max < 11)
                                                         style="width: 82px !important;"
-                                                    @elseif($max < 17)
+                                                    @elseif($max < 18)
                                                         style="width: 128px !important;"
                                                     @endif>
                                                         <input
