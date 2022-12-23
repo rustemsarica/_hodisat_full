@@ -165,7 +165,7 @@
                                                             value="{{ $attribute_value->value }}" @if (in_array($attribute_value->value, $selected_attribute_values)) checked @endif
                                                             onchange="filter()"
                                                         >
-                                                        <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-2 px-3 mb-2">{{ $attribute_value->value }}</span>
+                                                        <span class="aiz-megabox-elem rounded d-flex align-items-center justify-content-center py-1 px-1 mb-2">{{ $attribute_value->value }}</span>
                                                     </label>
                                                 @endforeach
                                             </div>
