@@ -147,7 +147,8 @@
                                             <div class="p-3  aiz-checkbox-list">
                                                         @php
                                                             $arr= $attribute->attribute_values->pluck('value')->toArray();
-                                                            print_r(max(array_map('strlen', array_map('array_pop', $arr))));
+                                                            $lengths = array_map('strlen', $arr);
+                                                            echo "The shortest is " . min($lengths) . ". The longest is " . max($lengths);
                                                         @endphp
                                                 @foreach ($attribute->attribute_values as $attribute_value)
                                                     <label class="aiz-megabox pl-0 mr-2" @if(count($attribute->attribute_values)>25) style="width: 60px !important;" @endif>
