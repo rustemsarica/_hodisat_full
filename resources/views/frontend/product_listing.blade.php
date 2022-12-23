@@ -171,7 +171,7 @@
                                         <div class="collapse" id="collapse_color">
                                             <div class="p-3 aiz-radio-inline">
                                                 @foreach ($colors as $key => $color)
-                                                <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="{{ $color->name }}"  style="width: 75px">
+                                                <label class="aiz-megabox pl-0 mr-2" data-toggle="tooltip" data-title="{{ $color->name }}"  style="width: 60px !importand;">
                                                     <input
                                                         type="radio"
                                                         name="color"
