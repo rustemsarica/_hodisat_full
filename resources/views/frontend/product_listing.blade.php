@@ -149,7 +149,6 @@
                                                             $arr= $attribute->attribute_values->pluck('value')->toArray();
                                                             $lengths = array_map('strlen', $arr);
                                                             $max = max($lengths);
-                                                            echo $max;
                                                         @endphp
                                                 @foreach ($attribute->attribute_values as $attribute_value)
                                                     <label class="aiz-megabox pl-0 mr-2"
