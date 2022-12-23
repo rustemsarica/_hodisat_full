@@ -145,11 +145,11 @@
                                         </div>
                                         <div class="collapse" id="collapse_{{ str_replace(' ', '',$attribute->name) }}">
                                             <div class="p-3  aiz-checkbox-list">
-                                                @foreach ($attribute->attribute_values as $attribute_value)
-                                                    <label class="aiz-megabox pl-0 mr-2" @if(count($attribute->attribute_values)>25) style="width: 60px !important;" @endif>
                                                         @php
                                                             print_r($attribute->attribute_values);
                                                         @endphp
+                                                @foreach ($attribute->attribute_values as $attribute_value)
+                                                    <label class="aiz-megabox pl-0 mr-2" @if(count($attribute->attribute_values)>25) style="width: 60px !important;" @endif>
                                                         <input
                                                             type="checkbox"
                                                             name="selected_attribute_values[]"
