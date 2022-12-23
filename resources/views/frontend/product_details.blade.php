@@ -191,7 +191,7 @@
                                             <div class="col-10">
                                                 <div class="aiz-radio-inline">
                                                     @foreach ($choice->values as $key => $value)
-                                                        <label class="aiz-megabox pl-0 mr-2" style="width: 75px">
+                                                        <label class="aiz-megabox pl-0 mr-2">
                                                             <input type="radio"
                                                                 name="attribute_id_{{ $choice->attribute_id }}"
                                                                 value="{{ $value }}"
